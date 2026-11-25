@@ -23,7 +23,18 @@
 # calls `organization_id` on some routes and `org_slug` on others, is always
 # `organization_id` (it takes the slug or the public id). Every path
 # parameter is named explicitly, so no default rename of the heuristic's
-# applies. Response transforms are the heuristic's own for each route.
+# applies. Response transforms are the heuristic's own for each route, except
+# where a load answers more than its record. A record answered beside its
+# context (a finding beside its permissions, a memory beside its history) is
+# unwrapped to the record. A view whose payload is the point (an app's
+# deployment dashboard, a project's PR-testing options and product-map
+# comparison) is a resource of its own, read whole.
+#
+# Where the heuristic gives a route an action because a sibling path, often
+# a deprecated `clawder` one left out here, shares its selector, the action
+# stays: a guide cannot take one away. Such a route uses the heuristic's
+# action name, and a resource whose plain route it marks takes a name of its
+# own (`verify_environment`, `spark_automation`).
 #
 # One nested block: written as one statement per route, about 500 or more
 # top-level statements fail the model build as a false circular reference.
@@ -147,7 +158,7 @@ guide: entity: {
       op: load: transform: page: cursor: "`body.next_cursor`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/debug": {
-      action: "debug": {}
+      action: "spark_debug": {}
       rename: param: "id": "id"
       op: load: method: GET
     }
@@ -162,7 +173,6 @@ guide: entity: {
       action: "environment": {}
       rename: param: "id": "id"
       op: load: method: GET
-      op: load: transform: res: "`body.variables`"
       op: patch: method: PATCH
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/github_access": {
@@ -172,7 +182,7 @@ guide: entity: {
       op: update: method: PUT
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/input_delivery": {
-      action: "input_delivery": {}
+      action: "spark_input_delivery": {}
       rename: param: "id": "id"
       op: load: method: GET
     }
@@ -195,12 +205,12 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/message_image": {
-      action: "message_image": {}
+      action: "spark_message_image": {}
       rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/mission_control_card": {
-      action: "mission_control_card": {}
+      action: "spark_mission_control_card": {}
       rename: param: "id": "id"
       op: load: method: GET
     }
@@ -210,13 +220,13 @@ guide: entity: {
       op: patch: method: PATCH
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/activity": {
-      action: "activity": {}
+      action: "spark_relay_activity": {}
       rename: param: "id": "id"
       op: load: method: GET
       op: load: transform: res: "`body.activity`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/inspection": {
-      action: "inspection": {}
+      action: "spark_relay_inspection": {}
       rename: param: "id": "id"
       op: load: method: GET
     }
@@ -224,10 +234,9 @@ guide: entity: {
       action: "resource": {}
       rename: param: "id": "id"
       op: load: method: GET
-      op: load: transform: res: "`body.contents`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/run_usage": {
-      action: "run_usage": {}
+      action: "spark_run_usage": {}
       rename: param: "id": "id"
       op: load: method: GET
     }
@@ -254,7 +263,6 @@ guide: entity: {
       action: "thread_model": {}
       rename: param: "id": "id"
       op: load: method: GET
-      op: load: transform: res: "`body.choices`"
       op: update: method: PUT
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/transcription_session": {
@@ -263,7 +271,7 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/usage": {
-      action: "usage": {}
+      action: "spark_usage": {}
       rename: param: "id": "id"
       op: load: method: GET
     }
@@ -274,44 +282,33 @@ guide: entity: {
     }
     "/api/v1/agent/roder/browser_authorization": active: false
     "/api/v1/agent/roder/browser_executor_authorization": active: false
-    "/api/v1/agent/roder/machines/{public_id}": active: false
     "/api/v1/agent/roder/run/swarm_activity": active: false
     "/api/v1/agent/roder/run/swarm_stack": active: false
     "/api/v1/agent/roder/run/swarm_transcript": active: false
     "/api/v1/agent/roder/run/workspace_authorization": active: false
-    "/api/v1/agent/roder/run/workspace_credentials": active: false
     "/api/v1/agent/roder/workspace_authorization": active: false
-    "/api/v1/agent/swarms": active: false
-    "/api/v1/agent/swarms/{id}": active: false
-    "/api/v1/agent/swarms/{id}/cancel": active: false
-    "/api/v1/agent/swarms/{swarm_id}/events": active: false
-    "/api/v1/agent/swarms/{swarm_id}/notes": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/browser_task_activity": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/claim": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/evidence": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/heartbeat": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/release": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/result": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verification_account_session": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verification_cleanup": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verification_diagnostics": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verification_evidence": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verification_mail": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verification_secrets": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_checkpoint": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_diagnostics": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_jev": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_knowledge": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_learning": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_mail": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_product_map": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_secrets": active: false
-    "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_sign_in": active: false
-    "/api/v1/agent/threads": active: false
-    "/api/v1/agent/threads/{id}": active: false
-    "/api/v1/agent/threads/{id}/archive": active: false
+    "/api/v1/model_subscription_accounts/connection/{agent_id}": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/avatar/configuration": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/avatar/generate": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/avatar/retry": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/computer/frame": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/computer/start": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/debug": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/input_delivery": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/message_image": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/mission_control_card": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/relay/activity": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/relay/inspection": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/run_usage": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/runtime/reset": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/usage": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/sharing/review": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/spark/computer/frame": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/spark/computer/start": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/spark/provisioning/retry": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/spark/runtime/reset": active: false
+    "/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/agent": active: false
+    "/api/v1/organizations/{organization_id}/verify/explorations/{id}/report/replay/{agent_id}": active: false
   }
 
   # agent_app
@@ -353,32 +350,6 @@ guide: entity: {
       rename: param: "id": "agent_id"
       op: create: method: POST
     }
-  }
-
-  # agent_automation
-  agent_automation: path: {
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/automations": {
-      rename: param: "id": "agent_id"
-      op: list: method: GET
-      op: list: transform: res: "`body.items`"
-      op: list: transform: page: next: "`body.pagination.next`"
-    }
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}": {
-      rename: param: "automation_key": "id"
-      rename: param: "id": "agent_id"
-      op: load: method: GET
-      op: update: method: PUT
-    }
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/schedule": {
-      action: "schedule": {}
-      rename: param: "automation_key": "id"
-      rename: param: "id": "agent_id"
-      op: update: method: PUT
-    }
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/automations/{automation_key}": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/automations/{automation_key}/events": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/automations/{automation_key}/schedule": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/events": active: false
   }
 
   # agent_avatar
@@ -482,8 +453,6 @@ guide: entity: {
       action: "custody": {}
       rename: param: "id": "id"
       op: load: method: GET
-      op: load: transform: res: "`body.events`"
-      op: load: transform: page: next: "`body.pagination.next`"
     }
     "/api/v1/organizations/{organization_id}/agent_connections/{id}/delegate": {
       action: "delegate": {}
@@ -700,6 +669,7 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/agent_integrations/github": {
       action: "github": {}
       op: load: method: GET
+      op: load: transform: res: "`body.installations`"
     }
     "/api/v1/organizations/{organization_id}/agent_integrations/{id}": {
       rename: param: "id": "id"
@@ -782,6 +752,7 @@ guide: entity: {
       rename: param: "id": "agent_id"
       rename: param: "request_id": "id"
       op: create: method: POST
+      op: create: transform: res: "`body.interaction`"
     }
   }
 
@@ -833,12 +804,10 @@ guide: entity: {
       op: load: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.listing`"
-      op: list: active: false
     }
     "/api/v1/organizations/{organization_id}/agent_marketplace/draft": {
       action: "draft": {}
       op: load: method: GET
-      op: load: transform: res: "`body.page_app_choices`"
     }
     "/api/v1/organizations/{organization_id}/agent_marketplace/{id}": {
       rename: param: "id": "id"
@@ -893,6 +862,7 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/operations": {
       rename: param: "id": "agent_id"
       op: create: method: POST
+      op: create: transform: res: "`body.operation`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/operations/{operation_id}": {
       rename: param: "id": "agent_id"
@@ -1035,7 +1005,6 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/clawder/runtime": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/runtime/reset": active: false
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/runtime": active: false
   }
 
@@ -1045,9 +1014,13 @@ guide: entity: {
       action: "transcript": {}
       rename: param: "session_id": "id"
       op: load: method: GET
-      op: load: transform: res: "`body.events`"
-      op: load: transform: page: more: "`body.has_more`"
     }
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/roder_handoffs": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript_export": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript_index": active: false
   }
 
   # agent_session_checkpoint
@@ -1118,7 +1091,6 @@ guide: entity: {
       action: "review": {}
       rename: param: "id": "agent_id"
       op: load: method: GET
-      op: load: transform: res: "`body.accounts`"
     }
   }
 
@@ -1571,11 +1543,6 @@ guide: entity: {
       op: load: method: GET
       op: load: transform: res: "`body.app`"
     }
-    "/api/v1/hosting/apps/{app_id}/deployment_dashboard": {
-      action: "deployment_dashboard": {}
-      rename: param: "app_id": "id"
-      op: load: method: GET
-    }
     "/api/v1/hosting/apps/{id}": {
       rename: param: "id": "id"
       op: remove: method: DELETE
@@ -1595,6 +1562,11 @@ guide: entity: {
       rename: param: "id": "id"
       op: create: method: POST
     }
+    "/api/v1/clawder/organizations/{organization_id}/apps": active: false
+    "/api/v1/clawder/organizations/{organization_id}/apps/{name}/install": active: false
+    "/api/v1/hosting/apps/{app_id}/metrics/query_range": active: false
+    "/api/v1/spark/organizations/{organization_id}/apps": active: false
+    "/api/v1/spark/organizations/{organization_id}/apps/{name}/install": active: false
   }
 
   # app_access
@@ -1607,7 +1579,6 @@ guide: entity: {
       action: "start": {}
       op: load: method: GET
     }
-    "/api/v1/app_access/jwks": active: false
   }
 
   # app_access_jwk
@@ -1814,6 +1785,15 @@ guide: entity: {
     }
   }
 
+  # app_deployment_dashboard
+  app_deployment_dashboard: path: {
+    "/api/v1/hosting/apps/{app_id}/deployment_dashboard": {
+      rename: param: "app_id": "id"
+      op: load: method: GET
+      op: load: transform: res: "`body`"
+    }
+  }
+
   # app_deployment_operation
   app_deployment_operation: path: {
     "/api/v1/hosting/apps/{app_id}/deployment_operations": {
@@ -1966,6 +1946,7 @@ guide: entity: {
       rename: param: "app_id": "app_id"
       rename: param: "id": "id"
       op: load: method: GET
+      op: load: transform: res: "`body.preview`"
     }
     "/api/v1/hosting/apps/{app_id}/previews/{id}/archive": {
       action: "archive": {}
@@ -2261,6 +2242,8 @@ guide: entity: {
       rename: param: "artefact_ref": "id"
       op: update: method: PUT
     }
+    "/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/page": active: false
+    "/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/view_tokens": active: false
   }
 
   # artefact_comment_thread
@@ -2278,7 +2261,6 @@ guide: entity: {
       op: patch: method: PATCH
       op: patch: transform: res: "`body.thread`"
     }
-    "/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads/{anchor}/comments": active: false
   }
 
   # artefact_revision
@@ -2326,29 +2308,8 @@ guide: entity: {
       rename: param: "id": "id"
       op: create: method: POST
     }
-    "/api/v1/artifacts/cache_namespaces": active: false
-    "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries": active: false
-    "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}": active: false
-    "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict": active: false
-    "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/issue_contract": active: false
-    "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/record_hit": active: false
-    "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/record_miss": active: false
-    "/api/v1/artifacts/cache_namespaces/{id}": active: false
-    "/api/v1/artifacts/cache_namespaces/{id}/archive": active: false
-    "/api/v1/artifacts/cache_namespaces/{id}/pause": active: false
-    "/api/v1/artifacts/cache_namespaces/{id}/resume": active: false
-    "/api/v1/artifacts/image_repositories": active: false
-    "/api/v1/artifacts/image_repositories/{id}": active: false
-    "/api/v1/artifacts/image_repositories/{id}/archive": active: false
-    "/api/v1/artifacts/image_repositories/{id}/pause": active: false
-    "/api/v1/artifacts/image_repositories/{id}/resume": active: false
-    "/api/v1/artifacts/package_mirrors": active: false
-    "/api/v1/artifacts/package_mirrors/{id}": active: false
-    "/api/v1/artifacts/package_mirrors/{id}/pause": active: false
-    "/api/v1/artifacts/package_mirrors/{id}/resume": active: false
-    "/api/v1/artifacts/package_mirrors/{id}/sync": active: false
-    "/api/v1/artifacts/retention_policies": active: false
-    "/api/v1/artifacts/retention_policies/{id}": active: false
+    "/api/v1/ci/nodes/{id}/leases/{lease_id}/artifacts": active: false
+    "/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts": active: false
   }
 
   # artifact_cache_namespace
@@ -2477,6 +2438,7 @@ guide: entity: {
       op: list: method: GET
       op: list: transform: res: "`body.audit_events`"
     }
+    "/api/v1/observability/spaces/{space_id}/audit_events": active: false
   }
 
   # auth
@@ -2515,13 +2477,11 @@ guide: entity: {
       action: "register": {}
       op: create: method: POST
     }
-    "/api/v1/auth/cli/complete": active: false
     "/api/v1/auth/cli/install": active: false
     "/api/v1/auth/github/start": active: false
     "/api/v1/auth/google/start": active: false
     "/api/v1/auth/openai/callback": active: false
     "/api/v1/auth/openai/start": active: false
-    "/api/v1/auth/password_resets": active: false
   }
 
   # auth_cli
@@ -2625,23 +2585,8 @@ guide: entity: {
       action: "authorize": {}
       op: create: method: POST
     }
-    "/api/v1/bazel/action_results/{hash}/{size_bytes}": active: false
-    "/api/v1/bazel/backends": active: false
-    "/api/v1/bazel/backends/{backend_id}/runner_pools": active: false
-    "/api/v1/bazel/backends/{backend_id}/runner_pools/{id}": active: false
-    "/api/v1/bazel/backends/{id}": active: false
-    "/api/v1/bazel/backends/{id}/issue_token": active: false
-    "/api/v1/bazel/backends/{id}/pause": active: false
-    "/api/v1/bazel/backends/{id}/resume": active: false
-    "/api/v1/bazel/blobs/{kind}/{hash}/{size_bytes}": active: false
-    "/api/v1/bazel/executions": active: false
     "/api/v1/bazel/executions/claim_next": active: false
     "/api/v1/bazel/executions/lookup": active: false
-    "/api/v1/bazel/executions/{id}": active: false
-    "/api/v1/bazel/executions/{id}/complete": active: false
-    "/api/v1/bazel/executions/{id}/fail": active: false
-    "/api/v1/bazel/executions/{id}/heartbeat": active: false
-    "/api/v1/bazel/find_missing_blobs": active: false
   }
 
   # bazel_action_result
@@ -2740,16 +2685,15 @@ guide: entity: {
   billing: path: {
     "/api/v1/organizations/{organization_id}/billing": {
       op: load: method: GET
-      op: load: transform: res: "`body.addons`"
-      op: list: active: false
     }
     "/api/v1/organizations/{organization_id}/billing/usage": {
       action: "usage": {}
       op: load: method: GET
       op: load: transform: res: "`body.meters`"
     }
-    "/api/v1/billing/packages": active: false
     "/api/v1/organizations/{org_slug}/pages/billing": active: false
+    "/api/v1/organizations/{organization_id}/billing/checkout_sessions": active: false
+    "/api/v1/organizations/{organization_id}/billing/portal_sessions": active: false
   }
 
   # billing_addon
@@ -2877,6 +2821,7 @@ guide: entity: {
       op: list: method: GET
       op: list: transform: res: "`body.binaries`"
       op: create: method: POST
+      op: create: transform: res: "`body.binary`"
     }
     "/api/v1/organizations/{organization_id}/verify/binaries/{id}": {
       rename: param: "id": "id"
@@ -2886,6 +2831,7 @@ guide: entity: {
       action: "archive": {}
       rename: param: "id": "id"
       op: create: method: POST
+      op: create: transform: res: "`body.binary`"
     }
   }
 
@@ -2898,24 +2844,28 @@ guide: entity: {
       op: list: transform: page: total: "`body.pagination.count`"
       op: list: transform: page: next: "`body.pagination.next`"
       op: create: method: POST
+      op: create: transform: res: "`body.version`"
     }
     "/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}": {
       rename: param: "binary_id": "binary_id"
       rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
+      op: load: transform: res: "`body.version`"
     }
     "/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/cancel": {
       action: "cancel": {}
       rename: param: "binary_id": "binary_id"
       rename: param: "id": "id"
       op: create: method: POST
+      op: create: transform: res: "`body.version`"
     }
     "/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/retry": {
       action: "retry": {}
       rename: param: "binary_id": "binary_id"
       rename: param: "id": "id"
       op: create: method: POST
+      op: create: transform: res: "`body.version`"
     }
   }
 
@@ -3146,8 +3096,6 @@ guide: entity: {
       op: load: method: GET
       op: create: method: POST
     }
-    "/api/v1/cdn_spaces/{cdn_space_id}/objects": active: false
-    "/api/v1/cdn_spaces/{cdn_space_id}/objects/{path}": active: false
   }
 
   # cdn_space_object
@@ -3171,7 +3119,31 @@ guide: entity: {
       rename: param: "org_slug": "organization_id"
       op: load: method: GET
     }
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/changes/{id}": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_branch_submissions": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_commit_identities": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/lookup": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_preview": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_ref": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/sync": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/diff": active: false
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/transcript_chat": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/abandon": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/accept": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/ci": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/description": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/file_review_checkpoints": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/fold": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/github_projection": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/labels": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/ready": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/request_changes": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/retry_ci": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/state": active: false
   }
 
   # change_asset
@@ -3197,8 +3169,8 @@ guide: entity: {
       rename: param: "id": "change_id"
       rename: param: "org_slug": "organization_id"
       rename: param: "repo_slug": "repo_id"
-      op: list: method: GET
-      op: list: transform: res: "`body.comments`"
+      op: load: method: GET
+      op: load: transform: res: "`body.comment`"
       op: create: method: POST
     }
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve": {
@@ -3533,7 +3505,6 @@ guide: entity: {
       action: "start": {}
       op: load: method: GET
     }
-    "/api/v1/com_site_access/sessions": active: false
   }
 
   # com_site_access_session
@@ -3666,9 +3637,11 @@ guide: entity: {
   # deep_scan
   deep_scan: path: {
     "/api/v1/organizations/{organization_id}/verify/deep_scans": {
-      op: load: method: GET
+      op: list: method: GET
+      op: list: transform: res: "`body.active`"
+      op: list: transform: page: total: "`body.pagination.count`"
+      op: list: transform: page: next: "`body.pagination.next`"
       op: create: method: POST
-      op: list: active: false
     }
     "/api/v1/organizations/{organization_id}/verify/deep_scans/{id}": {
       rename: param: "id": "id"
@@ -3771,6 +3744,19 @@ guide: entity: {
       op: load: method: GET
       op: load: transform: res: "`body.operation`"
     }
+    "/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments": active: false
+    "/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments/{id}": active: false
+    "/api/v1/hosting/apps/{app_id}/deployments": active: false
+    "/api/v1/hosting/apps/{app_id}/deployments/{deployment_id}/live": active: false
+    "/api/v1/hosting/apps/{app_id}/deployments/{id}": active: false
+    "/api/v1/hosting/apps/{app_id}/deployments/{id}/cancel": active: false
+    "/api/v1/hosting/apps/{app_id}/deployments/{id}/fail": active: false
+    "/api/v1/hosting/apps/{app_id}/deployments/{id}/succeed": active: false
+    "/api/v1/static_sites/{static_site_id}/deployments": active: false
+    "/api/v1/static_sites/{static_site_id}/deployments/{id}": active: false
+    "/api/v1/static_sites/{static_site_id}/deployments/{id}/activate": active: false
+    "/api/v1/static_sites/{static_site_id}/deployments/{id}/cancel": active: false
+    "/api/v1/static_sites/{static_site_id}/deployments/{id}/finalize": active: false
   }
 
   # deployment_dashboard_nomad
@@ -3904,6 +3890,7 @@ guide: entity: {
       action: "rename": {}
       rename: param: "device_registration_id": "id"
       op: create: method: POST
+      op: create: transform: res: "`body.device`"
     }
     "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/retry_control": {
       action: "retry_control": {}
@@ -3914,12 +3901,15 @@ guide: entity: {
       action: "revoke": {}
       rename: param: "device_registration_id": "id"
       op: create: method: POST
+      op: create: transform: res: "`body.device`"
     }
     "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/user_browser_access": {
       action: "user_browser_access": {}
       rename: param: "device_registration_id": "id"
       op: create: method: POST
     }
+    "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/local_events": active: false
+    "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/scheduled_check_ins": active: false
   }
 
   # device_browser_operation
@@ -3953,33 +3943,6 @@ guide: entity: {
     }
   }
 
-  # device_control_operation
-  device_control_operation: path: {
-    "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations": {
-      rename: param: "device_registration_id": "device_id"
-      op: create: method: POST
-      op: create: transform: res: "`body.operation`"
-    }
-    "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/request": {
-      action: "request": {}
-      rename: param: "device_registration_id": "device_id"
-      op: load: method: GET
-      op: load: transform: res: "`body.operation`"
-    }
-    "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/{id}": {
-      rename: param: "device_registration_id": "device_id"
-      rename: param: "id": "id"
-      op: load: method: GET
-      op: load: transform: res: "`body.operation`"
-    }
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/local_threads/operations/{operation_id}": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/local_threads/{local_thread_id}/operations/{operation_id}": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/operations/{operation_id}": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/operations/{operation_id}": active: false
-    "/api/v1/organizations/{organization_id}/control_computers/{computer}/control_operations/request": active: false
-    "/api/v1/organizations/{organization_id}/control_computers/{computer}/control_operations/{id}": active: false
-  }
-
   # device_enterprise_relay
   device_enterprise_relay: path: {
     "/api/v1/spark/devices/enterprise_relays": {
@@ -4007,7 +3970,8 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants": {
       rename: param: "device_registration_id": "device_id"
       op: list: method: GET
-      op: list: transform: res: "`body.grants`"
+      op: list: transform: res: "`body.active_grants`"
+      op: list: transform: page: cursor: "`body.next_cursor`"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/{device_grant_id}/revise": {
@@ -4021,7 +3985,9 @@ guide: entity: {
       rename: param: "device_grant_id": "id"
       rename: param: "device_registration_id": "device_id"
       op: create: method: POST
+      op: create: transform: res: "`body.grant`"
     }
+    "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/all_agents": active: false
   }
 
   # device_invocation
@@ -4046,6 +4012,27 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/local_events": {
       rename: param: "device_registration_id": "device_id"
       op: create: method: POST
+    }
+  }
+
+  # device_operation
+  device_operation: path: {
+    "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations": {
+      rename: param: "device_registration_id": "device_id"
+      op: create: method: POST
+      op: create: transform: res: "`body.operation`"
+    }
+    "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/request": {
+      action: "request": {}
+      rename: param: "device_registration_id": "device_id"
+      op: load: method: GET
+      op: load: transform: res: "`body.operation`"
+    }
+    "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/{id}": {
+      rename: param: "device_registration_id": "device_id"
+      rename: param: "id": "id"
+      op: load: method: GET
+      op: load: transform: res: "`body.operation`"
     }
   }
 
@@ -4143,9 +4130,7 @@ guide: entity: {
   docker_builder_setting: path: {
     "/api/v1/organizations/{organization_id}/docker_builder_settings": {
       op: load: method: GET
-      op: load: transform: res: "`body.docker_builder_settings`"
       op: patch: method: PATCH
-      op: patch: transform: res: "`body.docker_builder_settings`"
       op: update: method: PUT
     }
   }
@@ -4192,6 +4177,7 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/verify/dreams/{id}": {
       rename: param: "id": "id"
       op: load: method: GET
+      op: load: transform: res: "`body.dream`"
     }
     "/api/v1/organizations/{organization_id}/verify/dreams/{id}/resume": {
       action: "resume": {}
@@ -4215,29 +4201,6 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/email_verifications/verify": active: false
-  }
-
-  # environment
-  environment: path: {
-    "/api/v1/organizations/{organization_id}/verify/environments": {
-      op: load: method: GET
-      op: create: method: POST
-    }
-    "/api/v1/organizations/{organization_id}/verify/environments/{id}": {
-      rename: param: "id": "id"
-      op: remove: method: DELETE
-      op: load: method: GET
-      op: patch: method: PATCH
-      op: update: method: PUT
-    }
-    "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run": {
-      action: "first_run": {}
-      rename: param: "verify_environment_id": "id"
-      op: remove: method: DELETE
-      op: update: method: PUT
-    }
-    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments": active: false
-    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments/{id}": active: false
   }
 
   # environment_discovery_run
@@ -4279,6 +4242,7 @@ guide: entity: {
       action: "test_user": {}
       rename: param: "verify_environment_id": "environment_id"
       op: create: method: POST
+      op: create: transform: res: "`body.environment`"
     }
   }
 
@@ -4351,26 +4315,6 @@ guide: entity: {
     }
   }
 
-  # evidence
-  evidence: path: {
-    "/api/v1/organizations/{organization_id}/verify/evidence": {
-      op: load: method: GET
-    }
-    "/api/v1/organizations/{organization_id}/verify/evidence/archive": {
-      action: "archive": {}
-      op: load: method: GET
-    }
-    "/api/v1/organizations/{organization_id}/verify/evidence/{id}": {
-      rename: param: "id": "id"
-      op: load: method: GET
-    }
-    "/api/v1/organizations/{organization_id}/verify/evidence/{id}/download": {
-      action: "download": {}
-      rename: param: "id": "id"
-      op: load: method: GET
-    }
-  }
-
   # execution_desired_state
   execution_desired_state: path: {
     "/api/v1/execution/desired_states": {
@@ -4381,6 +4325,7 @@ guide: entity: {
       rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
+      op: load: transform: res: "`body.desired_state`"
       op: patch: method: PATCH
       op: update: method: PUT
     }
@@ -4462,7 +4407,9 @@ guide: entity: {
   exploration: path: {
     "/api/v1/organizations/{organization_id}/verify/explorations": {
       op: list: method: GET
-      op: list: transform: res: "`body.explorations`"
+      op: list: transform: res: "`body.active`"
+      op: list: transform: page: total: "`body.pagination.count`"
+      op: list: transform: page: next: "`body.pagination.next`"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/explorations/{id}": {
@@ -4478,13 +4425,13 @@ guide: entity: {
       action: "progress": {}
       rename: param: "id": "id"
       op: load: method: GET
-      op: load: transform: res: "`body.agents`"
+      op: load: transform: res: "`body`"
     }
     "/api/v1/organizations/{organization_id}/verify/explorations/{id}/report": {
       action: "report": {}
       rename: param: "id": "id"
       op: load: method: GET
-      op: load: transform: res: "`body.related_explorations`"
+      op: load: transform: res: "`body`"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/explorations/{id}/retry_startup": {
@@ -4502,6 +4449,7 @@ guide: entity: {
       rename: param: "id": "id"
       op: create: method: POST
     }
+    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments/{environment_id}/explorations": active: false
   }
 
   # exploration_message
@@ -4542,9 +4490,11 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/verify/findings/{id}": {
       rename: param: "id": "id"
       op: load: method: GET
+      op: load: transform: res: "`body.finding`"
       op: patch: method: PATCH
       op: update: method: PUT
     }
+    "/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/findings": active: false
   }
 
   # gh
@@ -4585,6 +4535,7 @@ guide: entity: {
       action: "repository_lookup": {}
       op: load: method: GET
     }
+    "/api/v1/organizations/{organization_id}/agent_integrations/github": active: false
   }
 
   # github_app
@@ -4593,11 +4544,8 @@ guide: entity: {
       action: "webhook": {}
       op: create: method: POST
     }
-    "/api/v1/github_app/importable_repositories": active: false
-    "/api/v1/github_app/installation_authorizations": active: false
     "/api/v1/github_app/installation_authorizations/complete": active: false
     "/api/v1/github_app/installation_authorizations/setup": active: false
-    "/api/v1/github_app/user_authorizations": active: false
   }
 
   # github_app_importable_repository
@@ -4682,21 +4630,7 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/verify/github_connections": {
       op: load: method: GET
       op: create: method: POST
-    }
-  }
-
-  # github_integration
-  github_integration: path: {
-    "/api/v1/organizations/{org_slug}/pages/github_integrations": {
-      rename: param: "org_slug": "organization_id"
-      op: list: method: GET
-      op: list: transform: res: "`body.github_installations`"
-    }
-    "/api/v1/organizations/{org_slug}/pages/github_integrations/{github_app_installation_id}": {
-      rename: param: "github_app_installation_id": "id"
-      rename: param: "org_slug": "organization_id"
-      op: load: method: GET
-      op: load: transform: res: "`body.organization`"
+      op: list: active: false
     }
   }
 
@@ -4787,7 +4721,6 @@ guide: entity: {
     "/api/v1/organizations/{org_slug}/github_runner_history": {
       rename: param: "org_slug": "organization_id"
       op: load: method: GET
-      op: list: active: false
     }
   }
 
@@ -4834,7 +4767,7 @@ guide: entity: {
   github_runner_setup: path: {
     "/api/v1/organizations/{organization_id}/github_runner_setup": {
       op: load: method: GET
-      op: load: transform: res: "`body.runner_labels`"
+      op: load: transform: res: "`body`"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/github_runner_setup/agent_session": {
@@ -4848,8 +4781,6 @@ guide: entity: {
     "/api/v1/organizations/{org_slug}/gitlab": {
       rename: param: "org_slug": "organization_id"
       op: load: method: GET
-      op: load: transform: res: "`body.connections`"
-      op: list: active: false
     }
     "/api/v1/organizations/{org_slug}/gitlab/authorize": {
       action: "authorize": {}
@@ -4949,6 +4880,12 @@ guide: entity: {
       op: create: method: POST
       op: create: transform: res: "`body.image_repository`"
     }
+    "/api/v1/artifacts/image_repositories": active: false
+    "/api/v1/artifacts/image_repositories/{id}": active: false
+    "/api/v1/artifacts/image_repositories/{id}/archive": active: false
+    "/api/v1/artifacts/image_repositories/{id}/contract": active: false
+    "/api/v1/artifacts/image_repositories/{id}/pause": active: false
+    "/api/v1/artifacts/image_repositories/{id}/resume": active: false
   }
 
   # image_repository_tag
@@ -4964,6 +4901,7 @@ guide: entity: {
   import_branch_policy: path: {
     "/api/v1/organizations/{organization_id}/import_branch_policy": {
       op: load: method: GET
+      op: load: transform: res: "`body.organization`"
       op: patch: method: PATCH
       op: update: method: PUT
     }
@@ -4974,6 +4912,8 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/verification/integrations": {
       op: load: method: GET
     }
+    "/api/v1/clawder/organizations/{organization_id}/relay/integrations/{operation_id}": active: false
+    "/api/v1/spark/organizations/{organization_id}/relay/integrations/{operation_id}": active: false
   }
 
   # interaction_response
@@ -4997,6 +4937,8 @@ guide: entity: {
       rename: param: "id": "id"
       op: remove: method: DELETE
     }
+    "/api/v1/admin/organizations/{org_slug}/invitations": active: false
+    "/api/v1/admin/organizations/{org_slug}/invitations/{id}": active: false
   }
 
   # invocation_control
@@ -5080,6 +5022,7 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/verify/knowledge": {
       op: load: method: GET
       op: create: method: POST
+      op: list: active: false
     }
     "/api/v1/organizations/{organization_id}/verify/knowledge/{id}": {
       rename: param: "id": "id"
@@ -5213,7 +5156,9 @@ guide: entity: {
       rename: param: "id": "agent_id"
       rename: param: "local_thread_id": "local_thread_id"
       op: load: method: GET
+      op: load: transform: res: "`body.delivery`"
       op: update: method: PUT
+      op: update: transform: res: "`body.delivery`"
     }
   }
 
@@ -5246,6 +5191,8 @@ guide: entity: {
       op: list: method: GET
       op: list: transform: res: "`body.locations`"
     }
+    "/api/v1/hosting/apps/{app_id}/locations": active: false
+    "/api/v1/hosting/apps/{app_id}/locations/{id}": active: false
   }
 
   # log_stream_chunk
@@ -5393,7 +5340,7 @@ guide: entity: {
   member: path: {
     "/api/v1/organizations/{organization_id}/members": {
       op: list: method: GET
-      op: list: transform: res: "`body.invitations`"
+      op: list: transform: res: "`body.members`"
     }
     "/api/v1/organizations/{organization_id}/members/{id}": {
       rename: param: "id": "id"
@@ -5403,6 +5350,8 @@ guide: entity: {
       op: update: method: PUT
       op: update: transform: res: "`body.member`"
     }
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups/{id}/members": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups/{id}/members/{change_id}": active: false
   }
 
   # memory
@@ -5416,6 +5365,7 @@ guide: entity: {
       rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
+      op: load: transform: res: "`body.memory`"
     }
   }
 
@@ -5472,26 +5422,6 @@ guide: entity: {
       rename: param: "org_slug": "organization_id"
       rename: param: "repo_slug": "repo_id"
       rename: param: "target": "merge_queue_id"
-      op: create: method: POST
-    }
-  }
-
-  # merge_request
-  merge_request: path: {
-    "/api/v1/organizations/{organization_id}/verify/merge_requests": {
-      op: create: method: POST
-    }
-    "/api/v1/organizations/{organization_id}/verify/merge_requests/preview": {
-      action: "preview": {}
-      op: create: method: POST
-    }
-    "/api/v1/organizations/{organization_id}/verify/merge_requests/{id}": {
-      rename: param: "id": "id"
-      op: load: method: GET
-    }
-    "/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun": {
-      action: "rerun": {}
-      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -5555,7 +5485,6 @@ guide: entity: {
       op: patch: method: PATCH
       op: update: method: PUT
     }
-    "/api/v1/model_subscription_accounts/connection/{agent_id}": active: false
   }
 
   # model_subscription_account_connection
@@ -5625,6 +5554,11 @@ guide: entity: {
       op: list: method: GET
       op: list: transform: res: "`body.github_installations`"
     }
+    "/api/v1/ci/nodes/{id}": active: false
+    "/api/v1/ci/nodes/{id}/cordon": active: false
+    "/api/v1/ci/nodes/{id}/drain": active: false
+    "/api/v1/ci/nodes/{id}/heartbeat": active: false
+    "/api/v1/ci/nodes/{id}/uncordon": active: false
   }
 
   # node_certificate
@@ -5839,13 +5773,17 @@ guide: entity: {
       op: update: method: PUT
       op: update: transform: res: "`body.organization`"
     }
+    "/api/v1/clawder/organizations/{organization_id}/parallel/v1/search": active: false
+    "/api/v1/clawder/organizations/{organization_id}/run_events": active: false
+    "/api/v1/clawder/organizations/{organization_id}/run_outcomes": active: false
+    "/api/v1/clawder/organizations/{organization_id}/run_usages": active: false
+    "/api/v1/clawder/organizations/{organization_id}/subscriptions/authorize": active: false
+    "/api/v1/identity/organizations/{organization_id}/catalog": active: false
     "/api/v1/organizations/{org_slug}/cdn_spaces": active: false
-    "/api/v1/organizations/{org_slug}/changes": active: false
     "/api/v1/organizations/{org_slug}/changes/transcript_summaries": active: false
     "/api/v1/organizations/{org_slug}/github/pull_requests/refresh": active: false
-    "/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/resolve": active: false
-    "/api/v1/organizations/{org_slug}/gitlab/connections/{connection_id}/control": active: false
-    "/api/v1/organizations/{org_slug}/gitlab/connections/{connection_id}/retry": active: false
+    "/api/v1/organizations/{org_slug}/github_runner_history": active: false
+    "/api/v1/organizations/{org_slug}/gitlab/authorize": active: false
     "/api/v1/organizations/{org_slug}/gitlab/imports": active: false
     "/api/v1/organizations/{org_slug}/image_repositories": active: false
     "/api/v1/organizations/{org_slug}/labels": active: false
@@ -5854,9 +5792,6 @@ guide: entity: {
     "/api/v1/organizations/{org_slug}/pages/deployments/logs": active: false
     "/api/v1/organizations/{org_slug}/pages/deployments/metrics": active: false
     "/api/v1/organizations/{org_slug}/pages/deployments/settings": active: false
-    "/api/v1/organizations/{org_slug}/pages/deployments/{deployment_id}": active: false
-    "/api/v1/organizations/{org_slug}/pages/github_integrations": active: false
-    "/api/v1/organizations/{org_slug}/pages/github_integrations/{github_app_installation_id}": active: false
     "/api/v1/organizations/{org_slug}/pages/github_onboarding": active: false
     "/api/v1/organizations/{org_slug}/pages/members": active: false
     "/api/v1/organizations/{org_slug}/pages/now": active: false
@@ -5867,324 +5802,57 @@ guide: entity: {
     "/api/v1/organizations/{org_slug}/pages/sites": active: false
     "/api/v1/organizations/{org_slug}/pages/vcs_nodes": active: false
     "/api/v1/organizations/{org_slug}/pages/vcs_settings": active: false
-    "/api/v1/organizations/{org_slug}/repos": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/access_tokens": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/access_tokens/{id}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_checkpoints/{id}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_checkpoints/{id}/download": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/prepare_chunks": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/download": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/seal": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript_export": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript_index": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protection_events": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections/simulate": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections/{id}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/changes/{id}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/commits/{commit_sha}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/patchsets/{id}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/ref": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/objects/{object_key}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/access": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/actions": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/pull_request/{number}/transcripts": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/sync": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/land_method": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/magic_merge": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/mutation_lease/clear": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/trunk": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/archive.zip": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/blob": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/branches/{branch_name}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups/{id}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups/{id}/members": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups/{id}/members/{change_id}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets/{id}/finalize": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_branch_submissions": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_commit_identities": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_publications/{id}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/lookup": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_preview": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_ref": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/sync": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/abandon": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/accept": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/agent_context/checkpoints/{checkpoint_id}/transcript": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/ci": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/unresolve": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/description": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/file_review_checkpoints": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/fold": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/github_projection": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/labels": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_hold/release": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_requests": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_requests/{entry_id}": active: false
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/patchsets/{patchset_number}/diff/{fingerprint}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/ready": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/request_changes": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/retry_ci": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/reviewers": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/state": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commit_file": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_policy": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/concurrency": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/merge": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/promote": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/retry": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/skip_ci": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/validate_full": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/pause": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/resume": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/skip_ci": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks/{code}": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks/{code}/name": active: false
-    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/tree": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections": active: false
+    "/api/v1/organizations/{org_slug}/transcripts/search": active: false
     "/api/v1/organizations/{organization_id}/agent_connections/custom_mcp": active: false
     "/api/v1/organizations/{organization_id}/agent_connections/safety_controls": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}/discover": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}/replace": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}/adopt_custody": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}/authorize": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}/cancel_sign_in": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}/complete": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}/custody": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}/delegate": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}/delegations": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}/disconnect": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}/disconnect_impact": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}/grants": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}/reassign_custody": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}/resources": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}/revoke_delegation": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}/revoke_grant": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}/safety_control": active: false
-    "/api/v1/organizations/{organization_id}/agent_connections/{id}/sync": active: false
     "/api/v1/organizations/{organization_id}/agent_integrations/custom_mcp": active: false
-    "/api/v1/organizations/{organization_id}/agent_integrations/{id}": active: false
-    "/api/v1/organizations/{organization_id}/agent_integrations/{id}/authorize": active: false
-    "/api/v1/organizations/{organization_id}/agent_integrations/{id}/cancel_sign_in": active: false
-    "/api/v1/organizations/{organization_id}/agent_integrations/{id}/complete": active: false
-    "/api/v1/organizations/{organization_id}/agent_integrations/{id}/disconnect": active: false
-    "/api/v1/organizations/{organization_id}/agent_integrations/{id}/sharing": active: false
-    "/api/v1/organizations/{organization_id}/agent_integrations/{id}/sync": active: false
     "/api/v1/organizations/{organization_id}/agent_marketplace/draft": active: false
-    "/api/v1/organizations/{organization_id}/agent_relay_file_grants": active: false
     "/api/v1/organizations/{organization_id}/agent_relay_file_grants/accounts": active: false
-    "/api/v1/organizations/{organization_id}/agent_relay_file_grants/{id}": active: false
-    "/api/v1/organizations/{organization_id}/agent_sites/{id}/icon": active: false
-    "/api/v1/organizations/{organization_id}/agent_skills/marketplace": active: false
-    "/api/v1/organizations/{organization_id}/agents": active: false
     "/api/v1/organizations/{organization_id}/agents/browser_egress/candidates": active: false
     "/api/v1/organizations/{organization_id}/agents/mission_control/feedback": active: false
     "/api/v1/organizations/{organization_id}/agents/mission_control/relevance": active: false
     "/api/v1/organizations/{organization_id}/agents/page/activity": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/avatar": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/attachments/{attachment_id}/parts/{index}": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/browser_opened": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/commands": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/computer/frame": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/coordination": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/coordination/{task_id}/stop": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/events": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/interactions": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/library/{artifact_id}/download": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/local_threads": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/local_threads/{local_thread_id}/operations": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/marked_read": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/message_image": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/questions/{question_id}/answer": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/relay/activity": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/relay/operations": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/repositories/{repository}/environment": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/slack": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/slack/app": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/slack/as_you": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/subscriptions/models": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/teammates": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/threads/{thread_id}/archive": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/threads/{thread_id}/previews": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/threads/{thread_id}/snooze": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/waits/{wait_id}/stop": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/warm": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/work/{work_id}/handled": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/workflow_runs/{run_id}/steps/{step_id}/output": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/workflow_runs/{run_id}/stop_notice/dismissal": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/workflow_triggers": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/workflow_triggers/{trigger_id}/review": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/workflow_triggers/{trigger_id}/skipped": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/workflow_triggers/{trigger_id}/skipped/{delivery_id}/run": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/workflows": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/clawder/workspaces": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/manager_choices": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/managers/{user_id}": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/sharing/review": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/attachments/{attachment_id}/parts/{index}": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/browser_opened": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/commands": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/computer/frame": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/coordination": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/coordination/{task_id}/stop": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/events": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/interactions": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/library/{artifact_id}/download": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/operations": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/marked_read": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/message_image": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/provisioning/retry": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/questions/{question_id}/answer": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/activity": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/operations": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/repositories/{repository}/environment": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/slack": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/slack/app": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/slack/as_you": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions/models": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/teammates": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/previews": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/snooze": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/waits/{wait_id}/stop": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/warm": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/work/{work_id}/handled": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs/{run_id}/steps/{step_id}/output": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs/{run_id}/stop_notice/dismissal": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}/review": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}/skipped": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}/skipped/{delivery_id}/run": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflows": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/spark/workspaces": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/write_permissions": active: false
-    "/api/v1/organizations/{organization_id}/agents/{id}/write_permissions/{write_permission_id}": active: false
-    "/api/v1/organizations/{organization_id}/artefacts": active: false
-    "/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}": active: false
-    "/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads": active: false
-    "/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/download": active: false
-    "/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/draft": active: false
-    "/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/revisions": active: false
-    "/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/view_tokens": active: false
     "/api/v1/organizations/{organization_id}/audit_events": active: false
     "/api/v1/organizations/{organization_id}/billing/contact": active: false
-    "/api/v1/organizations/{organization_id}/billing/prepaid_purchases": active: false
     "/api/v1/organizations/{organization_id}/billing/token_top_ups": active: false
-    "/api/v1/organizations/{organization_id}/browser_sessions": active: false
-    "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/connections": active: false
-    "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/events": active: false
-    "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media/{id}/files/{file_id}": active: false
-    "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/recordings": active: false
-    "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/recordings/{id}/stop": active: false
-    "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/screenshots": active: false
-    "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks": active: false
-    "/api/v1/organizations/{organization_id}/control_computers/{computer}/control_operations": active: false
+    "/api/v1/organizations/{organization_id}/billing/usage/breakdown": active: false
     "/api/v1/organizations/{organization_id}/desktop_local_agent/responses": active: false
-    "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/browser_operations/{id}/finish": active: false
-    "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations": active: false
-    "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/folder_listings": active: false
-    "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/local_events": active: false
-    "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/projects/{id}": active: false
-    "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/scheduled_check_ins": active: false
+    "/api/v1/organizations/{organization_id}/docker_builder_gateway/authorize": active: false
+    "/api/v1/organizations/{organization_id}/docker_builder_gateway/finish": active: false
+    "/api/v1/organizations/{organization_id}/docker_builder_sessions/authorize": active: false
     "/api/v1/organizations/{organization_id}/domain_dns_integrations": active: false
-    "/api/v1/organizations/{organization_id}/github_app/installations": active: false
-    "/api/v1/organizations/{organization_id}/github_app/installations/{id}": active: false
-    "/api/v1/organizations/{organization_id}/github_app/installations/{id}/check_connection": active: false
-    "/api/v1/organizations/{organization_id}/github_ci_repositories": active: false
-    "/api/v1/organizations/{organization_id}/github_ci_repositories/{github_ci_repository_id}/compatibility_reports": active: false
-    "/api/v1/organizations/{organization_id}/github_ci_repositories/{github_ci_repository_id}/compatibility_reports/{id}": active: false
-    "/api/v1/organizations/{organization_id}/github_ci_repositories/{id}": active: false
     "/api/v1/organizations/{organization_id}/github_onboarding/branches": active: false
-    "/api/v1/organizations/{organization_id}/github_onboarding/import_batches/{github_import_batch_id}": active: false
-    "/api/v1/organizations/{organization_id}/github_onboarding/import_items/{github_import_batch_item_id}/retry": active: false
     "/api/v1/organizations/{organization_id}/github_onboarding/imports": active: false
     "/api/v1/organizations/{organization_id}/github_runner_egress": active: false
-    "/api/v1/organizations/{organization_id}/github_runner_images": active: false
-    "/api/v1/organizations/{organization_id}/github_runner_images/{id}": active: false
-    "/api/v1/organizations/{organization_id}/github_runner_images/{id}/prepare": active: false
-    "/api/v1/organizations/{organization_id}/github_runner_pools": active: false
     "/api/v1/organizations/{organization_id}/github_runner_pools/configure": active: false
-    "/api/v1/organizations/{organization_id}/github_runner_pools/{id}": active: false
     "/api/v1/organizations/{organization_id}/github_runner_setup/agent_session": active: false
     "/api/v1/organizations/{organization_id}/import_branch_policy": active: false
-    "/api/v1/organizations/{organization_id}/invitations": active: false
-    "/api/v1/organizations/{organization_id}/invitations/{id}": active: false
     "/api/v1/organizations/{organization_id}/local_agent/decisions": active: false
     "/api/v1/organizations/{organization_id}/local_agent/parallel/v1/extract": active: false
     "/api/v1/organizations/{organization_id}/local_agent/parallel/v1/search": active: false
     "/api/v1/organizations/{organization_id}/local_agent/responses": active: false
     "/api/v1/organizations/{organization_id}/logo_image": active: false
-    "/api/v1/organizations/{organization_id}/members": active: false
-    "/api/v1/organizations/{organization_id}/members/{id}": active: false
-    "/api/v1/organizations/{organization_id}/mobile_push/registrations/{installation}": active: false
     "/api/v1/organizations/{organization_id}/pages/nodes": active: false
     "/api/v1/organizations/{organization_id}/products": active: false
-    "/api/v1/organizations/{organization_id}/signal_integrations": active: false
-    "/api/v1/organizations/{organization_id}/signal_integrations/{id}": active: false
-    "/api/v1/organizations/{organization_id}/signal_integrations/{id}/regenerate_inbound_token": active: false
-    "/api/v1/organizations/{organization_id}/signal_integrations/{id}/verify": active: false
-    "/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/deliveries": active: false
-    "/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/targets": active: false
-    "/api/v1/organizations/{organization_id}/signal_subscriptions": active: false
-    "/api/v1/organizations/{organization_id}/signal_subscriptions/{id}": active: false
     "/api/v1/organizations/{organization_id}/sparks": active: false
     "/api/v1/organizations/{organization_id}/static_sites": active: false
-    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journey_variants/{variant_id}/replays": active: false
-    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/version": active: false
-    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/live_frame": active: false
-    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/run": active: false
     "/api/v1/organizations/{organization_id}/verify/bug_hunts/flows": active: false
     "/api/v1/organizations/{organization_id}/verify/deep_scans/flows": active: false
-    "/api/v1/organizations/{organization_id}/verify/environments": active: false
-    "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run/start": active: false
-    "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}": active: false
-    "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/test_accounts/{persona}": active: false
-    "/api/v1/organizations/{organization_id}/verify/evidence": active: false
     "/api/v1/organizations/{organization_id}/verify/evidence/archive": active: false
     "/api/v1/organizations/{organization_id}/verify/evidence/{id}": active: false
     "/api/v1/organizations/{organization_id}/verify/evidence/{id}/download": active: false
-    "/api/v1/organizations/{organization_id}/verify/memories/{id}": active: false
-    "/api/v1/organizations/{organization_id}/verify/merge_requests": active: false
-    "/api/v1/organizations/{organization_id}/verify/network_connections/{id}": active: false
-    "/api/v1/organizations/{organization_id}/verify/projects/{project_id}/code_maps": active: false
-    "/api/v1/organizations/{organization_id}/verify/projects/{project_id}/code_maps/session": active: false
-    "/api/v1/organizations/{organization_id}/verify/pull_request_settings/add_repositories": active: false
-    "/api/v1/organizations/{organization_id}/verify/pull_requests": active: false
+    "/api/v1/organizations/{organization_id}/verify/page": active: false
+    "/api/v1/organizations/{organization_id}/verify/run_search": active: false
+    "/api/v1/organizations/{organization_id}/verify/run_updates": active: false
     "/api/v1/organizations/{organization_id}/verify/site_preview": active: false
-    "/api/v1/organizations/{organization_id}/workspace_spaces": active: false
     "/api/v1/organizations/{organization_id}/workspace_spaces/github_import": active: false
     "/api/v1/organizations/{organization_id}/workspace_spaces/preferences": active: false
-    "/api/v1/organizations/{organization_id}/workspace_spaces/{id}": active: false
-    "/api/v1/organizations/{organization_id}/workspace_spaces/{id}/failed_import": active: false
+    "/api/v1/spark/organizations/{organization_id}/parallel/v1/search": active: false
+    "/api/v1/spark/organizations/{organization_id}/run_events": active: false
+    "/api/v1/spark/organizations/{organization_id}/run_outcomes": active: false
+    "/api/v1/spark/organizations/{organization_id}/run_usages": active: false
+    "/api/v1/spark/organizations/{organization_id}/subscriptions/authorize": active: false
   }
 
   # organization_app
@@ -6558,7 +6226,10 @@ guide: entity: {
   page: path: {
     "/api/v1/organizations/{organization_id}/verify/page": {
       op: load: method: GET
+      op: load: transform: res: "`body.organization`"
     }
+    "/api/v1/organizations/{organization_id}/agents/page": active: false
+    "/api/v1/organizations/{organization_id}/artefacts/page": active: false
   }
 
   # page_agent
@@ -6588,6 +6259,7 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/page": {
       rename: param: "artefact_ref": "id"
       op: load: method: GET
+      op: load: transform: res: "`body.artefact`"
     }
   }
 
@@ -6597,7 +6269,6 @@ guide: entity: {
       rename: param: "pipeline_id": "pipeline_id"
       rename: param: "run_id": "id"
       op: load: method: GET
-      op: load: transform: res: "`body.jobs`"
     }
   }
 
@@ -6607,6 +6278,7 @@ guide: entity: {
       rename: param: "id": "id"
       rename: param: "project_id": "project_id"
       op: load: method: GET
+      op: load: transform: res: "`body.run`"
     }
   }
 
@@ -6617,6 +6289,7 @@ guide: entity: {
       rename: param: "org_slug": "organization_id"
       rename: param: "repo_slug": "repo_id"
       op: load: method: GET
+      op: load: transform: res: "`body.commit`"
     }
   }
 
@@ -6625,7 +6298,20 @@ guide: entity: {
     "/api/v1/organizations/{org_slug}/pages/billing": {
       rename: param: "org_slug": "organization_id"
       op: load: method: GET
-      op: load: transform: res: "`body.addons`"
+    }
+  }
+
+  # pages_github_integration
+  pages_github_integration: path: {
+    "/api/v1/organizations/{org_slug}/pages/github_integrations": {
+      rename: param: "org_slug": "organization_id"
+      op: list: method: GET
+      op: list: transform: res: "`body.github_installations`"
+    }
+    "/api/v1/organizations/{org_slug}/pages/github_integrations/{github_app_installation_id}": {
+      rename: param: "github_app_installation_id": "id"
+      rename: param: "org_slug": "organization_id"
+      op: load: method: GET
     }
   }
 
@@ -6671,6 +6357,8 @@ guide: entity: {
       rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.runs`"
+      op: list: transform: page: total: "`body.pagination.count`"
+      op: list: transform: page: next: "`body.pagination.next`"
     }
   }
 
@@ -6700,6 +6388,7 @@ guide: entity: {
       rename: param: "org_slug": "organization_id"
       rename: param: "session_id": "id"
       op: load: method: GET
+      op: load: transform: res: "`body.session`"
     }
     "/api/v1/organizations/{org_slug}/pages/sessions": {
       rename: param: "org_slug": "organization_id"
@@ -6956,11 +6645,13 @@ guide: entity: {
       action: "environment": {}
       rename: param: "project_id": "id"
       op: load: method: GET
+      op: load: transform: res: "`body.environment`"
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/header": {
       action: "header": {}
       rename: param: "project_id": "id"
       op: load: method: GET
+      op: load: transform: res: "`body.project`"
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview": {
       action: "overview": {}
@@ -6989,21 +6680,10 @@ guide: entity: {
       rename: param: "project_id": "id"
       op: load: method: GET
     }
-    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/pr_testing": {
-      action: "pr_testing": {}
-      rename: param: "project_id": "id"
-      op: load: method: GET
-    }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map": {
       action: "product_map": {}
       rename: param: "project_id": "id"
       op: load: method: GET
-    }
-    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison": {
-      action: "product_map_comparison": {}
-      rename: param: "project_id": "id"
-      op: load: method: GET
-      op: load: transform: res: "`body.accounts`"
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/recorder": {
       action: "recorder": {}
@@ -7021,6 +6701,13 @@ guide: entity: {
       rename: param: "project_id": "id"
       op: load: method: GET
     }
+    "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/projects/{id}": active: false
+    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/brief": active: false
+    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/compare": active: false
+    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/frontier": active: false
+    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/overview": active: false
+    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/path": active: false
+    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/version": active: false
   }
 
   # project_android_apk
@@ -7162,6 +6849,15 @@ guide: entity: {
     }
   }
 
+  # project_pr_testing
+  project_pr_testing: path: {
+    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/pr_testing": {
+      rename: param: "project_id": "id"
+      op: load: method: GET
+      op: load: transform: res: "`body`"
+    }
+  }
+
   # project_product_map
   project_product_map: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/brief": {
@@ -7178,8 +6874,6 @@ guide: entity: {
       action: "frontier": {}
       rename: param: "project_id": "project_id"
       op: load: method: GET
-      op: load: transform: res: "`body.items`"
-      op: load: transform: page: cursor: "`body.next_cursor`"
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/overview": {
       action: "overview": {}
@@ -7196,6 +6890,15 @@ guide: entity: {
       action: "version": {}
       rename: param: "project_id": "project_id"
       op: load: method: GET
+    }
+  }
+
+  # project_product_map_comparison
+  project_product_map_comparison: path: {
+    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison": {
+      rename: param: "project_id": "id"
+      op: load: method: GET
+      op: load: transform: res: "`body`"
     }
   }
 
@@ -7300,42 +7003,9 @@ guide: entity: {
   project_setting: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings": {
       rename: param: "project_id": "project_id"
-      op: load: method: GET
+      op: list: method: GET
+      op: list: transform: res: "`body.available_messaging_environments`"
     }
-  }
-
-  # pull_request
-  pull_request: path: {
-    "/api/v1/organizations/{organization_id}/verify/pull_requests": {
-      op: create: method: POST
-    }
-    "/api/v1/organizations/{organization_id}/verify/pull_requests/lookup": {
-      action: "lookup": {}
-      op: load: method: GET
-      op: load: transform: res: "`body.available_tests`"
-      op: load: transform: page: total: "`body.pagination.count`"
-      op: load: transform: page: next: "`body.pagination.next`"
-    }
-    "/api/v1/organizations/{organization_id}/verify/pull_requests/preview": {
-      action: "preview": {}
-      op: create: method: POST
-    }
-    "/api/v1/organizations/{organization_id}/verify/pull_requests/{id}": {
-      rename: param: "id": "id"
-      op: load: method: GET
-    }
-    "/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share": {
-      action: "demo_share": {}
-      rename: param: "id": "id"
-      op: remove: method: DELETE
-      op: create: method: POST
-    }
-    "/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/rerun": {
-      action: "rerun": {}
-      rename: param: "id": "id"
-      op: create: method: POST
-    }
-    "/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}": active: false
   }
 
   # pull_request_action
@@ -7464,6 +7134,7 @@ guide: entity: {
       op: remove: method: DELETE
       op: remove: transform: res: "`body.connection`"
       op: load: method: GET
+      op: load: transform: res: "`body.connection`"
       op: patch: method: PATCH
       op: patch: transform: res: "`body.connection`"
     }
@@ -7472,6 +7143,7 @@ guide: entity: {
       rename: param: "connection_id": "id"
       rename: param: "id": "agent_id"
       op: load: method: GET
+      op: load: transform: res: "`body.connection`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup": {
       action: "setup": {}
@@ -7553,12 +7225,20 @@ guide: entity: {
       op: load: transform: res: "`body.catalog`"
     }
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/sync": {
-      action: "sync": {}
+      action: "page_sync": {}
       rename: param: "org_slug": "organization_id"
       rename: param: "repo_slug": "id"
       op: load: method: GET
-      op: load: transform: res: "`body.sync_targets`"
     }
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/ref": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/archive.zip": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/blame": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/blob": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/browser/file": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/browser/tree": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_policy": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/tree": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/trunk_tip": active: false
   }
 
   # repo_access_token
@@ -7569,6 +7249,7 @@ guide: entity: {
       op: list: method: GET
       op: list: transform: res: "`body.access_tokens`"
       op: create: method: POST
+      op: create: transform: res: "`body.access_token`"
     }
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/access_tokens/{id}": {
       rename: param: "id": "id"
@@ -7635,7 +7316,6 @@ guide: entity: {
       rename: param: "org_slug": "organization_id"
       rename: param: "repo_slug": "repo_id"
       op: load: method: GET
-      op: load: transform: res: "`body.events`"
     }
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript_export": {
       action: "transcript_export": {}
@@ -7739,6 +7419,7 @@ guide: entity: {
       rename: param: "rule": "id"
       op: remove: method: DELETE
       op: update: method: PUT
+      op: update: transform: res: "`body.code_rule`"
     }
   }
 
@@ -7802,7 +7483,6 @@ guide: entity: {
       rename: param: "org_slug": "organization_id"
       rename: param: "repo_slug": "repo_id"
       op: load: method: GET
-      op: load: transform: res: "`body.revisions`"
     }
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/blob": {
       action: "blob": {}
@@ -7917,7 +7597,6 @@ guide: entity: {
     "/api/v1/organizations/{org_slug}/pages/repository_import": {
       rename: param: "org_slug": "organization_id"
       op: load: method: GET
-      op: list: active: false
     }
   }
 
@@ -8093,15 +7772,14 @@ guide: entity: {
   run_search: path: {
     "/api/v1/organizations/{organization_id}/verify/run_search": {
       op: load: method: GET
-      op: load: transform: res: "`body.runs`"
     }
   }
 
   # run_update
   run_update: path: {
     "/api/v1/organizations/{organization_id}/verify/run_updates": {
-      op: list: method: GET
-      op: list: transform: res: "`body.pull_requests`"
+      op: load: method: GET
+      op: load: transform: res: "`body.organization`"
     }
   }
 
@@ -8197,6 +7875,7 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/sandbox_integrations": {
       op: load: method: GET
       op: create: method: POST
+      op: list: active: false
     }
     "/api/v1/organizations/{organization_id}/sandbox_integrations/{id}": {
       rename: param: "id": "id"
@@ -8350,6 +8029,12 @@ guide: entity: {
       rename: param: "org_slug": "organization_id"
       op: load: method: GET
     }
+    "/api/v1/admin/organizations/{org_slug}/settings": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/land_method": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/magic_merge": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/trunk": active: false
+    "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings": active: false
   }
 
   # setting_mutation_lease
@@ -8393,6 +8078,7 @@ guide: entity: {
     "/api/v1/signals": {
       op: create: method: POST
     }
+    "/api/v1/relay/signals": active: false
     "/api/v1/signals/inbound/{provider}/{inbound_token}": active: false
   }
 
@@ -8429,6 +8115,7 @@ guide: entity: {
       op: create: method: POST
       op: create: transform: res: "`body.signal_integration`"
     }
+    "/api/v1/organizations/{organization_id}/signal_integrations/{id}/verify": active: false
   }
 
   # signal_integration_delivery
@@ -8472,6 +8159,17 @@ guide: entity: {
       op: list: method: GET
       op: list: transform: res: "`body.deployments`"
     }
+    "/api/v1/clawder/organizations/{organization_id}/sites": active: false
+    "/api/v1/clawder/organizations/{organization_id}/sites/{name}": active: false
+    "/api/v1/clawder/organizations/{organization_id}/sites/{name}/app": active: false
+    "/api/v1/clawder/organizations/{organization_id}/sites/{name}/marketplace_template": active: false
+    "/api/v1/clawder/organizations/{organization_id}/sites/{name}/token": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/spark/sites": active: false
+    "/api/v1/spark/organizations/{organization_id}/sites": active: false
+    "/api/v1/spark/organizations/{organization_id}/sites/{name}": active: false
+    "/api/v1/spark/organizations/{organization_id}/sites/{name}/app": active: false
+    "/api/v1/spark/organizations/{organization_id}/sites/{name}/marketplace_template": active: false
+    "/api/v1/spark/organizations/{organization_id}/sites/{name}/token": active: false
   }
 
   # site_access_key
@@ -8905,49 +8603,10 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/spark/call_session": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/spark/compute": active: false
+    "/api/v1/organizations/{organization_id}/agents/{id}/spark/transcription_session": active: false
     "/api/v1/spark/devices/enterprise_admission": active: false
-    "/api/v1/spark/devices/enterprise_relays": active: false
-    "/api/v1/spark/harness_proxy/anthropic/v1/messages": active: false
-    "/api/v1/spark/harness_proxy/anthropic/v1/messages/count_tokens": active: false
-    "/api/v1/spark/harness_proxy/chatgpt/codex/responses": active: false
-    "/api/v1/spark/harness_proxy/openai/v1/responses": active: false
-    "/api/v1/spark/organizations/{organization_id}/admission": active: false
-    "/api/v1/spark/organizations/{organization_id}/apps": active: false
-    "/api/v1/spark/organizations/{organization_id}/apps/{name}/install": active: false
-    "/api/v1/spark/organizations/{organization_id}/devices/admission": active: false
-    "/api/v1/spark/organizations/{organization_id}/devices/browser_operations": active: false
-    "/api/v1/spark/organizations/{organization_id}/devices/command_events": active: false
-    "/api/v1/spark/organizations/{organization_id}/inference/images/edits": active: false
-    "/api/v1/spark/organizations/{organization_id}/inference/images/generations": active: false
-    "/api/v1/spark/organizations/{organization_id}/inference/responses": active: false
-    "/api/v1/spark/organizations/{organization_id}/inference/v1/messages": active: false
-    "/api/v1/spark/organizations/{organization_id}/interactions": active: false
-    "/api/v1/spark/organizations/{organization_id}/library": active: false
-    "/api/v1/spark/organizations/{organization_id}/message_files": active: false
-    "/api/v1/spark/organizations/{organization_id}/parallel/v1/search": active: false
-    "/api/v1/spark/organizations/{organization_id}/relay/a2a/connections/{connection_id}": active: false
-    "/api/v1/spark/organizations/{organization_id}/relay/files/{operation_id}": active: false
-    "/api/v1/spark/organizations/{organization_id}/relay/integrations/{operation_id}": active: false
-    "/api/v1/spark/organizations/{organization_id}/relay/native-deliveries/{operation_id}": active: false
-    "/api/v1/spark/organizations/{organization_id}/relay/notifications/{operation_id}": active: false
-    "/api/v1/spark/organizations/{organization_id}/relay/peers/{operation_id}": active: false
-    "/api/v1/spark/organizations/{organization_id}/run_events": active: false
-    "/api/v1/spark/organizations/{organization_id}/run_outcomes": active: false
-    "/api/v1/spark/organizations/{organization_id}/run_usages": active: false
-    "/api/v1/spark/organizations/{organization_id}/sandbox": active: false
-    "/api/v1/spark/organizations/{organization_id}/sandbox/automation-cleanup": active: false
-    "/api/v1/spark/organizations/{organization_id}/sites": active: false
-    "/api/v1/spark/organizations/{organization_id}/sites/{name}": active: false
-    "/api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys": active: false
-    "/api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys/{key_id}": active: false
-    "/api/v1/spark/organizations/{organization_id}/sites/{name}/app": active: false
-    "/api/v1/spark/organizations/{organization_id}/sites/{name}/marketplace_template": active: false
-    "/api/v1/spark/organizations/{organization_id}/sites/{name}/secrets/{secret_name}": active: false
-    "/api/v1/spark/organizations/{organization_id}/sites/{name}/token": active: false
-    "/api/v1/spark/organizations/{organization_id}/subscriptions/authorize": active: false
-    "/api/v1/spark/organizations/{organization_id}/subscriptions/selection": active: false
-    "/api/v1/spark/organizations/{organization_id}/telemetry/traces": active: false
-    "/api/v1/spark/organizations/{organization_id}/tools": active: false
   }
 
   # spark_agent_integration
@@ -8977,9 +8636,7 @@ guide: entity: {
       rename: param: "id": "agent_id"
       rename: param: "local_thread_id": "id"
       op: load: method: GET
-      op: load: transform: res: "`body.policy`"
       op: update: method: PUT
-      op: update: transform: res: "`body.policy`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/task": {
       action: "task": {}
@@ -9016,7 +8673,9 @@ guide: entity: {
       rename: param: "id": "agent_id"
       op: list: method: GET
       op: list: transform: res: "`body.threads`"
+      op: list: transform: page: cursor: "`body.next_cursor`"
       op: create: method: POST
+      op: create: transform: res: "`body.thread`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive": {
       action: "archive": {}
@@ -9035,6 +8694,28 @@ guide: entity: {
       rename: param: "id": "agent_id"
       rename: param: "thread_id": "id"
       op: create: method: POST
+    }
+  }
+
+  # spark_automation
+  spark_automation: path: {
+    "/api/v1/organizations/{organization_id}/agents/{id}/spark/automations": {
+      rename: param: "id": "agent_id"
+      op: list: method: GET
+      op: list: transform: res: "`body.items`"
+      op: list: transform: page: next: "`body.pagination.next`"
+    }
+    "/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}": {
+      rename: param: "automation_key": "id"
+      rename: param: "id": "agent_id"
+      op: load: method: GET
+      op: update: method: PUT
+    }
+    "/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/schedule": {
+      action: "schedule": {}
+      rename: param: "automation_key": "id"
+      rename: param: "id": "agent_id"
+      op: update: method: PUT
     }
   }
 
@@ -9093,16 +8774,6 @@ guide: entity: {
       op: create: method: POST
       op: create: transform: res: "`body.static_site`"
     }
-    "/api/v1/static_sites/{static_site_id}/deployments": active: false
-    "/api/v1/static_sites/{static_site_id}/deployments/{id}": active: false
-    "/api/v1/static_sites/{static_site_id}/deployments/{id}/activate": active: false
-    "/api/v1/static_sites/{static_site_id}/deployments/{id}/cancel": active: false
-    "/api/v1/static_sites/{static_site_id}/deployments/{id}/files": active: false
-    "/api/v1/static_sites/{static_site_id}/deployments/{id}/finalize": active: false
-    "/api/v1/static_sites/{static_site_id}/domains": active: false
-    "/api/v1/static_sites/{static_site_id}/domains/{id}": active: false
-    "/api/v1/static_sites/{static_site_id}/domains/{id}/provision": active: false
-    "/api/v1/static_sites/{static_site_id}/domains/{id}/verify": active: false
   }
 
   # static_site_deployment
@@ -9233,6 +8904,7 @@ guide: entity: {
       action: "replay": {}
       rename: param: "id": "swarm_id"
       op: load: method: GET
+      op: load: transform: res: "`body.swarm`"
     }
   }
 
@@ -9256,6 +8928,7 @@ guide: entity: {
       rename: param: "swarm_id": "swarm_id"
       rename: param: "task_id": "id"
       op: load: method: GET
+      op: load: transform: res: "`body.task`"
     }
   }
 
@@ -9307,6 +8980,7 @@ guide: entity: {
       rename: param: "swarm_id": "swarm_id"
       rename: param: "task_id": "task_id"
       op: create: method: POST
+      op: create: transform: res: "`body.roder_run`"
     }
     "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_jev": {
       action: "verify_jev": {}
@@ -9394,6 +9068,8 @@ guide: entity: {
       action: "search": {}
       rename: param: "org_slug": "organization_id"
       op: create: method: POST
+      op: create: transform: res: "`body.results`"
+      op: create: transform: page: cursor: "`body.pagination.next_cursor`"
     }
     "/api/v1/transcripts": {
       op: list: method: GET
@@ -9404,10 +9080,10 @@ guide: entity: {
     "/api/v1/transcripts/read": {
       action: "read": {}
       op: load: method: GET
-      op: load: transform: res: "`body.events`"
-      op: load: transform: page: more: "`body.has_more`"
     }
-    "/api/v1/agent_sessions/{session_id}/transcript": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/pull_request/{number}/transcripts": active: false
+    "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/transcripts": active: false
   }
 
   # v1_message
@@ -9448,7 +9124,6 @@ guide: entity: {
       rename: param: "org_slug": "organization_id"
       rename: param: "repo_slug": "repo_id"
       op: load: method: GET
-      op: load: transform: res: "`body.synced_spaces`"
     }
   }
 
@@ -9511,6 +9186,7 @@ guide: entity: {
       rename: param: "org_slug": "organization_id"
       rename: param: "repo_slug": "repo_id"
       op: load: method: GET
+      op: load: transform: res: "`body.change`"
     }
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/abandon": {
       action: "abandon": {}
@@ -9518,6 +9194,7 @@ guide: entity: {
       rename: param: "org_slug": "organization_id"
       rename: param: "repo_slug": "repo_id"
       op: create: method: POST
+      op: create: transform: res: "`body.change`"
     }
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/accept": {
       action: "accept": {}
@@ -9533,7 +9210,7 @@ guide: entity: {
       rename: param: "org_slug": "organization_id"
       rename: param: "repo_slug": "repo_id"
       op: load: method: GET
-      op: load: transform: res: "`body.checks`"
+      op: load: transform: res: "`body.change`"
     }
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/description": {
       action: "description": {}
@@ -9764,7 +9441,6 @@ guide: entity: {
       action: "prepare": {}
       rename: param: "project_id": "project_id"
       op: create: method: POST
-      op: create: transform: res: "`body.run`"
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}": {
       rename: param: "id": "id"
@@ -9790,6 +9466,7 @@ guide: entity: {
       rename: param: "id": "id"
       rename: param: "project_id": "project_id"
       op: load: method: GET
+      op: load: transform: res: "`body.run`"
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/launch": {
       action: "launch": {}
@@ -9824,7 +9501,6 @@ guide: entity: {
       action: "export": {}
       rename: param: "project_id": "project_id"
       op: load: method: GET
-      op: load: transform: res: "`body.scenarios`"
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/from_exploration": {
       action: "from_exploration": {}
@@ -9888,6 +9564,101 @@ guide: entity: {
     "/api/v1/email_verifications/verify": {
       op: load: method: GET
     }
+  }
+
+  # verify_environment
+  verify_environment: path: {
+    "/api/v1/organizations/{organization_id}/verify/environments": {
+      op: load: method: GET
+      op: create: method: POST
+    }
+    "/api/v1/organizations/{organization_id}/verify/environments/{id}": {
+      rename: param: "id": "id"
+      op: remove: method: DELETE
+      op: load: method: GET
+      op: load: transform: res: "`body.environment`"
+      op: patch: method: PATCH
+      op: update: method: PUT
+    }
+    "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run": {
+      action: "first_run": {}
+      rename: param: "verify_environment_id": "id"
+      op: remove: method: DELETE
+      op: update: method: PUT
+    }
+  }
+
+  # verify_evidence
+  verify_evidence: path: {
+    "/api/v1/organizations/{organization_id}/verify/evidence": {
+      op: load: method: GET
+    }
+    "/api/v1/organizations/{organization_id}/verify/evidence/archive": {
+      action: "archive": {}
+      op: load: method: GET
+    }
+    "/api/v1/organizations/{organization_id}/verify/evidence/{id}": {
+      rename: param: "id": "id"
+      op: load: method: GET
+    }
+    "/api/v1/organizations/{organization_id}/verify/evidence/{id}/download": {
+      action: "download": {}
+      rename: param: "id": "id"
+      op: load: method: GET
+    }
+  }
+
+  # verify_merge_request
+  verify_merge_request: path: {
+    "/api/v1/organizations/{organization_id}/verify/merge_requests": {
+      op: create: method: POST
+    }
+    "/api/v1/organizations/{organization_id}/verify/merge_requests/preview": {
+      action: "preview": {}
+      op: create: method: POST
+    }
+    "/api/v1/organizations/{organization_id}/verify/merge_requests/{id}": {
+      rename: param: "id": "id"
+      op: load: method: GET
+    }
+    "/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun": {
+      action: "rerun": {}
+      rename: param: "id": "id"
+      op: create: method: POST
+    }
+  }
+
+  # verify_pull_request
+  verify_pull_request: path: {
+    "/api/v1/organizations/{organization_id}/verify/pull_requests": {
+      op: create: method: POST
+    }
+    "/api/v1/organizations/{organization_id}/verify/pull_requests/lookup": {
+      action: "lookup": {}
+      op: load: method: GET
+      op: load: transform: res: "`body.pull_request`"
+    }
+    "/api/v1/organizations/{organization_id}/verify/pull_requests/preview": {
+      action: "preview": {}
+      op: create: method: POST
+    }
+    "/api/v1/organizations/{organization_id}/verify/pull_requests/{id}": {
+      rename: param: "id": "id"
+      op: load: method: GET
+    }
+    "/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share": {
+      action: "demo_share": {}
+      rename: param: "id": "id"
+      op: remove: method: DELETE
+      op: create: method: POST
+    }
+    "/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/rerun": {
+      action: "rerun": {}
+      rename: param: "id": "id"
+      op: create: method: POST
+    }
+    "/api/v1/organizations/{organization_id}/verify/merge_requests/{id}": active: false
+    "/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun": active: false
   }
 
   # verify_signal_integration
@@ -10005,6 +9776,7 @@ guide: entity: {
       op: load: method: GET
       op: load: transform: res: "`body.space`"
     }
+    "/api/v1/organizations/{organization_id}/workspace_spaces/{id}/failed_import": active: false
   }
 
   # workspace_space_preference
@@ -10015,302 +9787,361 @@ guide: entity: {
   }
 
   # The heuristic's own entities that no route above uses: switched off.
+  a2a: active: false
+  access: active: false
+  access_key: active: false
+  access_token: active: false
+  account: active: false
   account_deletion: active: false
-  account_email: active: false
-  admin: active: false
-  admin_invitation_result: active: false
+  action: active: false
+  action_result: active: false
   admin_organization: active: false
-  agent_automation_summary: active: false
+  administration_index: active: false
+  admission: active: false
+  agent_automation: active: false
+  agent_card: active: false
+  agent_checkpoint: active: false
   agent_environment: active: false
-  agent_github_integration: active: false
   agent_listing_detail: active: false
-  agent_listing_install: active: false
   agent_relay_delivery_policy: active: false
-  agent_relay_delivery_receipt: active: false
-  agent_relay_delivery_recovery: active: false
-  agent_relay_task: active: false
   agent_roder_session: active: false
-  agent_roder_workspace_credential: active: false
-  agent_sandbox_integration: active: false
   agent_sandbox_setting: active: false
-  agent_session_transcript_page: active: false
-  agent_skill_detail: active: false
-  agent_skill_preview: active: false
-  agent_swarm_live_page: active: false
-  agent_swarm_live_replay_page: active: false
   agent_swarm_policy: active: false
-  agent_swarm_task_conversation: active: false
   agent_web_source_preview: active: false
+  alert_rule: active: false
+  allocation: active: false
   android_apk: active: false
-  app_promotion: active: false
-  artefact_detail_page: active: false
-  artefact_index_page: active: false
+  answer: active: false
   auth_session: active: false
-  billing_hosted_session: active: false
+  automation_cleanup: active: false
+  avatar: active: false
+  backend: active: false
   billing_page: active: false
-  billing_usage_breakdown: active: false
-  browser_control: active: false
-  browser_media: active: false
-  browser_task: active: false
-  bug_hunt: active: false
-  checkout_session: active: false
+  blob: active: false
+  bookmark_protection: active: false
+  bookmark_protection_event: active: false
+  branch: active: false
+  browser_opened: active: false
+  browser_operation: active: false
+  browser_task_activity: active: false
+  cache_namespace: active: false
+  catalog: active: false
+  cdn: active: false
+  channel: active: false
+  checkpoint: active: false
+  chunk: active: false
   ci_runner_migration: active: false
   cin: active: false
+  claim: active: false
   clawder: active: false
-  clawder_agent_email_inbox: active: false
-  clawder_agent_email_message: active: false
   clawder_agent_integration: active: false
-  clawder_agent_model: active: false
-  clawder_call_session: active: false
+  clawder_agent_slack_app_update: active: false
+  clawder_agent_slack_as_you_update: active: false
+  clawder_agent_slack_update: active: false
   clawder_computer: active: false
   clawder_computer_connection: active: false
-  clawder_debug_report: active: false
-  clawder_device_browser_operation: active: false
   clawder_github_access: active: false
-  clawder_library_item: active: false
   clawder_local_thread: active: false
   clawder_pull: active: false
   clawder_repository: active: false
   clawder_routine: active: false
-  clawder_routine_updated: active: false
   clawder_setting: active: false
   clawder_site: active: false
   clawder_skill: active: false
-  clawder_slack_channel: active: false
   clawder_subagent: active: false
-  clawder_subscription_setting: active: false
-  clawder_thread_wait_page: active: false
-  clawder_transcription_session: active: false
-  clawder_usage: active: false
   clawder_verify_project: active: false
-  clawder_webhook_detail: active: false
-  clawder_webhook_setup: active: false
-  clawder_workflow_run: active: false
   clawder_workflow_run_detail: active: false
   clawder_workflow_run_total: active: false
   clawder_workflow_trigger: active: false
-  cli_login_exchange: active: false
+  clear: active: false
+  cli: active: false
+  cli_login_complete: active: false
   cli_login_organization: active: false
-  cli_login_start: active: false
+  clickhouse_cluster: active: false
+  cloud_workspace_backup: active: false
+  code_map: active: false
+  code_repair: active: false
+  code_repair_setting: active: false
   code_rule: active: false
-  code_rule_detail: active: false
-  code_rule_evaluation_result: active: false
-  control_a2a_agent_card: active: false
+  command: active: false
+  command_event: active: false
+  comment: active: false
+  comment_thread: active: false
+  commit: active: false
+  commit_file: active: false
+  compatibility_report: active: false
+  computer: active: false
+  config: active: false
+  config_variable: active: false
+  connection: active: false
+  context: active: false
+  control: active: false
   control_a2a_task_receipt: active: false
   control_admission: active: false
   control_flow: active: false
-  control_flow_snapshot: active: false
+  control_operation: active: false
+  coordination: active: false
   daily_usage: active: false
+  data: active: false
+  delegation: active: false
+  delivery: active: false
+  deploy: active: false
   deployment_dashboard: active: false
-  deployment_details_page: active: false
+  deployment_operation: active: false
   deployment_rollback: active: false
-  deployment_rollback_plan: active: false
-  desktop_local_inference_model: active: false
-  device_all_agents_access: active: false
-  device_browser_operation_claim: active: false
-  device_browser_operation_queue: active: false
-  device_control_runtime: active: false
+  desired_state: active: false
+  detail: active: false
+  device_control_operation: active: false
+  device_control_proof: active: false
   device_execution_lease: active: false
-  device_grant_list: active: false
+  device_grant_revision: active: false
   device_invocation_challenge: active: false
+  device_pairing_proof: active: false
   device_registration: active: false
-  device_worker_control_lease: active: false
-  docker_builder_gateway_completion: active: false
+  diff: active: false
+  directory: active: false
+  disconnect_impact: active: false
+  dismissal: active: false
+  dns_record: active: false
   docker_builder_gateway_connection: active: false
-  docker_builder_session_issued: active: false
-  environment_detail: active: false
+  document: active: false
+  domain: active: false
+  dotenv: active: false
+  edit: active: false
+  email: active: false
+  endpoint: active: false
+  enrollment_token: active: false
+  enterprise_relay: active: false
+  entry: active: false
+  environment: active: false
+  event: active: false
+  evidence: active: false
+  exchange: active: false
   execution: active: false
-  ghn: active: false
+  file: active: false
+  finalize: active: false
+  find_missing_blob: active: false
+  fixture: active: false
+  gateway: active: false
+  generation: active: false
   git_publication: active: false
   git_review_identity: active: false
-  github_required_check_snapshot: active: false
-  github_review_operation: active: false
+  github_integration: active: false
+  github_review_page: active: false
   github_runner_checkout: active: false
   github_runner_scale_set: active: false
   github_runner_supply_admission: active: false
-  gitlab_authorization_url: active: false
-  hosting: active: false
-  identity: active: false
-  image_repository_contract: active: false
+  grant: active: false
+  group: active: false
+  group_membership: active: false
+  handled: active: false
+  health_snapshot: active: false
+  heartbeat: active: false
+  hostname: active: false
+  identity_certificate: active: false
+  import_batch: active: false
+  import_item: active: false
+  importable_repository: active: false
+  inbox: active: false
+  input: active: false
+  install: active: false
+  installation: active: false
+  installation_authorization: active: false
+  interaction: active: false
   ios_app: active: false
+  job: active: false
+  journey: active: false
+  jwk: active: false
+  landing_request: active: false
+  leas: active: false
+  library: active: false
+  live: active: false
+  local_thread: active: false
+  log: active: false
+  log_chunk: active: false
+  log_stream: active: false
+  machine: active: false
   magic_merge_apply_result: active: false
+  manager: active: false
+  manager_choice: active: false
+  mapped_flow: active: false
+  marked_read: active: false
+  marketplace: active: false
   mcp: active: false
+  media: active: false
   men: active: false
-  metronome: active: false
-  mission_control_card: active: false
-  networking: active: false
-  nomad_allocation_detail: active: false
-  nomad_allocation_log: active: false
-  observability: active: false
+  merge_queue: active: false
+  merge_request: active: false
+  message: active: false
+  message_file: active: false
+  model: active: false
+  native_delivery: active: false
+  node_enrollment_token: active: false
+  note: active: false
+  notification: active: false
+  object: active: false
+  oidc_trust: active: false
   onboarding: active: false
-  ops_signal: active: false
-  ops_signal_agent_prompt: active: false
-  ops_signal_bulk_ack_result: active: false
+  operation: active: false
+  option: active: false
   organization_agent_app: active: false
-  organization_agent_app_install: active: false
-  organization_agent_integration: active: false
-  organization_agent_integration_account: active: false
-  organization_agent_integration_catalog: active: false
+  organization_agent_connection_detail: active: false
   organization_agent_site: active: false
   organization_agreements_page: active: false
-  organization_import_branch_policy: active: false
-  organization_previews_page: active: false
-  password_registration_option: active: false
-  persistent_agent_avatar_configuration: active: false
+  otel_collector: active: false
+  output: active: false
+  overview_activity: active: false
+  overview_discovery: active: false
+  overview_history: active: false
+  overview_pull_request: active: false
+  package: active: false
+  package_mirror: active: false
+  part: active: false
+  password_reset: active: false
+  patchset: active: false
+  path_rule: active: false
+  peer: active: false
+  peer_attachment: active: false
   persistent_agent_clawder_compacted: active: false
-  persistent_agent_clawder_compute_view: active: false
-  persistent_agent_clawder_input_receipt: active: false
   persistent_agent_clawder_interaction: active: false
   persistent_agent_clawder_lifecycle: active: false
-  persistent_agent_clawder_run: active: false
-  persistent_agent_clawder_thread: active: false
-  persistent_agent_clawder_thread_created: active: false
   persistent_agent_detail: active: false
-  persistent_agent_lobster_workflow: active: false
-  persistent_agent_roster: active: false
-  persistent_agent_run_usage: active: false
   persistent_agent_workflow_proposal: active: false
-  persistent_agents_workspace_page: active: false
   persona: active: false
-  portal_session: active: false
-  preview_administration_page: active: false
-  preview_owned_secret_reply: active: false
+  pipeline: active: false
+  policy: active: false
+  pr_testing: active: false
+  prepaid_purchase: active: false
+  preview: active: false
+  preview_profile: active: false
   proactive_agent_waitlist_status: active: false
   product_map: active: false
   product_map_answer: active: false
-  product_map_brief: active: false
   product_map_comparison: active: false
-  product_map_frontier: active: false
-  product_map_identity_history: active: false
-  product_map_journey_detail: active: false
-  product_map_overview: active: false
-  product_map_path: active: false
   product_map_search: active: false
-  product_map_state_detail: active: false
+  progress: active: false
   project_credential: active: false
-  project_credential_inbox: active: false
   project_discovery: active: false
-  project_environment_directory: active: false
-  project_environment_page: active: false
-  project_fixtures_page: active: false
   project_header: active: false
   project_overview: active: false
-  project_overview_activity_page: active: false
-  project_overview_discovery_page: active: false
-  project_overview_history_page: active: false
-  project_overview_pull_requests_page: active: false
   project_overviewpropertiescount: active: false
-  project_persona_page: active: false
-  project_personas_page: active: false
-  project_pr_testing_page: active: false
-  project_runs_page: active: false
   project_scenario: active: false
-  project_scenario_editor_page: active: false
   project_scenario_summary: active: false
-  project_settings_page: active: false
   public_agent_listing_detail: active: false
-  relay: active: false
-  relay_file_download: active: false
-  relay_inspection: active: false
+  pull_request: active: false
+  query: active: false
+  quickwit_cluster: active: false
+  read: active: false
+  reconciler_tick: active: false
+  recording: active: false
+  registration: active: false
+  registration_option: active: false
   relay_operator_receipt: active: false
-  relay_operator_resource: active: false
-  relay_operator_tool: active: false
   relay_owner_connection: active: false
-  relay_owner_connection_change: active: false
-  relay_owner_connection_detail: active: false
-  relay_owner_connection_setup: active: false
-  relay_owner_native_source: active: false
+  release: active: false
+  replay: active: false
+  report: active: false
   repository: active: false
-  repository_code_map: active: false
+  resolve: active: false
+  resource: active: false
+  response: active: false
+  retention_policy: active: false
+  reviewer: active: false
+  revision: active: false
+  roder_run_result: active: false
+  rollout: active: false
+  roster: active: false
+  rotate: active: false
+  routine: active: false
   run: active: false
-  run_browser_page: active: false
-  run_chat_card: active: false
   run_plan: active: false
   run_schedule: active: false
-  run_schedule_preview: active: false
-  run_schedule_setup_option: active: false
+  runner: active: false
+  runner_pool: active: false
+  runtime_instance: active: false
+  sandbox: active: false
+  sandbox_environment: active: false
   scenario: active: false
-  scenario_edit_content: active: false
-  scenario_edit_proposal: active: false
-  scenario_file_export: active: false
-  scenario_file_import: active: false
-  scenario_recording: active: false
-  scenario_revision_detail: active: false
+  scenario_editor: active: false
+  scenario_run: active: false
   scenario_run_edit: active: false
+  screenshot: active: false
+  secret: active: false
+  secret_binding: active: false
+  segment: active: false
+  selection: active: false
+  selector: active: false
+  service: active: false
+  service_account: active: false
+  service_binding: active: false
   session: active: false
+  setup: active: false
+  skipped: active: false
+  snooze: active: false
+  source: active: false
+  space: active: false
   spark_attachment: active: false
   spark_thread_model_option: active: false
-  spark_usage_total: active: false
-  stripe: active: false
-  thread_workspace: active: false
-  transcript_read_page: active: false
-  transcript_search_result: active: false
-  vcs_blame: active: false
+  stat: active: false
+  state: active: false
+  step: active: false
+  storage: active: false
+  subagent: active: false
+  subscription: active: false
+  swarm: active: false
+  target: active: false
+  task: active: false
+  teammate: active: false
+  test_account: active: false
+  thread: active: false
+  tool: active: false
+  trace: active: false
+  trace_span: active: false
+  trigger_subscription: active: false
+  unresolve: active: false
+  upload: active: false
+  usage_total: active: false
+  user_authorization: active: false
+  value: active: false
+  vcs: active: false
   vcs_branch: active: false
-  vcs_browser_file: active: false
-  vcs_browser_tree: active: false
-  vcs_change_diff: active: false
-  vcs_change_transcript: active: false
+  vcs_change_group: active: false
   vcs_commit: active: false
-  vcs_commit_range_diff: active: false
   vcs_file: active: false
-  vcs_merge: active: false
-  vcs_trunk_tip: active: false
+  vcs_stack: active: false
+  verification_account_session: active: false
+  verification_cleanup: active: false
+  verification_diagnostic: active: false
+  verification_evidence: active: false
   verification_integration: active: false
+  verification_mail: active: false
+  verification_secret: active: false
   verify: active: false
   verify_binary: active: false
-  verify_binary_directory: active: false
-  verify_binary_log: active: false
-  verify_binary_registration: active: false
-  verify_binary_version: active: false
-  verify_binary_version_registration: active: false
-  verify_code_repair: active: false
-  verify_code_repair_setting: active: false
-  verify_deep_scan_context: active: false
-  verify_deep_scan_document_page: active: false
-  verify_deep_scan_finding: active: false
-  verify_deep_scan_mapped_flow: active: false
-  verify_deep_scan_option: active: false
   verify_demo_share: active: false
   verify_discovery_run: active: false
-  verify_dream_detail: active: false
-  verify_dream_page: active: false
-  verify_dreams_page: active: false
-  verify_environment: active: false
-  verify_environment_detail: active: false
-  verify_environment_revision: active: false
   verify_exploration: active: false
-  verify_exploration_agent: active: false
-  verify_exploration_progress: active: false
-  verify_exploration_report: active: false
-  verify_exploration_report_replay: active: false
-  verify_finding_detail: active: false
-  verify_finding_record: active: false
   verify_first_run: active: false
-  verify_fixture: active: false
-  verify_fixture_download: active: false
   verify_github_connection: active: false
-  verify_github_connection_option: active: false
-  verify_knowledge_document: active: false
-  verify_knowledge_page: active: false
-  verify_library_fixture: active: false
-  verify_login_account: active: false
   verify_memory: active: false
   verify_messaging_manual: active: false
   verify_messaging_page: active: false
   verify_messaging_session_grant: active: false
   verify_messaging_setup: active: false
-  verify_messaging_upload: active: false
   verify_network_connection: active: false
-  verify_page: active: false
   verify_preview_detection: active: false
-  verify_pull_request: active: false
   verify_pull_request_option: active: false
-  verify_pull_request_run: active: false
-  verify_run_search: active: false
-  verify_run_update: active: false
-  verify_sign_in_browser: active: false
   verify_test_account: active: false
+  version: active: false
+  wait: active: false
+  warm: active: false
   webhook: active: false
-  workspace_activity_page: active: false
+  workflow: active: false
+  workflow_proposal: active: false
+  workflow_run: active: false
+  workflow_trigger: active: false
+  workload_identity: active: false
+  workspace: active: false
+  workspace_credential: active: false
+  write_permission: active: false
 }
