@@ -79,9 +79,6 @@ func init() {
 	core.NewAgentAttachmentEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewAgentAttachmentEntity(client, entopts)
 	}
-	core.NewAgentAutomationEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
-		return entity.NewAgentAutomationEntity(client, entopts)
-	}
 	core.NewAgentAvatarEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewAgentAvatarEntity(client, entopts)
 	}
@@ -312,6 +309,9 @@ func init() {
 	}
 	core.NewAppDeploymentEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewAppDeploymentEntity(client, entopts)
+	}
+	core.NewAppDeploymentDashboardEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
+		return entity.NewAppDeploymentDashboardEntity(client, entopts)
 	}
 	core.NewAppDeploymentOperationEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewAppDeploymentOperationEntity(client, entopts)
@@ -700,9 +700,6 @@ func init() {
 	core.NewDeviceControlMessageEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewDeviceControlMessageEntity(client, entopts)
 	}
-	core.NewDeviceControlOperationEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
-		return entity.NewDeviceControlOperationEntity(client, entopts)
-	}
 	core.NewDeviceEnterpriseRelayEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewDeviceEnterpriseRelayEntity(client, entopts)
 	}
@@ -717,6 +714,9 @@ func init() {
 	}
 	core.NewDeviceLocalEventEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewDeviceLocalEventEntity(client, entopts)
+	}
+	core.NewDeviceOperationEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
+		return entity.NewDeviceOperationEntity(client, entopts)
 	}
 	core.NewDevicePairingEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewDevicePairingEntity(client, entopts)
@@ -751,9 +751,6 @@ func init() {
 	core.NewEmailVerificationEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewEmailVerificationEntity(client, entopts)
 	}
-	core.NewEnvironmentEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
-		return entity.NewEnvironmentEntity(client, entopts)
-	}
 	core.NewEnvironmentDiscoveryRunEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewEnvironmentDiscoveryRunEntity(client, entopts)
 	}
@@ -771,9 +768,6 @@ func init() {
 	}
 	core.NewEnvironmentTestAccountEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewEnvironmentTestAccountEntity(client, entopts)
-	}
-	core.NewEvidenceEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
-		return entity.NewEvidenceEntity(client, entopts)
 	}
 	core.NewExecutionDesiredStateEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewExecutionDesiredStateEntity(client, entopts)
@@ -834,9 +828,6 @@ func init() {
 	}
 	core.NewGithubConnectionEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewGithubConnectionEntity(client, entopts)
-	}
-	core.NewGithubIntegrationEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
-		return entity.NewGithubIntegrationEntity(client, entopts)
 	}
 	core.NewGithubOnboardingEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewGithubOnboardingEntity(client, entopts)
@@ -1012,9 +1003,6 @@ func init() {
 	core.NewMergeQueueEntryEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewMergeQueueEntryEntity(client, entopts)
 	}
-	core.NewMergeRequestEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
-		return entity.NewMergeRequestEntity(client, entopts)
-	}
 	core.NewMergeResolutionEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewMergeResolutionEntity(client, entopts)
 	}
@@ -1159,6 +1147,9 @@ func init() {
 	core.NewPagesBillingEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewPagesBillingEntity(client, entopts)
 	}
+	core.NewPagesGithubIntegrationEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
+		return entity.NewPagesGithubIntegrationEntity(client, entopts)
+	}
 	core.NewPagesGithubOnboardingEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewPagesGithubOnboardingEntity(client, entopts)
 	}
@@ -1264,8 +1255,14 @@ func init() {
 	core.NewProjectOverviewPullRequestEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewProjectOverviewPullRequestEntity(client, entopts)
 	}
+	core.NewProjectPrTestingEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
+		return entity.NewProjectPrTestingEntity(client, entopts)
+	}
 	core.NewProjectProductMapEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewProjectProductMapEntity(client, entopts)
+	}
+	core.NewProjectProductMapComparisonEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
+		return entity.NewProjectProductMapComparisonEntity(client, entopts)
 	}
 	core.NewProjectRecordingEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewProjectRecordingEntity(client, entopts)
@@ -1284,9 +1281,6 @@ func init() {
 	}
 	core.NewProjectSettingEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewProjectSettingEntity(client, entopts)
-	}
-	core.NewPullRequestEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
-		return entity.NewPullRequestEntity(client, entopts)
 	}
 	core.NewPullRequestActionEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewPullRequestActionEntity(client, entopts)
@@ -1573,6 +1567,9 @@ func init() {
 	core.NewSparkAgentThreadEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewSparkAgentThreadEntity(client, entopts)
 	}
+	core.NewSparkAutomationEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
+		return entity.NewSparkAutomationEntity(client, entopts)
+	}
 	core.NewSparkCreditEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewSparkCreditEntity(client, entopts)
 	}
@@ -1686,6 +1683,18 @@ func init() {
 	}
 	core.NewVerifyEmailVerificationEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewVerifyEmailVerificationEntity(client, entopts)
+	}
+	core.NewVerifyEnvironmentEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
+		return entity.NewVerifyEnvironmentEntity(client, entopts)
+	}
+	core.NewVerifyEvidenceEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
+		return entity.NewVerifyEvidenceEntity(client, entopts)
+	}
+	core.NewVerifyMergeRequestEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
+		return entity.NewVerifyMergeRequestEntity(client, entopts)
+	}
+	core.NewVerifyPullRequestEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
+		return entity.NewVerifyPullRequestEntity(client, entopts)
 	}
 	core.NewVerifySignalIntegrationEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewVerifySignalIntegrationEntity(client, entopts)

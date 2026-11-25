@@ -1,0 +1,18 @@
+$kind: http-request
+id: "76a4c458-e07b-5f73-bd7d-059cff68d480"
+description: |-
+  The `archive` action of **verify_evidence**, a route of its `load` operation.
+
+  SDK: `client.VerifyEvidence().load({ "organization_id": "organization_id", "scenario_run_id": "scenario_run_id", $action: "archive" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/evidence/archive?scenario_run_id={{scenario_run_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: scenario_run_id
+    value: "{{scenario_run_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_evidence belongs to.
+order: 3000

@@ -31,11 +31,6 @@ describe("DeepScanFindingDirect", function()
       pending(_reason or "skipped via sdk-test-control.json")
       return
     end
-    if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" and setup.idmap["deep_scan01"] == nil then
-      print("LIVE STEP {\"id\":\"direct-list-deep_scan_finding\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs deep_scan01, which only POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce gives\"}")
-      pending("Live coverage incomplete: direct-list-deep_scan_finding excluded (GET-only live run: needs deep_scan01, which only POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce gives)")
-      return
-    end
     if setup.live then
       for _, _live_key in ipairs({"deep_scan01", "organization01"}) do
         if setup.idmap[_live_key] == nil then

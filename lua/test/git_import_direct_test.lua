@@ -29,8 +29,8 @@ describe("GitImportDirect", function()
       return
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" and setup.idmap["git_import01"] == nil then
-      print("LIVE STEP {\"id\":\"direct-load-git_import\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs git_import01, which only POST /api/v1/git_imports/{id}/complete gives\"}")
-      pending("Live coverage incomplete: direct-load-git_import excluded (GET-only live run: needs git_import01, which only POST /api/v1/git_imports/{id}/complete gives)")
+      print("LIVE STEP {\"id\":\"direct-load-git_import\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs git_import01, which only POST /api/v1/organizations/{organization_id}/git_imports gives\"}")
+      pending("Live coverage incomplete: direct-load-git_import excluded (GET-only live run: needs git_import01, which only POST /api/v1/organizations/{organization_id}/git_imports gives)")
       return
     end
     if setup.live then

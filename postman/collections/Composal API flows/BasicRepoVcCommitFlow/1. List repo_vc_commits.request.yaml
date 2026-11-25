@@ -4,19 +4,13 @@ description: |-
   The `list` operation of **repo_vc_commit**.
 
   SDK: `client.RepoVcCommit().list({ organization_id: "example", repo_id: "example", ref: "example" })`
-url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/commits?ref={{ref}}&ref={{ref}}"
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/commits?ref={{ref}}"
 method: GET
 headers:
   Accept: application/json
 queryParams:
   - key: limit
     value: "50"
-    disabled: true
-  - key: limit
-    value: "25"
-    disabled: true
-  - key: offset
-    value: "0"
     disabled: true
   - key: offset
     value: "0"
@@ -30,11 +24,6 @@ queryParams:
   - key: q
     value: ""
     disabled: true
-  - key: q
-    value: ""
-    disabled: true
-  - key: ref
-    value: "{{ref}}"
   - key: ref
     value: "{{ref}}"
 pathVariables:

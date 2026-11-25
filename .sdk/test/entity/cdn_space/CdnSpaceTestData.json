@@ -21,17 +21,17 @@
     }
   },
   "requests": {
+    "POST /api/v1/organizations/{org_slug}/cdn_spaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
     "POST /api/v1/cdn_spaces/{id}/archive": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
     "POST /api/v1/cdn_spaces/{id}/provision": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "POST /api/v1/organizations/{org_slug}/cdn_spaces": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

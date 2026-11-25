@@ -21,7 +21,7 @@ body:
   type: json
   content: |-
     {
-      "environment_id": "{{environment_id}}",
+      "environment_id": "example",
       "exploration_id": "{{exploration_id}}",
       "account_id": "example",
       "flow_names": [

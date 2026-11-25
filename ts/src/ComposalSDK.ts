@@ -6,7 +6,6 @@ import { AgentEntity } from './entity/AgentEntity'
 import { AgentAppEntity } from './entity/AgentAppEntity'
 import { AgentAppInstallEntity } from './entity/AgentAppInstallEntity'
 import { AgentAttachmentEntity } from './entity/AgentAttachmentEntity'
-import { AgentAutomationEntity } from './entity/AgentAutomationEntity'
 import { AgentAvatarEntity } from './entity/AgentAvatarEntity'
 import { AgentCommandEntity } from './entity/AgentCommandEntity'
 import { AgentComputerEntity } from './entity/AgentComputerEntity'
@@ -84,6 +83,7 @@ import { AppConfigVariableEntity } from './entity/AppConfigVariableEntity'
 import { AppDataResourceEntity } from './entity/AppDataResourceEntity'
 import { AppDeployEntity } from './entity/AppDeployEntity'
 import { AppDeploymentEntity } from './entity/AppDeploymentEntity'
+import { AppDeploymentDashboardEntity } from './entity/AppDeploymentDashboardEntity'
 import { AppDeploymentOperationEntity } from './entity/AppDeploymentOperationEntity'
 import { AppDeploymentRollbackEntity } from './entity/AppDeploymentRollbackEntity'
 import { AppEnvironmentEntity } from './entity/AppEnvironmentEntity'
@@ -213,12 +213,12 @@ import { DesktopLocalAgentResponseEntity } from './entity/DesktopLocalAgentRespo
 import { DeviceEntity } from './entity/DeviceEntity'
 import { DeviceBrowserOperationEntity } from './entity/DeviceBrowserOperationEntity'
 import { DeviceControlMessageEntity } from './entity/DeviceControlMessageEntity'
-import { DeviceControlOperationEntity } from './entity/DeviceControlOperationEntity'
 import { DeviceEnterpriseRelayEntity } from './entity/DeviceEnterpriseRelayEntity'
 import { DeviceFolderListingEntity } from './entity/DeviceFolderListingEntity'
 import { DeviceGrantEntity } from './entity/DeviceGrantEntity'
 import { DeviceInvocationEntity } from './entity/DeviceInvocationEntity'
 import { DeviceLocalEventEntity } from './entity/DeviceLocalEventEntity'
+import { DeviceOperationEntity } from './entity/DeviceOperationEntity'
 import { DevicePairingEntity } from './entity/DevicePairingEntity'
 import { DeviceProjectEntity } from './entity/DeviceProjectEntity'
 import { DeviceScheduledCheckInEntity } from './entity/DeviceScheduledCheckInEntity'
@@ -230,14 +230,12 @@ import { DomainPathRuleEntity } from './entity/DomainPathRuleEntity'
 import { DreamEntity } from './entity/DreamEntity'
 import { EdgeEntity } from './entity/EdgeEntity'
 import { EmailVerificationEntity } from './entity/EmailVerificationEntity'
-import { EnvironmentEntity } from './entity/EnvironmentEntity'
 import { EnvironmentDiscoveryRunEntity } from './entity/EnvironmentDiscoveryRunEntity'
 import { EnvironmentExplorationEntity } from './entity/EnvironmentExplorationEntity'
 import { EnvironmentFirstRunEntity } from './entity/EnvironmentFirstRunEntity'
 import { EnvironmentRevisionEntity } from './entity/EnvironmentRevisionEntity'
 import { EnvironmentSecretBindingEntity } from './entity/EnvironmentSecretBindingEntity'
 import { EnvironmentTestAccountEntity } from './entity/EnvironmentTestAccountEntity'
-import { EvidenceEntity } from './entity/EvidenceEntity'
 import { ExecutionDesiredStateEntity } from './entity/ExecutionDesiredStateEntity'
 import { ExecutionReconcilerTickEntity } from './entity/ExecutionReconcilerTickEntity'
 import { ExecutionReleaseEntity } from './entity/ExecutionReleaseEntity'
@@ -258,7 +256,6 @@ import { GithubAppUserAuthorizationEntity } from './entity/GithubAppUserAuthoriz
 import { GithubCiRepositoryEntity } from './entity/GithubCiRepositoryEntity'
 import { GithubCiRepositoryCompatibilityReportEntity } from './entity/GithubCiRepositoryCompatibilityReportEntity'
 import { GithubConnectionEntity } from './entity/GithubConnectionEntity'
-import { GithubIntegrationEntity } from './entity/GithubIntegrationEntity'
 import { GithubOnboardingEntity } from './entity/GithubOnboardingEntity'
 import { GithubOnboardingBranchEntity } from './entity/GithubOnboardingBranchEntity'
 import { GithubOnboardingImportEntity } from './entity/GithubOnboardingImportEntity'
@@ -317,7 +314,6 @@ import { MediaFileEntity } from './entity/MediaFileEntity'
 import { MemberEntity } from './entity/MemberEntity'
 import { MemoryEntity } from './entity/MemoryEntity'
 import { MergeQueueEntryEntity } from './entity/MergeQueueEntryEntity'
-import { MergeRequestEntity } from './entity/MergeRequestEntity'
 import { MergeResolutionEntity } from './entity/MergeResolutionEntity'
 import { MessagingConversationMessageEntity } from './entity/MessagingConversationMessageEntity'
 import { MessagingConversationUploadEntity } from './entity/MessagingConversationUploadEntity'
@@ -366,6 +362,7 @@ import { PageCiPipelineRunEntity } from './entity/PageCiPipelineRunEntity'
 import { PageProjectRunEntity } from './entity/PageProjectRunEntity'
 import { PageRepoVcCommitEntity } from './entity/PageRepoVcCommitEntity'
 import { PagesBillingEntity } from './entity/PagesBillingEntity'
+import { PagesGithubIntegrationEntity } from './entity/PagesGithubIntegrationEntity'
 import { PagesGithubOnboardingEntity } from './entity/PagesGithubOnboardingEntity'
 import { PagesMemberEntity } from './entity/PagesMemberEntity'
 import { PagesProjectCredentialEntity } from './entity/PagesProjectCredentialEntity'
@@ -401,14 +398,15 @@ import { ProjectIosAppEntity } from './entity/ProjectIosAppEntity'
 import { ProjectMessagingConversationEntity } from './entity/ProjectMessagingConversationEntity'
 import { ProjectOverviewMetricEntity } from './entity/ProjectOverviewMetricEntity'
 import { ProjectOverviewPullRequestEntity } from './entity/ProjectOverviewPullRequestEntity'
+import { ProjectPrTestingEntity } from './entity/ProjectPrTestingEntity'
 import { ProjectProductMapEntity } from './entity/ProjectProductMapEntity'
+import { ProjectProductMapComparisonEntity } from './entity/ProjectProductMapComparisonEntity'
 import { ProjectRecordingEntity } from './entity/ProjectRecordingEntity'
 import { ProjectRunPlanEntity } from './entity/ProjectRunPlanEntity'
 import { ProjectRunScheduleEntity } from './entity/ProjectRunScheduleEntity'
 import { ProjectScenarioOptionEntity } from './entity/ProjectScenarioOptionEntity'
 import { ProjectScenarioRowEntity } from './entity/ProjectScenarioRowEntity'
 import { ProjectSettingEntity } from './entity/ProjectSettingEntity'
-import { PullRequestEntity } from './entity/PullRequestEntity'
 import { PullRequestActionEntity } from './entity/PullRequestActionEntity'
 import { PullRequestMagicMergeEntity } from './entity/PullRequestMagicMergeEntity'
 import { PullRequestSettingEntity } from './entity/PullRequestSettingEntity'
@@ -504,6 +502,7 @@ import { SparkAgentLocalThreadEntity } from './entity/SparkAgentLocalThreadEntit
 import { SparkAgentSiteEntity } from './entity/SparkAgentSiteEntity'
 import { SparkAgentSkillEntity } from './entity/SparkAgentSkillEntity'
 import { SparkAgentThreadEntity } from './entity/SparkAgentThreadEntity'
+import { SparkAutomationEntity } from './entity/SparkAutomationEntity'
 import { SparkCreditEntity } from './entity/SparkCreditEntity'
 import { SparkCreditAgentUsageEntity } from './entity/SparkCreditAgentUsageEntity'
 import { SparkCreditUsageTotalEntity } from './entity/SparkCreditUsageTotalEntity'
@@ -542,6 +541,10 @@ import { VerificationProjectScenarioEntity } from './entity/VerificationProjectS
 import { VerifyAppDomainEntity } from './entity/VerifyAppDomainEntity'
 import { VerifyBrowserSessionEntity } from './entity/VerifyBrowserSessionEntity'
 import { VerifyEmailVerificationEntity } from './entity/VerifyEmailVerificationEntity'
+import { VerifyEnvironmentEntity } from './entity/VerifyEnvironmentEntity'
+import { VerifyEvidenceEntity } from './entity/VerifyEvidenceEntity'
+import { VerifyMergeRequestEntity } from './entity/VerifyMergeRequestEntity'
+import { VerifyPullRequestEntity } from './entity/VerifyPullRequestEntity'
 import { VerifySignalIntegrationEntity } from './entity/VerifySignalIntegrationEntity'
 import { VerifyStaticSiteDomainEntity } from './entity/VerifyStaticSiteDomainEntity'
 import { VersionLogEntity } from './entity/VersionLogEntity'
@@ -946,15 +949,6 @@ if (null != this._secrets) {
   AgentAttachment(entopts?: Record<string, any>) {
     const self = this
     return new AgentAttachmentEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.AgentAutomation().list()` / `client.AgentAutomation().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  AgentAutomation(entopts?: Record<string, any>) {
-    const self = this
-    return new AgentAutomationEntity(self, entopts)
   }
 
 
@@ -1648,6 +1642,15 @@ if (null != this._secrets) {
   AppDeployment(entopts?: Record<string, any>) {
     const self = this
     return new AppDeploymentEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.AppDeploymentDashboard().list()` / `client.AppDeploymentDashboard().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  AppDeploymentDashboard(entopts?: Record<string, any>) {
+    const self = this
+    return new AppDeploymentDashboardEntity(self, entopts)
   }
 
 
@@ -2812,15 +2815,6 @@ if (null != this._secrets) {
   }
 
 
-  // Entity access: `client.DeviceControlOperation().list()` / `client.DeviceControlOperation().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  DeviceControlOperation(entopts?: Record<string, any>) {
-    const self = this
-    return new DeviceControlOperationEntity(self, entopts)
-  }
-
-
   // Entity access: `client.DeviceEnterpriseRelay().list()` / `client.DeviceEnterpriseRelay().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
@@ -2863,6 +2857,15 @@ if (null != this._secrets) {
   DeviceLocalEvent(entopts?: Record<string, any>) {
     const self = this
     return new DeviceLocalEventEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.DeviceOperation().list()` / `client.DeviceOperation().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  DeviceOperation(entopts?: Record<string, any>) {
+    const self = this
+    return new DeviceOperationEntity(self, entopts)
   }
 
 
@@ -2965,15 +2968,6 @@ if (null != this._secrets) {
   }
 
 
-  // Entity access: `client.Environment().list()` / `client.Environment().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  Environment(entopts?: Record<string, any>) {
-    const self = this
-    return new EnvironmentEntity(self, entopts)
-  }
-
-
   // Entity access: `client.EnvironmentDiscoveryRun().list()` / `client.EnvironmentDiscoveryRun().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
@@ -3025,15 +3019,6 @@ if (null != this._secrets) {
   EnvironmentTestAccount(entopts?: Record<string, any>) {
     const self = this
     return new EnvironmentTestAccountEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.Evidence().list()` / `client.Evidence().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  Evidence(entopts?: Record<string, any>) {
-    const self = this
-    return new EvidenceEntity(self, entopts)
   }
 
 
@@ -3214,15 +3199,6 @@ if (null != this._secrets) {
   GithubConnection(entopts?: Record<string, any>) {
     const self = this
     return new GithubConnectionEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.GithubIntegration().list()` / `client.GithubIntegration().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  GithubIntegration(entopts?: Record<string, any>) {
-    const self = this
-    return new GithubIntegrationEntity(self, entopts)
   }
 
 
@@ -3748,15 +3724,6 @@ if (null != this._secrets) {
   }
 
 
-  // Entity access: `client.MergeRequest().list()` / `client.MergeRequest().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  MergeRequest(entopts?: Record<string, any>) {
-    const self = this
-    return new MergeRequestEntity(self, entopts)
-  }
-
-
   // Entity access: `client.MergeResolution().list()` / `client.MergeResolution().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
@@ -4189,6 +4156,15 @@ if (null != this._secrets) {
   }
 
 
+  // Entity access: `client.PagesGithubIntegration().list()` / `client.PagesGithubIntegration().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PagesGithubIntegration(entopts?: Record<string, any>) {
+    const self = this
+    return new PagesGithubIntegrationEntity(self, entopts)
+  }
+
+
   // Entity access: `client.PagesGithubOnboarding().list()` / `client.PagesGithubOnboarding().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
@@ -4504,12 +4480,30 @@ if (null != this._secrets) {
   }
 
 
+  // Entity access: `client.ProjectPrTesting().list()` / `client.ProjectPrTesting().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProjectPrTesting(entopts?: Record<string, any>) {
+    const self = this
+    return new ProjectPrTestingEntity(self, entopts)
+  }
+
+
   // Entity access: `client.ProjectProductMap().list()` / `client.ProjectProductMap().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
   ProjectProductMap(entopts?: Record<string, any>) {
     const self = this
     return new ProjectProductMapEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.ProjectProductMapComparison().list()` / `client.ProjectProductMapComparison().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProjectProductMapComparison(entopts?: Record<string, any>) {
+    const self = this
+    return new ProjectProductMapComparisonEntity(self, entopts)
   }
 
 
@@ -4564,15 +4558,6 @@ if (null != this._secrets) {
   ProjectSetting(entopts?: Record<string, any>) {
     const self = this
     return new ProjectSettingEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.PullRequest().list()` / `client.PullRequest().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  PullRequest(entopts?: Record<string, any>) {
-    const self = this
-    return new PullRequestEntity(self, entopts)
   }
 
 
@@ -5431,6 +5416,15 @@ if (null != this._secrets) {
   }
 
 
+  // Entity access: `client.SparkAutomation().list()` / `client.SparkAutomation().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SparkAutomation(entopts?: Record<string, any>) {
+    const self = this
+    return new SparkAutomationEntity(self, entopts)
+  }
+
+
   // Entity access: `client.SparkCredit().list()` / `client.SparkCredit().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
@@ -5770,6 +5764,42 @@ if (null != this._secrets) {
   VerifyEmailVerification(entopts?: Record<string, any>) {
     const self = this
     return new VerifyEmailVerificationEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.VerifyEnvironment().list()` / `client.VerifyEnvironment().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  VerifyEnvironment(entopts?: Record<string, any>) {
+    const self = this
+    return new VerifyEnvironmentEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.VerifyEvidence().list()` / `client.VerifyEvidence().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  VerifyEvidence(entopts?: Record<string, any>) {
+    const self = this
+    return new VerifyEvidenceEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.VerifyMergeRequest().list()` / `client.VerifyMergeRequest().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  VerifyMergeRequest(entopts?: Record<string, any>) {
+    const self = this
+    return new VerifyMergeRequestEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.VerifyPullRequest().list()` / `client.VerifyPullRequest().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  VerifyPullRequest(entopts?: Record<string, any>) {
+    const self = this
+    return new VerifyPullRequestEntity(self, entopts)
   }
 
 

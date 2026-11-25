@@ -1,4 +1,4 @@
 $kind: collection
 id: "53fd5c4d-fdad-5da7-b6cc-c9bf60450087"
 description: "The `BasicAlertRuleEventFlow` flow of **alert_rule_event**."
-order: 56000
+order: 55000

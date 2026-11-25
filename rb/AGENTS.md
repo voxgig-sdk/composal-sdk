@@ -13,6 +13,10 @@ npm run build        # only if you changed a component
 npm run generate     # refreshes this rb/ directory
 ```
 
+Each `npm run generate` rewrites every file it generates, so an edit
+made to generated output is lost, and deletes the files it generated before
+and no longer emits. A target or a phase switched off is left as it was.
+
 Then build and test the generated output:
 
 ```bash
@@ -34,24 +38,28 @@ make test
 Decision rule: *same for every API → template; depends on the API →
 component.* After editing a component run `npm run build` before
 `npm run generate`; template-only edits just need `npm run generate`.
+`target add` and `feature add` overwrite the templates and components
+in `.sdk/` (`main: kit: copies: 'overwrite'`): set `copies` to
+`'merge'` before customising them, so that an add merges toolchain updates
+into the edited copies.
 
 ## Features in this target
 
-Each feature is a flat file in the `feature/` package. Its hooks and
-default activation come from `.sdk/model/feature/<name>.aontu`; customise
-the runtime under `.sdk/tm/rb/feature/` and regenerate.
+Each feature's hooks and default activation come from
+`.sdk/model/feature/<name>.aontu`. Its runtime is generated from the template
+listed here: customise that and regenerate.
 
-| Feature | Runtime file | Active hooks |
+| Feature | Template | Active hooks |
 | --- | --- | --- |
-| **debug** — Debug capture | `feature/debug_feature.rb` | `PreDone`, `PreRequest`, `PreResponse`, `PreUnexpected` |
-| **idempotency** — Idempotency | `feature/idempotency_feature.rb` | `PreRequest` |
-| **metrics** — Metrics | `feature/metrics_feature.rb` | `PreDone`, `PrePoint`, `PreUnexpected` |
-| **paging** — Paging | `feature/paging_feature.rb` | `PreRequest`, `PreResult` |
-| **ratelimit** — Rate limiting | `feature/ratelimit_feature.rb` | — |
-| **retry** — Retry | `feature/retry_feature.rb` | — |
-| **secrets** — Secrets | `feature/secrets_feature.rb` | `PreSpec` |
-| **test** — Test transport | `feature/test_feature.rb` | `GetData`, `GetMatch`, `PostConstruct`, `PostConstructEntity`, `PrePoint`, `PreRequest`, `PreResponse`, `PreResult`, `PreSpec`, `SetData`, `SetMatch` |
-| **timeout** — Timeout | `feature/timeout_feature.rb` | — |
+| **debug** — Debug capture | `.sdk/tm/rb/feature/debug_feature.rb` | `PreDone`, `PreRequest`, `PreResponse`, `PreUnexpected` |
+| **idempotency** — Idempotency | `.sdk/tm/rb/feature/idempotency_feature.rb` | `PreRequest` |
+| **metrics** — Metrics | `.sdk/tm/rb/feature/metrics_feature.rb` | `PreDone`, `PrePoint`, `PreUnexpected` |
+| **paging** — Paging | `.sdk/tm/rb/feature/paging_feature.rb` | `PreRequest`, `PreResult` |
+| **ratelimit** — Rate limiting | `.sdk/tm/rb/feature/ratelimit_feature.rb` | — |
+| **retry** — Retry | `.sdk/tm/rb/feature/retry_feature.rb` | — |
+| **secrets** — Secrets | `.sdk/tm/rb/feature/secrets/` | `PreSpec` |
+| **test** — Test transport | `.sdk/tm/rb/feature/test_feature.rb` | `GetData`, `GetMatch`, `PostConstruct`, `PostConstructEntity`, `PrePoint`, `PreRequest`, `PreResponse`, `PreResult`, `PreSpec`, `SetData`, `SetMatch` |
+| **timeout** — Timeout | `.sdk/tm/rb/feature/timeout_feature.rb` | — |
 
 ---
 

@@ -116,7 +116,7 @@ class TestProjectEnvironmentEntity:
             "id": project_environment_ref01_data["id"],
         }
         project_environment_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
-        project_environment_ref01_match_dt0["project_id"] = project_environment_ref01_data.get("project_id") if isinstance(project_environment_ref01_data.get("project_id"), (str, int, float)) else setup["idmap"].get("project_id")
+        project_environment_ref01_match_dt0["project_id"] = project_environment_ref01_data.get("project_id") if isinstance(project_environment_ref01_data.get("project_id"), (str, int, float)) else setup["idmap"].get("project_id") or setup["idmap"].get("project01")
         project_environment_ref01_data_dt0_loaded = project_environment_ref01_ent.load(project_environment_ref01_match_dt0, None)
         project_environment_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(project_environment_ref01_data_dt0_loaded))
         assert project_environment_ref01_data_dt0_load_result is not None
@@ -162,7 +162,7 @@ class TestProjectEnvironmentEntity:
             "id": project_environment_ref01_data["id"],
         }
         project_environment_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
-        project_environment_ref01_match_dt0["project_id"] = project_environment_ref01_data.get("project_id") if isinstance(project_environment_ref01_data.get("project_id"), (str, int, float)) else setup["idmap"].get("project_id")
+        project_environment_ref01_match_dt0["project_id"] = project_environment_ref01_data.get("project_id") if isinstance(project_environment_ref01_data.get("project_id"), (str, int, float)) else setup["idmap"].get("project_id") or setup["idmap"].get("project01")
         project_environment_ref01_data_dt0_loaded = project_environment_ref01_ent.load(project_environment_ref01_match_dt0, None)
         project_environment_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(project_environment_ref01_data_dt0_loaded))
         assert project_environment_ref01_data_dt0_load_result is not None

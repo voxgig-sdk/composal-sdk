@@ -25,7 +25,7 @@ class AgentInputEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.AgentInput(nil).create({ "agent_id" => 1, "organization_id" => "x", "browser_context" => "x", "client_time" => "x", "conversation_id" => "x", "text" => "x" }, nil)
+      client.AgentInput(nil).create({ "agent_id" => 1, "organization_id" => "x", "conversation_id" => "x", "text" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end

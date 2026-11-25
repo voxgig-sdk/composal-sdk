@@ -166,6 +166,7 @@ func TestGithubRunnerPoolEntity(t *testing.T) {
 		// UPDATE
 		githubRunnerPoolRef01DataUp0Up := map[string]any{
 			"id": githubRunnerPoolRef01Data["id"],
+			"organization_id": setup.idmap["organization_id"],
 		}
 
 		githubRunnerPoolRef01MarkdefUp0Name := "github_app_installation_id"
@@ -239,6 +240,10 @@ func github_runner_poolBasicSetup(extra map[string]any) *entityTestSetup {
 	idmapResolved := core.ToMapAny(env["COMPOSAL_TEST_GITHUB_RUNNER_POOL_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
+	}
+	// Add organization_id alias for update test.
+	if idmapResolved["organization_id"] == nil {
+		idmapResolved["organization_id"] = idmapResolved["organization01"]
 	}
 
 	if env["COMPOSAL_TEST_LIVE"] == "TRUE" {

@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "project_pr_testing": {
+      "PROJECT_PR_TESTING00": {
+        "id": "PROJECT_PR_TESTING00",
+        "project": {},
+        "pull_request_options": {},
+        "organization_id": "ORGANIZATION01"
+      },
+      "PROJECT_PR_TESTING01": {
+        "id": "PROJECT_PR_TESTING01",
+        "project": {},
+        "pull_request_options": {},
+        "organization_id": "ORGANIZATION01"
+      },
+      "PROJECT_PR_TESTING02": {
+        "id": "PROJECT_PR_TESTING02",
+        "project": {},
+        "pull_request_options": {},
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "project_pr_testing": {
+      "project_pr_testing_ref01": {
+        "project": {},
+        "pull_request_options": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/pr_testing": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

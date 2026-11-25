@@ -34,7 +34,7 @@ class DeploymentEntityTest < Minitest::Test
     setup = deployment_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    [].each do |_op|
+    ["load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "deployment." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -42,10 +42,18 @@ class DeploymentEntityTest < Minitest::Test
       end
     end
     if setup[:live]
-      skip("Live coverage incomplete: the flow has no step to run")
+      ["deployment01", "organization01"].each do |_live_key|
+        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
+          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_DEPLOYMENT_ENTID")
+        end
+      end
     end
-
     client = setup[:client]
+    if setup[:live]
+      Runner.live_existing(setup, LIVE_STRICT, "deployment", "id", setup[:idmap]["deployment01"]) do
+        [{ "id" => setup[:idmap]["deployment01"] }]
+      end
+    end
 
     # Bootstrap entity data from existing test data.
     deployment_ref01_data_raw = Vs.items(Helpers.to_map(
@@ -54,6 +62,18 @@ class DeploymentEntityTest < Minitest::Test
     if deployment_ref01_data_raw.length > 0
       deployment_ref01_data = Helpers.to_map(deployment_ref01_data_raw[0][1])
     end
+
+    Runner.live_pace if setup[:live]
+    # LOAD
+    deployment_ref01_ent = client.Deployment(nil)
+    deployment_ref01_match_dt0 = {
+      "id" => deployment_ref01_data["id"],
+    }
+    deployment_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
+    deployment_ref01_data_dt0_loaded = deployment_ref01_ent.load(deployment_ref01_match_dt0, nil)
+    deployment_ref01_data_dt0_load_result = Helpers.to_map(deployment_ref01_data_dt0_loaded.respond_to?(:data_get) ? deployment_ref01_data_dt0_loaded.data_get : deployment_ref01_data_dt0_loaded)
+    assert !deployment_ref01_data_dt0_load_result.nil?
+    assert Runner.live_same_id(deployment_ref01_data_dt0_load_result["id"], deployment_ref01_data["id"])
 
   end
 end

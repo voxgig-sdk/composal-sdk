@@ -78,8 +78,7 @@ describe('RelayAgentConnectionDirect', async () => {
     } else {
       params.agent_id = 'direct01'
       params.id = 'direct02'
-      params.id = 'direct03'
-      params.organization_id = 'direct04'
+      params.organization_id = 'direct03'
     }
 
     const result: any = await client.direct({
@@ -106,7 +105,6 @@ describe('RelayAgentConnectionDirect', async () => {
       assert(calls[0].url.includes('direct01'))
       assert(calls[0].url.includes('direct02'))
       assert(calls[0].url.includes('direct03'))
-      assert(calls[0].url.includes('direct04'))
     }
   })
 

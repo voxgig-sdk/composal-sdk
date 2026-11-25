@@ -33,18 +33,8 @@ func TestPullRequestTranscriptDirect(t *testing.T) {
 			t.Skip(_reason)
 			return
 		}
-		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" && setup.idmap["pull_request01"] == nil {
-			t.Log("LIVE STEP {\"id\":\"direct-list-pull_request_transcript\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}")
-			t.Skip("Live coverage incomplete: direct-list-pull_request_transcript excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)")
-			return
-		}
-		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" && setup.idmap["pull_request01"] == nil {
-			t.Log("LIVE STEP {\"id\":\"direct-list-pull_request_transcript\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}")
-			t.Skip("Live coverage incomplete: direct-list-pull_request_transcript excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)")
-			return
-		}
 		if setup.live {
-			for _, _liveKey := range []string{"organization01", "pull_request01", "pull_request01", "repo01"} {
+			for _, _liveKey := range []string{"organization01", "pull_request01", "repo01"} {
 				if v := setup.idmap[_liveKey]; v == nil {
 					liveMiss(t, pull_request_transcriptDirectLiveStrict, "Live test blocked: needs %s via COMPOSAL_TEST_PULL_REQUEST_TRANSCRIPT_ENTID", _liveKey)
 					return
@@ -69,14 +59,9 @@ func TestPullRequestTranscriptDirect(t *testing.T) {
 			params["pull_request_id"] = "direct02"
 		}
 		if setup.live {
-			params["pull_request_id"] = setup.idmap["pull_request01"]
-		} else {
-			params["pull_request_id"] = "direct03"
-		}
-		if setup.live {
 			params["repo_id"] = setup.idmap["repo01"]
 		} else {
-			params["repo_id"] = "direct04"
+			params["repo_id"] = "direct03"
 		}
 
 		result, err := client.Direct(map[string]any{
@@ -134,9 +119,6 @@ func TestPullRequestTranscriptDirect(t *testing.T) {
 				}
 				if !strings.Contains(url, "direct03") {
 					t.Fatalf("expected url to contain direct03, got %v", url)
-				}
-				if !strings.Contains(url, "direct04") {
-					t.Fatalf("expected url to contain direct04, got %v", url)
 				}
 			}
 		}

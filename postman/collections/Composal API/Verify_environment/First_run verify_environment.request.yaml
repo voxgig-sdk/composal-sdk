@@ -1,0 +1,29 @@
+$kind: http-request
+id: edab4e2e-366a-5301-86c5-678bec0f9efc
+description: |-
+  The `first_run` action of **verify_environment**, a route of its `update` operation.
+
+  SDK: `client.VerifyEnvironment().update({ "organization_id": "organization_id", "id": "ID", $action: "first_run" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/environments/:verify_environment_id/first_run"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_environment belongs to.
+  - key: verify_environment_id
+    value: "{{verify_environment_id}}"
+    description: The verify_environment this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "account_id": "example",
+      "no_sign_in": true,
+      "finish": true,
+      "finish_if_waiting": true,
+      "keep_chosen": true
+    }
+order: 6000

@@ -63,7 +63,7 @@ main: kit: entity: github_runner_history: {
     usage: {
       h: "Usage"
       n: "usage"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
   }

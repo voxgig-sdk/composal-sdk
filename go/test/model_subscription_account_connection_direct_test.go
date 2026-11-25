@@ -47,10 +47,8 @@ func TestModelSubscriptionAccountConnectionDirect(t *testing.T) {
 		query := map[string]any{}
 		if setup.live {
 			params["id"] = setup.idmap["model_subscription_account_connection01"]
-			params["id"] = setup.idmap["model_subscription_account_connection01"]
 		} else {
 			params["id"] = "direct01"
-			params["id"] = "direct02"
 		}
 
 		result, err := client.Direct(map[string]any{
@@ -103,9 +101,6 @@ func TestModelSubscriptionAccountConnectionDirect(t *testing.T) {
 			if url, ok := call["url"].(string); ok {
 				if !strings.Contains(url, "direct01") {
 					t.Fatalf("expected url to contain direct01, got %v", url)
-				}
-				if !strings.Contains(url, "direct02") {
-					t.Fatalf("expected url to contain direct02, got %v", url)
 				}
 			}
 		}

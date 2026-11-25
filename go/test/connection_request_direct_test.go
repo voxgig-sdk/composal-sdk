@@ -48,13 +48,11 @@ func TestConnectionRequestDirect(t *testing.T) {
 		if setup.live {
 			params["agent_id"] = setup.idmap["agent01"]
 			params["id"] = setup.idmap["connection_request01"]
-			params["id"] = setup.idmap["connection_request01"]
 			params["organization_id"] = setup.idmap["organization01"]
 		} else {
 			params["agent_id"] = "direct01"
 			params["id"] = "direct02"
-			params["id"] = "direct03"
-			params["organization_id"] = "direct04"
+			params["organization_id"] = "direct03"
 		}
 
 		result, err := client.Direct(map[string]any{
@@ -113,9 +111,6 @@ func TestConnectionRequestDirect(t *testing.T) {
 				}
 				if !strings.Contains(url, "direct03") {
 					t.Fatalf("expected url to contain direct03, got %v", url)
-				}
-				if !strings.Contains(url, "direct04") {
-					t.Fatalf("expected url to contain direct04, got %v", url)
 				}
 			}
 		}

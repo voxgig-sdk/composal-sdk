@@ -29,7 +29,7 @@ describe("ChangeCommentEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:ChangeComment(nil):list({ ["change_id"] = 1, ["organization_id"] = "x", ["repo_id"] = "x" }, nil)
+    local _, err = client:ChangeComment(nil):load({ ["change_id"] = 1, ["organization_id"] = "x", ["repo_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("ChangeCommentEntity", function()
     local setup = change_comment_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list"}) do
+    for _, _op in ipairs({"create", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "change_comment." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,38 +46,8 @@ describe("ChangeCommentEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"change_comment.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"change01", "organization01", "repo01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_CHANGE_COMMENT_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-
-    -- Bootstrap entity data from existing test data.
-    local change_comment_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.change_comment")))
-    local change_comment_ref01_data = nil
-    if #change_comment_ref01_data_raw > 0 then
-      change_comment_ref01_data = helpers.to_map(change_comment_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local change_comment_ref01_ent = client:ChangeComment(nil)
-    local change_comment_ref01_match = {
-      ["change_id"] = setup.idmap["change01"],
-      ["organization_id"] = setup.idmap["organization01"],
-      ["repo_id"] = setup.idmap["repo01"],
-    }
-
-    local change_comment_ref01_list_result, err = change_comment_ref01_ent:list(change_comment_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(change_comment_ref01_list_result)
-
+      print("LIVE STEP {\"id\":\"change_comment.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only change_comment.create.0 gives\"}")
+      pending("Live coverage incomplete: change_comment.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve); change_comment.load.1 excluded (GET-only live run: reads a record only change_comment.create.0 gives)")
       return
     end
 
@@ -110,21 +80,19 @@ describe("ChangeCommentEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local change_comment_ref01_match = {
-      ["change_id"] = setup.idmap["change01"],
-      ["organization_id"] = setup.idmap["organization01"],
-      ["repo_id"] = setup.idmap["repo01"],
+    -- LOAD
+    local change_comment_ref01_match_dt0 = {
+      id = change_comment_ref01_data["id"],
     }
-
-    local change_comment_ref01_list_result, err = change_comment_ref01_ent:list(change_comment_ref01_match, nil)
+    change_comment_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+    change_comment_ref01_match_dt0["repo_id"] = setup.idmap["repo_id"] or setup.idmap["repo01"]
+    local change_comment_ref01_data_dt0_loaded, err = change_comment_ref01_ent:load(change_comment_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(change_comment_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(change_comment_ref01_list_result),
-      { id = change_comment_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
+    local change_comment_ref01_data_dt0_load_result = helpers.to_map(type(change_comment_ref01_data_dt0_loaded) == 'table' and change_comment_ref01_data_dt0_loaded.data_get and change_comment_ref01_data_dt0_loaded:data_get() or change_comment_ref01_data_dt0_loaded)
+    assert.is_not_nil(change_comment_ref01_data_dt0_load_result)
+    if not setup.live then
+      assert.is_true(runner.live_same_id(change_comment_ref01_data_dt0_load_result["id"], change_comment_ref01_data["id"]))
+    end
 
   end)
 end)

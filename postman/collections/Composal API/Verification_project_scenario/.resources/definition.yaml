@@ -14,7 +14,7 @@ description: |-
   | `created_at` | string | yes |  |
   | `dependencies` | array | yes |  |
   | `fixtures` | array |  |  |
-  | `health` | object | yes |  |
+  | `health` | object |  |  |
   | `id` | string | yes |  |
   | `identity_probe` | any |  |  |
   | `if` | string |  |  |
@@ -33,4 +33,4 @@ description: |-
   | `triggers` | array | yes |  |
   | `updated_at` | string | yes |  |
   | `version` | integer | yes |  |
-order: 539000
+order: 538000

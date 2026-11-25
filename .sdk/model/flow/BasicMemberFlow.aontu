@@ -31,7 +31,7 @@ main: kit: flow: BasicMemberFlow:
         ref: "member_ref01",
         srcdatavar: "member_ref01_data",
         suffix: "_up0",
-        textfield: "accepted_at"
+        textfield: "created_at"
       }
 
       o: "update",

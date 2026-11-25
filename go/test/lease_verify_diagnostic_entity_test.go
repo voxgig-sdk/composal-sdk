@@ -38,7 +38,7 @@ func TestLeaseVerifyDiagnosticEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.LeaseVerifyDiagnostic(nil).Create(map[string]any{"lease_id": 1, "swarm_id": "x", "task_id": "x", "browser_events": "x", "live_browser": "x", "live_view": "x"}, nil)
+		_, err := client.LeaseVerifyDiagnostic(nil).Create(map[string]any{"lease_id": 1, "swarm_id": "x", "task_id": "x", "browser_events": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}

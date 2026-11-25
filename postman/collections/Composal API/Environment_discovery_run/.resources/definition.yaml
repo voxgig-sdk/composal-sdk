@@ -1,7 +1,7 @@
 $kind: collection
 id: "14c3cb75-068d-5ce7-88a7-1cfccb274c88"
 description: |-
-  The **environment_discovery_run** entity, which belongs to a organization and a environment. Its requests address one record by `{{environment_discovery_run_id}}`, which a list or a create remembers.
+  The **environment_discovery_run** entity, which belongs to a organization. Its requests address one record by `{{environment_discovery_run_id}}`, which a list or a create remembers.
 
   | field | type | required | |
   |---|---|---|---|
@@ -12,7 +12,7 @@ description: |-
   | `failure_code` | string | yes |  |
   | `id` | string | yes |  |
   | `queued_at` | string | yes |  |
-  | `recording` | object | yes |  |
+  | `recording` | object |  |  |
   | `result` | object | yes |  |
   | `status` | string | yes |  |
-order: 236000
+order: 235000

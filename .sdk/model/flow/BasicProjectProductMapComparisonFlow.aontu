@@ -1,0 +1,33 @@
+# BasicProjectProductMapComparisonFlow
+
+main: kit: flow: BasicProjectProductMapComparisonFlow:
+{
+  entity: "project_product_map_comparison",
+  kind: "basic",
+  name: "BasicProjectProductMapComparisonFlow",
+  step: [
+    {
+      i: {
+        ref: "project_product_map_comparison_ref01",
+        srcdatavar: "project_product_map_comparison_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "project_product_map_comparison01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_product_map_comparison_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectProductMapComparisonFlow"
+}

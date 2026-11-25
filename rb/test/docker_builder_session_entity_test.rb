@@ -49,7 +49,7 @@ class DockerBuilderSessionEntityTest < Minitest::Test
     end
 
     if setup[:live]
-      ["organization01"].each do |_live_key|
+      ["docker_builder01", "organization01"].each do |_live_key|
         if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
           Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_DOCKER_BUILDER_SESSION_ENTID")
         end
@@ -62,6 +62,7 @@ class DockerBuilderSessionEntityTest < Minitest::Test
     docker_builder_session_ref01_ent = client.DockerBuilderSession(nil)
     docker_builder_session_ref01_data = Helpers.to_map(Vs.getprop(
       Vs.getpath(setup[:data], "new.docker_builder_session"), "docker_builder_session_ref01"))
+    docker_builder_session_ref01_data["docker_builder_id"] = setup[:idmap]["docker_builder01"]
     docker_builder_session_ref01_data["organization_id"] = setup[:idmap]["organization01"]
 
     docker_builder_session_ref01_data_result = docker_builder_session_ref01_ent.create(docker_builder_session_ref01_data, nil)

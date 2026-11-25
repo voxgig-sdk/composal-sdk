@@ -124,6 +124,11 @@ func TestAppSecretEntity(t *testing.T) {
 		appSecretRef01MatchDt0 := map[string]any{
 			"id": appSecretRef01Data["id"],
 		}
+		if v := setup.idmap["app_id"]; v != nil {
+			appSecretRef01MatchDt0["app_id"] = v
+		} else {
+			appSecretRef01MatchDt0["app_id"] = setup.idmap["app01"]
+		}
 		appSecretRef01DataDt0Loaded, err := appSecretRef01Ent.Load(appSecretRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
@@ -226,6 +231,11 @@ func TestAppSecretEntity(t *testing.T) {
 		// LOAD
 		appSecretRef01MatchDt0 := map[string]any{
 			"id": appSecretRef01Data["id"],
+		}
+		if v := setup.idmap["app_id"]; v != nil {
+			appSecretRef01MatchDt0["app_id"] = v
+		} else {
+			appSecretRef01MatchDt0["app_id"] = setup.idmap["app01"]
 		}
 		appSecretRef01DataDt0Loaded, err := appSecretRef01Ent.Load(appSecretRef01MatchDt0, nil)
 		if err != nil {

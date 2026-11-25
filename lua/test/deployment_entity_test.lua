@@ -37,7 +37,7 @@ describe("DeploymentEntity", function()
     local setup = deployment_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({}) do
+    for _, _op in ipairs({"load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "deployment." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -45,11 +45,18 @@ describe("DeploymentEntity", function()
       end
     end
     if setup.live then
-      pending("Live coverage incomplete: the flow has no step to run")
-      return
+      for _, _live_key in ipairs({"deployment01", "organization01"}) do
+        if setup.synthetic_only or setup.idmap[_live_key] == nil then
+          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_DEPLOYMENT_ENTID")
+        end
+      end
     end
-
     local client = setup.client
+    if setup.live then
+      runner.live_existing(pending, setup, LIVE_STRICT, "deployment", function()
+        return { { id = setup.idmap["deployment01"] } }
+      end, "id", setup.idmap["deployment01"])
+    end
 
     -- Bootstrap entity data from existing test data.
     local deployment_ref01_data_raw = vs.items(helpers.to_map(
@@ -58,6 +65,21 @@ describe("DeploymentEntity", function()
     if #deployment_ref01_data_raw > 0 then
       deployment_ref01_data = helpers.to_map(deployment_ref01_data_raw[1][2])
     end
+
+    if setup.live then
+      runner.live_pace()
+    end
+    -- LOAD
+    local deployment_ref01_ent = client:Deployment(nil)
+    local deployment_ref01_match_dt0 = {
+      id = deployment_ref01_data["id"],
+    }
+    deployment_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+    local deployment_ref01_data_dt0_loaded, err = deployment_ref01_ent:load(deployment_ref01_match_dt0, nil)
+    assert.is_nil(err)
+    local deployment_ref01_data_dt0_load_result = helpers.to_map(type(deployment_ref01_data_dt0_loaded) == 'table' and deployment_ref01_data_dt0_loaded.data_get and deployment_ref01_data_dt0_loaded:data_get() or deployment_ref01_data_dt0_loaded)
+    assert.is_not_nil(deployment_ref01_data_dt0_load_result)
+    assert.is_true(runner.live_same_id(deployment_ref01_data_dt0_load_result["id"], deployment_ref01_data["id"]))
 
   end)
 end)

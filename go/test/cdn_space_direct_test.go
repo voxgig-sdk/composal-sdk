@@ -31,8 +31,8 @@ func TestCdnSpaceDirect(t *testing.T) {
 			return
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" && setup.idmap["cdn_space01"] == nil {
-			t.Log("LIVE STEP {\"id\":\"direct-load-cdn_space\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs cdn_space01, which only POST /api/v1/cdn_spaces/{id}/archive gives\"}")
-			t.Skip("Live coverage incomplete: direct-load-cdn_space excluded (GET-only live run: needs cdn_space01, which only POST /api/v1/cdn_spaces/{id}/archive gives)")
+			t.Log("LIVE STEP {\"id\":\"direct-load-cdn_space\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs cdn_space01, which only POST /api/v1/organizations/{org_slug}/cdn_spaces gives\"}")
+			t.Skip("Live coverage incomplete: direct-load-cdn_space excluded (GET-only live run: needs cdn_space01, which only POST /api/v1/organizations/{org_slug}/cdn_spaces gives)")
 			return
 		}
 		if setup.live {

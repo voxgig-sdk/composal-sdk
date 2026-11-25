@@ -34,10 +34,6 @@ class GithubPullRequestDirectTest extends TestCase
             fwrite(STDOUT, 'LIVE STEP {"id":"direct-load-github_pull_request","state":"excluded","attempted":false,"reason":"GET-only live run: needs github_pull_request01, which only POST /api/v1/organizations/{org_slug}/github/pull_requests/refresh gives"}' . "\n");
             $this->markTestSkipped('Live coverage incomplete: direct-load-github_pull_request excluded (GET-only live run: needs github_pull_request01, which only POST /api/v1/organizations/{org_slug}/github/pull_requests/refresh gives)');
         }
-        if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE" && null === ($setup["idmap"]['pull_request01'] ?? null)) {
-            fwrite(STDOUT, 'LIVE STEP {"id":"direct-load-github_pull_request","state":"excluded","attempted":false,"reason":"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives"}' . "\n");
-            $this->markTestSkipped('Live coverage incomplete: direct-load-github_pull_request excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)');
-        }
         if ($setup["live"]) {
             foreach (["github_pull_request01", "organization01", "pull_request01"] as $_liveKey) {
                 if (null === ($setup["idmap"][$_liveKey] ?? null)) {
@@ -54,18 +50,12 @@ class GithubPullRequestDirectTest extends TestCase
         $query = [];
         if ($setup["live"]) {
             $params["id"] = $setup["idmap"]["github_pull_request01"] ?? null;
-            $params["id"] = $setup["idmap"]["github_pull_request01"] ?? null;
             $params["organization_id"] = $setup["idmap"]["organization01"] ?? null;
-            $params["organization_id"] = $setup["idmap"]["organization01"] ?? null;
-            $params["pull_request_id"] = $setup["idmap"]["pull_request01"] ?? null;
             $params["pull_request_id"] = $setup["idmap"]["pull_request01"] ?? null;
         } else {
             $params["id"] = "direct01";
-            $params["id"] = "direct02";
-            $params["organization_id"] = "direct03";
-            $params["organization_id"] = "direct04";
-            $params["pull_request_id"] = "direct05";
-            $params["pull_request_id"] = "direct06";
+            $params["organization_id"] = "direct02";
+            $params["pull_request_id"] = "direct03";
         }
 
         $result = $client->direct([

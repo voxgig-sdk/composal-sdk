@@ -89,7 +89,7 @@ class TestMemberEntity:
             "organization_id": setup["idmap"]["organization_id"],
         }
 
-        member_ref01_markdef_up0_name = "accepted_at"
+        member_ref01_markdef_up0_name = "created_at"
         member_ref01_markdef_up0_value = "Mark01-member_ref01_" + str(setup["now"])
         member_ref01_data_up0_up[member_ref01_markdef_up0_name] = member_ref01_markdef_up0_value
 

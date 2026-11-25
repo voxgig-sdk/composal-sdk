@@ -128,6 +128,11 @@ func TestProjectRunScheduleEntity(t *testing.T) {
 		} else {
 			projectRunScheduleRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
 		}
+		if v := setup.idmap["project_id"]; v != nil {
+			projectRunScheduleRef01MatchDt0["project_id"] = v
+		} else {
+			projectRunScheduleRef01MatchDt0["project_id"] = setup.idmap["project01"]
+		}
 		projectRunScheduleRef01DataDt0Loaded, err := projectRunScheduleRef01Ent.Load(projectRunScheduleRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
@@ -238,6 +243,11 @@ func TestProjectRunScheduleEntity(t *testing.T) {
 			projectRunScheduleRef01MatchDt0["organization_id"] = v
 		} else {
 			projectRunScheduleRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
+		}
+		if v := setup.idmap["project_id"]; v != nil {
+			projectRunScheduleRef01MatchDt0["project_id"] = v
+		} else {
+			projectRunScheduleRef01MatchDt0["project_id"] = setup.idmap["project01"]
 		}
 		projectRunScheduleRef01DataDt0Loaded, err := projectRunScheduleRef01Ent.Load(projectRunScheduleRef01MatchDt0, nil)
 		if err != nil {

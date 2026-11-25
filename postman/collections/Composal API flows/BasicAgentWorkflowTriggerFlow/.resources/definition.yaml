@@ -1,4 +1,4 @@
 $kind: collection
 id: "33c5f189-0315-5941-8cd3-ebb5cebb9b65"
 description: "The `BasicAgentWorkflowTriggerFlow` flow of **agent_workflow_trigger**."
-order: 51000
+order: 50000

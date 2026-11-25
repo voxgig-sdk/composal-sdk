@@ -44,20 +44,16 @@ class TestPatchsetDiffDirect:
         if setup["live"]:
             params["change_id"] = setup["idmap"].get("change01")
             params["id"] = setup["idmap"].get("patchset_diff01")
-            params["id"] = setup["idmap"].get("patchset_diff01")
             params["organization_id"] = setup["idmap"].get("organization01")
-            params["patchset_id"] = setup["idmap"].get("patchset01")
             params["patchset_id"] = setup["idmap"].get("patchset01")
             params["repo_id"] = setup["idmap"].get("repo01")
             pass
         else:
             params["change_id"] = "direct01"
             params["id"] = "direct02"
-            params["id"] = "direct03"
-            params["organization_id"] = "direct04"
-            params["patchset_id"] = "direct05"
-            params["patchset_id"] = "direct06"
-            params["repo_id"] = "direct07"
+            params["organization_id"] = "direct03"
+            params["patchset_id"] = "direct04"
+            params["repo_id"] = "direct05"
             pass
 
         result = client.direct({

@@ -53,7 +53,7 @@ func TestVcChangeEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{"list", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "vc_change." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -74,6 +74,17 @@ func TestVcChangeEntity(t *testing.T) {
 		}
 		client := setup.client
 		_ = client
+		if setup.live {
+			var _liveId any
+			if !setup.syntheticOnly {
+				_liveId = setup.idmap["vc_change01"]
+			}
+			livePace()
+			liveExisting(t, vc_changeEntityLiveStrict, setup.data, "vc_change", "id", _liveId,
+				func() (any, error) {
+					return client.VcChange(nil).List(map[string]any{"organization_id": setup.idmap["organization01"], "repo_id": setup.idmap["repo01"]}, nil)
+				})
+		}
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		vcChangeRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.vc_change")))
@@ -102,6 +113,35 @@ func TestVcChangeEntity(t *testing.T) {
 		_, vcChangeRef01ListOk := vcChangeRef01ListResult.([]any)
 		if !vcChangeRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", vcChangeRef01ListResult)
+		}
+
+		if setup.live {
+			livePace()
+		}
+		// LOAD
+		vcChangeRef01MatchDt0 := map[string]any{
+			"id": vcChangeRef01Data["id"],
+		}
+		if v := setup.idmap["organization_id"]; v != nil {
+			vcChangeRef01MatchDt0["organization_id"] = v
+		} else {
+			vcChangeRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
+		}
+		if v := setup.idmap["repo_id"]; v != nil {
+			vcChangeRef01MatchDt0["repo_id"] = v
+		} else {
+			vcChangeRef01MatchDt0["repo_id"] = setup.idmap["repo01"]
+		}
+		vcChangeRef01DataDt0Loaded, err := vcChangeRef01Ent.Load(vcChangeRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		vcChangeRef01DataDt0LoadResult := core.ToMapAny(entityData(vcChangeRef01DataDt0Loaded))
+		if vcChangeRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if !liveSameId(vcChangeRef01DataDt0LoadResult["id"], vcChangeRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
 		}
 
 		return
@@ -116,6 +156,17 @@ func TestVcChangeEntity(t *testing.T) {
 		}
 		client := setup.client
 		_ = client
+		if setup.live {
+			var _liveId any
+			if !setup.syntheticOnly {
+				_liveId = setup.idmap["vc_change01"]
+			}
+			livePace()
+			liveExisting(t, vc_changeEntityLiveStrict, setup.data, "vc_change", "id", _liveId,
+				func() (any, error) {
+					return client.VcChange(nil).List(map[string]any{"organization_id": setup.idmap["organization01"], "repo_id": setup.idmap["repo01"]}, nil)
+				})
+		}
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		vcChangeRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.vc_change")))
@@ -144,6 +195,35 @@ func TestVcChangeEntity(t *testing.T) {
 		_, vcChangeRef01ListOk := vcChangeRef01ListResult.([]any)
 		if !vcChangeRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", vcChangeRef01ListResult)
+		}
+
+		if setup.live {
+			livePace()
+		}
+		// LOAD
+		vcChangeRef01MatchDt0 := map[string]any{
+			"id": vcChangeRef01Data["id"],
+		}
+		if v := setup.idmap["organization_id"]; v != nil {
+			vcChangeRef01MatchDt0["organization_id"] = v
+		} else {
+			vcChangeRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
+		}
+		if v := setup.idmap["repo_id"]; v != nil {
+			vcChangeRef01MatchDt0["repo_id"] = v
+		} else {
+			vcChangeRef01MatchDt0["repo_id"] = setup.idmap["repo01"]
+		}
+		vcChangeRef01DataDt0Loaded, err := vcChangeRef01Ent.Load(vcChangeRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		vcChangeRef01DataDt0LoadResult := core.ToMapAny(entityData(vcChangeRef01DataDt0Loaded))
+		if vcChangeRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if !liveSameId(vcChangeRef01DataDt0LoadResult["id"], vcChangeRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

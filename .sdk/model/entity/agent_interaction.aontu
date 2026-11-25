@@ -228,7 +228,7 @@ main: kit: entity: agent_interaction: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.interaction`"
           }
         }
       ]

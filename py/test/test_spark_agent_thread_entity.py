@@ -52,7 +52,7 @@ class TestSparkAgentThreadEntity:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
-            print("LIVE STEP {\"id\":\"spark_agent_thread.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive\"}")
+            print("LIVE STEP {\"id\":\"spark_agent_thread.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads\"}")
             return self._run_get_only_flow(setup)
 
         if setup["live"]:

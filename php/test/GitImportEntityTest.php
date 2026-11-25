@@ -53,9 +53,9 @@ class GitImportEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
-            fwrite(STDOUT, 'LIVE STEP {"id":"git_import.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/git_imports/{id}/complete"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"git_import.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/git_imports"}' . "\n");
             fwrite(STDOUT, 'LIVE STEP {"id":"git_import.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only git_import.create.0 gives"}' . "\n");
-            $this->markTestSkipped('Live coverage incomplete: git_import.create.0 excluded (GET-only live run: needs POST /api/v1/git_imports/{id}/complete); git_import.load.1 excluded (GET-only live run: reads a record only git_import.create.0 gives)');
+            $this->markTestSkipped('Live coverage incomplete: git_import.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/git_imports); git_import.load.1 excluded (GET-only live run: reads a record only git_import.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {

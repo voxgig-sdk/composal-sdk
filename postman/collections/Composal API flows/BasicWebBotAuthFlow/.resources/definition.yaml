@@ -1,4 +1,4 @@
 $kind: collection
 id: "932d464f-14c4-514a-9924-644e7812cb35"
 description: "The `BasicWebBotAuthFlow` flow of **web_bot_auth**."
-order: 425000
+order: 429000

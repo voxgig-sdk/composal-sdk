@@ -210,6 +210,121 @@ main: kit: entity: relay_agent_connection: {
       points: [
         {
           bf: [
+            "agent_card_url"
+            "auth_scheme"
+            "credential"
+            "name"
+            "remote_agent"
+            "source_operation_id"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                explode: false
+                k: "header"
+                n: "x_composal_relay_scope"
+                or: "X-Composal-Relay-Scope"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                explode: false
+                k: "header"
+                n: "x_composal_requester_id"
+                or: "X-Composal-Requester-Id"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections"
+          q: {
+            exist: [
+              "agent_id"
+              "idempotency_key"
+              "organization_id"
+              "x_composal_relay_scope"
+              "x_composal_requester_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "relay"
+            }
+            {
+              lit: "connections"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.connection`"
+          }
+        }
+        {
+          bf: [
             "expected_generation"
           ]
           co: {
@@ -317,121 +432,6 @@ main: kit: entity: relay_agent_connection: {
             }
             {
               lit: "setup"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body.connection`"
-          }
-        }
-        {
-          bf: [
-            "agent_card_url"
-            "auth_scheme"
-            "credential"
-            "name"
-            "remote_agent"
-            "source_operation_id"
-          ]
-          co: {
-            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            header: [
-              {
-                explode: false
-                k: "header"
-                n: "idempotency_key"
-                or: "Idempotency-Key"
-                r: true
-                style: "simple"
-                t: "`$STRING`"
-              }
-              {
-                explode: false
-                k: "header"
-                n: "x_composal_relay_scope"
-                or: "X-Composal-Relay-Scope"
-                r: true
-                style: "simple"
-                t: "`$STRING`"
-              }
-              {
-                explode: false
-                k: "header"
-                n: "x_composal_requester_id"
-                or: "X-Composal-Requester-Id"
-                r: true
-                style: "simple"
-                t: "`$STRING`"
-              }
-            ]
-            params: [
-              {
-                k: "param"
-                n: "agent_id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "organization_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "POST"
-          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections"
-          q: {
-            exist: [
-              "agent_id"
-              "idempotency_key"
-              "organization_id"
-              "x_composal_relay_scope"
-              "x_composal_requester_id"
-            ]
-          }
-          r: {
-            param: {
-              id: "agent_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "agents"
-            }
-            {
-              var: "agent_id"
-            }
-            {
-              lit: "spark"
-            }
-            {
-              lit: "relay"
-            }
-            {
-              lit: "connections"
             }
           ]
           t: {
@@ -601,13 +601,6 @@ main: kit: entity: relay_agent_connection: {
               }
               {
                 k: "param"
-                n: "id"
-                or: "connection_id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "organization_id"
                 or: "organization_id"
                 r: true
@@ -696,7 +689,7 @@ main: kit: entity: relay_agent_connection: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.connection`"
           }
         }
         {
@@ -783,7 +776,7 @@ main: kit: entity: relay_agent_connection: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.connection`"
           }
         }
       ]

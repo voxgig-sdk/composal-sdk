@@ -116,7 +116,7 @@ class TestVerificationProjectScenarioEntity:
             "id": verification_project_scenario_ref01_data["id"],
         }
         verification_project_scenario_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
-        verification_project_scenario_ref01_match_dt0["project_id"] = verification_project_scenario_ref01_data.get("project_id") if isinstance(verification_project_scenario_ref01_data.get("project_id"), (str, int, float)) else setup["idmap"].get("project_id")
+        verification_project_scenario_ref01_match_dt0["project_id"] = verification_project_scenario_ref01_data.get("project_id") if isinstance(verification_project_scenario_ref01_data.get("project_id"), (str, int, float)) else setup["idmap"].get("project_id") or setup["idmap"].get("project01")
         verification_project_scenario_ref01_data_dt0_loaded = verification_project_scenario_ref01_ent.load(verification_project_scenario_ref01_match_dt0, None)
         verification_project_scenario_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(verification_project_scenario_ref01_data_dt0_loaded))
         assert verification_project_scenario_ref01_data_dt0_load_result is not None
@@ -162,7 +162,7 @@ class TestVerificationProjectScenarioEntity:
             "id": verification_project_scenario_ref01_data["id"],
         }
         verification_project_scenario_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
-        verification_project_scenario_ref01_match_dt0["project_id"] = verification_project_scenario_ref01_data.get("project_id") if isinstance(verification_project_scenario_ref01_data.get("project_id"), (str, int, float)) else setup["idmap"].get("project_id")
+        verification_project_scenario_ref01_match_dt0["project_id"] = verification_project_scenario_ref01_data.get("project_id") if isinstance(verification_project_scenario_ref01_data.get("project_id"), (str, int, float)) else setup["idmap"].get("project_id") or setup["idmap"].get("project01")
         verification_project_scenario_ref01_data_dt0_loaded = verification_project_scenario_ref01_ent.load(verification_project_scenario_ref01_match_dt0, None)
         verification_project_scenario_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(verification_project_scenario_ref01_data_dt0_loaded))
         assert verification_project_scenario_ref01_data_dt0_load_result is not None

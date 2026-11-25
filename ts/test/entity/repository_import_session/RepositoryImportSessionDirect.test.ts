@@ -44,8 +44,8 @@ describe('RepositoryImportSessionDirect', async () => {
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-repository_import_session', setup.live)) return
     if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["repository_import_session01"]) {
-      console.log("LIVE STEP {\"id\":\"direct-load-repository_import_session\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs repository_import_session01, which only POST /api/v1/repository_import_sessions/{id}/authorization gives\"}")
-      t.skip("Live coverage incomplete: direct-load-repository_import_session excluded (GET-only live run: needs repository_import_session01, which only POST /api/v1/repository_import_sessions/{id}/authorization gives)")
+      console.log("LIVE STEP {\"id\":\"direct-load-repository_import_session\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs repository_import_session01, which only POST /api/v1/organizations/{organization_id}/repository_import_sessions gives\"}")
+      t.skip("Live coverage incomplete: direct-load-repository_import_session excluded (GET-only live run: needs repository_import_session01, which only POST /api/v1/organizations/{organization_id}/repository_import_sessions gives)")
       return
     }
     if (skipIfMissingIds(t, setup, ["repository_import_session01"], LIVE_STRICT)) return

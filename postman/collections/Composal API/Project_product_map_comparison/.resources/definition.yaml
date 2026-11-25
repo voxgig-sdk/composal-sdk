@@ -1,0 +1,15 @@
+$kind: collection
+id: c25c1c71-cfce-55a5-977d-b318a3818481
+description: |-
+  The **project_product_map_comparison** entity, which belongs to a organization. Its requests address one record by `{{project_product_map_comparison_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `accounts` | array | yes |  |
+  | `comparison` | any | yes |  |
+  | `filters` | any | yes |  |
+  | `id` | string |  |  |
+  | `project` | object | yes |  |
+  | `requirements` | array | yes |  |
+  | `revisions` | array | yes |  |
+order: 403000

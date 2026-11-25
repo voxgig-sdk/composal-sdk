@@ -47,4 +47,4 @@ description: |-
   | `updated_at` | string | yes |  |
   | `user_id` | string | yes |  |
   | `version` | string | yes |  |
-order: 12000
+order: 11000

@@ -95,17 +95,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/hosting/apps/{app_id}/catalog": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "GET /api/v1/hosting/apps/{app_id}/deployment_dashboard": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/v1/hosting/apps/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/catalog": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

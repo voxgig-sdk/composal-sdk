@@ -260,7 +260,7 @@ main: kit: entity: repo_vc: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.revisions`"
+            res: "`body`"
           }
         }
         {

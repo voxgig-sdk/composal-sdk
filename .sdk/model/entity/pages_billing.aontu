@@ -197,7 +197,7 @@ main: kit: entity: pages_billing: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.addons`"
+            res: "`body`"
           }
         }
       ]

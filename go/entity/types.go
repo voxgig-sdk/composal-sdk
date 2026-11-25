@@ -171,34 +171,6 @@ type AgentAttachmentCreateData struct {
 	FileName string `json:"file_name"`
 }
 
-// AgentAutomation is the typed data model for the agent_automation entity.
-type AgentAutomation struct {
-}
-
-// AgentAutomationLoadMatch is the typed request payload for AgentAutomation.LoadTyped.
-type AgentAutomationLoadMatch struct {
-	AgentId string `json:"agent_id"`
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-}
-
-// AgentAutomationListMatch is the typed request payload for AgentAutomation.ListTyped.
-type AgentAutomationListMatch struct {
-	AgentId string `json:"agent_id"`
-	OrganizationId string `json:"organization_id"`
-	Cursor *string `json:"cursor,omitempty"`
-	Limit *int `json:"limit,omitempty"`
-}
-
-// AgentAutomationUpdateData is the typed request payload for AgentAutomation.UpdateTyped.
-type AgentAutomationUpdateData struct {
-	AgentId string `json:"agent_id"`
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-	Definition *map[string]any `json:"definition,omitempty"`
-	ExpectedRevision *int `json:"expected_revision,omitempty"`
-}
-
 // AgentAvatar is the typed data model for the agent_avatar entity.
 type AgentAvatar struct {
 }
@@ -479,8 +451,8 @@ type AgentInputCreateData struct {
 	OrganizationId string `json:"organization_id"`
 	AttachmentIds *[]any `json:"attachment_ids,omitempty"`
 	Attachments *[]any `json:"attachments,omitempty"`
-	BrowserContext map[string]any `json:"browser_context"`
-	ClientTime map[string]any `json:"client_time"`
+	BrowserContext *map[string]any `json:"browser_context,omitempty"`
+	ClientTime *map[string]any `json:"client_time,omitempty"`
 	ConversationId string `json:"conversation_id"`
 	ModelPolicy *any `json:"model_policy,omitempty"`
 	RequesterMembershipId *string `json:"requester_membership_id,omitempty"`
@@ -1110,7 +1082,7 @@ type AgentSwarmCreateData struct {
 	QueuedAt *any `json:"queued_at,omitempty"`
 	Repository *string `json:"repository,omitempty"`
 	Slug *string `json:"slug,omitempty"`
-	Target map[string]any `json:"target"`
+	Target *map[string]any `json:"target,omitempty"`
 	TaskTemplateJson *any `json:"task_template_json,omitempty"`
 	Tasks *[]any `json:"tasks,omitempty"`
 }
@@ -1756,6 +1728,16 @@ type AppDeploymentPatchData struct {
 type AppDeploymentRemoveMatch struct {
 	AppId string `json:"app_id"`
 	Id string `json:"id"`
+}
+
+// AppDeploymentDashboard is the typed data model for the app_deployment_dashboard entity.
+type AppDeploymentDashboard struct {
+}
+
+// AppDeploymentDashboardLoadMatch is the typed request payload for AppDeploymentDashboard.LoadTyped.
+type AppDeploymentDashboardLoadMatch struct {
+	Id string `json:"id"`
+	MetricsRange *string `json:"metrics_range,omitempty"`
 }
 
 // AppDeploymentOperation is the typed data model for the app_deployment_operation entity.
@@ -3407,8 +3389,8 @@ type ChangeAssetCreateData struct {
 type ChangeComment struct {
 }
 
-// ChangeCommentListMatch is the typed request payload for ChangeComment.ListTyped.
-type ChangeCommentListMatch struct {
+// ChangeCommentLoadMatch is the typed request payload for ChangeComment.LoadTyped.
+type ChangeCommentLoadMatch struct {
 	ChangeId string `json:"change_id"`
 	OrganizationId string `json:"organization_id"`
 	RepoId string `json:"repo_id"`
@@ -3956,14 +3938,20 @@ type DeepScan struct {
 
 // DeepScanLoadMatch is the typed request payload for DeepScan.LoadTyped.
 type DeepScanLoadMatch struct {
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
 	OrganizationId string `json:"organization_id"`
 	AgentId *string `json:"agent_id,omitempty"`
 	Evidence *string `json:"evidence,omitempty"`
 	FindingId *string `json:"finding_id,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
+}
+
+// DeepScanListMatch is the typed request payload for DeepScan.ListTyped.
+type DeepScanListMatch struct {
+	OrganizationId string `json:"organization_id"`
 	Finding *string `json:"finding,omitempty"`
 	Page *int `json:"page,omitempty"`
+	ProjectId *string `json:"project_id,omitempty"`
 	Query *string `json:"query,omitempty"`
 	Status *string `json:"status,omitempty"`
 }
@@ -4243,26 +4231,6 @@ type DeviceControlMessageListMatch struct {
 	Cursor *string `json:"cursor,omitempty"`
 }
 
-// DeviceControlOperation is the typed data model for the device_control_operation entity.
-type DeviceControlOperation struct {
-}
-
-// DeviceControlOperationLoadMatch is the typed request payload for DeviceControlOperation.LoadTyped.
-type DeviceControlOperationLoadMatch struct {
-	DeviceId string `json:"device_id"`
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-}
-
-// DeviceControlOperationCreateData is the typed request payload for DeviceControlOperation.CreateTyped.
-type DeviceControlOperationCreateData struct {
-	DeviceId string `json:"device_id"`
-	OrganizationId string `json:"organization_id"`
-	Action string `json:"action"`
-	Arguments map[string]any `json:"arguments"`
-	Key string `json:"key"`
-}
-
 // DeviceEnterpriseRelay is the typed data model for the device_enterprise_relay entity.
 type DeviceEnterpriseRelay struct {
 }
@@ -4333,6 +4301,26 @@ type DeviceLocalEventCreateData struct {
 	DeviceId string `json:"device_id"`
 	OrganizationId string `json:"organization_id"`
 	Event string `json:"event"`
+}
+
+// DeviceOperation is the typed data model for the device_operation entity.
+type DeviceOperation struct {
+}
+
+// DeviceOperationLoadMatch is the typed request payload for DeviceOperation.LoadTyped.
+type DeviceOperationLoadMatch struct {
+	DeviceId string `json:"device_id"`
+	Id string `json:"id"`
+	OrganizationId string `json:"organization_id"`
+}
+
+// DeviceOperationCreateData is the typed request payload for DeviceOperation.CreateTyped.
+type DeviceOperationCreateData struct {
+	DeviceId string `json:"device_id"`
+	OrganizationId string `json:"organization_id"`
+	Action string `json:"action"`
+	Arguments map[string]any `json:"arguments"`
+	Key string `json:"key"`
 }
 
 // DevicePairing is the typed data model for the device_pairing entity.
@@ -4582,57 +4570,6 @@ type EmailVerificationCreateData struct {
 	Email *any `json:"email,omitempty"`
 }
 
-// Environment is the typed data model for the environment entity.
-type Environment struct {
-}
-
-// EnvironmentLoadMatch is the typed request payload for Environment.LoadTyped.
-type EnvironmentLoadMatch struct {
-	Id *string `json:"id,omitempty"`
-	OrganizationId string `json:"organization_id"`
-	ProjectId *string `json:"project_id,omitempty"`
-}
-
-// EnvironmentCreateData is the typed request payload for Environment.CreateTyped.
-type EnvironmentCreateData struct {
-	OrganizationId string `json:"organization_id"`
-	AllowedActions *string `json:"allowed_actions,omitempty"`
-	DefaultPolicy *map[string]any `json:"default_policy,omitempty"`
-	ImessageNumber *any `json:"imessage_number,omitempty"`
-	MessagingTesterNumber *any `json:"messaging_tester_number,omitempty"`
-	Name *string `json:"name,omitempty"`
-	ProjectId *any `json:"project_id,omitempty"`
-	RepositoryId *any `json:"repository_id,omitempty"`
-	Slug string `json:"slug"`
-	TargetKind *any `json:"target_kind,omitempty"`
-	TargetUrl *any `json:"target_url,omitempty"`
-}
-
-// EnvironmentUpdateData is the typed request payload for Environment.UpdateTyped.
-type EnvironmentUpdateData struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-}
-
-// EnvironmentPatchData is the typed request payload for Environment.PatchTyped.
-type EnvironmentPatchData struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-	AllowedActions *string `json:"allowed_actions,omitempty"`
-	ImessageNumber *any `json:"imessage_number,omitempty"`
-	MessagingTesterNumber *any `json:"messaging_tester_number,omitempty"`
-	Name *string `json:"name,omitempty"`
-	TargetUrl *any `json:"target_url,omitempty"`
-	VerifyNetworkConnectionId *any `json:"verify_network_connection_id,omitempty"`
-	Version *int `json:"version,omitempty"`
-}
-
-// EnvironmentRemoveMatch is the typed request payload for Environment.RemoveTyped.
-type EnvironmentRemoveMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-}
-
 // EnvironmentDiscoveryRun is the typed data model for the environment_discovery_run entity.
 type EnvironmentDiscoveryRun struct {
 }
@@ -4757,23 +4694,6 @@ type EnvironmentTestAccountPatchData struct {
 	OrganizationId string `json:"organization_id"`
 	Credentials *[]any `json:"credentials,omitempty"`
 	RevisionId *string `json:"revision_id,omitempty"`
-}
-
-// Evidence is the typed data model for the evidence entity.
-type Evidence struct {
-}
-
-// EvidenceLoadMatch is the typed request payload for Evidence.LoadTyped.
-type EvidenceLoadMatch struct {
-	Id *string `json:"id,omitempty"`
-	OrganizationId string `json:"organization_id"`
-	AgentId *string `json:"agent_id,omitempty"`
-	Cursor *string `json:"cursor,omitempty"`
-	ExplorationId *string `json:"exploration_id,omitempty"`
-	Kind *string `json:"kind,omitempty"`
-	Limit *int `json:"limit,omitempty"`
-	RepositoryId *string `json:"repository_id,omitempty"`
-	ScenarioRunId *string `json:"scenario_run_id,omitempty"`
 }
 
 // ExecutionDesiredState is the typed data model for the execution_desired_state entity.
@@ -5197,22 +5117,6 @@ type GithubConnectionCreateData struct {
 	ProjectId *string `json:"project_id,omitempty"`
 	Replace *bool `json:"replace,omitempty"`
 	Repositories []any `json:"repositories"`
-}
-
-// GithubIntegration is the typed data model for the github_integration entity.
-type GithubIntegration struct {
-}
-
-// GithubIntegrationLoadMatch is the typed request payload for GithubIntegration.LoadTyped.
-type GithubIntegrationLoadMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-	Page *int `json:"page,omitempty"`
-}
-
-// GithubIntegrationListMatch is the typed request payload for GithubIntegration.ListTyped.
-type GithubIntegrationListMatch struct {
-	OrganizationId string `json:"organization_id"`
 }
 
 // GithubOnboarding is the typed data model for the github_onboarding entity.
@@ -5868,8 +5772,8 @@ type LeaseVerifyDiagnosticCreateData struct {
 	SwarmId string `json:"swarm_id"`
 	TaskId string `json:"task_id"`
 	BrowserEvents map[string]any `json:"browser_events"`
-	LiveBrowser map[string]any `json:"live_browser"`
-	LiveView map[string]any `json:"live_view"`
+	LiveBrowser *map[string]any `json:"live_browser,omitempty"`
+	LiveView *map[string]any `json:"live_view,omitempty"`
 	Steps *[]any `json:"steps,omitempty"`
 }
 
@@ -6270,28 +6174,6 @@ type MergeQueueEntryRemoveMatch struct {
 	RepoId string `json:"repo_id"`
 }
 
-// MergeRequest is the typed data model for the merge_request entity.
-type MergeRequest struct {
-}
-
-// MergeRequestLoadMatch is the typed request payload for MergeRequest.LoadTyped.
-type MergeRequestLoadMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-	Page *int `json:"page,omitempty"`
-}
-
-// MergeRequestCreateData is the typed request payload for MergeRequest.CreateTyped.
-type MergeRequestCreateData struct {
-	OrganizationId string `json:"organization_id"`
-	Branch *string `json:"branch,omitempty"`
-	HeadSha *string `json:"head_sha,omitempty"`
-	IdempotencyKey string `json:"idempotency_key"`
-	Number int `json:"number"`
-	ProjectId *any `json:"project_id,omitempty"`
-	RepositoryId *string `json:"repository_id,omitempty"`
-}
-
 // MergeResolution is the typed data model for the merge_resolution entity.
 type MergeResolution struct {
 }
@@ -6316,7 +6198,7 @@ type MessagingConversationMessageCreateData struct {
 	ProjectId string `json:"project_id"`
 	ClientOperationId string `json:"client_operation_id"`
 	Content string `json:"content"`
-	Media map[string]any `json:"media"`
+	Media *map[string]any `json:"media,omitempty"`
 	MediaUploadIds *[]any `json:"media_upload_ids,omitempty"`
 	ReplyTo *string `json:"reply_to,omitempty"`
 	RetryAttachment *bool `json:"retry_attachment,omitempty"`
@@ -7192,6 +7074,22 @@ type PagesBillingLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 }
 
+// PagesGithubIntegration is the typed data model for the pages_github_integration entity.
+type PagesGithubIntegration struct {
+}
+
+// PagesGithubIntegrationLoadMatch is the typed request payload for PagesGithubIntegration.LoadTyped.
+type PagesGithubIntegrationLoadMatch struct {
+	Id string `json:"id"`
+	OrganizationId string `json:"organization_id"`
+	Page *int `json:"page,omitempty"`
+}
+
+// PagesGithubIntegrationListMatch is the typed request payload for PagesGithubIntegration.ListTyped.
+type PagesGithubIntegrationListMatch struct {
+	OrganizationId string `json:"organization_id"`
+}
+
 // PagesGithubOnboarding is the typed data model for the pages_github_onboarding entity.
 type PagesGithubOnboarding struct {
 }
@@ -7494,7 +7392,7 @@ type ProductMapIdentityDecisionCreateData struct {
 	Observations []any `json:"observations"`
 	Operation string `json:"operation"`
 	Reason string `json:"reason"`
-	Target map[string]any `json:"target"`
+	Target *map[string]any `json:"target,omitempty"`
 }
 
 // ProductMapJourney is the typed data model for the product_map_journey entity.
@@ -7928,6 +7826,20 @@ type ProjectOverviewPullRequestListMatch struct {
 	ProjectId string `json:"project_id"`
 }
 
+// ProjectPrTesting is the typed data model for the project_pr_testing entity.
+type ProjectPrTesting struct {
+}
+
+// ProjectPrTestingLoadMatch is the typed request payload for ProjectPrTesting.LoadTyped.
+type ProjectPrTestingLoadMatch struct {
+	Id string `json:"id"`
+	OrganizationId string `json:"organization_id"`
+	Provider *string `json:"provider,omitempty"`
+	RepositoryId *string `json:"repository_id,omitempty"`
+	RepositorySearch *string `json:"repository_search,omitempty"`
+	SourceRepository *string `json:"source_repository,omitempty"`
+}
+
 // ProjectProductMap is the typed data model for the project_product_map entity.
 type ProjectProductMap struct {
 }
@@ -7954,6 +7866,24 @@ type ProjectProductMapLoadMatch struct {
 type ProjectProductMapCreateData struct {
 	OrganizationId string `json:"organization_id"`
 	ProjectId string `json:"project_id"`
+}
+
+// ProjectProductMapComparison is the typed data model for the project_product_map_comparison entity.
+type ProjectProductMapComparison struct {
+}
+
+// ProjectProductMapComparisonLoadMatch is the typed request payload for ProjectProductMapComparison.LoadTyped.
+type ProjectProductMapComparisonLoadMatch struct {
+	Id string `json:"id"`
+	OrganizationId string `json:"organization_id"`
+	AccountId *string `json:"account_id,omitempty"`
+	Area *string `json:"area,omitempty"`
+	Before *string `json:"before,omitempty"`
+	CompareRevisionId *string `json:"compare_revision_id,omitempty"`
+	PersonaId *string `json:"persona_id,omitempty"`
+	Query *string `json:"query,omitempty"`
+	RevisionId *string `json:"revision_id,omitempty"`
+	Since *string `json:"since,omitempty"`
 }
 
 // ProjectRecording is the typed data model for the project_recording entity.
@@ -8006,7 +7936,7 @@ type ProjectRunPlanCreateData struct {
 	OrganizationId string `json:"organization_id"`
 	ProjectId string `json:"project_id"`
 	Dependencies []any `json:"dependencies"`
-	IdentityProbe any `json:"identity_probe"`
+	IdentityProbe *any `json:"identity_probe,omitempty"`
 	Name string `json:"name"`
 	Nodes []any `json:"nodes"`
 }
@@ -8131,41 +8061,10 @@ type ProjectScenarioRowListMatch struct {
 type ProjectSetting struct {
 }
 
-// ProjectSettingLoadMatch is the typed request payload for ProjectSetting.LoadTyped.
-type ProjectSettingLoadMatch struct {
+// ProjectSettingListMatch is the typed request payload for ProjectSetting.ListTyped.
+type ProjectSettingListMatch struct {
 	OrganizationId string `json:"organization_id"`
 	ProjectId string `json:"project_id"`
-}
-
-// PullRequest is the typed data model for the pull_request entity.
-type PullRequest struct {
-}
-
-// PullRequestLoadMatch is the typed request payload for PullRequest.LoadTyped.
-type PullRequestLoadMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-	Page *int `json:"page,omitempty"`
-}
-
-// PullRequestCreateData is the typed request payload for PullRequest.CreateTyped.
-type PullRequestCreateData struct {
-	OrganizationId string `json:"organization_id"`
-	Branch *string `json:"branch,omitempty"`
-	CleanupOnly *bool `json:"cleanup_only,omitempty"`
-	HeadSha *string `json:"head_sha,omitempty"`
-	IdempotencyKey string `json:"idempotency_key"`
-	ImessageNumber *string `json:"imessage_number,omitempty"`
-	Number *int `json:"number,omitempty"`
-	PreviewUrl *any `json:"preview_url,omitempty"`
-	ProjectId *string `json:"project_id,omitempty"`
-	RepositoryId *string `json:"repository_id,omitempty"`
-}
-
-// PullRequestRemoveMatch is the typed request payload for PullRequest.RemoveTyped.
-type PullRequestRemoveMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
 }
 
 // PullRequestAction is the typed data model for the pull_request_action entity.
@@ -9030,8 +8929,8 @@ type RunSearchLoadMatch struct {
 type RunUpdate struct {
 }
 
-// RunUpdateListMatch is the typed request payload for RunUpdate.ListTyped.
-type RunUpdateListMatch struct {
+// RunUpdateLoadMatch is the typed request payload for RunUpdate.LoadTyped.
+type RunUpdateLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 	Page *int `json:"page,omitempty"`
 	Query *string `json:"query,omitempty"`
@@ -10138,6 +10037,34 @@ type SparkAgentThreadCreateData struct {
 	Title *string `json:"title,omitempty"`
 }
 
+// SparkAutomation is the typed data model for the spark_automation entity.
+type SparkAutomation struct {
+}
+
+// SparkAutomationLoadMatch is the typed request payload for SparkAutomation.LoadTyped.
+type SparkAutomationLoadMatch struct {
+	AgentId string `json:"agent_id"`
+	Id string `json:"id"`
+	OrganizationId string `json:"organization_id"`
+}
+
+// SparkAutomationListMatch is the typed request payload for SparkAutomation.ListTyped.
+type SparkAutomationListMatch struct {
+	AgentId string `json:"agent_id"`
+	OrganizationId string `json:"organization_id"`
+	Cursor *string `json:"cursor,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+}
+
+// SparkAutomationUpdateData is the typed request payload for SparkAutomation.UpdateTyped.
+type SparkAutomationUpdateData struct {
+	AgentId string `json:"agent_id"`
+	Id string `json:"id"`
+	OrganizationId string `json:"organization_id"`
+	Definition *map[string]any `json:"definition,omitempty"`
+	ExpectedRevision *int `json:"expected_revision,omitempty"`
+}
+
 // SparkCredit is the typed data model for the spark_credit entity.
 type SparkCredit struct {
 }
@@ -11066,6 +10993,127 @@ type VerifyEmailVerification struct {
 
 // VerifyEmailVerificationLoadMatch is the typed request payload for VerifyEmailVerification.LoadTyped.
 type VerifyEmailVerificationLoadMatch struct {
+}
+
+// VerifyEnvironment is the typed data model for the verify_environment entity.
+type VerifyEnvironment struct {
+}
+
+// VerifyEnvironmentLoadMatch is the typed request payload for VerifyEnvironment.LoadTyped.
+type VerifyEnvironmentLoadMatch struct {
+	Id *string `json:"id,omitempty"`
+	OrganizationId string `json:"organization_id"`
+	ProjectId *string `json:"project_id,omitempty"`
+}
+
+// VerifyEnvironmentCreateData is the typed request payload for VerifyEnvironment.CreateTyped.
+type VerifyEnvironmentCreateData struct {
+	OrganizationId string `json:"organization_id"`
+	AllowedActions *string `json:"allowed_actions,omitempty"`
+	DefaultPolicy *map[string]any `json:"default_policy,omitempty"`
+	ImessageNumber *any `json:"imessage_number,omitempty"`
+	MessagingTesterNumber *any `json:"messaging_tester_number,omitempty"`
+	Name *string `json:"name,omitempty"`
+	ProjectId *any `json:"project_id,omitempty"`
+	RepositoryId *any `json:"repository_id,omitempty"`
+	Slug string `json:"slug"`
+	TargetKind *any `json:"target_kind,omitempty"`
+	TargetUrl *any `json:"target_url,omitempty"`
+}
+
+// VerifyEnvironmentUpdateData is the typed request payload for VerifyEnvironment.UpdateTyped.
+type VerifyEnvironmentUpdateData struct {
+	Id string `json:"id"`
+	OrganizationId string `json:"organization_id"`
+}
+
+// VerifyEnvironmentPatchData is the typed request payload for VerifyEnvironment.PatchTyped.
+type VerifyEnvironmentPatchData struct {
+	Id string `json:"id"`
+	OrganizationId string `json:"organization_id"`
+	AllowedActions *string `json:"allowed_actions,omitempty"`
+	ImessageNumber *any `json:"imessage_number,omitempty"`
+	MessagingTesterNumber *any `json:"messaging_tester_number,omitempty"`
+	Name *string `json:"name,omitempty"`
+	TargetUrl *any `json:"target_url,omitempty"`
+	VerifyNetworkConnectionId *any `json:"verify_network_connection_id,omitempty"`
+	Version *int `json:"version,omitempty"`
+}
+
+// VerifyEnvironmentRemoveMatch is the typed request payload for VerifyEnvironment.RemoveTyped.
+type VerifyEnvironmentRemoveMatch struct {
+	Id string `json:"id"`
+	OrganizationId string `json:"organization_id"`
+}
+
+// VerifyEvidence is the typed data model for the verify_evidence entity.
+type VerifyEvidence struct {
+}
+
+// VerifyEvidenceLoadMatch is the typed request payload for VerifyEvidence.LoadTyped.
+type VerifyEvidenceLoadMatch struct {
+	Id *string `json:"id,omitempty"`
+	OrganizationId string `json:"organization_id"`
+	AgentId *string `json:"agent_id,omitempty"`
+	Cursor *string `json:"cursor,omitempty"`
+	ExplorationId *string `json:"exploration_id,omitempty"`
+	Kind *string `json:"kind,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	RepositoryId *string `json:"repository_id,omitempty"`
+	ScenarioRunId *string `json:"scenario_run_id,omitempty"`
+}
+
+// VerifyMergeRequest is the typed data model for the verify_merge_request entity.
+type VerifyMergeRequest struct {
+}
+
+// VerifyMergeRequestLoadMatch is the typed request payload for VerifyMergeRequest.LoadTyped.
+type VerifyMergeRequestLoadMatch struct {
+	Id string `json:"id"`
+	OrganizationId string `json:"organization_id"`
+	Page *int `json:"page,omitempty"`
+}
+
+// VerifyMergeRequestCreateData is the typed request payload for VerifyMergeRequest.CreateTyped.
+type VerifyMergeRequestCreateData struct {
+	OrganizationId string `json:"organization_id"`
+	Branch *string `json:"branch,omitempty"`
+	HeadSha *string `json:"head_sha,omitempty"`
+	IdempotencyKey string `json:"idempotency_key"`
+	Number int `json:"number"`
+	ProjectId *any `json:"project_id,omitempty"`
+	RepositoryId *string `json:"repository_id,omitempty"`
+}
+
+// VerifyPullRequest is the typed data model for the verify_pull_request entity.
+type VerifyPullRequest struct {
+}
+
+// VerifyPullRequestLoadMatch is the typed request payload for VerifyPullRequest.LoadTyped.
+type VerifyPullRequestLoadMatch struct {
+	Id string `json:"id"`
+	OrganizationId string `json:"organization_id"`
+	Page *int `json:"page,omitempty"`
+}
+
+// VerifyPullRequestCreateData is the typed request payload for VerifyPullRequest.CreateTyped.
+type VerifyPullRequestCreateData struct {
+	OrganizationId string `json:"organization_id"`
+	Branch *string `json:"branch,omitempty"`
+	CleanupOnly *bool `json:"cleanup_only,omitempty"`
+	HeadSha *string `json:"head_sha,omitempty"`
+	IdempotencyKey string `json:"idempotency_key"`
+	ImessageNumber *string `json:"imessage_number,omitempty"`
+	Number *int `json:"number,omitempty"`
+	PreviewUrl *any `json:"preview_url,omitempty"`
+	ProjectId *string `json:"project_id,omitempty"`
+	RepositoryId *string `json:"repository_id,omitempty"`
+}
+
+// VerifyPullRequestRemoveMatch is the typed request payload for VerifyPullRequest.RemoveTyped.
+type VerifyPullRequestRemoveMatch struct {
+	Id string `json:"id"`
+	OrganizationId string `json:"organization_id"`
 }
 
 // VerifySignalIntegration is the typed data model for the verify_signal_integration entity.

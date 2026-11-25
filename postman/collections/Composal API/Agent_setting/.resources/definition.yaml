@@ -9,4 +9,4 @@ description: |-
   | `expected_version` | string | yes |  |
   | `instructions` | string | yes |  |
   | `version` | string | yes |  |
-order: 52000
+order: 51000

@@ -198,6 +198,11 @@
       "version": 2,
       "source": "openapi3"
     },
+    "POST /api/v1/organizations/{organization_id}/agents": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
     "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/call_session": {
       "provenance": "operation-contract",
       "version": 2,
@@ -214,11 +219,6 @@
       "source": "openapi3"
     },
     "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/warm": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "POST /api/v1/organizations/{organization_id}/agents": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
@@ -248,6 +248,11 @@
       "version": 2,
       "source": "openapi3"
     },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resource": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
     "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/input_delivery": {
       "provenance": "operation-contract",
       "version": 2,
@@ -258,22 +263,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resource": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/thread_model": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
     "GET /api/v1/organizations/{organization_id}/agents/{id}": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/activity": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
@@ -289,11 +284,6 @@
       "source": "openapi3"
     },
     "GET /api/v1/organizations/{organization_id}/agents/{id}/spark": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/debug": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
@@ -323,22 +313,32 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/mission_control_card": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/run_usage": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/runtime": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
     "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/sandbox": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/debug": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/mission_control_card": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/activity": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/run_usage": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

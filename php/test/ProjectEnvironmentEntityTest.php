@@ -99,7 +99,7 @@ class ProjectEnvironmentEntityTest extends TestCase
             "id" => $project_environment_ref01_data["id"],
         ];
         $project_environment_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
-        $project_environment_ref01_match_dt0["project_id"] = is_scalar($project_environment_ref01_data["project_id"] ?? null) ? $project_environment_ref01_data["project_id"] : ($setup["idmap"]["project_id"] ?? null);
+        $project_environment_ref01_match_dt0["project_id"] = is_scalar($project_environment_ref01_data["project_id"] ?? null) ? $project_environment_ref01_data["project_id"] : ($setup["idmap"]["project_id"] ?? $setup["idmap"]["project01"] ?? null);
         $project_environment_ref01_data_dt0_loaded = $project_environment_ref01_ent->load($project_environment_ref01_match_dt0, null);
         $project_environment_ref01_data_dt0_load_result = Helpers::to_map(is_object($project_environment_ref01_data_dt0_loaded) && method_exists($project_environment_ref01_data_dt0_loaded, 'data_get') ? $project_environment_ref01_data_dt0_loaded->data_get() : $project_environment_ref01_data_dt0_loaded);
         $this->assertNotNull($project_environment_ref01_data_dt0_load_result);
@@ -177,7 +177,7 @@ class ProjectEnvironmentEntityTest extends TestCase
             "id" => $project_environment_ref01_data["id"],
         ];
         $project_environment_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
-        $project_environment_ref01_match_dt0["project_id"] = is_scalar($project_environment_ref01_data["project_id"] ?? null) ? $project_environment_ref01_data["project_id"] : ($setup["idmap"]["project_id"] ?? null);
+        $project_environment_ref01_match_dt0["project_id"] = is_scalar($project_environment_ref01_data["project_id"] ?? null) ? $project_environment_ref01_data["project_id"] : ($setup["idmap"]["project_id"] ?? $setup["idmap"]["project01"] ?? null);
         $project_environment_ref01_data_dt0_loaded = $project_environment_ref01_ent->load($project_environment_ref01_match_dt0, null);
         $project_environment_ref01_data_dt0_load_result = Helpers::to_map(is_object($project_environment_ref01_data_dt0_loaded) && method_exists($project_environment_ref01_data_dt0_loaded, 'data_get') ? $project_environment_ref01_data_dt0_loaded->data_get() : $project_environment_ref01_data_dt0_loaded);
         $this->assertNotNull($project_environment_ref01_data_dt0_load_result);

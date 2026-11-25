@@ -61,24 +61,6 @@ main: kit: entity: vc_file: {
               {
                 explode: true
                 k: "query"
-                n: "prefix"
-                or: "prefix"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "ref"
-                or: "ref"
-                r: true
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
                 n: "ref"
                 or: "ref"
                 r: true

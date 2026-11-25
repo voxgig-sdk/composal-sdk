@@ -1,0 +1,516 @@
+# Entity: spark_automation
+
+main: kit: entity: spark_automation: {
+
+  alias: field: {}
+
+  fields: {
+    can_manage: {
+      h: "Can Manage"
+      n: "can_manage"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_manage_events: {
+      h: "Can Manage Events"
+      n: "can_manage_events"
+      r: true
+      sh: "Whether new event triggers can be attached or existing settings saved."
+      t: "`$BOOLEAN`"
+    }
+    can_run: {
+      h: "Can Run"
+      n: "can_run"
+      r: true
+      sh: "Whether the viewer can request a manual Temporal run"
+      t: "`$BOOLEAN`"
+    }
+    can_schedule: {
+      h: "Can Schedule"
+      n: "can_schedule"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    definition: {
+      h: "Definition"
+      n: "definition"
+      r: true
+      t: "`$OBJECT`"
+      union: {
+        branches: 12
+        count: 14
+        depth: 10
+      }
+    }
+    event_subscriptions: {
+      h: "Event Subscriptions"
+      n: "event_subscriptions"
+      r: true
+      t: "`$ARRAY`"
+    }
+    event_triggers: {
+      h: "Event Triggers"
+      n: "event_triggers"
+      r: true
+      t: "`$ARRAY`"
+    }
+    expected_revision: {
+      h: "Expected Revision"
+      n: "expected_revision"
+      r: true
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    key: {
+      h: "Key"
+      n: "key"
+      r: true
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    revision: {
+      h: "Revision"
+      n: "revision"
+      r: true
+      t: "`$INTEGER`"
+    }
+    schedule: {
+      h: "Schedule"
+      n: "schedule"
+      r: true
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 4
+      }
+    }
+    schedules: {
+      h: "Schedules"
+      n: "schedules"
+      r: true
+      t: "`$ARRAY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 3
+      }
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: true
+      t: "`$OBJECT`"
+      union: {
+        branches: 12
+        count: 14
+        depth: 12
+      }
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "spark_automation"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/automations"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: 30
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/automations"
+          q: {
+            exist: [
+              "agent_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "automations"
+            }
+          ]
+          t: {
+            page: {
+              next: "`body.pagination.next`"
+            }
+            req: "`reqdata`"
+            res: "`body.items`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "automation_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}"
+          q: {
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              automation_key: "id"
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "automations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "definition"
+            "expected_revision"
+          ]
+          co: {
+            id: "PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "automation_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}"
+          q: {
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              automation_key: "id"
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "automations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: {
+              definition: "`reqdata.definition`"
+              expected_revision: "`reqdata.expected_revision`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "action"
+            "expected_revision"
+            "schedule_key"
+            "settings"
+          ]
+          co: {
+            id: "PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/schedule"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "automation_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/schedule"
+          q: {
+            "$action": "schedule"
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              automation_key: "id"
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "automations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "schedule"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+  ]
+
+}

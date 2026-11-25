@@ -1,0 +1,105 @@
+{
+  "existing": {
+    "spark_automation": {
+      "SPARK_AUTOMATION00": {
+        "can_manage": true,
+        "can_manage_events": false,
+        "can_run": true,
+        "can_schedule": false,
+        "definition": {},
+        "event_subscriptions": [],
+        "event_triggers": [],
+        "expected_revision": 157,
+        "id": "SPARK_AUTOMATION00",
+        "key": "s9f",
+        "name": "sa0",
+        "revision": 161,
+        "schedule": "sa2",
+        "schedules": [],
+        "version": {},
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "SPARK_AUTOMATION01": {
+        "can_manage": true,
+        "can_manage_events": false,
+        "can_run": true,
+        "can_schedule": false,
+        "definition": {},
+        "event_subscriptions": [],
+        "event_triggers": [],
+        "expected_revision": 307,
+        "id": "SPARK_AUTOMATION01",
+        "key": "s135",
+        "name": "s136",
+        "revision": 311,
+        "schedule": "s138",
+        "schedules": [],
+        "version": {},
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "SPARK_AUTOMATION02": {
+        "can_manage": true,
+        "can_manage_events": false,
+        "can_run": true,
+        "can_schedule": false,
+        "definition": {},
+        "event_subscriptions": [],
+        "event_triggers": [],
+        "expected_revision": 457,
+        "id": "SPARK_AUTOMATION02",
+        "key": "s1cb",
+        "name": "s1cc",
+        "revision": 461,
+        "schedule": "s1ce",
+        "schedules": [],
+        "version": {},
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "spark_automation": {
+      "spark_automation_ref01": {
+        "can_manage": true,
+        "can_manage_events": false,
+        "can_run": true,
+        "can_schedule": false,
+        "definition": {},
+        "event_subscriptions": [],
+        "event_triggers": [],
+        "expected_revision": 607,
+        "key": "s261",
+        "name": "s262",
+        "revision": 611,
+        "schedule": "s264",
+        "schedules": [],
+        "version": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/automations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/schedule": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -5,7 +5,7 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `agent_steps` | object | yes |  |
+  | `agent_steps` | object |  |  |
   | `base_digest` | string | yes |  |
   | `can_manage` | boolean | yes |  |
   | `can_revise` | boolean | yes |  |
@@ -28,4 +28,4 @@ description: |-
   | `stale` | boolean | yes |  |
   | `starts` | object | yes |  |
   | `trigger_error` | string | yes |  |
-order: 71000
+order: 70000

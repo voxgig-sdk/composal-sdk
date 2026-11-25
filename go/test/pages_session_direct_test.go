@@ -165,8 +165,7 @@ func TestPagesSessionDirect(t *testing.T) {
 			params["organization_id"] = setup.idmap["organization01"]
 		} else {
 			params["id"] = "direct01"
-			params["id"] = "direct02"
-			params["organization_id"] = "direct03"
+			params["organization_id"] = "direct02"
 		}
 
 		result, err := client.Direct(map[string]any{
@@ -222,9 +221,6 @@ func TestPagesSessionDirect(t *testing.T) {
 				}
 				if !strings.Contains(url, "direct02") {
 					t.Fatalf("expected url to contain direct02, got %v", url)
-				}
-				if !strings.Contains(url, "direct03") {
-					t.Fatalf("expected url to contain direct03, got %v", url)
 				}
 			}
 		}

@@ -1,4 +1,4 @@
 $kind: collection
 id: fbb8beb3-e33f-5ac3-aa2c-0475fe97ae18
 description: "The `BasicAgentWorkspaceFlow` flow of **agent_workspace**."
-order: 52000
+order: 51000

@@ -21,7 +21,7 @@ body:
   content: |-
     {
       "viewer_time_zone": "example",
-      "environment_id": "{{environment_id}}",
+      "environment_id": "example",
       "scenario_ids": [
         "example"
       ],

@@ -112,7 +112,7 @@ Composal.
 
 ## Entities, not endpoints
 
-This SDK exposes the API as **555 semantic entities** that you
+This SDK exposes the API as **558 semantic entities** that you
 call directly, instead of assembling URL paths and query strings. See the [Entities](#entities) table below for the full list. Entities are
 **Capitalised** to mark them as the primary surface, each with the operations they
 support (`list`, `load`, `create`, `update`, `patch`, `remove`):
@@ -201,8 +201,8 @@ local result, err = client:GithubOnboarding():load({ organization_id = "example"
 | Golang | `github.com/voxgig-sdk/composal-sdk/go` | `go get github.com/voxgig-sdk/composal-sdk/go@latest` |
 | Ruby | `voxgig-sdk-composal-sdk` | publish pending — [install from source](rb/README.md#install) |
 | Lua | `voxgig-sdk-composal-sdk` | publish pending — [install from source](lua/README.md#install) |
-| Go CLI | `github.com/voxgig-sdk/composal-sdk/go-cli` | build from source — [go-cli/README.md](go-cli/README.md) |
-| Go MCP server | `github.com/voxgig-sdk/composal-sdk/go-mcp` | build from source — [go-mcp/README.md](go-mcp/README.md) |
+| Go CLI | `github.com/voxgig-sdk/composal-sdk/go-cli` | build from source — `go-cli/` |
+| Go MCP server | `github.com/voxgig-sdk/composal-sdk/go-mcp` | build from source — `go-mcp/` |
 
 ## Quickstart
 
@@ -260,7 +260,7 @@ Then add it to your agent's MCP config (Claude Desktop, Cursor, etc.):
 
 ## Entities
 
-The API exposes 555 entities:
+The API exposes 558 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
@@ -270,7 +270,6 @@ The API exposes 555 entities:
 | **AgentApp** | The AgentApp entity (create, list, load). | `/api/v1/organizations/{organization_id}/agent_apps` |
 | **AgentAppInstall** | The AgentAppInstall entity (remove, update). | `/api/v1/organizations/{organization_id}/agent_apps/{id}/installs/{agent_id}` |
 | **AgentAttachment** | The AgentAttachment entity (create). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/attachments` |
-| **AgentAutomation** | The AgentAutomation entity (list, load, update). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations` |
 | **AgentAvatar** | The AgentAvatar entity (create, load). | `/api/v1/organizations/{organization_id}/agents/{id}/avatar/configuration` |
 | **AgentCommand** | The AgentCommand entity (list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/commands` |
 | **AgentComputer** | The AgentComputer entity (create, load). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/computer/frame` |
@@ -348,6 +347,7 @@ The API exposes 555 entities:
 | **AppDataResource** | The AppDataResource entity (create, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/data_resources/{id}` |
 | **AppDeploy** | The AppDeploy entity (create). | `/api/v1/hosting/apps/{app_id}/deploys` |
 | **AppDeployment** | A deployment of a hosted app: list, start, read or cancel one. | `/api/v1/hosting/apps/{app_id}/deployments/{id}` |
+| **AppDeploymentDashboard** | The AppDeploymentDashboard entity (load). | `/api/v1/hosting/apps/{app_id}/deployment_dashboard` |
 | **AppDeploymentOperation** | The AppDeploymentOperation entity (create, list, load). | `/api/v1/hosting/apps/{app_id}/deployment_operations` |
 | **AppDeploymentRollback** | The AppDeploymentRollback entity (create). | `/api/v1/hosting/apps/{app_id}/deployment_rollbacks` |
 | **AppEnvironment** | A hosted app's environments: list, create, read, change, pause, resume, archive or remove one. | `/api/v1/hosting/apps/{app_id}/environments/{id}` |
@@ -422,7 +422,7 @@ The API exposes 555 entities:
 | **CdnSpaceObject** | The CdnSpaceObject entity (load, remove, update). | `/api/v1/cdn_spaces/{cdn_space_id}/objects/{path}` |
 | **Change** | The Change entity (load). | `/api/v1/organizations/{org_slug}/changes` |
 | **ChangeAsset** | The ChangeAsset entity (create). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets` |
-| **ChangeComment** | The ChangeComment entity (create, list). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments` |
+| **ChangeComment** | The ChangeComment entity (create, load). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments` |
 | **ChangeFileReviewCheckpoint** | The ChangeFileReviewCheckpoint entity (create). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/file_review_checkpoints` |
 | **ChangeGitBranchSubmission** | The ChangeGitBranchSubmission entity (create). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_branch_submissions` |
 | **ChangeGitCommitIdentity** | The ChangeGitCommitIdentity entity (create, load). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_commit_identities/{id}` |
@@ -457,7 +457,7 @@ The API exposes 555 entities:
 | **CoordinationWait** | The CoordinationWait entity (list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/coordination/{task_id}/waits` |
 | **CredentialSignInCheck** | The CredentialSignInCheck entity (create). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/credentials/{credential_id}/sign_in_checks` |
 | **DataResourceRotateCredential** | The DataResourceRotateCredential entity (create). | `/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials` |
-| **DeepScan** | The DeepScan entity (create, load). | `/api/v1/organizations/{organization_id}/verify/deep_scans/{id}` |
+| **DeepScan** | The DeepScan entity (create, list, load). | `/api/v1/organizations/{organization_id}/verify/deep_scans` |
 | **DeepScanFinding** | The DeepScanFinding entity (list). | `/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/findings` |
 | **DeepScanFlow** | The DeepScanFlow entity (create). | `/api/v1/organizations/{organization_id}/verify/deep_scans/flows` |
 | **DeepScanMappedFlow** | The DeepScanMappedFlow entity (load). | `/api/v1/organizations/{organization_id}/verify/deep_scans/mapped_flows` |
@@ -477,12 +477,12 @@ The API exposes 555 entities:
 | **Device** | The Device entity (create, list, load). | `/api/v1/organizations/{organization_id}/devices` |
 | **DeviceBrowserOperation** | The DeviceBrowserOperation entity (create, list). | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/browser_operations` |
 | **DeviceControlMessage** | The DeviceControlMessage entity (list). | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_messages` |
-| **DeviceControlOperation** | The DeviceControlOperation entity (create, load). | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/{id}` |
 | **DeviceEnterpriseRelay** | The DeviceEnterpriseRelay entity (load). | `/api/v1/spark/devices/enterprise_relays` |
 | **DeviceFolderListing** | The DeviceFolderListing entity (create, load). | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/folder_listings/{id}` |
 | **DeviceGrant** | The DeviceGrant entity (create, list). | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants` |
 | **DeviceInvocation** | The DeviceInvocation entity (create). | `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/challenge` |
 | **DeviceLocalEvent** | The DeviceLocalEvent entity (create). | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/local_events` |
+| **DeviceOperation** | The DeviceOperation entity (create, load). | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/{id}` |
 | **DevicePairing** | The DevicePairing entity (create). | `/api/v1/organizations/{organization_id}/devices/pairings` |
 | **DeviceProject** | The DeviceProject entity (remove). | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/projects/{id}` |
 | **DeviceScheduledCheckIn** | The DeviceScheduledCheckIn entity (create). | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/scheduled_check_ins` |
@@ -494,14 +494,12 @@ The API exposes 555 entities:
 | **Dream** | The Dream entity (create, list, load). | `/api/v1/organizations/{organization_id}/verify/dreams` |
 | **Edge** | The Edge entity (load). | `/api/v1/edge/tls-check` |
 | **EmailVerification** | The EmailVerification entity (create). | `/api/v1/email_verifications/resend` |
-| **Environment** | The Environment entity (create, load, patch, remove, update). | `/api/v1/organizations/{organization_id}/verify/environments/{id}` |
 | **EnvironmentDiscoveryRun** | The EnvironmentDiscoveryRun entity (create, load). | `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}` |
 | **EnvironmentExploration** | The EnvironmentExploration entity (create). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments/{environment_id}/explorations` |
 | **EnvironmentFirstRun** | The EnvironmentFirstRun entity (create). | `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run/start` |
 | **EnvironmentRevision** | The EnvironmentRevision entity (create, load, update). | `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}` |
 | **EnvironmentSecretBinding** | The EnvironmentSecretBinding entity (create, load, remove). | `/api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings` |
 | **EnvironmentTestAccount** | The EnvironmentTestAccount entity (list, patch, update). | `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/test_accounts` |
-| **Evidence** | The Evidence entity (load). | `/api/v1/organizations/{organization_id}/verify/evidence/{id}` |
 | **ExecutionDesiredState** | The ExecutionDesiredState entity (create, load, patch, remove, update). | `/api/v1/execution/desired_states/{id}` |
 | **ExecutionReconcilerTick** | The ExecutionReconcilerTick entity (create, load). | `/api/v1/execution/reconciler_ticks/{id}` |
 | **ExecutionRelease** | The ExecutionRelease entity (create, load). | `/api/v1/execution/releases/{id}` |
@@ -522,7 +520,6 @@ The API exposes 555 entities:
 | **GithubCiRepository** | The GithubCiRepository entity (create, list, load, patch, update). | `/api/v1/organizations/{organization_id}/github_ci_repositories` |
 | **GithubCiRepositoryCompatibilityReport** | The GithubCiRepositoryCompatibilityReport entity (list, load). | `/api/v1/organizations/{organization_id}/github_ci_repositories/{github_ci_repository_id}/compatibility_reports` |
 | **GithubConnection** | The GithubConnection entity (create, load). | `/api/v1/organizations/{organization_id}/verify/github_connections` |
-| **GithubIntegration** | The GithubIntegration entity (list, load). | `/api/v1/organizations/{org_slug}/pages/github_integrations` |
 | **GithubOnboarding** | The GithubOnboarding entity (load). | `/api/v1/organizations/{organization_id}/github_onboarding` |
 | **GithubOnboardingBranch** | The GithubOnboardingBranch entity (list). | `/api/v1/organizations/{organization_id}/github_onboarding/branches` |
 | **GithubOnboardingImport** | The GithubOnboardingImport entity (create). | `/api/v1/organizations/{organization_id}/github_onboarding/imports` |
@@ -581,7 +578,6 @@ The API exposes 555 entities:
 | **Member** | An organization's members: list them, or change or remove one. | `/api/v1/organizations/{organization_id}/members` |
 | **Memory** | The Memory entity (create, list, load, remove). | `/api/v1/organizations/{organization_id}/verify/memories` |
 | **MergeQueueEntry** | The MergeQueueEntry entity (create, remove). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries` |
-| **MergeRequest** | The MergeRequest entity (create, load). | `/api/v1/organizations/{organization_id}/verify/merge_requests/{id}` |
 | **MergeResolution** | The MergeResolution entity (create). | `/api/v1/merge_resolutions` |
 | **MessagingConversationMessage** | The MessagingConversationMessage entity (create). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/messages` |
 | **MessagingConversationUpload** | The MessagingConversationUpload entity (create). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/uploads` |
@@ -630,6 +626,7 @@ The API exposes 555 entities:
 | **PageProjectRun** | The PageProjectRun entity (load). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/page` |
 | **PageRepoVcCommit** | The PageRepoVcCommit entity (load). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits/{id}/page` |
 | **PagesBilling** | The PagesBilling entity (load). | `/api/v1/organizations/{org_slug}/pages/billing` |
+| **PagesGithubIntegration** | The PagesGithubIntegration entity (list, load). | `/api/v1/organizations/{org_slug}/pages/github_integrations` |
 | **PagesGithubOnboarding** | The PagesGithubOnboarding entity (load). | `/api/v1/organizations/{org_slug}/pages/github_onboarding` |
 | **PagesMember** | The PagesMember entity (list). | `/api/v1/organizations/{org_slug}/pages/members` |
 | **PagesProjectCredential** | The PagesProjectCredential entity (list). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/credentials` |
@@ -665,14 +662,15 @@ The API exposes 555 entities:
 | **ProjectMessagingConversation** | The ProjectMessagingConversation entity (create, load, patch, update). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}` |
 | **ProjectOverviewMetric** | The ProjectOverviewMetric entity (load). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics` |
 | **ProjectOverviewPullRequest** | The ProjectOverviewPullRequest entity (list). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_pull_requests` |
+| **ProjectPrTesting** | The ProjectPrTesting entity (load). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/pr_testing` |
 | **ProjectProductMap** | The ProjectProductMap entity (create, load). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/path` |
+| **ProjectProductMapComparison** | The ProjectProductMapComparison entity (load). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison` |
 | **ProjectRecording** | The ProjectRecording entity (create, load, remove). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/recordings/{id}` |
 | **ProjectRunPlan** | The ProjectRunPlan entity (create, list, load, patch, update). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_plans` |
 | **ProjectRunSchedule** | The ProjectRunSchedule entity (create, list, load, patch, update). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules` |
 | **ProjectScenarioOption** | The ProjectScenarioOption entity (load). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_options` |
 | **ProjectScenarioRow** | The ProjectScenarioRow entity (list). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_rows` |
-| **ProjectSetting** | The ProjectSetting entity (load). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings` |
-| **PullRequest** | The PullRequest entity (create, load, remove). | `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}` |
+| **ProjectSetting** | The ProjectSetting entity (list). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings` |
 | **PullRequestAction** | The PullRequestAction entity (create). | `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/actions` |
 | **PullRequestMagicMerge** | The PullRequestMagicMerge entity (create). | `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/merge` |
 | **PullRequestSetting** | The PullRequestSetting entity (create, load). | `/api/v1/organizations/{organization_id}/verify/pull_request_settings` |
@@ -720,7 +718,7 @@ The API exposes 555 entities:
 | **RunScenarioRun** | The RunScenarioRun entity (load, update). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/live_frame` |
 | **RunScheduleOption** | The RunScheduleOption entity (list). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/options` |
 | **RunSearch** | The RunSearch entity (load). | `/api/v1/organizations/{organization_id}/verify/run_search` |
-| **RunUpdate** | The RunUpdate entity (list). | `/api/v1/organizations/{organization_id}/verify/run_updates` |
+| **RunUpdate** | The RunUpdate entity (load). | `/api/v1/organizations/{organization_id}/verify/run_updates` |
 | **RunWorkspaceCredential** | The RunWorkspaceCredential entity (create). | `/api/v1/agent/roder/run/workspace_credentials` |
 | **RunnerLease** | The RunnerLease entity (create, load). | `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases` |
 | **RunnerPoolNodeEnrollmentToken** | The RunnerPoolNodeEnrollmentToken entity (create, list). | `/api/v1/ci/runner_pools/{runner_pool_id}/node_enrollment_tokens` |
@@ -768,6 +766,7 @@ The API exposes 555 entities:
 | **SparkAgentSite** | The SparkAgentSite entity (list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/sites` |
 | **SparkAgentSkill** | The SparkAgentSkill entity (create, list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills` |
 | **SparkAgentThread** | The SparkAgentThread entity (create, list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads` |
+| **SparkAutomation** | The SparkAutomation entity (list, load, update). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations` |
 | **SparkCredit** | The SparkCredit entity (create, load, patch, update). | `/api/v1/organizations/{org_slug}/spark_credits` |
 | **SparkCreditAgentUsage** | The SparkCreditAgentUsage entity (load). | `/api/v1/organizations/{org_slug}/spark_credits/agent_usage/{agent_id}` |
 | **SparkCreditUsageTotal** | The SparkCreditUsageTotal entity (load). | `/api/v1/organizations/{org_slug}/spark_credits/usage_totals` |
@@ -806,6 +805,10 @@ The API exposes 555 entities:
 | **VerifyAppDomain** | The VerifyAppDomain entity (create). | `/api/v1/hosting/apps/{app_id}/domains/{id}/verify` |
 | **VerifyBrowserSession** | The VerifyBrowserSession entity (create, load, remove). | `/api/v1/organizations/{organization_id}/verify/browser_sessions/{id}` |
 | **VerifyEmailVerification** | The VerifyEmailVerification entity (load). | `/api/v1/email_verifications/verify` |
+| **VerifyEnvironment** | The VerifyEnvironment entity (create, load, patch, remove, update). | `/api/v1/organizations/{organization_id}/verify/environments/{id}` |
+| **VerifyEvidence** | The VerifyEvidence entity (load). | `/api/v1/organizations/{organization_id}/verify/evidence/{id}` |
+| **VerifyMergeRequest** | The VerifyMergeRequest entity (create, load). | `/api/v1/organizations/{organization_id}/verify/merge_requests/{id}` |
+| **VerifyPullRequest** | The VerifyPullRequest entity (create, load, remove). | `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}` |
 | **VerifySignalIntegration** | The VerifySignalIntegration entity (create). | `/api/v1/organizations/{organization_id}/signal_integrations/{id}/verify` |
 | **VerifyStaticSiteDomain** | The VerifyStaticSiteDomain entity (create). | `/api/v1/static_sites/{static_site_id}/domains/{id}/verify` |
 | **VersionLog** | The VersionLog entity (list). | `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/logs` |
@@ -973,15 +976,16 @@ local result, err = client:direct({
 > Everyday use only needs the sections above. This explains the internals
 > behind every call — relevant when writing custom features.
 
-Every SDK call runs the same five-stage pipeline:
+Every entity operation runs the same six-stage pipeline:
 
-1. **Point** — resolve the API endpoint from the operation definition.
-2. **Spec** — build the HTTP specification (URL, method, headers, body).
-3. **Request** — send the HTTP request.
-4. **Response** — receive and parse the response.
-5. **Result** — extract the result data for the caller.
+1. **Point** — Resolves which API endpoint to call based on the operation name and entity configuration.
+2. **Spec** — Builds the HTTP spec — URL, method, headers, body — from the resolved point and the caller's parameters.
+3. **Request** — Sends the HTTP request. Features can intercept here to replace the transport.
+4. **Response** — Parses the raw HTTP response.
+5. **Result** — Extracts the business data from the parsed response.
+6. **Done** — Final stage before returning to the caller. Entity state (match, data) is updated here.
 
-A feature hook fires at each stage (e.g. `PrePoint`, `PreSpec`,
+A feature hook fires before each stage (e.g. `PrePoint`, `PreSpec`,
 `PreRequest`), so features can inspect or modify the pipeline without
 forking the SDK.
 
@@ -1025,9 +1029,10 @@ customizable without forking any upstream tool:
   they cannot express a change, write a feature of this project's own, or
   an entire custom target, in `.sdk/model/`, `.sdk/tm/` and
   `.sdk/src/cmp/`, and add it by name (`voxgig-sdkgen feature add`,
-  `voxgig-sdkgen target add`). An add merges toolchain updates into the
-  edited copies, and `voxgig-sdkgen doctor` reports any drift from what a
-  resync would write.
+  `voxgig-sdkgen target add`). This repository regenerates `.sdk` in full
+  (`main: kit: copies: 'overwrite'`): set it to `'merge'` before
+  customising, so that an add merges toolchain updates into the edited
+  copies.
 
 ### Project map
 
@@ -1038,7 +1043,7 @@ customizable without forking any upstream tool:
 | `.sdk/model/guide/guide.aontu` | How the spec's paths map onto entities and operations | Yes. The scaffold writes it once and never again. |
 | `.sdk/model/`, the rest | The API model built from the spec, and the target and feature definitions | Not by hand. Generation, `target add` and a new scaffold run rewrite it, apart from a feature or target this project defines itself. |
 | `.sdk/def/` | The OpenAPI spec | Replace it when the API changes. Generation rebuilds the model from it. |
-| `.sdk/src/cmp/<target>/`, `.sdk/tm/<target>/` | The components and templates that generate each target | Yes. They are this project's copies, and `target add` merges toolchain updates into your edits. |
+| `.sdk/src/cmp/<target>/`, `.sdk/tm/<target>/` | The components and templates that generate each target | Only after setting `copies` to `'merge'`. This repository regenerates them in full. |
 | `.sdk/test/` | The shared test cases the generated tests run | No. |
 | `<target>/`, such as `ts/` | One generated SDK per target, with its own tests | No. Generation overwrites it. |
 | `README.md`, `LICENSE`, `Makefile` and the other root files | The repository's generated files | No. Generation overwrites them. |
@@ -1067,7 +1072,6 @@ The full story: [voxgig.com/sdk/custom](https://voxgig.com/sdk/custom).
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-- [Postman collections](postman/README.md)
 
 ## Upstream API
 

@@ -45,7 +45,7 @@ class AgentWorkflowRunEntityTest extends TestCase
         $setup = agent_workflow_run_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list"] as $_op) {
+        foreach (["list", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "agent_workflow_run." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -62,6 +62,12 @@ class AgentWorkflowRunEntityTest extends TestCase
             }
         }
         $client = $setup["client"];
+        if (!empty($setup["live"])) {
+            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["agent_workflow_run01"] ?? null) : null;
+            Runner::live_pace();
+            Runner::live_existing($setup, self::LIVE_STRICT, "agent_workflow_run",
+                fn() => $client->AgentWorkflowRun(null)->list(["agent_id" => $setup["idmap"]["agent01"] ?? null, "organization_id" => $setup["idmap"]["organization01"] ?? null], null), "id", $_liveId);
+        }
 
         // Bootstrap entity data from existing test data.
         $agent_workflow_run_ref01_data_raw = Vs::items(Helpers::to_map(
@@ -83,6 +89,20 @@ class AgentWorkflowRunEntityTest extends TestCase
 
         $agent_workflow_run_ref01_list_result = $agent_workflow_run_ref01_ent->list($agent_workflow_run_ref01_match, null);
         $this->assertIsArray($agent_workflow_run_ref01_list_result);
+
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
+        // LOAD
+        $agent_workflow_run_ref01_match_dt0 = [
+            "id" => $agent_workflow_run_ref01_data["id"],
+        ];
+        $agent_workflow_run_ref01_match_dt0["agent_id"] = $setup["idmap"]["agent_id"] ?? $setup["idmap"]["agent01"] ?? null;
+        $agent_workflow_run_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $agent_workflow_run_ref01_data_dt0_loaded = $agent_workflow_run_ref01_ent->load($agent_workflow_run_ref01_match_dt0, null);
+        $agent_workflow_run_ref01_data_dt0_load_result = Helpers::to_map(is_object($agent_workflow_run_ref01_data_dt0_loaded) && method_exists($agent_workflow_run_ref01_data_dt0_loaded, 'data_get') ? $agent_workflow_run_ref01_data_dt0_loaded->data_get() : $agent_workflow_run_ref01_data_dt0_loaded);
+        $this->assertNotNull($agent_workflow_run_ref01_data_dt0_load_result);
+        $this->assertTrue(Runner::live_same_id($agent_workflow_run_ref01_data_dt0_load_result["id"] ?? null, $agent_workflow_run_ref01_data["id"]));
 
             return;
         }
@@ -95,6 +115,12 @@ class AgentWorkflowRunEntityTest extends TestCase
             }
         }
         $client = $setup["client"];
+        if (!empty($setup["live"])) {
+            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["agent_workflow_run01"] ?? null) : null;
+            Runner::live_pace();
+            Runner::live_existing($setup, self::LIVE_STRICT, "agent_workflow_run",
+                fn() => $client->AgentWorkflowRun(null)->list(["agent_id" => $setup["idmap"]["agent01"] ?? null, "organization_id" => $setup["idmap"]["organization01"] ?? null], null), "id", $_liveId);
+        }
 
         // Bootstrap entity data from existing test data.
         $agent_workflow_run_ref01_data_raw = Vs::items(Helpers::to_map(
@@ -116,6 +142,20 @@ class AgentWorkflowRunEntityTest extends TestCase
 
         $agent_workflow_run_ref01_list_result = $agent_workflow_run_ref01_ent->list($agent_workflow_run_ref01_match, null);
         $this->assertIsArray($agent_workflow_run_ref01_list_result);
+
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
+        // LOAD
+        $agent_workflow_run_ref01_match_dt0 = [
+            "id" => $agent_workflow_run_ref01_data["id"],
+        ];
+        $agent_workflow_run_ref01_match_dt0["agent_id"] = $setup["idmap"]["agent_id"] ?? $setup["idmap"]["agent01"] ?? null;
+        $agent_workflow_run_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $agent_workflow_run_ref01_data_dt0_loaded = $agent_workflow_run_ref01_ent->load($agent_workflow_run_ref01_match_dt0, null);
+        $agent_workflow_run_ref01_data_dt0_load_result = Helpers::to_map(is_object($agent_workflow_run_ref01_data_dt0_loaded) && method_exists($agent_workflow_run_ref01_data_dt0_loaded, 'data_get') ? $agent_workflow_run_ref01_data_dt0_loaded->data_get() : $agent_workflow_run_ref01_data_dt0_loaded);
+        $this->assertNotNull($agent_workflow_run_ref01_data_dt0_load_result);
+        $this->assertTrue(Runner::live_same_id($agent_workflow_run_ref01_data_dt0_load_result["id"] ?? null, $agent_workflow_run_ref01_data["id"]));
 
     }
 }

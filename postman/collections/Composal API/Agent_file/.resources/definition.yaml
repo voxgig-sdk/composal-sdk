@@ -10,4 +10,4 @@ description: |-
   | `filename` | string | yes |  |
   | `id` | string | yes |  |
   | `size_bytes` | integer | yes |  |
-order: 25000
+order: 24000

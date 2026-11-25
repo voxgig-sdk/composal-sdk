@@ -81,6 +81,7 @@ class TestControlComputerControlOperationEntity:
         control_computer_control_operation_ref01_match_dt0 = {
             "id": control_computer_control_operation_ref01_data["id"],
         }
+        control_computer_control_operation_ref01_match_dt0["control_computer_id"] = setup["idmap"].get("control_computer_id") or setup["idmap"].get("control_computer01")
         control_computer_control_operation_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
         control_computer_control_operation_ref01_data_dt0_loaded = control_computer_control_operation_ref01_ent.load(control_computer_control_operation_ref01_match_dt0, None)
         control_computer_control_operation_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(control_computer_control_operation_ref01_data_dt0_loaded))

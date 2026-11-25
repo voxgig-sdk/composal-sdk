@@ -175,13 +175,6 @@ main: kit: entity: pull_request_transcript: {
               }
               {
                 k: "param"
-                n: "pull_request_id"
-                or: "number"
-                r: true
-                t: "`$INTEGER`"
-              }
-              {
-                k: "param"
                 n: "repo_id"
                 or: "repo_slug"
                 r: true
@@ -287,7 +280,7 @@ main: kit: entity: pull_request_transcript: {
 
 
   relations: ancestors: [
-    [path("$.main.kit.entity.organization") path("$.main.kit.entity.repo") path("$.main.kit.entity.pull_request")]
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.repo")]
   ]
 
 }

@@ -3,7 +3,7 @@ id: "10bdeac6-a14d-5916-9780-3d995a58f33c"
 description: |-
   The `create` operation of **agent_swarm**.
 
-  SDK: `client.AgentSwarm().create({ organization_slug: "example", target: {} })`
+  SDK: `client.AgentSwarm().create({ organization_slug: "example" })`
 url: "{{base}}/api/v1/agent/swarms"
 method: POST
 headers:

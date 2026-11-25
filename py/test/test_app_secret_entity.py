@@ -114,6 +114,7 @@ class TestAppSecretEntity:
         app_secret_ref01_match_dt0 = {
             "id": app_secret_ref01_data["id"],
         }
+        app_secret_ref01_match_dt0["app_id"] = setup["idmap"].get("app_id") or setup["idmap"].get("app01")
         app_secret_ref01_data_dt0_loaded = app_secret_ref01_ent.load(app_secret_ref01_match_dt0, None)
         app_secret_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(app_secret_ref01_data_dt0_loaded))
         assert app_secret_ref01_data_dt0_load_result is not None
@@ -181,6 +182,7 @@ class TestAppSecretEntity:
         app_secret_ref01_match_dt0 = {
             "id": app_secret_ref01_data["id"],
         }
+        app_secret_ref01_match_dt0["app_id"] = setup["idmap"].get("app_id") or setup["idmap"].get("app01")
         app_secret_ref01_data_dt0_loaded = app_secret_ref01_ent.load(app_secret_ref01_match_dt0, None)
         app_secret_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(app_secret_ref01_data_dt0_loaded))
         assert app_secret_ref01_data_dt0_load_result is not None

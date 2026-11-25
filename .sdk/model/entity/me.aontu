@@ -96,7 +96,7 @@ main: kit: entity: me: {
     impersonation: {
       h: "Impersonation"
       n: "impersonation"
-      r: true
+      r: false
       t: [
         "`$ONE`"
         [

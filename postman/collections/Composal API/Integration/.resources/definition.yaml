@@ -9,4 +9,4 @@ description: |-
   | `gitlab` | object | yes |  |
   | `permissions` | object | yes |  |
   | `slack` | object | yes |  |
-order: 288000
+order: 284000

@@ -27,6 +27,7 @@ main: kit: flow: BasicControlComputerControlOperationFlow:
       }
 
       m: {
+        control_computer_id: "control_computer01",
         id: "control_computer_control_operation01",
         organization_id: "organization01"
       }

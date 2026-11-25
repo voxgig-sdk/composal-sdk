@@ -221,7 +221,7 @@ main: kit: entity: vc_browser: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.synced_spaces`"
+            res: "`body`"
           }
         }
       ]

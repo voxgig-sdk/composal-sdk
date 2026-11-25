@@ -43,7 +43,7 @@ describe('CommitDiffDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-commit_diff', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["commit01","commit_diff01","commit_diff01","organization01","repo01"], LIVE_STRICT)) return
+    if (skipIfMissingIds(t, setup, ["commit01","commit_diff01","organization01","repo01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
@@ -51,15 +51,13 @@ describe('CommitDiffDirect', async () => {
     if (setup.live) {
       params.commit_id = setup.idmap['commit01']
       params.id = setup.idmap['commit_diff01']
-      params.id = setup.idmap['commit_diff01']
       params.organization_id = setup.idmap['organization01']
       params.repo_id = setup.idmap['repo01']
     } else {
       params.commit_id = 'direct01'
       params.id = 'direct02'
-      params.id = 'direct03'
-      params.organization_id = 'direct04'
-      params.repo_id = 'direct05'
+      params.organization_id = 'direct03'
+      params.repo_id = 'direct04'
     }
 
     const result: any = await client.direct({
@@ -87,7 +85,6 @@ describe('CommitDiffDirect', async () => {
       assert(calls[0].url.includes('direct02'))
       assert(calls[0].url.includes('direct03'))
       assert(calls[0].url.includes('direct04'))
-      assert(calls[0].url.includes('direct05'))
     }
   })
 

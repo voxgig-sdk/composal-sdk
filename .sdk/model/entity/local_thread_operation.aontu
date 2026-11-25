@@ -27,7 +27,7 @@ main: kit: entity: local_thread_operation: {
     delivery: {
       h: "Delivery"
       n: "delivery"
-      r: true
+      r: false
       sh: "Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did."
       t: "`$OBJECT`"
     }
@@ -47,7 +47,7 @@ main: kit: entity: local_thread_operation: {
     end: {
       h: "End"
       n: "end"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     expires_at: {

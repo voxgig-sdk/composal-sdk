@@ -7,10 +7,10 @@ description: |-
   |---|---|---|---|
   | `accepted` | boolean |  |  |
   | `add` | array |  |  |
-  | `approval` | object | yes |  |
+  | `approval` | object |  |  |
   | `assets` | array |  |  |
   | `author` | any |  |  |
-  | `capabilities` | object | yes |  |
+  | `capabilities` | object |  |  |
   | `change_key` | string |  |  |
   | `checks` | array |  |  |
   | `checks_status` | string |  |  |
@@ -18,12 +18,12 @@ description: |-
   | `comments_count` | integer |  |  |
   | `comments_count_label` | string |  |  |
   | `commit_message` | string |  |  |
-  | `current_patchset` | object | yes |  |
+  | `current_patchset` | object |  |  |
   | `description` | string |  |  |
   | `draft` | boolean |  |  |
   | `folded_into_number` | integer |  |  |
   | `github_projection_status` | string |  |  |
-  | `github_pull_request` | object | yes |  |
+  | `github_pull_request` | object |  |  |
   | `github_pull_requests` | array |  |  |
   | `group` | object |  |  |
   | `has_description` | boolean |  |  |
@@ -31,7 +31,7 @@ description: |-
   | `jj_change_id` | string |  |  |
   | `labels` | array |  |  |
   | `landable` | boolean |  |  |
-  | `landed_by` | object | yes |  |
+  | `landed_by` | object |  |  |
   | `number` | integer | yes |  |
   | `orphaned` | boolean |  |  |
   | `orphaned_at` | string |  |  |

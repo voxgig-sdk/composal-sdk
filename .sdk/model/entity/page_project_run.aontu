@@ -228,7 +228,7 @@ main: kit: entity: page_project_run: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.run`"
           }
         }
       ]

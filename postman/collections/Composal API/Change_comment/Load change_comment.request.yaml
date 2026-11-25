@@ -1,0 +1,28 @@
+$kind: http-request
+id: d11a6dd6-6280-5525-a07f-38943d2e38e4
+description: |-
+  The `load` operation of **change_comment**.
+
+  SDK: `client.ChangeComment().load({ change_id: "example", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/:id/comments"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: path
+    value: ""
+    disabled: true
+  - key: resolved
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this change_comment belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this change_comment belongs to.
+  - key: id
+    value: "{{change_id}}"
+    description: The change this change_comment belongs to.
+order: 1000

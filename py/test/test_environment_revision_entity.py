@@ -125,7 +125,7 @@ def _environment_revision_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["environment_revision01", "environment_revision02", "environment_revision03", "organization01", "organization02", "organization03", "environment01", "environment02", "environment03"],
+        ["environment_revision01", "environment_revision02", "environment_revision03", "organization01", "organization02", "organization03", "environment01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

@@ -42,7 +42,7 @@ class StaticSiteEntityTest < Minitest::Test
       end
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
-      puts "LIVE STEP {\"id\":\"static_site.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/static_sites/{id}/provision\"}"
+      puts "LIVE STEP {\"id\":\"static_site.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/static_sites\"}"
       puts "LIVE STEP {\"id\":\"static_site.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/static_sites/{id}\"}"
       puts "LIVE STEP {\"id\":\"static_site.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/static_sites/{id}\"}"
       puts "LIVE STEP {\"id\":\"static_site.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}"

@@ -115,7 +115,7 @@ class TestVcChangeDirect:
             pass
 
         result = client.direct({
-            "path": "api/v1/organizations/{organization_id}/repos/{repo_id}/vcs/changes/{id}/diff",
+            "path": "api/v1/organizations/{organization_id}/repos/{repo_id}/vcs/changes/{id}",
             "method": "GET",
             "params": params,
             "query": query,

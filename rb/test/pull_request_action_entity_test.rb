@@ -86,7 +86,7 @@ def pull_request_action_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["pull_request_action01", "pull_request_action02", "pull_request_action03", "organization01", "organization02", "organization03", "pull_request01", "pull_request02", "pull_request03", "number01"],
+    ["pull_request_action01", "pull_request_action02", "pull_request_action03", "organization01", "organization02", "organization03", "number01", "pull_request01"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

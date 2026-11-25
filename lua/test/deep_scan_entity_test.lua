@@ -29,7 +29,7 @@ describe("DeepScanEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:DeepScan(nil):load({ ["id"] = 1, ["organization_id"] = "x" }, nil)
+    local _, err = client:DeepScan(nil):list({ ["organization_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("DeepScanEntity", function()
     local setup = deep_scan_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "load"}) do
+    for _, _op in ipairs({"create", "list", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "deep_scan." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,8 +46,60 @@ describe("DeepScanEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"deep_scan.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce\"}")
-      print("LIVE STEP {\"id\":\"deep_scan.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only deep_scan.create.0 gives\"}")
-      pending("Live coverage incomplete: deep_scan.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce); deep_scan.load.1 excluded (GET-only live run: reads a record only deep_scan.create.0 gives)")
+    if setup.live then
+      for _, _live_key in ipairs({"organization01"}) do
+        if setup.synthetic_only or setup.idmap[_live_key] == nil then
+          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_DEEP_SCAN_ENTID")
+        end
+      end
+    end
+    local client = setup.client
+    if setup.live then
+      local _live_id = nil
+      if not setup.synthetic_only then
+        _live_id = setup.idmap["deep_scan01"]
+      end
+      runner.live_pace()
+      runner.live_existing(pending, setup, LIVE_STRICT, "deep_scan", function()
+        return client:DeepScan(nil):list({["organization_id"] = setup.idmap["organization01"]}, nil)
+      end, "id", _live_id)
+    end
+
+    -- Bootstrap entity data from existing test data.
+    local deep_scan_ref01_data_raw = vs.items(helpers.to_map(
+      vs.getpath(setup.data, "existing.deep_scan")))
+    local deep_scan_ref01_data = nil
+    if #deep_scan_ref01_data_raw > 0 then
+      deep_scan_ref01_data = helpers.to_map(deep_scan_ref01_data_raw[1][2])
+    end
+
+    if setup.live then
+      runner.live_pace()
+    end
+    -- LIST
+    local deep_scan_ref01_ent = client:DeepScan(nil)
+    local deep_scan_ref01_match = {
+      ["organization_id"] = setup.idmap["organization01"],
+    }
+
+    local deep_scan_ref01_list_result, err = deep_scan_ref01_ent:list(deep_scan_ref01_match, nil)
+    assert.is_nil(err)
+    assert.is_table(deep_scan_ref01_list_result)
+
+    if setup.live then
+      runner.live_pace()
+    end
+    -- LOAD
+    local deep_scan_ref01_match_dt0 = {
+      id = deep_scan_ref01_data["id"],
+    }
+    deep_scan_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+    local deep_scan_ref01_data_dt0_loaded, err = deep_scan_ref01_ent:load(deep_scan_ref01_match_dt0, nil)
+    assert.is_nil(err)
+    local deep_scan_ref01_data_dt0_load_result = helpers.to_map(type(deep_scan_ref01_data_dt0_loaded) == 'table' and deep_scan_ref01_data_dt0_loaded.data_get and deep_scan_ref01_data_dt0_loaded:data_get() or deep_scan_ref01_data_dt0_loaded)
+    assert.is_not_nil(deep_scan_ref01_data_dt0_load_result)
+    assert.is_true(runner.live_same_id(deep_scan_ref01_data_dt0_load_result["id"], deep_scan_ref01_data["id"]))
+
       return
     end
 
@@ -78,10 +130,28 @@ describe("DeepScanEntity", function()
     if setup.live then
       runner.live_pace()
     end
+    -- LIST
+    local deep_scan_ref01_match = {
+      ["organization_id"] = setup.idmap["organization01"],
+    }
+
+    local deep_scan_ref01_list_result, err = deep_scan_ref01_ent:list(deep_scan_ref01_match, nil)
+    assert.is_nil(err)
+    assert.is_table(deep_scan_ref01_list_result)
+
+    local found_item = vs.select(
+      runner.entity_list_to_data(deep_scan_ref01_list_result),
+      { id = deep_scan_ref01_data["id"] })
+    assert.is_false(vs.isempty(found_item))
+
+    if setup.live then
+      runner.live_pace()
+    end
     -- LOAD
     local deep_scan_ref01_match_dt0 = {
       id = deep_scan_ref01_data["id"],
     }
+    deep_scan_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
     local deep_scan_ref01_data_dt0_loaded, err = deep_scan_ref01_ent:load(deep_scan_ref01_match_dt0, nil)
     assert.is_nil(err)
     local deep_scan_ref01_data_dt0_load_result = helpers.to_map(type(deep_scan_ref01_data_dt0_loaded) == 'table' and deep_scan_ref01_data_dt0_loaded.data_get and deep_scan_ref01_data_dt0_loaded:data_get() or deep_scan_ref01_data_dt0_loaded)

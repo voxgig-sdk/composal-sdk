@@ -129,8 +129,7 @@ describe("RelayAgentConnectionDirect", function()
     else
       params["agent_id"] = "direct01"
       params["id"] = "direct02"
-      params["id"] = "direct03"
-      params["organization_id"] = "direct04"
+      params["organization_id"] = "direct03"
     end
 
     local result, err = client:direct({

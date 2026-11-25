@@ -127,6 +127,66 @@ main: kit: entity: git_import: {
       name: "create"
       points: [
         {
+          bf: [
+            "destination_mode"
+            "git_default_branch"
+            "idempotency_key"
+            "name"
+            "root_path"
+            "slug"
+            "source_branch"
+            "target_branch"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/git_imports"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/git_imports"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "git_imports"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
           bf: false
           co: {
             id: "POST /api/v1/git_imports/{id}/complete"
@@ -233,66 +293,6 @@ main: kit: entity: git_import: {
             }
             {
               lit: "retry"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          bf: [
-            "destination_mode"
-            "git_default_branch"
-            "idempotency_key"
-            "name"
-            "root_path"
-            "slug"
-            "source_branch"
-            "target_branch"
-          ]
-          co: {
-            id: "POST /api/v1/organizations/{organization_id}/git_imports"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "organization_id"
-                or: "organization_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "POST"
-          o: "/api/v1/organizations/{organization_id}/git_imports"
-          q: {
-            exist: [
-              "organization_id"
-            ]
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "git_imports"
             }
           ]
           t: {

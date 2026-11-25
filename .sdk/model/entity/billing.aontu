@@ -189,7 +189,7 @@ main: kit: entity: billing: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.addons`"
+            res: "`body`"
           }
         }
         {

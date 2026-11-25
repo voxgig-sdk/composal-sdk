@@ -74,8 +74,7 @@ describe('PagesSessionDirect', async () => {
       params.organization_id = setup.idmap['organization01']
     } else {
       params.id = 'direct01'
-      params.id = 'direct02'
-      params.organization_id = 'direct03'
+      params.organization_id = 'direct02'
     }
 
     const result: any = await client.direct({
@@ -101,7 +100,6 @@ describe('PagesSessionDirect', async () => {
       assert(calls[0].init.method === 'GET')
       assert(calls[0].url.includes('direct01'))
       assert(calls[0].url.includes('direct02'))
-      assert(calls[0].url.includes('direct03'))
     }
   })
 

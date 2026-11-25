@@ -85,7 +85,7 @@ class VerificationProjectScenarioEntityTest < Minitest::Test
       "id" => verification_project_scenario_ref01_data["id"],
     }
     verification_project_scenario_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
-    verification_project_scenario_ref01_match_dt0["project_id"] = [String, Numeric, TrueClass, FalseClass].any? { |c| verification_project_scenario_ref01_data["project_id"].is_a?(c) } ? verification_project_scenario_ref01_data["project_id"] : (setup[:idmap]["project_id"])
+    verification_project_scenario_ref01_match_dt0["project_id"] = [String, Numeric, TrueClass, FalseClass].any? { |c| verification_project_scenario_ref01_data["project_id"].is_a?(c) } ? verification_project_scenario_ref01_data["project_id"] : (setup[:idmap]["project_id"] || setup[:idmap]["project01"])
     verification_project_scenario_ref01_data_dt0_loaded = verification_project_scenario_ref01_ent.load(verification_project_scenario_ref01_match_dt0, nil)
     verification_project_scenario_ref01_data_dt0_load_result = Helpers.to_map(verification_project_scenario_ref01_data_dt0_loaded.respond_to?(:data_get) ? verification_project_scenario_ref01_data_dt0_loaded.data_get : verification_project_scenario_ref01_data_dt0_loaded)
     assert !verification_project_scenario_ref01_data_dt0_load_result.nil?
@@ -155,7 +155,7 @@ class VerificationProjectScenarioEntityTest < Minitest::Test
       "id" => verification_project_scenario_ref01_data["id"],
     }
     verification_project_scenario_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
-    verification_project_scenario_ref01_match_dt0["project_id"] = [String, Numeric, TrueClass, FalseClass].any? { |c| verification_project_scenario_ref01_data["project_id"].is_a?(c) } ? verification_project_scenario_ref01_data["project_id"] : (setup[:idmap]["project_id"])
+    verification_project_scenario_ref01_match_dt0["project_id"] = [String, Numeric, TrueClass, FalseClass].any? { |c| verification_project_scenario_ref01_data["project_id"].is_a?(c) } ? verification_project_scenario_ref01_data["project_id"] : (setup[:idmap]["project_id"] || setup[:idmap]["project01"])
     verification_project_scenario_ref01_data_dt0_loaded = verification_project_scenario_ref01_ent.load(verification_project_scenario_ref01_match_dt0, nil)
     verification_project_scenario_ref01_data_dt0_load_result = Helpers.to_map(verification_project_scenario_ref01_data_dt0_loaded.respond_to?(:data_get) ? verification_project_scenario_ref01_data_dt0_loaded.data_get : verification_project_scenario_ref01_data_dt0_loaded)
     assert !verification_project_scenario_ref01_data_dt0_load_result.nil?

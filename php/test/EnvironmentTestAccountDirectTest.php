@@ -33,10 +33,6 @@ class EnvironmentTestAccountDirectTest extends TestCase
             $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
             return;
         }
-        if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE" && null === ($setup["idmap"]['environment01'] ?? null)) {
-            fwrite(STDOUT, 'LIVE STEP {"id":"direct-list-environment_test_account","state":"excluded","attempted":false,"reason":"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives"}' . "\n");
-            $this->markTestSkipped('Live coverage incomplete: direct-list-environment_test_account excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)');
-        }
         if ($setup["live"]) {
             foreach (["environment01", "organization01"] as $_liveKey) {
                 if (null === ($setup["idmap"][$_liveKey] ?? null)) {

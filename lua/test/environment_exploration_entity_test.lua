@@ -99,7 +99,7 @@ function environment_exploration_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "environment_exploration01", "environment_exploration02", "environment_exploration03", "organization01", "organization02", "organization03", "project01", "project02", "project03", "environment01", "environment02", "environment03" },
+    { "environment_exploration01", "environment_exploration02", "environment_exploration03", "organization01", "organization02", "organization03", "project01", "project02", "project03", "environment01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

@@ -1,0 +1,49 @@
+# BasicPagesGithubIntegrationFlow
+
+main: kit: flow: BasicPagesGithubIntegrationFlow:
+{
+  entity: "pages_github_integration",
+  kind: "basic",
+  name: "BasicPagesGithubIntegrationFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "pages_github_integration_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "pages_github_integration_ref01",
+        srcdatavar: "pages_github_integration_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "pages_github_integration01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pages_github_integration_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPagesGithubIntegrationFlow"
+}

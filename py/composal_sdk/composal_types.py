@@ -266,51 +266,6 @@ class AgentAttachmentCreateData(TypedDict):
     file_name: str
 
 
-class AgentAutomation(TypedDict):
-    can_manage: bool
-    can_manage_events: bool
-    can_run: bool
-    can_schedule: bool
-    definition: dict
-    event_subscriptions: list
-    event_triggers: list
-    expected_revision: int
-    id: str
-    key: str
-    name: str
-    revision: int
-    schedule: Any
-    schedules: list
-    version: dict
-
-
-class AgentAutomationLoadMatch(TypedDict):
-    agent_id: str
-    id: str
-    organization_id: str
-
-
-class AgentAutomationListMatchRequired(TypedDict):
-    agent_id: str
-    organization_id: str
-
-
-class AgentAutomationListMatch(AgentAutomationListMatchRequired, total=False):
-    cursor: str
-    limit: int
-
-
-class AgentAutomationUpdateDataRequired(TypedDict):
-    agent_id: str
-    id: str
-    organization_id: str
-
-
-class AgentAutomationUpdateData(AgentAutomationUpdateDataRequired, total=False):
-    definition: dict
-    expected_revision: int
-
-
 class AgentAvatar(TypedDict):
     pass
 
@@ -758,8 +713,6 @@ class AgentFileLoadMatch(TypedDict):
 
 
 class AgentInputRequired(TypedDict):
-    browser_context: dict
-    client_time: dict
     conversation_id: str
     text: str
 
@@ -767,6 +720,8 @@ class AgentInputRequired(TypedDict):
 class AgentInput(AgentInputRequired, total=False):
     attachment_ids: list
     attachments: list
+    browser_context: dict
+    client_time: dict
     model_policy: Any
     requester_membership_id: str
     speed: str
@@ -775,8 +730,6 @@ class AgentInput(AgentInputRequired, total=False):
 class AgentInputCreateDataRequired(TypedDict):
     agent_id: str
     organization_id: str
-    browser_context: dict
-    client_time: dict
     conversation_id: str
     text: str
 
@@ -784,6 +737,8 @@ class AgentInputCreateDataRequired(TypedDict):
 class AgentInputCreateData(AgentInputCreateDataRequired, total=False):
     attachment_ids: list
     attachments: list
+    browser_context: dict
+    client_time: dict
     model_policy: Any
     requester_membership_id: str
     speed: str
@@ -1380,10 +1335,9 @@ class AgentRoderCreateData(TypedDict, total=False):
     session_purpose: Any
 
 
-class AgentRoutine(TypedDict):
+class AgentRoutineRequired(TypedDict):
     can_manage: bool
     consecutive_errors: int
-    credit_wait: dict
     description: str | None
     enabled: bool
     id: str
@@ -1397,6 +1351,10 @@ class AgentRoutine(TypedDict):
     routine: dict
     schedule: dict
     schedule_label: str
+
+
+class AgentRoutine(AgentRoutineRequired, total=False):
+    credit_wait: dict
     utility_model: dict
 
 
@@ -1667,9 +1625,8 @@ class AgentSlackCreateData(AgentSlackCreateDataRequired, total=False):
     signing_secret: Any
 
 
-class AgentSubagent(TypedDict):
+class AgentSubagentRequired(TypedDict):
     active: bool
-    attention: dict | None
     ended_at: str | None
     id: str
     model: str | None
@@ -1680,6 +1637,10 @@ class AgentSubagent(TypedDict):
     status: str
     title: str
     updated_at: str | None
+
+
+class AgentSubagent(AgentSubagentRequired, total=False):
+    attention: dict | None
 
 
 class AgentSubagentListMatchRequired(TypedDict):
@@ -1766,7 +1727,6 @@ class AgentSwarmRequired(TypedDict):
     started_at_label: str | None
     status: str
     summary: dict
-    target: dict
     task_count: int
     task_template_json: str | None
     tasks: list
@@ -1777,6 +1737,7 @@ class AgentSwarmRequired(TypedDict):
 
 class AgentSwarm(AgentSwarmRequired, total=False):
     repository: str
+    target: dict
 
 
 class AgentSwarmLoadMatch(TypedDict):
@@ -1794,7 +1755,6 @@ class AgentSwarmListMatch(AgentSwarmListMatchRequired, total=False):
 
 class AgentSwarmCreateDataRequired(TypedDict):
     organization_slug: str | None
-    target: dict
 
 
 class AgentSwarmCreateData(AgentSwarmCreateDataRequired, total=False):
@@ -1811,6 +1771,7 @@ class AgentSwarmCreateData(AgentSwarmCreateDataRequired, total=False):
     queued_at: str | None
     repository: str
     slug: str
+    target: dict
     task_template_json: str | None
     tasks: list
 
@@ -2046,7 +2007,6 @@ class AgentWorkflowUpdateData(AgentWorkflowUpdateDataRequired, total=False):
 
 
 class AgentWorkflowProposalRequired(TypedDict):
-    agent_steps: dict
     base_digest: str | None
     can_manage: bool
     can_revise: bool
@@ -2069,6 +2029,7 @@ class AgentWorkflowProposalRequired(TypedDict):
 
 
 class AgentWorkflowProposal(AgentWorkflowProposalRequired, total=False):
+    agent_steps: dict
     model_choices: list
     native_rows: list
     reasoning_choices: list
@@ -2092,9 +2053,8 @@ class AgentWorkflowProposalCreateData(AgentWorkflowProposalCreateDataRequired, t
     reasoning: Any
 
 
-class AgentWorkflowRun(TypedDict):
+class AgentWorkflowRunRequired(TypedDict):
     action: str
-    automation: dict | None
     budget_seconds: int | None
     budget_usd: float | None
     can_answer: bool
@@ -2102,7 +2062,6 @@ class AgentWorkflowRun(TypedDict):
     can_dismiss: bool
     checkpoint: dict | None
     conversation_id: str | None
-    decision_history: dict
     error: str | None
     finished_at: str | None
     flow_steps: list | None
@@ -2126,6 +2085,11 @@ class AgentWorkflowRun(TypedDict):
     wake_at: str | None
     workflow_digest: str | None
     workflow_path: str | None
+
+
+class AgentWorkflowRun(AgentWorkflowRunRequired, total=False):
+    automation: dict | None
+    decision_history: dict
 
 
 class AgentWorkflowRunLoadMatchRequired(TypedDict):
@@ -2774,6 +2738,45 @@ class AppDeploymentPatchData(TypedDict):
 class AppDeploymentRemoveMatch(TypedDict):
     app_id: str
     id: str
+
+
+class AppDeploymentDashboardRequired(TypedDict):
+    activity: list
+    app: dict
+    audit_events: list
+    capacity: dict
+    connections: list
+    data_resources: list
+    deployments: list
+    desired_states: list
+    environments: list
+    locations: list
+    managed_database_catalog: dict
+    observability: dict
+    operations: list
+    placements: list
+    reconciler_ticks: list
+    releases: list
+    rollback_deployments: list
+    rollouts: list
+    runtime_instances: list
+    service_bindings: list
+    service_views: list
+    services: list
+    storage_resources: list
+    summary: dict
+
+
+class AppDeploymentDashboard(AppDeploymentDashboardRequired, total=False):
+    id: str
+
+
+class AppDeploymentDashboardLoadMatchRequired(TypedDict):
+    id: str
+
+
+class AppDeploymentDashboardLoadMatch(AppDeploymentDashboardLoadMatchRequired, total=False):
+    metrics_range: str
 
 
 class AppDeploymentOperationRequired(TypedDict):
@@ -3995,9 +3998,8 @@ class AutomationEventUpdateData(AutomationEventUpdateDataRequired, total=False):
     subscription_key: str
 
 
-class AutomationRun(TypedDict):
+class AutomationRunRequired(TypedDict):
     action: str
-    automation: dict | None
     budget_seconds: int | None
     budget_usd: float | None
     can_answer: bool
@@ -4005,7 +4007,6 @@ class AutomationRun(TypedDict):
     can_dismiss: bool
     checkpoint: dict | None
     conversation_id: str | None
-    decision_history: dict
     error: str | None
     finished_at: str | None
     flow_steps: list | None
@@ -4032,6 +4033,11 @@ class AutomationRun(TypedDict):
     wake_at: str | None
     workflow_digest: str | None
     workflow_path: str | None
+
+
+class AutomationRun(AutomationRunRequired, total=False):
+    automation: dict | None
+    decision_history: dict
 
 
 class AutomationRunCreateData(TypedDict):
@@ -5102,11 +5108,14 @@ class CdnSpaceObjectRemoveMatch(TypedDict):
     id: str
 
 
-class Change(TypedDict):
+class ChangeRequired(TypedDict):
     counts: dict
     filters: dict
-    github_sync: dict
     result: Any
+
+
+class Change(ChangeRequired, total=False):
+    github_sync: dict
 
 
 class ChangeLoadMatchRequired(TypedDict):
@@ -5159,39 +5168,27 @@ class ChangeAssetCreateData(TypedDict):
 
 class ChangeCommentRequired(TypedDict):
     body: str
-    capabilities: dict
-    id: str
-    outdated: bool
-    patchset_number: int | None
-    resolved: bool
-    resolved_by: dict
-    user: dict
+    comments: list
 
 
 class ChangeComment(ChangeCommentRequired, total=False):
-    change_id: str | None
-    created_at: str | None
-    created_at_label: str | None
+    comment: dict
+    id: str
     kind: str | None
     line: int | None
     parent_comment_id: str | None
     patchset_id: str | None
     path: str | None
-    replies: list
-    resolved_at: str | None
-    resolved_at_label: str | None
     side: str | None
-    updated_at: str | None
-    updated_at_label: str | None
 
 
-class ChangeCommentListMatchRequired(TypedDict):
+class ChangeCommentLoadMatchRequired(TypedDict):
     change_id: str
     organization_id: str
     repo_id: str
 
 
-class ChangeCommentListMatch(ChangeCommentListMatchRequired, total=False):
+class ChangeCommentLoadMatch(ChangeCommentLoadMatchRequired, total=False):
     path: str
     resolved: bool
 
@@ -5320,12 +5317,7 @@ class ChangeGroupMemberRemoveMatch(TypedDict):
 
 
 class ChangeLabelRequired(TypedDict):
-    approval: dict
-    capabilities: dict
-    current_patchset: dict
-    github_pull_request: dict
     id: str
-    landed_by: dict
     number: int
     status: str
     target_branch: str
@@ -5335,8 +5327,10 @@ class ChangeLabelRequired(TypedDict):
 class ChangeLabel(ChangeLabelRequired, total=False):
     accepted: bool
     add: list
+    approval: dict
     assets: list
     author: Any
+    capabilities: dict
     change_key: str
     checks: list
     checks_status: str
@@ -5344,16 +5338,19 @@ class ChangeLabel(ChangeLabelRequired, total=False):
     comments_count: int
     comments_count_label: str
     commit_message: str | None
+    current_patchset: dict
     description: str | None
     draft: bool
     folded_into_number: int | None
     github_projection_status: str | None
+    github_pull_request: dict
     github_pull_requests: list
     group: dict | None
     has_description: bool
     jj_change_id: str | None
     labels: list
     landable: bool
+    landed_by: dict
     orphaned: bool
     orphaned_at: str
     orphaned_at_label: str
@@ -5496,13 +5493,13 @@ class ChangeTranscriptRequired(TypedDict):
     redaction_count: int
     status: str
     superseded: bool
-    user: dict
 
 
 class ChangeTranscript(ChangeTranscriptRequired, total=False):
     original_resume: Any
     session_id: str | None
     session_title: str | None
+    user: dict
 
 
 class ChangeTranscriptListMatch(TypedDict):
@@ -5942,12 +5939,12 @@ class ContactSubmissionCreateData(ContactSubmissionCreateDataRequired, total=Fal
 
 
 class ControlComputerRequired(TypedDict):
-    connection: dict
     consent: dict
     device: dict
 
 
 class ControlComputer(ControlComputerRequired, total=False):
+    connection: dict
     id: str
     provider_status: list
 
@@ -5978,9 +5975,7 @@ class ControlComputerControlOperationRequired(TypedDict):
     action: str
     arguments: dict
     created_at: str
-    delivery: dict
     device_id: str
-    end: dict
     expires_at: str
     id: str
     key: str
@@ -5992,7 +5987,9 @@ class ControlComputerControlOperationRequired(TypedDict):
 
 
 class ControlComputerControlOperation(ControlComputerControlOperationRequired, total=False):
+    delivery: dict
     diagnostic_code: str
+    end: dict
 
 
 class ControlComputerControlOperationLoadMatch(TypedDict):
@@ -6059,7 +6056,6 @@ class CredentialSignInCheckRequired(TypedDict):
     reproductions: list
     saves_scenarios: bool
     scannable_flows: list
-    scenario_generation: dict
     sign_in_needs_answer: bool
     sign_in_outcome: str
     status: str
@@ -6075,6 +6071,7 @@ class CredentialSignInCheck(CredentialSignInCheckRequired, total=False):
     mode: str
     observed_at: str
     project_id: str | None
+    scenario_generation: dict
     sign_in_question: str | None
     startup_retryable: bool
     title: str
@@ -6114,18 +6111,18 @@ class DataResourceRotateCredentialCreateData(TypedDict):
 
 
 class DeepScanRequired(TypedDict):
-    active: list
     agent_filters: dict
     agents: list
+    check_count: int
     concurrency: int
     covered_areas: list
     created_at: str
     deadline_at: str
     demo_project: dict | None
+    duration_ms: int | None
     ended_early: bool
     environment_id: str
     environment_name: str
-    explorations: list
     explorer_activity: dict
     finding_count: int
     findings: list
@@ -6133,12 +6130,10 @@ class DeepScanRequired(TypedDict):
     goal: str
     huntable_flows: list
     id: str
-    launch_options: dict
     max_seconds: int
     max_testers: int
     next_scan_improvements: list
     onboarding: bool
-    pagination: dict
     paywalled: bool
     permissions: dict
     priority_counts: dict
@@ -6148,9 +6143,9 @@ class DeepScanRequired(TypedDict):
     reproductions: list
     saves_scenarios: bool
     scannable_flows: list
-    scenario_generation: dict
     sign_in_needs_answer: bool
     sign_in_outcome: str
+    started_at: str
     status: str
     time_limit_reached: bool
     unlock: Any
@@ -6161,28 +6156,40 @@ class DeepScan(DeepScanRequired, total=False):
     account_id: str | None
     can_continue: bool
     chat_messages: list
+    credential_name: str | None
     finished_at: str | None
     idempotency_key: str
     mode: str
     observed_at: str
     project_id: str | None
+    scenario_count: int
+    scenario_generation: dict
+    scenarios_pending: bool
     sign_in_question: str | None
     startup_retryable: bool
     title: str
 
 
 class DeepScanLoadMatchRequired(TypedDict):
+    id: str
     organization_id: str
 
 
 class DeepScanLoadMatch(DeepScanLoadMatchRequired, total=False):
-    id: str
     agent_id: str
     evidence: str
     finding_id: str
     project_id: str
+
+
+class DeepScanListMatchRequired(TypedDict):
+    organization_id: str
+
+
+class DeepScanListMatch(DeepScanListMatchRequired, total=False):
     finding: str
     page: int
+    project_id: str
     query: str
     status: str
 
@@ -6584,11 +6591,9 @@ class DesktopLocalAgentResponseCreateData(DesktopLocalAgentResponseCreateDataReq
 class DeviceRequired(TypedDict):
     architecture: str
     channel: str
-    coding_connection: dict | None
     connection_checked_at: str | None
     connection_status: str
     control_delivery_policy: dict
-    control_spawn_policy: dict
     created_at: str
     device: dict
     environment: str
@@ -6605,6 +6610,8 @@ class DeviceRequired(TypedDict):
 
 
 class Device(DeviceRequired, total=False):
+    coding_connection: dict | None
+    control_spawn_policy: dict
     provider_status: list
     scheduled_check_ins: bool
 
@@ -6685,41 +6692,6 @@ class DeviceControlMessageListMatchRequired(TypedDict):
 
 class DeviceControlMessageListMatch(DeviceControlMessageListMatchRequired, total=False):
     cursor: str
-
-
-class DeviceControlOperationRequired(TypedDict):
-    action: str
-    arguments: dict
-    created_at: str
-    delivery: dict
-    device_id: str
-    end: dict
-    expires_at: str
-    id: str
-    key: str
-    provider: str
-    references: dict
-    result: Any
-    result_expired: bool
-    state: str
-
-
-class DeviceControlOperation(DeviceControlOperationRequired, total=False):
-    diagnostic_code: str
-
-
-class DeviceControlOperationLoadMatch(TypedDict):
-    device_id: str
-    id: str
-    organization_id: str
-
-
-class DeviceControlOperationCreateData(TypedDict):
-    device_id: str
-    organization_id: str
-    action: str
-    arguments: dict
-    key: str
 
 
 class DeviceEnterpriseRelay(TypedDict):
@@ -6815,6 +6787,41 @@ class DeviceLocalEventCreateData(TypedDict):
     device_id: str
     organization_id: str
     event: str
+
+
+class DeviceOperationRequired(TypedDict):
+    action: str
+    arguments: dict
+    created_at: str
+    device_id: str
+    expires_at: str
+    id: str
+    key: str
+    provider: str
+    references: dict
+    result: Any
+    result_expired: bool
+    state: str
+
+
+class DeviceOperation(DeviceOperationRequired, total=False):
+    delivery: dict
+    diagnostic_code: str
+    end: dict
+
+
+class DeviceOperationLoadMatch(TypedDict):
+    device_id: str
+    id: str
+    organization_id: str
+
+
+class DeviceOperationCreateData(TypedDict):
+    device_id: str
+    organization_id: str
+    action: str
+    arguments: dict
+    key: str
 
 
 class DevicePairingRequired(TypedDict):
@@ -7144,104 +7151,6 @@ class EmailVerificationCreateData(TypedDict, total=False):
     email: Any
 
 
-class EnvironmentRequired(TypedDict):
-    active_revision_id: str | None
-    agent_sign_up_available: bool
-    allowed_actions: str
-    billing: dict
-    cleanup: list
-    connection: str
-    created_at: str
-    default_policy_json: dict
-    discovery_defaults: dict
-    environment: dict
-    hosted_app_id: str | None
-    id: str
-    imessage_number: str | None
-    included_deep_scan: bool
-    lock_version: int
-    managed_google_available: bool
-    managed_google_email: str
-    name: str
-    network_connections: list
-    organization_id: str
-    permissions: dict
-    project_id: str | None
-    repository_id: str | None
-    revisions: list
-    sign_in_check_available: bool
-    slug: str
-    status: str
-    target_kind: str | None
-    target_url: str | None
-    test_accounts: dict
-    updated_at: str
-    verify_network_connection_id: str | None
-
-
-class Environment(EnvironmentRequired, total=False):
-    default_policy: dict
-    exploration_accounts: list
-    explorations: list
-    first_run: Any
-    messaging_tester_number: str | None
-    onboarding_discovery: Any
-    pending_accounts: list
-    setup_discovery_id: str | None
-    version: int
-
-
-class EnvironmentLoadMatchRequired(TypedDict):
-    organization_id: str
-
-
-class EnvironmentLoadMatch(EnvironmentLoadMatchRequired, total=False):
-    id: str
-    project_id: str
-
-
-class EnvironmentCreateDataRequired(TypedDict):
-    organization_id: str
-    slug: str
-
-
-class EnvironmentCreateData(EnvironmentCreateDataRequired, total=False):
-    allowed_actions: str
-    default_policy: dict
-    imessage_number: str | None
-    messaging_tester_number: str | None
-    name: str
-    project_id: str | None
-    repository_id: str | None
-    target_kind: str | None
-    target_url: str | None
-
-
-class EnvironmentUpdateData(TypedDict):
-    id: str
-    organization_id: str
-
-
-class EnvironmentPatchDataRequired(TypedDict):
-    id: str
-    organization_id: str
-
-
-class EnvironmentPatchData(EnvironmentPatchDataRequired, total=False):
-    allowed_actions: str
-    imessage_number: str | None
-    messaging_tester_number: str | None
-    name: str
-    target_url: str | None
-    verify_network_connection_id: str | None
-    version: int
-
-
-class EnvironmentRemoveMatch(TypedDict):
-    id: str
-    organization_id: str
-
-
 class EnvironmentDiscoveryRunRequired(TypedDict):
     account_id: str | None
     deadline_at: str
@@ -7249,13 +7158,13 @@ class EnvironmentDiscoveryRunRequired(TypedDict):
     failure_code: str | None
     id: str
     queued_at: str
-    recording: dict
     result: dict | None
     status: str
 
 
 class EnvironmentDiscoveryRun(EnvironmentDiscoveryRunRequired, total=False):
     evidence: list
+    recording: dict
 
 
 class EnvironmentDiscoveryRunLoadMatch(TypedDict):
@@ -7304,7 +7213,6 @@ class EnvironmentExplorationRequired(TypedDict):
     reproductions: list
     saves_scenarios: bool
     scannable_flows: list
-    scenario_generation: dict
     sign_in_needs_answer: bool
     sign_in_outcome: str
     status: str
@@ -7323,6 +7231,7 @@ class EnvironmentExploration(EnvironmentExplorationRequired, total=False):
     observed_at: str
     persona_id: str | None
     project_id: str | None
+    scenario_generation: dict
     sign_in_question: str | None
     startup_retryable: bool
     title: str
@@ -7477,25 +7386,6 @@ class EnvironmentTestAccountPatchData(EnvironmentTestAccountPatchDataRequired, t
     revision_id: str
 
 
-class Evidence(TypedDict, total=False):
-    id: str
-
-
-class EvidenceLoadMatchRequired(TypedDict):
-    organization_id: str
-
-
-class EvidenceLoadMatch(EvidenceLoadMatchRequired, total=False):
-    id: str
-    agent_id: str
-    cursor: str
-    exploration_id: str
-    kind: str
-    limit: int
-    repository_id: str
-    scenario_run_id: str
-
-
 class ExecutionDesiredStateRequired(TypedDict):
     desired_state: dict
     stop_observed: bool
@@ -7645,7 +7535,6 @@ class ExplorationRequired(TypedDict):
     reproductions: list
     saves_scenarios: bool
     scannable_flows: list
-    scenario_generation: dict
     sign_in_needs_answer: bool
     sign_in_outcome: str
     started_at: str
@@ -7667,6 +7556,7 @@ class Exploration(ExplorationRequired, total=False):
     persona_id: str | None
     project_id: str | None
     scenario_count: int
+    scenario_generation: dict
     scenarios_pending: bool
     sign_in_question: str | None
     startup_retryable: bool
@@ -7742,7 +7632,6 @@ class ExplorationMessageRequired(TypedDict):
     reproductions: list
     saves_scenarios: bool
     scannable_flows: list
-    scenario_generation: dict
     sign_in_needs_answer: bool
     sign_in_outcome: str
     status: str
@@ -7759,6 +7648,7 @@ class ExplorationMessage(ExplorationMessageRequired, total=False):
     mode: str
     observed_at: str
     project_id: str | None
+    scenario_generation: dict
     sign_in_question: str | None
     startup_retryable: bool
     title: str
@@ -7828,7 +7718,6 @@ class ExplorationScenarioRequired(TypedDict):
     reproductions: list
     saves_scenarios: bool
     scannable_flows: list
-    scenario_generation: dict
     sign_in_needs_answer: bool
     sign_in_outcome: str
     status: str
@@ -7844,6 +7733,7 @@ class ExplorationScenario(ExplorationScenarioRequired, total=False):
     mode: str
     observed_at: str
     project_id: str | None
+    scenario_generation: dict
     sign_in_question: str | None
     startup_retryable: bool
     title: str
@@ -7870,7 +7760,6 @@ class FindingRequired(TypedDict):
     occurrence_count: int
     organization_id: str
     permissions: dict
-    reported_occurrence: dict | None
     repository_id: str | None
     safe_summary: str
     severity: str
@@ -7883,6 +7772,7 @@ class FindingRequired(TypedDict):
 class Finding(FindingRequired, total=False):
     deferred_until: str | None
     reason: str
+    reported_occurrence: dict | None
     scenario_occurrences: list
 
 
@@ -8268,34 +8158,6 @@ class GithubConnectionCreateData(GithubConnectionCreateDataRequired, total=False
     replace: bool
 
 
-class GithubIntegration(TypedDict):
-    account_avatar_url: str | None
-    account_login: str
-    connection_status: str
-    connection_status_label: str
-    github_installation: Any
-    health: dict
-    id: str
-    imported_repositories_count: int
-    imported_repositories_count_label: str
-    organization: dict
-    pagination: dict
-    repositories: list
-
-
-class GithubIntegrationLoadMatchRequired(TypedDict):
-    id: str
-    organization_id: str
-
-
-class GithubIntegrationLoadMatch(GithubIntegrationLoadMatchRequired, total=False):
-    page: int
-
-
-class GithubIntegrationListMatch(TypedDict):
-    organization_id: str
-
-
 class GithubOnboarding(TypedDict):
     accounts: list
     active_batch_id: str | None
@@ -8464,11 +8326,11 @@ class GithubRunnerHistoryRequired(TypedDict):
     repositories: list
     runs: list
     success_rate: int | None
-    usage: dict
 
 
 class GithubRunnerHistory(GithubRunnerHistoryRequired, total=False):
     setup: Any
+    usage: dict
 
 
 class GithubRunnerHistoryLoadMatchRequired(TypedDict):
@@ -9183,11 +9045,11 @@ class LeaseStepUpdateData(TypedDict):
 
 class LeaseVerifyDiagnosticRequired(TypedDict):
     browser_events: dict
-    live_browser: dict
-    live_view: dict
 
 
 class LeaseVerifyDiagnostic(LeaseVerifyDiagnosticRequired, total=False):
+    live_browser: dict
+    live_view: dict
     steps: list
 
 
@@ -9196,11 +9058,11 @@ class LeaseVerifyDiagnosticCreateDataRequired(TypedDict):
     swarm_id: str
     task_id: str
     browser_events: dict
-    live_browser: dict
-    live_view: dict
 
 
 class LeaseVerifyDiagnosticCreateData(LeaseVerifyDiagnosticCreateDataRequired, total=False):
+    live_browser: dict
+    live_view: dict
     steps: list
 
 
@@ -9298,9 +9160,7 @@ class LocalThreadOperationRequired(TypedDict):
     action: str
     arguments: dict
     created_at: str
-    delivery: dict
     device_id: str
-    end: dict
     expires_at: str
     id: str
     key: str
@@ -9312,7 +9172,9 @@ class LocalThreadOperationRequired(TypedDict):
 
 
 class LocalThreadOperation(LocalThreadOperationRequired, total=False):
+    delivery: dict
     diagnostic_code: str
+    end: dict
 
 
 class LocalThreadOperationLoadMatchRequired(TypedDict):
@@ -9441,7 +9303,6 @@ class MeRequired(TypedDict):
     github_pr_user_authorization_login: str | None
     github_prs_authored_by_change_author: bool
     id: str
-    impersonation: dict | None
     name: str | None
     onboarding: dict
     organizations: list
@@ -9454,6 +9315,7 @@ class Me(MeRequired, total=False):
     analytics_distinct_id: str
     api_base_url: str
     api_token: str
+    impersonation: dict | None
     next_path: str
     openai_sign_in_connected: bool
     openai_sign_in_enabled: bool
@@ -9609,29 +9471,15 @@ class MediaFileLoadMatch(MediaFileLoadMatchRequired, total=False):
     inline: bool
 
 
-class MemberRequired(TypedDict):
-    accepted_at: str | None
-    accepted_by_user: Any
+class Member(TypedDict):
     created_at: str
     created_at_label: str | None
-    email: str
-    expires_at: str | None
-    expires_at_label: str | None
     id: str
-    invite_url: str | None
-    invited_by_user: Any
     is_self: bool
-    organization: dict
-    revoked_at: str | None
     role: str
-    status: str
     updated_at: str
     updated_at_label: str | None
     user: dict
-
-
-class Member(MemberRequired, total=False):
-    email_delivery_status: str
 
 
 class MemberListMatch(TypedDict):
@@ -9728,7 +9576,6 @@ class MemoryRemoveMatch(MemoryRemoveMatchRequired, total=False):
 
 
 class MergeQueueEntryRequired(TypedDict):
-    analytics: dict
     expected_version: int
     idempotency_key: str
     kind: str
@@ -9737,6 +9584,7 @@ class MergeQueueEntryRequired(TypedDict):
 
 
 class MergeQueueEntry(MergeQueueEntryRequired, total=False):
+    analytics: dict
     change_id: str | None
     expected_target_commit_id: str | None
     expected_target_version: int | None
@@ -9772,67 +9620,6 @@ class MergeQueueEntryRemoveMatch(TypedDict):
     repo_id: str
 
 
-class MergeRequestRequired(TypedDict):
-    available_tests: list
-    base_sha: str
-    comment_url: str | None
-    draft: bool
-    findings: list
-    github_repository: str | None
-    github_url: str | None
-    head_sha: str
-    id: str
-    idempotency_key: str
-    number: int
-    pagination: dict
-    permissions: dict
-    preview_cleanup_ready: bool
-    project_id: str | None
-    project_slug: str | None
-    provider: str
-    pull_request: dict
-    repository_id: str
-    request_label: str
-    requested_run_id: str | None
-    runs: list
-    source_branch: str | None
-    source_repository: str | None
-    source_url: str | None
-    state: str
-    title: str
-    updated_at: str
-    web_path: str
-
-
-class MergeRequest(MergeRequestRequired, total=False):
-    branch: str
-    current_run: Any
-    preview_url: str | None
-    project: Any
-
-
-class MergeRequestLoadMatchRequired(TypedDict):
-    id: str
-    organization_id: str
-
-
-class MergeRequestLoadMatch(MergeRequestLoadMatchRequired, total=False):
-    page: int
-
-
-class MergeRequestCreateDataRequired(TypedDict):
-    organization_id: str
-    idempotency_key: str
-    number: int
-
-
-class MergeRequestCreateData(MergeRequestCreateDataRequired, total=False):
-    branch: str
-    head_sha: str
-    project_id: str | None
-    repository_id: str
-
-
 class MergeResolutionRequired(TypedDict):
     action: str
     base: str
@@ -9866,13 +9653,13 @@ class MessagingConversationMessageRequired(TypedDict):
     attachment_max_bytes: int
     client_operation_id: str
     content: str
-    media: dict
     messages: list
     send_blocked_reason: str | None
 
 
 class MessagingConversationMessage(MessagingConversationMessageRequired, total=False):
     id: str
+    media: dict
     media_upload_ids: list
     reply_to: str
     retry_attachment: bool
@@ -9887,10 +9674,10 @@ class MessagingConversationMessageCreateDataRequired(TypedDict):
     project_id: str
     client_operation_id: str
     content: str
-    media: dict
 
 
 class MessagingConversationMessageCreateData(MessagingConversationMessageCreateDataRequired, total=False):
+    media: dict
     media_upload_ids: list
     reply_to: str
     retry_attachment: bool
@@ -11028,6 +10815,34 @@ class PagesBillingLoadMatch(TypedDict):
     organization_id: str
 
 
+class PagesGithubIntegration(TypedDict):
+    account_avatar_url: str | None
+    account_login: str
+    connection_status: str
+    connection_status_label: str
+    github_installation: Any
+    health: dict
+    id: str
+    imported_repositories_count: int
+    imported_repositories_count_label: str
+    organization: dict
+    pagination: dict
+    repositories: list
+
+
+class PagesGithubIntegrationLoadMatchRequired(TypedDict):
+    id: str
+    organization_id: str
+
+
+class PagesGithubIntegrationLoadMatch(PagesGithubIntegrationLoadMatchRequired, total=False):
+    page: int
+
+
+class PagesGithubIntegrationListMatch(TypedDict):
+    organization_id: str
+
+
 class PagesGithubOnboarding(TypedDict):
     onboarding: dict
     organization: dict
@@ -11534,19 +11349,25 @@ class ProductCreateData(TypedDict):
     product: str
 
 
-class ProductMapIdentityDecision(TypedDict):
+class ProductMapIdentityDecisionRequired(TypedDict):
     observations: list
     operation: str
     reason: str
+
+
+class ProductMapIdentityDecision(ProductMapIdentityDecisionRequired, total=False):
     target: dict
 
 
-class ProductMapIdentityDecisionCreateData(TypedDict):
+class ProductMapIdentityDecisionCreateDataRequired(TypedDict):
     organization_id: str
     project_id: str
     observations: list
     operation: str
     reason: str
+
+
+class ProductMapIdentityDecisionCreateData(ProductMapIdentityDecisionCreateDataRequired, total=False):
     target: dict
 
 
@@ -11775,7 +11596,6 @@ class ProjectRequired(TypedDict):
     name: str
     network_connections: list
     organization_id: str
-    overview: dict
     permissions: dict
     personas: list
     project: dict
@@ -11783,7 +11603,6 @@ class ProjectRequired(TypedDict):
     pull_requests: list
     purpose: str | None
     runs: list
-    scenario_history: dict
     scenario_states: dict
     scenarios: list
     slug: str
@@ -11794,6 +11613,8 @@ class ProjectRequired(TypedDict):
 
 
 class Project(ProjectRequired, total=False):
+    overview: dict
+    scenario_history: dict
     setup_required: bool
 
 
@@ -11866,16 +11687,16 @@ class ProjectPatchData(ProjectPatchDataRequired, total=False):
 
 
 class ProjectAndroidApkRequired(TypedDict):
-    android: dict
     description: str
     image: str
-    ios: dict
-    managed_binary: dict
 
 
 class ProjectAndroidApk(ProjectAndroidApkRequired, total=False):
+    android: dict
     artifact_paths: list
+    ios: dict
     launch_command: str
+    managed_binary: dict
     platform: str
     provider: str
     setup_command: str
@@ -11894,13 +11715,13 @@ class ProjectCodeMapRequired(TypedDict):
     id: str
     name: str
     repository_id: str
-    revision: dict
     slug: str
     status: str
 
 
 class ProjectCodeMap(ProjectCodeMapRequired, total=False):
     ref: str
+    revision: dict
 
 
 class ProjectCodeMapListMatchRequired(TypedDict):
@@ -12130,16 +11951,16 @@ class ProjectFixtureRemoveMatch(TypedDict):
 
 
 class ProjectIosAppRequired(TypedDict):
-    android: dict
     description: str
     image: str
-    ios: dict
-    managed_binary: dict
 
 
 class ProjectIosApp(ProjectIosAppRequired, total=False):
+    android: dict
     artifact_paths: list
+    ios: dict
     launch_command: str
+    managed_binary: dict
     platform: str
     provider: str
     setup_command: str
@@ -12255,6 +12076,27 @@ class ProjectOverviewPullRequestListMatch(TypedDict):
     project_id: str
 
 
+class ProjectPrTestingRequired(TypedDict):
+    project: dict
+    pull_request_options: dict
+
+
+class ProjectPrTesting(ProjectPrTestingRequired, total=False):
+    id: str
+
+
+class ProjectPrTestingLoadMatchRequired(TypedDict):
+    id: str
+    organization_id: str
+
+
+class ProjectPrTestingLoadMatch(ProjectPrTestingLoadMatchRequired, total=False):
+    provider: str
+    repository_id: str
+    repository_search: str
+    source_repository: str
+
+
 class ProjectProductMap(TypedDict):
     pass
 
@@ -12282,6 +12124,35 @@ class ProjectProductMapLoadMatch(ProjectProductMapLoadMatchRequired, total=False
 class ProjectProductMapCreateData(TypedDict):
     organization_id: str
     project_id: str
+
+
+class ProjectProductMapComparisonRequired(TypedDict):
+    accounts: list
+    comparison: Any
+    filters: Any
+    project: dict
+    requirements: list
+    revisions: list
+
+
+class ProjectProductMapComparison(ProjectProductMapComparisonRequired, total=False):
+    id: str
+
+
+class ProjectProductMapComparisonLoadMatchRequired(TypedDict):
+    id: str
+    organization_id: str
+
+
+class ProjectProductMapComparisonLoadMatch(ProjectProductMapComparisonLoadMatchRequired, total=False):
+    account_id: str
+    area: str
+    before: str
+    compare_revision_id: str
+    persona_id: str
+    query: str
+    revision_id: str
+    since: str
 
 
 class ProjectRecordingRequired(TypedDict):
@@ -12358,13 +12229,16 @@ class ProjectRunPlanListMatch(ProjectRunPlanListMatchRequired, total=False):
     page: int
 
 
-class ProjectRunPlanCreateData(TypedDict):
+class ProjectRunPlanCreateDataRequired(TypedDict):
     organization_id: str
     project_id: str
     dependencies: list
-    identity_probe: dict | None
     name: str
     nodes: list
+
+
+class ProjectRunPlanCreateData(ProjectRunPlanCreateDataRequired, total=False):
+    identity_probe: dict | None
 
 
 class ProjectRunPlanUpdateDataRequired(TypedDict):
@@ -12532,72 +12406,13 @@ class ProjectScenarioRowListMatch(ProjectScenarioRowListMatchRequired, total=Fal
 
 
 class ProjectSetting(TypedDict):
-    available_messaging_environments: list
-    messaging_conversations: list
-    messaging_enabled: bool
-    permissions: dict
-    project: dict
-    tester_numbers: list
+    id: str
+    name: str
 
 
-class ProjectSettingLoadMatch(TypedDict):
+class ProjectSettingListMatch(TypedDict):
     organization_id: str
     project_id: str
-
-
-class PullRequestRequired(TypedDict):
-    available_tests: list
-    findings: list
-    idempotency_key: str
-    pagination: dict
-    permissions: dict
-    preview_cleanup_ready: bool
-    pull_request: dict
-    runs: list
-
-
-class PullRequest(PullRequestRequired, total=False):
-    branch: str
-    cleanup_only: bool
-    current_run: Any
-    head_sha: str
-    id: str
-    imessage_number: str
-    number: int
-    preview_url: str | None
-    project: Any
-    project_id: str
-    repository_id: str
-
-
-class PullRequestLoadMatchRequired(TypedDict):
-    id: str
-    organization_id: str
-
-
-class PullRequestLoadMatch(PullRequestLoadMatchRequired, total=False):
-    page: int
-
-
-class PullRequestCreateDataRequired(TypedDict):
-    organization_id: str
-    idempotency_key: str
-
-
-class PullRequestCreateData(PullRequestCreateDataRequired, total=False):
-    branch: str
-    cleanup_only: bool
-    head_sha: str
-    imessage_number: str
-    number: int
-    preview_url: str | None
-    project_id: str
-    repository_id: str
-
-
-class PullRequestRemoveMatch(TypedDict):
-    id: str
-    organization_id: str
 
 
 class PullRequestActionRequired(TypedDict):
@@ -13803,7 +13618,6 @@ class RunArtifactCreateData(TypedDict):
 class RunJobRequired(TypedDict):
     active: bool
     allow_failure: bool
-    cache_archive_observations: dict | None
     ci_pipeline_run_id: str
     ci_runner_id: str | None
     created_at: str
@@ -13822,7 +13636,6 @@ class RunJobRequired(TypedDict):
     organization_id: str
     queued_at: str | None
     retry_number: int
-    reuse: dict | None
     runner_label_selector: str | None
     slug: str
     started_at: str | None
@@ -13836,8 +13649,10 @@ class RunJobRequired(TypedDict):
 
 
 class RunJob(RunJobRequired, total=False):
+    cache_archive_observations: dict | None
     execution_profile: str | None
     reconciliation_id: str | None
+    reuse: dict | None
 
 
 class RunJobLoadMatchRequired(TypedDict):
@@ -13900,41 +13715,35 @@ class RunSearchLoadMatch(RunSearchLoadMatchRequired, total=False):
     query: str
 
 
-class RunUpdate(TypedDict):
-    base_sha: str
-    can_verify: bool
-    comment_url: str | None
-    draft: bool
-    github_repository: str | None
-    github_url: str | None
-    head_sha: str
-    id: str
-    latest_created_at: str | None
-    latest_current: bool
-    latest_head_sha: str | None
-    latest_reason: str | None
-    latest_run_id: str | None
-    latest_state: str | None
-    number: int
-    project_id: str | None
-    project_slug: str | None
-    provider: str
-    repository_id: str
-    request_label: str
-    source_branch: str | None
-    source_repository: str | None
-    source_url: str | None
-    state: str
-    title: str
-    updated_at: str
-    web_path: str
+class RunUpdateRequired(TypedDict):
+    active_runs: list
+    checkout_required: bool
+    cli_signed_in_at: str | None
+    counts: dict
+    demo_project: dict | None
+    environments: list
+    included_deep_scan: bool
+    organization: dict
+    permissions: dict
+    project: Any
+    repositories: list
+    runs: list
+    runs_pagination: dict
+    suggested_app_url: str | None
+    url_first_start: bool
 
 
-class RunUpdateListMatchRequired(TypedDict):
+class RunUpdate(RunUpdateRequired, total=False):
+    onboarding_discovery: Any
+    pull_request_launch_options: list
+    pull_requests: list
+
+
+class RunUpdateLoadMatchRequired(TypedDict):
     organization_id: str
 
 
-class RunUpdateListMatch(RunUpdateListMatchRequired, total=False):
+class RunUpdateLoadMatch(RunUpdateLoadMatchRequired, total=False):
     page: int
     query: str
     status: str
@@ -14293,10 +14102,8 @@ class SettingMutationLeaseCreateData(SettingMutationLeaseCreateDataRequired, tot
     reason: Any
 
 
-class Signal(TypedDict):
+class SignalRequired(TypedDict):
     acked_at: str | None
-    acked_by: dict | None
-    agent_runs: dict
     app_service_id: str | None
     attribution: dict
     created_at: str
@@ -14308,13 +14115,18 @@ class Signal(TypedDict):
     occurred_at: str
     organization_id: str
     payload: dict
-    recovery: dict
-    resolution: dict
     severity: str
     source: dict
     subject_id: str | None
     subject_type: str | None
     summary: str
+
+
+class Signal(SignalRequired, total=False):
+    acked_by: dict | None
+    agent_runs: dict
+    recovery: dict
+    resolution: dict
 
 
 class SignalLoadMatch(TypedDict):
@@ -15147,7 +14959,6 @@ class SparkAgentLocalThreadRequired(TypedDict):
     can_interrupt: bool
     can_send: bool
     created_at: str
-    delivery: dict
     device_id: str
     device_name: str
     end: Any
@@ -15160,7 +14971,6 @@ class SparkAgentLocalThreadRequired(TypedDict):
     parent_conversation_id: str | None
     provider: str
     references: dict
-    relay_participant: dict
     result: Any
     result_expired: bool
     section: str
@@ -15173,8 +14983,10 @@ class SparkAgentLocalThreadRequired(TypedDict):
 
 class SparkAgentLocalThread(SparkAgentLocalThreadRequired, total=False):
     can_disconnect_relay: bool
+    delivery: dict
     diagnostic_code: str
     relay_disconnected_at: str | None
+    relay_participant: dict
     result_schema: dict | bool
 
 
@@ -15318,12 +15130,56 @@ class SparkAgentThreadCreateData(SparkAgentThreadCreateDataRequired, total=False
     title: str
 
 
+class SparkAutomation(TypedDict):
+    can_manage: bool
+    can_manage_events: bool
+    can_run: bool
+    can_schedule: bool
+    definition: dict
+    event_subscriptions: list
+    event_triggers: list
+    expected_revision: int
+    id: str
+    key: str
+    name: str
+    revision: int
+    schedule: Any
+    schedules: list
+    version: dict
+
+
+class SparkAutomationLoadMatch(TypedDict):
+    agent_id: str
+    id: str
+    organization_id: str
+
+
+class SparkAutomationListMatchRequired(TypedDict):
+    agent_id: str
+    organization_id: str
+
+
+class SparkAutomationListMatch(SparkAutomationListMatchRequired, total=False):
+    cursor: str
+    limit: int
+
+
+class SparkAutomationUpdateDataRequired(TypedDict):
+    agent_id: str
+    id: str
+    organization_id: str
+
+
+class SparkAutomationUpdateData(SparkAutomationUpdateDataRequired, total=False):
+    definition: dict
+    expected_revision: int
+
+
 class SparkCreditRequired(TypedDict):
     autofill: Any
     autofill_payment_unconfirmed: bool
     available_usd: str
     can_manage: bool
-    compute_minutes: dict
     credits_per_usd: int
     kind: str
     payment_method: dict | None
@@ -15343,6 +15199,7 @@ class SparkCreditRequired(TypedDict):
 class SparkCredit(SparkCreditRequired, total=False):
     amount_cents: int
     billing_unit: str
+    compute_minutes: dict
     compute_usd: str
     inference_usd: str
     quoted_credits_cents: int
@@ -16105,12 +15962,12 @@ class VcFileListMatch(VcFileListMatchRequired, total=False):
 
 
 class VcMergeQueueRequired(TypedDict):
-    analytics: dict
     policy: dict
     queue: dict
 
 
 class VcMergeQueue(VcMergeQueueRequired, total=False):
+    analytics: dict
     id: str
     target_branches: list
 
@@ -16167,7 +16024,6 @@ class VcStackRequired(TypedDict):
     alias_ref_name: str | None
     changes: list
     code: str
-    landing: dict
     member_count: int
     name: str | None
     ref_name: str
@@ -16179,6 +16035,7 @@ class VcStackRequired(TypedDict):
 
 class VcStack(VcStackRequired, total=False):
     id: str
+    landing: dict
 
 
 class VcStackLoadMatch(TypedDict):
@@ -16548,7 +16405,6 @@ VerificationProjectScenarioRequired = TypedDict('VerificationProjectScenarioRequ
     "archived_at": str | None,
     "created_at": str,
     "dependencies": list,
-    "health": dict,
     "id": str,
     "labels": list,
     "last_revision": Any,
@@ -16569,6 +16425,7 @@ VerificationProjectScenarioOptional = TypedDict('VerificationProjectScenarioOpti
     "actors": dict,
     "cleanup": list,
     "fixtures": list,
+    "health": dict,
     "identity_probe": Any,
     "if": str | None,
     "on": Any,
@@ -16733,6 +16590,239 @@ class VerifyEmailVerification(TypedDict):
 
 class VerifyEmailVerificationLoadMatch(TypedDict):
     pass
+
+
+class VerifyEnvironmentRequired(TypedDict):
+    active_revision_id: str | None
+    agent_sign_up_available: bool
+    allowed_actions: str
+    billing: dict
+    cleanup: list
+    connection: str
+    created_at: str
+    default_policy_json: dict
+    discovery_defaults: dict
+    environment: dict
+    hosted_app_id: str | None
+    id: str
+    imessage_number: str | None
+    included_deep_scan: bool
+    lock_version: int
+    managed_google_available: bool
+    managed_google_email: str
+    name: str
+    network_connections: list
+    organization_id: str
+    permissions: dict
+    project_id: str | None
+    repository_id: str | None
+    revisions: list
+    sign_in_check_available: bool
+    slug: str
+    status: str
+    target_kind: str | None
+    target_url: str | None
+    test_accounts: dict
+    updated_at: str
+    verify_network_connection_id: str | None
+
+
+class VerifyEnvironment(VerifyEnvironmentRequired, total=False):
+    default_policy: dict
+    exploration_accounts: list
+    explorations: list
+    first_run: Any
+    messaging_tester_number: str | None
+    onboarding_discovery: Any
+    pending_accounts: list
+    setup_discovery_id: str | None
+    version: int
+
+
+class VerifyEnvironmentLoadMatchRequired(TypedDict):
+    organization_id: str
+
+
+class VerifyEnvironmentLoadMatch(VerifyEnvironmentLoadMatchRequired, total=False):
+    id: str
+    project_id: str
+
+
+class VerifyEnvironmentCreateDataRequired(TypedDict):
+    organization_id: str
+    slug: str
+
+
+class VerifyEnvironmentCreateData(VerifyEnvironmentCreateDataRequired, total=False):
+    allowed_actions: str
+    default_policy: dict
+    imessage_number: str | None
+    messaging_tester_number: str | None
+    name: str
+    project_id: str | None
+    repository_id: str | None
+    target_kind: str | None
+    target_url: str | None
+
+
+class VerifyEnvironmentUpdateData(TypedDict):
+    id: str
+    organization_id: str
+
+
+class VerifyEnvironmentPatchDataRequired(TypedDict):
+    id: str
+    organization_id: str
+
+
+class VerifyEnvironmentPatchData(VerifyEnvironmentPatchDataRequired, total=False):
+    allowed_actions: str
+    imessage_number: str | None
+    messaging_tester_number: str | None
+    name: str
+    target_url: str | None
+    verify_network_connection_id: str | None
+    version: int
+
+
+class VerifyEnvironmentRemoveMatch(TypedDict):
+    id: str
+    organization_id: str
+
+
+class VerifyEvidence(TypedDict, total=False):
+    id: str
+
+
+class VerifyEvidenceLoadMatchRequired(TypedDict):
+    organization_id: str
+
+
+class VerifyEvidenceLoadMatch(VerifyEvidenceLoadMatchRequired, total=False):
+    id: str
+    agent_id: str
+    cursor: str
+    exploration_id: str
+    kind: str
+    limit: int
+    repository_id: str
+    scenario_run_id: str
+
+
+class VerifyMergeRequestRequired(TypedDict):
+    available_tests: list
+    base_sha: str
+    comment_url: str | None
+    draft: bool
+    findings: list
+    github_repository: str | None
+    github_url: str | None
+    head_sha: str
+    id: str
+    idempotency_key: str
+    number: int
+    pagination: dict
+    permissions: dict
+    preview_cleanup_ready: bool
+    project_id: str | None
+    project_slug: str | None
+    provider: str
+    pull_request: dict
+    repository_id: str
+    request_label: str
+    requested_run_id: str | None
+    runs: list
+    source_branch: str | None
+    source_repository: str | None
+    source_url: str | None
+    state: str
+    title: str
+    updated_at: str
+    web_path: str
+
+
+class VerifyMergeRequest(VerifyMergeRequestRequired, total=False):
+    branch: str
+    current_run: Any
+    preview_url: str | None
+    project: Any
+
+
+class VerifyMergeRequestLoadMatchRequired(TypedDict):
+    id: str
+    organization_id: str
+
+
+class VerifyMergeRequestLoadMatch(VerifyMergeRequestLoadMatchRequired, total=False):
+    page: int
+
+
+class VerifyMergeRequestCreateDataRequired(TypedDict):
+    organization_id: str
+    idempotency_key: str
+    number: int
+
+
+class VerifyMergeRequestCreateData(VerifyMergeRequestCreateDataRequired, total=False):
+    branch: str
+    head_sha: str
+    project_id: str | None
+    repository_id: str
+
+
+class VerifyPullRequestRequired(TypedDict):
+    available_tests: list
+    findings: list
+    idempotency_key: str
+    pagination: dict
+    permissions: dict
+    preview_cleanup_ready: bool
+    pull_request: dict
+    runs: list
+
+
+class VerifyPullRequest(VerifyPullRequestRequired, total=False):
+    branch: str
+    cleanup_only: bool
+    current_run: Any
+    head_sha: str
+    id: str
+    imessage_number: str
+    number: int
+    preview_url: str | None
+    project: Any
+    project_id: str
+    repository_id: str
+
+
+class VerifyPullRequestLoadMatchRequired(TypedDict):
+    id: str
+    organization_id: str
+
+
+class VerifyPullRequestLoadMatch(VerifyPullRequestLoadMatchRequired, total=False):
+    page: int
+
+
+class VerifyPullRequestCreateDataRequired(TypedDict):
+    organization_id: str
+    idempotency_key: str
+
+
+class VerifyPullRequestCreateData(VerifyPullRequestCreateDataRequired, total=False):
+    branch: str
+    cleanup_only: bool
+    head_sha: str
+    imessage_number: str
+    number: int
+    preview_url: str | None
+    project_id: str
+    repository_id: str
+
+
+class VerifyPullRequestRemoveMatch(TypedDict):
+    id: str
+    organization_id: str
 
 
 class VerifySignalIntegrationRequired(TypedDict):

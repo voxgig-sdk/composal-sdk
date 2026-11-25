@@ -803,7 +803,7 @@ main: kit: entity: environment_revision: {
 
 
   relations: ancestors: [
-    [path("$.main.kit.entity.organization") path("$.main.kit.entity.environment")]
+    [path("$.main.kit.entity.organization")]
   ]
 
 }

@@ -15,4 +15,4 @@ description: |-
   | `slug` | string | yes |  |
   | `verify_projects` | array | yes |  |
   | `version` | integer | yes |  |
-order: 65000
+order: 64000

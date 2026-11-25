@@ -21,7 +21,7 @@ pathVariables:
     description: The project this environment_exploration belongs to.
   - key: environment_id
     value: "{{environment_id}}"
-    description: The environment this environment_exploration belongs to.
+    description: "Input: environment_id."
 body:
   type: json
   content: |-

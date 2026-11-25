@@ -13,7 +13,7 @@ description: |-
   | `name` | string | yes |  |
   | `ref` | string |  |  |
   | `repository_id` | string | yes |  |
-  | `revision` | object | yes |  |
+  | `revision` | object |  |  |
   | `slug` | string | yes |  |
   | `status` | string | yes |  |
-order: 397000
+order: 393000

@@ -133,7 +133,7 @@ main: kit: entity: page_repo_vc_commit: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.commit`"
           }
         }
       ]

@@ -345,6 +345,10 @@ main: kit: entity: pages_project_run: {
             }
           ]
           t: {
+            page: {
+              next: "`body.pagination.next`"
+              total: "`body.pagination.count`"
+            }
             req: "`reqdata`"
             res: "`body.runs`"
           }

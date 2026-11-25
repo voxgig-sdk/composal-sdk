@@ -44,14 +44,12 @@ class TestAgentEmailDirect:
         if setup["live"]:
             params["agent_id"] = setup["idmap"].get("agent01")
             params["id"] = setup["idmap"].get("agent_email01")
-            params["id"] = setup["idmap"].get("agent_email01")
             params["organization_id"] = setup["idmap"].get("organization01")
             pass
         else:
             params["agent_id"] = "direct01"
             params["id"] = "direct02"
-            params["id"] = "direct03"
-            params["organization_id"] = "direct04"
+            params["organization_id"] = "direct03"
             pass
 
         result = client.direct({

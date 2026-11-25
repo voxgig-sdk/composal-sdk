@@ -9,4 +9,4 @@ description: |-
   | `open_findings` | integer | yes |  |
   | `ready_environments` | integer | yes |  |
   | `scenarios` | object | yes |  |
-order: 403000
+order: 399000

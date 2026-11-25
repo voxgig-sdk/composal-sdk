@@ -18,4 +18,4 @@ description: |-
   | `skill` | object | yes |  |
   | `skills` | array | yes |  |
   | `source` | string |  |  |
-order: 55000
+order: 54000

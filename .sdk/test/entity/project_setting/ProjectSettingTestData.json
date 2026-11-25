@@ -2,49 +2,29 @@
   "existing": {
     "project_setting": {
       "PROJECT_SETTING00": {
-        "available_messaging_environments": [],
-        "messaging_conversations": [],
-        "messaging_enabled": true,
-        "permissions": {},
-        "project": {},
-        "tester_numbers": [],
+        "id": "PROJECT_SETTING00",
+        "name": "s15",
         "organization_id": "ORGANIZATION01",
-        "project_id": "PROJECT01",
-        "id": "PROJECT_SETTING00"
+        "project_id": "PROJECT01"
       },
       "PROJECT_SETTING01": {
-        "available_messaging_environments": [],
-        "messaging_conversations": [],
-        "messaging_enabled": true,
-        "permissions": {},
-        "project": {},
-        "tester_numbers": [],
+        "id": "PROJECT_SETTING01",
+        "name": "s29",
         "organization_id": "ORGANIZATION01",
-        "project_id": "PROJECT01",
-        "id": "PROJECT_SETTING01"
+        "project_id": "PROJECT01"
       },
       "PROJECT_SETTING02": {
-        "available_messaging_environments": [],
-        "messaging_conversations": [],
-        "messaging_enabled": true,
-        "permissions": {},
-        "project": {},
-        "tester_numbers": [],
+        "id": "PROJECT_SETTING02",
+        "name": "s3d",
         "organization_id": "ORGANIZATION01",
-        "project_id": "PROJECT01",
-        "id": "PROJECT_SETTING02"
+        "project_id": "PROJECT01"
       }
     }
   },
   "new": {
     "project_setting": {
       "project_setting_ref01": {
-        "available_messaging_environments": [],
-        "messaging_conversations": [],
-        "messaging_enabled": true,
-        "permissions": {},
-        "project": {},
-        "tester_numbers": []
+        "name": "s51"
       }
     }
   },

@@ -34,7 +34,7 @@ class VcChangeEntityTest < Minitest::Test
     setup = vc_change_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["list"].each do |_op|
+    ["list", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "vc_change." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -52,6 +52,13 @@ class VcChangeEntityTest < Minitest::Test
       end
     end
     client = setup[:client]
+    if setup[:live]
+      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["vc_change01"]
+      Runner.live_pace
+      Runner.live_existing(setup, LIVE_STRICT, "vc_change", "id", _live_id) do
+        client.VcChange(nil).list({"organization_id" => setup[:idmap]["organization01"], "repo_id" => setup[:idmap]["repo01"]}, nil)
+      end
+    end
 
     # Bootstrap entity data from existing test data.
     vc_change_ref01_data_raw = Vs.items(Helpers.to_map(
@@ -71,6 +78,18 @@ class VcChangeEntityTest < Minitest::Test
 
     vc_change_ref01_list_result = vc_change_ref01_ent.list(vc_change_ref01_match, nil)
     assert vc_change_ref01_list_result.is_a?(Array)
+
+    Runner.live_pace if setup[:live]
+    # LOAD
+    vc_change_ref01_match_dt0 = {
+      "id" => vc_change_ref01_data["id"],
+    }
+    vc_change_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
+    vc_change_ref01_match_dt0["repo_id"] = setup[:idmap]["repo_id"] || setup[:idmap]["repo01"]
+    vc_change_ref01_data_dt0_loaded = vc_change_ref01_ent.load(vc_change_ref01_match_dt0, nil)
+    vc_change_ref01_data_dt0_load_result = Helpers.to_map(vc_change_ref01_data_dt0_loaded.respond_to?(:data_get) ? vc_change_ref01_data_dt0_loaded.data_get : vc_change_ref01_data_dt0_loaded)
+    assert !vc_change_ref01_data_dt0_load_result.nil?
+    assert Runner.live_same_id(vc_change_ref01_data_dt0_load_result["id"], vc_change_ref01_data["id"])
 
       return
     end
@@ -83,6 +102,13 @@ class VcChangeEntityTest < Minitest::Test
       end
     end
     client = setup[:client]
+    if setup[:live]
+      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["vc_change01"]
+      Runner.live_pace
+      Runner.live_existing(setup, LIVE_STRICT, "vc_change", "id", _live_id) do
+        client.VcChange(nil).list({"organization_id" => setup[:idmap]["organization01"], "repo_id" => setup[:idmap]["repo01"]}, nil)
+      end
+    end
 
     # Bootstrap entity data from existing test data.
     vc_change_ref01_data_raw = Vs.items(Helpers.to_map(
@@ -102,6 +128,18 @@ class VcChangeEntityTest < Minitest::Test
 
     vc_change_ref01_list_result = vc_change_ref01_ent.list(vc_change_ref01_match, nil)
     assert vc_change_ref01_list_result.is_a?(Array)
+
+    Runner.live_pace if setup[:live]
+    # LOAD
+    vc_change_ref01_match_dt0 = {
+      "id" => vc_change_ref01_data["id"],
+    }
+    vc_change_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
+    vc_change_ref01_match_dt0["repo_id"] = setup[:idmap]["repo_id"] || setup[:idmap]["repo01"]
+    vc_change_ref01_data_dt0_loaded = vc_change_ref01_ent.load(vc_change_ref01_match_dt0, nil)
+    vc_change_ref01_data_dt0_load_result = Helpers.to_map(vc_change_ref01_data_dt0_loaded.respond_to?(:data_get) ? vc_change_ref01_data_dt0_loaded.data_get : vc_change_ref01_data_dt0_loaded)
+    assert !vc_change_ref01_data_dt0_load_result.nil?
+    assert Runner.live_same_id(vc_change_ref01_data_dt0_load_result["id"], vc_change_ref01_data["id"])
 
   end
 end

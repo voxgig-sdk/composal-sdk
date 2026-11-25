@@ -44,22 +44,14 @@ describe("GhDirect", function()
     local query = {}
     if setup.live then
       params["gh_id"] = setup.idmap["gh01"]
-      params["gh_id"] = setup.idmap["gh01"]
-      params["github_repo"] = setup.idmap["github_repo01"]
       params["github_repo"] = setup.idmap["github_repo01"]
       params["id"] = setup.idmap["gh01"]
-      params["id"] = setup.idmap["gh01"]
-      params["organization_id"] = setup.idmap["organization01"]
       params["organization_id"] = setup.idmap["organization01"]
     else
       params["gh_id"] = "direct01"
-      params["gh_id"] = "direct02"
-      params["github_repo"] = "direct03"
-      params["github_repo"] = "direct04"
-      params["id"] = "direct05"
-      params["id"] = "direct06"
-      params["organization_id"] = "direct07"
-      params["organization_id"] = "direct08"
+      params["github_repo"] = "direct02"
+      params["id"] = "direct03"
+      params["organization_id"] = "direct04"
     end
 
     local result, err = client:direct({

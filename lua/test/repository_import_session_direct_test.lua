@@ -29,8 +29,8 @@ describe("RepositoryImportSessionDirect", function()
       return
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" and setup.idmap["repository_import_session01"] == nil then
-      print("LIVE STEP {\"id\":\"direct-load-repository_import_session\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs repository_import_session01, which only POST /api/v1/repository_import_sessions/{id}/authorization gives\"}")
-      pending("Live coverage incomplete: direct-load-repository_import_session excluded (GET-only live run: needs repository_import_session01, which only POST /api/v1/repository_import_sessions/{id}/authorization gives)")
+      print("LIVE STEP {\"id\":\"direct-load-repository_import_session\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs repository_import_session01, which only POST /api/v1/organizations/{organization_id}/repository_import_sessions gives\"}")
+      pending("Live coverage incomplete: direct-load-repository_import_session excluded (GET-only live run: needs repository_import_session01, which only POST /api/v1/organizations/{organization_id}/repository_import_sessions gives)")
       return
     end
     if setup.live then

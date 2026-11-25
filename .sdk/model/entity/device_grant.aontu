@@ -282,7 +282,7 @@ main: kit: entity: device_grant: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.grant`"
           }
         }
         {
@@ -440,8 +440,11 @@ main: kit: entity: device_grant: {
             }
           ]
           t: {
+            page: {
+              cursor: "`body.next_cursor`"
+            }
             req: "`reqdata`"
-            res: "`body.grants`"
+            res: "`body.active_grants`"
           }
         }
       ]

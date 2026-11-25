@@ -1,0 +1,18 @@
+$kind: http-request
+id: e70ce261-52e0-5b56-aaee-1e1e05703563
+description: |-
+  The `page_sync` action of **repo**, a route of its `load` operation.
+
+  SDK: `client.Repo().load({ "organization_id": "organization_id", "id": "ID", $action: "page_sync" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/pages/sync"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this request addresses.
+order: 3000

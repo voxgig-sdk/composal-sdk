@@ -46,11 +46,11 @@ description: |-
   | `started_at_label` | string | yes |  |
   | `status` | string | yes |  |
   | `summary` | object | yes |  |
-  | `target` | object | yes |  |
+  | `target` | object |  |  |
   | `task_count` | integer | yes |  |
   | `task_template_json` | string | yes |  |
   | `tasks` | array | yes |  |
   | `updated_at` | string | yes |  |
   | `updated_at_label` | string | yes |  |
   | `usage` | object | yes |  |
-order: 59000
+order: 58000

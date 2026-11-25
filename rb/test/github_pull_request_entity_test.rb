@@ -99,7 +99,7 @@ def github_pull_request_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["github_pull_request01", "github_pull_request02", "github_pull_request03", "organization01", "organization02", "organization03", "pull_request01", "pull_request02", "pull_request03"],
+    ["github_pull_request01", "github_pull_request02", "github_pull_request03", "organization01", "organization02", "organization03", "pull_request01"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

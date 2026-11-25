@@ -17,4 +17,4 @@ description: |-
   | `sequence_number` | integer | yes |  |
   | `stream` | string | yes |  |
   | `updated_at` | string | yes |  |
-order: 292000
+order: 288000

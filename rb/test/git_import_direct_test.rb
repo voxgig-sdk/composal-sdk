@@ -25,8 +25,8 @@ class GitImportDirectTest < Minitest::Test
       return
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE" && setup[:idmap]["git_import01"].nil?
-      puts "LIVE STEP {\"id\":\"direct-load-git_import\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs git_import01, which only POST /api/v1/git_imports/{id}/complete gives\"}"
-      skip("Live coverage incomplete: direct-load-git_import excluded (GET-only live run: needs git_import01, which only POST /api/v1/git_imports/{id}/complete gives)")
+      puts "LIVE STEP {\"id\":\"direct-load-git_import\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs git_import01, which only POST /api/v1/organizations/{organization_id}/git_imports gives\"}"
+      skip("Live coverage incomplete: direct-load-git_import excluded (GET-only live run: needs git_import01, which only POST /api/v1/organizations/{organization_id}/git_imports gives)")
     end
     if setup[:live]
       ["git_import01"].each do |_live_key|

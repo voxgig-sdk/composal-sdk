@@ -58,7 +58,7 @@ class TestDockerBuilderSessionEntity:
             pytest.skip("Live coverage incomplete: docker_builder_session.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/docker_builders/{docker_builder_id}/sessions); docker_builder_session.load.1 excluded (GET-only live run: reads a record only docker_builder_session.create.0 gives); docker_builder_session.remove.2 excluded (GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/docker_builder_sessions/{id})")
 
         if setup["live"]:
-            for _live_key in ["organization01"]:
+            for _live_key in ["docker_builder01", "organization01"]:
                 if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
                     runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_DOCKER_BUILDER_SESSION_ENTID")
         client = setup["client"]
@@ -69,6 +69,7 @@ class TestDockerBuilderSessionEntity:
         docker_builder_session_ref01_ent = client.DockerBuilderSession(None)
         docker_builder_session_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.docker_builder_session"), "docker_builder_session_ref01"))
+        docker_builder_session_ref01_data["docker_builder_id"] = setup["idmap"]["docker_builder01"]
         docker_builder_session_ref01_data["organization_id"] = setup["idmap"]["organization01"]
 
         docker_builder_session_ref01_data = helpers.to_map(runner.entity_data(docker_builder_session_ref01_ent.create(docker_builder_session_ref01_data, None)))

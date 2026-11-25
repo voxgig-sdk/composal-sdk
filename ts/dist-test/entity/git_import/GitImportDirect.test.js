@@ -30,8 +30,8 @@ const utility_1 = require("../../utility");
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-git_import', setup.live))
             return;
         if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["git_import01"]) {
-            console.log("LIVE STEP {\"id\":\"direct-load-git_import\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs git_import01, which only POST /api/v1/git_imports/{id}/complete gives\"}");
-            t.skip("Live coverage incomplete: direct-load-git_import excluded (GET-only live run: needs git_import01, which only POST /api/v1/git_imports/{id}/complete gives)");
+            console.log("LIVE STEP {\"id\":\"direct-load-git_import\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs git_import01, which only POST /api/v1/organizations/{organization_id}/git_imports gives\"}");
+            t.skip("Live coverage incomplete: direct-load-git_import excluded (GET-only live run: needs git_import01, which only POST /api/v1/organizations/{organization_id}/git_imports gives)");
             return;
         }
         if ((0, utility_1.skipIfMissingIds)(t, setup, ["git_import01"], LIVE_STRICT))

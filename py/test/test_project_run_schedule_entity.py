@@ -116,6 +116,7 @@ class TestProjectRunScheduleEntity:
             "id": project_run_schedule_ref01_data["id"],
         }
         project_run_schedule_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
+        project_run_schedule_ref01_match_dt0["project_id"] = setup["idmap"].get("project_id") or setup["idmap"].get("project01")
         project_run_schedule_ref01_data_dt0_loaded = project_run_schedule_ref01_ent.load(project_run_schedule_ref01_match_dt0, None)
         project_run_schedule_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(project_run_schedule_ref01_data_dt0_loaded))
         assert project_run_schedule_ref01_data_dt0_load_result is not None
@@ -161,6 +162,7 @@ class TestProjectRunScheduleEntity:
             "id": project_run_schedule_ref01_data["id"],
         }
         project_run_schedule_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
+        project_run_schedule_ref01_match_dt0["project_id"] = setup["idmap"].get("project_id") or setup["idmap"].get("project01")
         project_run_schedule_ref01_data_dt0_loaded = project_run_schedule_ref01_ent.load(project_run_schedule_ref01_match_dt0, None)
         project_run_schedule_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(project_run_schedule_ref01_data_dt0_loaded))
         assert project_run_schedule_ref01_data_dt0_load_result is not None

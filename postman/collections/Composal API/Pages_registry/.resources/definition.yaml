@@ -10,4 +10,4 @@ description: |-
   | `pagination` | object | yes |  |
   | `repositories` | array | yes |  |
   | `repository_count` | integer | yes |  |
-order: 377000
+order: 373000

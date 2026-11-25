@@ -7,11 +7,11 @@ description: |-
   |---|---|---|---|
   | `architecture` | string | yes |  |
   | `channel` | string | yes |  |
-  | `coding_connection` | object | yes |  |
+  | `coding_connection` | object |  |  |
   | `connection_checked_at` | string | yes |  |
   | `connection_status` | string | yes |  |
   | `control_delivery_policy` | object | yes |  |
-  | `control_spawn_policy` | object | yes |  |
+  | `control_spawn_policy` | object |  |  |
   | `created_at` | string | yes |  |
   | `device` | object | yes |  |
   | `environment` | string | yes |  |

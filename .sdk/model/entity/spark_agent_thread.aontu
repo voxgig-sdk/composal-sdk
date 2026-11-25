@@ -64,12 +64,6 @@ main: kit: entity: spark_agent_thread: {
     execution: {
       h: "Execution"
       n: "execution"
-      op: {
-        list: {
-          req: true
-          type: "`$OBJECT`"
-        }
-      }
       r: false
       sh: "device_folder threads also report state and path; sandbox threads run on their own machine with the coding agent in harness."
       t: "`$ANY`"
@@ -232,6 +226,105 @@ main: kit: entity: spark_agent_thread: {
     create: {
       name: "create"
       points: [
+        {
+          bf: [
+            "execution"
+            "inherit_context"
+            "message"
+            "parent_conversation_id"
+            "requester_membership_id"
+            "title"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/threads"
+          q: {
+            exist: [
+              "agent_id"
+              "idempotency_key"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "threads"
+            }
+          ]
+          t: {
+            req: {
+              execution: "`reqdata.execution`"
+              inherit_context: "`reqdata.inherit_context`"
+              message: "`reqdata.message`"
+              parent_conversation_id: "`reqdata.parent_conversation_id`"
+              requester_membership_id: "`reqdata.requester_membership_id`"
+              title: "`reqdata.title`"
+            }
+            res: "`body.thread`"
+          }
+        }
         {
           bf: [
             "archived"
@@ -507,105 +600,6 @@ main: kit: entity: spark_agent_thread: {
             res: "`body`"
           }
         }
-        {
-          bf: [
-            "execution"
-            "inherit_context"
-            "message"
-            "parent_conversation_id"
-            "requester_membership_id"
-            "title"
-          ]
-          co: {
-            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            header: [
-              {
-                explode: false
-                k: "header"
-                n: "idempotency_key"
-                or: "Idempotency-Key"
-                r: true
-                style: "simple"
-                t: "`$STRING`"
-              }
-            ]
-            params: [
-              {
-                k: "param"
-                n: "agent_id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "organization_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "POST"
-          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/threads"
-          q: {
-            exist: [
-              "agent_id"
-              "idempotency_key"
-              "organization_id"
-            ]
-          }
-          r: {
-            param: {
-              id: "agent_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "agents"
-            }
-            {
-              var: "agent_id"
-            }
-            {
-              lit: "spark"
-            }
-            {
-              lit: "threads"
-            }
-          ]
-          t: {
-            req: {
-              execution: "`reqdata.execution`"
-              inherit_context: "`reqdata.inherit_context`"
-              message: "`reqdata.message`"
-              parent_conversation_id: "`reqdata.parent_conversation_id`"
-              requester_membership_id: "`reqdata.requester_membership_id`"
-              title: "`reqdata.title`"
-            }
-            res: "`body`"
-          }
-        }
       ]
     }
     list: {
@@ -718,6 +712,9 @@ main: kit: entity: spark_agent_thread: {
             }
           ]
           t: {
+            page: {
+              cursor: "`body.next_cursor`"
+            }
             req: "`reqdata`"
             res: "`body.threads`"
           }

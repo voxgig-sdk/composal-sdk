@@ -19,4 +19,4 @@ scripts:
         pm.collectionVariables.unset("app_id")
       }
     language: text/javascript
-order: 10000
+order: 9000

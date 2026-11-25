@@ -176,7 +176,7 @@ func environment_secret_bindingBasicSetup(extra map[string]any) *entityTestSetup
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"environment_secret_binding01", "environment_secret_binding02", "environment_secret_binding03", "app01", "app02", "app03", "environment01", "environment02", "environment03"},
+		[]any{"environment_secret_binding01", "environment_secret_binding02", "environment_secret_binding03", "app01", "app02", "app03", "environment01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

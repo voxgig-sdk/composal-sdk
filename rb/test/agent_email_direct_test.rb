@@ -39,13 +39,11 @@ class AgentEmailDirectTest < Minitest::Test
     if setup[:live]
       params["agent_id"] = setup[:idmap]["agent01"]
       params["id"] = setup[:idmap]["agent_email01"]
-      params["id"] = setup[:idmap]["agent_email01"]
       params["organization_id"] = setup[:idmap]["organization01"]
     else
       params["agent_id"] = "direct01"
       params["id"] = "direct02"
-      params["id"] = "direct03"
-      params["organization_id"] = "direct04"
+      params["organization_id"] = "direct03"
     end
 
     result = client.direct({

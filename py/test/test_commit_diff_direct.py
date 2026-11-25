@@ -44,16 +44,14 @@ class TestCommitDiffDirect:
         if setup["live"]:
             params["commit_id"] = setup["idmap"].get("commit01")
             params["id"] = setup["idmap"].get("commit_diff01")
-            params["id"] = setup["idmap"].get("commit_diff01")
             params["organization_id"] = setup["idmap"].get("organization01")
             params["repo_id"] = setup["idmap"].get("repo01")
             pass
         else:
             params["commit_id"] = "direct01"
             params["id"] = "direct02"
-            params["id"] = "direct03"
-            params["organization_id"] = "direct04"
-            params["repo_id"] = "direct05"
+            params["organization_id"] = "direct03"
+            params["repo_id"] = "direct04"
             pass
 
         result = client.direct({

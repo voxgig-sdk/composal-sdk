@@ -93,7 +93,7 @@ main: kit: entity: verification_project_scenario: {
     health: {
       h: "Health"
       n: "health"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     id: {
@@ -1031,7 +1031,7 @@ main: kit: entity: verification_project_scenario: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.scenarios`"
+            res: "`body`"
           }
         }
       ]

@@ -53,7 +53,7 @@ func TestDeploymentEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{} {
+		for _, _op := range []string{"load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "deployment." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,8 +63,19 @@ func TestDeploymentEntity(t *testing.T) {
 			}
 		}
 		if setup.live {
-			t.Skip("Live coverage incomplete: the flow has no step to run")
-			return
+			for _, _liveKey := range []string{"deployment01", "organization01"} {
+				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
+					liveMiss(t, deploymentEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_DEPLOYMENT_ENTID", _liveKey)
+				}
+			}
+		}
+		client := setup.client
+		_ = client
+		if setup.live {
+			liveExisting(t, deploymentEntityLiveStrict, setup.data, "deployment", "id", setup.idmap["deployment01"],
+				func() (any, error) {
+					return []any{map[string]any{"id": setup.idmap["deployment01"]}}, nil
+				})
 		}
 
 		// Bootstrap entity data from existing test data (no create step in flow).
@@ -76,6 +87,31 @@ func TestDeploymentEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = deploymentRef01Data
+
+		if setup.live {
+			livePace()
+		}
+		// LOAD
+		deploymentRef01Ent := client.Deployment(nil)
+		deploymentRef01MatchDt0 := map[string]any{
+			"id": deploymentRef01Data["id"],
+		}
+		if v := setup.idmap["organization_id"]; v != nil {
+			deploymentRef01MatchDt0["organization_id"] = v
+		} else {
+			deploymentRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
+		}
+		deploymentRef01DataDt0Loaded, err := deploymentRef01Ent.Load(deploymentRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		deploymentRef01DataDt0LoadResult := core.ToMapAny(entityData(deploymentRef01DataDt0Loaded))
+		if deploymentRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if !liveSameId(deploymentRef01DataDt0LoadResult["id"], deploymentRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
+		}
 
 	})
 }

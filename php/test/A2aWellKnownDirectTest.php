@@ -46,10 +46,8 @@ class A2aWellKnownDirectTest extends TestCase
         $query = [];
         if ($setup["live"]) {
             $params["a2a_id"] = $setup["idmap"]["a2a01"] ?? null;
-            $params["a2a_id"] = $setup["idmap"]["a2a01"] ?? null;
         } else {
             $params["a2a_id"] = "direct01";
-            $params["a2a_id"] = "direct02";
         }
 
         $result = $client->direct([

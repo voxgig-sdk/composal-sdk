@@ -11,4 +11,4 @@ description: |-
   | `store` | boolean | yes |  |
   | `stream` | boolean | yes |  |
   | `tools` | array |  |  |
-order: 309000
+order: 305000

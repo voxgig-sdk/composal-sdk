@@ -38,7 +38,7 @@ func TestMessagingConversationMessageEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.MessagingConversationMessage(nil).Create(map[string]any{"messaging_conversation_id": 1, "organization_id": "x", "project_id": "x", "client_operation_id": "x", "content": "x", "media": "x"}, nil)
+		_, err := client.MessagingConversationMessage(nil).Create(map[string]any{"messaging_conversation_id": 1, "organization_id": "x", "project_id": "x", "client_operation_id": "x", "content": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}

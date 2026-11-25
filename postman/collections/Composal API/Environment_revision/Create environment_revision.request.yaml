@@ -15,7 +15,7 @@ pathVariables:
     description: The organization this environment_revision belongs to.
   - key: verify_environment_id
     value: "{{environment_id}}"
-    description: The environment this environment_revision belongs to.
+    description: "Input: environment_id."
 body:
   type: json
   content: |-

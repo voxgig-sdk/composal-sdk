@@ -9,4 +9,4 @@ description: |-
   | `icon_url` | string | yes |  |
   | `image_url` | string | yes |  |
   | `title` | string | yes |  |
-order: 67000
+order: 66000

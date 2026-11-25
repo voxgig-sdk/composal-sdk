@@ -43,17 +43,15 @@ describe('AgentSessionDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-agent_session', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["agent_session01","agent_session01"], LIVE_STRICT)) return
+    if (skipIfMissingIds(t, setup, ["agent_session01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
       params.id = setup.idmap['agent_session01']
-      params.id = setup.idmap['agent_session01']
     } else {
       params.id = 'direct01'
-      params.id = 'direct02'
     }
 
     const result: any = await client.direct({
@@ -78,7 +76,6 @@ describe('AgentSessionDirect', async () => {
       assert(calls.length === 1)
       assert(calls[0].init.method === 'GET')
       assert(calls[0].url.includes('direct01'))
-      assert(calls[0].url.includes('direct02'))
     }
   })
 

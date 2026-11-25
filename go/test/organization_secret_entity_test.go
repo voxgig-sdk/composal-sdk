@@ -124,6 +124,11 @@ func TestOrganizationSecretEntity(t *testing.T) {
 		organizationSecretRef01MatchDt0 := map[string]any{
 			"id": organizationSecretRef01Data["id"],
 		}
+		if v := setup.idmap["organization_id"]; v != nil {
+			organizationSecretRef01MatchDt0["organization_id"] = v
+		} else {
+			organizationSecretRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
+		}
 		organizationSecretRef01DataDt0Loaded, err := organizationSecretRef01Ent.Load(organizationSecretRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
@@ -226,6 +231,11 @@ func TestOrganizationSecretEntity(t *testing.T) {
 		// LOAD
 		organizationSecretRef01MatchDt0 := map[string]any{
 			"id": organizationSecretRef01Data["id"],
+		}
+		if v := setup.idmap["organization_id"]; v != nil {
+			organizationSecretRef01MatchDt0["organization_id"] = v
+		} else {
+			organizationSecretRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
 		}
 		organizationSecretRef01DataDt0Loaded, err := organizationSecretRef01Ent.Load(organizationSecretRef01MatchDt0, nil)
 		if err != nil {

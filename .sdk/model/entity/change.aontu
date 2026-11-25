@@ -21,7 +21,7 @@ main: kit: entity: change: {
     github_sync: {
       h: "Github Sync"
       n: "github_sync"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     result: {

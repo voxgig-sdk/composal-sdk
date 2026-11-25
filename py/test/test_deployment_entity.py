@@ -46,15 +46,19 @@ class TestDeploymentEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in []:
+        for _op in ["load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "deployment." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"]:
-            pytest.skip("Live coverage incomplete: the flow has no step to run")
-
+            for _live_key in ["deployment01", "organization01"]:
+                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
+                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_DEPLOYMENT_ENTID")
         client = setup["client"]
+        if setup["live"]:
+            runner.live_existing(setup, LIVE_STRICT, "deployment",
+                                 lambda: [{"id": setup["idmap"].get("deployment01")}], "id", setup["idmap"].get("deployment01"))
 
         # Bootstrap entity data from existing test data.
         deployment_ref01_data_raw = vs.items(helpers.to_map(
@@ -62,6 +66,19 @@ class TestDeploymentEntity:
         deployment_ref01_data = None
         if len(deployment_ref01_data_raw) > 0:
             deployment_ref01_data = helpers.to_map(deployment_ref01_data_raw[0][1])
+
+        if setup["live"]:
+            runner.live_pace()
+        # LOAD
+        deployment_ref01_ent = client.Deployment(None)
+        deployment_ref01_match_dt0 = {
+            "id": deployment_ref01_data["id"],
+        }
+        deployment_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
+        deployment_ref01_data_dt0_loaded = deployment_ref01_ent.load(deployment_ref01_match_dt0, None)
+        deployment_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(deployment_ref01_data_dt0_loaded))
+        assert deployment_ref01_data_dt0_load_result is not None
+        assert runner.live_same_id(deployment_ref01_data_dt0_load_result.get("id"), deployment_ref01_data["id"])
 
 
 

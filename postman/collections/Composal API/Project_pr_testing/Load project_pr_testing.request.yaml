@@ -1,0 +1,31 @@
+$kind: http-request
+id: ae93c9bb-d11e-566a-ad17-fb58d3f63a90
+description: |-
+  The `load` operation of **project_pr_testing**.
+
+  SDK: `client.ProjectPrTesting().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/pages/pr_testing"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: provider
+    value: ""
+    disabled: true
+  - key: repository_id
+    value: ""
+    disabled: true
+  - key: repository_search
+    value: ""
+    disabled: true
+  - key: source_repository
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_pr_testing belongs to.
+  - key: project_id
+    value: "{{project_pr_testing_id}}"
+    description: The project_pr_testing this request addresses.
+order: 1000

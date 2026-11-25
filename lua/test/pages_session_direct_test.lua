@@ -121,8 +121,7 @@ describe("PagesSessionDirect", function()
       params["organization_id"] = setup.idmap["organization01"]
     else
       params["id"] = "direct01"
-      params["id"] = "direct02"
-      params["organization_id"] = "direct03"
+      params["organization_id"] = "direct02"
     end
 
     local result, err = client:direct({

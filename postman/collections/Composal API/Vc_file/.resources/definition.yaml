@@ -7,4 +7,4 @@ description: |-
   |---|---|---|---|
   | `paths` | array | yes |  |
   | `truncated` | boolean | yes |  |
-order: 531000
+order: 530000

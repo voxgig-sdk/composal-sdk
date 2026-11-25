@@ -21,18 +21,24 @@ main: kit: flow: BasicChangeCommentFlow:
     }
 
     {
+      i: {
+        ref: "change_comment_ref01",
+        srcdatavar: "change_comment_ref01_data",
+        suffix: "_dt0"
+      }
+
       m: {
-        change_id: "change01",
+        id: "change_comment01",
         organization_id: "organization01",
         repo_id: "repo01"
       }
 
-      o: "list",
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "change_comment_ref01"
+            mark: "Mark01-change_comment_ref01"
           }
         }
       ]

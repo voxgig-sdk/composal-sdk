@@ -22,7 +22,7 @@ body:
     {
       "tester_number": "example",
       "assistant_number": "example",
-      "verify_environment_id": "example"
+      "verify_environment_id": "{{verify_environment_id}}"
     }
 scripts:
   - type: afterResponse

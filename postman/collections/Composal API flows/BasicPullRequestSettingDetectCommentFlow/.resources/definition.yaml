@@ -1,4 +1,4 @@
 $kind: collection
 id: "176f1afe-402e-5ff6-8048-b2a9ea72a595"
 description: "The `BasicPullRequestSettingDetectCommentFlow` flow of **pull_request_setting_detect_comment**."
-order: 316000
+order: 317000

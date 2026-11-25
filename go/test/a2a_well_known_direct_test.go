@@ -47,10 +47,8 @@ func TestA2aWellKnownDirect(t *testing.T) {
 		query := map[string]any{}
 		if setup.live {
 			params["a2a_id"] = setup.idmap["a2a01"]
-			params["a2a_id"] = setup.idmap["a2a01"]
 		} else {
 			params["a2a_id"] = "direct01"
-			params["a2a_id"] = "direct02"
 		}
 
 		result, err := client.Direct(map[string]any{
@@ -103,9 +101,6 @@ func TestA2aWellKnownDirect(t *testing.T) {
 			if url, ok := call["url"].(string); ok {
 				if !strings.Contains(url, "direct01") {
 					t.Fatalf("expected url to contain direct01, got %v", url)
-				}
-				if !strings.Contains(url, "direct02") {
-					t.Fatalf("expected url to contain direct02, got %v", url)
 				}
 			}
 		}

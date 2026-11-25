@@ -44,14 +44,12 @@ describe("ProductMapObservationDirect", function()
     local query = {}
     if setup.live then
       params["id"] = setup.idmap["product_map_observation01"]
-      params["id"] = setup.idmap["product_map_observation01"]
       params["organization_id"] = setup.idmap["organization01"]
       params["project_id"] = setup.idmap["project01"]
     else
       params["id"] = "direct01"
-      params["id"] = "direct02"
-      params["organization_id"] = "direct03"
-      params["project_id"] = "direct04"
+      params["organization_id"] = "direct02"
+      params["project_id"] = "direct03"
     end
 
     local result, err = client:direct({

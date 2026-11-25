@@ -135,7 +135,7 @@ function environment_revision_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["environment_revision01", "environment_revision02", "environment_revision03", "organization01", "organization02", "organization03", "environment01", "environment02", "environment03"] as $k) {
+    foreach (["environment_revision01", "environment_revision02", "environment_revision03", "organization01", "organization02", "organization03", "environment01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

@@ -37,7 +37,7 @@ describe("VcChangeEntity", function()
     local setup = vc_change_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"list"}) do
+    for _, _op in ipairs({"list", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "vc_change." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -55,6 +55,16 @@ describe("VcChangeEntity", function()
       end
     end
     local client = setup.client
+    if setup.live then
+      local _live_id = nil
+      if not setup.synthetic_only then
+        _live_id = setup.idmap["vc_change01"]
+      end
+      runner.live_pace()
+      runner.live_existing(pending, setup, LIVE_STRICT, "vc_change", function()
+        return client:VcChange(nil):list({["organization_id"] = setup.idmap["organization01"], ["repo_id"] = setup.idmap["repo01"]}, nil)
+      end, "id", _live_id)
+    end
 
     -- Bootstrap entity data from existing test data.
     local vc_change_ref01_data_raw = vs.items(helpers.to_map(
@@ -77,6 +87,21 @@ describe("VcChangeEntity", function()
     local vc_change_ref01_list_result, err = vc_change_ref01_ent:list(vc_change_ref01_match, nil)
     assert.is_nil(err)
     assert.is_table(vc_change_ref01_list_result)
+
+    if setup.live then
+      runner.live_pace()
+    end
+    -- LOAD
+    local vc_change_ref01_match_dt0 = {
+      id = vc_change_ref01_data["id"],
+    }
+    vc_change_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+    vc_change_ref01_match_dt0["repo_id"] = setup.idmap["repo_id"] or setup.idmap["repo01"]
+    local vc_change_ref01_data_dt0_loaded, err = vc_change_ref01_ent:load(vc_change_ref01_match_dt0, nil)
+    assert.is_nil(err)
+    local vc_change_ref01_data_dt0_load_result = helpers.to_map(type(vc_change_ref01_data_dt0_loaded) == 'table' and vc_change_ref01_data_dt0_loaded.data_get and vc_change_ref01_data_dt0_loaded:data_get() or vc_change_ref01_data_dt0_loaded)
+    assert.is_not_nil(vc_change_ref01_data_dt0_load_result)
+    assert.is_true(runner.live_same_id(vc_change_ref01_data_dt0_load_result["id"], vc_change_ref01_data["id"]))
 
       return
     end
@@ -89,6 +114,16 @@ describe("VcChangeEntity", function()
       end
     end
     local client = setup.client
+    if setup.live then
+      local _live_id = nil
+      if not setup.synthetic_only then
+        _live_id = setup.idmap["vc_change01"]
+      end
+      runner.live_pace()
+      runner.live_existing(pending, setup, LIVE_STRICT, "vc_change", function()
+        return client:VcChange(nil):list({["organization_id"] = setup.idmap["organization01"], ["repo_id"] = setup.idmap["repo01"]}, nil)
+      end, "id", _live_id)
+    end
 
     -- Bootstrap entity data from existing test data.
     local vc_change_ref01_data_raw = vs.items(helpers.to_map(
@@ -111,6 +146,21 @@ describe("VcChangeEntity", function()
     local vc_change_ref01_list_result, err = vc_change_ref01_ent:list(vc_change_ref01_match, nil)
     assert.is_nil(err)
     assert.is_table(vc_change_ref01_list_result)
+
+    if setup.live then
+      runner.live_pace()
+    end
+    -- LOAD
+    local vc_change_ref01_match_dt0 = {
+      id = vc_change_ref01_data["id"],
+    }
+    vc_change_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+    vc_change_ref01_match_dt0["repo_id"] = setup.idmap["repo_id"] or setup.idmap["repo01"]
+    local vc_change_ref01_data_dt0_loaded, err = vc_change_ref01_ent:load(vc_change_ref01_match_dt0, nil)
+    assert.is_nil(err)
+    local vc_change_ref01_data_dt0_load_result = helpers.to_map(type(vc_change_ref01_data_dt0_loaded) == 'table' and vc_change_ref01_data_dt0_loaded.data_get and vc_change_ref01_data_dt0_loaded:data_get() or vc_change_ref01_data_dt0_loaded)
+    assert.is_not_nil(vc_change_ref01_data_dt0_load_result)
+    assert.is_true(runner.live_same_id(vc_change_ref01_data_dt0_load_result["id"], vc_change_ref01_data["id"]))
 
   end)
 end)

@@ -623,7 +623,7 @@ main: kit: entity: swarm_task: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.task`"
           }
         }
       ]

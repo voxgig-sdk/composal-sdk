@@ -28,10 +28,6 @@ class GithubPullRequestDirectTest < Minitest::Test
       puts "LIVE STEP {\"id\":\"direct-load-github_pull_request\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs github_pull_request01, which only POST /api/v1/organizations/{org_slug}/github/pull_requests/refresh gives\"}"
       skip("Live coverage incomplete: direct-load-github_pull_request excluded (GET-only live run: needs github_pull_request01, which only POST /api/v1/organizations/{org_slug}/github/pull_requests/refresh gives)")
     end
-    if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE" && setup[:idmap]["pull_request01"].nil?
-      puts "LIVE STEP {\"id\":\"direct-load-github_pull_request\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}"
-      skip("Live coverage incomplete: direct-load-github_pull_request excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)")
-    end
     if setup[:live]
       ["github_pull_request01", "organization01", "pull_request01"].each do |_live_key|
         if setup[:idmap][_live_key].nil?
@@ -46,18 +42,12 @@ class GithubPullRequestDirectTest < Minitest::Test
     query = {}
     if setup[:live]
       params["id"] = setup[:idmap]["github_pull_request01"]
-      params["id"] = setup[:idmap]["github_pull_request01"]
       params["organization_id"] = setup[:idmap]["organization01"]
-      params["organization_id"] = setup[:idmap]["organization01"]
-      params["pull_request_id"] = setup[:idmap]["pull_request01"]
       params["pull_request_id"] = setup[:idmap]["pull_request01"]
     else
       params["id"] = "direct01"
-      params["id"] = "direct02"
-      params["organization_id"] = "direct03"
-      params["organization_id"] = "direct04"
-      params["pull_request_id"] = "direct05"
-      params["pull_request_id"] = "direct06"
+      params["organization_id"] = "direct02"
+      params["pull_request_id"] = "direct03"
     end
 
     result = client.direct({

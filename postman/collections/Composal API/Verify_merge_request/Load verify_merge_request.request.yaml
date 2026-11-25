@@ -1,0 +1,22 @@
+$kind: http-request
+id: ccd03e45-7738-5b75-a305-e5125d20b561
+description: |-
+  The `load` operation of **verify_merge_request**.
+
+  SDK: `client.VerifyMergeRequest().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/merge_requests/:id"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: page
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_merge_request belongs to.
+  - key: id
+    value: "{{verify_merge_request_id}}"
+    description: The verify_merge_request this request addresses.
+order: 1000

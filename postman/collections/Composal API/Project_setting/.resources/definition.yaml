@@ -5,10 +5,6 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `available_messaging_environments` | array | yes |  |
-  | `messaging_conversations` | array | yes |  |
-  | `messaging_enabled` | boolean | yes |  |
-  | `permissions` | object | yes |  |
-  | `project` | object | yes |  |
-  | `tester_numbers` | array | yes |  |
-order: 411000
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+order: 409000

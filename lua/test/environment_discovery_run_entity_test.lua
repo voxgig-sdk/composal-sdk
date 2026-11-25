@@ -45,9 +45,9 @@ describe("EnvironmentDiscoveryRunEntity", function()
       end
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
-      print("LIVE STEP {\"id\":\"environment_discovery_run.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop\"}")
+      print("LIVE STEP {\"id\":\"environment_discovery_run.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs\"}")
       print("LIVE STEP {\"id\":\"environment_discovery_run.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only environment_discovery_run.create.0 gives\"}")
-      pending("Live coverage incomplete: environment_discovery_run.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop); environment_discovery_run.load.1 excluded (GET-only live run: reads a record only environment_discovery_run.create.0 gives)")
+      pending("Live coverage incomplete: environment_discovery_run.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs); environment_discovery_run.load.1 excluded (GET-only live run: reads a record only environment_discovery_run.create.0 gives)")
       return
     end
 
@@ -114,7 +114,7 @@ function environment_discovery_run_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "environment_discovery_run01", "environment_discovery_run02", "environment_discovery_run03", "organization01", "organization02", "organization03", "environment01", "environment02", "environment03" },
+    { "environment_discovery_run01", "environment_discovery_run02", "environment_discovery_run03", "organization01", "organization02", "organization03", "environment01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

@@ -29,7 +29,7 @@ describe("AgentInputEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:AgentInput(nil):create({ ["agent_id"] = 1, ["organization_id"] = "x", ["browser_context"] = "x", ["client_time"] = "x", ["conversation_id"] = "x", ["text"] = "x" }, nil)
+    local _, err = client:AgentInput(nil):create({ ["agent_id"] = 1, ["organization_id"] = "x", ["conversation_id"] = "x", ["text"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 

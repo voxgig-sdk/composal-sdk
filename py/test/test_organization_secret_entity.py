@@ -114,6 +114,7 @@ class TestOrganizationSecretEntity:
         organization_secret_ref01_match_dt0 = {
             "id": organization_secret_ref01_data["id"],
         }
+        organization_secret_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
         organization_secret_ref01_data_dt0_loaded = organization_secret_ref01_ent.load(organization_secret_ref01_match_dt0, None)
         organization_secret_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(organization_secret_ref01_data_dt0_loaded))
         assert organization_secret_ref01_data_dt0_load_result is not None
@@ -181,6 +182,7 @@ class TestOrganizationSecretEntity:
         organization_secret_ref01_match_dt0 = {
             "id": organization_secret_ref01_data["id"],
         }
+        organization_secret_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
         organization_secret_ref01_data_dt0_loaded = organization_secret_ref01_ent.load(organization_secret_ref01_match_dt0, None)
         organization_secret_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(organization_secret_ref01_data_dt0_loaded))
         assert organization_secret_ref01_data_dt0_load_result is not None

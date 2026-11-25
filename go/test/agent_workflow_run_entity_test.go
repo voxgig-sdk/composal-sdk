@@ -53,7 +53,7 @@ func TestAgentWorkflowRunEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{"list", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "agent_workflow_run." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -73,6 +73,17 @@ func TestAgentWorkflowRunEntity(t *testing.T) {
 		}
 		client := setup.client
 		_ = client
+		if setup.live {
+			var _liveId any
+			if !setup.syntheticOnly {
+				_liveId = setup.idmap["agent_workflow_run01"]
+			}
+			livePace()
+			liveExisting(t, agent_workflow_runEntityLiveStrict, setup.data, "agent_workflow_run", "id", _liveId,
+				func() (any, error) {
+					return client.AgentWorkflowRun(nil).List(map[string]any{"agent_id": setup.idmap["agent01"], "organization_id": setup.idmap["organization01"]}, nil)
+				})
+		}
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		agentWorkflowRunRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.agent_workflow_run")))
@@ -101,6 +112,35 @@ func TestAgentWorkflowRunEntity(t *testing.T) {
 		_, agentWorkflowRunRef01ListOk := agentWorkflowRunRef01ListResult.([]any)
 		if !agentWorkflowRunRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", agentWorkflowRunRef01ListResult)
+		}
+
+		if setup.live {
+			livePace()
+		}
+		// LOAD
+		agentWorkflowRunRef01MatchDt0 := map[string]any{
+			"id": agentWorkflowRunRef01Data["id"],
+		}
+		if v := setup.idmap["agent_id"]; v != nil {
+			agentWorkflowRunRef01MatchDt0["agent_id"] = v
+		} else {
+			agentWorkflowRunRef01MatchDt0["agent_id"] = setup.idmap["agent01"]
+		}
+		if v := setup.idmap["organization_id"]; v != nil {
+			agentWorkflowRunRef01MatchDt0["organization_id"] = v
+		} else {
+			agentWorkflowRunRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
+		}
+		agentWorkflowRunRef01DataDt0Loaded, err := agentWorkflowRunRef01Ent.Load(agentWorkflowRunRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		agentWorkflowRunRef01DataDt0LoadResult := core.ToMapAny(entityData(agentWorkflowRunRef01DataDt0Loaded))
+		if agentWorkflowRunRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if !liveSameId(agentWorkflowRunRef01DataDt0LoadResult["id"], agentWorkflowRunRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
 		}
 
 		return
@@ -115,6 +155,17 @@ func TestAgentWorkflowRunEntity(t *testing.T) {
 		}
 		client := setup.client
 		_ = client
+		if setup.live {
+			var _liveId any
+			if !setup.syntheticOnly {
+				_liveId = setup.idmap["agent_workflow_run01"]
+			}
+			livePace()
+			liveExisting(t, agent_workflow_runEntityLiveStrict, setup.data, "agent_workflow_run", "id", _liveId,
+				func() (any, error) {
+					return client.AgentWorkflowRun(nil).List(map[string]any{"agent_id": setup.idmap["agent01"], "organization_id": setup.idmap["organization01"]}, nil)
+				})
+		}
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		agentWorkflowRunRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.agent_workflow_run")))
@@ -143,6 +194,35 @@ func TestAgentWorkflowRunEntity(t *testing.T) {
 		_, agentWorkflowRunRef01ListOk := agentWorkflowRunRef01ListResult.([]any)
 		if !agentWorkflowRunRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", agentWorkflowRunRef01ListResult)
+		}
+
+		if setup.live {
+			livePace()
+		}
+		// LOAD
+		agentWorkflowRunRef01MatchDt0 := map[string]any{
+			"id": agentWorkflowRunRef01Data["id"],
+		}
+		if v := setup.idmap["agent_id"]; v != nil {
+			agentWorkflowRunRef01MatchDt0["agent_id"] = v
+		} else {
+			agentWorkflowRunRef01MatchDt0["agent_id"] = setup.idmap["agent01"]
+		}
+		if v := setup.idmap["organization_id"]; v != nil {
+			agentWorkflowRunRef01MatchDt0["organization_id"] = v
+		} else {
+			agentWorkflowRunRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
+		}
+		agentWorkflowRunRef01DataDt0Loaded, err := agentWorkflowRunRef01Ent.Load(agentWorkflowRunRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		agentWorkflowRunRef01DataDt0LoadResult := core.ToMapAny(entityData(agentWorkflowRunRef01DataDt0Loaded))
+		if agentWorkflowRunRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if !liveSameId(agentWorkflowRunRef01DataDt0LoadResult["id"], agentWorkflowRunRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

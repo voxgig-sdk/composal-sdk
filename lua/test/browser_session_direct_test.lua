@@ -56,7 +56,7 @@ describe("BrowserSessionDirect", function()
     end
 
     local result, err = client:direct({
-      path = "api/v1/organizations/{organization_id}/browser_sessions/{id}/media",
+      path = "api/v1/organizations/{organization_id}/browser_sessions/{id}",
       method = "GET",
       params = params,
       query = query,

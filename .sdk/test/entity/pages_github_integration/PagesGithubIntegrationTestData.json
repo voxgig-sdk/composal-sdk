@@ -1,0 +1,80 @@
+{
+  "existing": {
+    "pages_github_integration": {
+      "PAGES_GITHUB_INTEGRATION00": {
+        "account_avatar_url": "s78",
+        "account_login": "s79",
+        "connection_status": "s7a",
+        "connection_status_label": "s7b",
+        "github_installation": "s7c",
+        "health": {},
+        "id": "PAGES_GITHUB_INTEGRATION00",
+        "imported_repositories_count": 127,
+        "imported_repositories_count_label": "s80",
+        "organization": {},
+        "pagination": {},
+        "repositories": [],
+        "organization_id": "ORGANIZATION01"
+      },
+      "PAGES_GITHUB_INTEGRATION01": {
+        "account_avatar_url": "sf0",
+        "account_login": "sf1",
+        "connection_status": "sf2",
+        "connection_status_label": "sf3",
+        "github_installation": "sf4",
+        "health": {},
+        "id": "PAGES_GITHUB_INTEGRATION01",
+        "imported_repositories_count": 247,
+        "imported_repositories_count_label": "sf8",
+        "organization": {},
+        "pagination": {},
+        "repositories": [],
+        "organization_id": "ORGANIZATION01"
+      },
+      "PAGES_GITHUB_INTEGRATION02": {
+        "account_avatar_url": "s168",
+        "account_login": "s169",
+        "connection_status": "s16a",
+        "connection_status_label": "s16b",
+        "github_installation": "s16c",
+        "health": {},
+        "id": "PAGES_GITHUB_INTEGRATION02",
+        "imported_repositories_count": 367,
+        "imported_repositories_count_label": "s170",
+        "organization": {},
+        "pagination": {},
+        "repositories": [],
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "pages_github_integration": {
+      "pages_github_integration_ref01": {
+        "account_avatar_url": "s1e0",
+        "account_login": "s1e1",
+        "connection_status": "s1e2",
+        "connection_status_label": "s1e3",
+        "github_installation": "s1e4",
+        "health": {},
+        "imported_repositories_count": 487,
+        "imported_repositories_count_label": "s1e8",
+        "organization": {},
+        "pagination": {},
+        "repositories": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/pages/github_integrations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/pages/github_integrations/{github_app_installation_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

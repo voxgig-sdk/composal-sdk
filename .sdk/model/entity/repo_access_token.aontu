@@ -270,7 +270,7 @@ main: kit: entity: repo_access_token: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.access_token`"
           }
         }
       ]

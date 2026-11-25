@@ -57,10 +57,10 @@ scripts:
       const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
       const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
       if ("Mark01-local_thread_delivery_ref01" === pm.variables.get("local_thread_delivery_ref01_marked")) pm.test("2. Load local_thread_delivery: the update reads back", () => {
-        pm.expect(JSON.stringify(body)).to.include("Mark01-local_thread_delivery_ref01")
+        pm.expect(JSON.stringify(body?.["delivery"])).to.include("Mark01-local_thread_delivery_ref01")
       })
       pm.test("2. Load local_thread_delivery: the record is the one asked for", () => {
-        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("local_thread_delivery_id")))
+        pm.expect(String(at(body?.["delivery"], "id"))).to.eql(String(pm.variables.get("local_thread_delivery_id")))
       })
     language: text/javascript
 order: 2000

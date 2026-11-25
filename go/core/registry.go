@@ -34,8 +34,6 @@ var NewAgentAppInstallEntityFunc func(client *ComposalSDK, entopts map[string]an
 
 var NewAgentAttachmentEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
-var NewAgentAutomationEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
-
 var NewAgentAvatarEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewAgentCommandEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
@@ -189,6 +187,8 @@ var NewAppDataResourceEntityFunc func(client *ComposalSDK, entopts map[string]an
 var NewAppDeployEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewAppDeploymentEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
+
+var NewAppDeploymentDashboardEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewAppDeploymentOperationEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
@@ -448,8 +448,6 @@ var NewDeviceBrowserOperationEntityFunc func(client *ComposalSDK, entopts map[st
 
 var NewDeviceControlMessageEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
-var NewDeviceControlOperationEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
-
 var NewDeviceEnterpriseRelayEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewDeviceFolderListingEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
@@ -459,6 +457,8 @@ var NewDeviceGrantEntityFunc func(client *ComposalSDK, entopts map[string]any) C
 var NewDeviceInvocationEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewDeviceLocalEventEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
+
+var NewDeviceOperationEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewDevicePairingEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
@@ -482,8 +482,6 @@ var NewEdgeEntityFunc func(client *ComposalSDK, entopts map[string]any) Composal
 
 var NewEmailVerificationEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
-var NewEnvironmentEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
-
 var NewEnvironmentDiscoveryRunEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewEnvironmentExplorationEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
@@ -495,8 +493,6 @@ var NewEnvironmentRevisionEntityFunc func(client *ComposalSDK, entopts map[strin
 var NewEnvironmentSecretBindingEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewEnvironmentTestAccountEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
-
-var NewEvidenceEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewExecutionDesiredStateEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
@@ -537,8 +533,6 @@ var NewGithubCiRepositoryEntityFunc func(client *ComposalSDK, entopts map[string
 var NewGithubCiRepositoryCompatibilityReportEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewGithubConnectionEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
-
-var NewGithubIntegrationEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewGithubOnboardingEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
@@ -656,8 +650,6 @@ var NewMemoryEntityFunc func(client *ComposalSDK, entopts map[string]any) Compos
 
 var NewMergeQueueEntryEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
-var NewMergeRequestEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
-
 var NewMergeResolutionEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewMessagingConversationMessageEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
@@ -754,6 +746,8 @@ var NewPageRepoVcCommitEntityFunc func(client *ComposalSDK, entopts map[string]a
 
 var NewPagesBillingEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
+var NewPagesGithubIntegrationEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
+
 var NewPagesGithubOnboardingEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewPagesMemberEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
@@ -824,7 +818,11 @@ var NewProjectOverviewMetricEntityFunc func(client *ComposalSDK, entopts map[str
 
 var NewProjectOverviewPullRequestEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
+var NewProjectPrTestingEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
+
 var NewProjectProductMapEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
+
+var NewProjectProductMapComparisonEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewProjectRecordingEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
@@ -837,8 +835,6 @@ var NewProjectScenarioOptionEntityFunc func(client *ComposalSDK, entopts map[str
 var NewProjectScenarioRowEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewProjectSettingEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
-
-var NewPullRequestEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewPullRequestActionEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
@@ -1030,6 +1026,8 @@ var NewSparkAgentSkillEntityFunc func(client *ComposalSDK, entopts map[string]an
 
 var NewSparkAgentThreadEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
+var NewSparkAutomationEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
+
 var NewSparkCreditEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewSparkCreditAgentUsageEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
@@ -1105,6 +1103,14 @@ var NewVerifyAppDomainEntityFunc func(client *ComposalSDK, entopts map[string]an
 var NewVerifyBrowserSessionEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewVerifyEmailVerificationEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
+
+var NewVerifyEnvironmentEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
+
+var NewVerifyEvidenceEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
+
+var NewVerifyMergeRequestEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
+
+var NewVerifyPullRequestEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewVerifySignalIntegrationEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 

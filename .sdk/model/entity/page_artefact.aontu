@@ -621,7 +621,7 @@ main: kit: entity: page_artefact: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.artefact`"
           }
         }
       ]

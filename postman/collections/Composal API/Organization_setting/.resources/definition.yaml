@@ -14,4 +14,4 @@ description: |-
   | `name` | string |  |  |
   | `onboarding_custom_pricing` | boolean |  |  |
   | `onboarding_package_keys` | array |  |  |
-order: 358000
+order: 353000

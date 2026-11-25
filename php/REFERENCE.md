@@ -66,10 +66,6 @@ Create a new `AgentAppInstallEntity` instance. Pass `null` for no initial data.
 
 Create a new `AgentAttachmentEntity` instance. Pass `null` for no initial data.
 
-#### `AgentAutomation($data = null)`
-
-Create a new `AgentAutomationEntity` instance. Pass `null` for no initial data.
-
 #### `AgentAvatar($data = null)`
 
 Create a new `AgentAvatarEntity` instance. Pass `null` for no initial data.
@@ -377,6 +373,10 @@ Create a new `AppDeployEntity` instance. Pass `null` for no initial data.
 #### `AppDeployment($data = null)`
 
 Create a new `AppDeploymentEntity` instance. Pass `null` for no initial data.
+
+#### `AppDeploymentDashboard($data = null)`
+
+Create a new `AppDeploymentDashboardEntity` instance. Pass `null` for no initial data.
 
 #### `AppDeploymentOperation($data = null)`
 
@@ -894,10 +894,6 @@ Create a new `DeviceBrowserOperationEntity` instance. Pass `null` for no initial
 
 Create a new `DeviceControlMessageEntity` instance. Pass `null` for no initial data.
 
-#### `DeviceControlOperation($data = null)`
-
-Create a new `DeviceControlOperationEntity` instance. Pass `null` for no initial data.
-
 #### `DeviceEnterpriseRelay($data = null)`
 
 Create a new `DeviceEnterpriseRelayEntity` instance. Pass `null` for no initial data.
@@ -917,6 +913,10 @@ Create a new `DeviceInvocationEntity` instance. Pass `null` for no initial data.
 #### `DeviceLocalEvent($data = null)`
 
 Create a new `DeviceLocalEventEntity` instance. Pass `null` for no initial data.
+
+#### `DeviceOperation($data = null)`
+
+Create a new `DeviceOperationEntity` instance. Pass `null` for no initial data.
 
 #### `DevicePairing($data = null)`
 
@@ -962,10 +962,6 @@ Create a new `EdgeEntity` instance. Pass `null` for no initial data.
 
 Create a new `EmailVerificationEntity` instance. Pass `null` for no initial data.
 
-#### `Environment($data = null)`
-
-Create a new `EnvironmentEntity` instance. Pass `null` for no initial data.
-
 #### `EnvironmentDiscoveryRun($data = null)`
 
 Create a new `EnvironmentDiscoveryRunEntity` instance. Pass `null` for no initial data.
@@ -989,10 +985,6 @@ Create a new `EnvironmentSecretBindingEntity` instance. Pass `null` for no initi
 #### `EnvironmentTestAccount($data = null)`
 
 Create a new `EnvironmentTestAccountEntity` instance. Pass `null` for no initial data.
-
-#### `Evidence($data = null)`
-
-Create a new `EvidenceEntity` instance. Pass `null` for no initial data.
 
 #### `ExecutionDesiredState($data = null)`
 
@@ -1073,10 +1065,6 @@ Create a new `GithubCiRepositoryCompatibilityReportEntity` instance. Pass `null`
 #### `GithubConnection($data = null)`
 
 Create a new `GithubConnectionEntity` instance. Pass `null` for no initial data.
-
-#### `GithubIntegration($data = null)`
-
-Create a new `GithubIntegrationEntity` instance. Pass `null` for no initial data.
 
 #### `GithubOnboarding($data = null)`
 
@@ -1310,10 +1298,6 @@ Create a new `MemoryEntity` instance. Pass `null` for no initial data.
 
 Create a new `MergeQueueEntryEntity` instance. Pass `null` for no initial data.
 
-#### `MergeRequest($data = null)`
-
-Create a new `MergeRequestEntity` instance. Pass `null` for no initial data.
-
 #### `MergeResolution($data = null)`
 
 Create a new `MergeResolutionEntity` instance. Pass `null` for no initial data.
@@ -1506,6 +1490,10 @@ Create a new `PageRepoVcCommitEntity` instance. Pass `null` for no initial data.
 
 Create a new `PagesBillingEntity` instance. Pass `null` for no initial data.
 
+#### `PagesGithubIntegration($data = null)`
+
+Create a new `PagesGithubIntegrationEntity` instance. Pass `null` for no initial data.
+
 #### `PagesGithubOnboarding($data = null)`
 
 Create a new `PagesGithubOnboardingEntity` instance. Pass `null` for no initial data.
@@ -1646,9 +1634,17 @@ Create a new `ProjectOverviewMetricEntity` instance. Pass `null` for no initial 
 
 Create a new `ProjectOverviewPullRequestEntity` instance. Pass `null` for no initial data.
 
+#### `ProjectPrTesting($data = null)`
+
+Create a new `ProjectPrTestingEntity` instance. Pass `null` for no initial data.
+
 #### `ProjectProductMap($data = null)`
 
 Create a new `ProjectProductMapEntity` instance. Pass `null` for no initial data.
+
+#### `ProjectProductMapComparison($data = null)`
+
+Create a new `ProjectProductMapComparisonEntity` instance. Pass `null` for no initial data.
 
 #### `ProjectRecording($data = null)`
 
@@ -1673,10 +1669,6 @@ Create a new `ProjectScenarioRowEntity` instance. Pass `null` for no initial dat
 #### `ProjectSetting($data = null)`
 
 Create a new `ProjectSettingEntity` instance. Pass `null` for no initial data.
-
-#### `PullRequest($data = null)`
-
-Create a new `PullRequestEntity` instance. Pass `null` for no initial data.
 
 #### `PullRequestAction($data = null)`
 
@@ -2058,6 +2050,10 @@ Create a new `SparkAgentSkillEntity` instance. Pass `null` for no initial data.
 
 Create a new `SparkAgentThreadEntity` instance. Pass `null` for no initial data.
 
+#### `SparkAutomation($data = null)`
+
+Create a new `SparkAutomationEntity` instance. Pass `null` for no initial data.
+
 #### `SparkCredit($data = null)`
 
 Create a new `SparkCreditEntity` instance. Pass `null` for no initial data.
@@ -2209,6 +2205,22 @@ Create a new `VerifyBrowserSessionEntity` instance. Pass `null` for no initial d
 #### `VerifyEmailVerification($data = null)`
 
 Create a new `VerifyEmailVerificationEntity` instance. Pass `null` for no initial data.
+
+#### `VerifyEnvironment($data = null)`
+
+Create a new `VerifyEnvironmentEntity` instance. Pass `null` for no initial data.
+
+#### `VerifyEvidence($data = null)`
+
+Create a new `VerifyEvidenceEntity` instance. Pass `null` for no initial data.
+
+#### `VerifyMergeRequest($data = null)`
+
+Create a new `VerifyMergeRequestEntity` instance. Pass `null` for no initial data.
+
+#### `VerifyPullRequest($data = null)`
+
+Create a new `VerifyPullRequestEntity` instance. Pass `null` for no initial data.
 
 #### `VerifySignalIntegration($data = null)`
 
@@ -2810,93 +2822,6 @@ Set the entity match criteria.
 #### `make(): AgentAttachmentEntity`
 
 Create a new `AgentAttachmentEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
-## AgentAutomationEntity
-
-```php
-$agent_automation = $client->AgentAutomation();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `can_manage` | `bool` | Yes |  |
-| `can_manage_events` | `bool` | Yes | Whether new event triggers can be attached or existing settings saved. |
-| `can_run` | `bool` | Yes | Whether the viewer can request a manual Temporal run |
-| `can_schedule` | `bool` | Yes |  |
-| `definition` | `array` | Yes |  |
-| `event_subscriptions` | `array` | Yes |  |
-| `event_triggers` | `array` | Yes |  |
-| `expected_revision` | `int` | Yes |  |
-| `id` | `string` | Yes |  |
-| `key` | `string` | Yes |  |
-| `name` | `string` | Yes |  |
-| `revision` | `int` | Yes |  |
-| `schedule` | `mixed` | Yes |  |
-| `schedules` | `array` | Yes |  |
-| `version` | `array` | Yes |  |
-
-### Operations
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AgentAutomation()->list(["agent_id" => "example", "organization_id" => "example"]);
-```
-
-#### `load(array $reqmatch, ?array $ctrl = null): mixed`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
-
-```php
-$result = $client->AgentAutomation()->load(["id" => "agent_automation_id", "agent_id" => "agent_id", "organization_id" => "organization_id"]);
-```
-
-#### `update(array $reqdata, ?array $ctrl = null): mixed`
-
-Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
-
-```php
-$result = $client->AgentAutomation()->update([
-  "id" => "agent_automation_id",
-  "agent_id" => "agent_id",
-  "organization_id" => "organization_id",
-  // Fields to update
-]);
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): AgentAutomationEntity`
-
-Create a new `AgentAutomationEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -3919,8 +3844,8 @@ $agent_input = $client->AgentInput();
 | --- | --- | --- | --- |
 | `attachment_ids` | `array` | No | Completed uploads from the attachments endpoint, in order. |
 | `attachments` | `array` | No |  |
-| `browser_context` | `array` | Yes | Advisory snapshot of the browser pane beside this conversation when the message was sent. |
-| `client_time` | `array` | Yes | The sending app's IANA time zone and clock, so the agent answers in the person's local time. |
+| `browser_context` | `array` | No | Advisory snapshot of the browser pane beside this conversation when the message was sent. |
+| `client_time` | `array` | No | The sending app's IANA time zone and clock, so the agent answers in the person's local time. |
 | `conversation_id` | `string` | Yes | Main or a conversation identity returned by the agent thread list. |
 | `model_policy` | `mixed` | No |  |
 | `requester_membership_id` | `string` | No | Snapshot the membership supplied by conversation history for a NEW V1 input. |
@@ -3937,8 +3862,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 $result = $client->AgentInput()->create([
   "agent_id" => null, // string
   "organization_id" => null, // string
-  "browser_context" => null, // array
-  "client_time" => null, // array
   "conversation_id" => null, // string
   "text" => null, // string
 ]);
@@ -4515,7 +4438,7 @@ $agent_marketplace = $client->AgentMarketplace();
 
 | Field | load | create | update | patch | remove |
 | --- | --- | --- | --- | --- | --- |
-| `bundle` | - | - | - | - | - |
+| `bundle` | - | - | - | Yes | - |
 | `can_manage` | - | - | - | - | - |
 | `catalog_key` | - | - | - | - | - |
 | `categories` | - | - | - | - | - |
@@ -5323,7 +5246,7 @@ $agent_routine = $client->AgentRoutine();
 | --- | --- | --- | --- |
 | `can_manage` | `bool` | Yes |  |
 | `consecutive_errors` | `int` | Yes |  |
-| `credit_wait` | `array` | Yes | The wallet funding an enabled routine that is waiting for inference credit. |
+| `credit_wait` | `array` | No | The wallet funding an enabled routine that is waiting for inference credit. |
 | `description` | `mixed` | Yes |  |
 | `enabled` | `bool` | Yes |  |
 | `id` | `string` | Yes |  |
@@ -5337,7 +5260,7 @@ $agent_routine = $client->AgentRoutine();
 | `routine` | `array` | Yes |  |
 | `schedule` | `array` | Yes |  |
 | `schedule_label` | `string` | Yes |  |
-| `utility_model` | `array` | Yes |  |
+| `utility_model` | `array` | No |  |
 
 ### Operations
 
@@ -6000,7 +5923,7 @@ $agent_subagent = $client->AgentSubagent();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `active` | `bool` | Yes |  |
-| `attention` | `mixed` | Yes | Why the person should open this thread, as the Threads panel shows it: a pending question, the agent asking for attention, or a run that did not finish. |
+| `attention` | `mixed` | No | Why the person should open this thread, as the Threads panel shows it: a pending question, the agent asking for attention, or a run that did not finish. |
 | `ended_at` | `mixed` | Yes |  |
 | `id` | `string` | Yes |  |
 | `model` | `mixed` | Yes |  |
@@ -6160,7 +6083,7 @@ $agent_swarm = $client->AgentSwarm();
 | `started_at_label` | `mixed` | Yes |  |
 | `status` | `string` | Yes |  |
 | `summary` | `array` | Yes |  |
-| `target` | `array` | Yes | Where the swarm lands. |
+| `target` | `array` | No | Where the swarm lands. |
 | `task_count` | `int` | Yes |  |
 | `task_template_json` | `mixed` | Yes |  |
 | `tasks` | `array` | Yes |  |
@@ -6230,7 +6153,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 ```php
 $result = $client->AgentSwarm()->create([
   "organization_slug" => null, // mixed
-  "target" => null, // array
 ]);
 ```
 
@@ -6963,7 +6885,7 @@ $agent_workflow_proposal = $client->AgentWorkflowProposal();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `agent_steps` | `array` | Yes | The model and reasoning the workflow's agent steps share. |
+| `agent_steps` | `array` | No | The model and reasoning the workflow's agent steps share. |
 | `base_digest` | `mixed` | Yes | The saved workflow this proposal changes; null for a new workflow. |
 | `can_manage` | `bool` | Yes |  |
 | `can_revise` | `bool` | Yes | The viewer can choose the model and reasoning of the agent steps now, before saving. |
@@ -7042,7 +6964,7 @@ $agent_workflow_run = $client->AgentWorkflowRun();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `action` | `string` | Yes |  |
-| `automation` | `mixed` | Yes | Saved native automation identity. |
+| `automation` | `mixed` | No | Saved native automation identity. |
 | `budget_seconds` | `mixed` | Yes | The run stops once it has been running this long |
 | `budget_usd` | `mixed` | Yes | The run stops before a step once it has spent this much |
 | `can_answer` | `bool` | Yes | Whether this viewer can answer the step that stopped the run; the answer runs that step again |
@@ -7050,7 +6972,7 @@ $agent_workflow_run = $client->AgentWorkflowRun();
 | `can_dismiss` | `bool` | Yes | Whether this viewer can dismiss the run waiting for them, which ends it unanswered |
 | `checkpoint` | `mixed` | Yes | The question a run waiting at a checkpoint is asking |
 | `conversation_id` | `mixed` | Yes | The thread the run works in, which the person opens to follow it |
-| `decision_history` | `array` | Yes |  |
+| `decision_history` | `array` | No |  |
 | `error` | `mixed` | Yes |  |
 | `finished_at` | `mixed` | Yes |  |
 | `flow_steps` | `mixed` | Yes | How the run went at each step of its workflow file, in the order it reached them; null when steps were recorded without their step of the file |
@@ -8479,6 +8401,82 @@ Set the entity match criteria.
 #### `make(): AppDeploymentEntity`
 
 Create a new `AppDeploymentEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AppDeploymentDashboardEntity
+
+```php
+$app_deployment_dashboard = $client->AppDeploymentDashboard();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `array` | Yes |  |
+| `app` | `array` | Yes |  |
+| `audit_events` | `array` | Yes |  |
+| `capacity` | `array` | Yes |  |
+| `connections` | `array` | Yes |  |
+| `data_resources` | `array` | Yes |  |
+| `deployments` | `array` | Yes |  |
+| `desired_states` | `array` | Yes |  |
+| `environments` | `array` | Yes |  |
+| `id` | `string` | No |  |
+| `locations` | `array` | Yes |  |
+| `managed_database_catalog` | `array` | Yes |  |
+| `observability` | `array` | Yes |  |
+| `operations` | `array` | Yes |  |
+| `placements` | `array` | Yes |  |
+| `reconciler_ticks` | `array` | Yes |  |
+| `releases` | `array` | Yes |  |
+| `rollback_deployments` | `array` | Yes |  |
+| `rollouts` | `array` | Yes |  |
+| `runtime_instances` | `array` | Yes |  |
+| `service_bindings` | `array` | Yes |  |
+| `service_views` | `array` | Yes |  |
+| `services` | `array` | Yes |  |
+| `storage_resources` | `array` | Yes |  |
+| `summary` | `array` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->AppDeploymentDashboard()->load(["id" => "app_deployment_dashboard_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AppDeploymentDashboardEntity`
+
+Create a new `AppDeploymentDashboardEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -11335,7 +11333,7 @@ $automation_run = $client->AutomationRun();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `action` | `string` | Yes |  |
-| `automation` | `mixed` | Yes | Saved native automation identity. |
+| `automation` | `mixed` | No | Saved native automation identity. |
 | `budget_seconds` | `mixed` | Yes | The run stops once it has been running this long |
 | `budget_usd` | `mixed` | Yes | The run stops before a step once it has spent this much |
 | `can_answer` | `bool` | Yes | Whether this viewer can answer the step that stopped the run; the answer runs that step again |
@@ -11343,7 +11341,7 @@ $automation_run = $client->AutomationRun();
 | `can_dismiss` | `bool` | Yes | Whether this viewer can dismiss the run waiting for them, which ends it unanswered |
 | `checkpoint` | `mixed` | Yes | The question a run waiting at a checkpoint is asking |
 | `conversation_id` | `mixed` | Yes | The thread the run works in, which the person opens to follow it |
-| `decision_history` | `array` | Yes |  |
+| `decision_history` | `array` | No |  |
 | `error` | `mixed` | Yes |  |
 | `finished_at` | `mixed` | Yes |  |
 | `flow_steps` | `mixed` | Yes | How the run went at each step of its workflow file, in the order it reached them; null when steps were recorded without their step of the file |
@@ -14278,7 +14276,7 @@ $change = $client->Change();
 | --- | --- | --- | --- |
 | `counts` | `array` | Yes | Counts for each state across the active non-state filters. |
 | `filters` | `array` | Yes |  |
-| `github_sync` | `array` | Yes |  |
+| `github_sync` | `array` | No |  |
 | `result` | `mixed` | Yes | What this page is a page of. |
 
 ### Operations
@@ -14399,54 +14397,15 @@ $change_comment = $client->ChangeComment();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `body` | `string` | Yes |  |
-| `capabilities` | `array` | Yes |  |
-| `change_id` | `mixed` | No |  |
-| `created_at` | `mixed` | No |  |
-| `created_at_label` | `mixed` | No |  |
-| `id` | `string` | Yes |  |
+| `comment` | `array` | No |  |
+| `comments` | `array` | Yes |  |
+| `id` | `string` | No |  |
 | `kind` | `mixed` | No |  |
 | `line` | `mixed` | No |  |
-| `outdated` | `bool` | Yes |  |
 | `parent_comment_id` | `mixed` | No |  |
 | `patchset_id` | `mixed` | No |  |
-| `patchset_number` | `mixed` | Yes |  |
 | `path` | `mixed` | No |  |
-| `replies` | `array` | No |  |
-| `resolved` | `bool` | Yes |  |
-| `resolved_at` | `mixed` | No |  |
-| `resolved_at_label` | `mixed` | No |  |
-| `resolved_by` | `array` | Yes |  |
 | `side` | `mixed` | No |  |
-| `updated_at` | `mixed` | No |  |
-| `updated_at_label` | `mixed` | No |  |
-| `user` | `array` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | list | create |
-| --- | --- | --- |
-| `body` | - | - |
-| `capabilities` | - | - |
-| `change_id` | - | - |
-| `created_at` | - | - |
-| `created_at_label` | - | - |
-| `id` | - | - |
-| `kind` | - | - |
-| `line` | - | - |
-| `outdated` | - | - |
-| `parent_comment_id` | - | - |
-| `patchset_id` | Yes | - |
-| `patchset_number` | - | - |
-| `path` | - | - |
-| `replies` | - | - |
-| `resolved` | - | - |
-| `resolved_at` | - | - |
-| `resolved_at_label` | - | - |
-| `resolved_by` | - | - |
-| `side` | - | - |
-| `updated_at` | - | - |
-| `updated_at_label` | - | - |
-| `user` | - | - |
 
 ### Operations
 
@@ -14463,12 +14422,12 @@ $result = $client->ChangeComment()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->ChangeComment()->list(["change_id" => "example", "organization_id" => "example", "repo_id" => "example"]);
+$result = $client->ChangeComment()->load(["change_id" => "change_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
 ```
 
 ### Common Methods
@@ -14840,10 +14799,10 @@ $change_label = $client->ChangeLabel();
 | --- | --- | --- | --- |
 | `accepted` | `bool` | No |  |
 | `add` | `array` | No |  |
-| `approval` | `array` | Yes |  |
+| `approval` | `array` | No |  |
 | `assets` | `array` | No | Proof assets referenced from the description as `vex-asset:<id>`. |
 | `author` | `mixed` | No | Human user summary or organization automation identity. |
-| `capabilities` | `array` | Yes |  |
+| `capabilities` | `array` | No |  |
 | `change_key` | `string` | No |  |
 | `checks` | `array` | No |  |
 | `checks_status` | `string` | No |  |
@@ -14851,12 +14810,12 @@ $change_label = $client->ChangeLabel();
 | `comments_count` | `int` | No |  |
 | `comments_count_label` | `string` | No |  |
 | `commit_message` | `mixed` | No |  |
-| `current_patchset` | `array` | Yes |  |
+| `current_patchset` | `array` | No |  |
 | `description` | `mixed` | No |  |
 | `draft` | `bool` | No |  |
 | `folded_into_number` | `mixed` | No |  |
 | `github_projection_status` | `mixed` | No |  |
-| `github_pull_request` | `array` | Yes |  |
+| `github_pull_request` | `array` | No |  |
 | `github_pull_requests` | `array` | No |  |
 | `group` | `mixed` | No |  |
 | `has_description` | `bool` | No | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
@@ -14864,7 +14823,7 @@ $change_label = $client->ChangeLabel();
 | `jj_change_id` | `mixed` | No |  |
 | `labels` | `array` | No |  |
 | `landable` | `bool` | No |  |
-| `landed_by` | `array` | Yes |  |
+| `landed_by` | `array` | No |  |
 | `number` | `int` | Yes |  |
 | `orphaned` | `bool` | No |  |
 | `orphaned_at` | `string` | No |  |
@@ -15205,7 +15164,7 @@ $change_transcript = $client->ChangeTranscript();
 | `session_title` | `mixed` | No |  |
 | `status` | `string` | Yes |  |
 | `superseded` | `bool` | Yes |  |
-| `user` | `array` | Yes |  |
+| `user` | `array` | No |  |
 
 ### Operations
 
@@ -16447,7 +16406,7 @@ $control_computer = $client->ControlComputer();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `connection` | `array` | Yes | A point-in-time control transport observation. |
+| `connection` | `array` | No | A point-in-time control transport observation. |
 | `consent` | `array` | Yes |  |
 | `device` | `array` | Yes |  |
 | `id` | `string` | No |  |
@@ -16510,10 +16469,10 @@ $control_computer_control_operation = $client->ControlComputerControlOperation()
 | `action` | `string` | Yes |  |
 | `arguments` | `array` | Yes |  |
 | `created_at` | `string` | Yes |  |
-| `delivery` | `array` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `delivery` | `array` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
 | `device_id` | `string` | Yes |  |
 | `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
-| `end` | `array` | Yes |  |
+| `end` | `array` | No |  |
 | `expires_at` | `string` | Yes |  |
 | `id` | `string` | Yes |  |
 | `key` | `string` | Yes |  |
@@ -16680,7 +16639,7 @@ $credential_sign_in_check = $client->CredentialSignInCheck();
 | `reproductions` | `array` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `array` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `array` | Yes |  |
+| `scenario_generation` | `array` | No |  |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `mixed` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -16819,20 +16778,21 @@ $deep_scan = $client->DeepScan();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `account_id` | `mixed` | No |  |
-| `active` | `array` | Yes |  |
 | `agent_filters` | `array` | Yes | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` | `array` | Yes |  |
 | `can_continue` | `bool` | No | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` | `array` | No |  |
+| `check_count` | `int` | Yes |  |
 | `concurrency` | `int` | Yes |  |
 | `covered_areas` | `array` | Yes | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` | `string` | Yes |  |
-| `deadline_at` | `string` | Yes |  |
+| `credential_name` | `mixed` | No | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | `string` | Yes | When the team's time limit ends. |
 | `demo_project` | `mixed` | Yes | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` | `mixed` | Yes |  |
 | `ended_early` | `bool` | Yes | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` | `string` | Yes |  |
 | `environment_name` | `string` | Yes |  |
-| `explorations` | `array` | Yes |  |
 | `explorer_activity` | `array` | Yes | What the team is doing now. |
 | `finding_count` | `int` | Yes | Findings at every priority, locked ones included. |
 | `findings` | `array` | Yes | Every tester's findings, most severe first, with the checks each one cites. |
@@ -16842,14 +16802,12 @@ $deep_scan = $client->DeepScan();
 | `huntable_flows` | `array` | Yes | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` | `string` | Yes |  |
 | `idempotency_key` | `string` | No |  |
-| `launch_options` | `array` | Yes | Present only when launch was requested by an admin |
 | `max_seconds` | `int` | Yes |  |
 | `max_testers` | `int` | Yes |  |
 | `mode` | `string` | No |  |
 | `next_scan_improvements` | `array` | Yes | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | `string` | No | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | `bool` | Yes | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` | `array` | Yes |  |
 | `paywalled` | `bool` | Yes | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` | `array` | Yes |  |
 | `priority_counts` | `array` | Yes |  |
@@ -16860,10 +16818,13 @@ $deep_scan = $client->DeepScan();
 | `reproductions` | `array` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `array` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `array` | Yes |  |
+| `scenario_count` | `int` | No | Scenarios saved from this discovery. |
+| `scenario_generation` | `array` | No |  |
+| `scenarios_pending` | `bool` | No | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `mixed` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` | `string` | Yes |  |
 | `startup_retryable` | `bool` | No | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` | `string` | Yes |  |
 | `time_limit_reached` | `bool` | Yes | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -16873,60 +16834,62 @@ $deep_scan = $client->DeepScan();
 
 ### Field Usage by Operation
 
-| Field | load | create |
-| --- | --- | --- |
-| `account_id` | - | - |
-| `active` | - | - |
-| `agent_filters` | - | - |
-| `agents` | - | - |
-| `can_continue` | - | - |
-| `chat_messages` | - | - |
-| `concurrency` | - | Yes |
-| `covered_areas` | - | - |
-| `created_at` | - | - |
-| `deadline_at` | - | - |
-| `demo_project` | - | - |
-| `ended_early` | - | - |
-| `environment_id` | - | - |
-| `environment_name` | - | - |
-| `explorations` | - | - |
-| `explorer_activity` | - | - |
-| `finding_count` | - | - |
-| `findings` | - | - |
-| `findings_fix_prompt` | - | - |
-| `finished_at` | - | - |
-| `goal` | - | - |
-| `huntable_flows` | - | - |
-| `id` | - | - |
-| `idempotency_key` | - | - |
-| `launch_options` | - | - |
-| `max_seconds` | - | Yes |
-| `max_testers` | - | Yes |
-| `mode` | - | - |
-| `next_scan_improvements` | - | - |
-| `observed_at` | - | - |
-| `onboarding` | - | - |
-| `pagination` | - | - |
-| `paywalled` | - | - |
-| `permissions` | - | - |
-| `priority_counts` | - | - |
-| `project_id` | - | - |
-| `related_explorations` | - | - |
-| `report` | - | - |
-| `reproduction_of` | - | - |
-| `reproductions` | - | - |
-| `saves_scenarios` | - | - |
-| `scannable_flows` | - | - |
-| `scenario_generation` | - | - |
-| `sign_in_needs_answer` | - | - |
-| `sign_in_outcome` | - | - |
-| `sign_in_question` | - | - |
-| `startup_retryable` | - | - |
-| `status` | - | - |
-| `time_limit_reached` | - | - |
-| `title` | - | - |
-| `unlock` | - | - |
-| `web_url` | - | - |
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `account_id` | - | - | - |
+| `agent_filters` | - | - | - |
+| `agents` | - | - | - |
+| `can_continue` | - | - | - |
+| `chat_messages` | - | - | - |
+| `check_count` | - | - | - |
+| `concurrency` | - | - | Yes |
+| `covered_areas` | - | - | - |
+| `created_at` | - | - | - |
+| `credential_name` | - | - | - |
+| `deadline_at` | - | Yes | - |
+| `demo_project` | - | - | - |
+| `duration_ms` | - | - | - |
+| `ended_early` | - | - | - |
+| `environment_id` | - | - | - |
+| `environment_name` | - | - | - |
+| `explorer_activity` | - | - | - |
+| `finding_count` | - | - | - |
+| `findings` | - | - | - |
+| `findings_fix_prompt` | - | - | - |
+| `finished_at` | - | Yes | - |
+| `goal` | - | - | - |
+| `huntable_flows` | - | - | - |
+| `id` | - | - | - |
+| `idempotency_key` | - | - | - |
+| `max_seconds` | - | - | Yes |
+| `max_testers` | - | - | Yes |
+| `mode` | - | - | - |
+| `next_scan_improvements` | - | - | - |
+| `observed_at` | - | - | - |
+| `onboarding` | - | - | - |
+| `paywalled` | - | - | - |
+| `permissions` | - | - | - |
+| `priority_counts` | - | - | - |
+| `project_id` | - | - | - |
+| `related_explorations` | - | - | - |
+| `report` | - | - | - |
+| `reproduction_of` | - | - | - |
+| `reproductions` | - | - | - |
+| `saves_scenarios` | - | - | - |
+| `scannable_flows` | - | - | - |
+| `scenario_count` | - | - | - |
+| `scenario_generation` | - | - | - |
+| `scenarios_pending` | - | - | - |
+| `sign_in_needs_answer` | - | - | - |
+| `sign_in_outcome` | - | - | - |
+| `sign_in_question` | - | - | - |
+| `started_at` | - | - | - |
+| `startup_retryable` | - | - | - |
+| `status` | - | - | - |
+| `time_limit_reached` | - | - | - |
+| `title` | - | Yes | - |
+| `unlock` | - | - | - |
+| `web_url` | - | - | - |
 
 ### Operations
 
@@ -16940,6 +16903,14 @@ $result = $client->DeepScan()->create([
   "environment_id" => null, // string
   "goal" => null, // string
 ]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->DeepScan()->list(["organization_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -17970,11 +17941,11 @@ $device = $client->Device();
 | --- | --- | --- | --- |
 | `architecture` | `string` | Yes |  |
 | `channel` | `string` | Yes |  |
-| `coding_connection` | `mixed` | Yes | Independent organization coding-control service state for the current device owner. |
+| `coding_connection` | `mixed` | No | Independent organization coding-control service state for the current device owner. |
 | `connection_checked_at` | `mixed` | Yes | When this native presence observation was obtained; null when unobserved or unavailable. |
 | `connection_status` | `string` | Yes | Display-only native presence. |
 | `control_delivery_policy` | `array` | Yes |  |
-| `control_spawn_policy` | `array` | Yes |  |
+| `control_spawn_policy` | `array` | No |  |
 | `created_at` | `string` | Yes |  |
 | `device` | `array` | Yes |  |
 | `environment` | `string` | Yes |  |
@@ -18151,86 +18122,6 @@ Set the entity match criteria.
 #### `make(): DeviceControlMessageEntity`
 
 Create a new `DeviceControlMessageEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
-## DeviceControlOperationEntity
-
-```php
-$device_control_operation = $client->DeviceControlOperation();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `action` | `string` | Yes |  |
-| `arguments` | `array` | Yes |  |
-| `created_at` | `string` | Yes |  |
-| `delivery` | `array` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
-| `device_id` | `string` | Yes |  |
-| `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
-| `end` | `array` | Yes |  |
-| `expires_at` | `string` | Yes |  |
-| `id` | `string` | Yes |  |
-| `key` | `string` | Yes |  |
-| `provider` | `string` | Yes |  |
-| `references` | `array` | Yes |  |
-| `result` | `mixed` | Yes |  |
-| `result_expired` | `bool` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
-| `state` | `string` | Yes |  |
-
-### Operations
-
-#### `create(array $reqdata, ?array $ctrl = null): mixed`
-
-Create a new entity with the given data. Returns the created entity and throws on error.
-
-```php
-$result = $client->DeviceControlOperation()->create([
-  "device_id" => null, // string
-  "organization_id" => null, // string
-  "action" => null, // string
-  "arguments" => null, // array
-  "key" => null, // string
-]);
-```
-
-#### `load(array $reqmatch, ?array $ctrl = null): mixed`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
-
-```php
-$result = $client->DeviceControlOperation()->load(["id" => "device_control_operation_id", "device_id" => "device_id", "organization_id" => "organization_id"]);
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): DeviceControlOperationEntity`
-
-Create a new `DeviceControlOperationEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -18540,6 +18431,86 @@ Set the entity match criteria.
 #### `make(): DeviceLocalEventEntity`
 
 Create a new `DeviceLocalEventEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeviceOperationEntity
+
+```php
+$device_operation = $client->DeviceOperation();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `arguments` | `array` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `delivery` | `array` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` | Yes |  |
+| `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
+| `end` | `array` | No |  |
+| `expires_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `references` | `array` | Yes |  |
+| `result` | `mixed` | Yes |  |
+| `result_expired` | `bool` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->DeviceOperation()->create([
+  "device_id" => null, // string
+  "organization_id" => null, // string
+  "action" => null, // string
+  "arguments" => null, // array
+  "key" => null, // string
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->DeviceOperation()->load(["id" => "device_operation_id", "device_id" => "device_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeviceOperationEntity`
+
+Create a new `DeviceOperationEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -19401,187 +19372,6 @@ Return the entity name.
 
 ---
 
-## EnvironmentEntity
-
-```php
-$environment = $client->Environment();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `active_revision_id` | `mixed` | Yes |  |
-| `agent_sign_up_available` | `bool` | Yes | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
-| `allowed_actions` | `string` | Yes | read_only only looks around; writes may create, change and delete data. |
-| `billing` | `array` | Yes |  |
-| `cleanup` | `array` | Yes |  |
-| `connection` | `string` | Yes |  |
-| `created_at` | `string` | Yes |  |
-| `default_policy` | `array` | No |  |
-| `default_policy_json` | `array` | Yes |  |
-| `discovery_defaults` | `array` | Yes |  |
-| `environment` | `array` | Yes |  |
-| `exploration_accounts` | `array` | No |  |
-| `explorations` | `array` | No |  |
-| `first_run` | `mixed` | No |  |
-| `hosted_app_id` | `mixed` | Yes |  |
-| `id` | `string` | Yes |  |
-| `imessage_number` | `mixed` | Yes | International destination number; blank or null clears it on an added environment. |
-| `included_deep_scan` | `bool` | Yes | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
-| `lock_version` | `int` | Yes |  |
-| `managed_google_available` | `bool` | Yes | Whether the managed Google account can be offered for this app. |
-| `managed_google_email` | `string` | Yes |  |
-| `messaging_tester_number` | `mixed` | No | One configured tester number. |
-| `name` | `string` | Yes | Optional for a website target; defaults to its hostname. |
-| `network_connections` | `array` | Yes |  |
-| `onboarding_discovery` | `mixed` | No |  |
-| `organization_id` | `string` | Yes |  |
-| `pending_accounts` | `array` | No | Credentials on a Composal address still waiting for the password the customer chose at signup. |
-| `permissions` | `array` | Yes |  |
-| `project_id` | `mixed` | Yes | Owning project. |
-| `repository_id` | `mixed` | Yes |  |
-| `revisions` | `array` | Yes |  |
-| `setup_discovery_id` | `mixed` | No | Existing discovery to resume after setup or Checkout, selected within this environment. |
-| `sign_in_check_available` | `bool` | Yes | Whether a test account's live sign-in check can run on this app. |
-| `slug` | `string` | Yes |  |
-| `status` | `string` | Yes |  |
-| `target_kind` | `mixed` | Yes |  |
-| `target_url` | `mixed` | Yes |  |
-| `test_accounts` | `array` | Yes |  |
-| `updated_at` | `string` | Yes |  |
-| `verify_network_connection_id` | `mixed` | Yes |  |
-| `version` | `int` | No | Required for target or tester changes; use lock_version from the environment. |
-
-### Field Usage by Operation
-
-| Field | load | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- |
-| `active_revision_id` | - | - | - | - | - |
-| `agent_sign_up_available` | - | - | - | - | - |
-| `allowed_actions` | - | Yes | - | Yes | - |
-| `billing` | - | - | - | - | - |
-| `cleanup` | - | - | - | - | - |
-| `connection` | - | - | - | - | - |
-| `created_at` | - | - | - | - | - |
-| `default_policy` | - | - | - | - | - |
-| `default_policy_json` | - | - | - | - | - |
-| `discovery_defaults` | - | - | - | - | - |
-| `environment` | - | - | - | - | - |
-| `exploration_accounts` | - | - | - | - | - |
-| `explorations` | - | - | - | - | - |
-| `first_run` | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - |
-| `id` | - | - | - | - | - |
-| `imessage_number` | - | Yes | - | Yes | - |
-| `included_deep_scan` | - | - | - | - | - |
-| `lock_version` | - | - | - | - | - |
-| `managed_google_available` | - | - | - | - | - |
-| `managed_google_email` | - | - | - | - | - |
-| `messaging_tester_number` | - | - | - | - | - |
-| `name` | - | Yes | - | Yes | - |
-| `network_connections` | - | - | - | - | - |
-| `onboarding_discovery` | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - |
-| `pending_accounts` | - | - | - | - | - |
-| `permissions` | - | - | - | - | - |
-| `project_id` | - | Yes | - | - | - |
-| `repository_id` | - | Yes | - | - | - |
-| `revisions` | - | - | - | - | - |
-| `setup_discovery_id` | - | - | - | - | - |
-| `sign_in_check_available` | - | - | - | - | - |
-| `slug` | - | - | - | - | - |
-| `status` | - | - | - | - | - |
-| `target_kind` | - | Yes | - | - | - |
-| `target_url` | - | Yes | - | Yes | - |
-| `test_accounts` | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - |
-| `verify_network_connection_id` | - | - | - | Yes | - |
-| `version` | - | - | - | - | - |
-
-### Operations
-
-#### `create(array $reqdata, ?array $ctrl = null): mixed`
-
-Create a new entity with the given data. Returns the created entity and throws on error.
-
-```php
-$result = $client->Environment()->create([
-  "organization_id" => null, // string
-  "slug" => null, // string
-]);
-```
-
-#### `load(array $reqmatch, ?array $ctrl = null): mixed`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
-
-```php
-$result = $client->Environment()->load(["id" => "environment_id", "organization_id" => "organization_id"]);
-```
-
-#### `patch(array $reqdata, ?array $ctrl = null): mixed`
-
-Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
-
-```php
-$result = $client->Environment()->patch([
-  "id" => "environment_id",
-  "organization_id" => "organization_id",
-  // Only the fields to change
-]);
-```
-
-#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
-
-Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
-
-```php
-$result = $client->Environment()->remove(["id" => "environment_id", "organization_id" => "organization_id"]);
-```
-
-#### `update(array $reqdata, ?array $ctrl = null): mixed`
-
-Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
-
-```php
-$result = $client->Environment()->update([
-  "id" => "environment_id",
-  "organization_id" => "organization_id",
-  // Fields to update
-]);
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): EnvironmentEntity`
-
-Create a new `EnvironmentEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
 ## EnvironmentDiscoveryRunEntity
 
 ```php
@@ -19599,7 +19389,7 @@ $environment_discovery_run = $client->EnvironmentDiscoveryRun();
 | `failure_code` | `mixed` | Yes |  |
 | `id` | `string` | Yes |  |
 | `queued_at` | `string` | Yes |  |
-| `recording` | `array` | Yes |  |
+| `recording` | `array` | No |  |
 | `result` | `mixed` | Yes |  |
 | `status` | `string` | Yes |  |
 
@@ -19718,7 +19508,7 @@ $environment_exploration = $client->EnvironmentExploration();
 | `reproductions` | `array` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `array` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `array` | Yes |  |
+| `scenario_generation` | `array` | No |  |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `mixed` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -20132,58 +19922,6 @@ Return the entity name.
 
 ---
 
-## EvidenceEntity
-
-```php
-$evidence = $client->Evidence();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | No |  |
-
-### Operations
-
-#### `load(array $reqmatch, ?array $ctrl = null): mixed`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
-
-```php
-$result = $client->Evidence()->load(["id" => "evidence_id", "organization_id" => "organization_id"]);
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): EvidenceEntity`
-
-Create a new `EvidenceEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
 ## ExecutionDesiredStateEntity
 
 ```php
@@ -20582,7 +20320,7 @@ $exploration = $client->Exploration();
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `array` | Yes | Flows a finished exploration recorded that deep scans can start from. |
 | `scenario_count` | `int` | No | Scenarios saved from this discovery. |
-| `scenario_generation` | `array` | Yes |  |
+| `scenario_generation` | `array` | No |  |
 | `scenarios_pending` | `bool` | No | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
@@ -20761,7 +20499,7 @@ $exploration_message = $client->ExplorationMessage();
 | `reproductions` | `array` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `array` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `array` | Yes |  |
+| `scenario_generation` | `array` | No |  |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `mixed` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -20909,7 +20647,7 @@ $exploration_scenario = $client->ExplorationScenario();
 | `reproductions` | `array` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `array` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `array` | Yes |  |
+| `scenario_generation` | `array` | No |  |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `mixed` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -20986,7 +20724,7 @@ $finding = $client->Finding();
 | `organization_id` | `string` | Yes |  |
 | `permissions` | `array` | Yes |  |
 | `reason` | `string` | No | Why the finding was resolved or ignored, such as "Expected for trial accounts". |
-| `reported_occurrence` | `mixed` | Yes | The Discovery or Deep Scan report behind the finding; null for scenario run findings |
+| `reported_occurrence` | `mixed` | No | The Discovery or Deep Scan report behind the finding; null for scenario run findings |
 | `repository_id` | `mixed` | Yes |  |
 | `safe_summary` | `string` | Yes |  |
 | `scenario_occurrences` | `array` | No |  |
@@ -21871,77 +21609,6 @@ Return the entity name.
 
 ---
 
-## GithubIntegrationEntity
-
-```php
-$github_integration = $client->GithubIntegration();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `account_avatar_url` | `mixed` | Yes |  |
-| `account_login` | `string` | Yes |  |
-| `connection_status` | `string` | Yes |  |
-| `connection_status_label` | `string` | Yes |  |
-| `github_installation` | `mixed` | Yes |  |
-| `health` | `array` | Yes |  |
-| `id` | `string` | Yes |  |
-| `imported_repositories_count` | `int` | Yes |  |
-| `imported_repositories_count_label` | `string` | Yes |  |
-| `organization` | `array` | Yes |  |
-| `pagination` | `array` | Yes |  |
-| `repositories` | `array` | Yes |  |
-
-### Operations
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->GithubIntegration()->list(["organization_id" => "example"]);
-```
-
-#### `load(array $reqmatch, ?array $ctrl = null): mixed`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
-
-```php
-$result = $client->GithubIntegration()->load(["id" => "github_integration_id", "organization_id" => "organization_id"]);
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): GithubIntegrationEntity`
-
-Create a new `GithubIntegrationEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
 ## GithubOnboardingEntity
 
 ```php
@@ -22486,7 +22153,7 @@ $github_runner_history = $client->GithubRunnerHistory();
 | `runs` | `array` | Yes |  |
 | `setup` | `mixed` | No | CI onboarding. |
 | `success_rate` | `mixed` | Yes |  |
-| `usage` | `array` | Yes |  |
+| `usage` | `array` | No |  |
 
 ### Operations
 
@@ -24585,8 +24252,8 @@ $lease_verify_diagnostic = $client->LeaseVerifyDiagnostic();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `browser_events` | `array` | Yes |  |
-| `live_browser` | `array` | Yes |  |
-| `live_view` | `array` | Yes | The tester's read-only live stream for page viewers. |
+| `live_browser` | `array` | No |  |
+| `live_view` | `array` | No | The tester's read-only live stream for page viewers. |
 | `steps` | `array` | No |  |
 
 ### Operations
@@ -24601,8 +24268,6 @@ $result = $client->LeaseVerifyDiagnostic()->create([
   "swarm_id" => null, // string
   "task_id" => null, // string
   "browser_events" => null, // array
-  "live_browser" => null, // array
-  "live_view" => null, // array
 ]);
 ```
 
@@ -24879,6 +24544,18 @@ $local_thread_delivery = $client->LocalThreadDelivery();
 | `policy` | `array` | Yes |  |
 | `recovery_message` | `mixed` | Yes |  |
 
+### Field Usage by Operation
+
+| Field | load | update |
+| --- | --- | --- |
+| `decision` | - | - |
+| `decision_pending` | - | - |
+| `delivery` | - | - |
+| `expected_version` | - | - |
+| `id` | - | - |
+| `policy` | - | Yes |
+| `recovery_message` | - | - |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -24946,10 +24623,10 @@ $local_thread_operation = $client->LocalThreadOperation();
 | `action` | `string` | Yes |  |
 | `arguments` | `array` | Yes |  |
 | `created_at` | `string` | Yes |  |
-| `delivery` | `array` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `delivery` | `array` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
 | `device_id` | `string` | Yes |  |
 | `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
-| `end` | `array` | Yes |  |
+| `end` | `array` | No |  |
 | `expires_at` | `string` | Yes |  |
 | `id` | `string` | Yes |  |
 | `key` | `string` | Yes |  |
@@ -25340,7 +25017,7 @@ $me = $client->Me();
 | `github_pr_user_authorization_login` | `mixed` | Yes |  |
 | `github_prs_authored_by_change_author` | `bool` | Yes |  |
 | `id` | `string` | Yes |  |
-| `impersonation` | `mixed` | Yes |  |
+| `impersonation` | `mixed` | No |  |
 | `name` | `mixed` | Yes |  |
 | `next_path` | `string` | No | Present on a sign-in that created the person's first workspace; its setup page, where they go next. |
 | `onboarding` | `array` | Yes | V2 agent onboarding progress. |
@@ -25618,22 +25295,11 @@ $member = $client->Member();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accepted_at` | `mixed` | Yes |  |
-| `accepted_by_user` | `mixed` | Yes |  |
 | `created_at` | `string` | Yes |  |
 | `created_at_label` | `mixed` | Yes |  |
-| `email` | `string` | Yes |  |
-| `email_delivery_status` | `string` | No |  |
-| `expires_at` | `mixed` | Yes |  |
-| `expires_at_label` | `mixed` | Yes |  |
 | `id` | `string` | Yes |  |
-| `invite_url` | `mixed` | Yes |  |
-| `invited_by_user` | `mixed` | Yes |  |
 | `is_self` | `bool` | Yes |  |
-| `organization` | `array` | Yes |  |
-| `revoked_at` | `mixed` | Yes |  |
 | `role` | `string` | Yes |  |
-| `status` | `string` | Yes |  |
 | `updated_at` | `string` | Yes |  |
 | `updated_at_label` | `mixed` | Yes |  |
 | `user` | `array` | Yes |  |
@@ -25834,7 +25500,7 @@ $merge_queue_entry = $client->MergeQueueEntry();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analytics` | `array` | Yes | Queue performance for the reporting window. |
+| `analytics` | `array` | No | Queue performance for the reporting window. |
 | `change_id` | `mixed` | No |  |
 | `expected_target_commit_id` | `mixed` | No |  |
 | `expected_target_version` | `mixed` | No |  |
@@ -25895,140 +25561,6 @@ Set the entity match criteria.
 #### `make(): MergeQueueEntryEntity`
 
 Create a new `MergeQueueEntryEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
-## MergeRequestEntity
-
-```php
-$merge_request = $client->MergeRequest();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `available_tests` | `array` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `base_sha` | `string` | Yes |  |
-| `branch` | `string` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `comment_url` | `mixed` | Yes |  |
-| `current_run` | `mixed` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `draft` | `bool` | Yes |  |
-| `findings` | `array` | Yes |  |
-| `github_repository` | `mixed` | Yes | GitHub owner/repository associated with this pull request. |
-| `github_url` | `mixed` | Yes |  |
-| `head_sha` | `string` | Yes | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` | `string` | Yes |  |
-| `idempotency_key` | `string` | Yes |  |
-| `number` | `int` | Yes |  |
-| `pagination` | `array` | Yes |  |
-| `permissions` | `array` | Yes |  |
-| `preview_cleanup_ready` | `bool` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | `mixed` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` | `mixed` | No |  |
-| `project_id` | `mixed` | Yes | Composal project slug or public ID for PR preview environments. |
-| `project_slug` | `mixed` | Yes |  |
-| `provider` | `string` | Yes |  |
-| `pull_request` | `array` | Yes |  |
-| `repository_id` | `string` | Yes |  |
-| `request_label` | `string` | Yes |  |
-| `requested_run_id` | `mixed` | Yes |  |
-| `runs` | `array` | Yes |  |
-| `source_branch` | `mixed` | Yes |  |
-| `source_repository` | `mixed` | Yes |  |
-| `source_url` | `mixed` | Yes |  |
-| `state` | `string` | Yes |  |
-| `title` | `string` | Yes |  |
-| `updated_at` | `string` | Yes |  |
-| `web_path` | `string` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | load | create |
-| --- | --- | --- |
-| `available_tests` | - | - |
-| `base_sha` | - | - |
-| `branch` | - | - |
-| `comment_url` | - | - |
-| `current_run` | - | - |
-| `draft` | - | - |
-| `findings` | - | - |
-| `github_repository` | - | - |
-| `github_url` | - | - |
-| `head_sha` | - | Yes |
-| `id` | - | - |
-| `idempotency_key` | - | - |
-| `number` | - | - |
-| `pagination` | - | - |
-| `permissions` | - | - |
-| `preview_cleanup_ready` | - | - |
-| `preview_url` | - | - |
-| `project` | - | - |
-| `project_id` | - | Yes |
-| `project_slug` | - | - |
-| `provider` | - | - |
-| `pull_request` | - | - |
-| `repository_id` | - | Yes |
-| `request_label` | - | - |
-| `requested_run_id` | - | - |
-| `runs` | - | - |
-| `source_branch` | - | - |
-| `source_repository` | - | - |
-| `source_url` | - | - |
-| `state` | - | - |
-| `title` | - | - |
-| `updated_at` | - | - |
-| `web_path` | - | - |
-
-### Operations
-
-#### `create(array $reqdata, ?array $ctrl = null): mixed`
-
-Create a new entity with the given data. Returns the created entity and throws on error.
-
-```php
-$result = $client->MergeRequest()->create([
-  "organization_id" => null, // string
-  "idempotency_key" => null, // string
-  "number" => null, // int
-]);
-```
-
-#### `load(array $reqmatch, ?array $ctrl = null): mixed`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
-
-```php
-$result = $client->MergeRequest()->load(["id" => "merge_request_id", "organization_id" => "organization_id"]);
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): MergeRequestEntity`
-
-Create a new `MergeRequestEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -26119,7 +25651,7 @@ $messaging_conversation_message = $client->MessagingConversationMessage();
 | `client_operation_id` | `string` | Yes |  |
 | `content` | `string` | Yes |  |
 | `id` | `string` | No |  |
-| `media` | `array` | Yes |  |
+| `media` | `array` | No |  |
 | `media_upload_ids` | `array` | No | Ordered staged upload IDs; six on Photon, one on Sendblue. |
 | `messages` | `array` | Yes |  |
 | `reply_to` | `string` | No | Public ID of a visible message |
@@ -26142,7 +25674,6 @@ $result = $client->MessagingConversationMessage()->create([
   "project_id" => null, // string
   "client_operation_id" => null, // string
   "content" => null, // string
-  "media" => null, // array
 ]);
 ```
 
@@ -29340,6 +28871,77 @@ Return the entity name.
 
 ---
 
+## PagesGithubIntegrationEntity
+
+```php
+$pages_github_integration = $client->PagesGithubIntegration();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `mixed` | Yes |  |
+| `account_login` | `string` | Yes |  |
+| `connection_status` | `string` | Yes |  |
+| `connection_status_label` | `string` | Yes |  |
+| `github_installation` | `mixed` | Yes |  |
+| `health` | `array` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imported_repositories_count` | `int` | Yes |  |
+| `imported_repositories_count_label` | `string` | Yes |  |
+| `organization` | `array` | Yes |  |
+| `pagination` | `array` | Yes |  |
+| `repositories` | `array` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->PagesGithubIntegration()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->PagesGithubIntegration()->load(["id" => "pages_github_integration_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PagesGithubIntegrationEntity`
+
+Create a new `PagesGithubIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## PagesGithubOnboardingEntity
 
 ```php
@@ -30651,7 +30253,7 @@ $product_map_identity_decision = $client->ProductMapIdentityDecision();
 | `observations` | `array` | Yes |  |
 | `operation` | `string` | Yes |  |
 | `reason` | `string` | Yes |  |
-| `target` | `array` | Yes |  |
+| `target` | `array` | No |  |
 
 ### Operations
 
@@ -30666,7 +30268,6 @@ $result = $client->ProductMapIdentityDecision()->create([
   "observations" => null, // array
   "operation" => null, // string
   "reason" => null, // string
-  "target" => null, // array
 ]);
 ```
 
@@ -31073,7 +30674,7 @@ $project = $client->Project();
 | `name` | `string` | Yes |  |
 | `network_connections` | `array` | Yes |  |
 | `organization_id` | `string` | Yes |  |
-| `overview` | `array` | Yes |  |
+| `overview` | `array` | No |  |
 | `permissions` | `array` | Yes |  |
 | `personas` | `array` | Yes |  |
 | `project` | `array` | Yes |  |
@@ -31081,7 +30682,7 @@ $project = $client->Project();
 | `pull_requests` | `array` | Yes |  |
 | `purpose` | `mixed` | Yes |  |
 | `runs` | `array` | Yes |  |
-| `scenario_history` | `array` | Yes |  |
+| `scenario_history` | `array` | No |  |
 | `scenario_states` | `array` | Yes | Scenarios by the state of their latest execution. |
 | `scenarios` | `array` | Yes |  |
 | `setup_required` | `bool` | No |  |
@@ -31221,13 +30822,13 @@ $project_android_apk = $client->ProjectAndroidApk();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `android` | `array` | Yes |  |
+| `android` | `array` | No |  |
 | `artifact_paths` | `array` | No |  |
 | `description` | `string` | Yes |  |
 | `image` | `string` | Yes |  |
-| `ios` | `array` | Yes |  |
+| `ios` | `array` | No |  |
 | `launch_command` | `string` | No |  |
-| `managed_binary` | `array` | Yes |  |
+| `managed_binary` | `array` | No |  |
 | `platform` | `string` | No |  |
 | `provider` | `string` | No |  |
 | `setup_command` | `string` | No |  |
@@ -31293,7 +30894,7 @@ $project_code_map = $client->ProjectCodeMap();
 | `name` | `string` | Yes |  |
 | `ref` | `string` | No |  |
 | `repository_id` | `string` | Yes |  |
-| `revision` | `array` | Yes |  |
+| `revision` | `array` | No |  |
 | `slug` | `string` | Yes |  |
 | `status` | `string` | Yes |  |
 
@@ -31707,13 +31308,13 @@ $project_ios_app = $client->ProjectIosApp();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `android` | `array` | Yes |  |
+| `android` | `array` | No |  |
 | `artifact_paths` | `array` | No |  |
 | `description` | `string` | Yes |  |
 | `image` | `string` | Yes |  |
-| `ios` | `array` | Yes |  |
+| `ios` | `array` | No |  |
 | `launch_command` | `string` | No |  |
-| `managed_binary` | `array` | Yes |  |
+| `managed_binary` | `array` | No |  |
 | `platform` | `string` | No |  |
 | `provider` | `string` | No |  |
 | `setup_command` | `string` | No |  |
@@ -32001,6 +31602,60 @@ Return the entity name.
 
 ---
 
+## ProjectPrTestingEntity
+
+```php
+$project_pr_testing = $client->ProjectPrTesting();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+| `project` | `array` | Yes |  |
+| `pull_request_options` | `array` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ProjectPrTesting()->load(["id" => "project_pr_testing_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ProjectPrTestingEntity`
+
+Create a new `ProjectPrTestingEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## ProjectProductMapEntity
 
 ```php
@@ -32038,6 +31693,64 @@ Set the entity match criteria.
 #### `make(): ProjectProductMapEntity`
 
 Create a new `ProjectProductMapEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ProjectProductMapComparisonEntity
+
+```php
+$project_product_map_comparison = $client->ProjectProductMapComparison();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accounts` | `array` | Yes |  |
+| `comparison` | `mixed` | Yes |  |
+| `filters` | `mixed` | Yes |  |
+| `id` | `string` | No |  |
+| `project` | `array` | Yes |  |
+| `requirements` | `array` | Yes |  |
+| `revisions` | `array` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ProjectProductMapComparison()->load(["id" => "project_product_map_comparison_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ProjectProductMapComparisonEntity`
+
+Create a new `ProjectProductMapComparisonEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -32157,6 +31870,25 @@ $project_run_plan = $client->ProjectRunPlan();
 | `updated_at` | `string` | Yes |  |
 | `version` | `int` | Yes |  |
 
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `archived_at` | - | - | - | - | - |
+| `base_url` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dependencies` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `identity_probe` | - | - | Yes | Yes | Yes |
+| `kind` | - | - | - | - | - |
+| `lock_version` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `nodes` | - | - | - | - | - |
+| `preview` | - | - | - | - | - |
+| `project_id` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `version` | - | - | - | - | - |
+
 ### Operations
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
@@ -32168,7 +31900,6 @@ $result = $client->ProjectRunPlan()->create([
   "organization_id" => null, // string
   "project_id" => null, // string
   "dependencies" => null, // array
-  "identity_probe" => null, // mixed
   "name" => null, // string
   "nodes" => null, // array
 ]);
@@ -32522,21 +32253,17 @@ $project_setting = $client->ProjectSetting();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `available_messaging_environments` | `array` | Yes |  |
-| `messaging_conversations` | `array` | Yes |  |
-| `messaging_enabled` | `bool` | Yes |  |
-| `permissions` | `array` | Yes |  |
-| `project` | `array` | Yes |  |
-| `tester_numbers` | `array` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
 
 ```php
-$result = $client->ProjectSetting()->load(["organization_id" => "organization_id", "project_id" => "project_id"]);
+$results = $client->ProjectSetting()->list(["organization_id" => "example", "project_id" => "example"]);
 ```
 
 ### Common Methods
@@ -32560,91 +32287,6 @@ Set the entity match criteria.
 #### `make(): ProjectSettingEntity`
 
 Create a new `ProjectSettingEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
-## PullRequestEntity
-
-```php
-$pull_request = $client->PullRequest();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `available_tests` | `array` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `branch` | `string` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `cleanup_only` | `bool` | No | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
-| `current_run` | `mixed` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `findings` | `array` | Yes |  |
-| `head_sha` | `string` | No | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` | `string` | No |  |
-| `idempotency_key` | `string` | Yes |  |
-| `imessage_number` | `string` | No | International destination of this exact deployed commit. |
-| `number` | `int` | No |  |
-| `pagination` | `array` | Yes |  |
-| `permissions` | `array` | Yes |  |
-| `preview_cleanup_ready` | `bool` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | `mixed` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` | `mixed` | No |  |
-| `project_id` | `string` | No | Composal project slug or public ID for PR preview environments. |
-| `pull_request` | `array` | Yes |  |
-| `repository_id` | `string` | No |  |
-| `runs` | `array` | Yes |  |
-
-### Operations
-
-#### `create(array $reqdata, ?array $ctrl = null): mixed`
-
-Create a new entity with the given data. Returns the created entity and throws on error.
-
-```php
-$result = $client->PullRequest()->create([
-  "organization_id" => null, // string
-  "idempotency_key" => null, // string
-]);
-```
-
-#### `load(array $reqmatch, ?array $ctrl = null): mixed`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
-
-```php
-$result = $client->PullRequest()->load(["id" => "pull_request_id", "organization_id" => "organization_id"]);
-```
-
-#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
-
-Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): PullRequestEntity`
-
-Create a new `PullRequestEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -35653,7 +35295,7 @@ $run_job = $client->RunJob();
 | --- | --- | --- | --- |
 | `active` | `bool` | Yes |  |
 | `allow_failure` | `bool` | Yes |  |
-| `cache_archive_observations` | `mixed` | Yes | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `cache_archive_observations` | `mixed` | No | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
 | `ci_pipeline_run_id` | `string` | Yes |  |
 | `ci_runner_id` | `mixed` | Yes |  |
 | `created_at` | `string` | Yes |  |
@@ -35674,7 +35316,7 @@ $run_job = $client->RunJob();
 | `queued_at` | `mixed` | Yes |  |
 | `reconciliation_id` | `mixed` | No |  |
 | `retry_number` | `int` | Yes |  |
-| `reuse` | `mixed` | Yes |  |
+| `reuse` | `mixed` | No |  |
 | `runner_label_selector` | `mixed` | Yes |  |
 | `slug` | `string` | Yes |  |
 | `started_at` | `mixed` | Yes |  |
@@ -35904,42 +35546,33 @@ $run_update = $client->RunUpdate();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `base_sha` | `string` | Yes |  |
-| `can_verify` | `bool` | Yes |  |
-| `comment_url` | `mixed` | Yes |  |
-| `draft` | `bool` | Yes |  |
-| `github_repository` | `mixed` | Yes | GitHub owner/repository associated with this pull request. |
-| `github_url` | `mixed` | Yes |  |
-| `head_sha` | `string` | Yes |  |
-| `id` | `string` | Yes |  |
-| `latest_created_at` | `mixed` | Yes |  |
-| `latest_current` | `bool` | Yes |  |
-| `latest_head_sha` | `mixed` | Yes |  |
-| `latest_reason` | `mixed` | Yes |  |
-| `latest_run_id` | `mixed` | Yes |  |
-| `latest_state` | `mixed` | Yes |  |
-| `number` | `int` | Yes |  |
-| `project_id` | `mixed` | Yes |  |
-| `project_slug` | `mixed` | Yes |  |
-| `provider` | `string` | Yes |  |
-| `repository_id` | `string` | Yes |  |
-| `request_label` | `string` | Yes |  |
-| `source_branch` | `mixed` | Yes |  |
-| `source_repository` | `mixed` | Yes |  |
-| `source_url` | `mixed` | Yes |  |
-| `state` | `string` | Yes |  |
-| `title` | `string` | Yes |  |
-| `updated_at` | `string` | Yes |  |
-| `web_path` | `string` | Yes |  |
+| `active_runs` | `array` | Yes |  |
+| `checkout_required` | `bool` | Yes |  |
+| `cli_signed_in_at` | `mixed` | Yes | When the signed-in user last finished a CLI sign-in for this organization, so agent setup can show the CLI is connected. |
+| `counts` | `array` | Yes |  |
+| `demo_project` | `mixed` | Yes | The workspace's copy of the demo project, which setup offers as example data. |
+| `environments` | `array` | Yes |  |
+| `included_deep_scan` | `bool` | Yes | Whether a new app gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account, so setup asks for one right after the app. |
+| `onboarding_discovery` | `mixed` | No |  |
+| `organization` | `array` | Yes |  |
+| `permissions` | `array` | Yes |  |
+| `project` | `mixed` | Yes | The project the page is limited to, or null for the whole organization. |
+| `pull_request_launch_options` | `array` | No |  |
+| `pull_requests` | `array` | No |  |
+| `repositories` | `array` | Yes |  |
+| `runs` | `array` | Yes |  |
+| `runs_pagination` | `array` | Yes |  |
+| `suggested_app_url` | `mixed` | Yes | The URL first-run setup prefills for a new app, from the workspace's project website or the signed-in user's work email domain. |
+| `url_first_start` | `bool` | Yes | Whether setup opens on the URL-first screen, which saves the app and asks for test access next. |
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->RunUpdate()->list(["organization_id" => "example"]);
+$result = $client->RunUpdate()->load(["organization_id" => "organization_id"]);
 ```
 
 ### Common Methods
@@ -37014,8 +36647,8 @@ $signal = $client->Signal();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `acked_at` | `mixed` | Yes |  |
-| `acked_by` | `mixed` | Yes | Who acked the signal, read from `acked_by_user_id`. |
-| `agent_runs` | `array` | Yes | Dispatched-run summary (docs §6c). |
+| `acked_by` | `mixed` | No | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | `array` | No | Dispatched-run summary (docs §6c). |
 | `app_service_id` | `mixed` | Yes |  |
 | `attribution` | `array` | Yes | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
 | `created_at` | `string` | Yes | ISO8601 row insert time — retention math and debugging only. |
@@ -37027,8 +36660,8 @@ $signal = $client->Signal();
 | `occurred_at` | `string` | Yes | ISO8601 domain event time — what the UI displays and `since` filters on. |
 | `organization_id` | `string` | Yes |  |
 | `payload` | `array` | Yes | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
-| `recovery` | `array` | Yes | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
-| `resolution` | `array` | Yes | Recovery pairing (docs §6b). |
+| `recovery` | `array` | No | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | `array` | No | Recovery pairing (docs §6b). |
 | `severity` | `string` | Yes | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
 | `source` | `array` | Yes | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
 | `subject_id` | `mixed` | Yes |  |
@@ -39402,7 +39035,7 @@ $spark_agent_local_thread = $client->SparkAgentLocalThread();
 | `can_interrupt` | `bool` | Yes |  |
 | `can_send` | `bool` | Yes |  |
 | `created_at` | `string` | Yes |  |
-| `delivery` | `array` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `delivery` | `array` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
 | `device_id` | `string` | Yes |  |
 | `device_name` | `string` | Yes |  |
 | `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
@@ -39417,7 +39050,7 @@ $spark_agent_local_thread = $client->SparkAgentLocalThread();
 | `provider` | `string` | Yes |  |
 | `references` | `array` | Yes |  |
 | `relay_disconnected_at` | `mixed` | No |  |
-| `relay_participant` | `array` | Yes |  |
+| `relay_participant` | `array` | No |  |
 | `result` | `mixed` | Yes |  |
 | `result_expired` | `bool` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
 | `result_schema` | `mixed` | No |  |
@@ -39427,6 +39060,44 @@ $spark_agent_local_thread = $client->SparkAgentLocalThread();
 | `task_configured` | `bool` | Yes |  |
 | `thread_id` | `string` | Yes |  |
 | `title` | `string` | Yes | Short title: the native name, or the first prompt's first line without the agent's task preamble. |
+
+### Field Usage by Operation
+
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `action` | - | - | - |
+| `archived` | - | - | - |
+| `can_archive` | - | - | - |
+| `can_disconnect_relay` | - | - | - |
+| `can_end` | - | - | - |
+| `can_interrupt` | - | - | - |
+| `can_send` | - | - | - |
+| `created_at` | - | - | - |
+| `delivery` | - | - | - |
+| `device_id` | - | - | - |
+| `device_name` | - | - | - |
+| `diagnostic_code` | - | - | - |
+| `end` | - | Yes | - |
+| `expires_at` | - | - | - |
+| `full_title` | - | - | - |
+| `id` | - | - | - |
+| `key` | - | - | - |
+| `last_activity_at` | - | - | - |
+| `native_thread_id` | - | - | - |
+| `parent_conversation_id` | - | - | - |
+| `provider` | - | - | - |
+| `references` | - | - | - |
+| `relay_disconnected_at` | - | - | - |
+| `relay_participant` | - | - | - |
+| `result` | - | - | - |
+| `result_expired` | - | - | - |
+| `result_schema` | - | - | - |
+| `section` | - | - | - |
+| `state` | - | - | - |
+| `status` | - | - | - |
+| `task_configured` | - | - | - |
+| `thread_id` | - | - | - |
+| `title` | - | - | - |
 
 ### Operations
 
@@ -39668,7 +39339,7 @@ $spark_agent_thread = $client->SparkAgentThread();
 | `can_compact` | - | - |
 | `can_snooze` | - | - |
 | `coordination_status` | - | - |
-| `execution` | Yes | - |
+| `execution` | - | - |
 | `first_input` | - | - |
 | `first_input_key` | - | - |
 | `first_input_requester_membership_id` | - | - |
@@ -39739,6 +39410,93 @@ Return the entity name.
 
 ---
 
+## SparkAutomationEntity
+
+```php
+$spark_automation = $client->SparkAutomation();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage` | `bool` | Yes |  |
+| `can_manage_events` | `bool` | Yes | Whether new event triggers can be attached or existing settings saved. |
+| `can_run` | `bool` | Yes | Whether the viewer can request a manual Temporal run |
+| `can_schedule` | `bool` | Yes |  |
+| `definition` | `array` | Yes |  |
+| `event_subscriptions` | `array` | Yes |  |
+| `event_triggers` | `array` | Yes |  |
+| `expected_revision` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `revision` | `int` | Yes |  |
+| `schedule` | `mixed` | Yes |  |
+| `schedules` | `array` | Yes |  |
+| `version` | `array` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SparkAutomation()->list(["agent_id" => "example", "organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->SparkAutomation()->load(["id" => "spark_automation_id", "agent_id" => "agent_id", "organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SparkAutomation()->update([
+  "id" => "spark_automation_id",
+  "agent_id" => "agent_id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SparkAutomationEntity`
+
+Create a new `SparkAutomationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## SparkCreditEntity
 
 ```php
@@ -39755,7 +39513,7 @@ $spark_credit = $client->SparkCredit();
 | `available_usd` | `string` | Yes |  |
 | `billing_unit` | `string` | No | Compute minute quote version returned by the billing summary. |
 | `can_manage` | `bool` | Yes |  |
-| `compute_minutes` | `array` | Yes |  |
+| `compute_minutes` | `array` | No |  |
 | `compute_usd` | `string` | No |  |
 | `credits_per_usd` | `int` | Yes |  |
 | `inference_usd` | `string` | No |  |
@@ -41686,7 +41444,7 @@ $vc_merge_queue = $client->VcMergeQueue();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analytics` | `array` | Yes | Queue performance for the reporting window. |
+| `analytics` | `array` | No | Queue performance for the reporting window. |
 | `id` | `string` | No |  |
 | `policy` | `array` | Yes |  |
 | `queue` | `array` | Yes |  |
@@ -41762,7 +41520,7 @@ $vc_stack = $client->VcStack();
 | `changes` | `array` | Yes |  |
 | `code` | `string` | Yes |  |
 | `id` | `string` | No |  |
-| `landing` | `array` | Yes | Compact landing state for the Stack CLI. |
+| `landing` | `array` | No | Compact landing state for the Stack CLI. |
 | `member_count` | `int` | Yes |  |
 | `name` | `mixed` | Yes |  |
 | `ref_name` | `string` | Yes |  |
@@ -42380,7 +42138,7 @@ $verification_project_scenario = $client->VerificationProjectScenario();
 | `created_at` | `string` | Yes |  |
 | `dependencies` | `array` | Yes |  |
 | `fixtures` | `array` | No | Files upload steps choose, ordered by name. |
-| `health` | `array` | Yes |  |
+| `health` | `array` | No |  |
 | `id` | `string` | Yes |  |
 | `identity_probe` | `mixed` | No |  |
 | `if` | `mixed` | No | A documented subset of Actions expressions. |
@@ -42703,6 +42461,458 @@ Set the entity match criteria.
 #### `make(): VerifyEmailVerificationEntity`
 
 Create a new `VerifyEmailVerificationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## VerifyEnvironmentEntity
+
+```php
+$verify_environment = $client->VerifyEnvironment();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_revision_id` | `mixed` | Yes |  |
+| `agent_sign_up_available` | `bool` | Yes | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
+| `allowed_actions` | `string` | Yes | read_only only looks around; writes may create, change and delete data. |
+| `billing` | `array` | Yes |  |
+| `cleanup` | `array` | Yes |  |
+| `connection` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `default_policy` | `array` | No |  |
+| `default_policy_json` | `array` | Yes |  |
+| `discovery_defaults` | `array` | Yes |  |
+| `environment` | `array` | Yes |  |
+| `exploration_accounts` | `array` | No |  |
+| `explorations` | `array` | No |  |
+| `first_run` | `mixed` | No |  |
+| `hosted_app_id` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imessage_number` | `mixed` | Yes | International destination number; blank or null clears it on an added environment. |
+| `included_deep_scan` | `bool` | Yes | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
+| `lock_version` | `int` | Yes |  |
+| `managed_google_available` | `bool` | Yes | Whether the managed Google account can be offered for this app. |
+| `managed_google_email` | `string` | Yes |  |
+| `messaging_tester_number` | `mixed` | No | One configured tester number. |
+| `name` | `string` | Yes | Optional for a website target; defaults to its hostname. |
+| `network_connections` | `array` | Yes |  |
+| `onboarding_discovery` | `mixed` | No |  |
+| `organization_id` | `string` | Yes |  |
+| `pending_accounts` | `array` | No | Credentials on a Composal address still waiting for the password the customer chose at signup. |
+| `permissions` | `array` | Yes |  |
+| `project_id` | `mixed` | Yes | Owning project. |
+| `repository_id` | `mixed` | Yes |  |
+| `revisions` | `array` | Yes |  |
+| `setup_discovery_id` | `mixed` | No | Existing discovery to resume after setup or Checkout, selected within this environment. |
+| `sign_in_check_available` | `bool` | Yes | Whether a test account's live sign-in check can run on this app. |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `target_kind` | `mixed` | Yes |  |
+| `target_url` | `mixed` | Yes |  |
+| `test_accounts` | `array` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `verify_network_connection_id` | `mixed` | Yes |  |
+| `version` | `int` | No | Required for target or tester changes; use lock_version from the environment. |
+
+### Field Usage by Operation
+
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `active_revision_id` | - | - | - | - | - |
+| `agent_sign_up_available` | - | - | - | - | - |
+| `allowed_actions` | - | Yes | - | Yes | - |
+| `billing` | - | - | - | - | - |
+| `cleanup` | - | - | - | - | - |
+| `connection` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `default_policy` | - | - | - | - | - |
+| `default_policy_json` | - | - | - | - | - |
+| `discovery_defaults` | - | - | - | - | - |
+| `environment` | - | - | - | - | - |
+| `exploration_accounts` | - | - | - | - | - |
+| `explorations` | - | - | - | - | - |
+| `first_run` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `imessage_number` | - | Yes | - | Yes | - |
+| `included_deep_scan` | - | - | - | - | - |
+| `lock_version` | - | - | - | - | - |
+| `managed_google_available` | - | - | - | - | - |
+| `managed_google_email` | - | - | - | - | - |
+| `messaging_tester_number` | - | - | - | - | - |
+| `name` | - | Yes | - | Yes | - |
+| `network_connections` | - | - | - | - | - |
+| `onboarding_discovery` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `pending_accounts` | - | - | - | - | - |
+| `permissions` | - | - | - | - | - |
+| `project_id` | - | Yes | - | - | - |
+| `repository_id` | - | Yes | - | - | - |
+| `revisions` | - | - | - | - | - |
+| `setup_discovery_id` | - | - | - | - | - |
+| `sign_in_check_available` | - | - | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `target_kind` | - | Yes | - | - | - |
+| `target_url` | - | Yes | - | Yes | - |
+| `test_accounts` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verify_network_connection_id` | - | - | - | Yes | - |
+| `version` | - | - | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->VerifyEnvironment()->create([
+  "organization_id" => null, // string
+  "slug" => null, // string
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->VerifyEnvironment()->load(["id" => "verify_environment_id", "organization_id" => "organization_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->VerifyEnvironment()->patch([
+  "id" => "verify_environment_id",
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->VerifyEnvironment()->remove(["id" => "verify_environment_id", "organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->VerifyEnvironment()->update([
+  "id" => "verify_environment_id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): VerifyEnvironmentEntity`
+
+Create a new `VerifyEnvironmentEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## VerifyEvidenceEntity
+
+```php
+$verify_evidence = $client->VerifyEvidence();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->VerifyEvidence()->load(["id" => "verify_evidence_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): VerifyEvidenceEntity`
+
+Create a new `VerifyEvidenceEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## VerifyMergeRequestEntity
+
+```php
+$verify_merge_request = $client->VerifyMergeRequest();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available_tests` | `array` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `base_sha` | `string` | Yes |  |
+| `branch` | `string` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `comment_url` | `mixed` | Yes |  |
+| `current_run` | `mixed` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `draft` | `bool` | Yes |  |
+| `findings` | `array` | Yes |  |
+| `github_repository` | `mixed` | Yes | GitHub owner/repository associated with this pull request. |
+| `github_url` | `mixed` | Yes |  |
+| `head_sha` | `string` | Yes | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` | `string` | Yes |  |
+| `idempotency_key` | `string` | Yes |  |
+| `number` | `int` | Yes |  |
+| `pagination` | `array` | Yes |  |
+| `permissions` | `array` | Yes |  |
+| `preview_cleanup_ready` | `bool` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | `mixed` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` | `mixed` | No |  |
+| `project_id` | `mixed` | Yes | Composal project slug or public ID for PR preview environments. |
+| `project_slug` | `mixed` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `pull_request` | `array` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `request_label` | `string` | Yes |  |
+| `requested_run_id` | `mixed` | Yes |  |
+| `runs` | `array` | Yes |  |
+| `source_branch` | `mixed` | Yes |  |
+| `source_repository` | `mixed` | Yes |  |
+| `source_url` | `mixed` | Yes |  |
+| `state` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `web_path` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `available_tests` | - | - |
+| `base_sha` | - | - |
+| `branch` | - | - |
+| `comment_url` | - | - |
+| `current_run` | - | - |
+| `draft` | - | - |
+| `findings` | - | - |
+| `github_repository` | - | - |
+| `github_url` | - | - |
+| `head_sha` | - | Yes |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `number` | - | - |
+| `pagination` | - | - |
+| `permissions` | - | - |
+| `preview_cleanup_ready` | - | - |
+| `preview_url` | - | - |
+| `project` | - | - |
+| `project_id` | - | Yes |
+| `project_slug` | - | - |
+| `provider` | - | - |
+| `pull_request` | - | - |
+| `repository_id` | - | Yes |
+| `request_label` | - | - |
+| `requested_run_id` | - | - |
+| `runs` | - | - |
+| `source_branch` | - | - |
+| `source_repository` | - | - |
+| `source_url` | - | - |
+| `state` | - | - |
+| `title` | - | - |
+| `updated_at` | - | - |
+| `web_path` | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->VerifyMergeRequest()->create([
+  "organization_id" => null, // string
+  "idempotency_key" => null, // string
+  "number" => null, // int
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->VerifyMergeRequest()->load(["id" => "verify_merge_request_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): VerifyMergeRequestEntity`
+
+Create a new `VerifyMergeRequestEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## VerifyPullRequestEntity
+
+```php
+$verify_pull_request = $client->VerifyPullRequest();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available_tests` | `array` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `branch` | `string` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `cleanup_only` | `bool` | No | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
+| `current_run` | `mixed` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `findings` | `array` | Yes |  |
+| `head_sha` | `string` | No | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` | `string` | No |  |
+| `idempotency_key` | `string` | Yes |  |
+| `imessage_number` | `string` | No | International destination of this exact deployed commit. |
+| `number` | `int` | No |  |
+| `pagination` | `array` | Yes |  |
+| `permissions` | `array` | Yes |  |
+| `preview_cleanup_ready` | `bool` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | `mixed` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` | `mixed` | No |  |
+| `project_id` | `string` | No | Composal project slug or public ID for PR preview environments. |
+| `pull_request` | `array` | Yes |  |
+| `repository_id` | `string` | No |  |
+| `runs` | `array` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->VerifyPullRequest()->create([
+  "organization_id" => null, // string
+  "idempotency_key" => null, // string
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->VerifyPullRequest()->load(["id" => "verify_pull_request_id", "organization_id" => "organization_id"]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): VerifyPullRequestEntity`
+
+Create a new `VerifyPullRequestEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -43519,10 +43729,10 @@ $client = new ComposalSDK([
 ### Configuring features
 
 Each feature is inactive until switched on, and an SDK with no feature
-configured does no feature work at all. Every option below keeps its default
-unless you name it.
+configured does no feature work at all.
+Every option below keeps its default unless you name it.
 
-The array form of \`feature\` is significant: several features wrap the
+The array form of `feature` is significant: several features wrap the
 transport, and the order you list them in is the order they nest.
 
 #### Ordering
@@ -43533,10 +43743,10 @@ a feature activated later sits OUTSIDE one activated earlier, and sees the call
 first.
 
 That decides behaviour, not just sequence: a feature that short-circuits the
-call, such as a cache serving a hit, stops every feature nested inside it from
+call stops every feature nested inside it from
 ever seeing that call.
 
-`debug`, `idempotency`, `metrics`, `paging`, `test` attach to pipeline hooks
+`debug`, `idempotency`, `metrics`, `paging` attach to pipeline hooks
 rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
@@ -43752,6 +43962,7 @@ its default unless you name it.
 
 - Wraps the transport: its place in the activation order decides what it
   sees. See [Ordering](#ordering) above.
+- Also attaches to pipeline hooks.
 - Inactive by default: leaving it out costs nothing at runtime.
 
 #### `test`
@@ -43779,10 +43990,9 @@ its default unless you name it.
 
 **Considerations**
 
-- Attaches to pipeline hooks, not the transport, so activation order does
-  not change what it observes.
 - Installs the BASE transport that the wrapping features wrap, so it must be
   activated before them.
+- Also attaches to pipeline hooks.
 - Inactive by default: leaving it out costs nothing at runtime.
 
 #### `timeout`

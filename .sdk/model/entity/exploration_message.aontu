@@ -279,7 +279,7 @@ main: kit: entity: exploration_message: {
     scenario_generation: {
       h: "Scenario Generation"
       n: "scenario_generation"
-      r: true
+      r: false
       t: "`$OBJECT`"
       union: {
         branches: 2

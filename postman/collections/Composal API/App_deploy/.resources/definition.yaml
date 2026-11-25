@@ -17,4 +17,4 @@ description: |-
   | `rollout_predecessor` | string |  |  |
   | `service` | string |  |  |
   | `source_ref` | string |  |  |
-order: 86000
+order: 85000

@@ -5,48 +5,29 @@ main: kit: entity: project_setting: {
   alias: field: {}
 
   fields: {
-    available_messaging_environments: {
-      h: "Available Messaging Environments"
-      n: "available_messaging_environments"
+    id: {
+      h: "Id"
+      n: "id"
       r: true
-      t: "`$ARRAY`"
+      t: "`$STRING`"
     }
-    messaging_conversations: {
-      h: "Messaging Conversations"
-      n: "messaging_conversations"
+    name: {
+      h: "Name"
+      n: "name"
       r: true
-      t: "`$ARRAY`"
+      t: "`$STRING`"
     }
-    messaging_enabled: {
-      h: "Messaging Enabled"
-      n: "messaging_enabled"
-      r: true
-      t: "`$BOOLEAN`"
-    }
-    permissions: {
-      h: "Permissions"
-      n: "permissions"
-      r: true
-      t: "`$OBJECT`"
-    }
-    project: {
-      h: "Project"
-      n: "project"
-      r: true
-      t: "`$OBJECT`"
-    }
-    tester_numbers: {
-      h: "Tester Numbers"
-      n: "tester_numbers"
-      r: true
-      t: "`$ARRAY`"
-    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
   }
 
   name: "project_setting"
   op: {
-    load: {
-      name: "load"
+    list: {
+      name: "list"
       points: [
         {
           co: {
@@ -120,7 +101,7 @@ main: kit: entity: project_setting: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.available_messaging_environments`"
           }
         }
       ]

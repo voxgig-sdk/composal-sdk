@@ -124,8 +124,7 @@ class RelayAgentConnectionDirectTest extends TestCase
         } else {
             $params["agent_id"] = "direct01";
             $params["id"] = "direct02";
-            $params["id"] = "direct03";
-            $params["organization_id"] = "direct04";
+            $params["organization_id"] = "direct03";
         }
 
         $result = $client->direct([

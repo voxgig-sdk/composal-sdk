@@ -31,18 +31,8 @@ describe("PullRequestTranscriptDirect", function()
       pending(_reason or "skipped via sdk-test-control.json")
       return
     end
-    if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" and setup.idmap["pull_request01"] == nil then
-      print("LIVE STEP {\"id\":\"direct-list-pull_request_transcript\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}")
-      pending("Live coverage incomplete: direct-list-pull_request_transcript excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)")
-      return
-    end
-    if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" and setup.idmap["pull_request01"] == nil then
-      print("LIVE STEP {\"id\":\"direct-list-pull_request_transcript\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}")
-      pending("Live coverage incomplete: direct-list-pull_request_transcript excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)")
-      return
-    end
     if setup.live then
-      for _, _live_key in ipairs({"organization01", "pull_request01", "pull_request01", "repo01"}) do
+      for _, _live_key in ipairs({"organization01", "pull_request01", "repo01"}) do
         if setup.idmap[_live_key] == nil then
           runner.live_miss(pending, LIVE_STRICT, "Live test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_PULL_REQUEST_TRANSCRIPT_ENTID")
         end
@@ -66,14 +56,9 @@ describe("PullRequestTranscriptDirect", function()
       params["pull_request_id"] = "direct02"
     end
     if setup.live then
-      params["pull_request_id"] = setup.idmap["pull_request01"]
-    else
-      params["pull_request_id"] = "direct03"
-    end
-    if setup.live then
       params["repo_id"] = setup.idmap["repo01"]
     else
-      params["repo_id"] = "direct04"
+      params["repo_id"] = "direct03"
     end
 
     local result, err = client:direct({

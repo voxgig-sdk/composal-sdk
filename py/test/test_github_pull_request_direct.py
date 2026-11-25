@@ -34,10 +34,6 @@ class TestGithubPullRequestDirect:
             print("LIVE STEP {\"id\":\"direct-load-github_pull_request\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs github_pull_request01, which only POST /api/v1/organizations/{org_slug}/github/pull_requests/refresh gives\"}")
             pytest.skip("Live coverage incomplete: direct-load-github_pull_request excluded (GET-only live run: needs github_pull_request01, which only POST /api/v1/organizations/{org_slug}/github/pull_requests/refresh gives)")
 
-        if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE" and setup["idmap"].get("pull_request01") is None:
-            print("LIVE STEP {\"id\":\"direct-load-github_pull_request\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}")
-            pytest.skip("Live coverage incomplete: direct-load-github_pull_request excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)")
-
         if setup["live"]:
             for _live_key in ["github_pull_request01", "organization01", "pull_request01"]:
                 if setup["idmap"].get(_live_key) is None:
@@ -51,19 +47,13 @@ class TestGithubPullRequestDirect:
         query = {}
         if setup["live"]:
             params["id"] = setup["idmap"].get("github_pull_request01")
-            params["id"] = setup["idmap"].get("github_pull_request01")
             params["organization_id"] = setup["idmap"].get("organization01")
-            params["organization_id"] = setup["idmap"].get("organization01")
-            params["pull_request_id"] = setup["idmap"].get("pull_request01")
             params["pull_request_id"] = setup["idmap"].get("pull_request01")
             pass
         else:
             params["id"] = "direct01"
-            params["id"] = "direct02"
-            params["organization_id"] = "direct03"
-            params["organization_id"] = "direct04"
-            params["pull_request_id"] = "direct05"
-            params["pull_request_id"] = "direct06"
+            params["organization_id"] = "direct02"
+            params["pull_request_id"] = "direct03"
             pass
 
         result = client.direct({

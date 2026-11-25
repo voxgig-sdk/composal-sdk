@@ -20,7 +20,7 @@ main: kit: entity: device: {
     coding_connection: {
       h: "Coding Connection"
       n: "coding_connection"
-      r: true
+      r: false
       sh: "Independent organization coding-control service state for the current device owner."
       t: [
         "`$ONE`"
@@ -60,7 +60,7 @@ main: kit: entity: device: {
     control_spawn_policy: {
       h: "Control Spawn Policy"
       n: "control_spawn_policy"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     created_at: {
@@ -774,7 +774,7 @@ main: kit: entity: device: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.device`"
           }
         }
         {
@@ -916,7 +916,7 @@ main: kit: entity: device: {
             req: {
               pairing_generation: "`reqdata.pairing_generation`"
             }
-            res: "`body`"
+            res: "`body.device`"
           }
         }
         {

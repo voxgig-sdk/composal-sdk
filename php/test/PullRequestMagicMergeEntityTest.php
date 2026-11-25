@@ -73,7 +73,7 @@ function pull_request_magic_merge_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["pull_request_magic_merge01", "pull_request_magic_merge02", "pull_request_magic_merge03", "organization01", "organization02", "organization03", "pull_request01", "pull_request02", "pull_request03"] as $k) {
+    foreach (["pull_request_magic_merge01", "pull_request_magic_merge02", "pull_request_magic_merge03", "organization01", "organization02", "organization03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

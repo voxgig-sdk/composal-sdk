@@ -716,6 +716,76 @@ main: kit: entity: app_deployment: {
       points: [
         {
           co: {
+            id: "GET /api/v1/hosting/apps/{app_id}/deployments/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/hosting/apps/{app_id}/deployments/{id}"
+          q: {
+            exist: [
+              "app_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "hosting"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
             id: "GET /api/v1/hosting/apps/{app_id}/deployments/{deployment_id}/live"
             source: "openapi3"
             version: 2
@@ -781,76 +851,6 @@ main: kit: entity: app_deployment: {
             }
             {
               lit: "live"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/v1/hosting/apps/{app_id}/deployments/{id}"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "app_id"
-                or: "app_id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/hosting/apps/{app_id}/deployments/{id}"
-          q: {
-            exist: [
-              "app_id"
-              "id"
-            ]
-          }
-          r: {
-            param: {
-              app_id: "app_id"
-              id: "id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "hosting"
-            }
-            {
-              lit: "apps"
-            }
-            {
-              var: "app_id"
-            }
-            {
-              lit: "deployments"
-            }
-            {
-              var: "id"
             }
           ]
           t: {

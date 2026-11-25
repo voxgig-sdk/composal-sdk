@@ -24,13 +24,6 @@ main: kit: entity: a2a_well_known: {
                 r: true
                 t: "`$STRING`"
               }
-              {
-                k: "param"
-                n: "a2a_id"
-                or: "connection_id"
-                r: true
-                t: "`$STRING`"
-              }
             ]
           }
           m: "GET"

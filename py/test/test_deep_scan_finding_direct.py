@@ -33,10 +33,6 @@ class TestDeepScanFindingDirect:
         if _skip:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
-        if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE" and setup["idmap"].get("deep_scan01") is None:
-            print("LIVE STEP {\"id\":\"direct-list-deep_scan_finding\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs deep_scan01, which only POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce gives\"}")
-            pytest.skip("Live coverage incomplete: direct-list-deep_scan_finding excluded (GET-only live run: needs deep_scan01, which only POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce gives)")
-
         if setup["live"]:
             for _live_key in ["deep_scan01", "organization01"]:
                 if setup["idmap"].get(_live_key) is None:

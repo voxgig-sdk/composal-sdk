@@ -47,13 +47,11 @@ class AgentEmailDirectTest extends TestCase
         if ($setup["live"]) {
             $params["agent_id"] = $setup["idmap"]["agent01"] ?? null;
             $params["id"] = $setup["idmap"]["agent_email01"] ?? null;
-            $params["id"] = $setup["idmap"]["agent_email01"] ?? null;
             $params["organization_id"] = $setup["idmap"]["organization01"] ?? null;
         } else {
             $params["agent_id"] = "direct01";
             $params["id"] = "direct02";
-            $params["id"] = "direct03";
-            $params["organization_id"] = "direct04";
+            $params["organization_id"] = "direct03";
         }
 
         $result = $client->direct([

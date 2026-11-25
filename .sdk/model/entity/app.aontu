@@ -448,6 +448,61 @@ main: kit: entity: app: {
       points: [
         {
           co: {
+            id: "GET /api/v1/hosting/apps/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/hosting/apps/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "hosting"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
             id: "GET /api/v1/hosting/apps/{app_id}/catalog"
             source: "openapi3"
             version: 2
@@ -503,131 +558,6 @@ main: kit: entity: app: {
           t: {
             req: "`reqdata`"
             res: "`body.app`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/v1/hosting/apps/{app_id}/deployment_dashboard"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "id"
-                or: "app_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-            query: [
-              {
-                explode: true
-                k: "query"
-                n: "metrics_range"
-                or: "metrics_range"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/hosting/apps/{app_id}/deployment_dashboard"
-          q: {
-            "$action": "deployment_dashboard"
-            exist: [
-              "id"
-            ]
-          }
-          r: {
-            param: {
-              app_id: "id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "hosting"
-            }
-            {
-              lit: "apps"
-            }
-            {
-              var: "id"
-            }
-            {
-              lit: "deployment_dashboard"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/v1/hosting/apps/{id}"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/hosting/apps/{id}"
-          q: {
-            exist: [
-              "id"
-            ]
-          }
-          r: {
-            param: {
-              id: "id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "hosting"
-            }
-            {
-              lit: "apps"
-            }
-            {
-              var: "id"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
           }
         }
       ]

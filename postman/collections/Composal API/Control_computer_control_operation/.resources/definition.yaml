@@ -8,10 +8,10 @@ description: |-
   | `action` | string | yes |  |
   | `arguments` | object | yes |  |
   | `created_at` | string | yes |  |
-  | `delivery` | object | yes |  |
+  | `delivery` | object |  |  |
   | `device_id` | string | yes |  |
   | `diagnostic_code` | string |  |  |
-  | `end` | object | yes |  |
+  | `end` | object |  |  |
   | `expires_at` | string | yes |  |
   | `id` | string | yes |  |
   | `key` | string | yes |  |

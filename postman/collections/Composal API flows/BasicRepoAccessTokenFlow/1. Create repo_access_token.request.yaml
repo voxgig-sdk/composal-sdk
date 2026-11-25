@@ -56,7 +56,7 @@ scripts:
       })
       const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
       const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
-      const made = body
+      const made = body?.["access_token"]
       pm.test("1. Create repo_access_token: the record carries its key", () => {
         pm.expect(made, "record").to.be.an("object")
         pm.expect(at(made, "id"), "id").to.exist

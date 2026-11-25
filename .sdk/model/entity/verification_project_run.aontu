@@ -863,7 +863,7 @@ main: kit: entity: verification_project_run: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.run`"
+            res: "`body`"
           }
         }
       ]
@@ -1154,7 +1154,7 @@ main: kit: entity: verification_project_run: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.run`"
           }
         }
       ]

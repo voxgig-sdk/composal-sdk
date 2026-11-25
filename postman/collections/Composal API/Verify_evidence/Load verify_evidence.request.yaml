@@ -1,0 +1,18 @@
+$kind: http-request
+id: "9a7c1210-6ddc-5f6e-ba27-9f107dcd1a66"
+description: |-
+  The `load` operation of **verify_evidence**.
+
+  SDK: `client.VerifyEvidence().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/evidence/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_evidence belongs to.
+  - key: id
+    value: "{{verify_evidence_id}}"
+    description: The verify_evidence this request addresses.
+order: 1000

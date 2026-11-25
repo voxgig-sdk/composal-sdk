@@ -14,7 +14,7 @@ pathVariables:
     description: The organization this environment_discovery_run belongs to.
   - key: verify_environment_id
     value: "{{environment_id}}"
-    description: The environment this environment_discovery_run belongs to.
+    description: "Input: environment_id."
   - key: id
     value: "{{environment_discovery_run_id}}"
     description: The environment_discovery_run this request addresses.

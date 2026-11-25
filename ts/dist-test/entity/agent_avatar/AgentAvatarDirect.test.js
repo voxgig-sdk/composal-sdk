@@ -29,22 +29,18 @@ const utility_1 = require("../../utility");
         const setup = directSetup({ id: 'direct01' });
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-agent_avatar', setup.live))
             return;
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["agent01", "agent01", "organization01", "organization01"], LIVE_STRICT))
+        if ((0, utility_1.skipIfMissingIds)(t, setup, ["agent01", "organization01"], LIVE_STRICT))
             return;
         const { client, calls } = setup;
         const params = {};
         const query = {};
         if (setup.live) {
             params.agent_id = setup.idmap['agent01'];
-            params.agent_id = setup.idmap['agent01'];
-            params.organization_id = setup.idmap['organization01'];
             params.organization_id = setup.idmap['organization01'];
         }
         else {
             params.agent_id = 'direct01';
-            params.agent_id = 'direct02';
-            params.organization_id = 'direct03';
-            params.organization_id = 'direct04';
+            params.organization_id = 'direct02';
         }
         const result = await client.direct({
             path: 'api/v1/organizations/{organization_id}/agents/{agent_id}/avatar/configuration',
@@ -69,8 +65,6 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(calls[0].init.method === 'GET');
             (0, node_assert_1.default)(calls[0].url.includes('direct01'));
             (0, node_assert_1.default)(calls[0].url.includes('direct02'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct03'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct04'));
         }
     });
 });

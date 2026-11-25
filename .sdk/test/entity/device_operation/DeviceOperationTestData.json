@@ -1,0 +1,97 @@
+{
+  "existing": {
+    "device_operation": {
+      "DEVICE_OPERATION00": {
+        "action": "s96",
+        "arguments": {},
+        "created_at": "s98",
+        "delivery": {},
+        "device_id": "DEVICE01",
+        "diagnostic_code": "s9b",
+        "end": {},
+        "expires_at": "s9d",
+        "id": "DEVICE_OPERATION00",
+        "key": "s9f",
+        "provider": "sa0",
+        "references": {},
+        "result": "sa2",
+        "result_expired": false,
+        "state": "sa4",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEVICE_OPERATION01": {
+        "action": "s12c",
+        "arguments": {},
+        "created_at": "s12e",
+        "delivery": {},
+        "device_id": "DEVICE01",
+        "diagnostic_code": "s131",
+        "end": {},
+        "expires_at": "s133",
+        "id": "DEVICE_OPERATION01",
+        "key": "s135",
+        "provider": "s136",
+        "references": {},
+        "result": "s138",
+        "result_expired": false,
+        "state": "s13a",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEVICE_OPERATION02": {
+        "action": "s1c2",
+        "arguments": {},
+        "created_at": "s1c4",
+        "delivery": {},
+        "device_id": "DEVICE01",
+        "diagnostic_code": "s1c7",
+        "end": {},
+        "expires_at": "s1c9",
+        "id": "DEVICE_OPERATION02",
+        "key": "s1cb",
+        "provider": "s1cc",
+        "references": {},
+        "result": "s1ce",
+        "result_expired": false,
+        "state": "s1d0",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "device_operation": {
+      "device_operation_ref01": {
+        "action": "s258",
+        "arguments": {},
+        "created_at": "s25a",
+        "delivery": {},
+        "device_id": "DEVICE01",
+        "diagnostic_code": "s25d",
+        "end": {},
+        "expires_at": "s25f",
+        "key": "s261",
+        "provider": "s262",
+        "references": {},
+        "result": "s264",
+        "result_expired": false,
+        "state": "s266"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/request": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

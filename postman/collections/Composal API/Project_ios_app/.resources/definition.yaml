@@ -5,14 +5,14 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `android` | object | yes |  |
+  | `android` | object |  |  |
   | `artifact_paths` | array |  |  |
   | `description` | string | yes |  |
   | `image` | string | yes |  |
-  | `ios` | object | yes |  |
+  | `ios` | object |  |  |
   | `launch_command` | string |  |  |
-  | `managed_binary` | object | yes |  |
+  | `managed_binary` | object |  |  |
   | `platform` | string |  |  |
   | `provider` | string |  |  |
   | `setup_command` | string |  |  |
-order: 401000
+order: 397000

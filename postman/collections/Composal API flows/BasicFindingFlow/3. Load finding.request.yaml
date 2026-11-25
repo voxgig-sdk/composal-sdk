@@ -12,9 +12,6 @@ queryParams:
   - key: repository_id
     value: ""
     disabled: true
-  - key: repository_id
-    value: ""
-    disabled: true
 pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
@@ -54,10 +51,10 @@ scripts:
       const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
       const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
       if ("Mark01-finding_ref01" === pm.variables.get("finding_ref01_marked")) pm.test("3. Load finding: the update reads back", () => {
-        pm.expect(JSON.stringify(body)).to.include("Mark01-finding_ref01")
+        pm.expect(JSON.stringify(body?.["finding"])).to.include("Mark01-finding_ref01")
       })
       pm.test("3. Load finding: the record is the one asked for", () => {
-        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("finding_ref01")))
+        pm.expect(String(at(body?.["finding"], "id"))).to.eql(String(pm.variables.get("finding_ref01")))
       })
     language: text/javascript
 order: 3000

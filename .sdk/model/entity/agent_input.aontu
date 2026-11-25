@@ -21,14 +21,14 @@ main: kit: entity: agent_input: {
     browser_context: {
       h: "Browser Context"
       n: "browser_context"
-      r: true
+      r: false
       sh: "Advisory snapshot of the browser pane beside this conversation when the message was sent."
       t: "`$OBJECT`"
     }
     client_time: {
       h: "Client Time"
       n: "client_time"
-      r: true
+      r: false
       sh: "The sending app's IANA time zone and clock, so the agent answers in the person's local time."
       t: "`$OBJECT`"
     }

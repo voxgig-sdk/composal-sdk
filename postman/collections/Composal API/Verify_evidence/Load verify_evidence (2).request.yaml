@@ -1,0 +1,37 @@
+$kind: http-request
+id: "68c78881-f3e1-5dfd-9c42-10720e7d012f"
+description: |-
+  The `load` operation of **verify_evidence**.
+
+  SDK: `client.VerifyEvidence().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/evidence"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: agent_id
+    value: ""
+    disabled: true
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: exploration_id
+    value: ""
+    disabled: true
+  - key: kind
+    value: ""
+    disabled: true
+  - key: limit
+    value: ""
+    disabled: true
+  - key: repository_id
+    value: ""
+    disabled: true
+  - key: scenario_run_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_evidence belongs to.
+order: 2000

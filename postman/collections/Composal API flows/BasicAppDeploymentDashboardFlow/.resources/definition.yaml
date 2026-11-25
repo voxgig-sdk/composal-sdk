@@ -1,0 +1,4 @@
+$kind: collection
+id: "08547bea-775a-540d-8b09-1aefaeccaf0d"
+description: "The `BasicAppDeploymentDashboardFlow` flow of **app_deployment_dashboard**."
+order: 63000

@@ -25,7 +25,7 @@ class ChangeCommentEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.ChangeComment(nil).list({ "change_id" => 1, "organization_id" => "x", "repo_id" => "x" }, nil)
+      client.ChangeComment(nil).load({ "change_id" => 1, "organization_id" => "x", "repo_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class ChangeCommentEntityTest < Minitest::Test
     setup = change_comment_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list"].each do |_op|
+    ["create", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "change_comment." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,36 +43,8 @@ class ChangeCommentEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"change_comment.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve\"}"
-    if setup[:live]
-      ["change01", "organization01", "repo01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_CHANGE_COMMENT_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-
-    # Bootstrap entity data from existing test data.
-    change_comment_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.change_comment")))
-    change_comment_ref01_data = nil
-    if change_comment_ref01_data_raw.length > 0
-      change_comment_ref01_data = Helpers.to_map(change_comment_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    change_comment_ref01_ent = client.ChangeComment(nil)
-    change_comment_ref01_match = {
-      "change_id" => setup[:idmap]["change01"],
-      "organization_id" => setup[:idmap]["organization01"],
-      "repo_id" => setup[:idmap]["repo01"],
-    }
-
-    change_comment_ref01_list_result = change_comment_ref01_ent.list(change_comment_ref01_match, nil)
-    assert change_comment_ref01_list_result.is_a?(Array)
-
-      return
+      puts "LIVE STEP {\"id\":\"change_comment.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only change_comment.create.0 gives\"}"
+      skip("Live coverage incomplete: change_comment.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve); change_comment.load.1 excluded (GET-only live run: reads a record only change_comment.create.0 gives)")
     end
 
     if setup[:live]
@@ -99,20 +71,16 @@ class ChangeCommentEntityTest < Minitest::Test
     assert !change_comment_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    change_comment_ref01_match = {
-      "change_id" => setup[:idmap]["change01"],
-      "organization_id" => setup[:idmap]["organization01"],
-      "repo_id" => setup[:idmap]["repo01"],
+    # LOAD
+    change_comment_ref01_match_dt0 = {
+      "id" => change_comment_ref01_data["id"],
     }
-
-    change_comment_ref01_list_result = change_comment_ref01_ent.list(change_comment_ref01_match, nil)
-    assert change_comment_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(change_comment_ref01_list_result),
-      { "id" => change_comment_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
+    change_comment_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
+    change_comment_ref01_match_dt0["repo_id"] = setup[:idmap]["repo_id"] || setup[:idmap]["repo01"]
+    change_comment_ref01_data_dt0_loaded = change_comment_ref01_ent.load(change_comment_ref01_match_dt0, nil)
+    change_comment_ref01_data_dt0_load_result = Helpers.to_map(change_comment_ref01_data_dt0_loaded.respond_to?(:data_get) ? change_comment_ref01_data_dt0_loaded.data_get : change_comment_ref01_data_dt0_loaded)
+    assert !change_comment_ref01_data_dt0_load_result.nil?
+    assert Runner.live_same_id(change_comment_ref01_data_dt0_load_result["id"], change_comment_ref01_data["id"]) unless setup[:live]
 
   end
 end

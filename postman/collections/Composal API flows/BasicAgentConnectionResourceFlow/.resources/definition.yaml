@@ -1,4 +1,4 @@
 $kind: collection
 id: d64fa5a3-61b3-5cf7-a065-a354faeeb075
 description: "The `BasicAgentConnectionResourceFlow` flow of **agent_connection_resource**."
-order: 12000
+order: 11000

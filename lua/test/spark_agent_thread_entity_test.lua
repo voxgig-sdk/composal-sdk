@@ -45,7 +45,7 @@ describe("SparkAgentThreadEntity", function()
       end
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
-      print("LIVE STEP {\"id\":\"spark_agent_thread.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive\"}")
+      print("LIVE STEP {\"id\":\"spark_agent_thread.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads\"}")
     if setup.live then
       for _, _live_key in ipairs({"agent01", "organization01"}) do
         if setup.synthetic_only or setup.idmap[_live_key] == nil then

@@ -56,10 +56,10 @@ scripts:
       const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
       const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
       if ("Mark01-dream_ref01" === pm.variables.get("dream_ref01_marked")) pm.test("2. Load dream: the update reads back", () => {
-        pm.expect(JSON.stringify(body)).to.include("Mark01-dream_ref01")
+        pm.expect(JSON.stringify(body?.["dream"])).to.include("Mark01-dream_ref01")
       })
       pm.test("2. Load dream: the record is the one asked for", () => {
-        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("dream_ref01")))
+        pm.expect(String(at(body?.["dream"], "id"))).to.eql(String(pm.variables.get("dream_ref01")))
       })
     language: text/javascript
 order: 2000

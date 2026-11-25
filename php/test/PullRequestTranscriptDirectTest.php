@@ -33,16 +33,8 @@ class PullRequestTranscriptDirectTest extends TestCase
             $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
             return;
         }
-        if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE" && null === ($setup["idmap"]['pull_request01'] ?? null)) {
-            fwrite(STDOUT, 'LIVE STEP {"id":"direct-list-pull_request_transcript","state":"excluded","attempted":false,"reason":"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives"}' . "\n");
-            $this->markTestSkipped('Live coverage incomplete: direct-list-pull_request_transcript excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)');
-        }
-        if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE" && null === ($setup["idmap"]['pull_request01'] ?? null)) {
-            fwrite(STDOUT, 'LIVE STEP {"id":"direct-list-pull_request_transcript","state":"excluded","attempted":false,"reason":"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives"}' . "\n");
-            $this->markTestSkipped('Live coverage incomplete: direct-list-pull_request_transcript excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)');
-        }
         if ($setup["live"]) {
-            foreach (["organization01", "pull_request01", "pull_request01", "repo01"] as $_liveKey) {
+            foreach (["organization01", "pull_request01", "repo01"] as $_liveKey) {
                 if (null === ($setup["idmap"][$_liveKey] ?? null)) {
                     Runner::live_miss(self::LIVE_STRICT, "Live test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_PULL_REQUEST_TRANSCRIPT_ENTID");
                 }
@@ -57,8 +49,7 @@ class PullRequestTranscriptDirectTest extends TestCase
         $query = [];
         $params["organization_id"] = $setup["live"] ? ($setup["idmap"]["organization01"] ?? null) : "direct01";
         $params["pull_request_id"] = $setup["live"] ? ($setup["idmap"]["pull_request01"] ?? null) : "direct02";
-        $params["pull_request_id"] = $setup["live"] ? ($setup["idmap"]["pull_request01"] ?? null) : "direct03";
-        $params["repo_id"] = $setup["live"] ? ($setup["idmap"]["repo01"] ?? null) : "direct04";
+        $params["repo_id"] = $setup["live"] ? ($setup["idmap"]["repo01"] ?? null) : "direct03";
 
         $result = $client->direct([
             "path" => "api/v1/organizations/{organization_id}/repos/{repo_id}/pages/pull_request/{pull_request_id}/transcripts",

@@ -195,13 +195,6 @@ main: kit: entity: agent_repository: {
               }
               {
                 k: "param"
-                n: "id"
-                or: "repository"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "organization_id"
                 or: "organization_id"
                 r: true

@@ -13,5 +13,5 @@ description: |-
   | `runs` | array | yes |  |
   | `setup` | any |  |  |
   | `success_rate` | integer | yes |  |
-  | `usage` | object | yes |  |
-order: 274000
+  | `usage` | object |  |  |
+order: 270000

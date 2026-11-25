@@ -1,7 +1,7 @@
 $kind: collection
 id: "5780a863-0e15-5c97-adb5-d2a40c13bb35"
 description: |-
-  The **environment_revision** entity, which belongs to a organization and a environment. Its requests address one record by `{{environment_revision_id}}`, which a list or a create remembers.
+  The **environment_revision** entity, which belongs to a organization. Its requests address one record by `{{environment_revision_id}}`, which a list or a create remembers.
 
   | field | type | required | |
   |---|---|---|---|
@@ -31,4 +31,4 @@ description: |-
   | `updated_at` | string | yes |  |
   | `validation_json` | object | yes |  |
   | `verify_environment_id` | string | yes |  |
-order: 239000
+order: 238000

@@ -12,7 +12,6 @@
 <a href="../api/agent_app.html">AgentApp</a>
 <a href="../api/agent_app_install.html">AgentAppInstall</a>
 <a href="../api/agent_attachment.html">AgentAttachment</a>
-<a href="../api/agent_automation.html">AgentAutomation</a>
 <a href="../api/agent_avatar.html">AgentAvatar</a>
 <a href="../api/agent_command.html">AgentCommand</a>
 <a href="../api/agent_computer.html">AgentComputer</a>
@@ -90,6 +89,7 @@
 <a href="../api/app_data_resource.html">AppDataResource</a>
 <a href="../api/app_deploy.html">AppDeploy</a>
 <a href="../api/app_deployment.html">AppDeployment</a>
+<a href="../api/app_deployment_dashboard.html">AppDeploymentDashboard</a>
 <a href="../api/app_deployment_operation.html">AppDeploymentOperation</a>
 <a href="../api/app_deployment_rollback.html">AppDeploymentRollback</a>
 <a href="../api/app_environment.html">AppEnvironment</a>
@@ -150,8 +150,8 @@
 <a href="../api/browser_egress_candidate.html">BrowserEgressCandidate</a>
 <a aria-current="page" href="../api/browser_session.html">BrowserSession</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1organizationsorganization_idbrowser_sessionsbrowser_session_idcontrol">POST /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/control</a>
 <a class="nav-section" href="#post-apiv1organizationsorganization_idbrowser_sessions">POST /api/v1/organizations/{organization_id}/browser_sessions</a>
-<a class="nav-section" href="#get-apiv1organizationsorganization_idbrowser_sessionsbrowser_session_idmedia">GET /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media</a>
 <a class="nav-section" href="#get-apiv1organizationsorganization_idbrowser_sessionsid">GET /api/v1/organizations/{organization_id}/browser_sessions/{id}</a>
+<a class="nav-section" href="#get-apiv1organizationsorganization_idbrowser_sessionsbrowser_session_idmedia">GET /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media</a>
 <a class="nav-section" href="#delete-apiv1organizationsorganization_idbrowser_sessionsid">DELETE /api/v1/organizations/{organization_id}/browser_sessions/{id}</a></div>
 <a href="../api/browser_session_connection.html">BrowserSessionConnection</a>
 <a href="../api/browser_session_control.html">BrowserSessionControl</a>
@@ -223,12 +223,12 @@
 <a href="../api/device.html">Device</a>
 <a href="../api/device_browser_operation.html">DeviceBrowserOperation</a>
 <a href="../api/device_control_message.html">DeviceControlMessage</a>
-<a href="../api/device_control_operation.html">DeviceControlOperation</a>
 <a href="../api/device_enterprise_relay.html">DeviceEnterpriseRelay</a>
 <a href="../api/device_folder_listing.html">DeviceFolderListing</a>
 <a href="../api/device_grant.html">DeviceGrant</a>
 <a href="../api/device_invocation.html">DeviceInvocation</a>
 <a href="../api/device_local_event.html">DeviceLocalEvent</a>
+<a href="../api/device_operation.html">DeviceOperation</a>
 <a href="../api/device_pairing.html">DevicePairing</a>
 <a href="../api/device_project.html">DeviceProject</a>
 <a href="../api/device_scheduled_check_in.html">DeviceScheduledCheckIn</a>
@@ -240,14 +240,12 @@
 <a href="../api/dream.html">Dream</a>
 <a href="../api/edge.html">Edge</a>
 <a href="../api/email_verification.html">EmailVerification</a>
-<a href="../api/environment.html">Environment</a>
 <a href="../api/environment_discovery_run.html">EnvironmentDiscoveryRun</a>
 <a href="../api/environment_exploration.html">EnvironmentExploration</a>
 <a href="../api/environment_first_run.html">EnvironmentFirstRun</a>
 <a href="../api/environment_revision.html">EnvironmentRevision</a>
 <a href="../api/environment_secret_binding.html">EnvironmentSecretBinding</a>
 <a href="../api/environment_test_account.html">EnvironmentTestAccount</a>
-<a href="../api/evidence.html">Evidence</a>
 <a href="../api/execution_desired_state.html">ExecutionDesiredState</a>
 <a href="../api/execution_reconciler_tick.html">ExecutionReconcilerTick</a>
 <a href="../api/execution_release.html">ExecutionRelease</a>
@@ -268,7 +266,6 @@
 <a href="../api/github_ci_repository.html">GithubCiRepository</a>
 <a href="../api/github_ci_repository_compatibility_report.html">GithubCiRepositoryCompatibilityReport</a>
 <a href="../api/github_connection.html">GithubConnection</a>
-<a href="../api/github_integration.html">GithubIntegration</a>
 <a href="../api/github_onboarding.html">GithubOnboarding</a>
 <a href="../api/github_onboarding_branch.html">GithubOnboardingBranch</a>
 <a href="../api/github_onboarding_import.html">GithubOnboardingImport</a>
@@ -327,7 +324,6 @@
 <a href="../api/member.html">Member</a>
 <a href="../api/memory.html">Memory</a>
 <a href="../api/merge_queue_entry.html">MergeQueueEntry</a>
-<a href="../api/merge_request.html">MergeRequest</a>
 <a href="../api/merge_resolution.html">MergeResolution</a>
 <a href="../api/messaging_conversation_message.html">MessagingConversationMessage</a>
 <a href="../api/messaging_conversation_upload.html">MessagingConversationUpload</a>
@@ -376,6 +372,7 @@
 <a href="../api/page_project_run.html">PageProjectRun</a>
 <a href="../api/page_repo_vc_commit.html">PageRepoVcCommit</a>
 <a href="../api/pages_billing.html">PagesBilling</a>
+<a href="../api/pages_github_integration.html">PagesGithubIntegration</a>
 <a href="../api/pages_github_onboarding.html">PagesGithubOnboarding</a>
 <a href="../api/pages_member.html">PagesMember</a>
 <a href="../api/pages_project_credential.html">PagesProjectCredential</a>
@@ -411,14 +408,15 @@
 <a href="../api/project_messaging_conversation.html">ProjectMessagingConversation</a>
 <a href="../api/project_overview_metric.html">ProjectOverviewMetric</a>
 <a href="../api/project_overview_pull_request.html">ProjectOverviewPullRequest</a>
+<a href="../api/project_pr_testing.html">ProjectPrTesting</a>
 <a href="../api/project_product_map.html">ProjectProductMap</a>
+<a href="../api/project_product_map_comparison.html">ProjectProductMapComparison</a>
 <a href="../api/project_recording.html">ProjectRecording</a>
 <a href="../api/project_run_plan.html">ProjectRunPlan</a>
 <a href="../api/project_run_schedule.html">ProjectRunSchedule</a>
 <a href="../api/project_scenario_option.html">ProjectScenarioOption</a>
 <a href="../api/project_scenario_row.html">ProjectScenarioRow</a>
 <a href="../api/project_setting.html">ProjectSetting</a>
-<a href="../api/pull_request.html">PullRequest</a>
 <a href="../api/pull_request_action.html">PullRequestAction</a>
 <a href="../api/pull_request_magic_merge.html">PullRequestMagicMerge</a>
 <a href="../api/pull_request_setting.html">PullRequestSetting</a>
@@ -514,6 +512,7 @@
 <a href="../api/spark_agent_site.html">SparkAgentSite</a>
 <a href="../api/spark_agent_skill.html">SparkAgentSkill</a>
 <a href="../api/spark_agent_thread.html">SparkAgentThread</a>
+<a href="../api/spark_automation.html">SparkAutomation</a>
 <a href="../api/spark_credit.html">SparkCredit</a>
 <a href="../api/spark_credit_agent_usage.html">SparkCreditAgentUsage</a>
 <a href="../api/spark_credit_usage_total.html">SparkCreditUsageTotal</a>
@@ -552,6 +551,10 @@
 <a href="../api/verify_app_domain.html">VerifyAppDomain</a>
 <a href="../api/verify_browser_session.html">VerifyBrowserSession</a>
 <a href="../api/verify_email_verification.html">VerifyEmailVerification</a>
+<a href="../api/verify_environment.html">VerifyEnvironment</a>
+<a href="../api/verify_evidence.html">VerifyEvidence</a>
+<a href="../api/verify_merge_request.html">VerifyMergeRequest</a>
+<a href="../api/verify_pull_request.html">VerifyPullRequest</a>
 <a href="../api/verify_signal_integration.html">VerifySignalIntegration</a>
 <a href="../api/verify_static_site_domain.html">VerifyStaticSiteDomain</a>
 <a href="../api/version_log.html">VersionLog</a>
@@ -614,15 +617,15 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1organizationsorganization_idbrowser_sessionsbrowser_session_idmedia"><code>/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media</code></a></td>
-<td><code>load</code></td>
-<td>Up to 256 captures belonging to this browser session</td>
-</tr>
-<tr>
-<td><code>GET</code></td>
 <td><a href="#get-apiv1organizationsorganization_idbrowser_sessionsid"><code>/api/v1/organizations/{organization_id}/browser_sessions/{id}</code></a></td>
 <td><code>load</code></td>
 <td>Admin-only browser state; connection capabilities expire with control or session closure</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv1organizationsorganization_idbrowser_sessionsbrowser_session_idmedia"><code>/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media</code></a></td>
+<td><code>load</code></td>
+<td>Up to 256 captures belonging to this browser session</td>
 </tr>
 <tr>
 <td><code>DELETE</code></td>
@@ -1250,10 +1253,193 @@ await client.BrowserSession().remove({ id: &quot;example_id&quot;, organization_
 <h5 id="422-invalid-context-unavailable-credential-exhausted-capacity-or-funding-or-paused-admission" class="status" data-status="4xx">422: Invalid context, unavailable credential, exhausted capacity or funding, or paused admission</h5>
 <h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
 <h2 id="load">load</h2>
+<h3 id="get-apiv1organizationsorganization_idbrowser_sessionsid" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/browser_sessions/{id}</h3>
+<p>Operation ID: <code>api_v1_browser_runner_session</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>organization_id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-admin-only-browser-state-connection-capabilities-expire-with-control-or-session-closure" class="status" data-status="2xx">200: Admin-only browser state; connection capabilities expire with control or session closure</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active_task_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>authentication_status</code></td>
+<td><code>enum: not_required, pending, ready, blocked</code></td>
+<td>Yes</td>
+<td>Session readiness alone does not confirm application sign-in.</td>
+</tr>
+<tr>
+<td><code>authentication_task_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Automatic sign-in task; read its status and result separately from browser readiness.</td>
+</tr>
+<tr>
+<td><code>cdp_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Admin-only full browser CDP bearer capability for the current external control generation.</td>
+</tr>
+<tr>
+<td><code>closed_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>closure_basis</code></td>
+<td><code>enum: worker_clock, provider_deletion</code></td>
+<td>No</td>
+<td>Provider deletion is a conservative closure bound when the worker cannot report its stop time.</td>
+</tr>
+<tr>
+<td><code>control_generation</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>controller</code></td>
+<td><code>enum: idle, agent, external, transitioning, blocked, closed</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>credential_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>environment_revision_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>expires_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>failure_code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>initial_url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pending_control_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>project_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>reconciled_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>started_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: pending, provisioning, ready, closing, closed, expired, ...</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>viewer</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>viewer.token</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>viewer.url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorized-2" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-2" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
 <h3 id="get-apiv1organizationsorganization_idbrowser_sessionsbrowser_session_idmedia" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media</h3>
 <p>Operation ID: <code>api_v1_media</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-2">Parameters</h4>
+<h4 id="parameters-3">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1281,7 +1467,7 @@ await client.BrowserSession().remove({ id: &quot;example_id&quot;, organization_
 </tr>
 </tbody>
 </table>
-<h4 id="responses-2">Responses</h4>
+<h4 id="responses-3">Responses</h4>
 <h5 id="200-up-to-256-captures-belonging-to-this-browser-session" class="status" data-status="2xx">200: Up to 256 captures belonging to this browser session</h5>
 <p><code>application/json</code></p>
 <table>
@@ -1501,189 +1687,6 @@ await client.BrowserSession().remove({ id: &quot;example_id&quot;, organization_
 <tr>
 <td><code>[].stop_requested_at</code></td>
 <td><code>string (date-time)</code></td>
-<td>No</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h5 id="401-unauthorized-2" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-2" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
-<h3 id="get-apiv1organizationsorganization_idbrowser_sessionsid" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/browser_sessions/{id}</h3>
-<p>Operation ID: <code>api_v1_browser_runner_session</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-3">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>organization_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="responses-3">Responses</h4>
-<h5 id="200-admin-only-browser-state-connection-capabilities-expire-with-control-or-session-closure" class="status" data-status="2xx">200: Admin-only browser state; connection capabilities expire with control or session closure</h5>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>active_task_id</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>authentication_status</code></td>
-<td><code>enum: not_required, pending, ready, blocked</code></td>
-<td>Yes</td>
-<td>Session readiness alone does not confirm application sign-in.</td>
-</tr>
-<tr>
-<td><code>authentication_task_id</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>Automatic sign-in task; read its status and result separately from browser readiness.</td>
-</tr>
-<tr>
-<td><code>cdp_url</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>Admin-only full browser CDP bearer capability for the current external control generation.</td>
-</tr>
-<tr>
-<td><code>closed_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>closure_basis</code></td>
-<td><code>enum: worker_clock, provider_deletion</code></td>
-<td>No</td>
-<td>Provider deletion is a conservative closure bound when the worker cannot report its stop time.</td>
-</tr>
-<tr>
-<td><code>control_generation</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>controller</code></td>
-<td><code>enum: idle, agent, external, transitioning, blocked, closed</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>credential_id</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>environment_revision_id</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>expires_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>failure_code</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>initial_url</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>pending_control_id</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>project_id</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>reconciled_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>started_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>status</code></td>
-<td><code>enum: pending, provisioning, ready, closing, closed, expired, ...</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>viewer</code></td>
-<td><code>object</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>viewer.token</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>viewer.url</code></td>
-<td><code>string</code></td>
 <td>No</td>
 <td></td>
 </tr>

@@ -108,6 +108,11 @@ func TestControlComputerControlOperationEntity(t *testing.T) {
 		controlComputerControlOperationRef01MatchDt0 := map[string]any{
 			"id": controlComputerControlOperationRef01Data["id"],
 		}
+		if v := setup.idmap["control_computer_id"]; v != nil {
+			controlComputerControlOperationRef01MatchDt0["control_computer_id"] = v
+		} else {
+			controlComputerControlOperationRef01MatchDt0["control_computer_id"] = setup.idmap["control_computer01"]
+		}
 		if v := setup.idmap["organization_id"]; v != nil {
 			controlComputerControlOperationRef01MatchDt0["organization_id"] = v
 		} else {

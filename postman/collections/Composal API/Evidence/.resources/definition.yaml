@@ -1,9 +1,0 @@
-$kind: collection
-id: f73bf452-4b11-506d-b1e4-565311d56865
-description: |-
-  The **evidence** entity, which belongs to a organization. Its requests address one record by `{{evidence_id}}`, which a list or a create remembers.
-
-  | field | type | required | |
-  |---|---|---|---|
-  | `id` | string |  |  |
-order: 242000

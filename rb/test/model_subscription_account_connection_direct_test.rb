@@ -38,10 +38,8 @@ class ModelSubscriptionAccountConnectionDirectTest < Minitest::Test
     query = {}
     if setup[:live]
       params["id"] = setup[:idmap]["model_subscription_account_connection01"]
-      params["id"] = setup[:idmap]["model_subscription_account_connection01"]
     else
       params["id"] = "direct01"
-      params["id"] = "direct02"
     end
 
     result = client.direct({

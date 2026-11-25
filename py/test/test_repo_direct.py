@@ -102,13 +102,10 @@ class TestRepoDirect:
                 runner.live_miss(LIVE_STRICT, "Live load blocked: discovery returned no usable identity")
             params["id"] = first.get("id")
             params["organization_id"] = setup["idmap"].get("organization01")
-            params["organization_id"] = setup["idmap"].get("organization01")
             pass
         else:
             params["id"] = "direct01"
-            params["id"] = "direct02"
-            params["organization_id"] = "direct03"
-            params["organization_id"] = "direct04"
+            params["organization_id"] = "direct02"
             pass
 
         result = client.direct({

@@ -21,4 +21,4 @@ description: |-
   | `sync_error_message` | string | yes |  |
   | `sync_provider` | string |  |  |
   | `sync_status` | string | yes |  |
-order: 18000
+order: 17000

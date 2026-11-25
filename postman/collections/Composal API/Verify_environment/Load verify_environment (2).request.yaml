@@ -1,0 +1,19 @@
+$kind: http-request
+id: ce29590d-77c1-56bc-8450-53e0236c76f6
+description: |-
+  The `load` operation of **verify_environment**.
+
+  SDK: `client.VerifyEnvironment().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/environments"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_environment belongs to.
+order: 2000

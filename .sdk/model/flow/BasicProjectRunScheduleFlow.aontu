@@ -69,7 +69,8 @@ main: kit: flow: BasicProjectRunScheduleFlow:
 
       m: {
         id: "project_run_schedule01",
-        organization_id: "organization01"
+        organization_id: "organization01",
+        project_id: "project01"
       }
 
       o: "load",

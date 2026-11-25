@@ -35,4 +35,4 @@ description: |-
   | `team_sharing_enabled` | boolean | yes |  |
   | `team_sharing_version` | integer | yes |  |
   | `toolkit` | string | yes |  |
-order: 27000
+order: 26000

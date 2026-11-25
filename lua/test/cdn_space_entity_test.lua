@@ -45,11 +45,11 @@ describe("CdnSpaceEntity", function()
       end
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
-      print("LIVE STEP {\"id\":\"cdn_space.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/cdn_spaces/{id}/archive\"}")
+      print("LIVE STEP {\"id\":\"cdn_space.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{org_slug}/cdn_spaces\"}")
       print("LIVE STEP {\"id\":\"cdn_space.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/cdn_spaces/{id}\"}")
       print("LIVE STEP {\"id\":\"cdn_space.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only cdn_space.create.0 gives\"}")
       print("LIVE STEP {\"id\":\"cdn_space.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/cdn_spaces/{id}\"}")
-      pending("Live coverage incomplete: cdn_space.create.0 excluded (GET-only live run: needs POST /api/v1/cdn_spaces/{id}/archive); cdn_space.update.1 excluded (GET-only live run: needs PUT /api/v1/cdn_spaces/{id}); cdn_space.load.2 excluded (GET-only live run: reads a record only cdn_space.create.0 gives); cdn_space.remove.3 excluded (GET-only live run: needs DELETE /api/v1/cdn_spaces/{id})")
+      pending("Live coverage incomplete: cdn_space.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{org_slug}/cdn_spaces); cdn_space.update.1 excluded (GET-only live run: needs PUT /api/v1/cdn_spaces/{id}); cdn_space.load.2 excluded (GET-only live run: reads a record only cdn_space.create.0 gives); cdn_space.remove.3 excluded (GET-only live run: needs DELETE /api/v1/cdn_spaces/{id})")
       return
     end
 

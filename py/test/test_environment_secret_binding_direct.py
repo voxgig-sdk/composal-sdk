@@ -30,10 +30,6 @@ class TestEnvironmentSecretBindingDirect:
         if _skip:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
-        if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE" and setup["idmap"].get("environment01") is None:
-            print("LIVE STEP {\"id\":\"direct-load-environment_secret_binding\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives\"}")
-            pytest.skip("Live coverage incomplete: direct-load-environment_secret_binding excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)")
-
         if setup["live"]:
             for _live_key in ["app01", "environment01"]:
                 if setup["idmap"].get(_live_key) is None:

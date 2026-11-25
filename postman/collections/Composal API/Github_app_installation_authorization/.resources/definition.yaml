@@ -8,4 +8,4 @@ description: |-
   | `installation_url` | string | yes |  |
   | `organization_slug` | string | yes |  |
   | `return_target` | string | yes |  |
-order: 258000
+order: 256000

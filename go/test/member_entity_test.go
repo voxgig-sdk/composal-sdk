@@ -156,7 +156,7 @@ func TestMemberEntity(t *testing.T) {
 			"organization_id": setup.idmap["organization_id"],
 		}
 
-		memberRef01MarkdefUp0Name := "accepted_at"
+		memberRef01MarkdefUp0Name := "created_at"
 		memberRef01MarkdefUp0Value := fmt.Sprintf("Mark01-member_ref01_%d", setup.now)
 		memberRef01DataUp0Up[memberRef01MarkdefUp0Name] = memberRef01MarkdefUp0Value
 

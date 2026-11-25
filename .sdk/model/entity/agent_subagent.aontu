@@ -14,7 +14,7 @@ main: kit: entity: agent_subagent: {
     attention: {
       h: "Attention"
       n: "attention"
-      r: true
+      r: false
       sh: "Why the person should open this thread, as the Threads panel shows it: a pending question, the agent asking for attention, or a run that did not finish."
       t: [
         "`$ONE`"

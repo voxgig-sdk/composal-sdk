@@ -21,4 +21,4 @@ description: |-
   | `tester_number` | string | yes |  |
   | `unknown_send` | boolean | yes |  |
   | `verify_environment_id` | string | yes |  |
-order: 402000
+order: 398000

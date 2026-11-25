@@ -1,0 +1,35 @@
+$kind: http-request
+id: "1aa4e6fc-0e0d-5a4f-a895-7096187b8d3b"
+description: |-
+  The `list` operation of **spark_automation**.
+
+  SDK: `client.SparkAutomation().list({ agent_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/automations"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: limit
+    value: "30"
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this spark_automation belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this spark_automation belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["items"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("spark_automation_id")) pm.collectionVariables.set("spark_automation_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

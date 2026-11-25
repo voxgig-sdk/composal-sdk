@@ -6,20 +6,21 @@ description: |-
   | field | type | required | |
   |---|---|---|---|
   | `account_id` | string |  |  |
-  | `active` | array | yes |  |
   | `agent_filters` | object | yes |  |
   | `agents` | array | yes |  |
   | `can_continue` | boolean |  |  |
   | `chat_messages` | array |  |  |
+  | `check_count` | integer | yes |  |
   | `concurrency` | integer | yes |  |
   | `covered_areas` | array | yes |  |
   | `created_at` | string | yes |  |
+  | `credential_name` | string |  |  |
   | `deadline_at` | string | yes |  |
   | `demo_project` | object | yes |  |
+  | `duration_ms` | integer | yes |  |
   | `ended_early` | boolean | yes |  |
   | `environment_id` | string | yes |  |
   | `environment_name` | string | yes |  |
-  | `explorations` | array | yes |  |
   | `explorer_activity` | object | yes |  |
   | `finding_count` | integer | yes |  |
   | `findings` | array | yes |  |
@@ -29,14 +30,12 @@ description: |-
   | `huntable_flows` | array | yes |  |
   | `id` | string | yes |  |
   | `idempotency_key` | string |  |  |
-  | `launch_options` | object | yes |  |
   | `max_seconds` | integer | yes |  |
   | `max_testers` | integer | yes |  |
   | `mode` | string |  |  |
   | `next_scan_improvements` | array | yes |  |
   | `observed_at` | string |  |  |
   | `onboarding` | boolean | yes |  |
-  | `pagination` | object | yes |  |
   | `paywalled` | boolean | yes |  |
   | `permissions` | object | yes |  |
   | `priority_counts` | object | yes |  |
@@ -47,10 +46,13 @@ description: |-
   | `reproductions` | array | yes |  |
   | `saves_scenarios` | boolean | yes |  |
   | `scannable_flows` | array | yes |  |
-  | `scenario_generation` | object | yes |  |
+  | `scenario_count` | integer |  |  |
+  | `scenario_generation` | object |  |  |
+  | `scenarios_pending` | boolean |  |  |
   | `sign_in_needs_answer` | boolean | yes |  |
   | `sign_in_outcome` | string | yes |  |
   | `sign_in_question` | string |  |  |
+  | `started_at` | string | yes |  |
   | `startup_retryable` | boolean |  |  |
   | `status` | string | yes |  |
   | `time_limit_reached` | boolean | yes |  |

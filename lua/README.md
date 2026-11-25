@@ -212,7 +212,6 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `AgentApp` | `(data) -> AgentAppEntity` | Create an AgentApp entity instance. |
 | `AgentAppInstall` | `(data) -> AgentAppInstallEntity` | Create an AgentAppInstall entity instance. |
 | `AgentAttachment` | `(data) -> AgentAttachmentEntity` | Create an AgentAttachment entity instance. |
-| `AgentAutomation` | `(data) -> AgentAutomationEntity` | Create an AgentAutomation entity instance. |
 | `AgentAvatar` | `(data) -> AgentAvatarEntity` | Create an AgentAvatar entity instance. |
 | `AgentCommand` | `(data) -> AgentCommandEntity` | Create an AgentCommand entity instance. |
 | `AgentComputer` | `(data) -> AgentComputerEntity` | Create an AgentComputer entity instance. |
@@ -290,6 +289,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `AppDataResource` | `(data) -> AppDataResourceEntity` | Create an AppDataResource entity instance. |
 | `AppDeploy` | `(data) -> AppDeployEntity` | Create an AppDeploy entity instance. |
 | `AppDeployment` | `(data) -> AppDeploymentEntity` | Create an AppDeployment entity instance. |
+| `AppDeploymentDashboard` | `(data) -> AppDeploymentDashboardEntity` | Create an AppDeploymentDashboard entity instance. |
 | `AppDeploymentOperation` | `(data) -> AppDeploymentOperationEntity` | Create an AppDeploymentOperation entity instance. |
 | `AppDeploymentRollback` | `(data) -> AppDeploymentRollbackEntity` | Create an AppDeploymentRollback entity instance. |
 | `AppEnvironment` | `(data) -> AppEnvironmentEntity` | Create an AppEnvironment entity instance. |
@@ -419,12 +419,12 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Device` | `(data) -> DeviceEntity` | Create a Device entity instance. |
 | `DeviceBrowserOperation` | `(data) -> DeviceBrowserOperationEntity` | Create a DeviceBrowserOperation entity instance. |
 | `DeviceControlMessage` | `(data) -> DeviceControlMessageEntity` | Create a DeviceControlMessage entity instance. |
-| `DeviceControlOperation` | `(data) -> DeviceControlOperationEntity` | Create a DeviceControlOperation entity instance. |
 | `DeviceEnterpriseRelay` | `(data) -> DeviceEnterpriseRelayEntity` | Create a DeviceEnterpriseRelay entity instance. |
 | `DeviceFolderListing` | `(data) -> DeviceFolderListingEntity` | Create a DeviceFolderListing entity instance. |
 | `DeviceGrant` | `(data) -> DeviceGrantEntity` | Create a DeviceGrant entity instance. |
 | `DeviceInvocation` | `(data) -> DeviceInvocationEntity` | Create a DeviceInvocation entity instance. |
 | `DeviceLocalEvent` | `(data) -> DeviceLocalEventEntity` | Create a DeviceLocalEvent entity instance. |
+| `DeviceOperation` | `(data) -> DeviceOperationEntity` | Create a DeviceOperation entity instance. |
 | `DevicePairing` | `(data) -> DevicePairingEntity` | Create a DevicePairing entity instance. |
 | `DeviceProject` | `(data) -> DeviceProjectEntity` | Create a DeviceProject entity instance. |
 | `DeviceScheduledCheckIn` | `(data) -> DeviceScheduledCheckInEntity` | Create a DeviceScheduledCheckIn entity instance. |
@@ -436,14 +436,12 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Dream` | `(data) -> DreamEntity` | Create a Dream entity instance. |
 | `Edge` | `(data) -> EdgeEntity` | Create an Edge entity instance. |
 | `EmailVerification` | `(data) -> EmailVerificationEntity` | Create an EmailVerification entity instance. |
-| `Environment` | `(data) -> EnvironmentEntity` | Create an Environment entity instance. |
 | `EnvironmentDiscoveryRun` | `(data) -> EnvironmentDiscoveryRunEntity` | Create an EnvironmentDiscoveryRun entity instance. |
 | `EnvironmentExploration` | `(data) -> EnvironmentExplorationEntity` | Create an EnvironmentExploration entity instance. |
 | `EnvironmentFirstRun` | `(data) -> EnvironmentFirstRunEntity` | Create an EnvironmentFirstRun entity instance. |
 | `EnvironmentRevision` | `(data) -> EnvironmentRevisionEntity` | Create an EnvironmentRevision entity instance. |
 | `EnvironmentSecretBinding` | `(data) -> EnvironmentSecretBindingEntity` | Create an EnvironmentSecretBinding entity instance. |
 | `EnvironmentTestAccount` | `(data) -> EnvironmentTestAccountEntity` | Create an EnvironmentTestAccount entity instance. |
-| `Evidence` | `(data) -> EvidenceEntity` | Create an Evidence entity instance. |
 | `ExecutionDesiredState` | `(data) -> ExecutionDesiredStateEntity` | Create an ExecutionDesiredState entity instance. |
 | `ExecutionReconcilerTick` | `(data) -> ExecutionReconcilerTickEntity` | Create an ExecutionReconcilerTick entity instance. |
 | `ExecutionRelease` | `(data) -> ExecutionReleaseEntity` | Create an ExecutionRelease entity instance. |
@@ -464,7 +462,6 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GithubCiRepository` | `(data) -> GithubCiRepositoryEntity` | Create a GithubCiRepository entity instance. |
 | `GithubCiRepositoryCompatibilityReport` | `(data) -> GithubCiRepositoryCompatibilityReportEntity` | Create a GithubCiRepositoryCompatibilityReport entity instance. |
 | `GithubConnection` | `(data) -> GithubConnectionEntity` | Create a GithubConnection entity instance. |
-| `GithubIntegration` | `(data) -> GithubIntegrationEntity` | Create a GithubIntegration entity instance. |
 | `GithubOnboarding` | `(data) -> GithubOnboardingEntity` | Create a GithubOnboarding entity instance. |
 | `GithubOnboardingBranch` | `(data) -> GithubOnboardingBranchEntity` | Create a GithubOnboardingBranch entity instance. |
 | `GithubOnboardingImport` | `(data) -> GithubOnboardingImportEntity` | Create a GithubOnboardingImport entity instance. |
@@ -523,7 +520,6 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Member` | `(data) -> MemberEntity` | Create a Member entity instance. |
 | `Memory` | `(data) -> MemoryEntity` | Create a Memory entity instance. |
 | `MergeQueueEntry` | `(data) -> MergeQueueEntryEntity` | Create a MergeQueueEntry entity instance. |
-| `MergeRequest` | `(data) -> MergeRequestEntity` | Create a MergeRequest entity instance. |
 | `MergeResolution` | `(data) -> MergeResolutionEntity` | Create a MergeResolution entity instance. |
 | `MessagingConversationMessage` | `(data) -> MessagingConversationMessageEntity` | Create a MessagingConversationMessage entity instance. |
 | `MessagingConversationUpload` | `(data) -> MessagingConversationUploadEntity` | Create a MessagingConversationUpload entity instance. |
@@ -572,6 +568,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `PageProjectRun` | `(data) -> PageProjectRunEntity` | Create a PageProjectRun entity instance. |
 | `PageRepoVcCommit` | `(data) -> PageRepoVcCommitEntity` | Create a PageRepoVcCommit entity instance. |
 | `PagesBilling` | `(data) -> PagesBillingEntity` | Create a PagesBilling entity instance. |
+| `PagesGithubIntegration` | `(data) -> PagesGithubIntegrationEntity` | Create a PagesGithubIntegration entity instance. |
 | `PagesGithubOnboarding` | `(data) -> PagesGithubOnboardingEntity` | Create a PagesGithubOnboarding entity instance. |
 | `PagesMember` | `(data) -> PagesMemberEntity` | Create a PagesMember entity instance. |
 | `PagesProjectCredential` | `(data) -> PagesProjectCredentialEntity` | Create a PagesProjectCredential entity instance. |
@@ -607,14 +604,15 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `ProjectMessagingConversation` | `(data) -> ProjectMessagingConversationEntity` | Create a ProjectMessagingConversation entity instance. |
 | `ProjectOverviewMetric` | `(data) -> ProjectOverviewMetricEntity` | Create a ProjectOverviewMetric entity instance. |
 | `ProjectOverviewPullRequest` | `(data) -> ProjectOverviewPullRequestEntity` | Create a ProjectOverviewPullRequest entity instance. |
+| `ProjectPrTesting` | `(data) -> ProjectPrTestingEntity` | Create a ProjectPrTesting entity instance. |
 | `ProjectProductMap` | `(data) -> ProjectProductMapEntity` | Create a ProjectProductMap entity instance. |
+| `ProjectProductMapComparison` | `(data) -> ProjectProductMapComparisonEntity` | Create a ProjectProductMapComparison entity instance. |
 | `ProjectRecording` | `(data) -> ProjectRecordingEntity` | Create a ProjectRecording entity instance. |
 | `ProjectRunPlan` | `(data) -> ProjectRunPlanEntity` | Create a ProjectRunPlan entity instance. |
 | `ProjectRunSchedule` | `(data) -> ProjectRunScheduleEntity` | Create a ProjectRunSchedule entity instance. |
 | `ProjectScenarioOption` | `(data) -> ProjectScenarioOptionEntity` | Create a ProjectScenarioOption entity instance. |
 | `ProjectScenarioRow` | `(data) -> ProjectScenarioRowEntity` | Create a ProjectScenarioRow entity instance. |
 | `ProjectSetting` | `(data) -> ProjectSettingEntity` | Create a ProjectSetting entity instance. |
-| `PullRequest` | `(data) -> PullRequestEntity` | Create a PullRequest entity instance. |
 | `PullRequestAction` | `(data) -> PullRequestActionEntity` | Create a PullRequestAction entity instance. |
 | `PullRequestMagicMerge` | `(data) -> PullRequestMagicMergeEntity` | Create a PullRequestMagicMerge entity instance. |
 | `PullRequestSetting` | `(data) -> PullRequestSettingEntity` | Create a PullRequestSetting entity instance. |
@@ -710,6 +708,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `SparkAgentSite` | `(data) -> SparkAgentSiteEntity` | Create a SparkAgentSite entity instance. |
 | `SparkAgentSkill` | `(data) -> SparkAgentSkillEntity` | Create a SparkAgentSkill entity instance. |
 | `SparkAgentThread` | `(data) -> SparkAgentThreadEntity` | Create a SparkAgentThread entity instance. |
+| `SparkAutomation` | `(data) -> SparkAutomationEntity` | Create a SparkAutomation entity instance. |
 | `SparkCredit` | `(data) -> SparkCreditEntity` | Create a SparkCredit entity instance. |
 | `SparkCreditAgentUsage` | `(data) -> SparkCreditAgentUsageEntity` | Create a SparkCreditAgentUsage entity instance. |
 | `SparkCreditUsageTotal` | `(data) -> SparkCreditUsageTotalEntity` | Create a SparkCreditUsageTotal entity instance. |
@@ -748,6 +747,10 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `VerifyAppDomain` | `(data) -> VerifyAppDomainEntity` | Create a VerifyAppDomain entity instance. |
 | `VerifyBrowserSession` | `(data) -> VerifyBrowserSessionEntity` | Create a VerifyBrowserSession entity instance. |
 | `VerifyEmailVerification` | `(data) -> VerifyEmailVerificationEntity` | Create a VerifyEmailVerification entity instance. |
+| `VerifyEnvironment` | `(data) -> VerifyEnvironmentEntity` | Create a VerifyEnvironment entity instance. |
+| `VerifyEvidence` | `(data) -> VerifyEvidenceEntity` | Create a VerifyEvidence entity instance. |
+| `VerifyMergeRequest` | `(data) -> VerifyMergeRequestEntity` | Create a VerifyMergeRequest entity instance. |
+| `VerifyPullRequest` | `(data) -> VerifyPullRequestEntity` | Create a VerifyPullRequest entity instance. |
 | `VerifySignalIntegration` | `(data) -> VerifySignalIntegrationEntity` | Create a VerifySignalIntegration entity instance. |
 | `VerifyStaticSiteDomain` | `(data) -> VerifyStaticSiteDomainEntity` | Create a VerifyStaticSiteDomain entity instance. |
 | `VersionLog` | `(data) -> VersionLogEntity` | Create a VersionLog entity instance. |
@@ -933,30 +936,6 @@ API path: `/api/v1/organizations/{organization_id}/agent_apps/{id}/installs/{age
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/attachments/{attachment_id}/complete`
-
-#### AgentAutomation
-
-| Field | Description |
-| --- | --- |
-| `can_manage` |  |
-| `can_manage_events` | Whether new event triggers can be attached or existing settings saved. |
-| `can_run` | Whether the viewer can request a manual Temporal run |
-| `can_schedule` |  |
-| `definition` |  |
-| `event_subscriptions` |  |
-| `event_triggers` |  |
-| `expected_revision` |  |
-| `id` |  |
-| `key` |  |
-| `name` |  |
-| `revision` |  |
-| `schedule` |  |
-| `schedules` |  |
-| `version` |  |
-
-Operations: List, Load, Update.
-
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations`
 
 #### AgentAvatar
 
@@ -2425,6 +2404,40 @@ Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployments/{id}/cancel`
 
+#### AppDeploymentDashboard
+
+| Field | Description |
+| --- | --- |
+| `activity` |  |
+| `app` |  |
+| `audit_events` |  |
+| `capacity` |  |
+| `connections` |  |
+| `data_resources` |  |
+| `deployments` |  |
+| `desired_states` |  |
+| `environments` |  |
+| `id` |  |
+| `locations` |  |
+| `managed_database_catalog` |  |
+| `observability` |  |
+| `operations` |  |
+| `placements` |  |
+| `reconciler_ticks` |  |
+| `releases` |  |
+| `rollback_deployments` |  |
+| `rollouts` |  |
+| `runtime_instances` |  |
+| `service_bindings` |  |
+| `service_views` |  |
+| `services` |  |
+| `storage_resources` |  |
+| `summary` |  |
+
+Operations: Load.
+
+API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard`
+
 #### AppDeploymentOperation
 
 | Field | Description |
@@ -3763,7 +3776,7 @@ API path: `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames`
 
 Operations: Create, Load, Patch, Remove, Update.
 
-API path: `/api/v1/cdn_spaces/{id}/archive`
+API path: `/api/v1/organizations/{org_slug}/cdn_spaces`
 
 #### CdnSpaceObject
 
@@ -3809,29 +3822,17 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets
 | Field | Description |
 | --- | --- |
 | `body` |  |
-| `capabilities` |  |
-| `change_id` |  |
-| `created_at` |  |
-| `created_at_label` |  |
+| `comment` |  |
+| `comments` |  |
 | `id` |  |
 | `kind` |  |
 | `line` |  |
-| `outdated` |  |
 | `parent_comment_id` |  |
 | `patchset_id` |  |
-| `patchset_number` |  |
 | `path` |  |
-| `replies` |  |
-| `resolved` |  |
-| `resolved_at` |  |
-| `resolved_at_label` |  |
-| `resolved_by` |  |
 | `side` |  |
-| `updated_at` |  |
-| `updated_at_label` |  |
-| `user` |  |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve`
 
@@ -4520,20 +4521,21 @@ API path: `/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials`
 | Field | Description |
 | --- | --- |
 | `account_id` |  |
-| `active` |  |
 | `agent_filters` | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` |  |
 | `can_continue` | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` |  |
+| `check_count` |  |
 | `concurrency` |  |
 | `covered_areas` | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` |  |
-| `deadline_at` |  |
+| `credential_name` | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | When the team's time limit ends. |
 | `demo_project` | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` |  |
 | `ended_early` | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` |  |
 | `environment_name` |  |
-| `explorations` |  |
 | `explorer_activity` | What the team is doing now. |
 | `finding_count` | Findings at every priority, locked ones included. |
 | `findings` | Every tester's findings, most severe first, with the checks each one cites. |
@@ -4543,14 +4545,12 @@ API path: `/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials`
 | `huntable_flows` | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` |  |
 | `idempotency_key` |  |
-| `launch_options` | Present only when launch was requested by an admin |
 | `max_seconds` |  |
 | `max_testers` |  |
 | `mode` |  |
 | `next_scan_improvements` | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` |  |
 | `paywalled` | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` |  |
 | `priority_counts` |  |
@@ -4561,10 +4561,13 @@ API path: `/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials`
 | `reproductions` | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | Flows a finished exploration recorded that deep scans can start from. |
+| `scenario_count` | Scenarios saved from this discovery. |
 | `scenario_generation` |  |
+| `scenarios_pending` | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` |  |
 | `startup_retryable` | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` |  |
 | `time_limit_reached` | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -4572,7 +4575,7 @@ API path: `/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials`
 | `unlock` | Once a paywalled scan ends, whether a paid plan would unlock its locked findings and whether this person may choose one, as on its findings page. |
 | `web_url` | The run's page in the Composal web app |
 
-Operations: Create, Load.
+Operations: Create, List, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce`
 
@@ -4943,30 +4946,6 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_messages`
 
-#### DeviceControlOperation
-
-| Field | Description |
-| --- | --- |
-| `action` |  |
-| `arguments` |  |
-| `created_at` |  |
-| `delivery` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
-| `device_id` |  |
-| `diagnostic_code` | Approved product error code retained after copied diagnostics expire. |
-| `end` |  |
-| `expires_at` |  |
-| `id` |  |
-| `key` |  |
-| `provider` |  |
-| `references` |  |
-| `result` |  |
-| `result_expired` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
-| `state` |  |
-
-Operations: Create, Load.
-
-API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations`
-
 #### DeviceEnterpriseRelay
 
 | Field | Description |
@@ -5034,6 +5013,30 @@ API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{devic
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/local_events`
+
+#### DeviceOperation
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `arguments` |  |
+| `created_at` |  |
+| `delivery` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` |  |
+| `diagnostic_code` | Approved product error code retained after copied diagnostics expire. |
+| `end` |  |
+| `expires_at` |  |
+| `id` |  |
+| `key` |  |
+| `provider` |  |
+| `references` |  |
+| `result` |  |
+| `result_expired` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations`
 
 #### DevicePairing
 
@@ -5210,56 +5213,6 @@ Operations: Create.
 
 API path: `/api/v1/email_verifications/resend`
 
-#### Environment
-
-| Field | Description |
-| --- | --- |
-| `active_revision_id` |  |
-| `agent_sign_up_available` | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
-| `allowed_actions` | read_only only looks around; writes may create, change and delete data. |
-| `billing` |  |
-| `cleanup` |  |
-| `connection` |  |
-| `created_at` |  |
-| `default_policy` |  |
-| `default_policy_json` |  |
-| `discovery_defaults` |  |
-| `environment` |  |
-| `exploration_accounts` |  |
-| `explorations` |  |
-| `first_run` |  |
-| `hosted_app_id` |  |
-| `id` |  |
-| `imessage_number` | International destination number; blank or null clears it on an added environment. |
-| `included_deep_scan` | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
-| `lock_version` |  |
-| `managed_google_available` | Whether the managed Google account can be offered for this app. |
-| `managed_google_email` |  |
-| `messaging_tester_number` | One configured tester number. |
-| `name` | Optional for a website target; defaults to its hostname. |
-| `network_connections` |  |
-| `onboarding_discovery` |  |
-| `organization_id` |  |
-| `pending_accounts` | Credentials on a Composal address still waiting for the password the customer chose at signup. |
-| `permissions` |  |
-| `project_id` | Owning project. |
-| `repository_id` |  |
-| `revisions` |  |
-| `setup_discovery_id` | Existing discovery to resume after setup or Checkout, selected within this environment. |
-| `sign_in_check_available` | Whether a test account's live sign-in check can run on this app. |
-| `slug` |  |
-| `status` |  |
-| `target_kind` |  |
-| `target_url` |  |
-| `test_accounts` |  |
-| `updated_at` |  |
-| `verify_network_connection_id` |  |
-| `version` | Required for target or tester changes; use lock_version from the environment. |
-
-Operations: Create, Load, Patch, Remove, Update.
-
-API path: `/api/v1/organizations/{organization_id}/verify/environments`
-
 #### EnvironmentDiscoveryRun
 
 | Field | Description |
@@ -5277,7 +5230,7 @@ API path: `/api/v1/organizations/{organization_id}/verify/environments`
 
 Operations: Create, Load.
 
-API path: `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop`
+API path: `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs`
 
 #### EnvironmentExploration
 
@@ -5410,16 +5363,6 @@ API path: `/api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bi
 Operations: List, Patch, Update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/test_accounts`
-
-#### Evidence
-
-| Field | Description |
-| --- | --- |
-| `id` |  |
-
-Operations: Load.
-
-API path: `/api/v1/organizations/{organization_id}/verify/evidence/{id}`
 
 #### ExecutionDesiredState
 
@@ -5748,7 +5691,7 @@ API path: `/api/v1/organizations/{org_slug}/gh/{github_owner}/{github_repo}/{num
 
 Operations: Create, Load.
 
-API path: `/api/v1/git_imports/{id}/complete`
+API path: `/api/v1/organizations/{organization_id}/git_imports`
 
 #### Github
 
@@ -5921,27 +5864,6 @@ API path: `/api/v1/organizations/{organization_id}/github_ci_repositories/{githu
 Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/github_connections`
-
-#### GithubIntegration
-
-| Field | Description |
-| --- | --- |
-| `account_avatar_url` |  |
-| `account_login` |  |
-| `connection_status` |  |
-| `connection_status_label` |  |
-| `github_installation` |  |
-| `health` |  |
-| `id` |  |
-| `imported_repositories_count` |  |
-| `imported_repositories_count_label` |  |
-| `organization` |  |
-| `pagination` |  |
-| `repositories` |  |
-
-Operations: List, Load.
-
-API path: `/api/v1/organizations/{org_slug}/pages/github_integrations`
 
 #### GithubOnboarding
 
@@ -6796,22 +6718,11 @@ API path: `/api/v1/organizations/{organization_id}/browser_sessions/{browser_ses
 
 | Field | Description |
 | --- | --- |
-| `accepted_at` |  |
-| `accepted_by_user` |  |
 | `created_at` |  |
 | `created_at_label` |  |
-| `email` |  |
-| `email_delivery_status` |  |
-| `expires_at` |  |
-| `expires_at_label` |  |
 | `id` |  |
-| `invite_url` |  |
-| `invited_by_user` |  |
 | `is_self` |  |
-| `organization` |  |
-| `revoked_at` |  |
 | `role` |  |
-| `status` |  |
 | `updated_at` |  |
 | `updated_at_label` |  |
 | `user` |  |
@@ -6866,48 +6777,6 @@ API path: `/api/v1/organizations/{organization_id}/verify/memories`
 Operations: Create, Remove.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/merge`
-
-#### MergeRequest
-
-| Field | Description |
-| --- | --- |
-| `available_tests` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `base_sha` |  |
-| `branch` | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `comment_url` |  |
-| `current_run` | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `draft` |  |
-| `findings` |  |
-| `github_repository` | GitHub owner/repository associated with this pull request. |
-| `github_url` |  |
-| `head_sha` | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` |  |
-| `idempotency_key` |  |
-| `number` |  |
-| `pagination` |  |
-| `permissions` |  |
-| `preview_cleanup_ready` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` |  |
-| `project_id` | Composal project slug or public ID for PR preview environments. |
-| `project_slug` |  |
-| `provider` |  |
-| `pull_request` |  |
-| `repository_id` |  |
-| `request_label` |  |
-| `requested_run_id` |  |
-| `runs` |  |
-| `source_branch` |  |
-| `source_repository` |  |
-| `source_url` |  |
-| `state` |  |
-| `title` |  |
-| `updated_at` |  |
-| `web_path` |  |
-
-Operations: Create, Load.
-
-API path: `/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun`
 
 #### MergeResolution
 
@@ -7643,6 +7512,27 @@ Operations: Load.
 
 API path: `/api/v1/organizations/{org_slug}/pages/billing`
 
+#### PagesGithubIntegration
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_login` |  |
+| `connection_status` |  |
+| `connection_status_label` |  |
+| `github_installation` |  |
+| `health` |  |
+| `id` |  |
+| `imported_repositories_count` |  |
+| `imported_repositories_count_label` |  |
+| `organization` |  |
+| `pagination` |  |
+| `repositories` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/github_integrations`
+
 #### PagesGithubOnboarding
 
 | Field | Description |
@@ -8376,6 +8266,18 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_pull_requests`
 
+#### ProjectPrTesting
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `project` |  |
+| `pull_request_options` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/pr_testing`
+
 #### ProjectProductMap
 
 | Field | Description |
@@ -8384,6 +8286,22 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/overview`
+
+#### ProjectProductMapComparison
+
+| Field | Description |
+| --- | --- |
+| `accounts` |  |
+| `comparison` |  |
+| `filters` |  |
+| `id` |  |
+| `project` |  |
+| `requirements` |  |
+| `revisions` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison`
 
 #### ProjectRecording
 
@@ -8497,44 +8415,12 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 
 | Field | Description |
 | --- | --- |
-| `available_messaging_environments` |  |
-| `messaging_conversations` |  |
-| `messaging_enabled` |  |
-| `permissions` |  |
-| `project` |  |
-| `tester_numbers` |  |
+| `id` |  |
+| `name` |  |
 
-Operations: Load.
+Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings`
-
-#### PullRequest
-
-| Field | Description |
-| --- | --- |
-| `available_tests` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `branch` | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `cleanup_only` | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
-| `current_run` | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `findings` |  |
-| `head_sha` | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` |  |
-| `idempotency_key` |  |
-| `imessage_number` | International destination of this exact deployed commit. |
-| `number` |  |
-| `pagination` |  |
-| `permissions` |  |
-| `preview_cleanup_ready` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` |  |
-| `project_id` | Composal project slug or public ID for PR preview environments. |
-| `pull_request` |  |
-| `repository_id` |  |
-| `runs` |  |
-
-Operations: Create, Load, Remove.
-
-API path: `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share`
 
 #### PullRequestAction
 
@@ -8763,7 +8649,7 @@ API path: `/api/v1/registry/v2/authorize`
 
 Operations: Create, List, Load, Remove, Update.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup`
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections`
 
 #### RelayAgentLocalThread
 
@@ -9155,7 +9041,7 @@ API path: `/api/v1/organizations/{org_slug}/pages/repository_import`
 
 Operations: Create, Load.
 
-API path: `/api/v1/repository_import_sessions/{id}/authorization`
+API path: `/api/v1/organizations/{organization_id}/repository_import_sessions`
 
 #### RepositoryImportSessionRepository
 
@@ -9360,35 +9246,26 @@ API path: `/api/v1/organizations/{organization_id}/verify/run_search`
 
 | Field | Description |
 | --- | --- |
-| `base_sha` |  |
-| `can_verify` |  |
-| `comment_url` |  |
-| `draft` |  |
-| `github_repository` | GitHub owner/repository associated with this pull request. |
-| `github_url` |  |
-| `head_sha` |  |
-| `id` |  |
-| `latest_created_at` |  |
-| `latest_current` |  |
-| `latest_head_sha` |  |
-| `latest_reason` |  |
-| `latest_run_id` |  |
-| `latest_state` |  |
-| `number` |  |
-| `project_id` |  |
-| `project_slug` |  |
-| `provider` |  |
-| `repository_id` |  |
-| `request_label` |  |
-| `source_branch` |  |
-| `source_repository` |  |
-| `source_url` |  |
-| `state` |  |
-| `title` |  |
-| `updated_at` |  |
-| `web_path` |  |
+| `active_runs` |  |
+| `checkout_required` |  |
+| `cli_signed_in_at` | When the signed-in user last finished a CLI sign-in for this organization, so agent setup can show the CLI is connected. |
+| `counts` |  |
+| `demo_project` | The workspace's copy of the demo project, which setup offers as example data. |
+| `environments` |  |
+| `included_deep_scan` | Whether a new app gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account, so setup asks for one right after the app. |
+| `onboarding_discovery` |  |
+| `organization` |  |
+| `permissions` |  |
+| `project` | The project the page is limited to, or null for the whole organization. |
+| `pull_request_launch_options` |  |
+| `pull_requests` |  |
+| `repositories` |  |
+| `runs` |  |
+| `runs_pagination` |  |
+| `suggested_app_url` | The URL first-run setup prefills for a new app, from the workspace's project website or the signed-in user's work email domain. |
+| `url_first_start` | Whether setup opens on the URL-first screen, which saves the app and asks for test access next. |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/run_updates`
 
@@ -10121,7 +9998,31 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills`
 
 Operations: Create, List.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive`
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads`
+
+#### SparkAutomation
+
+| Field | Description |
+| --- | --- |
+| `can_manage` |  |
+| `can_manage_events` | Whether new event triggers can be attached or existing settings saved. |
+| `can_run` | Whether the viewer can request a manual Temporal run |
+| `can_schedule` |  |
+| `definition` |  |
+| `event_subscriptions` |  |
+| `event_triggers` |  |
+| `expected_revision` |  |
+| `id` |  |
+| `key` |  |
+| `name` |  |
+| `revision` |  |
+| `schedule` |  |
+| `schedules` |  |
+| `version` |  |
+
+Operations: List, Load, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations`
 
 #### SparkCredit
 
@@ -10212,7 +10113,7 @@ API path: `/api/v1/organizations/{org_slug}/spark_credits/usage_totals`
 
 Operations: Create, List, Load, Patch, Remove, Update.
 
-API path: `/api/v1/static_sites/{id}/provision`
+API path: `/api/v1/organizations/{organization_id}/static_sites`
 
 #### StaticSiteDeployment
 
@@ -10884,6 +10785,136 @@ Operations: Load.
 
 API path: `/api/v1/email_verifications/verify`
 
+#### VerifyEnvironment
+
+| Field | Description |
+| --- | --- |
+| `active_revision_id` |  |
+| `agent_sign_up_available` | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
+| `allowed_actions` | read_only only looks around; writes may create, change and delete data. |
+| `billing` |  |
+| `cleanup` |  |
+| `connection` |  |
+| `created_at` |  |
+| `default_policy` |  |
+| `default_policy_json` |  |
+| `discovery_defaults` |  |
+| `environment` |  |
+| `exploration_accounts` |  |
+| `explorations` |  |
+| `first_run` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `imessage_number` | International destination number; blank or null clears it on an added environment. |
+| `included_deep_scan` | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
+| `lock_version` |  |
+| `managed_google_available` | Whether the managed Google account can be offered for this app. |
+| `managed_google_email` |  |
+| `messaging_tester_number` | One configured tester number. |
+| `name` | Optional for a website target; defaults to its hostname. |
+| `network_connections` |  |
+| `onboarding_discovery` |  |
+| `organization_id` |  |
+| `pending_accounts` | Credentials on a Composal address still waiting for the password the customer chose at signup. |
+| `permissions` |  |
+| `project_id` | Owning project. |
+| `repository_id` |  |
+| `revisions` |  |
+| `setup_discovery_id` | Existing discovery to resume after setup or Checkout, selected within this environment. |
+| `sign_in_check_available` | Whether a test account's live sign-in check can run on this app. |
+| `slug` |  |
+| `status` |  |
+| `target_kind` |  |
+| `target_url` |  |
+| `test_accounts` |  |
+| `updated_at` |  |
+| `verify_network_connection_id` |  |
+| `version` | Required for target or tester changes; use lock_version from the environment. |
+
+Operations: Create, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/verify/environments`
+
+#### VerifyEvidence
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/verify/evidence/{id}`
+
+#### VerifyMergeRequest
+
+| Field | Description |
+| --- | --- |
+| `available_tests` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `base_sha` |  |
+| `branch` | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `comment_url` |  |
+| `current_run` | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `draft` |  |
+| `findings` |  |
+| `github_repository` | GitHub owner/repository associated with this pull request. |
+| `github_url` |  |
+| `head_sha` | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` |  |
+| `idempotency_key` |  |
+| `number` |  |
+| `pagination` |  |
+| `permissions` |  |
+| `preview_cleanup_ready` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` |  |
+| `project_id` | Composal project slug or public ID for PR preview environments. |
+| `project_slug` |  |
+| `provider` |  |
+| `pull_request` |  |
+| `repository_id` |  |
+| `request_label` |  |
+| `requested_run_id` |  |
+| `runs` |  |
+| `source_branch` |  |
+| `source_repository` |  |
+| `source_url` |  |
+| `state` |  |
+| `title` |  |
+| `updated_at` |  |
+| `web_path` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun`
+
+#### VerifyPullRequest
+
+| Field | Description |
+| --- | --- |
+| `available_tests` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `branch` | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `cleanup_only` | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
+| `current_run` | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `findings` |  |
+| `head_sha` | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` |  |
+| `idempotency_key` |  |
+| `imessage_number` | International destination of this exact deployed commit. |
+| `number` |  |
+| `pagination` |  |
+| `permissions` |  |
+| `preview_cleanup_ready` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` |  |
+| `project_id` | Composal project slug or public ID for PR preview environments. |
+| `pull_request` |  |
+| `repository_id` |  |
+| `runs` |  |
+
+Operations: Create, Load, Remove.
+
+API path: `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share`
+
 #### VerifySignalIntegration
 
 | Field | Description |
@@ -11319,51 +11350,6 @@ local agent_attachment, err = client:AgentAttachment():create({
   content_type = "example_content_type", -- string
   file_name = "example_file_name", -- string
 })
-```
-
-
-### AgentAutomation
-
-Create an instance: `local agent_automation = client:AgentAutomation(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-| `load(match)` | Load a single entity by match criteria. |
-| `update(data)` | Update an existing entity. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `can_manage` | `boolean` |  |
-| `can_manage_events` | `boolean` | Whether new event triggers can be attached or existing settings saved. |
-| `can_run` | `boolean` | Whether the viewer can request a manual Temporal run |
-| `can_schedule` | `boolean` |  |
-| `definition` | `table` |  |
-| `event_subscriptions` | `table` |  |
-| `event_triggers` | `table` |  |
-| `expected_revision` | `number` |  |
-| `id` | `string` |  |
-| `key` | `string` |  |
-| `name` | `string` |  |
-| `revision` | `number` |  |
-| `schedule` | `any` |  |
-| `schedules` | `table` |  |
-| `version` | `table` |  |
-
-#### Example: Load
-
-```lua
-local agent_automation, err = client:AgentAutomation():load({ id = "agent_automation_id", agent_id = "agent_id", organization_id = "organization_id" })
-```
-
-#### Example: List
-
-```lua
-local agent_automations, err = client:AgentAutomation():list({ agent_id = "example", organization_id = "example" })
 ```
 
 
@@ -11882,8 +11868,6 @@ Create an instance: `local agent_input = client:AgentInput(nil)`
 local agent_input, err = client:AgentInput():create({
   agent_id = "example_agent_id", -- string
   organization_id = "example_organization_id", -- string
-  browser_context = {}, -- table
-  client_time = {}, -- table
   conversation_id = "example_conversation_id", -- string
   text = "example_text", -- string
 })
@@ -13006,7 +12990,6 @@ local agent_swarms, err = client:AgentSwarm():list({ org = "example" })
 ```lua
 local agent_swarm, err = client:AgentSwarm():create({
   organization_slug = "example_organization_slug", -- string|nil
-  target = {}, -- table
 })
 ```
 
@@ -14020,6 +14003,53 @@ local app_deployment, err = client:AppDeployment():load({ id = "app_deployment_i
 local app_deployment, err = client:AppDeployment():create({
   app_id = "example_app_id", -- string
 })
+```
+
+
+### AppDeploymentDashboard
+
+Create an instance: `local app_deployment_dashboard = client:AppDeploymentDashboard(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `table` |  |
+| `app` | `table` |  |
+| `audit_events` | `table` |  |
+| `capacity` | `table` |  |
+| `connections` | `table` |  |
+| `data_resources` | `table` |  |
+| `deployments` | `table` |  |
+| `desired_states` | `table` |  |
+| `environments` | `table` |  |
+| `id` | `string` |  |
+| `locations` | `table` |  |
+| `managed_database_catalog` | `table` |  |
+| `observability` | `table` |  |
+| `operations` | `table` |  |
+| `placements` | `table` |  |
+| `reconciler_ticks` | `table` |  |
+| `releases` | `table` |  |
+| `rollback_deployments` | `table` |  |
+| `rollouts` | `table` |  |
+| `runtime_instances` | `table` |  |
+| `service_bindings` | `table` |  |
+| `service_views` | `table` |  |
+| `services` | `table` |  |
+| `storage_resources` | `table` |  |
+| `summary` | `table` |  |
+
+#### Example: Load
+
+```lua
+local app_deployment_dashboard, err = client:AppDeploymentDashboard():load({ id = "app_deployment_dashboard_id" })
 ```
 
 
@@ -16711,39 +16741,27 @@ Create an instance: `local change_comment = client:ChangeComment(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
 | `body` | `string` |  |
-| `capabilities` | `table` |  |
-| `change_id` | `string|nil` |  |
-| `created_at` | `string|nil` |  |
-| `created_at_label` | `string|nil` |  |
+| `comment` | `table` |  |
+| `comments` | `table` |  |
 | `id` | `string` |  |
 | `kind` | `string|nil` |  |
 | `line` | `number|nil` |  |
-| `outdated` | `boolean` |  |
 | `parent_comment_id` | `string|nil` |  |
 | `patchset_id` | `string|nil` |  |
-| `patchset_number` | `number|nil` |  |
 | `path` | `string|nil` |  |
-| `replies` | `table` |  |
-| `resolved` | `boolean` |  |
-| `resolved_at` | `string|nil` |  |
-| `resolved_at_label` | `string|nil` |  |
-| `resolved_by` | `table` |  |
 | `side` | `string|nil` |  |
-| `updated_at` | `string|nil` |  |
-| `updated_at_label` | `string|nil` |  |
-| `user` | `table` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local change_comments, err = client:ChangeComment():list({ change_id = "example", organization_id = "example", repo_id = "example" })
+local change_comment, err = client:ChangeComment():load({ change_id = "change_id", organization_id = "organization_id", repo_id = "repo_id" })
 ```
 
 #### Example: Create
@@ -17980,6 +17998,7 @@ Create an instance: `local deep_scan = client:DeepScan(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -17987,20 +18006,21 @@ Create an instance: `local deep_scan = client:DeepScan(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `account_id` | `string|nil` |  |
-| `active` | `table` |  |
 | `agent_filters` | `table` | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` | `table` |  |
 | `can_continue` | `boolean` | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` | `table` |  |
+| `check_count` | `number` |  |
 | `concurrency` | `number` |  |
 | `covered_areas` | `table` | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` | `string` |  |
-| `deadline_at` | `string` |  |
+| `credential_name` | `string|nil` | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | `string` | When the team's time limit ends. |
 | `demo_project` | `table|nil` | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` | `number|nil` |  |
 | `ended_early` | `boolean` | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` | `string` |  |
 | `environment_name` | `string` |  |
-| `explorations` | `table` |  |
 | `explorer_activity` | `table` | What the team is doing now. |
 | `finding_count` | `number` | Findings at every priority, locked ones included. |
 | `findings` | `table` | Every tester's findings, most severe first, with the checks each one cites. |
@@ -18010,14 +18030,12 @@ Create an instance: `local deep_scan = client:DeepScan(nil)`
 | `huntable_flows` | `table` | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` | `string` |  |
 | `idempotency_key` | `string` |  |
-| `launch_options` | `table` | Present only when launch was requested by an admin |
 | `max_seconds` | `number` |  |
 | `max_testers` | `number` |  |
 | `mode` | `string` |  |
 | `next_scan_improvements` | `table` | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | `string` | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | `boolean` | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` | `table` |  |
 | `paywalled` | `boolean` | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` | `table` |  |
 | `priority_counts` | `table` |  |
@@ -18028,10 +18046,13 @@ Create an instance: `local deep_scan = client:DeepScan(nil)`
 | `reproductions` | `table` | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `boolean` | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `table` | Flows a finished exploration recorded that deep scans can start from. |
+| `scenario_count` | `number` | Scenarios saved from this discovery. |
 | `scenario_generation` | `table` |  |
+| `scenarios_pending` | `boolean` | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `boolean` | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `string|nil` | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` | `string` |  |
 | `startup_retryable` | `boolean` | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` | `string` |  |
 | `time_limit_reached` | `boolean` | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -18043,6 +18064,12 @@ Create an instance: `local deep_scan = client:DeepScan(nil)`
 
 ```lua
 local deep_scan, err = client:DeepScan():load({ id = "deep_scan_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local deep_scans, err = client:DeepScan():list({ organization_id = "example" })
 ```
 
 #### Example: Create
@@ -18666,56 +18693,6 @@ local device_control_messages, err = client:DeviceControlMessage():list({ device
 ```
 
 
-### DeviceControlOperation
-
-Create an instance: `local device_control_operation = client:DeviceControlOperation(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `create(data)` | Create a new entity with the given data. |
-| `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `action` | `string` |  |
-| `arguments` | `table` |  |
-| `created_at` | `string` |  |
-| `delivery` | `table` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
-| `device_id` | `string` |  |
-| `diagnostic_code` | `string` | Approved product error code retained after copied diagnostics expire. |
-| `end` | `table` |  |
-| `expires_at` | `string` |  |
-| `id` | `string` |  |
-| `key` | `string` |  |
-| `provider` | `string` |  |
-| `references` | `table` |  |
-| `result` | `any` |  |
-| `result_expired` | `boolean` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
-| `state` | `string` |  |
-
-#### Example: Load
-
-```lua
-local device_control_operation, err = client:DeviceControlOperation():load({ id = "device_control_operation_id", device_id = "device_id", organization_id = "organization_id" })
-```
-
-#### Example: Create
-
-```lua
-local device_control_operation, err = client:DeviceControlOperation():create({
-  device_id = "example_device_id", -- string
-  organization_id = "example_organization_id", -- string
-  action = "example_action", -- string
-  arguments = {}, -- table
-  key = "example_key", -- string
-})
-```
-
-
 ### DeviceEnterpriseRelay
 
 Create an instance: `local device_enterprise_relay = client:DeviceEnterpriseRelay(nil)`
@@ -18858,6 +18835,56 @@ local device_local_event, err = client:DeviceLocalEvent():create({
   device_id = "example_device_id", -- string
   organization_id = "example_organization_id", -- string
   event = "example_event", -- string
+})
+```
+
+
+### DeviceOperation
+
+Create an instance: `local device_operation = client:DeviceOperation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `arguments` | `table` |  |
+| `created_at` | `string` |  |
+| `delivery` | `table` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` |  |
+| `diagnostic_code` | `string` | Approved product error code retained after copied diagnostics expire. |
+| `end` | `table` |  |
+| `expires_at` | `string` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `provider` | `string` |  |
+| `references` | `table` |  |
+| `result` | `any` |  |
+| `result_expired` | `boolean` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```lua
+local device_operation, err = client:DeviceOperation():load({ id = "device_operation_id", device_id = "device_id", organization_id = "organization_id" })
+```
+
+#### Example: Create
+
+```lua
+local device_operation, err = client:DeviceOperation():create({
+  device_id = "example_device_id", -- string
+  organization_id = "example_organization_id", -- string
+  action = "example_action", -- string
+  arguments = {}, -- table
+  key = "example_key", -- string
 })
 ```
 
@@ -19234,82 +19261,6 @@ Create an instance: `local email_verification = client:EmailVerification(nil)`
 | `create(data)` | Create a new entity with the given data. |
 
 
-### Environment
-
-Create an instance: `local environment = client:Environment(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `create(data)` | Create a new entity with the given data. |
-| `load(match)` | Load a single entity by match criteria. |
-| `patch(data)` | Change part of an existing entity. |
-| `remove(match)` | Remove the matching entity. |
-| `update(data)` | Update an existing entity. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `active_revision_id` | `string|nil` |  |
-| `agent_sign_up_available` | `boolean` | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
-| `allowed_actions` | `string` | read_only only looks around; writes may create, change and delete data. |
-| `billing` | `table` |  |
-| `cleanup` | `table` |  |
-| `connection` | `string` |  |
-| `created_at` | `string` |  |
-| `default_policy` | `table` |  |
-| `default_policy_json` | `table` |  |
-| `discovery_defaults` | `table` |  |
-| `environment` | `table` |  |
-| `exploration_accounts` | `table` |  |
-| `explorations` | `table` |  |
-| `first_run` | `any` |  |
-| `hosted_app_id` | `string|nil` |  |
-| `id` | `string` |  |
-| `imessage_number` | `string|nil` | International destination number; blank or null clears it on an added environment. |
-| `included_deep_scan` | `boolean` | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
-| `lock_version` | `number` |  |
-| `managed_google_available` | `boolean` | Whether the managed Google account can be offered for this app. |
-| `managed_google_email` | `string` |  |
-| `messaging_tester_number` | `string|nil` | One configured tester number. |
-| `name` | `string` | Optional for a website target; defaults to its hostname. |
-| `network_connections` | `table` |  |
-| `onboarding_discovery` | `any` |  |
-| `organization_id` | `string` |  |
-| `pending_accounts` | `table` | Credentials on a Composal address still waiting for the password the customer chose at signup. |
-| `permissions` | `table` |  |
-| `project_id` | `string|nil` | Owning project. |
-| `repository_id` | `string|nil` |  |
-| `revisions` | `table` |  |
-| `setup_discovery_id` | `string|nil` | Existing discovery to resume after setup or Checkout, selected within this environment. |
-| `sign_in_check_available` | `boolean` | Whether a test account's live sign-in check can run on this app. |
-| `slug` | `string` |  |
-| `status` | `string` |  |
-| `target_kind` | `string|nil` |  |
-| `target_url` | `string|nil` |  |
-| `test_accounts` | `table` |  |
-| `updated_at` | `string` |  |
-| `verify_network_connection_id` | `string|nil` |  |
-| `version` | `number` | Required for target or tester changes; use lock_version from the environment. |
-
-#### Example: Load
-
-```lua
-local environment, err = client:Environment():load({ id = "environment_id", organization_id = "organization_id" })
-```
-
-#### Example: Create
-
-```lua
-local environment, err = client:Environment():create({
-  organization_id = "example_organization_id", -- string
-  slug = "example_slug", -- string
-})
-```
-
-
 ### EnvironmentDiscoveryRun
 
 Create an instance: `local environment_discovery_run = client:EnvironmentDiscoveryRun(nil)`
@@ -19566,29 +19517,6 @@ Create an instance: `local environment_test_account = client:EnvironmentTestAcco
 
 ```lua
 local environment_test_accounts, err = client:EnvironmentTestAccount():list({ environment_id = "example", organization_id = "example" })
-```
-
-
-### Evidence
-
-Create an instance: `local evidence = client:Evidence(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `string` |  |
-
-#### Example: Load
-
-```lua
-local evidence, err = client:Evidence():load({ id = "evidence_id", organization_id = "organization_id" })
 ```
 
 
@@ -20452,47 +20380,6 @@ local github_connection, err = client:GithubConnection():create({
   github_app_installation_id = "example_github_app_installation_id", -- string
   repositories = {}, -- table
 })
-```
-
-
-### GithubIntegration
-
-Create an instance: `local github_integration = client:GithubIntegration(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-| `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `account_avatar_url` | `string|nil` |  |
-| `account_login` | `string` |  |
-| `connection_status` | `string` |  |
-| `connection_status_label` | `string` |  |
-| `github_installation` | `any` |  |
-| `health` | `table` |  |
-| `id` | `string` |  |
-| `imported_repositories_count` | `number` |  |
-| `imported_repositories_count_label` | `string` |  |
-| `organization` | `table` |  |
-| `pagination` | `table` |  |
-| `repositories` | `table` |  |
-
-#### Example: Load
-
-```lua
-local github_integration, err = client:GithubIntegration():load({ id = "github_integration_id", organization_id = "organization_id" })
-```
-
-#### Example: List
-
-```lua
-local github_integrations, err = client:GithubIntegration():list({ organization_id = "example" })
 ```
 
 
@@ -21721,8 +21608,6 @@ local lease_verify_diagnostic, err = client:LeaseVerifyDiagnostic():create({
   swarm_id = "example_swarm_id", -- string
   task_id = "example_task_id", -- string
   browser_events = {}, -- table
-  live_browser = {}, -- table
-  live_view = {}, -- table
 })
 ```
 
@@ -22189,22 +22074,11 @@ Create an instance: `local member = client:Member(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accepted_at` | `string|nil` |  |
-| `accepted_by_user` | `any` |  |
 | `created_at` | `string` |  |
 | `created_at_label` | `string|nil` |  |
-| `email` | `string` |  |
-| `email_delivery_status` | `string` |  |
-| `expires_at` | `string|nil` |  |
-| `expires_at_label` | `string|nil` |  |
 | `id` | `string` |  |
-| `invite_url` | `string|nil` |  |
-| `invited_by_user` | `any` |  |
 | `is_self` | `boolean` |  |
-| `organization` | `table` |  |
-| `revoked_at` | `string|nil` |  |
 | `role` | `string` |  |
-| `status` | `string` |  |
 | `updated_at` | `string` |  |
 | `updated_at_label` | `string|nil` |  |
 | `user` | `table` |  |
@@ -22316,72 +22190,6 @@ local merge_queue_entry, err = client:MergeQueueEntry():create({
 ```
 
 
-### MergeRequest
-
-Create an instance: `local merge_request = client:MergeRequest(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `create(data)` | Create a new entity with the given data. |
-| `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `available_tests` | `table` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `base_sha` | `string` |  |
-| `branch` | `string` | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `comment_url` | `string|nil` |  |
-| `current_run` | `any` | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `draft` | `boolean` |  |
-| `findings` | `table` |  |
-| `github_repository` | `string|nil` | GitHub owner/repository associated with this pull request. |
-| `github_url` | `string|nil` |  |
-| `head_sha` | `string` | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` | `string` |  |
-| `idempotency_key` | `string` |  |
-| `number` | `number` |  |
-| `pagination` | `table` |  |
-| `permissions` | `table` |  |
-| `preview_cleanup_ready` | `boolean` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | `string|nil` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` | `any` |  |
-| `project_id` | `string|nil` | Composal project slug or public ID for PR preview environments. |
-| `project_slug` | `string|nil` |  |
-| `provider` | `string` |  |
-| `pull_request` | `table` |  |
-| `repository_id` | `string` |  |
-| `request_label` | `string` |  |
-| `requested_run_id` | `string|nil` |  |
-| `runs` | `table` |  |
-| `source_branch` | `string|nil` |  |
-| `source_repository` | `string|nil` |  |
-| `source_url` | `string|nil` |  |
-| `state` | `string` |  |
-| `title` | `string` |  |
-| `updated_at` | `string` |  |
-| `web_path` | `string` |  |
-
-#### Example: Load
-
-```lua
-local merge_request, err = client:MergeRequest():load({ id = "merge_request_id", organization_id = "organization_id" })
-```
-
-#### Example: Create
-
-```lua
-local merge_request, err = client:MergeRequest():create({
-  organization_id = "example_organization_id", -- string
-  idempotency_key = "example_idempotency_key", -- string
-  number = 1, -- number
-})
-```
-
-
 ### MergeResolution
 
 Create an instance: `local merge_resolution = client:MergeResolution(nil)`
@@ -22457,7 +22265,6 @@ local messaging_conversation_message, err = client:MessagingConversationMessage(
   project_id = "example_project_id", -- string
   client_operation_id = "example_client_operation_id", -- string
   content = "example_content", -- string
-  media = {}, -- table
 })
 ```
 
@@ -23840,6 +23647,47 @@ local pages_billing, err = client:PagesBilling():load({ organization_id = "organ
 ```
 
 
+### PagesGithubIntegration
+
+Create an instance: `local pages_github_integration = client:PagesGithubIntegration(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `string|nil` |  |
+| `account_login` | `string` |  |
+| `connection_status` | `string` |  |
+| `connection_status_label` | `string` |  |
+| `github_installation` | `any` |  |
+| `health` | `table` |  |
+| `id` | `string` |  |
+| `imported_repositories_count` | `number` |  |
+| `imported_repositories_count_label` | `string` |  |
+| `organization` | `table` |  |
+| `pagination` | `table` |  |
+| `repositories` | `table` |  |
+
+#### Example: Load
+
+```lua
+local pages_github_integration, err = client:PagesGithubIntegration():load({ id = "pages_github_integration_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local pages_github_integrations, err = client:PagesGithubIntegration():list({ organization_id = "example" })
+```
+
+
 ### PagesGithubOnboarding
 
 Create an instance: `local pages_github_onboarding = client:PagesGithubOnboarding(nil)`
@@ -24527,7 +24375,6 @@ local product_map_identity_decision, err = client:ProductMapIdentityDecision():c
   observations = {}, -- table
   operation = "example_operation", -- string
   reason = "example_reason", -- string
-  target = {}, -- table
 })
 ```
 
@@ -25200,6 +25047,31 @@ local project_overview_pull_requests, err = client:ProjectOverviewPullRequest():
 ```
 
 
+### ProjectPrTesting
+
+Create an instance: `local project_pr_testing = client:ProjectPrTesting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `project` | `table` |  |
+| `pull_request_options` | `table` |  |
+
+#### Example: Load
+
+```lua
+local project_pr_testing, err = client:ProjectPrTesting():load({ id = "project_pr_testing_id", organization_id = "organization_id" })
+```
+
+
 ### ProjectProductMap
 
 Create an instance: `local project_product_map = client:ProjectProductMap(nil)`
@@ -25210,6 +25082,35 @@ Create an instance: `local project_product_map = client:ProjectProductMap(nil)`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
+
+
+### ProjectProductMapComparison
+
+Create an instance: `local project_product_map_comparison = client:ProjectProductMapComparison(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accounts` | `table` |  |
+| `comparison` | `any` |  |
+| `filters` | `any` |  |
+| `id` | `string` |  |
+| `project` | `table` |  |
+| `requirements` | `table` |  |
+| `revisions` | `table` |  |
+
+#### Example: Load
+
+```lua
+local project_product_map_comparison, err = client:ProjectProductMapComparison():load({ id = "project_product_map_comparison_id", organization_id = "organization_id" })
+```
 
 
 ### ProjectRecording
@@ -25312,7 +25213,6 @@ local project_run_plan, err = client:ProjectRunPlan():create({
   organization_id = "example_organization_id", -- string
   project_id = "example_project_id", -- string
   dependencies = {}, -- table
-  identity_probe = {}, -- table|nil
   name = "example_name", -- string
   nodes = {}, -- table
 })
@@ -25456,75 +25356,19 @@ Create an instance: `local project_setting = client:ProjectSetting(nil)`
 
 | Method | Description |
 | --- | --- |
-| `load(match)` | Load a single entity by match criteria. |
+| `list(match)` | List entities matching the criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `available_messaging_environments` | `table` |  |
-| `messaging_conversations` | `table` |  |
-| `messaging_enabled` | `boolean` |  |
-| `permissions` | `table` |  |
-| `project` | `table` |  |
-| `tester_numbers` | `table` |  |
-
-#### Example: Load
-
-```lua
-local project_setting, err = client:ProjectSetting():load({ organization_id = "organization_id", project_id = "project_id" })
-```
-
-
-### PullRequest
-
-Create an instance: `local pull_request = client:PullRequest(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `create(data)` | Create a new entity with the given data. |
-| `load(match)` | Load a single entity by match criteria. |
-| `remove(match)` | Remove the matching entity. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `available_tests` | `table` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `branch` | `string` | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `cleanup_only` | `boolean` | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
-| `current_run` | `any` | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `findings` | `table` |  |
-| `head_sha` | `string` | If supplied, refuse to create a run unless this is the current PR head. |
 | `id` | `string` |  |
-| `idempotency_key` | `string` |  |
-| `imessage_number` | `string` | International destination of this exact deployed commit. |
-| `number` | `number` |  |
-| `pagination` | `table` |  |
-| `permissions` | `table` |  |
-| `preview_cleanup_ready` | `boolean` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | `string|nil` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` | `any` |  |
-| `project_id` | `string` | Composal project slug or public ID for PR preview environments. |
-| `pull_request` | `table` |  |
-| `repository_id` | `string` |  |
-| `runs` | `table` |  |
+| `name` | `string` |  |
 
-#### Example: Load
+#### Example: List
 
 ```lua
-local pull_request, err = client:PullRequest():load({ id = "pull_request_id", organization_id = "organization_id" })
-```
-
-#### Example: Create
-
-```lua
-local pull_request, err = client:PullRequest():create({
-  organization_id = "example_organization_id", -- string
-  idempotency_key = "example_idempotency_key", -- string
-})
+local project_settings, err = client:ProjectSetting():list({ organization_id = "example", project_id = "example" })
 ```
 
 
@@ -27087,44 +26931,35 @@ Create an instance: `local run_update = client:RunUpdate(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `base_sha` | `string` |  |
-| `can_verify` | `boolean` |  |
-| `comment_url` | `string|nil` |  |
-| `draft` | `boolean` |  |
-| `github_repository` | `string|nil` | GitHub owner/repository associated with this pull request. |
-| `github_url` | `string|nil` |  |
-| `head_sha` | `string` |  |
-| `id` | `string` |  |
-| `latest_created_at` | `string|nil` |  |
-| `latest_current` | `boolean` |  |
-| `latest_head_sha` | `string|nil` |  |
-| `latest_reason` | `string|nil` |  |
-| `latest_run_id` | `string|nil` |  |
-| `latest_state` | `string|nil` |  |
-| `number` | `number` |  |
-| `project_id` | `string|nil` |  |
-| `project_slug` | `string|nil` |  |
-| `provider` | `string` |  |
-| `repository_id` | `string` |  |
-| `request_label` | `string` |  |
-| `source_branch` | `string|nil` |  |
-| `source_repository` | `string|nil` |  |
-| `source_url` | `string|nil` |  |
-| `state` | `string` |  |
-| `title` | `string` |  |
-| `updated_at` | `string` |  |
-| `web_path` | `string` |  |
+| `active_runs` | `table` |  |
+| `checkout_required` | `boolean` |  |
+| `cli_signed_in_at` | `string|nil` | When the signed-in user last finished a CLI sign-in for this organization, so agent setup can show the CLI is connected. |
+| `counts` | `table` |  |
+| `demo_project` | `table|nil` | The workspace's copy of the demo project, which setup offers as example data. |
+| `environments` | `table` |  |
+| `included_deep_scan` | `boolean` | Whether a new app gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account, so setup asks for one right after the app. |
+| `onboarding_discovery` | `any` |  |
+| `organization` | `table` |  |
+| `permissions` | `table` |  |
+| `project` | `any` | The project the page is limited to, or null for the whole organization. |
+| `pull_request_launch_options` | `table` |  |
+| `pull_requests` | `table` |  |
+| `repositories` | `table` |  |
+| `runs` | `table` |  |
+| `runs_pagination` | `table` |  |
+| `suggested_app_url` | `string|nil` | The URL first-run setup prefills for a new app, from the workspace's project website or the signed-in user's work email domain. |
+| `url_first_start` | `boolean` | Whether setup opens on the URL-first screen, which saves the app and asks for test access next. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local run_updates, err = client:RunUpdate():list({ organization_id = "example" })
+local run_update, err = client:RunUpdate():load({ organization_id = "organization_id" })
 ```
 
 
@@ -28792,6 +28627,51 @@ local spark_agent_thread, err = client:SparkAgentThread():create({
 ```
 
 
+### SparkAutomation
+
+Create an instance: `local spark_automation = client:SparkAutomation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage` | `boolean` |  |
+| `can_manage_events` | `boolean` | Whether new event triggers can be attached or existing settings saved. |
+| `can_run` | `boolean` | Whether the viewer can request a manual Temporal run |
+| `can_schedule` | `boolean` |  |
+| `definition` | `table` |  |
+| `event_subscriptions` | `table` |  |
+| `event_triggers` | `table` |  |
+| `expected_revision` | `number` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `name` | `string` |  |
+| `revision` | `number` |  |
+| `schedule` | `any` |  |
+| `schedules` | `table` |  |
+| `version` | `table` |  |
+
+#### Example: Load
+
+```lua
+local spark_automation, err = client:SparkAutomation():load({ id = "spark_automation_id", agent_id = "agent_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local spark_automations, err = client:SparkAutomation():list({ agent_id = "example", organization_id = "example" })
+```
+
+
 ### SparkCredit
 
 Create an instance: `local spark_credit = client:SparkCredit(nil)`
@@ -30235,6 +30115,223 @@ local verify_email_verification, err = client:VerifyEmailVerification():load()
 ```
 
 
+### VerifyEnvironment
+
+Create an instance: `local verify_environment = client:VerifyEnvironment(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_revision_id` | `string|nil` |  |
+| `agent_sign_up_available` | `boolean` | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
+| `allowed_actions` | `string` | read_only only looks around; writes may create, change and delete data. |
+| `billing` | `table` |  |
+| `cleanup` | `table` |  |
+| `connection` | `string` |  |
+| `created_at` | `string` |  |
+| `default_policy` | `table` |  |
+| `default_policy_json` | `table` |  |
+| `discovery_defaults` | `table` |  |
+| `environment` | `table` |  |
+| `exploration_accounts` | `table` |  |
+| `explorations` | `table` |  |
+| `first_run` | `any` |  |
+| `hosted_app_id` | `string|nil` |  |
+| `id` | `string` |  |
+| `imessage_number` | `string|nil` | International destination number; blank or null clears it on an added environment. |
+| `included_deep_scan` | `boolean` | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
+| `lock_version` | `number` |  |
+| `managed_google_available` | `boolean` | Whether the managed Google account can be offered for this app. |
+| `managed_google_email` | `string` |  |
+| `messaging_tester_number` | `string|nil` | One configured tester number. |
+| `name` | `string` | Optional for a website target; defaults to its hostname. |
+| `network_connections` | `table` |  |
+| `onboarding_discovery` | `any` |  |
+| `organization_id` | `string` |  |
+| `pending_accounts` | `table` | Credentials on a Composal address still waiting for the password the customer chose at signup. |
+| `permissions` | `table` |  |
+| `project_id` | `string|nil` | Owning project. |
+| `repository_id` | `string|nil` |  |
+| `revisions` | `table` |  |
+| `setup_discovery_id` | `string|nil` | Existing discovery to resume after setup or Checkout, selected within this environment. |
+| `sign_in_check_available` | `boolean` | Whether a test account's live sign-in check can run on this app. |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `target_kind` | `string|nil` |  |
+| `target_url` | `string|nil` |  |
+| `test_accounts` | `table` |  |
+| `updated_at` | `string` |  |
+| `verify_network_connection_id` | `string|nil` |  |
+| `version` | `number` | Required for target or tester changes; use lock_version from the environment. |
+
+#### Example: Load
+
+```lua
+local verify_environment, err = client:VerifyEnvironment():load({ id = "verify_environment_id", organization_id = "organization_id" })
+```
+
+#### Example: Create
+
+```lua
+local verify_environment, err = client:VerifyEnvironment():create({
+  organization_id = "example_organization_id", -- string
+  slug = "example_slug", -- string
+})
+```
+
+
+### VerifyEvidence
+
+Create an instance: `local verify_evidence = client:VerifyEvidence(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local verify_evidence, err = client:VerifyEvidence():load({ id = "verify_evidence_id", organization_id = "organization_id" })
+```
+
+
+### VerifyMergeRequest
+
+Create an instance: `local verify_merge_request = client:VerifyMergeRequest(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `available_tests` | `table` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `base_sha` | `string` |  |
+| `branch` | `string` | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `comment_url` | `string|nil` |  |
+| `current_run` | `any` | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `draft` | `boolean` |  |
+| `findings` | `table` |  |
+| `github_repository` | `string|nil` | GitHub owner/repository associated with this pull request. |
+| `github_url` | `string|nil` |  |
+| `head_sha` | `string` | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `number` | `number` |  |
+| `pagination` | `table` |  |
+| `permissions` | `table` |  |
+| `preview_cleanup_ready` | `boolean` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | `string|nil` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` | `any` |  |
+| `project_id` | `string|nil` | Composal project slug or public ID for PR preview environments. |
+| `project_slug` | `string|nil` |  |
+| `provider` | `string` |  |
+| `pull_request` | `table` |  |
+| `repository_id` | `string` |  |
+| `request_label` | `string` |  |
+| `requested_run_id` | `string|nil` |  |
+| `runs` | `table` |  |
+| `source_branch` | `string|nil` |  |
+| `source_repository` | `string|nil` |  |
+| `source_url` | `string|nil` |  |
+| `state` | `string` |  |
+| `title` | `string` |  |
+| `updated_at` | `string` |  |
+| `web_path` | `string` |  |
+
+#### Example: Load
+
+```lua
+local verify_merge_request, err = client:VerifyMergeRequest():load({ id = "verify_merge_request_id", organization_id = "organization_id" })
+```
+
+#### Example: Create
+
+```lua
+local verify_merge_request, err = client:VerifyMergeRequest():create({
+  organization_id = "example_organization_id", -- string
+  idempotency_key = "example_idempotency_key", -- string
+  number = 1, -- number
+})
+```
+
+
+### VerifyPullRequest
+
+Create an instance: `local verify_pull_request = client:VerifyPullRequest(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `available_tests` | `table` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `branch` | `string` | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `cleanup_only` | `boolean` | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
+| `current_run` | `any` | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `findings` | `table` |  |
+| `head_sha` | `string` | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `imessage_number` | `string` | International destination of this exact deployed commit. |
+| `number` | `number` |  |
+| `pagination` | `table` |  |
+| `permissions` | `table` |  |
+| `preview_cleanup_ready` | `boolean` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | `string|nil` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` | `any` |  |
+| `project_id` | `string` | Composal project slug or public ID for PR preview environments. |
+| `pull_request` | `table` |  |
+| `repository_id` | `string` |  |
+| `runs` | `table` |  |
+
+#### Example: Load
+
+```lua
+local verify_pull_request, err = client:VerifyPullRequest():load({ id = "verify_pull_request_id", organization_id = "organization_id" })
+```
+
+#### Example: Create
+
+```lua
+local verify_pull_request, err = client:VerifyPullRequest():create({
+  organization_id = "example_organization_id", -- string
+  idempotency_key = "example_idempotency_key", -- string
+})
+```
+
+
 ### VerifySignalIntegration
 
 Create an instance: `local verify_signal_integration = client:VerifySignalIntegration(nil)`
@@ -30581,12 +30678,11 @@ Create an instance: `local workspace_space_preference = client:WorkspaceSpacePre
 
 ## Features
 
-This SDK ships 9 optional features. Each is **inactive until you
-switch it on**, so an SDK you have not configured behaves exactly as if none of
-them existed — no retries, no cache, no logging, no measurable overhead.
+This SDK ships 9 optional features.
+Each is **inactive until you switch it on**, so an SDK you have not
+configured behaves exactly as if none of them existed, with no measurable overhead.
 
-Activate a feature by name in the client options, alongside the options shown
-above:
+Activate a feature by name in the `feature` client option:
 
 | Feature | What it does |
 |---|---|
@@ -30747,12 +30843,12 @@ guarantee.
 
 | Entity | Field | Variants | Nesting |
 | --- | --- | --- | --- |
-| `agent_automation` | `definition` | 12 | 10 levels |
-| `agent_automation` | `version` | 12 | 12 levels |
 | `agent_interaction` | `interactions` | 12 | 17 levels |
 | `automation_event` | `version` | 12 | 12 levels |
+| `spark_automation` | `definition` | 12 | 10 levels |
+| `spark_automation` | `version` | 12 | 12 levels |
 | `control_computer_control_operation` | `result` | 10 | 2 levels |
-| `device_control_operation` | `result` | 10 | 2 levels |
+| `device_operation` | `result` | 10 | 2 levels |
 | `local_thread_operation` | `result` | 10 | 2 levels |
 | `spark_agent_local_thread` | `result` | 10 | 2 levels |
 | `workspace_activity` | `recent_items` | 7 | 1 level |
@@ -30784,16 +30880,12 @@ feature hook before executing:
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 ```
 
-- **PrePoint**: Resolves which API endpoint to call based on the
-  operation name and entity configuration.
-- **PreSpec**: Builds the HTTP spec — URL, method, headers, body —
-  from the resolved point and the caller's parameters.
-- **PreRequest**: Sends the HTTP request. Features can intercept here
-  to replace the transport (as TestFeature does with mocks).
+- **PrePoint**: Resolves which API endpoint to call based on the operation name and entity configuration.
+- **PreSpec**: Builds the HTTP spec — URL, method, headers, body — from the resolved point and the caller's parameters.
+- **PreRequest**: Sends the HTTP request. Features can intercept here to replace the transport.
 - **PreResponse**: Parses the raw HTTP response.
 - **PreResult**: Extracts the business data from the parsed response.
-- **PreDone**: Final stage before returning to the caller. Entity
-  state (match, data) is updated here.
+- **PreDone**: Final stage before returning to the caller. Entity state (match, data) is updated here.
 
 If any stage errors, the pipeline short-circuits and the error surfaces
 to the caller — see [Error handling](#error-handling) for how that looks
@@ -30867,7 +30959,8 @@ but no stored state.
 ### Direct vs entity access
 
 The entity interface handles URL construction, parameter placement,
-and response parsing automatically. Use it for standard CRUD operations.
+and response parsing automatically. Use it for the operations each
+entity declares.
 
 `direct()` gives full control over the HTTP request. Use it for
 non-standard endpoints, bulk operations, or any path not modelled as

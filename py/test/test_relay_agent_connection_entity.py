@@ -52,7 +52,7 @@ class TestRelayAgentConnectionEntity:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
-            print("LIVE STEP {\"id\":\"relay_agent_connection.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup\"}")
+            print("LIVE STEP {\"id\":\"relay_agent_connection.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections\"}")
             print("LIVE STEP {\"id\":\"relay_agent_connection.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}\"}")
             print("LIVE STEP {\"id\":\"relay_agent_connection.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}\"}")
             print("LIVE STEP {\"id\":\"relay_agent_connection.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")

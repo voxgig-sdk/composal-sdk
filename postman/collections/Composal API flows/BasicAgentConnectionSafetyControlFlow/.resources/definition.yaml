@@ -1,4 +1,4 @@
 $kind: collection
 id: d7550a0b-05e7-5cfc-bf12-badbcc70ed3c
 description: "The `BasicAgentConnectionSafetyControlFlow` flow of **agent_connection_safety_control**."
-order: 13000
+order: 12000

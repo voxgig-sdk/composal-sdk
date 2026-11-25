@@ -262,7 +262,7 @@ main: kit: entity: gitlab: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.connections`"
+            res: "`body`"
           }
         }
       ]

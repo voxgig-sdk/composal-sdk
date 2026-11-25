@@ -42,9 +42,9 @@ class GitImportEntityTest < Minitest::Test
       end
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
-      puts "LIVE STEP {\"id\":\"git_import.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/git_imports/{id}/complete\"}"
+      puts "LIVE STEP {\"id\":\"git_import.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/git_imports\"}"
       puts "LIVE STEP {\"id\":\"git_import.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only git_import.create.0 gives\"}"
-      skip("Live coverage incomplete: git_import.create.0 excluded (GET-only live run: needs POST /api/v1/git_imports/{id}/complete); git_import.load.1 excluded (GET-only live run: reads a record only git_import.create.0 gives)")
+      skip("Live coverage incomplete: git_import.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/git_imports); git_import.load.1 excluded (GET-only live run: reads a record only git_import.create.0 gives)")
     end
 
     if setup[:live]

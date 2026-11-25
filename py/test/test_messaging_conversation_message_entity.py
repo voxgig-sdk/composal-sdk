@@ -37,7 +37,7 @@ class TestMessagingConversationMessageEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.MessagingConversationMessage(None).create({"messaging_conversation_id": 1, "organization_id": "x", "project_id": "x", "client_operation_id": "x", "content": "x", "media": "x"}, None)
+            client.MessagingConversationMessage(None).create({"messaging_conversation_id": 1, "organization_id": "x", "project_id": "x", "client_operation_id": "x", "content": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):

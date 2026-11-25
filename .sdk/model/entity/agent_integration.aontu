@@ -1108,7 +1108,7 @@ main: kit: entity: agent_integration: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.installations`"
           }
         }
       ]

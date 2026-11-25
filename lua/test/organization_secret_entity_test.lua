@@ -96,6 +96,7 @@ describe("OrganizationSecretEntity", function()
     local organization_secret_ref01_match_dt0 = {
       id = organization_secret_ref01_data["id"],
     }
+    organization_secret_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
     local organization_secret_ref01_data_dt0_loaded, err = organization_secret_ref01_ent:load(organization_secret_ref01_match_dt0, nil)
     assert.is_nil(err)
     local organization_secret_ref01_data_dt0_load_result = helpers.to_map(type(organization_secret_ref01_data_dt0_loaded) == 'table' and organization_secret_ref01_data_dt0_loaded.data_get and organization_secret_ref01_data_dt0_loaded:data_get() or organization_secret_ref01_data_dt0_loaded)
@@ -173,6 +174,7 @@ describe("OrganizationSecretEntity", function()
     local organization_secret_ref01_match_dt0 = {
       id = organization_secret_ref01_data["id"],
     }
+    organization_secret_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
     local organization_secret_ref01_data_dt0_loaded, err = organization_secret_ref01_ent:load(organization_secret_ref01_match_dt0, nil)
     assert.is_nil(err)
     local organization_secret_ref01_data_dt0_load_result = helpers.to_map(type(organization_secret_ref01_data_dt0_loaded) == 'table' and organization_secret_ref01_data_dt0_loaded.data_get and organization_secret_ref01_data_dt0_loaded:data_get() or organization_secret_ref01_data_dt0_loaded)

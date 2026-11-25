@@ -304,13 +304,6 @@ main: kit: entity: product_map_state: {
               }
               {
                 k: "param"
-                n: "id"
-                or: "state_id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "organization_id"
                 or: "organization_id"
                 r: true

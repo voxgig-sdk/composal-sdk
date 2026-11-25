@@ -47,14 +47,10 @@ func TestAgentAvatarDirect(t *testing.T) {
 		query := map[string]any{}
 		if setup.live {
 			params["agent_id"] = setup.idmap["agent01"]
-			params["agent_id"] = setup.idmap["agent01"]
-			params["organization_id"] = setup.idmap["organization01"]
 			params["organization_id"] = setup.idmap["organization01"]
 		} else {
 			params["agent_id"] = "direct01"
-			params["agent_id"] = "direct02"
-			params["organization_id"] = "direct03"
-			params["organization_id"] = "direct04"
+			params["organization_id"] = "direct02"
 		}
 
 		result, err := client.Direct(map[string]any{
@@ -110,12 +106,6 @@ func TestAgentAvatarDirect(t *testing.T) {
 				}
 				if !strings.Contains(url, "direct02") {
 					t.Fatalf("expected url to contain direct02, got %v", url)
-				}
-				if !strings.Contains(url, "direct03") {
-					t.Fatalf("expected url to contain direct03, got %v", url)
-				}
-				if !strings.Contains(url, "direct04") {
-					t.Fatalf("expected url to contain direct04, got %v", url)
 				}
 			}
 		}

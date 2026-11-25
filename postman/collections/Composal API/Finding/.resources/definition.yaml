@@ -20,7 +20,7 @@ description: |-
   | `organization_id` | string | yes |  |
   | `permissions` | object | yes |  |
   | `reason` | string |  |  |
-  | `reported_occurrence` | object | yes |  |
+  | `reported_occurrence` | object |  |  |
   | `repository_id` | string | yes |  |
   | `safe_summary` | string | yes |  |
   | `scenario_occurrences` | array |  |  |
@@ -29,4 +29,4 @@ description: |-
   | `title` | string | yes |  |
   | `updated_at` | string | yes |  |
   | `verification` | any | yes |  |
-order: 251000
+order: 249000

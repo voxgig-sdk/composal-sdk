@@ -76,9 +76,8 @@ describe('ProductMapStateDirect', async () => {
       params.project_id = setup.idmap['project01']
     } else {
       params.id = 'direct01'
-      params.id = 'direct02'
-      params.organization_id = 'direct03'
-      params.project_id = 'direct04'
+      params.organization_id = 'direct02'
+      params.project_id = 'direct03'
     }
 
     const result: any = await client.direct({
@@ -105,7 +104,6 @@ describe('ProductMapStateDirect', async () => {
       assert(calls[0].url.includes('direct01'))
       assert(calls[0].url.includes('direct02'))
       assert(calls[0].url.includes('direct03'))
-      assert(calls[0].url.includes('direct04'))
     }
   })
 

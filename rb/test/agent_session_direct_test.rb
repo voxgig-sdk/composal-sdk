@@ -38,10 +38,8 @@ class AgentSessionDirectTest < Minitest::Test
     query = {}
     if setup[:live]
       params["id"] = setup[:idmap]["agent_session01"]
-      params["id"] = setup[:idmap]["agent_session01"]
     else
       params["id"] = "direct01"
-      params["id"] = "direct02"
     end
 
     result = client.direct({

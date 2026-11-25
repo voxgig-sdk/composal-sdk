@@ -121,7 +121,7 @@ describe("MemberEntity", function()
       ["organization_id"] = setup.idmap["organization_id"],
     }
 
-    local member_ref01_markdef_up0_name = "accepted_at"
+    local member_ref01_markdef_up0_name = "created_at"
     local member_ref01_markdef_up0_value = "Mark01-member_ref01_" .. tostring(setup.now)
     member_ref01_data_up0_up[member_ref01_markdef_up0_name] = member_ref01_markdef_up0_value
 

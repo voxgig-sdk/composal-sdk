@@ -21,10 +21,10 @@ postman collection run "postman/collections/Composal API flows" \
   --env-var idempotency_key=... \
   --env-var version=... \
   --env-var conversation_id=... \
-  --env-var view=... \
+  --env-var uri=... \
   --env-var index=... \
   --env-var message_id=... \
-  --env-var uri=... \
+  --env-var view=... \
   --env-var expected_commit_id=... \
   --env-var connection_id=... \
   --env-var state=... \
@@ -49,16 +49,14 @@ postman collection run "postman/collections/Composal API flows" \
   --env-var persistent_agent_id=... \
   --env-var request_key=... \
   --env-var coordination_id=... \
+  --env-var environment_id=... \
   --env-var persona_id=... \
   --env-var scenario_id=... \
   --env-var credential_id=... \
   --env-var data_resource_id=... \
   --env-var domain_id=... \
-  --env-var scenario_run_id=... \
   --env-var name=... \
   --env-var owner=... \
-  --env-var number=... \
-  --env-var source_repository=... \
   --env-var interaction_id=... \
   --env-var run_id=... \
   --env-var job_id=... \
@@ -78,12 +76,15 @@ postman collection run "postman/collections/Composal API flows" \
   --env-var preview_profile_id=... \
   --env-var compare_revision_id=... \
   --env-var target=... \
+  --env-var pull_request_id=... \
+  --env-var number=... \
   --env-var change=... \
   --env-var expected_generation=... \
   --env-var release_id=... \
   --env-var path=... \
   --env-var ref=... \
   --env-var repository_id=... \
+  --env-var scenario_run_id=... \
   --env-var runner_pool_id=... \
   --env-var runner_id=... \
   --env-var runtime_instance_id=... \
@@ -93,6 +94,7 @@ postman collection run "postman/collections/Composal API flows" \
   --env-var thread_id=... \
   --env-var repo=... \
   --env-var head=... \
+  --env-var source_repository=... \
   --env-var version_id=... \
   --env-var workflow_run_id=... \
   --env-var workflow_trigger_id=... \
@@ -112,6 +114,7 @@ postman collection run "postman/collections/Composal API flows" \
   --env-var app_id=... \
   --env-var app_environment_id=... \
   --env-var app_service_id=... \
+  --env-var app_deployment_dashboard_id=... \
   --env-var location_id=... \
   --env-var app_preview_profile_id=... \
   --env-var artefact_id=... \
@@ -125,7 +128,6 @@ postman collection run "postman/collections/Composal API flows" \
   --env-var billing_prepaid_period_id=... \
   --env-var project_id=... \
   --env-var binary_id=... \
-  --env-var environment_id=... \
   --env-var browser_session_id=... \
   --env-var browser_session_control_id=... \
   --env-var browser_session_media_id=... \
@@ -139,6 +141,7 @@ postman collection run "postman/collections/Composal API flows" \
   --env-var exploration_id=... \
   --env-var demo_share_id=... \
   --env-var demo_share_segment_id=... \
+  --env-var deployment_id=... \
   --env-var device_id=... \
   --env-var docker_builder_id=... \
   --env-var secret_version_id=... \
@@ -167,7 +170,9 @@ postman collection run "postman/collections/Composal API flows" \
   --env-var patchset_diff_id=... \
   --env-var product_map_journey_replay_id=... \
   --env-var product_map_observation_id=... \
-  --env-var pull_request_id=... \
+  --env-var verify_environment_id=... \
+  --env-var project_pr_testing_id=... \
+  --env-var project_product_map_comparison_id=... \
   --env-var repo_agent_checkpoint_id=... \
   --env-var report_replay_id=... \
   --env-var repository_access_resolve_resolve_id=... \
@@ -257,10 +262,10 @@ values in Postman.
 - `deep_scan` `BasicDeepScanFlow`: the flow creates a record it has no route to remove
 - `deep_scan_flow` `BasicDeepScanFlowFlow`: the flow creates a record it has no route to remove
 - `desktop_local_agent_response` `BasicDesktopLocalAgentResponseFlow`: the flow creates a record it has no route to remove
-- `device_control_operation` `BasicDeviceControlOperationFlow`: the flow creates a record it has no route to remove
 - `device_folder_listing` `BasicDeviceFolderListingFlow`: the flow creates a record it has no route to remove
 - `device_grant` `BasicDeviceGrantFlow`: the flow creates a record it has no route to remove
 - `device_local_event` `BasicDeviceLocalEventFlow`: the flow creates a record it has no route to remove
+- `device_operation` `BasicDeviceOperationFlow`: the flow creates a record it has no route to remove
 - `device_pairing` `BasicDevicePairingFlow`: the flow creates a record it has no route to remove
 - `device_scheduled_check_in` `BasicDeviceScheduledCheckInFlow`: the flow creates a record it has no route to remove
 - `docker_builder` `BasicDockerBuilderFlow`: the flow creates a record it has no route to remove
@@ -279,7 +284,6 @@ values in Postman.
 - `github_ci_repository` `BasicGithubCiRepositoryFlow`: the flow creates a record it has no route to remove
 - `github_connection` `BasicGithubConnectionFlow`: the flow creates a record it has no route to remove
 - `github_onboarding_import` `BasicGithubOnboardingImportFlow`: the flow creates a record it has no route to remove
-- `pull_request` `BasicPullRequestFlow`: the flow creates a record it has no route to remove
 - `github_runner_admission` `BasicGithubRunnerAdmissionFlow`: the flow creates a record it has no route to remove
 - `github_runner_cache` `BasicGithubRunnerCacheFlow`: the flow creates a record it has no route to remove
 - `github_runner_egress` `BasicGithubRunnerEgressFlow`: the flow creates a record it has no route to remove
@@ -302,7 +306,6 @@ values in Postman.
 - `local_agent_response` `BasicLocalAgentResponseFlow`: the flow creates a record it has no route to remove
 - `local_thread_operation` `BasicLocalThreadOperationFlow`: the flow creates a record it has no route to remove
 - `log_stream_chunk` `BasicLogStreamChunkFlow`: the flow creates a record it has no route to remove
-- `merge_request` `BasicMergeRequestFlow`: the flow creates a record it has no route to remove
 - `merge_resolution` `BasicMergeResolutionFlow`: the flow creates a record it has no route to remove
 - `messaging_conversation_message` `BasicMessagingConversationMessageFlow`: the flow creates a record it has no route to remove
 - `messaging_conversation_upload` `BasicMessagingConversationUploadFlow`: the flow creates a record it has no route to remove
@@ -373,6 +376,8 @@ values in Postman.
 - `vc_change_group` `BasicVcChangeGroupFlow`: the flow creates a record it has no route to remove
 - `verification_project_scenario` `BasicVerificationProjectScenarioFlow`: the flow creates a record it has no route to remove
 - `verify_app_domain` `BasicVerifyAppDomainFlow`: the flow creates a record it has no route to remove
+- `verify_merge_request` `BasicVerifyMergeRequestFlow`: the flow creates a record it has no route to remove
+- `verify_pull_request` `BasicVerifyPullRequestFlow`: the flow creates a record it has no route to remove
 - `verify_signal_integration` `BasicVerifySignalIntegrationFlow`: the flow creates a record it has no route to remove
 - `verify_static_site_domain` `BasicVerifyStaticSiteDomainFlow`: the flow creates a record it has no route to remove
 - `waitlist_application` `BasicWaitlistApplicationFlow`: the flow creates a record it has no route to remove

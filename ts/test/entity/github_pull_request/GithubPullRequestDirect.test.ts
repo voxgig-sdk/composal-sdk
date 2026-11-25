@@ -48,40 +48,19 @@ describe('GithubPullRequestDirect', async () => {
       t.skip("Live coverage incomplete: direct-load-github_pull_request excluded (GET-only live run: needs github_pull_request01, which only POST /api/v1/organizations/{org_slug}/github/pull_requests/refresh gives)")
       return
     }
-    if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["github_pull_request01"]) {
-      console.log("LIVE STEP {\"id\":\"direct-load-github_pull_request\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs github_pull_request01, which only POST /api/v1/organizations/{org_slug}/github/pull_requests/refresh gives\"}")
-      t.skip("Live coverage incomplete: direct-load-github_pull_request excluded (GET-only live run: needs github_pull_request01, which only POST /api/v1/organizations/{org_slug}/github/pull_requests/refresh gives)")
-      return
-    }
-    if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["pull_request01"]) {
-      console.log("LIVE STEP {\"id\":\"direct-load-github_pull_request\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}")
-      t.skip("Live coverage incomplete: direct-load-github_pull_request excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)")
-      return
-    }
-    if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["pull_request01"]) {
-      console.log("LIVE STEP {\"id\":\"direct-load-github_pull_request\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}")
-      t.skip("Live coverage incomplete: direct-load-github_pull_request excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)")
-      return
-    }
-    if (skipIfMissingIds(t, setup, ["github_pull_request01","github_pull_request01","organization01","organization01","pull_request01","pull_request01"], LIVE_STRICT)) return
+    if (skipIfMissingIds(t, setup, ["github_pull_request01","organization01","pull_request01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
       params.id = setup.idmap['github_pull_request01']
-      params.id = setup.idmap['github_pull_request01']
       params.organization_id = setup.idmap['organization01']
-      params.organization_id = setup.idmap['organization01']
-      params.pull_request_id = setup.idmap['pull_request01']
       params.pull_request_id = setup.idmap['pull_request01']
     } else {
       params.id = 'direct01'
-      params.id = 'direct02'
-      params.organization_id = 'direct03'
-      params.organization_id = 'direct04'
-      params.pull_request_id = 'direct05'
-      params.pull_request_id = 'direct06'
+      params.organization_id = 'direct02'
+      params.pull_request_id = 'direct03'
     }
 
     const result: any = await client.direct({
@@ -108,9 +87,6 @@ describe('GithubPullRequestDirect', async () => {
       assert(calls[0].url.includes('direct01'))
       assert(calls[0].url.includes('direct02'))
       assert(calls[0].url.includes('direct03'))
-      assert(calls[0].url.includes('direct04'))
-      assert(calls[0].url.includes('direct05'))
-      assert(calls[0].url.includes('direct06'))
     }
   })
 

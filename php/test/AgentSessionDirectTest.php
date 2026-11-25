@@ -46,10 +46,8 @@ class AgentSessionDirectTest extends TestCase
         $query = [];
         if ($setup["live"]) {
             $params["id"] = $setup["idmap"]["agent_session01"] ?? null;
-            $params["id"] = $setup["idmap"]["agent_session01"] ?? null;
         } else {
             $params["id"] = "direct01";
-            $params["id"] = "direct02";
         }
 
         $result = $client->direct([

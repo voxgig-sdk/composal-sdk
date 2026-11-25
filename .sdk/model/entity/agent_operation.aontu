@@ -146,7 +146,7 @@ main: kit: entity: agent_operation: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.operation`"
           }
         }
       ]

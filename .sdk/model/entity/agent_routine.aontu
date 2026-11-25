@@ -20,7 +20,7 @@ main: kit: entity: agent_routine: {
     credit_wait: {
       h: "Credit Wait"
       n: "credit_wait"
-      r: true
+      r: false
       sh: "The wallet funding an enabled routine that is waiting for inference credit."
       t: "`$OBJECT`"
     }
@@ -135,7 +135,7 @@ main: kit: entity: agent_routine: {
     utility_model: {
       h: "Utility Model"
       n: "utility_model"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
   }

@@ -270,53 +270,6 @@ class AgentAttachmentCreateData
     public string $file_name;
 }
 
-/** AgentAutomation entity data model. */
-class AgentAutomation
-{
-    public bool $can_manage;
-    public bool $can_manage_events;
-    public bool $can_run;
-    public bool $can_schedule;
-    public array $definition;
-    public array $event_subscriptions;
-    public array $event_triggers;
-    public int $expected_revision;
-    public string $id;
-    public string $key;
-    public string $name;
-    public int $revision;
-    public mixed $schedule;
-    public array $schedules;
-    public array $version;
-}
-
-/** Request payload for AgentAutomation#load. */
-class AgentAutomationLoadMatch
-{
-    public string $agent_id;
-    public string $id;
-    public string $organization_id;
-}
-
-/** Request payload for AgentAutomation#list. */
-class AgentAutomationListMatch
-{
-    public string $agent_id;
-    public string $organization_id;
-    public ?string $cursor = null;
-    public ?int $limit = null;
-}
-
-/** Request payload for AgentAutomation#update. */
-class AgentAutomationUpdateData
-{
-    public string $agent_id;
-    public string $id;
-    public string $organization_id;
-    public ?array $definition = null;
-    public ?int $expected_revision = null;
-}
-
 /** AgentAvatar entity data model. */
 class AgentAvatar
 {
@@ -780,8 +733,8 @@ class AgentInput
 {
     public ?array $attachment_ids = null;
     public ?array $attachments = null;
-    public array $browser_context;
-    public array $client_time;
+    public ?array $browser_context = null;
+    public ?array $client_time = null;
     public string $conversation_id;
     public mixed $model_policy = null;
     public ?string $requester_membership_id = null;
@@ -796,8 +749,8 @@ class AgentInputCreateData
     public string $organization_id;
     public ?array $attachment_ids = null;
     public ?array $attachments = null;
-    public array $browser_context;
-    public array $client_time;
+    public ?array $browser_context = null;
+    public ?array $client_time = null;
     public string $conversation_id;
     public mixed $model_policy = null;
     public ?string $requester_membership_id = null;
@@ -1424,7 +1377,7 @@ class AgentRoutine
 {
     public bool $can_manage;
     public int $consecutive_errors;
-    public array $credit_wait;
+    public ?array $credit_wait = null;
     public mixed $description;
     public bool $enabled;
     public string $id;
@@ -1438,7 +1391,7 @@ class AgentRoutine
     public array $routine;
     public array $schedule;
     public string $schedule_label;
-    public array $utility_model;
+    public ?array $utility_model = null;
 }
 
 /** Request payload for AgentRoutine#list. */
@@ -1717,7 +1670,7 @@ class AgentSlackCreateData
 class AgentSubagent
 {
     public bool $active;
-    public mixed $attention;
+    public mixed $attention = null;
     public mixed $ended_at;
     public string $id;
     public mixed $model;
@@ -1815,7 +1768,7 @@ class AgentSwarm
     public mixed $started_at_label;
     public string $status;
     public array $summary;
-    public array $target;
+    public ?array $target = null;
     public int $task_count;
     public mixed $task_template_json;
     public array $tasks;
@@ -1855,7 +1808,7 @@ class AgentSwarmCreateData
     public mixed $queued_at = null;
     public ?string $repository = null;
     public ?string $slug = null;
-    public array $target;
+    public ?array $target = null;
     public mixed $task_template_json = null;
     public ?array $tasks = null;
 }
@@ -2113,7 +2066,7 @@ class AgentWorkflowUpdateData
 /** AgentWorkflowProposal entity data model. */
 class AgentWorkflowProposal
 {
-    public array $agent_steps;
+    public ?array $agent_steps = null;
     public mixed $base_digest;
     public bool $can_manage;
     public bool $can_revise;
@@ -2161,7 +2114,7 @@ class AgentWorkflowProposalCreateData
 class AgentWorkflowRun
 {
     public string $action;
-    public mixed $automation;
+    public mixed $automation = null;
     public mixed $budget_seconds;
     public mixed $budget_usd;
     public bool $can_answer;
@@ -2169,7 +2122,7 @@ class AgentWorkflowRun
     public bool $can_dismiss;
     public mixed $checkpoint;
     public mixed $conversation_id;
-    public array $decision_history;
+    public ?array $decision_history = null;
     public mixed $error;
     public mixed $finished_at;
     public mixed $flow_steps;
@@ -2880,6 +2833,43 @@ class AppDeploymentRemoveMatch
 {
     public string $app_id;
     public string $id;
+}
+
+/** AppDeploymentDashboard entity data model. */
+class AppDeploymentDashboard
+{
+    public array $activity;
+    public array $app;
+    public array $audit_events;
+    public array $capacity;
+    public array $connections;
+    public array $data_resources;
+    public array $deployments;
+    public array $desired_states;
+    public array $environments;
+    public ?string $id = null;
+    public array $locations;
+    public array $managed_database_catalog;
+    public array $observability;
+    public array $operations;
+    public array $placements;
+    public array $reconciler_ticks;
+    public array $releases;
+    public array $rollback_deployments;
+    public array $rollouts;
+    public array $runtime_instances;
+    public array $service_bindings;
+    public array $service_views;
+    public array $services;
+    public array $storage_resources;
+    public array $summary;
+}
+
+/** Request payload for AppDeploymentDashboard#load. */
+class AppDeploymentDashboardLoadMatch
+{
+    public string $id;
+    public ?string $metrics_range = null;
 }
 
 /** AppDeploymentOperation entity data model. */
@@ -4226,7 +4216,7 @@ class AutomationEventUpdateData
 class AutomationRun
 {
     public string $action;
-    public mixed $automation;
+    public mixed $automation = null;
     public mixed $budget_seconds;
     public mixed $budget_usd;
     public bool $can_answer;
@@ -4234,7 +4224,7 @@ class AutomationRun
     public bool $can_dismiss;
     public mixed $checkpoint;
     public mixed $conversation_id;
-    public array $decision_history;
+    public ?array $decision_history = null;
     public mixed $error;
     public mixed $finished_at;
     public mixed $flow_steps;
@@ -5440,7 +5430,7 @@ class Change
 {
     public array $counts;
     public array $filters;
-    public array $github_sync;
+    public ?array $github_sync = null;
     public mixed $result;
 }
 
@@ -5496,31 +5486,19 @@ class ChangeAssetCreateData
 class ChangeComment
 {
     public string $body;
-    public array $capabilities;
-    public mixed $change_id = null;
-    public mixed $created_at = null;
-    public mixed $created_at_label = null;
-    public string $id;
+    public ?array $comment = null;
+    public array $comments;
+    public ?string $id = null;
     public mixed $kind = null;
     public mixed $line = null;
-    public bool $outdated;
     public mixed $parent_comment_id = null;
     public mixed $patchset_id = null;
-    public mixed $patchset_number;
     public mixed $path = null;
-    public ?array $replies = null;
-    public bool $resolved;
-    public mixed $resolved_at = null;
-    public mixed $resolved_at_label = null;
-    public array $resolved_by;
     public mixed $side = null;
-    public mixed $updated_at = null;
-    public mixed $updated_at_label = null;
-    public array $user;
 }
 
-/** Request payload for ChangeComment#list. */
-class ChangeCommentListMatch
+/** Request payload for ChangeComment#load. */
+class ChangeCommentLoadMatch
 {
     public string $change_id;
     public string $organization_id;
@@ -5672,10 +5650,10 @@ class ChangeLabel
 {
     public ?bool $accepted = null;
     public ?array $add = null;
-    public array $approval;
+    public ?array $approval = null;
     public ?array $assets = null;
     public mixed $author = null;
-    public array $capabilities;
+    public ?array $capabilities = null;
     public ?string $change_key = null;
     public ?array $checks = null;
     public ?string $checks_status = null;
@@ -5683,12 +5661,12 @@ class ChangeLabel
     public ?int $comments_count = null;
     public ?string $comments_count_label = null;
     public mixed $commit_message = null;
-    public array $current_patchset;
+    public ?array $current_patchset = null;
     public mixed $description = null;
     public ?bool $draft = null;
     public mixed $folded_into_number = null;
     public mixed $github_projection_status = null;
-    public array $github_pull_request;
+    public ?array $github_pull_request = null;
     public ?array $github_pull_requests = null;
     public mixed $group = null;
     public ?bool $has_description = null;
@@ -5696,7 +5674,7 @@ class ChangeLabel
     public mixed $jj_change_id = null;
     public ?array $labels = null;
     public ?bool $landable = null;
-    public array $landed_by;
+    public ?array $landed_by = null;
     public int $number;
     public ?bool $orphaned = null;
     public ?string $orphaned_at = null;
@@ -5851,7 +5829,7 @@ class ChangeTranscript
     public mixed $session_title = null;
     public string $status;
     public bool $superseded;
-    public array $user;
+    public ?array $user = null;
 }
 
 /** Request payload for ChangeTranscript#list. */
@@ -6348,7 +6326,7 @@ class ContactSubmissionCreateData
 /** ControlComputer entity data model. */
 class ControlComputer
 {
-    public array $connection;
+    public ?array $connection = null;
     public array $consent;
     public array $device;
     public ?string $id = null;
@@ -6381,10 +6359,10 @@ class ControlComputerControlOperation
     public string $action;
     public array $arguments;
     public string $created_at;
-    public array $delivery;
+    public ?array $delivery = null;
     public string $device_id;
     public ?string $diagnostic_code = null;
-    public array $end;
+    public ?array $end = null;
     public string $expires_at;
     public string $id;
     public string $key;
@@ -6472,7 +6450,7 @@ class CredentialSignInCheck
     public array $reproductions;
     public bool $saves_scenarios;
     public array $scannable_flows;
-    public array $scenario_generation;
+    public ?array $scenario_generation = null;
     public bool $sign_in_needs_answer;
     public string $sign_in_outcome;
     public mixed $sign_in_question = null;
@@ -6527,20 +6505,21 @@ class DataResourceRotateCredentialCreateData
 class DeepScan
 {
     public mixed $account_id = null;
-    public array $active;
     public array $agent_filters;
     public array $agents;
     public ?bool $can_continue = null;
     public ?array $chat_messages = null;
+    public int $check_count;
     public int $concurrency;
     public array $covered_areas;
     public string $created_at;
+    public mixed $credential_name = null;
     public string $deadline_at;
     public mixed $demo_project;
+    public mixed $duration_ms;
     public bool $ended_early;
     public string $environment_id;
     public string $environment_name;
-    public array $explorations;
     public array $explorer_activity;
     public int $finding_count;
     public array $findings;
@@ -6550,14 +6529,12 @@ class DeepScan
     public array $huntable_flows;
     public string $id;
     public ?string $idempotency_key = null;
-    public array $launch_options;
     public int $max_seconds;
     public int $max_testers;
     public ?string $mode = null;
     public array $next_scan_improvements;
     public ?string $observed_at = null;
     public bool $onboarding;
-    public array $pagination;
     public bool $paywalled;
     public array $permissions;
     public array $priority_counts;
@@ -6568,10 +6545,13 @@ class DeepScan
     public array $reproductions;
     public bool $saves_scenarios;
     public array $scannable_flows;
-    public array $scenario_generation;
+    public ?int $scenario_count = null;
+    public ?array $scenario_generation = null;
+    public ?bool $scenarios_pending = null;
     public bool $sign_in_needs_answer;
     public string $sign_in_outcome;
     public mixed $sign_in_question = null;
+    public string $started_at;
     public ?bool $startup_retryable = null;
     public string $status;
     public bool $time_limit_reached;
@@ -6583,14 +6563,21 @@ class DeepScan
 /** Request payload for DeepScan#load. */
 class DeepScanLoadMatch
 {
-    public ?string $id = null;
+    public string $id;
     public string $organization_id;
     public ?string $agent_id = null;
     public ?string $evidence = null;
     public ?string $finding_id = null;
     public ?string $project_id = null;
+}
+
+/** Request payload for DeepScan#list. */
+class DeepScanListMatch
+{
+    public string $organization_id;
     public ?string $finding = null;
     public ?int $page = null;
+    public ?string $project_id = null;
     public ?string $query = null;
     public ?string $status = null;
 }
@@ -7004,11 +6991,11 @@ class Device
 {
     public string $architecture;
     public string $channel;
-    public mixed $coding_connection;
+    public mixed $coding_connection = null;
     public mixed $connection_checked_at;
     public string $connection_status;
     public array $control_delivery_policy;
-    public array $control_spawn_policy;
+    public ?array $control_spawn_policy = null;
     public string $created_at;
     public array $device;
     public string $environment;
@@ -7106,44 +7093,6 @@ class DeviceControlMessageListMatch
     public string $device_id;
     public string $organization_id;
     public ?string $cursor = null;
-}
-
-/** DeviceControlOperation entity data model. */
-class DeviceControlOperation
-{
-    public string $action;
-    public array $arguments;
-    public string $created_at;
-    public array $delivery;
-    public string $device_id;
-    public ?string $diagnostic_code = null;
-    public array $end;
-    public string $expires_at;
-    public string $id;
-    public string $key;
-    public string $provider;
-    public array $references;
-    public mixed $result;
-    public bool $result_expired;
-    public string $state;
-}
-
-/** Request payload for DeviceControlOperation#load. */
-class DeviceControlOperationLoadMatch
-{
-    public string $device_id;
-    public string $id;
-    public string $organization_id;
-}
-
-/** Request payload for DeviceControlOperation#create. */
-class DeviceControlOperationCreateData
-{
-    public string $device_id;
-    public string $organization_id;
-    public string $action;
-    public array $arguments;
-    public string $key;
 }
 
 /** DeviceEnterpriseRelay entity data model. */
@@ -7251,6 +7200,44 @@ class DeviceLocalEventCreateData
     public string $device_id;
     public string $organization_id;
     public string $event;
+}
+
+/** DeviceOperation entity data model. */
+class DeviceOperation
+{
+    public string $action;
+    public array $arguments;
+    public string $created_at;
+    public ?array $delivery = null;
+    public string $device_id;
+    public ?string $diagnostic_code = null;
+    public ?array $end = null;
+    public string $expires_at;
+    public string $id;
+    public string $key;
+    public string $provider;
+    public array $references;
+    public mixed $result;
+    public bool $result_expired;
+    public string $state;
+}
+
+/** Request payload for DeviceOperation#load. */
+class DeviceOperationLoadMatch
+{
+    public string $device_id;
+    public string $id;
+    public string $organization_id;
+}
+
+/** Request payload for DeviceOperation#create. */
+class DeviceOperationCreateData
+{
+    public string $device_id;
+    public string $organization_id;
+    public string $action;
+    public array $arguments;
+    public string $key;
 }
 
 /** DevicePairing entity data model. */
@@ -7614,104 +7601,6 @@ class EmailVerificationCreateData
     public mixed $email = null;
 }
 
-/** Environment entity data model. */
-class Environment
-{
-    public mixed $active_revision_id;
-    public bool $agent_sign_up_available;
-    public string $allowed_actions;
-    public array $billing;
-    public array $cleanup;
-    public string $connection;
-    public string $created_at;
-    public ?array $default_policy = null;
-    public array $default_policy_json;
-    public array $discovery_defaults;
-    public array $environment;
-    public ?array $exploration_accounts = null;
-    public ?array $explorations = null;
-    public mixed $first_run = null;
-    public mixed $hosted_app_id;
-    public string $id;
-    public mixed $imessage_number;
-    public bool $included_deep_scan;
-    public int $lock_version;
-    public bool $managed_google_available;
-    public string $managed_google_email;
-    public mixed $messaging_tester_number = null;
-    public string $name;
-    public array $network_connections;
-    public mixed $onboarding_discovery = null;
-    public string $organization_id;
-    public ?array $pending_accounts = null;
-    public array $permissions;
-    public mixed $project_id;
-    public mixed $repository_id;
-    public array $revisions;
-    public mixed $setup_discovery_id = null;
-    public bool $sign_in_check_available;
-    public string $slug;
-    public string $status;
-    public mixed $target_kind;
-    public mixed $target_url;
-    public array $test_accounts;
-    public string $updated_at;
-    public mixed $verify_network_connection_id;
-    public ?int $version = null;
-}
-
-/** Request payload for Environment#load. */
-class EnvironmentLoadMatch
-{
-    public ?string $id = null;
-    public string $organization_id;
-    public ?string $project_id = null;
-}
-
-/** Request payload for Environment#create. */
-class EnvironmentCreateData
-{
-    public string $organization_id;
-    public ?string $allowed_actions = null;
-    public ?array $default_policy = null;
-    public mixed $imessage_number = null;
-    public mixed $messaging_tester_number = null;
-    public ?string $name = null;
-    public mixed $project_id = null;
-    public mixed $repository_id = null;
-    public string $slug;
-    public mixed $target_kind = null;
-    public mixed $target_url = null;
-}
-
-/** Request payload for Environment#update. */
-class EnvironmentUpdateData
-{
-    public string $id;
-    public string $organization_id;
-}
-
-/** Request payload for Environment#patch. */
-class EnvironmentPatchData
-{
-    public string $id;
-    public string $organization_id;
-    public ?string $allowed_actions = null;
-    public mixed $imessage_number = null;
-    public mixed $messaging_tester_number = null;
-    public ?string $name = null;
-    public mixed $target_url = null;
-    public mixed $verify_network_connection_id = null;
-    public ?int $version = null;
-}
-
-/** Request payload for Environment#remove. */
-class EnvironmentRemoveMatch
-{
-    public string $id;
-    public string $organization_id;
-}
-
 /** EnvironmentDiscoveryRun entity data model. */
 class EnvironmentDiscoveryRun
 {
@@ -7722,7 +7611,7 @@ class EnvironmentDiscoveryRun
     public mixed $failure_code;
     public string $id;
     public string $queued_at;
-    public array $recording;
+    public ?array $recording = null;
     public mixed $result;
     public string $status;
 }
@@ -7785,7 +7674,7 @@ class EnvironmentExploration
     public array $reproductions;
     public bool $saves_scenarios;
     public array $scannable_flows;
-    public array $scenario_generation;
+    public ?array $scenario_generation = null;
     public bool $sign_in_needs_answer;
     public string $sign_in_outcome;
     public mixed $sign_in_question = null;
@@ -7952,26 +7841,6 @@ class EnvironmentTestAccountPatchData
     public string $organization_id;
     public ?array $credentials = null;
     public ?string $revision_id = null;
-}
-
-/** Evidence entity data model. */
-class Evidence
-{
-    public ?string $id = null;
-}
-
-/** Request payload for Evidence#load. */
-class EvidenceLoadMatch
-{
-    public ?string $id = null;
-    public string $organization_id;
-    public ?string $agent_id = null;
-    public ?string $cursor = null;
-    public ?string $exploration_id = null;
-    public ?string $kind = null;
-    public ?int $limit = null;
-    public ?string $repository_id = null;
-    public ?string $scenario_run_id = null;
 }
 
 /** ExecutionDesiredState entity data model. */
@@ -8167,7 +8036,7 @@ class Exploration
     public bool $saves_scenarios;
     public array $scannable_flows;
     public ?int $scenario_count = null;
-    public array $scenario_generation;
+    public ?array $scenario_generation = null;
     public ?bool $scenarios_pending = null;
     public bool $sign_in_needs_answer;
     public string $sign_in_outcome;
@@ -8255,7 +8124,7 @@ class ExplorationMessage
     public array $reproductions;
     public bool $saves_scenarios;
     public array $scannable_flows;
-    public array $scenario_generation;
+    public ?array $scenario_generation = null;
     public bool $sign_in_needs_answer;
     public string $sign_in_outcome;
     public mixed $sign_in_question = null;
@@ -8338,7 +8207,7 @@ class ExplorationScenario
     public array $reproductions;
     public bool $saves_scenarios;
     public array $scannable_flows;
-    public array $scenario_generation;
+    public ?array $scenario_generation = null;
     public bool $sign_in_needs_answer;
     public string $sign_in_outcome;
     public mixed $sign_in_question = null;
@@ -8374,7 +8243,7 @@ class Finding
     public string $organization_id;
     public array $permissions;
     public ?string $reason = null;
-    public mixed $reported_occurrence;
+    public mixed $reported_occurrence = null;
     public mixed $repository_id;
     public string $safe_summary;
     public ?array $scenario_occurrences = null;
@@ -8784,37 +8653,6 @@ class GithubConnectionCreateData
     public array $repositories;
 }
 
-/** GithubIntegration entity data model. */
-class GithubIntegration
-{
-    public mixed $account_avatar_url;
-    public string $account_login;
-    public string $connection_status;
-    public string $connection_status_label;
-    public mixed $github_installation;
-    public array $health;
-    public string $id;
-    public int $imported_repositories_count;
-    public string $imported_repositories_count_label;
-    public array $organization;
-    public array $pagination;
-    public array $repositories;
-}
-
-/** Request payload for GithubIntegration#load. */
-class GithubIntegrationLoadMatch
-{
-    public string $id;
-    public string $organization_id;
-    public ?int $page = null;
-}
-
-/** Request payload for GithubIntegration#list. */
-class GithubIntegrationListMatch
-{
-    public string $organization_id;
-}
-
 /** GithubOnboarding entity data model. */
 class GithubOnboarding
 {
@@ -9012,7 +8850,7 @@ class GithubRunnerHistory
     public array $runs;
     public mixed $setup = null;
     public mixed $success_rate;
-    public array $usage;
+    public ?array $usage = null;
 }
 
 /** Request payload for GithubRunnerHistory#load. */
@@ -9819,8 +9657,8 @@ class LeaseStepUpdateData
 class LeaseVerifyDiagnostic
 {
     public array $browser_events;
-    public array $live_browser;
-    public array $live_view;
+    public ?array $live_browser = null;
+    public ?array $live_view = null;
     public ?array $steps = null;
 }
 
@@ -9831,8 +9669,8 @@ class LeaseVerifyDiagnosticCreateData
     public string $swarm_id;
     public string $task_id;
     public array $browser_events;
-    public array $live_browser;
-    public array $live_view;
+    public ?array $live_browser = null;
+    public ?array $live_view = null;
     public ?array $steps = null;
 }
 
@@ -9938,10 +9776,10 @@ class LocalThreadOperation
     public string $action;
     public array $arguments;
     public string $created_at;
-    public array $delivery;
+    public ?array $delivery = null;
     public string $device_id;
     public ?string $diagnostic_code = null;
-    public array $end;
+    public ?array $end = null;
     public string $expires_at;
     public string $id;
     public string $key;
@@ -10103,7 +9941,7 @@ class Me
     public mixed $github_pr_user_authorization_login;
     public bool $github_prs_authored_by_change_author;
     public string $id;
-    public mixed $impersonation;
+    public mixed $impersonation = null;
     public mixed $name;
     public ?string $next_path = null;
     public array $onboarding;
@@ -10279,22 +10117,11 @@ class MediaFileLoadMatch
 /** Member entity data model. */
 class Member
 {
-    public mixed $accepted_at;
-    public mixed $accepted_by_user;
     public string $created_at;
     public mixed $created_at_label;
-    public string $email;
-    public ?string $email_delivery_status = null;
-    public mixed $expires_at;
-    public mixed $expires_at_label;
     public string $id;
-    public mixed $invite_url;
-    public mixed $invited_by_user;
     public bool $is_self;
-    public array $organization;
-    public mixed $revoked_at;
     public string $role;
-    public string $status;
     public string $updated_at;
     public mixed $updated_at_label;
     public array $user;
@@ -10393,7 +10220,7 @@ class MemoryRemoveMatch
 /** MergeQueueEntry entity data model. */
 class MergeQueueEntry
 {
-    public array $analytics;
+    public ?array $analytics = null;
     public mixed $change_id = null;
     public mixed $expected_target_commit_id = null;
     public mixed $expected_target_version = null;
@@ -10435,64 +10262,6 @@ class MergeQueueEntryRemoveMatch
     public string $repo_id;
 }
 
-/** MergeRequest entity data model. */
-class MergeRequest
-{
-    public array $available_tests;
-    public string $base_sha;
-    public ?string $branch = null;
-    public mixed $comment_url;
-    public mixed $current_run = null;
-    public bool $draft;
-    public array $findings;
-    public mixed $github_repository;
-    public mixed $github_url;
-    public string $head_sha;
-    public string $id;
-    public string $idempotency_key;
-    public int $number;
-    public array $pagination;
-    public array $permissions;
-    public bool $preview_cleanup_ready;
-    public mixed $preview_url = null;
-    public mixed $project = null;
-    public mixed $project_id;
-    public mixed $project_slug;
-    public string $provider;
-    public array $pull_request;
-    public string $repository_id;
-    public string $request_label;
-    public mixed $requested_run_id;
-    public array $runs;
-    public mixed $source_branch;
-    public mixed $source_repository;
-    public mixed $source_url;
-    public string $state;
-    public string $title;
-    public string $updated_at;
-    public string $web_path;
-}
-
-/** Request payload for MergeRequest#load. */
-class MergeRequestLoadMatch
-{
-    public string $id;
-    public string $organization_id;
-    public ?int $page = null;
-}
-
-/** Request payload for MergeRequest#create. */
-class MergeRequestCreateData
-{
-    public string $organization_id;
-    public ?string $branch = null;
-    public ?string $head_sha = null;
-    public string $idempotency_key;
-    public int $number;
-    public mixed $project_id = null;
-    public ?string $repository_id = null;
-}
-
 /** MergeResolution entity data model. */
 class MergeResolution
 {
@@ -10527,7 +10296,7 @@ class MessagingConversationMessage
     public string $client_operation_id;
     public string $content;
     public ?string $id = null;
-    public array $media;
+    public ?array $media = null;
     public ?array $media_upload_ids = null;
     public array $messages;
     public ?string $reply_to = null;
@@ -10546,7 +10315,7 @@ class MessagingConversationMessageCreateData
     public string $project_id;
     public string $client_operation_id;
     public string $content;
-    public array $media;
+    public ?array $media = null;
     public ?array $media_upload_ids = null;
     public ?string $reply_to = null;
     public ?bool $retry_attachment = null;
@@ -11849,6 +11618,37 @@ class PagesBillingLoadMatch
     public string $organization_id;
 }
 
+/** PagesGithubIntegration entity data model. */
+class PagesGithubIntegration
+{
+    public mixed $account_avatar_url;
+    public string $account_login;
+    public string $connection_status;
+    public string $connection_status_label;
+    public mixed $github_installation;
+    public array $health;
+    public string $id;
+    public int $imported_repositories_count;
+    public string $imported_repositories_count_label;
+    public array $organization;
+    public array $pagination;
+    public array $repositories;
+}
+
+/** Request payload for PagesGithubIntegration#load. */
+class PagesGithubIntegrationLoadMatch
+{
+    public string $id;
+    public string $organization_id;
+    public ?int $page = null;
+}
+
+/** Request payload for PagesGithubIntegration#list. */
+class PagesGithubIntegrationListMatch
+{
+    public string $organization_id;
+}
+
 /** PagesGithubOnboarding entity data model. */
 class PagesGithubOnboarding
 {
@@ -12380,7 +12180,7 @@ class ProductMapIdentityDecision
     public array $observations;
     public string $operation;
     public string $reason;
-    public array $target;
+    public ?array $target = null;
 }
 
 /** Request payload for ProductMapIdentityDecision#create. */
@@ -12391,7 +12191,7 @@ class ProductMapIdentityDecisionCreateData
     public array $observations;
     public string $operation;
     public string $reason;
-    public array $target;
+    public ?array $target = null;
 }
 
 /** ProductMapJourney entity data model. */
@@ -12620,7 +12420,7 @@ class Project
     public string $name;
     public array $network_connections;
     public string $organization_id;
-    public array $overview;
+    public ?array $overview = null;
     public array $permissions;
     public array $personas;
     public array $project;
@@ -12628,7 +12428,7 @@ class Project
     public array $pull_requests;
     public mixed $purpose;
     public array $runs;
-    public array $scenario_history;
+    public ?array $scenario_history = null;
     public array $scenario_states;
     public array $scenarios;
     public ?bool $setup_required = null;
@@ -12708,13 +12508,13 @@ class ProjectPatchData
 /** ProjectAndroidApk entity data model. */
 class ProjectAndroidApk
 {
-    public array $android;
+    public ?array $android = null;
     public ?array $artifact_paths = null;
     public string $description;
     public string $image;
-    public array $ios;
+    public ?array $ios = null;
     public ?string $launch_command = null;
-    public array $managed_binary;
+    public ?array $managed_binary = null;
     public ?string $platform = null;
     public ?string $provider = null;
     public ?string $setup_command = null;
@@ -12738,7 +12538,7 @@ class ProjectCodeMap
     public string $name;
     public ?string $ref = null;
     public string $repository_id;
-    public array $revision;
+    public ?array $revision = null;
     public string $slug;
     public string $status;
 }
@@ -12970,13 +12770,13 @@ class ProjectFixtureRemoveMatch
 /** ProjectIosApp entity data model. */
 class ProjectIosApp
 {
-    public array $android;
+    public ?array $android = null;
     public ?array $artifact_paths = null;
     public string $description;
     public string $image;
-    public array $ios;
+    public ?array $ios = null;
     public ?string $launch_command = null;
-    public array $managed_binary;
+    public ?array $managed_binary = null;
     public ?string $platform = null;
     public ?string $provider = null;
     public ?string $setup_command = null;
@@ -13103,6 +12903,25 @@ class ProjectOverviewPullRequestListMatch
     public string $project_id;
 }
 
+/** ProjectPrTesting entity data model. */
+class ProjectPrTesting
+{
+    public ?string $id = null;
+    public array $project;
+    public array $pull_request_options;
+}
+
+/** Request payload for ProjectPrTesting#load. */
+class ProjectPrTestingLoadMatch
+{
+    public string $id;
+    public string $organization_id;
+    public ?string $provider = null;
+    public ?string $repository_id = null;
+    public ?string $repository_search = null;
+    public ?string $source_repository = null;
+}
+
 /** ProjectProductMap entity data model. */
 class ProjectProductMap
 {
@@ -13132,6 +12951,33 @@ class ProjectProductMapCreateData
 {
     public string $organization_id;
     public string $project_id;
+}
+
+/** ProjectProductMapComparison entity data model. */
+class ProjectProductMapComparison
+{
+    public array $accounts;
+    public mixed $comparison;
+    public mixed $filters;
+    public ?string $id = null;
+    public array $project;
+    public array $requirements;
+    public array $revisions;
+}
+
+/** Request payload for ProjectProductMapComparison#load. */
+class ProjectProductMapComparisonLoadMatch
+{
+    public string $id;
+    public string $organization_id;
+    public ?string $account_id = null;
+    public ?string $area = null;
+    public ?string $before = null;
+    public ?string $compare_revision_id = null;
+    public ?string $persona_id = null;
+    public ?string $query = null;
+    public ?string $revision_id = null;
+    public ?string $since = null;
 }
 
 /** ProjectRecording entity data model. */
@@ -13219,7 +13065,7 @@ class ProjectRunPlanCreateData
     public string $organization_id;
     public string $project_id;
     public array $dependencies;
-    public mixed $identity_probe;
+    public mixed $identity_probe = null;
     public string $name;
     public array $nodes;
 }
@@ -13391,73 +13237,15 @@ class ProjectScenarioRowListMatch
 /** ProjectSetting entity data model. */
 class ProjectSetting
 {
-    public array $available_messaging_environments;
-    public array $messaging_conversations;
-    public bool $messaging_enabled;
-    public array $permissions;
-    public array $project;
-    public array $tester_numbers;
+    public string $id;
+    public string $name;
 }
 
-/** Request payload for ProjectSetting#load. */
-class ProjectSettingLoadMatch
+/** Request payload for ProjectSetting#list. */
+class ProjectSettingListMatch
 {
     public string $organization_id;
     public string $project_id;
-}
-
-/** PullRequest entity data model. */
-class PullRequest
-{
-    public array $available_tests;
-    public ?string $branch = null;
-    public ?bool $cleanup_only = null;
-    public mixed $current_run = null;
-    public array $findings;
-    public ?string $head_sha = null;
-    public ?string $id = null;
-    public string $idempotency_key;
-    public ?string $imessage_number = null;
-    public ?int $number = null;
-    public array $pagination;
-    public array $permissions;
-    public bool $preview_cleanup_ready;
-    public mixed $preview_url = null;
-    public mixed $project = null;
-    public ?string $project_id = null;
-    public array $pull_request;
-    public ?string $repository_id = null;
-    public array $runs;
-}
-
-/** Request payload for PullRequest#load. */
-class PullRequestLoadMatch
-{
-    public string $id;
-    public string $organization_id;
-    public ?int $page = null;
-}
-
-/** Request payload for PullRequest#create. */
-class PullRequestCreateData
-{
-    public string $organization_id;
-    public ?string $branch = null;
-    public ?bool $cleanup_only = null;
-    public ?string $head_sha = null;
-    public string $idempotency_key;
-    public ?string $imessage_number = null;
-    public ?int $number = null;
-    public mixed $preview_url = null;
-    public ?string $project_id = null;
-    public ?string $repository_id = null;
-}
-
-/** Request payload for PullRequest#remove. */
-class PullRequestRemoveMatch
-{
-    public string $id;
-    public string $organization_id;
 }
 
 /** PullRequestAction entity data model. */
@@ -14742,7 +14530,7 @@ class RunJob
 {
     public bool $active;
     public bool $allow_failure;
-    public mixed $cache_archive_observations;
+    public mixed $cache_archive_observations = null;
     public string $ci_pipeline_run_id;
     public mixed $ci_runner_id;
     public string $created_at;
@@ -14763,7 +14551,7 @@ class RunJob
     public mixed $queued_at;
     public mixed $reconciliation_id = null;
     public int $retry_number;
-    public mixed $reuse;
+    public mixed $reuse = null;
     public mixed $runner_label_selector;
     public string $slug;
     public mixed $started_at;
@@ -14848,37 +14636,28 @@ class RunSearchLoadMatch
 /** RunUpdate entity data model. */
 class RunUpdate
 {
-    public string $base_sha;
-    public bool $can_verify;
-    public mixed $comment_url;
-    public bool $draft;
-    public mixed $github_repository;
-    public mixed $github_url;
-    public string $head_sha;
-    public string $id;
-    public mixed $latest_created_at;
-    public bool $latest_current;
-    public mixed $latest_head_sha;
-    public mixed $latest_reason;
-    public mixed $latest_run_id;
-    public mixed $latest_state;
-    public int $number;
-    public mixed $project_id;
-    public mixed $project_slug;
-    public string $provider;
-    public string $repository_id;
-    public string $request_label;
-    public mixed $source_branch;
-    public mixed $source_repository;
-    public mixed $source_url;
-    public string $state;
-    public string $title;
-    public string $updated_at;
-    public string $web_path;
+    public array $active_runs;
+    public bool $checkout_required;
+    public mixed $cli_signed_in_at;
+    public array $counts;
+    public mixed $demo_project;
+    public array $environments;
+    public bool $included_deep_scan;
+    public mixed $onboarding_discovery = null;
+    public array $organization;
+    public array $permissions;
+    public mixed $project;
+    public ?array $pull_request_launch_options = null;
+    public ?array $pull_requests = null;
+    public array $repositories;
+    public array $runs;
+    public array $runs_pagination;
+    public mixed $suggested_app_url;
+    public bool $url_first_start;
 }
 
-/** Request payload for RunUpdate#list. */
-class RunUpdateListMatch
+/** Request payload for RunUpdate#load. */
+class RunUpdateLoadMatch
 {
     public string $organization_id;
     public ?int $page = null;
@@ -15297,8 +15076,8 @@ class SettingMutationLeaseCreateData
 class Signal
 {
     public mixed $acked_at;
-    public mixed $acked_by;
-    public array $agent_runs;
+    public mixed $acked_by = null;
+    public ?array $agent_runs = null;
     public mixed $app_service_id;
     public array $attribution;
     public string $created_at;
@@ -15310,8 +15089,8 @@ class Signal
     public string $occurred_at;
     public string $organization_id;
     public array $payload;
-    public array $recovery;
-    public array $resolution;
+    public ?array $recovery = null;
+    public ?array $resolution = null;
     public string $severity;
     public array $source;
     public mixed $subject_id;
@@ -16310,7 +16089,7 @@ class SparkAgentLocalThread
     public bool $can_interrupt;
     public bool $can_send;
     public string $created_at;
-    public array $delivery;
+    public ?array $delivery = null;
     public string $device_id;
     public string $device_name;
     public ?string $diagnostic_code = null;
@@ -16325,7 +16104,7 @@ class SparkAgentLocalThread
     public string $provider;
     public array $references;
     public mixed $relay_disconnected_at = null;
-    public array $relay_participant;
+    public ?array $relay_participant = null;
     public mixed $result;
     public bool $result_expired;
     public mixed $result_schema = null;
@@ -16478,6 +16257,53 @@ class SparkAgentThreadCreateData
     public ?string $title = null;
 }
 
+/** SparkAutomation entity data model. */
+class SparkAutomation
+{
+    public bool $can_manage;
+    public bool $can_manage_events;
+    public bool $can_run;
+    public bool $can_schedule;
+    public array $definition;
+    public array $event_subscriptions;
+    public array $event_triggers;
+    public int $expected_revision;
+    public string $id;
+    public string $key;
+    public string $name;
+    public int $revision;
+    public mixed $schedule;
+    public array $schedules;
+    public array $version;
+}
+
+/** Request payload for SparkAutomation#load. */
+class SparkAutomationLoadMatch
+{
+    public string $agent_id;
+    public string $id;
+    public string $organization_id;
+}
+
+/** Request payload for SparkAutomation#list. */
+class SparkAutomationListMatch
+{
+    public string $agent_id;
+    public string $organization_id;
+    public ?string $cursor = null;
+    public ?int $limit = null;
+}
+
+/** Request payload for SparkAutomation#update. */
+class SparkAutomationUpdateData
+{
+    public string $agent_id;
+    public string $id;
+    public string $organization_id;
+    public ?array $definition = null;
+    public ?int $expected_revision = null;
+}
+
 /** SparkCredit entity data model. */
 class SparkCredit
 {
@@ -16487,7 +16313,7 @@ class SparkCredit
     public string $available_usd;
     public ?string $billing_unit = null;
     public bool $can_manage;
-    public array $compute_minutes;
+    public ?array $compute_minutes = null;
     public ?string $compute_usd = null;
     public int $credits_per_usd;
     public ?string $inference_usd = null;
@@ -17332,7 +17158,7 @@ class VcFileListMatch
 /** VcMergeQueue entity data model. */
 class VcMergeQueue
 {
-    public array $analytics;
+    public ?array $analytics = null;
     public ?string $id = null;
     public array $policy;
     public array $queue;
@@ -17390,7 +17216,7 @@ class VcStack
     public array $changes;
     public string $code;
     public ?string $id = null;
-    public array $landing;
+    public ?array $landing = null;
     public int $member_count;
     public mixed $name;
     public string $ref_name;
@@ -17783,7 +17609,7 @@ class VerificationProjectScenario
     public string $created_at;
     public array $dependencies;
     public ?array $fixtures = null;
-    public array $health;
+    public ?array $health = null;
     public string $id;
     public mixed $identity_probe = null;
     public mixed $if = null;
@@ -17951,6 +17777,236 @@ class VerifyEmailVerification
 /** Request payload for VerifyEmailVerification#load. */
 class VerifyEmailVerificationLoadMatch
 {
+}
+
+/** VerifyEnvironment entity data model. */
+class VerifyEnvironment
+{
+    public mixed $active_revision_id;
+    public bool $agent_sign_up_available;
+    public string $allowed_actions;
+    public array $billing;
+    public array $cleanup;
+    public string $connection;
+    public string $created_at;
+    public ?array $default_policy = null;
+    public array $default_policy_json;
+    public array $discovery_defaults;
+    public array $environment;
+    public ?array $exploration_accounts = null;
+    public ?array $explorations = null;
+    public mixed $first_run = null;
+    public mixed $hosted_app_id;
+    public string $id;
+    public mixed $imessage_number;
+    public bool $included_deep_scan;
+    public int $lock_version;
+    public bool $managed_google_available;
+    public string $managed_google_email;
+    public mixed $messaging_tester_number = null;
+    public string $name;
+    public array $network_connections;
+    public mixed $onboarding_discovery = null;
+    public string $organization_id;
+    public ?array $pending_accounts = null;
+    public array $permissions;
+    public mixed $project_id;
+    public mixed $repository_id;
+    public array $revisions;
+    public mixed $setup_discovery_id = null;
+    public bool $sign_in_check_available;
+    public string $slug;
+    public string $status;
+    public mixed $target_kind;
+    public mixed $target_url;
+    public array $test_accounts;
+    public string $updated_at;
+    public mixed $verify_network_connection_id;
+    public ?int $version = null;
+}
+
+/** Request payload for VerifyEnvironment#load. */
+class VerifyEnvironmentLoadMatch
+{
+    public ?string $id = null;
+    public string $organization_id;
+    public ?string $project_id = null;
+}
+
+/** Request payload for VerifyEnvironment#create. */
+class VerifyEnvironmentCreateData
+{
+    public string $organization_id;
+    public ?string $allowed_actions = null;
+    public ?array $default_policy = null;
+    public mixed $imessage_number = null;
+    public mixed $messaging_tester_number = null;
+    public ?string $name = null;
+    public mixed $project_id = null;
+    public mixed $repository_id = null;
+    public string $slug;
+    public mixed $target_kind = null;
+    public mixed $target_url = null;
+}
+
+/** Request payload for VerifyEnvironment#update. */
+class VerifyEnvironmentUpdateData
+{
+    public string $id;
+    public string $organization_id;
+}
+
+/** Request payload for VerifyEnvironment#patch. */
+class VerifyEnvironmentPatchData
+{
+    public string $id;
+    public string $organization_id;
+    public ?string $allowed_actions = null;
+    public mixed $imessage_number = null;
+    public mixed $messaging_tester_number = null;
+    public ?string $name = null;
+    public mixed $target_url = null;
+    public mixed $verify_network_connection_id = null;
+    public ?int $version = null;
+}
+
+/** Request payload for VerifyEnvironment#remove. */
+class VerifyEnvironmentRemoveMatch
+{
+    public string $id;
+    public string $organization_id;
+}
+
+/** VerifyEvidence entity data model. */
+class VerifyEvidence
+{
+    public ?string $id = null;
+}
+
+/** Request payload for VerifyEvidence#load. */
+class VerifyEvidenceLoadMatch
+{
+    public ?string $id = null;
+    public string $organization_id;
+    public ?string $agent_id = null;
+    public ?string $cursor = null;
+    public ?string $exploration_id = null;
+    public ?string $kind = null;
+    public ?int $limit = null;
+    public ?string $repository_id = null;
+    public ?string $scenario_run_id = null;
+}
+
+/** VerifyMergeRequest entity data model. */
+class VerifyMergeRequest
+{
+    public array $available_tests;
+    public string $base_sha;
+    public ?string $branch = null;
+    public mixed $comment_url;
+    public mixed $current_run = null;
+    public bool $draft;
+    public array $findings;
+    public mixed $github_repository;
+    public mixed $github_url;
+    public string $head_sha;
+    public string $id;
+    public string $idempotency_key;
+    public int $number;
+    public array $pagination;
+    public array $permissions;
+    public bool $preview_cleanup_ready;
+    public mixed $preview_url = null;
+    public mixed $project = null;
+    public mixed $project_id;
+    public mixed $project_slug;
+    public string $provider;
+    public array $pull_request;
+    public string $repository_id;
+    public string $request_label;
+    public mixed $requested_run_id;
+    public array $runs;
+    public mixed $source_branch;
+    public mixed $source_repository;
+    public mixed $source_url;
+    public string $state;
+    public string $title;
+    public string $updated_at;
+    public string $web_path;
+}
+
+/** Request payload for VerifyMergeRequest#load. */
+class VerifyMergeRequestLoadMatch
+{
+    public string $id;
+    public string $organization_id;
+    public ?int $page = null;
+}
+
+/** Request payload for VerifyMergeRequest#create. */
+class VerifyMergeRequestCreateData
+{
+    public string $organization_id;
+    public ?string $branch = null;
+    public ?string $head_sha = null;
+    public string $idempotency_key;
+    public int $number;
+    public mixed $project_id = null;
+    public ?string $repository_id = null;
+}
+
+/** VerifyPullRequest entity data model. */
+class VerifyPullRequest
+{
+    public array $available_tests;
+    public ?string $branch = null;
+    public ?bool $cleanup_only = null;
+    public mixed $current_run = null;
+    public array $findings;
+    public ?string $head_sha = null;
+    public ?string $id = null;
+    public string $idempotency_key;
+    public ?string $imessage_number = null;
+    public ?int $number = null;
+    public array $pagination;
+    public array $permissions;
+    public bool $preview_cleanup_ready;
+    public mixed $preview_url = null;
+    public mixed $project = null;
+    public ?string $project_id = null;
+    public array $pull_request;
+    public ?string $repository_id = null;
+    public array $runs;
+}
+
+/** Request payload for VerifyPullRequest#load. */
+class VerifyPullRequestLoadMatch
+{
+    public string $id;
+    public string $organization_id;
+    public ?int $page = null;
+}
+
+/** Request payload for VerifyPullRequest#create. */
+class VerifyPullRequestCreateData
+{
+    public string $organization_id;
+    public ?string $branch = null;
+    public ?bool $cleanup_only = null;
+    public ?string $head_sha = null;
+    public string $idempotency_key;
+    public ?string $imessage_number = null;
+    public ?int $number = null;
+    public mixed $preview_url = null;
+    public ?string $project_id = null;
+    public ?string $repository_id = null;
+}
+
+/** Request payload for VerifyPullRequest#remove. */
+class VerifyPullRequestRemoveMatch
+{
+    public string $id;
+    public string $organization_id;
 }
 
 /** VerifySignalIntegration entity data model. */

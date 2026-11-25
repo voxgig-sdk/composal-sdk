@@ -11,4 +11,4 @@ description: |-
   | `provider` | string | yes |  |
   | `reasoning` | array |  |  |
   | `speeds` | array |  |  |
-order: 516000
+order: 515000

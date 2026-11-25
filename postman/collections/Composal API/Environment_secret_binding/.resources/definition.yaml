@@ -1,7 +1,7 @@
 $kind: collection
 id: "9c35cd0a-ac94-57a4-886d-13cfda204d6c"
 description: |-
-  The **environment_secret_binding** entity, which belongs to a app and a environment. Its requests address one record by `{{environment_secret_binding_id}}`, which a list or a create remembers.
+  The **environment_secret_binding** entity, which belongs to a app. Its requests address one record by `{{environment_secret_binding_id}}`, which a list or a create remembers.
 
   | field | type | required | |
   |---|---|---|---|
@@ -10,4 +10,4 @@ description: |-
   | `mode` | string |  |  |
   | `secret_id` | string |  |  |
   | `secret_version_id` | string |  |  |
-order: 240000
+order: 239000

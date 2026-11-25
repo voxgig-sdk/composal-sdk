@@ -34,7 +34,7 @@ class AgentWorkflowRunEntityTest < Minitest::Test
     setup = agent_workflow_run_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["list"].each do |_op|
+    ["list", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "agent_workflow_run." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -51,6 +51,13 @@ class AgentWorkflowRunEntityTest < Minitest::Test
       end
     end
     client = setup[:client]
+    if setup[:live]
+      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["agent_workflow_run01"]
+      Runner.live_pace
+      Runner.live_existing(setup, LIVE_STRICT, "agent_workflow_run", "id", _live_id) do
+        client.AgentWorkflowRun(nil).list({"agent_id" => setup[:idmap]["agent01"], "organization_id" => setup[:idmap]["organization01"]}, nil)
+      end
+    end
 
     # Bootstrap entity data from existing test data.
     agent_workflow_run_ref01_data_raw = Vs.items(Helpers.to_map(
@@ -70,6 +77,18 @@ class AgentWorkflowRunEntityTest < Minitest::Test
 
     agent_workflow_run_ref01_list_result = agent_workflow_run_ref01_ent.list(agent_workflow_run_ref01_match, nil)
     assert agent_workflow_run_ref01_list_result.is_a?(Array)
+
+    Runner.live_pace if setup[:live]
+    # LOAD
+    agent_workflow_run_ref01_match_dt0 = {
+      "id" => agent_workflow_run_ref01_data["id"],
+    }
+    agent_workflow_run_ref01_match_dt0["agent_id"] = setup[:idmap]["agent_id"] || setup[:idmap]["agent01"]
+    agent_workflow_run_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
+    agent_workflow_run_ref01_data_dt0_loaded = agent_workflow_run_ref01_ent.load(agent_workflow_run_ref01_match_dt0, nil)
+    agent_workflow_run_ref01_data_dt0_load_result = Helpers.to_map(agent_workflow_run_ref01_data_dt0_loaded.respond_to?(:data_get) ? agent_workflow_run_ref01_data_dt0_loaded.data_get : agent_workflow_run_ref01_data_dt0_loaded)
+    assert !agent_workflow_run_ref01_data_dt0_load_result.nil?
+    assert Runner.live_same_id(agent_workflow_run_ref01_data_dt0_load_result["id"], agent_workflow_run_ref01_data["id"])
 
       return
     end
@@ -82,6 +101,13 @@ class AgentWorkflowRunEntityTest < Minitest::Test
       end
     end
     client = setup[:client]
+    if setup[:live]
+      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["agent_workflow_run01"]
+      Runner.live_pace
+      Runner.live_existing(setup, LIVE_STRICT, "agent_workflow_run", "id", _live_id) do
+        client.AgentWorkflowRun(nil).list({"agent_id" => setup[:idmap]["agent01"], "organization_id" => setup[:idmap]["organization01"]}, nil)
+      end
+    end
 
     # Bootstrap entity data from existing test data.
     agent_workflow_run_ref01_data_raw = Vs.items(Helpers.to_map(
@@ -101,6 +127,18 @@ class AgentWorkflowRunEntityTest < Minitest::Test
 
     agent_workflow_run_ref01_list_result = agent_workflow_run_ref01_ent.list(agent_workflow_run_ref01_match, nil)
     assert agent_workflow_run_ref01_list_result.is_a?(Array)
+
+    Runner.live_pace if setup[:live]
+    # LOAD
+    agent_workflow_run_ref01_match_dt0 = {
+      "id" => agent_workflow_run_ref01_data["id"],
+    }
+    agent_workflow_run_ref01_match_dt0["agent_id"] = setup[:idmap]["agent_id"] || setup[:idmap]["agent01"]
+    agent_workflow_run_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
+    agent_workflow_run_ref01_data_dt0_loaded = agent_workflow_run_ref01_ent.load(agent_workflow_run_ref01_match_dt0, nil)
+    agent_workflow_run_ref01_data_dt0_load_result = Helpers.to_map(agent_workflow_run_ref01_data_dt0_loaded.respond_to?(:data_get) ? agent_workflow_run_ref01_data_dt0_loaded.data_get : agent_workflow_run_ref01_data_dt0_loaded)
+    assert !agent_workflow_run_ref01_data_dt0_load_result.nil?
+    assert Runner.live_same_id(agent_workflow_run_ref01_data_dt0_load_result["id"], agent_workflow_run_ref01_data["id"])
 
   end
 end

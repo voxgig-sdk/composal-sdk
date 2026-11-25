@@ -67,7 +67,7 @@ const utility_1 = require("../../utility");
             params.repo_id = 'direct03';
         }
         const result = await client.direct({
-            path: 'api/v1/organizations/{organization_id}/repos/{repo_id}/vcs/changes/{id}/diff',
+            path: 'api/v1/organizations/{organization_id}/repos/{repo_id}/vcs/changes/{id}',
             method: 'GET',
             params,
             query,

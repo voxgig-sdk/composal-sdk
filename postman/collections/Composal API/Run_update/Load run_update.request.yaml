@@ -1,0 +1,28 @@
+$kind: http-request
+id: "4c8d2254-784d-5267-aacb-b631765c76c3"
+description: |-
+  The `load` operation of **run_update**.
+
+  SDK: `client.RunUpdate().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/run_updates"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: page
+    value: ""
+    disabled: true
+  - key: query
+    value: ""
+    disabled: true
+  - key: status
+    value: ""
+    disabled: true
+  - key: verify_environment_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this run_update belongs to.
+order: 1000

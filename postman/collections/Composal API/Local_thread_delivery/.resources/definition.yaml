@@ -12,4 +12,4 @@ description: |-
   | `id` | string |  |  |
   | `policy` | object | yes |  |
   | `recovery_message` | string | yes |  |
-order: 310000
+order: 306000

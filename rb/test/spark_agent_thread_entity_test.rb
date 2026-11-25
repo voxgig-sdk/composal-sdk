@@ -42,7 +42,7 @@ class SparkAgentThreadEntityTest < Minitest::Test
       end
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
-      puts "LIVE STEP {\"id\":\"spark_agent_thread.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive\"}"
+      puts "LIVE STEP {\"id\":\"spark_agent_thread.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads\"}"
     if setup[:live]
       ["agent01", "organization01"].each do |_live_key|
         if setup[:synthetic_only] || setup[:idmap][_live_key].nil?

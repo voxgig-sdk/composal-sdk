@@ -29,7 +29,7 @@ const utility_1 = require("../../utility");
         const setup = directSetup({ id: 'direct01' });
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-agent_file', setup.live))
             return;
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["agent01", "agent_file01", "agent_file01", "organization01"], LIVE_STRICT))
+        if ((0, utility_1.skipIfMissingIds)(t, setup, ["agent01", "agent_file01", "organization01"], LIVE_STRICT))
             return;
         const { client, calls } = setup;
         const params = {};
@@ -37,14 +37,12 @@ const utility_1 = require("../../utility");
         if (setup.live) {
             params.agent_id = setup.idmap['agent01'];
             params.id = setup.idmap['agent_file01'];
-            params.id = setup.idmap['agent_file01'];
             params.organization_id = setup.idmap['organization01'];
         }
         else {
             params.agent_id = 'direct01';
             params.id = 'direct02';
-            params.id = 'direct03';
-            params.organization_id = 'direct04';
+            params.organization_id = 'direct03';
         }
         const result = await client.direct({
             path: 'api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/files/{id}',
@@ -70,7 +68,6 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(calls[0].url.includes('direct01'));
             (0, node_assert_1.default)(calls[0].url.includes('direct02'));
             (0, node_assert_1.default)(calls[0].url.includes('direct03'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct04'));
         }
     });
 });

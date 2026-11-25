@@ -17,4 +17,4 @@ description: |-
   | `tree_loaded` | boolean |  |  |
   | `variant_count` | integer | yes |  |
   | `variants` | array | yes |  |
-order: 391000
+order: 387000

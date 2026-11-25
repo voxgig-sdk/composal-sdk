@@ -42,7 +42,7 @@ class RelayAgentConnectionEntityTest < Minitest::Test
       end
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
-      puts "LIVE STEP {\"id\":\"relay_agent_connection.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup\"}"
+      puts "LIVE STEP {\"id\":\"relay_agent_connection.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections\"}"
       puts "LIVE STEP {\"id\":\"relay_agent_connection.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}\"}"
       puts "LIVE STEP {\"id\":\"relay_agent_connection.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}\"}"
       puts "LIVE STEP {\"id\":\"relay_agent_connection.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}"

@@ -37,7 +37,7 @@ class TestProductMapIdentityDecisionEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.ProductMapIdentityDecision(None).create({"organization_id": 1, "project_id": "x", "observations": "x", "operation": "x", "reason": "x", "target": "x"}, None)
+            client.ProductMapIdentityDecision(None).create({"organization_id": 1, "project_id": "x", "observations": "x", "operation": "x", "reason": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):

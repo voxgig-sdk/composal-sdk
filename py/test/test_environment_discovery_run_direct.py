@@ -30,13 +30,9 @@ class TestEnvironmentDiscoveryRunDirect:
         if _skip:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
-        if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE" and setup["idmap"].get("environment01") is None:
-            print("LIVE STEP {\"id\":\"direct-load-environment_discovery_run\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives\"}")
-            pytest.skip("Live coverage incomplete: direct-load-environment_discovery_run excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)")
-
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE" and setup["idmap"].get("environment_discovery_run01") is None:
-            print("LIVE STEP {\"id\":\"direct-load-environment_discovery_run\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment_discovery_run01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop gives\"}")
-            pytest.skip("Live coverage incomplete: direct-load-environment_discovery_run excluded (GET-only live run: needs environment_discovery_run01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop gives)")
+            print("LIVE STEP {\"id\":\"direct-load-environment_discovery_run\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment_discovery_run01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs gives\"}")
+            pytest.skip("Live coverage incomplete: direct-load-environment_discovery_run excluded (GET-only live run: needs environment_discovery_run01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs gives)")
 
         if setup["live"]:
             for _live_key in ["environment01", "environment_discovery_run01", "organization01"]:

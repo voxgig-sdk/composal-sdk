@@ -96,7 +96,7 @@ class AppDirectTest < Minitest::Test
     end
 
     result = client.direct({
-      "path" => "api/v1/hosting/apps/{id}/catalog",
+      "path" => "api/v1/hosting/apps/{id}",
       "method" => "GET",
       "params" => params,
       "query" => query,

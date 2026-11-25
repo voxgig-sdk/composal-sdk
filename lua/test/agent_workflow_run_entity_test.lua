@@ -37,7 +37,7 @@ describe("AgentWorkflowRunEntity", function()
     local setup = agent_workflow_run_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"list"}) do
+    for _, _op in ipairs({"list", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "agent_workflow_run." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -54,6 +54,16 @@ describe("AgentWorkflowRunEntity", function()
       end
     end
     local client = setup.client
+    if setup.live then
+      local _live_id = nil
+      if not setup.synthetic_only then
+        _live_id = setup.idmap["agent_workflow_run01"]
+      end
+      runner.live_pace()
+      runner.live_existing(pending, setup, LIVE_STRICT, "agent_workflow_run", function()
+        return client:AgentWorkflowRun(nil):list({["agent_id"] = setup.idmap["agent01"], ["organization_id"] = setup.idmap["organization01"]}, nil)
+      end, "id", _live_id)
+    end
 
     -- Bootstrap entity data from existing test data.
     local agent_workflow_run_ref01_data_raw = vs.items(helpers.to_map(
@@ -76,6 +86,21 @@ describe("AgentWorkflowRunEntity", function()
     local agent_workflow_run_ref01_list_result, err = agent_workflow_run_ref01_ent:list(agent_workflow_run_ref01_match, nil)
     assert.is_nil(err)
     assert.is_table(agent_workflow_run_ref01_list_result)
+
+    if setup.live then
+      runner.live_pace()
+    end
+    -- LOAD
+    local agent_workflow_run_ref01_match_dt0 = {
+      id = agent_workflow_run_ref01_data["id"],
+    }
+    agent_workflow_run_ref01_match_dt0["agent_id"] = setup.idmap["agent_id"] or setup.idmap["agent01"]
+    agent_workflow_run_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+    local agent_workflow_run_ref01_data_dt0_loaded, err = agent_workflow_run_ref01_ent:load(agent_workflow_run_ref01_match_dt0, nil)
+    assert.is_nil(err)
+    local agent_workflow_run_ref01_data_dt0_load_result = helpers.to_map(type(agent_workflow_run_ref01_data_dt0_loaded) == 'table' and agent_workflow_run_ref01_data_dt0_loaded.data_get and agent_workflow_run_ref01_data_dt0_loaded:data_get() or agent_workflow_run_ref01_data_dt0_loaded)
+    assert.is_not_nil(agent_workflow_run_ref01_data_dt0_load_result)
+    assert.is_true(runner.live_same_id(agent_workflow_run_ref01_data_dt0_load_result["id"], agent_workflow_run_ref01_data["id"]))
 
       return
     end
@@ -88,6 +113,16 @@ describe("AgentWorkflowRunEntity", function()
       end
     end
     local client = setup.client
+    if setup.live then
+      local _live_id = nil
+      if not setup.synthetic_only then
+        _live_id = setup.idmap["agent_workflow_run01"]
+      end
+      runner.live_pace()
+      runner.live_existing(pending, setup, LIVE_STRICT, "agent_workflow_run", function()
+        return client:AgentWorkflowRun(nil):list({["agent_id"] = setup.idmap["agent01"], ["organization_id"] = setup.idmap["organization01"]}, nil)
+      end, "id", _live_id)
+    end
 
     -- Bootstrap entity data from existing test data.
     local agent_workflow_run_ref01_data_raw = vs.items(helpers.to_map(
@@ -110,6 +145,21 @@ describe("AgentWorkflowRunEntity", function()
     local agent_workflow_run_ref01_list_result, err = agent_workflow_run_ref01_ent:list(agent_workflow_run_ref01_match, nil)
     assert.is_nil(err)
     assert.is_table(agent_workflow_run_ref01_list_result)
+
+    if setup.live then
+      runner.live_pace()
+    end
+    -- LOAD
+    local agent_workflow_run_ref01_match_dt0 = {
+      id = agent_workflow_run_ref01_data["id"],
+    }
+    agent_workflow_run_ref01_match_dt0["agent_id"] = setup.idmap["agent_id"] or setup.idmap["agent01"]
+    agent_workflow_run_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+    local agent_workflow_run_ref01_data_dt0_loaded, err = agent_workflow_run_ref01_ent:load(agent_workflow_run_ref01_match_dt0, nil)
+    assert.is_nil(err)
+    local agent_workflow_run_ref01_data_dt0_load_result = helpers.to_map(type(agent_workflow_run_ref01_data_dt0_loaded) == 'table' and agent_workflow_run_ref01_data_dt0_loaded.data_get and agent_workflow_run_ref01_data_dt0_loaded:data_get() or agent_workflow_run_ref01_data_dt0_loaded)
+    assert.is_not_nil(agent_workflow_run_ref01_data_dt0_load_result)
+    assert.is_true(runner.live_same_id(agent_workflow_run_ref01_data_dt0_load_result["id"], agent_workflow_run_ref01_data["id"]))
 
   end)
 end)

@@ -50,7 +50,7 @@ description: |-
   | `saves_scenarios` | boolean | yes |  |
   | `scannable_flows` | array | yes |  |
   | `scenario_count` | integer |  |  |
-  | `scenario_generation` | object | yes |  |
+  | `scenario_generation` | object |  |  |
   | `scenarios_pending` | boolean |  |  |
   | `sign_in_needs_answer` | boolean | yes |  |
   | `sign_in_outcome` | string | yes |  |
@@ -62,4 +62,4 @@ description: |-
   | `title` | string |  |  |
   | `unlock` | any | yes |  |
   | `web_url` | string | yes |  |
-order: 247000
+order: 245000

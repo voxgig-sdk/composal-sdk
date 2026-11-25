@@ -31,4 +31,4 @@ description: |-
   | `updated_at` | string | yes |  |
   | `version` | string | yes |  |
   | `waiting_for_retirement` | boolean | yes |  |
-order: 17000
+order: 16000

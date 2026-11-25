@@ -43,11 +43,6 @@ describe('DeepScanFindingDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
     if (maybeSkipControl(t, 'direct', 'direct-list-deep_scan_finding', setup.live)) return
-    if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["deep_scan01"]) {
-      console.log("LIVE STEP {\"id\":\"direct-list-deep_scan_finding\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs deep_scan01, which only POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce gives\"}")
-      t.skip("Live coverage incomplete: direct-list-deep_scan_finding excluded (GET-only live run: needs deep_scan01, which only POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce gives)")
-      return
-    }
     if (skipIfMissingIds(t, setup, ["deep_scan01","organization01"], LIVE_STRICT)) return
     const { client, calls } = setup
 

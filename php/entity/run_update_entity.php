@@ -290,22 +290,20 @@ class RunUpdateEntity
     }
 
     
-
-    
     /**
-     * List RunUpdate items matching the given filter.
+     * Load a single RunUpdate.
      *
-     * @param RunUpdateListMatch|array|null $reqmatch Match filter (any subset
-     *   of RunUpdate fields) as an assoc-array; RunUpdateListMatch names the shape.
+     * @param RunUpdateLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed RunUpdateLoadMatch names the shape.
      * @param mixed $ctrl Optional per-call control overrides.
-     * @return RunUpdateEntity[] The RunUpdate entities, one per record, each read
-     *   with data_get(); throws ComposalError on failure (item-5 convention).
+     * @return RunUpdateEntity The loaded RunUpdate entity, whose data_get() reads
+     *   its record; throws ComposalError on failure (item-5 convention).
      */
-    public function list(?array $reqmatch = null, $ctrl = null): mixed
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
-            "opname" => "list",
+            "opname" => "load",
             "ctrl" => $ctrl,
             "match" => $this->_match,
             "data" => $this->_data,
@@ -317,11 +315,16 @@ class RunUpdateEntity
                 if ($ctx->result->resmatch) {
                     $this->_match = $ctx->result->resmatch;
                 }
+                if ($ctx->result->resdata) {
+                    $this->_data = ComposalHelpers::to_map(Struct::clone($ctx->result->resdata)) ?? [];
+                }
             }
         });
     }
 
 
+
+    
 
     
 

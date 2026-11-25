@@ -175,9 +175,8 @@ func TestVcStackDirect(t *testing.T) {
 			params["repo_id"] = setup.idmap["repo01"]
 		} else {
 			params["id"] = "direct01"
-			params["id"] = "direct02"
-			params["organization_id"] = "direct03"
-			params["repo_id"] = "direct04"
+			params["organization_id"] = "direct02"
+			params["repo_id"] = "direct03"
 		}
 
 		result, err := client.Direct(map[string]any{
@@ -236,9 +235,6 @@ func TestVcStackDirect(t *testing.T) {
 				}
 				if !strings.Contains(url, "direct03") {
 					t.Fatalf("expected url to contain direct03, got %v", url)
-				}
-				if !strings.Contains(url, "direct04") {
-					t.Fatalf("expected url to contain direct04, got %v", url)
 				}
 			}
 		}

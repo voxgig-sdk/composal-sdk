@@ -106,13 +106,6 @@ main: kit: entity: me_email: {
                 r: true
                 t: "`$STRING`"
               }
-              {
-                k: "param"
-                n: "id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
             ]
           }
           m: "POST"
@@ -251,13 +244,6 @@ main: kit: entity: me_email: {
                 r: true
                 t: "`$STRING`"
               }
-              {
-                k: "param"
-                n: "id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
             ]
           }
           m: "PATCH"
@@ -311,13 +297,6 @@ main: kit: entity: me_email: {
           }
           g: {
             params: [
-              {
-                k: "param"
-                n: "id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
               {
                 k: "param"
                 n: "id"

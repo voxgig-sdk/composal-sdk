@@ -5,31 +5,22 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `base_sha` | string | yes |  |
-  | `can_verify` | boolean | yes |  |
-  | `comment_url` | string | yes |  |
-  | `draft` | boolean | yes |  |
-  | `github_repository` | string | yes |  |
-  | `github_url` | string | yes |  |
-  | `head_sha` | string | yes |  |
-  | `id` | string | yes |  |
-  | `latest_created_at` | string | yes |  |
-  | `latest_current` | boolean | yes |  |
-  | `latest_head_sha` | string | yes |  |
-  | `latest_reason` | string | yes |  |
-  | `latest_run_id` | string | yes |  |
-  | `latest_state` | string | yes |  |
-  | `number` | integer | yes |  |
-  | `project_id` | string | yes |  |
-  | `project_slug` | string | yes |  |
-  | `provider` | string | yes |  |
-  | `repository_id` | string | yes |  |
-  | `request_label` | string | yes |  |
-  | `source_branch` | string | yes |  |
-  | `source_repository` | string | yes |  |
-  | `source_url` | string | yes |  |
-  | `state` | string | yes |  |
-  | `title` | string | yes |  |
-  | `updated_at` | string | yes |  |
-  | `web_path` | string | yes |  |
-order: 458000
+  | `active_runs` | array | yes |  |
+  | `checkout_required` | boolean | yes |  |
+  | `cli_signed_in_at` | string | yes |  |
+  | `counts` | object | yes |  |
+  | `demo_project` | object | yes |  |
+  | `environments` | array | yes |  |
+  | `included_deep_scan` | boolean | yes |  |
+  | `onboarding_discovery` | any |  |  |
+  | `organization` | object | yes |  |
+  | `permissions` | object | yes |  |
+  | `project` | any | yes |  |
+  | `pull_request_launch_options` | array |  |  |
+  | `pull_requests` | array |  |  |
+  | `repositories` | array | yes |  |
+  | `runs` | array | yes |  |
+  | `runs_pagination` | object | yes |  |
+  | `suggested_app_url` | string | yes |  |
+  | `url_first_start` | boolean | yes |  |
+order: 456000

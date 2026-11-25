@@ -1,0 +1,45 @@
+# BasicVerifyMergeRequestFlow
+
+main: kit: flow: BasicVerifyMergeRequestFlow:
+{
+  entity: "verify_merge_request",
+  kind: "basic",
+  name: "BasicVerifyMergeRequestFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_merge_request_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "verify_merge_request_ref01",
+        srcdatavar: "verify_merge_request_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "verify_merge_request01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_merge_request_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyMergeRequestFlow"
+}

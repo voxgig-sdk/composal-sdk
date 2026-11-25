@@ -43,11 +43,9 @@ class TestA2aWellKnownDirect:
         query = {}
         if setup["live"]:
             params["a2a_id"] = setup["idmap"].get("a2a01")
-            params["a2a_id"] = setup["idmap"].get("a2a01")
             pass
         else:
             params["a2a_id"] = "direct01"
-            params["a2a_id"] = "direct02"
             pass
 
         result = client.direct({

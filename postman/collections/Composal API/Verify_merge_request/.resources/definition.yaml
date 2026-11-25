@@ -1,0 +1,41 @@
+$kind: collection
+id: "5afe44ac-a2da-5485-b926-c704254c3804"
+description: |-
+  The **verify_merge_request** entity, which belongs to a organization. Its requests address one record by `{{verify_merge_request_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `available_tests` | array | yes |  |
+  | `base_sha` | string | yes |  |
+  | `branch` | string |  |  |
+  | `comment_url` | string | yes |  |
+  | `current_run` | any |  |  |
+  | `draft` | boolean | yes |  |
+  | `findings` | array | yes |  |
+  | `github_repository` | string | yes |  |
+  | `github_url` | string | yes |  |
+  | `head_sha` | string | yes |  |
+  | `id` | string | yes |  |
+  | `idempotency_key` | string | yes |  |
+  | `number` | integer | yes |  |
+  | `pagination` | object | yes |  |
+  | `permissions` | object | yes |  |
+  | `preview_cleanup_ready` | boolean | yes |  |
+  | `preview_url` | string |  |  |
+  | `project` | any |  |  |
+  | `project_id` | string | yes |  |
+  | `project_slug` | string | yes |  |
+  | `provider` | string | yes |  |
+  | `pull_request` | object | yes |  |
+  | `repository_id` | string | yes |  |
+  | `request_label` | string | yes |  |
+  | `requested_run_id` | string | yes |  |
+  | `runs` | array | yes |  |
+  | `source_branch` | string | yes |  |
+  | `source_repository` | string | yes |  |
+  | `source_url` | string | yes |  |
+  | `state` | string | yes |  |
+  | `title` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `web_path` | string | yes |  |
+order: 544000

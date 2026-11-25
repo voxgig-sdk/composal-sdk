@@ -275,7 +275,7 @@ main: kit: entity: github_runner_setup: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.runner_labels`"
+            res: "`body`"
           }
         }
       ]

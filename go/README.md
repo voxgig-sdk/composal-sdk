@@ -224,7 +224,6 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `AgentApp` | `(data map[string]any) ComposalEntityBase` | Create an AgentApp entity instance. |
 | `AgentAppInstall` | `(data map[string]any) ComposalEntityBase` | Create an AgentAppInstall entity instance. |
 | `AgentAttachment` | `(data map[string]any) ComposalEntityBase` | Create an AgentAttachment entity instance. |
-| `AgentAutomation` | `(data map[string]any) ComposalEntityBase` | Create an AgentAutomation entity instance. |
 | `AgentAvatar` | `(data map[string]any) ComposalEntityBase` | Create an AgentAvatar entity instance. |
 | `AgentCommand` | `(data map[string]any) ComposalEntityBase` | Create an AgentCommand entity instance. |
 | `AgentComputer` | `(data map[string]any) ComposalEntityBase` | Create an AgentComputer entity instance. |
@@ -302,6 +301,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `AppDataResource` | `(data map[string]any) ComposalEntityBase` | Create an AppDataResource entity instance. |
 | `AppDeploy` | `(data map[string]any) ComposalEntityBase` | Create an AppDeploy entity instance. |
 | `AppDeployment` | `(data map[string]any) ComposalEntityBase` | Create an AppDeployment entity instance. |
+| `AppDeploymentDashboard` | `(data map[string]any) ComposalEntityBase` | Create an AppDeploymentDashboard entity instance. |
 | `AppDeploymentOperation` | `(data map[string]any) ComposalEntityBase` | Create an AppDeploymentOperation entity instance. |
 | `AppDeploymentRollback` | `(data map[string]any) ComposalEntityBase` | Create an AppDeploymentRollback entity instance. |
 | `AppEnvironment` | `(data map[string]any) ComposalEntityBase` | Create an AppEnvironment entity instance. |
@@ -431,12 +431,12 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Device` | `(data map[string]any) ComposalEntityBase` | Create a Device entity instance. |
 | `DeviceBrowserOperation` | `(data map[string]any) ComposalEntityBase` | Create a DeviceBrowserOperation entity instance. |
 | `DeviceControlMessage` | `(data map[string]any) ComposalEntityBase` | Create a DeviceControlMessage entity instance. |
-| `DeviceControlOperation` | `(data map[string]any) ComposalEntityBase` | Create a DeviceControlOperation entity instance. |
 | `DeviceEnterpriseRelay` | `(data map[string]any) ComposalEntityBase` | Create a DeviceEnterpriseRelay entity instance. |
 | `DeviceFolderListing` | `(data map[string]any) ComposalEntityBase` | Create a DeviceFolderListing entity instance. |
 | `DeviceGrant` | `(data map[string]any) ComposalEntityBase` | Create a DeviceGrant entity instance. |
 | `DeviceInvocation` | `(data map[string]any) ComposalEntityBase` | Create a DeviceInvocation entity instance. |
 | `DeviceLocalEvent` | `(data map[string]any) ComposalEntityBase` | Create a DeviceLocalEvent entity instance. |
+| `DeviceOperation` | `(data map[string]any) ComposalEntityBase` | Create a DeviceOperation entity instance. |
 | `DevicePairing` | `(data map[string]any) ComposalEntityBase` | Create a DevicePairing entity instance. |
 | `DeviceProject` | `(data map[string]any) ComposalEntityBase` | Create a DeviceProject entity instance. |
 | `DeviceScheduledCheckIn` | `(data map[string]any) ComposalEntityBase` | Create a DeviceScheduledCheckIn entity instance. |
@@ -448,14 +448,12 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Dream` | `(data map[string]any) ComposalEntityBase` | Create a Dream entity instance. |
 | `Edge` | `(data map[string]any) ComposalEntityBase` | Create an Edge entity instance. |
 | `EmailVerification` | `(data map[string]any) ComposalEntityBase` | Create an EmailVerification entity instance. |
-| `Environment` | `(data map[string]any) ComposalEntityBase` | Create an Environment entity instance. |
 | `EnvironmentDiscoveryRun` | `(data map[string]any) ComposalEntityBase` | Create an EnvironmentDiscoveryRun entity instance. |
 | `EnvironmentExploration` | `(data map[string]any) ComposalEntityBase` | Create an EnvironmentExploration entity instance. |
 | `EnvironmentFirstRun` | `(data map[string]any) ComposalEntityBase` | Create an EnvironmentFirstRun entity instance. |
 | `EnvironmentRevision` | `(data map[string]any) ComposalEntityBase` | Create an EnvironmentRevision entity instance. |
 | `EnvironmentSecretBinding` | `(data map[string]any) ComposalEntityBase` | Create an EnvironmentSecretBinding entity instance. |
 | `EnvironmentTestAccount` | `(data map[string]any) ComposalEntityBase` | Create an EnvironmentTestAccount entity instance. |
-| `Evidence` | `(data map[string]any) ComposalEntityBase` | Create an Evidence entity instance. |
 | `ExecutionDesiredState` | `(data map[string]any) ComposalEntityBase` | Create an ExecutionDesiredState entity instance. |
 | `ExecutionReconcilerTick` | `(data map[string]any) ComposalEntityBase` | Create an ExecutionReconcilerTick entity instance. |
 | `ExecutionRelease` | `(data map[string]any) ComposalEntityBase` | Create an ExecutionRelease entity instance. |
@@ -476,7 +474,6 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GithubCiRepository` | `(data map[string]any) ComposalEntityBase` | Create a GithubCiRepository entity instance. |
 | `GithubCiRepositoryCompatibilityReport` | `(data map[string]any) ComposalEntityBase` | Create a GithubCiRepositoryCompatibilityReport entity instance. |
 | `GithubConnection` | `(data map[string]any) ComposalEntityBase` | Create a GithubConnection entity instance. |
-| `GithubIntegration` | `(data map[string]any) ComposalEntityBase` | Create a GithubIntegration entity instance. |
 | `GithubOnboarding` | `(data map[string]any) ComposalEntityBase` | Create a GithubOnboarding entity instance. |
 | `GithubOnboardingBranch` | `(data map[string]any) ComposalEntityBase` | Create a GithubOnboardingBranch entity instance. |
 | `GithubOnboardingImport` | `(data map[string]any) ComposalEntityBase` | Create a GithubOnboardingImport entity instance. |
@@ -535,7 +532,6 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Member` | `(data map[string]any) ComposalEntityBase` | Create a Member entity instance. |
 | `Memory` | `(data map[string]any) ComposalEntityBase` | Create a Memory entity instance. |
 | `MergeQueueEntry` | `(data map[string]any) ComposalEntityBase` | Create a MergeQueueEntry entity instance. |
-| `MergeRequest` | `(data map[string]any) ComposalEntityBase` | Create a MergeRequest entity instance. |
 | `MergeResolution` | `(data map[string]any) ComposalEntityBase` | Create a MergeResolution entity instance. |
 | `MessagingConversationMessage` | `(data map[string]any) ComposalEntityBase` | Create a MessagingConversationMessage entity instance. |
 | `MessagingConversationUpload` | `(data map[string]any) ComposalEntityBase` | Create a MessagingConversationUpload entity instance. |
@@ -584,6 +580,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `PageProjectRun` | `(data map[string]any) ComposalEntityBase` | Create a PageProjectRun entity instance. |
 | `PageRepoVcCommit` | `(data map[string]any) ComposalEntityBase` | Create a PageRepoVcCommit entity instance. |
 | `PagesBilling` | `(data map[string]any) ComposalEntityBase` | Create a PagesBilling entity instance. |
+| `PagesGithubIntegration` | `(data map[string]any) ComposalEntityBase` | Create a PagesGithubIntegration entity instance. |
 | `PagesGithubOnboarding` | `(data map[string]any) ComposalEntityBase` | Create a PagesGithubOnboarding entity instance. |
 | `PagesMember` | `(data map[string]any) ComposalEntityBase` | Create a PagesMember entity instance. |
 | `PagesProjectCredential` | `(data map[string]any) ComposalEntityBase` | Create a PagesProjectCredential entity instance. |
@@ -619,14 +616,15 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `ProjectMessagingConversation` | `(data map[string]any) ComposalEntityBase` | Create a ProjectMessagingConversation entity instance. |
 | `ProjectOverviewMetric` | `(data map[string]any) ComposalEntityBase` | Create a ProjectOverviewMetric entity instance. |
 | `ProjectOverviewPullRequest` | `(data map[string]any) ComposalEntityBase` | Create a ProjectOverviewPullRequest entity instance. |
+| `ProjectPrTesting` | `(data map[string]any) ComposalEntityBase` | Create a ProjectPrTesting entity instance. |
 | `ProjectProductMap` | `(data map[string]any) ComposalEntityBase` | Create a ProjectProductMap entity instance. |
+| `ProjectProductMapComparison` | `(data map[string]any) ComposalEntityBase` | Create a ProjectProductMapComparison entity instance. |
 | `ProjectRecording` | `(data map[string]any) ComposalEntityBase` | Create a ProjectRecording entity instance. |
 | `ProjectRunPlan` | `(data map[string]any) ComposalEntityBase` | Create a ProjectRunPlan entity instance. |
 | `ProjectRunSchedule` | `(data map[string]any) ComposalEntityBase` | Create a ProjectRunSchedule entity instance. |
 | `ProjectScenarioOption` | `(data map[string]any) ComposalEntityBase` | Create a ProjectScenarioOption entity instance. |
 | `ProjectScenarioRow` | `(data map[string]any) ComposalEntityBase` | Create a ProjectScenarioRow entity instance. |
 | `ProjectSetting` | `(data map[string]any) ComposalEntityBase` | Create a ProjectSetting entity instance. |
-| `PullRequest` | `(data map[string]any) ComposalEntityBase` | Create a PullRequest entity instance. |
 | `PullRequestAction` | `(data map[string]any) ComposalEntityBase` | Create a PullRequestAction entity instance. |
 | `PullRequestMagicMerge` | `(data map[string]any) ComposalEntityBase` | Create a PullRequestMagicMerge entity instance. |
 | `PullRequestSetting` | `(data map[string]any) ComposalEntityBase` | Create a PullRequestSetting entity instance. |
@@ -722,6 +720,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `SparkAgentSite` | `(data map[string]any) ComposalEntityBase` | Create a SparkAgentSite entity instance. |
 | `SparkAgentSkill` | `(data map[string]any) ComposalEntityBase` | Create a SparkAgentSkill entity instance. |
 | `SparkAgentThread` | `(data map[string]any) ComposalEntityBase` | Create a SparkAgentThread entity instance. |
+| `SparkAutomation` | `(data map[string]any) ComposalEntityBase` | Create a SparkAutomation entity instance. |
 | `SparkCredit` | `(data map[string]any) ComposalEntityBase` | Create a SparkCredit entity instance. |
 | `SparkCreditAgentUsage` | `(data map[string]any) ComposalEntityBase` | Create a SparkCreditAgentUsage entity instance. |
 | `SparkCreditUsageTotal` | `(data map[string]any) ComposalEntityBase` | Create a SparkCreditUsageTotal entity instance. |
@@ -760,6 +759,10 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `VerifyAppDomain` | `(data map[string]any) ComposalEntityBase` | Create a VerifyAppDomain entity instance. |
 | `VerifyBrowserSession` | `(data map[string]any) ComposalEntityBase` | Create a VerifyBrowserSession entity instance. |
 | `VerifyEmailVerification` | `(data map[string]any) ComposalEntityBase` | Create a VerifyEmailVerification entity instance. |
+| `VerifyEnvironment` | `(data map[string]any) ComposalEntityBase` | Create a VerifyEnvironment entity instance. |
+| `VerifyEvidence` | `(data map[string]any) ComposalEntityBase` | Create a VerifyEvidence entity instance. |
+| `VerifyMergeRequest` | `(data map[string]any) ComposalEntityBase` | Create a VerifyMergeRequest entity instance. |
+| `VerifyPullRequest` | `(data map[string]any) ComposalEntityBase` | Create a VerifyPullRequest entity instance. |
 | `VerifySignalIntegration` | `(data map[string]any) ComposalEntityBase` | Create a VerifySignalIntegration entity instance. |
 | `VerifyStaticSiteDomain` | `(data map[string]any) ComposalEntityBase` | Create a VerifyStaticSiteDomain entity instance. |
 | `VersionLog` | `(data map[string]any) ComposalEntityBase` | Create a VersionLog entity instance. |
@@ -945,30 +948,6 @@ API path: `/api/v1/organizations/{organization_id}/agent_apps/{id}/installs/{age
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/attachments/{attachment_id}/complete`
-
-#### AgentAutomation
-
-| Field | Description |
-| --- | --- |
-| `"can_manage"` |  |
-| `"can_manage_events"` | Whether new event triggers can be attached or existing settings saved. |
-| `"can_run"` | Whether the viewer can request a manual Temporal run |
-| `"can_schedule"` |  |
-| `"definition"` |  |
-| `"event_subscriptions"` |  |
-| `"event_triggers"` |  |
-| `"expected_revision"` |  |
-| `"id"` |  |
-| `"key"` |  |
-| `"name"` |  |
-| `"revision"` |  |
-| `"schedule"` |  |
-| `"schedules"` |  |
-| `"version"` |  |
-
-Operations: List, Load, Update.
-
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations`
 
 #### AgentAvatar
 
@@ -2437,6 +2416,40 @@ Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployments/{id}/cancel`
 
+#### AppDeploymentDashboard
+
+| Field | Description |
+| --- | --- |
+| `"activity"` |  |
+| `"app"` |  |
+| `"audit_events"` |  |
+| `"capacity"` |  |
+| `"connections"` |  |
+| `"data_resources"` |  |
+| `"deployments"` |  |
+| `"desired_states"` |  |
+| `"environments"` |  |
+| `"id"` |  |
+| `"locations"` |  |
+| `"managed_database_catalog"` |  |
+| `"observability"` |  |
+| `"operations"` |  |
+| `"placements"` |  |
+| `"reconciler_ticks"` |  |
+| `"releases"` |  |
+| `"rollback_deployments"` |  |
+| `"rollouts"` |  |
+| `"runtime_instances"` |  |
+| `"service_bindings"` |  |
+| `"service_views"` |  |
+| `"services"` |  |
+| `"storage_resources"` |  |
+| `"summary"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard`
+
 #### AppDeploymentOperation
 
 | Field | Description |
@@ -3775,7 +3788,7 @@ API path: `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames`
 
 Operations: Create, Load, Patch, Remove, Update.
 
-API path: `/api/v1/cdn_spaces/{id}/archive`
+API path: `/api/v1/organizations/{org_slug}/cdn_spaces`
 
 #### CdnSpaceObject
 
@@ -3821,29 +3834,17 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets
 | Field | Description |
 | --- | --- |
 | `"body"` |  |
-| `"capabilities"` |  |
-| `"change_id"` |  |
-| `"created_at"` |  |
-| `"created_at_label"` |  |
+| `"comment"` |  |
+| `"comments"` |  |
 | `"id"` |  |
 | `"kind"` |  |
 | `"line"` |  |
-| `"outdated"` |  |
 | `"parent_comment_id"` |  |
 | `"patchset_id"` |  |
-| `"patchset_number"` |  |
 | `"path"` |  |
-| `"replies"` |  |
-| `"resolved"` |  |
-| `"resolved_at"` |  |
-| `"resolved_at_label"` |  |
-| `"resolved_by"` |  |
 | `"side"` |  |
-| `"updated_at"` |  |
-| `"updated_at_label"` |  |
-| `"user"` |  |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve`
 
@@ -4532,20 +4533,21 @@ API path: `/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials`
 | Field | Description |
 | --- | --- |
 | `"account_id"` |  |
-| `"active"` |  |
 | `"agent_filters"` | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `"agents"` |  |
 | `"can_continue"` | Whether a finished run can be resumed through the orchestrator. |
 | `"chat_messages"` |  |
+| `"check_count"` |  |
 | `"concurrency"` |  |
 | `"covered_areas"` | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `"created_at"` |  |
-| `"deadline_at"` |  |
+| `"credential_name"` | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `"deadline_at"` | When the team's time limit ends. |
 | `"demo_project"` | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `"duration_ms"` |  |
 | `"ended_early"` | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `"environment_id"` |  |
 | `"environment_name"` |  |
-| `"explorations"` |  |
 | `"explorer_activity"` | What the team is doing now. |
 | `"finding_count"` | Findings at every priority, locked ones included. |
 | `"findings"` | Every tester's findings, most severe first, with the checks each one cites. |
@@ -4555,14 +4557,12 @@ API path: `/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials`
 | `"huntable_flows"` | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `"id"` |  |
 | `"idempotency_key"` |  |
-| `"launch_options"` | Present only when launch was requested by an admin |
 | `"max_seconds"` |  |
 | `"max_testers"` |  |
 | `"mode"` |  |
 | `"next_scan_improvements"` | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `"observed_at"` | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `"onboarding"` | Whether this is the workspace's free first discovery, started by setup. |
-| `"pagination"` |  |
 | `"paywalled"` | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `"permissions"` |  |
 | `"priority_counts"` |  |
@@ -4573,10 +4573,13 @@ API path: `/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials`
 | `"reproductions"` | Fresh-browser reruns of this scan's reported bugs. |
 | `"saves_scenarios"` | Whether this exploration has started saving scenarios. |
 | `"scannable_flows"` | Flows a finished exploration recorded that deep scans can start from. |
+| `"scenario_count"` | Scenarios saved from this discovery. |
 | `"scenario_generation"` |  |
+| `"scenarios_pending"` | Scenarios are still being prepared, so scenario_count may still grow. |
 | `"sign_in_needs_answer"` | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `"sign_in_outcome"` | A sign-in check's outcome; null for other runs. |
 | `"sign_in_question"` | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `"started_at"` |  |
 | `"startup_retryable"` | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `"status"` |  |
 | `"time_limit_reached"` | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -4584,7 +4587,7 @@ API path: `/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials`
 | `"unlock"` | Once a paywalled scan ends, whether a paid plan would unlock its locked findings and whether this person may choose one, as on its findings page. |
 | `"web_url"` | The run's page in the Composal web app |
 
-Operations: Create, Load.
+Operations: Create, List, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce`
 
@@ -4955,30 +4958,6 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_messages`
 
-#### DeviceControlOperation
-
-| Field | Description |
-| --- | --- |
-| `"action"` |  |
-| `"arguments"` |  |
-| `"created_at"` |  |
-| `"delivery"` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
-| `"device_id"` |  |
-| `"diagnostic_code"` | Approved product error code retained after copied diagnostics expire. |
-| `"end"` |  |
-| `"expires_at"` |  |
-| `"id"` |  |
-| `"key"` |  |
-| `"provider"` |  |
-| `"references"` |  |
-| `"result"` |  |
-| `"result_expired"` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
-| `"state"` |  |
-
-Operations: Create, Load.
-
-API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations`
-
 #### DeviceEnterpriseRelay
 
 | Field | Description |
@@ -5046,6 +5025,30 @@ API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{devic
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/local_events`
+
+#### DeviceOperation
+
+| Field | Description |
+| --- | --- |
+| `"action"` |  |
+| `"arguments"` |  |
+| `"created_at"` |  |
+| `"delivery"` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `"device_id"` |  |
+| `"diagnostic_code"` | Approved product error code retained after copied diagnostics expire. |
+| `"end"` |  |
+| `"expires_at"` |  |
+| `"id"` |  |
+| `"key"` |  |
+| `"provider"` |  |
+| `"references"` |  |
+| `"result"` |  |
+| `"result_expired"` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `"state"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations`
 
 #### DevicePairing
 
@@ -5222,56 +5225,6 @@ Operations: Create.
 
 API path: `/api/v1/email_verifications/resend`
 
-#### Environment
-
-| Field | Description |
-| --- | --- |
-| `"active_revision_id"` |  |
-| `"agent_sign_up_available"` | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
-| `"allowed_actions"` | read_only only looks around; writes may create, change and delete data. |
-| `"billing"` |  |
-| `"cleanup"` |  |
-| `"connection"` |  |
-| `"created_at"` |  |
-| `"default_policy"` |  |
-| `"default_policy_json"` |  |
-| `"discovery_defaults"` |  |
-| `"environment"` |  |
-| `"exploration_accounts"` |  |
-| `"explorations"` |  |
-| `"first_run"` |  |
-| `"hosted_app_id"` |  |
-| `"id"` |  |
-| `"imessage_number"` | International destination number; blank or null clears it on an added environment. |
-| `"included_deep_scan"` | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
-| `"lock_version"` |  |
-| `"managed_google_available"` | Whether the managed Google account can be offered for this app. |
-| `"managed_google_email"` |  |
-| `"messaging_tester_number"` | One configured tester number. |
-| `"name"` | Optional for a website target; defaults to its hostname. |
-| `"network_connections"` |  |
-| `"onboarding_discovery"` |  |
-| `"organization_id"` |  |
-| `"pending_accounts"` | Credentials on a Composal address still waiting for the password the customer chose at signup. |
-| `"permissions"` |  |
-| `"project_id"` | Owning project. |
-| `"repository_id"` |  |
-| `"revisions"` |  |
-| `"setup_discovery_id"` | Existing discovery to resume after setup or Checkout, selected within this environment. |
-| `"sign_in_check_available"` | Whether a test account's live sign-in check can run on this app. |
-| `"slug"` |  |
-| `"status"` |  |
-| `"target_kind"` |  |
-| `"target_url"` |  |
-| `"test_accounts"` |  |
-| `"updated_at"` |  |
-| `"verify_network_connection_id"` |  |
-| `"version"` | Required for target or tester changes; use lock_version from the environment. |
-
-Operations: Create, Load, Patch, Remove, Update.
-
-API path: `/api/v1/organizations/{organization_id}/verify/environments`
-
 #### EnvironmentDiscoveryRun
 
 | Field | Description |
@@ -5289,7 +5242,7 @@ API path: `/api/v1/organizations/{organization_id}/verify/environments`
 
 Operations: Create, Load.
 
-API path: `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop`
+API path: `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs`
 
 #### EnvironmentExploration
 
@@ -5422,16 +5375,6 @@ API path: `/api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bi
 Operations: List, Patch, Update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/test_accounts`
-
-#### Evidence
-
-| Field | Description |
-| --- | --- |
-| `"id"` |  |
-
-Operations: Load.
-
-API path: `/api/v1/organizations/{organization_id}/verify/evidence/{id}`
 
 #### ExecutionDesiredState
 
@@ -5760,7 +5703,7 @@ API path: `/api/v1/organizations/{org_slug}/gh/{github_owner}/{github_repo}/{num
 
 Operations: Create, Load.
 
-API path: `/api/v1/git_imports/{id}/complete`
+API path: `/api/v1/organizations/{organization_id}/git_imports`
 
 #### Github
 
@@ -5933,27 +5876,6 @@ API path: `/api/v1/organizations/{organization_id}/github_ci_repositories/{githu
 Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/github_connections`
-
-#### GithubIntegration
-
-| Field | Description |
-| --- | --- |
-| `"account_avatar_url"` |  |
-| `"account_login"` |  |
-| `"connection_status"` |  |
-| `"connection_status_label"` |  |
-| `"github_installation"` |  |
-| `"health"` |  |
-| `"id"` |  |
-| `"imported_repositories_count"` |  |
-| `"imported_repositories_count_label"` |  |
-| `"organization"` |  |
-| `"pagination"` |  |
-| `"repositories"` |  |
-
-Operations: List, Load.
-
-API path: `/api/v1/organizations/{org_slug}/pages/github_integrations`
 
 #### GithubOnboarding
 
@@ -6808,22 +6730,11 @@ API path: `/api/v1/organizations/{organization_id}/browser_sessions/{browser_ses
 
 | Field | Description |
 | --- | --- |
-| `"accepted_at"` |  |
-| `"accepted_by_user"` |  |
 | `"created_at"` |  |
 | `"created_at_label"` |  |
-| `"email"` |  |
-| `"email_delivery_status"` |  |
-| `"expires_at"` |  |
-| `"expires_at_label"` |  |
 | `"id"` |  |
-| `"invite_url"` |  |
-| `"invited_by_user"` |  |
 | `"is_self"` |  |
-| `"organization"` |  |
-| `"revoked_at"` |  |
 | `"role"` |  |
-| `"status"` |  |
 | `"updated_at"` |  |
 | `"updated_at_label"` |  |
 | `"user"` |  |
@@ -6878,48 +6789,6 @@ API path: `/api/v1/organizations/{organization_id}/verify/memories`
 Operations: Create, Remove.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/merge`
-
-#### MergeRequest
-
-| Field | Description |
-| --- | --- |
-| `"available_tests"` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `"base_sha"` |  |
-| `"branch"` | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `"comment_url"` |  |
-| `"current_run"` | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `"draft"` |  |
-| `"findings"` |  |
-| `"github_repository"` | GitHub owner/repository associated with this pull request. |
-| `"github_url"` |  |
-| `"head_sha"` | If supplied, refuse to create a run unless this is the current PR head. |
-| `"id"` |  |
-| `"idempotency_key"` |  |
-| `"number"` |  |
-| `"pagination"` |  |
-| `"permissions"` |  |
-| `"preview_cleanup_ready"` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `"preview_url"` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `"project"` |  |
-| `"project_id"` | Composal project slug or public ID for PR preview environments. |
-| `"project_slug"` |  |
-| `"provider"` |  |
-| `"pull_request"` |  |
-| `"repository_id"` |  |
-| `"request_label"` |  |
-| `"requested_run_id"` |  |
-| `"runs"` |  |
-| `"source_branch"` |  |
-| `"source_repository"` |  |
-| `"source_url"` |  |
-| `"state"` |  |
-| `"title"` |  |
-| `"updated_at"` |  |
-| `"web_path"` |  |
-
-Operations: Create, Load.
-
-API path: `/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun`
 
 #### MergeResolution
 
@@ -7655,6 +7524,27 @@ Operations: Load.
 
 API path: `/api/v1/organizations/{org_slug}/pages/billing`
 
+#### PagesGithubIntegration
+
+| Field | Description |
+| --- | --- |
+| `"account_avatar_url"` |  |
+| `"account_login"` |  |
+| `"connection_status"` |  |
+| `"connection_status_label"` |  |
+| `"github_installation"` |  |
+| `"health"` |  |
+| `"id"` |  |
+| `"imported_repositories_count"` |  |
+| `"imported_repositories_count_label"` |  |
+| `"organization"` |  |
+| `"pagination"` |  |
+| `"repositories"` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/github_integrations`
+
 #### PagesGithubOnboarding
 
 | Field | Description |
@@ -8388,6 +8278,18 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_pull_requests`
 
+#### ProjectPrTesting
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+| `"project"` |  |
+| `"pull_request_options"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/pr_testing`
+
 #### ProjectProductMap
 
 | Field | Description |
@@ -8396,6 +8298,22 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/overview`
+
+#### ProjectProductMapComparison
+
+| Field | Description |
+| --- | --- |
+| `"accounts"` |  |
+| `"comparison"` |  |
+| `"filters"` |  |
+| `"id"` |  |
+| `"project"` |  |
+| `"requirements"` |  |
+| `"revisions"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison`
 
 #### ProjectRecording
 
@@ -8509,44 +8427,12 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 
 | Field | Description |
 | --- | --- |
-| `"available_messaging_environments"` |  |
-| `"messaging_conversations"` |  |
-| `"messaging_enabled"` |  |
-| `"permissions"` |  |
-| `"project"` |  |
-| `"tester_numbers"` |  |
+| `"id"` |  |
+| `"name"` |  |
 
-Operations: Load.
+Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings`
-
-#### PullRequest
-
-| Field | Description |
-| --- | --- |
-| `"available_tests"` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `"branch"` | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `"cleanup_only"` | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
-| `"current_run"` | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `"findings"` |  |
-| `"head_sha"` | If supplied, refuse to create a run unless this is the current PR head. |
-| `"id"` |  |
-| `"idempotency_key"` |  |
-| `"imessage_number"` | International destination of this exact deployed commit. |
-| `"number"` |  |
-| `"pagination"` |  |
-| `"permissions"` |  |
-| `"preview_cleanup_ready"` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `"preview_url"` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `"project"` |  |
-| `"project_id"` | Composal project slug or public ID for PR preview environments. |
-| `"pull_request"` |  |
-| `"repository_id"` |  |
-| `"runs"` |  |
-
-Operations: Create, Load, Remove.
-
-API path: `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share`
 
 #### PullRequestAction
 
@@ -8775,7 +8661,7 @@ API path: `/api/v1/registry/v2/authorize`
 
 Operations: Create, List, Load, Remove, Update.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup`
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections`
 
 #### RelayAgentLocalThread
 
@@ -9167,7 +9053,7 @@ API path: `/api/v1/organizations/{org_slug}/pages/repository_import`
 
 Operations: Create, Load.
 
-API path: `/api/v1/repository_import_sessions/{id}/authorization`
+API path: `/api/v1/organizations/{organization_id}/repository_import_sessions`
 
 #### RepositoryImportSessionRepository
 
@@ -9372,35 +9258,26 @@ API path: `/api/v1/organizations/{organization_id}/verify/run_search`
 
 | Field | Description |
 | --- | --- |
-| `"base_sha"` |  |
-| `"can_verify"` |  |
-| `"comment_url"` |  |
-| `"draft"` |  |
-| `"github_repository"` | GitHub owner/repository associated with this pull request. |
-| `"github_url"` |  |
-| `"head_sha"` |  |
-| `"id"` |  |
-| `"latest_created_at"` |  |
-| `"latest_current"` |  |
-| `"latest_head_sha"` |  |
-| `"latest_reason"` |  |
-| `"latest_run_id"` |  |
-| `"latest_state"` |  |
-| `"number"` |  |
-| `"project_id"` |  |
-| `"project_slug"` |  |
-| `"provider"` |  |
-| `"repository_id"` |  |
-| `"request_label"` |  |
-| `"source_branch"` |  |
-| `"source_repository"` |  |
-| `"source_url"` |  |
-| `"state"` |  |
-| `"title"` |  |
-| `"updated_at"` |  |
-| `"web_path"` |  |
+| `"active_runs"` |  |
+| `"checkout_required"` |  |
+| `"cli_signed_in_at"` | When the signed-in user last finished a CLI sign-in for this organization, so agent setup can show the CLI is connected. |
+| `"counts"` |  |
+| `"demo_project"` | The workspace's copy of the demo project, which setup offers as example data. |
+| `"environments"` |  |
+| `"included_deep_scan"` | Whether a new app gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account, so setup asks for one right after the app. |
+| `"onboarding_discovery"` |  |
+| `"organization"` |  |
+| `"permissions"` |  |
+| `"project"` | The project the page is limited to, or null for the whole organization. |
+| `"pull_request_launch_options"` |  |
+| `"pull_requests"` |  |
+| `"repositories"` |  |
+| `"runs"` |  |
+| `"runs_pagination"` |  |
+| `"suggested_app_url"` | The URL first-run setup prefills for a new app, from the workspace's project website or the signed-in user's work email domain. |
+| `"url_first_start"` | Whether setup opens on the URL-first screen, which saves the app and asks for test access next. |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/run_updates`
 
@@ -10133,7 +10010,31 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills`
 
 Operations: Create, List.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive`
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads`
+
+#### SparkAutomation
+
+| Field | Description |
+| --- | --- |
+| `"can_manage"` |  |
+| `"can_manage_events"` | Whether new event triggers can be attached or existing settings saved. |
+| `"can_run"` | Whether the viewer can request a manual Temporal run |
+| `"can_schedule"` |  |
+| `"definition"` |  |
+| `"event_subscriptions"` |  |
+| `"event_triggers"` |  |
+| `"expected_revision"` |  |
+| `"id"` |  |
+| `"key"` |  |
+| `"name"` |  |
+| `"revision"` |  |
+| `"schedule"` |  |
+| `"schedules"` |  |
+| `"version"` |  |
+
+Operations: List, Load, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations`
 
 #### SparkCredit
 
@@ -10224,7 +10125,7 @@ API path: `/api/v1/organizations/{org_slug}/spark_credits/usage_totals`
 
 Operations: Create, List, Load, Patch, Remove, Update.
 
-API path: `/api/v1/static_sites/{id}/provision`
+API path: `/api/v1/organizations/{organization_id}/static_sites`
 
 #### StaticSiteDeployment
 
@@ -10896,6 +10797,136 @@ Operations: Load.
 
 API path: `/api/v1/email_verifications/verify`
 
+#### VerifyEnvironment
+
+| Field | Description |
+| --- | --- |
+| `"active_revision_id"` |  |
+| `"agent_sign_up_available"` | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
+| `"allowed_actions"` | read_only only looks around; writes may create, change and delete data. |
+| `"billing"` |  |
+| `"cleanup"` |  |
+| `"connection"` |  |
+| `"created_at"` |  |
+| `"default_policy"` |  |
+| `"default_policy_json"` |  |
+| `"discovery_defaults"` |  |
+| `"environment"` |  |
+| `"exploration_accounts"` |  |
+| `"explorations"` |  |
+| `"first_run"` |  |
+| `"hosted_app_id"` |  |
+| `"id"` |  |
+| `"imessage_number"` | International destination number; blank or null clears it on an added environment. |
+| `"included_deep_scan"` | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
+| `"lock_version"` |  |
+| `"managed_google_available"` | Whether the managed Google account can be offered for this app. |
+| `"managed_google_email"` |  |
+| `"messaging_tester_number"` | One configured tester number. |
+| `"name"` | Optional for a website target; defaults to its hostname. |
+| `"network_connections"` |  |
+| `"onboarding_discovery"` |  |
+| `"organization_id"` |  |
+| `"pending_accounts"` | Credentials on a Composal address still waiting for the password the customer chose at signup. |
+| `"permissions"` |  |
+| `"project_id"` | Owning project. |
+| `"repository_id"` |  |
+| `"revisions"` |  |
+| `"setup_discovery_id"` | Existing discovery to resume after setup or Checkout, selected within this environment. |
+| `"sign_in_check_available"` | Whether a test account's live sign-in check can run on this app. |
+| `"slug"` |  |
+| `"status"` |  |
+| `"target_kind"` |  |
+| `"target_url"` |  |
+| `"test_accounts"` |  |
+| `"updated_at"` |  |
+| `"verify_network_connection_id"` |  |
+| `"version"` | Required for target or tester changes; use lock_version from the environment. |
+
+Operations: Create, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/verify/environments`
+
+#### VerifyEvidence
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/verify/evidence/{id}`
+
+#### VerifyMergeRequest
+
+| Field | Description |
+| --- | --- |
+| `"available_tests"` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `"base_sha"` |  |
+| `"branch"` | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `"comment_url"` |  |
+| `"current_run"` | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `"draft"` |  |
+| `"findings"` |  |
+| `"github_repository"` | GitHub owner/repository associated with this pull request. |
+| `"github_url"` |  |
+| `"head_sha"` | If supplied, refuse to create a run unless this is the current PR head. |
+| `"id"` |  |
+| `"idempotency_key"` |  |
+| `"number"` |  |
+| `"pagination"` |  |
+| `"permissions"` |  |
+| `"preview_cleanup_ready"` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `"preview_url"` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `"project"` |  |
+| `"project_id"` | Composal project slug or public ID for PR preview environments. |
+| `"project_slug"` |  |
+| `"provider"` |  |
+| `"pull_request"` |  |
+| `"repository_id"` |  |
+| `"request_label"` |  |
+| `"requested_run_id"` |  |
+| `"runs"` |  |
+| `"source_branch"` |  |
+| `"source_repository"` |  |
+| `"source_url"` |  |
+| `"state"` |  |
+| `"title"` |  |
+| `"updated_at"` |  |
+| `"web_path"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun`
+
+#### VerifyPullRequest
+
+| Field | Description |
+| --- | --- |
+| `"available_tests"` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `"branch"` | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `"cleanup_only"` | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
+| `"current_run"` | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `"findings"` |  |
+| `"head_sha"` | If supplied, refuse to create a run unless this is the current PR head. |
+| `"id"` |  |
+| `"idempotency_key"` |  |
+| `"imessage_number"` | International destination of this exact deployed commit. |
+| `"number"` |  |
+| `"pagination"` |  |
+| `"permissions"` |  |
+| `"preview_cleanup_ready"` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `"preview_url"` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `"project"` |  |
+| `"project_id"` | Composal project slug or public ID for PR preview environments. |
+| `"pull_request"` |  |
+| `"repository_id"` |  |
+| `"runs"` |  |
+
+Operations: Create, Load, Remove.
+
+API path: `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share`
+
 #### VerifySignalIntegration
 
 | Field | Description |
@@ -11360,62 +11391,6 @@ if err != nil {
     panic(err)
 }
 fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
-```
-
-
-### AgentAutomation
-
-Create an instance: `agentAutomation := client.AgentAutomation(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
-| `Load(match, ctrl)` | Load a single entity by match criteria. |
-| `Update(data, ctrl)` | Update an existing entity. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `can_manage` | `bool` |  |
-| `can_manage_events` | `bool` | Whether new event triggers can be attached or existing settings saved. |
-| `can_run` | `bool` | Whether the viewer can request a manual Temporal run |
-| `can_schedule` | `bool` |  |
-| `definition` | `map[string]any` |  |
-| `event_subscriptions` | `[]any` |  |
-| `event_triggers` | `[]any` |  |
-| `expected_revision` | `int` |  |
-| `id` | `string` |  |
-| `key` | `string` |  |
-| `name` | `string` |  |
-| `revision` | `int` |  |
-| `schedule` | `any` |  |
-| `schedules` | `[]any` |  |
-| `version` | `map[string]any` |  |
-
-#### Example: Load
-
-```go
-agentAutomation, err := client.AgentAutomation(nil).Load(map[string]any{"id": "agent_automation_id", "agent_id": "agent_id", "organization_id": "organization_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(agentAutomation.(sdk.Entity).Data()) // the loaded entity's record
-```
-
-#### Example: List
-
-```go
-agentAutomations, err := client.AgentAutomation(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-// A []any of entities, one per record.
-for _, item := range agentAutomations.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
 ```
 
 
@@ -11988,8 +11963,6 @@ Create an instance: `agentInput := client.AgentInput(nil)`
 result, err := client.AgentInput(nil).Create(map[string]any{
     "agent_id": "example_agent_id",
     "organization_id": "example_organization_id",
-    "browser_context": map[string]any{},
-    "client_time": map[string]any{},
     "conversation_id": "example_conversation_id",
     "text": "example_text",
 }, nil)
@@ -13229,7 +13202,6 @@ for _, item := range agentSwarms.([]any) {
 ```go
 result, err := client.AgentSwarm(nil).Create(map[string]any{
     "organization_slug": "example_organization_slug",
-    "target": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -14392,6 +14364,57 @@ if err != nil {
     panic(err)
 }
 fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### AppDeploymentDashboard
+
+Create an instance: `appDeploymentDashboard := client.AppDeploymentDashboard(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `[]any` |  |
+| `app` | `map[string]any` |  |
+| `audit_events` | `[]any` |  |
+| `capacity` | `map[string]any` |  |
+| `connections` | `[]any` |  |
+| `data_resources` | `[]any` |  |
+| `deployments` | `[]any` |  |
+| `desired_states` | `[]any` |  |
+| `environments` | `[]any` |  |
+| `id` | `string` |  |
+| `locations` | `[]any` |  |
+| `managed_database_catalog` | `map[string]any` |  |
+| `observability` | `map[string]any` |  |
+| `operations` | `[]any` |  |
+| `placements` | `[]any` |  |
+| `reconciler_ticks` | `[]any` |  |
+| `releases` | `[]any` |  |
+| `rollback_deployments` | `[]any` |  |
+| `rollouts` | `[]any` |  |
+| `runtime_instances` | `[]any` |  |
+| `service_bindings` | `[]any` |  |
+| `service_views` | `[]any` |  |
+| `services` | `[]any` |  |
+| `storage_resources` | `[]any` |  |
+| `summary` | `map[string]any` |  |
+
+#### Example: Load
+
+```go
+appDeploymentDashboard, err := client.AppDeploymentDashboard(nil).Load(map[string]any{"id": "app_deployment_dashboard_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(appDeploymentDashboard.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -17453,7 +17476,7 @@ Create an instance: `changeComment := client.ChangeComment(nil)`
 
 | Method | Description |
 | --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 | `Create(data, ctrl)` | Create a new entity with the given data. |
 
 #### Fields
@@ -17461,39 +17484,24 @@ Create an instance: `changeComment := client.ChangeComment(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `body` | `string` |  |
-| `capabilities` | `map[string]any` |  |
-| `change_id` | `any` |  |
-| `created_at` | `any` |  |
-| `created_at_label` | `any` |  |
+| `comment` | `map[string]any` |  |
+| `comments` | `[]any` |  |
 | `id` | `string` |  |
 | `kind` | `any` |  |
 | `line` | `any` |  |
-| `outdated` | `bool` |  |
 | `parent_comment_id` | `any` |  |
 | `patchset_id` | `any` |  |
-| `patchset_number` | `any` |  |
 | `path` | `any` |  |
-| `replies` | `[]any` |  |
-| `resolved` | `bool` |  |
-| `resolved_at` | `any` |  |
-| `resolved_at_label` | `any` |  |
-| `resolved_by` | `map[string]any` |  |
 | `side` | `any` |  |
-| `updated_at` | `any` |  |
-| `updated_at_label` | `any` |  |
-| `user` | `map[string]any` |  |
 
-#### Example: List
+#### Example: Load
 
 ```go
-changeComments, err := client.ChangeComment(nil).List(map[string]any{"change_id": "example", "organization_id": "example", "repo_id": "example"}, nil)
+changeComment, err := client.ChangeComment(nil).Load(map[string]any{"change_id": "change_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
 if err != nil {
     panic(err)
 }
-// A []any of entities, one per record.
-for _, item := range changeComments.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(changeComment.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: Create
@@ -18889,6 +18897,7 @@ Create an instance: `deepScan := client.DeepScan(nil)`
 
 | Method | Description |
 | --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 | `Create(data, ctrl)` | Create a new entity with the given data. |
 
@@ -18897,20 +18906,21 @@ Create an instance: `deepScan := client.DeepScan(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `account_id` | `any` |  |
-| `active` | `[]any` |  |
 | `agent_filters` | `map[string]any` | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` | `[]any` |  |
 | `can_continue` | `bool` | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` | `[]any` |  |
+| `check_count` | `int` |  |
 | `concurrency` | `int` |  |
 | `covered_areas` | `[]any` | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` | `string` |  |
-| `deadline_at` | `string` |  |
+| `credential_name` | `any` | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | `string` | When the team's time limit ends. |
 | `demo_project` | `any` | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` | `any` |  |
 | `ended_early` | `bool` | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` | `string` |  |
 | `environment_name` | `string` |  |
-| `explorations` | `[]any` |  |
 | `explorer_activity` | `map[string]any` | What the team is doing now. |
 | `finding_count` | `int` | Findings at every priority, locked ones included. |
 | `findings` | `[]any` | Every tester's findings, most severe first, with the checks each one cites. |
@@ -18920,14 +18930,12 @@ Create an instance: `deepScan := client.DeepScan(nil)`
 | `huntable_flows` | `[]any` | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` | `string` |  |
 | `idempotency_key` | `string` |  |
-| `launch_options` | `map[string]any` | Present only when launch was requested by an admin |
 | `max_seconds` | `int` |  |
 | `max_testers` | `int` |  |
 | `mode` | `string` |  |
 | `next_scan_improvements` | `[]any` | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | `string` | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | `bool` | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` | `map[string]any` |  |
 | `paywalled` | `bool` | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` | `map[string]any` |  |
 | `priority_counts` | `map[string]any` |  |
@@ -18938,10 +18946,13 @@ Create an instance: `deepScan := client.DeepScan(nil)`
 | `reproductions` | `[]any` | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `[]any` | Flows a finished exploration recorded that deep scans can start from. |
+| `scenario_count` | `int` | Scenarios saved from this discovery. |
 | `scenario_generation` | `map[string]any` |  |
+| `scenarios_pending` | `bool` | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `bool` | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `any` | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` | `string` |  |
 | `startup_retryable` | `bool` | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` | `string` |  |
 | `time_limit_reached` | `bool` | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -18957,6 +18968,19 @@ if err != nil {
     panic(err)
 }
 fmt.Println(deepScan.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+deepScans, err := client.DeepScan(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range deepScans.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 #### Example: Create
@@ -19678,64 +19702,6 @@ for _, item := range deviceControlMessages.([]any) {
 ```
 
 
-### DeviceControlOperation
-
-Create an instance: `deviceControlOperation := client.DeviceControlOperation(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `Load(match, ctrl)` | Load a single entity by match criteria. |
-| `Create(data, ctrl)` | Create a new entity with the given data. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `action` | `string` |  |
-| `arguments` | `map[string]any` |  |
-| `created_at` | `string` |  |
-| `delivery` | `map[string]any` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
-| `device_id` | `string` |  |
-| `diagnostic_code` | `string` | Approved product error code retained after copied diagnostics expire. |
-| `end` | `map[string]any` |  |
-| `expires_at` | `string` |  |
-| `id` | `string` |  |
-| `key` | `string` |  |
-| `provider` | `string` |  |
-| `references` | `map[string]any` |  |
-| `result` | `any` |  |
-| `result_expired` | `bool` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
-| `state` | `string` |  |
-
-#### Example: Load
-
-```go
-deviceControlOperation, err := client.DeviceControlOperation(nil).Load(map[string]any{"id": "device_control_operation_id", "device_id": "device_id", "organization_id": "organization_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(deviceControlOperation.(sdk.Entity).Data()) // the loaded entity's record
-```
-
-#### Example: Create
-
-```go
-result, err := client.DeviceControlOperation(nil).Create(map[string]any{
-    "device_id": "example_device_id",
-    "organization_id": "example_organization_id",
-    "action": "example_action",
-    "arguments": map[string]any{},
-    "key": "example_key",
-}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
-```
-
-
 ### DeviceEnterpriseRelay
 
 Create an instance: `deviceEnterpriseRelay := client.DeviceEnterpriseRelay(nil)`
@@ -19895,6 +19861,64 @@ result, err := client.DeviceLocalEvent(nil).Create(map[string]any{
     "device_id": "example_device_id",
     "organization_id": "example_organization_id",
     "event": "example_event",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### DeviceOperation
+
+Create an instance: `deviceOperation := client.DeviceOperation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `arguments` | `map[string]any` |  |
+| `created_at` | `string` |  |
+| `delivery` | `map[string]any` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` |  |
+| `diagnostic_code` | `string` | Approved product error code retained after copied diagnostics expire. |
+| `end` | `map[string]any` |  |
+| `expires_at` | `string` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `provider` | `string` |  |
+| `references` | `map[string]any` |  |
+| `result` | `any` |  |
+| `result_expired` | `bool` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```go
+deviceOperation, err := client.DeviceOperation(nil).Load(map[string]any{"id": "device_operation_id", "device_id": "device_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(deviceOperation.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.DeviceOperation(nil).Create(map[string]any{
+    "device_id": "example_device_id",
+    "organization_id": "example_organization_id",
+    "action": "example_action",
+    "arguments": map[string]any{},
+    "key": "example_key",
 }, nil)
 if err != nil {
     panic(err)
@@ -20334,90 +20358,6 @@ Create an instance: `edge := client.Edge(nil)`
 Create an instance: `emailVerification := client.EmailVerification(nil)`
 
 
-### Environment
-
-Create an instance: `environment := client.Environment(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `Load(match, ctrl)` | Load a single entity by match criteria. |
-| `Create(data, ctrl)` | Create a new entity with the given data. |
-| `Update(data, ctrl)` | Update an existing entity. |
-| `Patch(data, ctrl)` | Change part of an existing entity. |
-| `Remove(match, ctrl)` | Remove the matching entity. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `active_revision_id` | `any` |  |
-| `agent_sign_up_available` | `bool` | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
-| `allowed_actions` | `string` | read_only only looks around; writes may create, change and delete data. |
-| `billing` | `map[string]any` |  |
-| `cleanup` | `[]any` |  |
-| `connection` | `string` |  |
-| `created_at` | `string` |  |
-| `default_policy` | `map[string]any` |  |
-| `default_policy_json` | `map[string]any` |  |
-| `discovery_defaults` | `map[string]any` |  |
-| `environment` | `map[string]any` |  |
-| `exploration_accounts` | `[]any` |  |
-| `explorations` | `[]any` |  |
-| `first_run` | `any` |  |
-| `hosted_app_id` | `any` |  |
-| `id` | `string` |  |
-| `imessage_number` | `any` | International destination number; blank or null clears it on an added environment. |
-| `included_deep_scan` | `bool` | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
-| `lock_version` | `int` |  |
-| `managed_google_available` | `bool` | Whether the managed Google account can be offered for this app. |
-| `managed_google_email` | `string` |  |
-| `messaging_tester_number` | `any` | One configured tester number. |
-| `name` | `string` | Optional for a website target; defaults to its hostname. |
-| `network_connections` | `[]any` |  |
-| `onboarding_discovery` | `any` |  |
-| `organization_id` | `string` |  |
-| `pending_accounts` | `[]any` | Credentials on a Composal address still waiting for the password the customer chose at signup. |
-| `permissions` | `map[string]any` |  |
-| `project_id` | `any` | Owning project. |
-| `repository_id` | `any` |  |
-| `revisions` | `[]any` |  |
-| `setup_discovery_id` | `any` | Existing discovery to resume after setup or Checkout, selected within this environment. |
-| `sign_in_check_available` | `bool` | Whether a test account's live sign-in check can run on this app. |
-| `slug` | `string` |  |
-| `status` | `string` |  |
-| `target_kind` | `any` |  |
-| `target_url` | `any` |  |
-| `test_accounts` | `map[string]any` |  |
-| `updated_at` | `string` |  |
-| `verify_network_connection_id` | `any` |  |
-| `version` | `int` | Required for target or tester changes; use lock_version from the environment. |
-
-#### Example: Load
-
-```go
-environment, err := client.Environment(nil).Load(map[string]any{"id": "environment_id", "organization_id": "organization_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(environment.(sdk.Entity).Data()) // the loaded entity's record
-```
-
-#### Example: Create
-
-```go
-result, err := client.Environment(nil).Create(map[string]any{
-    "organization_id": "example_organization_id",
-    "slug": "example_slug",
-}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
-```
-
-
 ### EnvironmentDiscoveryRun
 
 Create an instance: `environmentDiscoveryRun := client.EnvironmentDiscoveryRun(nil)`
@@ -20703,33 +20643,6 @@ if err != nil {
 for _, item := range environmentTestAccounts.([]any) {
     fmt.Println(item.(sdk.Entity).Data())
 }
-```
-
-
-### Evidence
-
-Create an instance: `evidence := client.Evidence(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `Load(match, ctrl)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `string` |  |
-
-#### Example: Load
-
-```go
-evidence, err := client.Evidence(nil).Load(map[string]any{"id": "evidence_id", "organization_id": "organization_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(evidence.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -21714,58 +21627,6 @@ if err != nil {
     panic(err)
 }
 fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
-```
-
-
-### GithubIntegration
-
-Create an instance: `githubIntegration := client.GithubIntegration(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
-| `Load(match, ctrl)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `account_avatar_url` | `any` |  |
-| `account_login` | `string` |  |
-| `connection_status` | `string` |  |
-| `connection_status_label` | `string` |  |
-| `github_installation` | `any` |  |
-| `health` | `map[string]any` |  |
-| `id` | `string` |  |
-| `imported_repositories_count` | `int` |  |
-| `imported_repositories_count_label` | `string` |  |
-| `organization` | `map[string]any` |  |
-| `pagination` | `map[string]any` |  |
-| `repositories` | `[]any` |  |
-
-#### Example: Load
-
-```go
-githubIntegration, err := client.GithubIntegration(nil).Load(map[string]any{"id": "github_integration_id", "organization_id": "organization_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(githubIntegration.(sdk.Entity).Data()) // the loaded entity's record
-```
-
-#### Example: List
-
-```go
-githubIntegrations, err := client.GithubIntegration(nil).List(map[string]any{"organization_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-// A []any of entities, one per record.
-for _, item := range githubIntegrations.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
 ```
 
 
@@ -23136,8 +22997,6 @@ result, err := client.LeaseVerifyDiagnostic(nil).Create(map[string]any{
     "swarm_id": "example_swarm_id",
     "task_id": "example_task_id",
     "browser_events": map[string]any{},
-    "live_browser": map[string]any{},
-    "live_view": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -23655,22 +23514,11 @@ Create an instance: `member := client.Member(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accepted_at` | `any` |  |
-| `accepted_by_user` | `any` |  |
 | `created_at` | `string` |  |
 | `created_at_label` | `any` |  |
-| `email` | `string` |  |
-| `email_delivery_status` | `string` |  |
-| `expires_at` | `any` |  |
-| `expires_at_label` | `any` |  |
 | `id` | `string` |  |
-| `invite_url` | `any` |  |
-| `invited_by_user` | `any` |  |
 | `is_self` | `bool` |  |
-| `organization` | `map[string]any` |  |
-| `revoked_at` | `any` |  |
 | `role` | `string` |  |
-| `status` | `string` |  |
 | `updated_at` | `string` |  |
 | `updated_at_label` | `any` |  |
 | `user` | `map[string]any` |  |
@@ -23808,80 +23656,6 @@ fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
-### MergeRequest
-
-Create an instance: `mergeRequest := client.MergeRequest(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `Load(match, ctrl)` | Load a single entity by match criteria. |
-| `Create(data, ctrl)` | Create a new entity with the given data. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `available_tests` | `[]any` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `base_sha` | `string` |  |
-| `branch` | `string` | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `comment_url` | `any` |  |
-| `current_run` | `any` | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `draft` | `bool` |  |
-| `findings` | `[]any` |  |
-| `github_repository` | `any` | GitHub owner/repository associated with this pull request. |
-| `github_url` | `any` |  |
-| `head_sha` | `string` | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` | `string` |  |
-| `idempotency_key` | `string` |  |
-| `number` | `int` |  |
-| `pagination` | `map[string]any` |  |
-| `permissions` | `map[string]any` |  |
-| `preview_cleanup_ready` | `bool` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | `any` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` | `any` |  |
-| `project_id` | `any` | Composal project slug or public ID for PR preview environments. |
-| `project_slug` | `any` |  |
-| `provider` | `string` |  |
-| `pull_request` | `map[string]any` |  |
-| `repository_id` | `string` |  |
-| `request_label` | `string` |  |
-| `requested_run_id` | `any` |  |
-| `runs` | `[]any` |  |
-| `source_branch` | `any` |  |
-| `source_repository` | `any` |  |
-| `source_url` | `any` |  |
-| `state` | `string` |  |
-| `title` | `string` |  |
-| `updated_at` | `string` |  |
-| `web_path` | `string` |  |
-
-#### Example: Load
-
-```go
-mergeRequest, err := client.MergeRequest(nil).Load(map[string]any{"id": "merge_request_id", "organization_id": "organization_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(mergeRequest.(sdk.Entity).Data()) // the loaded entity's record
-```
-
-#### Example: Create
-
-```go
-result, err := client.MergeRequest(nil).Create(map[string]any{
-    "organization_id": "example_organization_id",
-    "idempotency_key": "example_idempotency_key",
-    "number": 1,
-}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
-```
-
-
 ### MergeResolution
 
 Create an instance: `mergeResolution := client.MergeResolution(nil)`
@@ -23961,7 +23735,6 @@ result, err := client.MessagingConversationMessage(nil).Create(map[string]any{
     "project_id": "example_project_id",
     "client_operation_id": "example_client_operation_id",
     "content": "example_content",
-    "media": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -25538,6 +25311,58 @@ fmt.Println(pagesBilling.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
+### PagesGithubIntegration
+
+Create an instance: `pagesGithubIntegration := client.PagesGithubIntegration(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `any` |  |
+| `account_login` | `string` |  |
+| `connection_status` | `string` |  |
+| `connection_status_label` | `string` |  |
+| `github_installation` | `any` |  |
+| `health` | `map[string]any` |  |
+| `id` | `string` |  |
+| `imported_repositories_count` | `int` |  |
+| `imported_repositories_count_label` | `string` |  |
+| `organization` | `map[string]any` |  |
+| `pagination` | `map[string]any` |  |
+| `repositories` | `[]any` |  |
+
+#### Example: Load
+
+```go
+pagesGithubIntegration, err := client.PagesGithubIntegration(nil).Load(map[string]any{"id": "pages_github_integration_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(pagesGithubIntegration.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+pagesGithubIntegrations, err := client.PagesGithubIntegration(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range pagesGithubIntegrations.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
 ### PagesGithubOnboarding
 
 Create an instance: `pagesGithubOnboarding := client.PagesGithubOnboarding(nil)`
@@ -26337,7 +26162,6 @@ result, err := client.ProductMapIdentityDecision(nil).Create(map[string]any{
     "observations": []any{},
     "operation": "example_operation",
     "reason": "example_reason",
-    "target": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -27137,9 +26961,71 @@ for _, item := range projectOverviewPullRequests.([]any) {
 ```
 
 
+### ProjectPrTesting
+
+Create an instance: `projectPrTesting := client.ProjectPrTesting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `project` | `map[string]any` |  |
+| `pull_request_options` | `map[string]any` |  |
+
+#### Example: Load
+
+```go
+projectPrTesting, err := client.ProjectPrTesting(nil).Load(map[string]any{"id": "project_pr_testing_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(projectPrTesting.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
 ### ProjectProductMap
 
 Create an instance: `projectProductMap := client.ProjectProductMap(nil)`
+
+
+### ProjectProductMapComparison
+
+Create an instance: `projectProductMapComparison := client.ProjectProductMapComparison(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accounts` | `[]any` |  |
+| `comparison` | `any` |  |
+| `filters` | `any` |  |
+| `id` | `string` |  |
+| `project` | `map[string]any` |  |
+| `requirements` | `[]any` |  |
+| `revisions` | `[]any` |  |
+
+#### Example: Load
+
+```go
+projectProductMapComparison, err := client.ProjectProductMapComparison(nil).Load(map[string]any{"id": "project_product_map_comparison_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(projectProductMapComparison.(sdk.Entity).Data()) // the loaded entity's record
+```
 
 
 ### ProjectRecording
@@ -27261,7 +27147,6 @@ result, err := client.ProjectRunPlan(nil).Create(map[string]any{
     "organization_id": "example_organization_id",
     "project_id": "example_project_id",
     "dependencies": []any{},
-    "identity_probe": map[string]any{},
     "name": "example_name",
     "nodes": []any{},
 }, nil)
@@ -27435,86 +27320,26 @@ Create an instance: `projectSetting := client.ProjectSetting(nil)`
 
 | Method | Description |
 | --- | --- |
-| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `List(match, ctrl)` | List entities matching the criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `available_messaging_environments` | `[]any` |  |
-| `messaging_conversations` | `[]any` |  |
-| `messaging_enabled` | `bool` |  |
-| `permissions` | `map[string]any` |  |
-| `project` | `map[string]any` |  |
-| `tester_numbers` | `[]any` |  |
-
-#### Example: Load
-
-```go
-projectSetting, err := client.ProjectSetting(nil).Load(map[string]any{"organization_id": "organization_id", "project_id": "project_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(projectSetting.(sdk.Entity).Data()) // the loaded entity's record
-```
-
-
-### PullRequest
-
-Create an instance: `pullRequest := client.PullRequest(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `Load(match, ctrl)` | Load a single entity by match criteria. |
-| `Create(data, ctrl)` | Create a new entity with the given data. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `available_tests` | `[]any` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `branch` | `string` | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `cleanup_only` | `bool` | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
-| `current_run` | `any` | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `findings` | `[]any` |  |
-| `head_sha` | `string` | If supplied, refuse to create a run unless this is the current PR head. |
 | `id` | `string` |  |
-| `idempotency_key` | `string` |  |
-| `imessage_number` | `string` | International destination of this exact deployed commit. |
-| `number` | `int` |  |
-| `pagination` | `map[string]any` |  |
-| `permissions` | `map[string]any` |  |
-| `preview_cleanup_ready` | `bool` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | `any` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` | `any` |  |
-| `project_id` | `string` | Composal project slug or public ID for PR preview environments. |
-| `pull_request` | `map[string]any` |  |
-| `repository_id` | `string` |  |
-| `runs` | `[]any` |  |
+| `name` | `string` |  |
 
-#### Example: Load
+#### Example: List
 
 ```go
-pullRequest, err := client.PullRequest(nil).Load(map[string]any{"id": "pull_request_id", "organization_id": "organization_id"}, nil)
+projectSettings, err := client.ProjectSetting(nil).List(map[string]any{"organization_id": "example", "project_id": "example"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(pullRequest.(sdk.Entity).Data()) // the loaded entity's record
-```
-
-#### Example: Create
-
-```go
-result, err := client.PullRequest(nil).Create(map[string]any{
-    "organization_id": "example_organization_id",
-    "idempotency_key": "example_idempotency_key",
-}, nil)
-if err != nil {
-    panic(err)
+// A []any of entities, one per record.
+for _, item := range projectSettings.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
 }
-fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
@@ -29273,51 +29098,39 @@ Create an instance: `runUpdate := client.RunUpdate(nil)`
 
 | Method | Description |
 | --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `base_sha` | `string` |  |
-| `can_verify` | `bool` |  |
-| `comment_url` | `any` |  |
-| `draft` | `bool` |  |
-| `github_repository` | `any` | GitHub owner/repository associated with this pull request. |
-| `github_url` | `any` |  |
-| `head_sha` | `string` |  |
-| `id` | `string` |  |
-| `latest_created_at` | `any` |  |
-| `latest_current` | `bool` |  |
-| `latest_head_sha` | `any` |  |
-| `latest_reason` | `any` |  |
-| `latest_run_id` | `any` |  |
-| `latest_state` | `any` |  |
-| `number` | `int` |  |
-| `project_id` | `any` |  |
-| `project_slug` | `any` |  |
-| `provider` | `string` |  |
-| `repository_id` | `string` |  |
-| `request_label` | `string` |  |
-| `source_branch` | `any` |  |
-| `source_repository` | `any` |  |
-| `source_url` | `any` |  |
-| `state` | `string` |  |
-| `title` | `string` |  |
-| `updated_at` | `string` |  |
-| `web_path` | `string` |  |
+| `active_runs` | `[]any` |  |
+| `checkout_required` | `bool` |  |
+| `cli_signed_in_at` | `any` | When the signed-in user last finished a CLI sign-in for this organization, so agent setup can show the CLI is connected. |
+| `counts` | `map[string]any` |  |
+| `demo_project` | `any` | The workspace's copy of the demo project, which setup offers as example data. |
+| `environments` | `[]any` |  |
+| `included_deep_scan` | `bool` | Whether a new app gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account, so setup asks for one right after the app. |
+| `onboarding_discovery` | `any` |  |
+| `organization` | `map[string]any` |  |
+| `permissions` | `map[string]any` |  |
+| `project` | `any` | The project the page is limited to, or null for the whole organization. |
+| `pull_request_launch_options` | `[]any` |  |
+| `pull_requests` | `[]any` |  |
+| `repositories` | `[]any` |  |
+| `runs` | `[]any` |  |
+| `runs_pagination` | `map[string]any` |  |
+| `suggested_app_url` | `any` | The URL first-run setup prefills for a new app, from the workspace's project website or the signed-in user's work email domain. |
+| `url_first_start` | `bool` | Whether setup opens on the URL-first screen, which saves the app and asks for test access next. |
 
-#### Example: List
+#### Example: Load
 
 ```go
-runUpdates, err := client.RunUpdate(nil).List(map[string]any{"organization_id": "example"}, nil)
+runUpdate, err := client.RunUpdate(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-// A []any of entities, one per record.
-for _, item := range runUpdates.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(runUpdate.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -31303,6 +31116,62 @@ fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
+### SparkAutomation
+
+Create an instance: `sparkAutomation := client.SparkAutomation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage` | `bool` |  |
+| `can_manage_events` | `bool` | Whether new event triggers can be attached or existing settings saved. |
+| `can_run` | `bool` | Whether the viewer can request a manual Temporal run |
+| `can_schedule` | `bool` |  |
+| `definition` | `map[string]any` |  |
+| `event_subscriptions` | `[]any` |  |
+| `event_triggers` | `[]any` |  |
+| `expected_revision` | `int` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `name` | `string` |  |
+| `revision` | `int` |  |
+| `schedule` | `any` |  |
+| `schedules` | `[]any` |  |
+| `version` | `map[string]any` |  |
+
+#### Example: Load
+
+```go
+sparkAutomation, err := client.SparkAutomation(nil).Load(map[string]any{"id": "spark_automation_id", "agent_id": "agent_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(sparkAutomation.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+sparkAutomations, err := client.SparkAutomation(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range sparkAutomations.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
 ### SparkCredit
 
 Create an instance: `sparkCredit := client.SparkCredit(nil)`
@@ -33000,6 +32869,250 @@ fmt.Println(verifyEmailVerification.(sdk.Entity).Data()) // the loaded entity's 
 ```
 
 
+### VerifyEnvironment
+
+Create an instance: `verifyEnvironment := client.VerifyEnvironment(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_revision_id` | `any` |  |
+| `agent_sign_up_available` | `bool` | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
+| `allowed_actions` | `string` | read_only only looks around; writes may create, change and delete data. |
+| `billing` | `map[string]any` |  |
+| `cleanup` | `[]any` |  |
+| `connection` | `string` |  |
+| `created_at` | `string` |  |
+| `default_policy` | `map[string]any` |  |
+| `default_policy_json` | `map[string]any` |  |
+| `discovery_defaults` | `map[string]any` |  |
+| `environment` | `map[string]any` |  |
+| `exploration_accounts` | `[]any` |  |
+| `explorations` | `[]any` |  |
+| `first_run` | `any` |  |
+| `hosted_app_id` | `any` |  |
+| `id` | `string` |  |
+| `imessage_number` | `any` | International destination number; blank or null clears it on an added environment. |
+| `included_deep_scan` | `bool` | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
+| `lock_version` | `int` |  |
+| `managed_google_available` | `bool` | Whether the managed Google account can be offered for this app. |
+| `managed_google_email` | `string` |  |
+| `messaging_tester_number` | `any` | One configured tester number. |
+| `name` | `string` | Optional for a website target; defaults to its hostname. |
+| `network_connections` | `[]any` |  |
+| `onboarding_discovery` | `any` |  |
+| `organization_id` | `string` |  |
+| `pending_accounts` | `[]any` | Credentials on a Composal address still waiting for the password the customer chose at signup. |
+| `permissions` | `map[string]any` |  |
+| `project_id` | `any` | Owning project. |
+| `repository_id` | `any` |  |
+| `revisions` | `[]any` |  |
+| `setup_discovery_id` | `any` | Existing discovery to resume after setup or Checkout, selected within this environment. |
+| `sign_in_check_available` | `bool` | Whether a test account's live sign-in check can run on this app. |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `target_kind` | `any` |  |
+| `target_url` | `any` |  |
+| `test_accounts` | `map[string]any` |  |
+| `updated_at` | `string` |  |
+| `verify_network_connection_id` | `any` |  |
+| `version` | `int` | Required for target or tester changes; use lock_version from the environment. |
+
+#### Example: Load
+
+```go
+verifyEnvironment, err := client.VerifyEnvironment(nil).Load(map[string]any{"id": "verify_environment_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(verifyEnvironment.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.VerifyEnvironment(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "slug": "example_slug",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### VerifyEvidence
+
+Create an instance: `verifyEvidence := client.VerifyEvidence(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+verifyEvidence, err := client.VerifyEvidence(nil).Load(map[string]any{"id": "verify_evidence_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(verifyEvidence.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### VerifyMergeRequest
+
+Create an instance: `verifyMergeRequest := client.VerifyMergeRequest(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `available_tests` | `[]any` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `base_sha` | `string` |  |
+| `branch` | `string` | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `comment_url` | `any` |  |
+| `current_run` | `any` | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `draft` | `bool` |  |
+| `findings` | `[]any` |  |
+| `github_repository` | `any` | GitHub owner/repository associated with this pull request. |
+| `github_url` | `any` |  |
+| `head_sha` | `string` | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `number` | `int` |  |
+| `pagination` | `map[string]any` |  |
+| `permissions` | `map[string]any` |  |
+| `preview_cleanup_ready` | `bool` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | `any` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` | `any` |  |
+| `project_id` | `any` | Composal project slug or public ID for PR preview environments. |
+| `project_slug` | `any` |  |
+| `provider` | `string` |  |
+| `pull_request` | `map[string]any` |  |
+| `repository_id` | `string` |  |
+| `request_label` | `string` |  |
+| `requested_run_id` | `any` |  |
+| `runs` | `[]any` |  |
+| `source_branch` | `any` |  |
+| `source_repository` | `any` |  |
+| `source_url` | `any` |  |
+| `state` | `string` |  |
+| `title` | `string` |  |
+| `updated_at` | `string` |  |
+| `web_path` | `string` |  |
+
+#### Example: Load
+
+```go
+verifyMergeRequest, err := client.VerifyMergeRequest(nil).Load(map[string]any{"id": "verify_merge_request_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(verifyMergeRequest.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.VerifyMergeRequest(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "idempotency_key": "example_idempotency_key",
+    "number": 1,
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### VerifyPullRequest
+
+Create an instance: `verifyPullRequest := client.VerifyPullRequest(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `available_tests` | `[]any` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `branch` | `string` | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `cleanup_only` | `bool` | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
+| `current_run` | `any` | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `findings` | `[]any` |  |
+| `head_sha` | `string` | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `imessage_number` | `string` | International destination of this exact deployed commit. |
+| `number` | `int` |  |
+| `pagination` | `map[string]any` |  |
+| `permissions` | `map[string]any` |  |
+| `preview_cleanup_ready` | `bool` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | `any` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` | `any` |  |
+| `project_id` | `string` | Composal project slug or public ID for PR preview environments. |
+| `pull_request` | `map[string]any` |  |
+| `repository_id` | `string` |  |
+| `runs` | `[]any` |  |
+
+#### Example: Load
+
+```go
+verifyPullRequest, err := client.VerifyPullRequest(nil).Load(map[string]any{"id": "verify_pull_request_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(verifyPullRequest.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.VerifyPullRequest(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "idempotency_key": "example_idempotency_key",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### VerifySignalIntegration
 
 Create an instance: `verifySignalIntegration := client.VerifySignalIntegration(nil)`
@@ -33364,12 +33477,11 @@ Create an instance: `workspaceSpacePreference := client.WorkspaceSpacePreference
 
 ## Features
 
-This SDK ships 9 optional features. Each is **inactive until you
-switch it on**, so an SDK you have not configured behaves exactly as if none of
-them existed — no retries, no cache, no logging, no measurable overhead.
+This SDK ships 9 optional features.
+Each is **inactive until you switch it on**, so an SDK you have not
+configured behaves exactly as if none of them existed, with no measurable overhead.
 
-Activate a feature by name in the client options, alongside the options shown
-above:
+Activate a feature by name in the `feature` client option:
 
 | Feature | What it does |
 |---|---|
@@ -33530,12 +33642,12 @@ guarantee.
 
 | Entity | Field | Variants | Nesting |
 | --- | --- | --- | --- |
-| `agent_automation` | `definition` | 12 | 10 levels |
-| `agent_automation` | `version` | 12 | 12 levels |
 | `agent_interaction` | `interactions` | 12 | 17 levels |
 | `automation_event` | `version` | 12 | 12 levels |
+| `spark_automation` | `definition` | 12 | 10 levels |
+| `spark_automation` | `version` | 12 | 12 levels |
 | `control_computer_control_operation` | `result` | 10 | 2 levels |
-| `device_control_operation` | `result` | 10 | 2 levels |
+| `device_operation` | `result` | 10 | 2 levels |
 | `local_thread_operation` | `result` | 10 | 2 levels |
 | `spark_agent_local_thread` | `result` | 10 | 2 levels |
 | `workspace_activity` | `recent_items` | 7 | 1 level |
@@ -33550,7 +33662,8 @@ guarantee.
 
 These values round-trip unchanged — read them, modify them, send them back. If
 the API adds a `discriminator` to the definition, regenerating will type them.
-Every other field is typed normally.
+A field with two variants is an open value here too; every other field is
+typed normally.
 
 ## Advanced
 
@@ -33567,16 +33680,12 @@ feature hook before executing:
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 ```
 
-- **PrePoint**: Resolves which API endpoint to call based on the
-  operation name and entity configuration.
-- **PreSpec**: Builds the HTTP spec — URL, method, headers, body —
-  from the resolved point and the caller's parameters.
-- **PreRequest**: Sends the HTTP request. Features can intercept here
-  to replace the transport (as TestFeature does with mocks).
+- **PrePoint**: Resolves which API endpoint to call based on the operation name and entity configuration.
+- **PreSpec**: Builds the HTTP spec — URL, method, headers, body — from the resolved point and the caller's parameters.
+- **PreRequest**: Sends the HTTP request. Features can intercept here to replace the transport.
 - **PreResponse**: Parses the raw HTTP response.
 - **PreResult**: Extracts the business data from the parsed response.
-- **PreDone**: Final stage before returning to the caller. Entity
-  state (match, data) is updated here.
+- **PreDone**: Final stage before returning to the caller. Entity state (match, data) is updated here.
 
 If any stage errors, the pipeline short-circuits and the error surfaces
 to the caller — see [Error handling](#error-handling) for how that looks
@@ -33648,7 +33757,8 @@ but no stored state.
 ### Direct vs entity access
 
 The entity interface handles URL construction, parameter placement,
-and response parsing automatically. Use it for standard CRUD operations.
+and response parsing automatically. Use it for the operations each
+entity declares.
 
 `Direct()` gives full control over the HTTP request. Use it for
 non-standard endpoints, bulk operations, or any path not modelled as

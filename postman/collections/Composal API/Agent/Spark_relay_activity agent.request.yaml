@@ -1,0 +1,28 @@
+$kind: http-request
+id: ee915724-d44e-5f65-ae8e-dd5c478a775f
+description: |-
+  The `spark_relay_activity` action of **agent**, a route of its `load` operation.
+
+  SDK: `client.Agent().load({ "organization_id": "organization_id", "id": "ID", $action: "spark_relay_activity" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/activity"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: kind
+    value: native
+    disabled: true
+  - key: limit
+    value: "20"
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+order: 35000

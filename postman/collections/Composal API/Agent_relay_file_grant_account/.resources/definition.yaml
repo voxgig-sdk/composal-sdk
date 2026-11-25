@@ -11,4 +11,4 @@ description: |-
   | `name` | string | yes |  |
   | `provider` | string | yes |  |
   | `resource_kind` | string | yes |  |
-order: 42000
+order: 41000

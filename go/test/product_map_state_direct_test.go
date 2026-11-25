@@ -175,9 +175,8 @@ func TestProductMapStateDirect(t *testing.T) {
 			params["project_id"] = setup.idmap["project01"]
 		} else {
 			params["id"] = "direct01"
-			params["id"] = "direct02"
-			params["organization_id"] = "direct03"
-			params["project_id"] = "direct04"
+			params["organization_id"] = "direct02"
+			params["project_id"] = "direct03"
 		}
 
 		result, err := client.Direct(map[string]any{
@@ -236,9 +235,6 @@ func TestProductMapStateDirect(t *testing.T) {
 				}
 				if !strings.Contains(url, "direct03") {
 					t.Fatalf("expected url to contain direct03, got %v", url)
-				}
-				if !strings.Contains(url, "direct04") {
-					t.Fatalf("expected url to contain direct04, got %v", url)
 				}
 			}
 		}

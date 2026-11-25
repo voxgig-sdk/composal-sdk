@@ -45,7 +45,7 @@ class DeploymentEntityTest extends TestCase
         $setup = deployment_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach ([] as $_op) {
+        foreach (["load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "deployment." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -53,10 +53,17 @@ class DeploymentEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"])) {
-            $this->markTestSkipped('Live coverage incomplete: the flow has no step to run');
+            foreach (["deployment01", "organization01"] as $_liveKey) {
+                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
+                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_DEPLOYMENT_ENTID");
+                }
+            }
         }
-
         $client = $setup["client"];
+        if (!empty($setup["live"])) {
+            Runner::live_existing($setup, self::LIVE_STRICT, "deployment",
+                fn() => [["id" => $setup["idmap"]["deployment01"] ?? null]], "id", $setup["idmap"]["deployment01"] ?? null);
+        }
 
         // Bootstrap entity data from existing test data.
         $deployment_ref01_data_raw = Vs::items(Helpers::to_map(
@@ -65,6 +72,20 @@ class DeploymentEntityTest extends TestCase
         if (count($deployment_ref01_data_raw) > 0) {
             $deployment_ref01_data = Helpers::to_map($deployment_ref01_data_raw[0][1]);
         }
+
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
+        // LOAD
+        $deployment_ref01_ent = $client->Deployment(null);
+        $deployment_ref01_match_dt0 = [
+            "id" => $deployment_ref01_data["id"],
+        ];
+        $deployment_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $deployment_ref01_data_dt0_loaded = $deployment_ref01_ent->load($deployment_ref01_match_dt0, null);
+        $deployment_ref01_data_dt0_load_result = Helpers::to_map(is_object($deployment_ref01_data_dt0_loaded) && method_exists($deployment_ref01_data_dt0_loaded, 'data_get') ? $deployment_ref01_data_dt0_loaded->data_get() : $deployment_ref01_data_dt0_loaded);
+        $this->assertNotNull($deployment_ref01_data_dt0_load_result);
+        $this->assertTrue(Runner::live_same_id($deployment_ref01_data_dt0_load_result["id"] ?? null, $deployment_ref01_data["id"]));
 
     }
 }

@@ -434,14 +434,6 @@ func (sdk *ComposalSDK) AgentAttachment(data map[string]any) ComposalEntityBase 
 }
 
 
-// AgentAutomation returns a AgentAutomation entity bound to this client.
-// Idiomatic usage: client.AgentAutomation(nil).List(nil, nil) or
-// client.AgentAutomation(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *ComposalSDK) AgentAutomation(data map[string]any) ComposalEntityBase {
-	return NewAgentAutomationEntityFunc(sdk, data)
-}
-
-
 // AgentAvatar returns a AgentAvatar entity bound to this client.
 // Idiomatic usage: client.AgentAvatar(nil).List(nil, nil) or
 // client.AgentAvatar(nil).Load(map[string]any{"id": ...}, nil).
@@ -1055,6 +1047,14 @@ func (sdk *ComposalSDK) AppDeploy(data map[string]any) ComposalEntityBase {
 // client.AppDeployment(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) AppDeployment(data map[string]any) ComposalEntityBase {
 	return NewAppDeploymentEntityFunc(sdk, data)
+}
+
+
+// AppDeploymentDashboard returns a AppDeploymentDashboard entity bound to this client.
+// Idiomatic usage: client.AppDeploymentDashboard(nil).List(nil, nil) or
+// client.AppDeploymentDashboard(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AppDeploymentDashboard(data map[string]any) ComposalEntityBase {
+	return NewAppDeploymentDashboardEntityFunc(sdk, data)
 }
 
 
@@ -2090,14 +2090,6 @@ func (sdk *ComposalSDK) DeviceControlMessage(data map[string]any) ComposalEntity
 }
 
 
-// DeviceControlOperation returns a DeviceControlOperation entity bound to this client.
-// Idiomatic usage: client.DeviceControlOperation(nil).List(nil, nil) or
-// client.DeviceControlOperation(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *ComposalSDK) DeviceControlOperation(data map[string]any) ComposalEntityBase {
-	return NewDeviceControlOperationEntityFunc(sdk, data)
-}
-
-
 // DeviceEnterpriseRelay returns a DeviceEnterpriseRelay entity bound to this client.
 // Idiomatic usage: client.DeviceEnterpriseRelay(nil).List(nil, nil) or
 // client.DeviceEnterpriseRelay(nil).Load(map[string]any{"id": ...}, nil).
@@ -2135,6 +2127,14 @@ func (sdk *ComposalSDK) DeviceInvocation(data map[string]any) ComposalEntityBase
 // client.DeviceLocalEvent(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) DeviceLocalEvent(data map[string]any) ComposalEntityBase {
 	return NewDeviceLocalEventEntityFunc(sdk, data)
+}
+
+
+// DeviceOperation returns a DeviceOperation entity bound to this client.
+// Idiomatic usage: client.DeviceOperation(nil).List(nil, nil) or
+// client.DeviceOperation(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DeviceOperation(data map[string]any) ComposalEntityBase {
+	return NewDeviceOperationEntityFunc(sdk, data)
 }
 
 
@@ -2226,14 +2226,6 @@ func (sdk *ComposalSDK) EmailVerification(data map[string]any) ComposalEntityBas
 }
 
 
-// Environment returns a Environment entity bound to this client.
-// Idiomatic usage: client.Environment(nil).List(nil, nil) or
-// client.Environment(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *ComposalSDK) Environment(data map[string]any) ComposalEntityBase {
-	return NewEnvironmentEntityFunc(sdk, data)
-}
-
-
 // EnvironmentDiscoveryRun returns a EnvironmentDiscoveryRun entity bound to this client.
 // Idiomatic usage: client.EnvironmentDiscoveryRun(nil).List(nil, nil) or
 // client.EnvironmentDiscoveryRun(nil).Load(map[string]any{"id": ...}, nil).
@@ -2279,14 +2271,6 @@ func (sdk *ComposalSDK) EnvironmentSecretBinding(data map[string]any) ComposalEn
 // client.EnvironmentTestAccount(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) EnvironmentTestAccount(data map[string]any) ComposalEntityBase {
 	return NewEnvironmentTestAccountEntityFunc(sdk, data)
-}
-
-
-// Evidence returns a Evidence entity bound to this client.
-// Idiomatic usage: client.Evidence(nil).List(nil, nil) or
-// client.Evidence(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *ComposalSDK) Evidence(data map[string]any) ComposalEntityBase {
-	return NewEvidenceEntityFunc(sdk, data)
 }
 
 
@@ -2447,14 +2431,6 @@ func (sdk *ComposalSDK) GithubCiRepositoryCompatibilityReport(data map[string]an
 // client.GithubConnection(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) GithubConnection(data map[string]any) ComposalEntityBase {
 	return NewGithubConnectionEntityFunc(sdk, data)
-}
-
-
-// GithubIntegration returns a GithubIntegration entity bound to this client.
-// Idiomatic usage: client.GithubIntegration(nil).List(nil, nil) or
-// client.GithubIntegration(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *ComposalSDK) GithubIntegration(data map[string]any) ComposalEntityBase {
-	return NewGithubIntegrationEntityFunc(sdk, data)
 }
 
 
@@ -2922,14 +2898,6 @@ func (sdk *ComposalSDK) MergeQueueEntry(data map[string]any) ComposalEntityBase 
 }
 
 
-// MergeRequest returns a MergeRequest entity bound to this client.
-// Idiomatic usage: client.MergeRequest(nil).List(nil, nil) or
-// client.MergeRequest(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *ComposalSDK) MergeRequest(data map[string]any) ComposalEntityBase {
-	return NewMergeRequestEntityFunc(sdk, data)
-}
-
-
 // MergeResolution returns a MergeResolution entity bound to this client.
 // Idiomatic usage: client.MergeResolution(nil).List(nil, nil) or
 // client.MergeResolution(nil).Load(map[string]any{"id": ...}, nil).
@@ -3314,6 +3282,14 @@ func (sdk *ComposalSDK) PagesBilling(data map[string]any) ComposalEntityBase {
 }
 
 
+// PagesGithubIntegration returns a PagesGithubIntegration entity bound to this client.
+// Idiomatic usage: client.PagesGithubIntegration(nil).List(nil, nil) or
+// client.PagesGithubIntegration(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) PagesGithubIntegration(data map[string]any) ComposalEntityBase {
+	return NewPagesGithubIntegrationEntityFunc(sdk, data)
+}
+
+
 // PagesGithubOnboarding returns a PagesGithubOnboarding entity bound to this client.
 // Idiomatic usage: client.PagesGithubOnboarding(nil).List(nil, nil) or
 // client.PagesGithubOnboarding(nil).Load(map[string]any{"id": ...}, nil).
@@ -3594,11 +3570,27 @@ func (sdk *ComposalSDK) ProjectOverviewPullRequest(data map[string]any) Composal
 }
 
 
+// ProjectPrTesting returns a ProjectPrTesting entity bound to this client.
+// Idiomatic usage: client.ProjectPrTesting(nil).List(nil, nil) or
+// client.ProjectPrTesting(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ProjectPrTesting(data map[string]any) ComposalEntityBase {
+	return NewProjectPrTestingEntityFunc(sdk, data)
+}
+
+
 // ProjectProductMap returns a ProjectProductMap entity bound to this client.
 // Idiomatic usage: client.ProjectProductMap(nil).List(nil, nil) or
 // client.ProjectProductMap(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) ProjectProductMap(data map[string]any) ComposalEntityBase {
 	return NewProjectProductMapEntityFunc(sdk, data)
+}
+
+
+// ProjectProductMapComparison returns a ProjectProductMapComparison entity bound to this client.
+// Idiomatic usage: client.ProjectProductMapComparison(nil).List(nil, nil) or
+// client.ProjectProductMapComparison(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ProjectProductMapComparison(data map[string]any) ComposalEntityBase {
+	return NewProjectProductMapComparisonEntityFunc(sdk, data)
 }
 
 
@@ -3647,14 +3639,6 @@ func (sdk *ComposalSDK) ProjectScenarioRow(data map[string]any) ComposalEntityBa
 // client.ProjectSetting(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) ProjectSetting(data map[string]any) ComposalEntityBase {
 	return NewProjectSettingEntityFunc(sdk, data)
-}
-
-
-// PullRequest returns a PullRequest entity bound to this client.
-// Idiomatic usage: client.PullRequest(nil).List(nil, nil) or
-// client.PullRequest(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *ComposalSDK) PullRequest(data map[string]any) ComposalEntityBase {
-	return NewPullRequestEntityFunc(sdk, data)
 }
 
 
@@ -4418,6 +4402,14 @@ func (sdk *ComposalSDK) SparkAgentThread(data map[string]any) ComposalEntityBase
 }
 
 
+// SparkAutomation returns a SparkAutomation entity bound to this client.
+// Idiomatic usage: client.SparkAutomation(nil).List(nil, nil) or
+// client.SparkAutomation(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SparkAutomation(data map[string]any) ComposalEntityBase {
+	return NewSparkAutomationEntityFunc(sdk, data)
+}
+
+
 // SparkCredit returns a SparkCredit entity bound to this client.
 // Idiomatic usage: client.SparkCredit(nil).List(nil, nil) or
 // client.SparkCredit(nil).Load(map[string]any{"id": ...}, nil).
@@ -4719,6 +4711,38 @@ func (sdk *ComposalSDK) VerifyBrowserSession(data map[string]any) ComposalEntity
 // client.VerifyEmailVerification(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) VerifyEmailVerification(data map[string]any) ComposalEntityBase {
 	return NewVerifyEmailVerificationEntityFunc(sdk, data)
+}
+
+
+// VerifyEnvironment returns a VerifyEnvironment entity bound to this client.
+// Idiomatic usage: client.VerifyEnvironment(nil).List(nil, nil) or
+// client.VerifyEnvironment(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) VerifyEnvironment(data map[string]any) ComposalEntityBase {
+	return NewVerifyEnvironmentEntityFunc(sdk, data)
+}
+
+
+// VerifyEvidence returns a VerifyEvidence entity bound to this client.
+// Idiomatic usage: client.VerifyEvidence(nil).List(nil, nil) or
+// client.VerifyEvidence(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) VerifyEvidence(data map[string]any) ComposalEntityBase {
+	return NewVerifyEvidenceEntityFunc(sdk, data)
+}
+
+
+// VerifyMergeRequest returns a VerifyMergeRequest entity bound to this client.
+// Idiomatic usage: client.VerifyMergeRequest(nil).List(nil, nil) or
+// client.VerifyMergeRequest(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) VerifyMergeRequest(data map[string]any) ComposalEntityBase {
+	return NewVerifyMergeRequestEntityFunc(sdk, data)
+}
+
+
+// VerifyPullRequest returns a VerifyPullRequest entity bound to this client.
+// Idiomatic usage: client.VerifyPullRequest(nil).List(nil, nil) or
+// client.VerifyPullRequest(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) VerifyPullRequest(data map[string]any) ComposalEntityBase {
+	return NewVerifyPullRequestEntityFunc(sdk, data)
 }
 
 

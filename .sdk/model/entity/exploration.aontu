@@ -387,7 +387,7 @@ main: kit: entity: exploration: {
     scenario_generation: {
       h: "Scenario Generation"
       n: "scenario_generation"
-      r: true
+      r: false
       t: "`$OBJECT`"
       union: {
         branches: 2
@@ -1023,8 +1023,12 @@ main: kit: entity: exploration: {
             }
           ]
           t: {
+            page: {
+              next: "`body.pagination.next`"
+              total: "`body.pagination.count`"
+            }
             req: "`reqdata`"
-            res: "`body.explorations`"
+            res: "`body.active`"
           }
         }
       ]
@@ -1220,7 +1224,7 @@ main: kit: entity: exploration: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.agents`"
+            res: "`body`"
           }
         }
         {
@@ -1304,7 +1308,7 @@ main: kit: entity: exploration: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.related_explorations`"
+            res: "`body`"
           }
         }
         {

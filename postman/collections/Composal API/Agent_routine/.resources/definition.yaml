@@ -9,7 +9,7 @@ description: |-
   |---|---|---|---|
   | `can_manage` | boolean | yes |  |
   | `consecutive_errors` | integer | yes |  |
-  | `credit_wait` | object | yes |  |
+  | `credit_wait` | object |  |  |
   | `description` | string | yes |  |
   | `enabled` | boolean | yes |  |
   | `id` | string | yes |  |
@@ -23,5 +23,5 @@ description: |-
   | `routine` | object | yes |  |
   | `schedule` | object | yes |  |
   | `schedule_label` | string | yes |  |
-  | `utility_model` | object | yes |  |
-order: 46000
+  | `utility_model` | object |  |  |
+order: 45000

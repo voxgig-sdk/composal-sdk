@@ -12,6 +12,7 @@ main: kit: flow: BasicDockerBuilderSessionFlow:
       }
 
       m: {
+        docker_builder_id: "docker_builder01",
         organization_id: "organization01"
       }
 

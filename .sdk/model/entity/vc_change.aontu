@@ -303,7 +303,7 @@ main: kit: entity: vc_change: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.change`"
           }
         }
         {
@@ -1277,6 +1277,180 @@ main: kit: entity: vc_change: {
       points: [
         {
           co: {
+            id: "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+              "repo_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              org_slug: "organization_id"
+              repo_slug: "repo_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repos"
+            }
+            {
+              var: "repo_id"
+            }
+            {
+              lit: "vcs"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.change`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/ci"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/ci"
+          q: {
+            "$action": "ci"
+            exist: [
+              "id"
+              "organization_id"
+              "repo_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              org_slug: "organization_id"
+              repo_slug: "repo_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repos"
+            }
+            {
+              var: "repo_id"
+            }
+            {
+              lit: "vcs"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "ci"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.change`"
+          }
+        }
+        {
+          co: {
             id: "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/diff"
             source: "openapi3"
             version: 2
@@ -1400,278 +1574,6 @@ main: kit: entity: vc_change: {
           t: {
             req: "`reqdata`"
             res: "`body`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_preview"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "organization_id"
-                or: "org_slug"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "repo_id"
-                or: "repo_slug"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-            query: [
-              {
-                explode: true
-                k: "query"
-                n: "base"
-                or: "base"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "head"
-                or: "head"
-                r: true
-                style: "form"
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_preview"
-          q: {
-            "$action": "submit_preview"
-            exist: [
-              "head"
-              "organization_id"
-              "repo_id"
-            ]
-          }
-          r: {
-            param: {
-              org_slug: "organization_id"
-              repo_slug: "repo_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "repos"
-            }
-            {
-              var: "repo_id"
-            }
-            {
-              lit: "vcs"
-            }
-            {
-              lit: "changes"
-            }
-            {
-              lit: "submit_preview"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "org_slug"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "repo_id"
-                or: "repo_slug"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}"
-          q: {
-            exist: [
-              "id"
-              "organization_id"
-              "repo_id"
-            ]
-          }
-          r: {
-            param: {
-              id: "id"
-              org_slug: "organization_id"
-              repo_slug: "repo_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "repos"
-            }
-            {
-              var: "repo_id"
-            }
-            {
-              lit: "vcs"
-            }
-            {
-              lit: "changes"
-            }
-            {
-              var: "id"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/ci"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "org_slug"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "repo_id"
-                or: "repo_slug"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/ci"
-          q: {
-            "$action": "ci"
-            exist: [
-              "id"
-              "organization_id"
-              "repo_id"
-            ]
-          }
-          r: {
-            param: {
-              id: "id"
-              org_slug: "organization_id"
-              repo_slug: "repo_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "repos"
-            }
-            {
-              var: "repo_id"
-            }
-            {
-              lit: "vcs"
-            }
-            {
-              lit: "changes"
-            }
-            {
-              var: "id"
-            }
-            {
-              lit: "ci"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body.checks`"
           }
         }
         {
@@ -1850,6 +1752,104 @@ main: kit: entity: vc_change: {
           t: {
             req: "`reqdata`"
             res: "`body.change`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_preview"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "base"
+                or: "base"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "head"
+                or: "head"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_preview"
+          q: {
+            "$action": "submit_preview"
+            exist: [
+              "head"
+              "organization_id"
+              "repo_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+              repo_slug: "repo_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repos"
+            }
+            {
+              var: "repo_id"
+            }
+            {
+              lit: "vcs"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              lit: "submit_preview"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
           }
         }
         {

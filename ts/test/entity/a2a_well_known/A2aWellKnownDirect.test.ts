@@ -43,17 +43,15 @@ describe('A2aWellKnownDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-a2a_well_known', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["a2a01","a2a01"], LIVE_STRICT)) return
+    if (skipIfMissingIds(t, setup, ["a2a01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
       params.a2a_id = setup.idmap['a2a01']
-      params.a2a_id = setup.idmap['a2a01']
     } else {
       params.a2a_id = 'direct01'
-      params.a2a_id = 'direct02'
     }
 
     const result: any = await client.direct({
@@ -78,7 +76,6 @@ describe('A2aWellKnownDirect', async () => {
       assert(calls.length === 1)
       assert(calls[0].init.method === 'GET')
       assert(calls[0].url.includes('direct01'))
-      assert(calls[0].url.includes('direct02'))
     }
   })
 

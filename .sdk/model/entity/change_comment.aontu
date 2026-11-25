@@ -11,53 +11,23 @@ main: kit: entity: change_comment: {
       r: true
       t: "`$STRING`"
     }
-    capabilities: {
-      h: "Capabilities"
-      n: "capabilities"
-      r: true
+    comment: {
+      h: "Comment"
+      n: "comment"
+      r: false
       t: "`$OBJECT`"
     }
-    change_id: {
-      h: "Change Id"
-      n: "change_id"
-      r: false
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    created_at: {
-      fo: "date-time"
-      h: "Created At"
-      n: "created_at"
-      r: false
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    created_at_label: {
-      h: "Created At Label"
-      n: "created_at_label"
-      r: false
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
+    comments: {
+      h: "Comments"
+      n: "comments"
+      r: true
+      t: "`$ARRAY`"
     }
     id: {
       h: "Id"
       n: "id"
-      r: true
+      r: false
+      syn: true
       t: "`$STRING`"
     }
     kind: {
@@ -84,12 +54,6 @@ main: kit: entity: change_comment: {
         ]
       ]
     }
-    outdated: {
-      h: "Outdated"
-      n: "outdated"
-      r: true
-      t: "`$BOOLEAN`"
-    }
     parent_comment_id: {
       h: "Parent Comment Id"
       n: "parent_comment_id"
@@ -105,35 +69,11 @@ main: kit: entity: change_comment: {
     patchset_id: {
       h: "Patchset Id"
       n: "patchset_id"
-      op: {
-        list: {
-          req: true
-          type: [
-            "`$ONE`"
-            [
-              "`$STRING`"
-              "`$NULL`"
-            ]
-          ]
-        }
-      }
       r: false
       t: [
         "`$ONE`"
         [
           "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    patchset_number: {
-      h: "Patchset Number"
-      n: "patchset_number"
-      r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$INTEGER`"
           "`$NULL`"
         ]
       ]
@@ -150,49 +90,6 @@ main: kit: entity: change_comment: {
         ]
       ]
     }
-    replies: {
-      h: "Replies"
-      n: "replies"
-      r: false
-      t: "`$ARRAY`"
-    }
-    resolved: {
-      h: "Resolved"
-      n: "resolved"
-      r: true
-      t: "`$BOOLEAN`"
-    }
-    resolved_at: {
-      fo: "date-time"
-      h: "Resolved At"
-      n: "resolved_at"
-      r: false
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    resolved_at_label: {
-      h: "Resolved At Label"
-      n: "resolved_at_label"
-      r: false
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    resolved_by: {
-      h: "Resolved By"
-      n: "resolved_by"
-      r: true
-      t: "`$OBJECT`"
-    }
     side: {
       h: "Side"
       n: "side"
@@ -204,37 +101,6 @@ main: kit: entity: change_comment: {
           "`$NULL`"
         ]
       ]
-    }
-    updated_at: {
-      fo: "date-time"
-      h: "Updated At"
-      n: "updated_at"
-      r: false
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    updated_at_label: {
-      h: "Updated At Label"
-      n: "updated_at_label"
-      r: false
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    user: {
-      h: "User"
-      n: "user"
-      r: true
-      t: "`$OBJECT`"
     }
   }
 
@@ -557,8 +423,8 @@ main: kit: entity: change_comment: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {
@@ -665,7 +531,7 @@ main: kit: entity: change_comment: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.comments`"
+            res: "`body.comment`"
           }
         }
       ]

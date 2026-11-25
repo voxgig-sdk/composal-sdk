@@ -33,7 +33,7 @@ class RunUpdateEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->RunUpdate(null)->list(["organization_id" => 1], null);
+            $client->RunUpdate(null)->load(["organization_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class RunUpdateEntityTest extends TestCase
         $setup = run_update_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "run_update." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -53,12 +53,9 @@ class RunUpdateEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_RUN_UPDATE_ENTID");
-                }
-            }
+            $this->markTestSkipped('Live coverage incomplete: the flow has no step to run');
         }
+
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -68,18 +65,6 @@ class RunUpdateEntityTest extends TestCase
         if (count($run_update_ref01_data_raw) > 0) {
             $run_update_ref01_data = Helpers::to_map($run_update_ref01_data_raw[0][1]);
         }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $run_update_ref01_ent = $client->RunUpdate(null);
-        $run_update_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $run_update_ref01_list_result = $run_update_ref01_ent->list($run_update_ref01_match, null);
-        $this->assertIsArray($run_update_ref01_list_result);
 
     }
 }

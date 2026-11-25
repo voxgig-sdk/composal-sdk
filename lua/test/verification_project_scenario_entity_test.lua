@@ -101,7 +101,7 @@ describe("VerificationProjectScenarioEntity", function()
       if type(own) == "string" or type(own) == "number" or type(own) == "boolean" then
         verification_project_scenario_ref01_match_dt0["project_id"] = own
       else
-        verification_project_scenario_ref01_match_dt0["project_id"] = setup.idmap["project_id"]
+        verification_project_scenario_ref01_match_dt0["project_id"] = setup.idmap["project_id"] or setup.idmap["project01"]
       end
     end
     local verification_project_scenario_ref01_data_dt0_loaded, err = verification_project_scenario_ref01_ent:load(verification_project_scenario_ref01_match_dt0, nil)
@@ -190,7 +190,7 @@ describe("VerificationProjectScenarioEntity", function()
       if type(own) == "string" or type(own) == "number" or type(own) == "boolean" then
         verification_project_scenario_ref01_match_dt0["project_id"] = own
       else
-        verification_project_scenario_ref01_match_dt0["project_id"] = setup.idmap["project_id"]
+        verification_project_scenario_ref01_match_dt0["project_id"] = setup.idmap["project_id"] or setup.idmap["project01"]
       end
     end
     local verification_project_scenario_ref01_data_dt0_loaded, err = verification_project_scenario_ref01_ent:load(verification_project_scenario_ref01_match_dt0, nil)

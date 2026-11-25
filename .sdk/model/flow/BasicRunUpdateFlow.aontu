@@ -7,16 +7,22 @@ main: kit: flow: BasicRunUpdateFlow:
   name: "BasicRunUpdateFlow",
   step: [
     {
-      m: {
-        organization_id: "organization01"
+      i: {
+        ref: "run_update_ref01",
+        srcdatavar: "run_update_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "run_update01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "run_update_ref01"
+            mark: "Mark01-run_update_ref01"
           }
         }
       ]

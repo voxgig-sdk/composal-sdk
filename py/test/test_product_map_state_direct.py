@@ -110,9 +110,8 @@ class TestProductMapStateDirect:
             pass
         else:
             params["id"] = "direct01"
-            params["id"] = "direct02"
-            params["organization_id"] = "direct03"
-            params["project_id"] = "direct04"
+            params["organization_id"] = "direct02"
+            params["project_id"] = "direct03"
             pass
 
         result = client.direct({

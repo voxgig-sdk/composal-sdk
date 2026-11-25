@@ -7,7 +7,7 @@ description: |-
   |---|---|---|---|
   | `active` | boolean | yes |  |
   | `allow_failure` | boolean | yes |  |
-  | `cache_archive_observations` | object | yes |  |
+  | `cache_archive_observations` | object |  |  |
   | `ci_pipeline_run_id` | string | yes |  |
   | `ci_runner_id` | string | yes |  |
   | `created_at` | string | yes |  |
@@ -28,7 +28,7 @@ description: |-
   | `queued_at` | string | yes |  |
   | `reconciliation_id` | string |  |  |
   | `retry_number` | integer | yes |  |
-  | `reuse` | object | yes |  |
+  | `reuse` | object |  |  |
   | `runner_label_selector` | string | yes |  |
   | `slug` | string | yes |  |
   | `started_at` | string | yes |  |
@@ -39,4 +39,4 @@ description: |-
   | `steps` | array | yes |  |
   | `timeout_seconds` | integer | yes |  |
   | `updated_at` | string | yes |  |
-order: 454000
+order: 452000

@@ -17,12 +17,9 @@ class ChangeCommentDirectTest < Minitest::Test
     result["err"].nil? && result["ok"] && status >= 200 && status < 300
   end
 
-  def test_direct_list_change_comment
-    setup = change_comment_direct_setup([
-      { "id" => "direct01" },
-      { "id" => "direct02" },
-    ])
-    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-list-change_comment", setup[:live] ? "live" : "unit")
+  def test_direct_load_change_comment
+    setup = change_comment_direct_setup({ "id" => "direct01" })
+    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-load-change_comment", setup[:live] ? "live" : "unit")
     if _should_skip
       skip(_reason || "skipped via sdk-test-control.json")
       return
@@ -39,9 +36,15 @@ class ChangeCommentDirectTest < Minitest::Test
 
     params = {}
     query = {}
-    params["change_id"] = setup[:live] ? setup[:idmap]["change01"] : "direct01"
-    params["organization_id"] = setup[:live] ? setup[:idmap]["organization01"] : "direct02"
-    params["repo_id"] = setup[:live] ? setup[:idmap]["repo01"] : "direct03"
+    if setup[:live]
+      params["change_id"] = setup[:idmap]["change01"]
+      params["organization_id"] = setup[:idmap]["organization01"]
+      params["repo_id"] = setup[:idmap]["repo01"]
+    else
+      params["change_id"] = "direct01"
+      params["organization_id"] = "direct02"
+      params["repo_id"] = "direct03"
+    end
 
     result = client.direct({
       "path" => "api/v1/organizations/{organization_id}/repos/{repo_id}/vcs/changes/{change_id}/comments",
@@ -51,18 +54,20 @@ class ChangeCommentDirectTest < Minitest::Test
     })
     if setup[:live]
       unless live_ok(result)
-        Runner.live_miss(LIVE_STRICT, "Live list failed: " + Runner.live_describe(result))
+        Runner.live_miss(LIVE_STRICT, "Live load failed: " + Runner.live_describe(result))
       end
-      if Runner.live_list(result["data"]).nil?
-        Runner.live_miss(LIVE_STRICT, "Live list returned no list: " + Runner.live_describe(result))
+      if result["data"].nil?
+        Runner.live_miss(LIVE_STRICT, "Live load returned no data: " + Runner.live_describe(result))
       end
-      assert Runner.live_list(result["data"]).is_a?(Array)
+      assert !result["data"].nil?
     else
       assert_nil result["err"]
       assert result["ok"]
       assert_equal 200, Helpers.to_int(result["status"])
-      assert result["data"].is_a?(Array)
-      assert_equal 2, result["data"].length
+      assert !result["data"].nil?
+      if result["data"].is_a?(Hash)
+        assert_equal "direct01", result["data"]["id"]
+      end
       assert_equal 1, setup[:calls].length
     end
   end

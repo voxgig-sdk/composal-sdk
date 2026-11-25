@@ -277,7 +277,7 @@ main: kit: entity: binary_version: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.version`"
           }
         }
         {
@@ -378,7 +378,7 @@ main: kit: entity: binary_version: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.version`"
           }
         }
         {
@@ -474,7 +474,7 @@ main: kit: entity: binary_version: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.version`"
           }
         }
       ]
@@ -677,7 +677,7 @@ main: kit: entity: binary_version: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.version`"
           }
         }
       ]

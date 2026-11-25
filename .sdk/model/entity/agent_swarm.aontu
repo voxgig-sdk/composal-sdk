@@ -473,7 +473,7 @@ main: kit: entity: agent_swarm: {
     target: {
       h: "Target"
       n: "target"
-      r: true
+      r: false
       sh: "Where the swarm lands."
       t: "`$OBJECT`"
     }

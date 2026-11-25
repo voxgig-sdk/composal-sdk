@@ -71,13 +71,6 @@ main: kit: entity: agent_file: {
               }
               {
                 k: "param"
-                n: "id"
-                or: "file_id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "organization_id"
                 or: "organization_id"
                 r: true

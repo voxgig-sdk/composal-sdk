@@ -1,0 +1,18 @@
+$kind: http-request
+id: "4f2662a9-975d-5521-ad88-ab345b515519"
+description: |-
+  The `first_run` action of **verify_environment**, a route of its `remove` operation.
+
+  SDK: `client.VerifyEnvironment().remove({ "organization_id": "organization_id", "id": "ID", $action: "first_run" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/environments/:verify_environment_id/first_run"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_environment belongs to.
+  - key: verify_environment_id
+    value: "{{verify_environment_id}}"
+    description: The verify_environment this request addresses.
+order: 8000

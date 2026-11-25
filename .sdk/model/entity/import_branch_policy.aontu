@@ -96,7 +96,7 @@ main: kit: entity: import_branch_policy: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.organization`"
           }
         }
       ]

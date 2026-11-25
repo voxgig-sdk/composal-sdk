@@ -363,13 +363,6 @@ class ComposalSDK
   end
 
 
-  # Canonical facade: client.AgentAutomation.list / client.AgentAutomation.load({ "id" => ... })
-  def AgentAutomation(data = nil)
-    require_relative 'entity/agent_automation_entity'
-    AgentAutomationEntity.new(self, data)
-  end
-
-
   # Canonical facade: client.AgentAvatar.list / client.AgentAvatar.load({ "id" => ... })
   def AgentAvatar(data = nil)
     require_relative 'entity/agent_avatar_entity'
@@ -906,6 +899,13 @@ class ComposalSDK
   def AppDeployment(data = nil)
     require_relative 'entity/app_deployment_entity'
     AppDeploymentEntity.new(self, data)
+  end
+
+
+  # Canonical facade: client.AppDeploymentDashboard.list / client.AppDeploymentDashboard.load({ "id" => ... })
+  def AppDeploymentDashboard(data = nil)
+    require_relative 'entity/app_deployment_dashboard_entity'
+    AppDeploymentDashboardEntity.new(self, data)
   end
 
 
@@ -1812,13 +1812,6 @@ class ComposalSDK
   end
 
 
-  # Canonical facade: client.DeviceControlOperation.list / client.DeviceControlOperation.load({ "id" => ... })
-  def DeviceControlOperation(data = nil)
-    require_relative 'entity/device_control_operation_entity'
-    DeviceControlOperationEntity.new(self, data)
-  end
-
-
   # Canonical facade: client.DeviceEnterpriseRelay.list / client.DeviceEnterpriseRelay.load({ "id" => ... })
   def DeviceEnterpriseRelay(data = nil)
     require_relative 'entity/device_enterprise_relay_entity'
@@ -1851,6 +1844,13 @@ class ComposalSDK
   def DeviceLocalEvent(data = nil)
     require_relative 'entity/device_local_event_entity'
     DeviceLocalEventEntity.new(self, data)
+  end
+
+
+  # Canonical facade: client.DeviceOperation.list / client.DeviceOperation.load({ "id" => ... })
+  def DeviceOperation(data = nil)
+    require_relative 'entity/device_operation_entity'
+    DeviceOperationEntity.new(self, data)
   end
 
 
@@ -1931,13 +1931,6 @@ class ComposalSDK
   end
 
 
-  # Canonical facade: client.Environment.list / client.Environment.load({ "id" => ... })
-  def Environment(data = nil)
-    require_relative 'entity/environment_entity'
-    EnvironmentEntity.new(self, data)
-  end
-
-
   # Canonical facade: client.EnvironmentDiscoveryRun.list / client.EnvironmentDiscoveryRun.load({ "id" => ... })
   def EnvironmentDiscoveryRun(data = nil)
     require_relative 'entity/environment_discovery_run_entity'
@@ -1977,13 +1970,6 @@ class ComposalSDK
   def EnvironmentTestAccount(data = nil)
     require_relative 'entity/environment_test_account_entity'
     EnvironmentTestAccountEntity.new(self, data)
-  end
-
-
-  # Canonical facade: client.Evidence.list / client.Evidence.load({ "id" => ... })
-  def Evidence(data = nil)
-    require_relative 'entity/evidence_entity'
-    EvidenceEntity.new(self, data)
   end
 
 
@@ -2124,13 +2110,6 @@ class ComposalSDK
   def GithubConnection(data = nil)
     require_relative 'entity/github_connection_entity'
     GithubConnectionEntity.new(self, data)
-  end
-
-
-  # Canonical facade: client.GithubIntegration.list / client.GithubIntegration.load({ "id" => ... })
-  def GithubIntegration(data = nil)
-    require_relative 'entity/github_integration_entity'
-    GithubIntegrationEntity.new(self, data)
   end
 
 
@@ -2540,13 +2519,6 @@ class ComposalSDK
   end
 
 
-  # Canonical facade: client.MergeRequest.list / client.MergeRequest.load({ "id" => ... })
-  def MergeRequest(data = nil)
-    require_relative 'entity/merge_request_entity'
-    MergeRequestEntity.new(self, data)
-  end
-
-
   # Canonical facade: client.MergeResolution.list / client.MergeResolution.load({ "id" => ... })
   def MergeResolution(data = nil)
     require_relative 'entity/merge_resolution_entity'
@@ -2883,6 +2855,13 @@ class ComposalSDK
   end
 
 
+  # Canonical facade: client.PagesGithubIntegration.list / client.PagesGithubIntegration.load({ "id" => ... })
+  def PagesGithubIntegration(data = nil)
+    require_relative 'entity/pages_github_integration_entity'
+    PagesGithubIntegrationEntity.new(self, data)
+  end
+
+
   # Canonical facade: client.PagesGithubOnboarding.list / client.PagesGithubOnboarding.load({ "id" => ... })
   def PagesGithubOnboarding(data = nil)
     require_relative 'entity/pages_github_onboarding_entity'
@@ -3128,10 +3107,24 @@ class ComposalSDK
   end
 
 
+  # Canonical facade: client.ProjectPrTesting.list / client.ProjectPrTesting.load({ "id" => ... })
+  def ProjectPrTesting(data = nil)
+    require_relative 'entity/project_pr_testing_entity'
+    ProjectPrTestingEntity.new(self, data)
+  end
+
+
   # Canonical facade: client.ProjectProductMap.list / client.ProjectProductMap.load({ "id" => ... })
   def ProjectProductMap(data = nil)
     require_relative 'entity/project_product_map_entity'
     ProjectProductMapEntity.new(self, data)
+  end
+
+
+  # Canonical facade: client.ProjectProductMapComparison.list / client.ProjectProductMapComparison.load({ "id" => ... })
+  def ProjectProductMapComparison(data = nil)
+    require_relative 'entity/project_product_map_comparison_entity'
+    ProjectProductMapComparisonEntity.new(self, data)
   end
 
 
@@ -3174,13 +3167,6 @@ class ComposalSDK
   def ProjectSetting(data = nil)
     require_relative 'entity/project_setting_entity'
     ProjectSettingEntity.new(self, data)
-  end
-
-
-  # Canonical facade: client.PullRequest.list / client.PullRequest.load({ "id" => ... })
-  def PullRequest(data = nil)
-    require_relative 'entity/pull_request_entity'
-    PullRequestEntity.new(self, data)
   end
 
 
@@ -3849,6 +3835,13 @@ class ComposalSDK
   end
 
 
+  # Canonical facade: client.SparkAutomation.list / client.SparkAutomation.load({ "id" => ... })
+  def SparkAutomation(data = nil)
+    require_relative 'entity/spark_automation_entity'
+    SparkAutomationEntity.new(self, data)
+  end
+
+
   # Canonical facade: client.SparkCredit.list / client.SparkCredit.load({ "id" => ... })
   def SparkCredit(data = nil)
     require_relative 'entity/spark_credit_entity'
@@ -4112,6 +4105,34 @@ class ComposalSDK
   def VerifyEmailVerification(data = nil)
     require_relative 'entity/verify_email_verification_entity'
     VerifyEmailVerificationEntity.new(self, data)
+  end
+
+
+  # Canonical facade: client.VerifyEnvironment.list / client.VerifyEnvironment.load({ "id" => ... })
+  def VerifyEnvironment(data = nil)
+    require_relative 'entity/verify_environment_entity'
+    VerifyEnvironmentEntity.new(self, data)
+  end
+
+
+  # Canonical facade: client.VerifyEvidence.list / client.VerifyEvidence.load({ "id" => ... })
+  def VerifyEvidence(data = nil)
+    require_relative 'entity/verify_evidence_entity'
+    VerifyEvidenceEntity.new(self, data)
+  end
+
+
+  # Canonical facade: client.VerifyMergeRequest.list / client.VerifyMergeRequest.load({ "id" => ... })
+  def VerifyMergeRequest(data = nil)
+    require_relative 'entity/verify_merge_request_entity'
+    VerifyMergeRequestEntity.new(self, data)
+  end
+
+
+  # Canonical facade: client.VerifyPullRequest.list / client.VerifyPullRequest.load({ "id" => ... })
+  def VerifyPullRequest(data = nil)
+    require_relative 'entity/verify_pull_request_entity'
+    VerifyPullRequestEntity.new(self, data)
   end
 
 

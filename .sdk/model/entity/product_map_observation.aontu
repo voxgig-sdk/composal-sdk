@@ -88,13 +88,6 @@ main: kit: entity: product_map_observation: {
               }
               {
                 k: "param"
-                n: "id"
-                or: "observation_id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "organization_id"
                 or: "organization_id"
                 r: true
@@ -238,13 +231,6 @@ main: kit: entity: product_map_observation: {
           }
           g: {
             params: [
-              {
-                k: "param"
-                n: "id"
-                or: "observation_id"
-                r: true
-                t: "`$STRING`"
-              }
               {
                 k: "param"
                 n: "id"

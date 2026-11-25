@@ -3,7 +3,7 @@ id: "8258e0be-4705-5c03-aacd-a0b644f1bdf6"
 description: |-
   The `create` operation of **project_run_plan**.
 
-  SDK: `client.ProjectRunPlan().create({ organization_id: "example", project_id: "example", dependencies: [], identity_probe: {}, name: "example", nodes: [] })`
+  SDK: `client.ProjectRunPlan().create({ organization_id: "example", project_id: "example", dependencies: [], name: "example", nodes: [] })`
 url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/run_plans"
 method: POST
 headers:

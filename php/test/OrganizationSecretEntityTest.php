@@ -99,6 +99,7 @@ class OrganizationSecretEntityTest extends TestCase
         $organization_secret_ref01_match_dt0 = [
             "id" => $organization_secret_ref01_data["id"],
         ];
+        $organization_secret_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
         $organization_secret_ref01_data_dt0_loaded = $organization_secret_ref01_ent->load($organization_secret_ref01_match_dt0, null);
         $organization_secret_ref01_data_dt0_load_result = Helpers::to_map(is_object($organization_secret_ref01_data_dt0_loaded) && method_exists($organization_secret_ref01_data_dt0_loaded, 'data_get') ? $organization_secret_ref01_data_dt0_loaded->data_get() : $organization_secret_ref01_data_dt0_loaded);
         $this->assertNotNull($organization_secret_ref01_data_dt0_load_result);
@@ -172,6 +173,7 @@ class OrganizationSecretEntityTest extends TestCase
         $organization_secret_ref01_match_dt0 = [
             "id" => $organization_secret_ref01_data["id"],
         ];
+        $organization_secret_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
         $organization_secret_ref01_data_dt0_loaded = $organization_secret_ref01_ent->load($organization_secret_ref01_match_dt0, null);
         $organization_secret_ref01_data_dt0_load_result = Helpers::to_map(is_object($organization_secret_ref01_data_dt0_loaded) && method_exists($organization_secret_ref01_data_dt0_loaded, 'data_get') ? $organization_secret_ref01_data_dt0_loaded->data_get() : $organization_secret_ref01_data_dt0_loaded);
         $this->assertNotNull($organization_secret_ref01_data_dt0_load_result);

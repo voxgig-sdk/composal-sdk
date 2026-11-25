@@ -33,11 +33,6 @@ func TestDeepScanFindingDirect(t *testing.T) {
 			t.Skip(_reason)
 			return
 		}
-		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" && setup.idmap["deep_scan01"] == nil {
-			t.Log("LIVE STEP {\"id\":\"direct-list-deep_scan_finding\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs deep_scan01, which only POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce gives\"}")
-			t.Skip("Live coverage incomplete: direct-list-deep_scan_finding excluded (GET-only live run: needs deep_scan01, which only POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce gives)")
-			return
-		}
 		if setup.live {
 			for _, _liveKey := range []string{"deep_scan01", "organization01"} {
 				if v := setup.idmap[_liveKey]; v == nil {

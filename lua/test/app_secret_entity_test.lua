@@ -96,6 +96,7 @@ describe("AppSecretEntity", function()
     local app_secret_ref01_match_dt0 = {
       id = app_secret_ref01_data["id"],
     }
+    app_secret_ref01_match_dt0["app_id"] = setup.idmap["app_id"] or setup.idmap["app01"]
     local app_secret_ref01_data_dt0_loaded, err = app_secret_ref01_ent:load(app_secret_ref01_match_dt0, nil)
     assert.is_nil(err)
     local app_secret_ref01_data_dt0_load_result = helpers.to_map(type(app_secret_ref01_data_dt0_loaded) == 'table' and app_secret_ref01_data_dt0_loaded.data_get and app_secret_ref01_data_dt0_loaded:data_get() or app_secret_ref01_data_dt0_loaded)
@@ -173,6 +174,7 @@ describe("AppSecretEntity", function()
     local app_secret_ref01_match_dt0 = {
       id = app_secret_ref01_data["id"],
     }
+    app_secret_ref01_match_dt0["app_id"] = setup.idmap["app_id"] or setup.idmap["app01"]
     local app_secret_ref01_data_dt0_loaded, err = app_secret_ref01_ent:load(app_secret_ref01_match_dt0, nil)
     assert.is_nil(err)
     local app_secret_ref01_data_dt0_load_result = helpers.to_map(type(app_secret_ref01_data_dt0_loaded) == 'table' and app_secret_ref01_data_dt0_loaded.data_get and app_secret_ref01_data_dt0_loaded:data_get() or app_secret_ref01_data_dt0_loaded)

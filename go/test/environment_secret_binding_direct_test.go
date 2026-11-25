@@ -30,11 +30,6 @@ func TestEnvironmentSecretBindingDirect(t *testing.T) {
 			t.Skip(_reason)
 			return
 		}
-		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" && setup.idmap["environment01"] == nil {
-			t.Log("LIVE STEP {\"id\":\"direct-load-environment_secret_binding\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives\"}")
-			t.Skip("Live coverage incomplete: direct-load-environment_secret_binding excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)")
-			return
-		}
 		if setup.live {
 			for _, _liveKey := range []string{"app01", "environment01"} {
 				if v := setup.idmap[_liveKey]; v == nil {

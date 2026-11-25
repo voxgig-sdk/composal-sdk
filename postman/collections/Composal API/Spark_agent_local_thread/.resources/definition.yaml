@@ -13,7 +13,7 @@ description: |-
   | `can_interrupt` | boolean | yes |  |
   | `can_send` | boolean | yes |  |
   | `created_at` | string | yes |  |
-  | `delivery` | object | yes |  |
+  | `delivery` | object |  |  |
   | `device_id` | string | yes |  |
   | `device_name` | string | yes |  |
   | `diagnostic_code` | string |  |  |
@@ -28,7 +28,7 @@ description: |-
   | `provider` | string | yes |  |
   | `references` | object | yes |  |
   | `relay_disconnected_at` | string |  |  |
-  | `relay_participant` | object | yes |  |
+  | `relay_participant` | object |  |  |
   | `result` | any | yes |  |
   | `result_expired` | boolean | yes |  |
   | `result_schema` | object |  |  |
@@ -38,4 +38,4 @@ description: |-
   | `task_configured` | boolean | yes |  |
   | `thread_id` | string | yes |  |
   | `title` | string | yes |  |
-order: 502000
+order: 500000

@@ -8,7 +8,7 @@ main: kit: entity: agent_workflow_proposal: {
     agent_steps: {
       h: "Agent Steps"
       n: "agent_steps"
-      r: true
+      r: false
       sh: "The model and reasoning the workflow's agent steps share."
       t: "`$OBJECT`"
     }

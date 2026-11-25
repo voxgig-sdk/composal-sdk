@@ -10,4 +10,4 @@ description: |-
   | `name` | string | yes |  |
   | `persona` | any |  |  |
   | `slug` | string | yes |  |
-order: 60000
+order: 59000

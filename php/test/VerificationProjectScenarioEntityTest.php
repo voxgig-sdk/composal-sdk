@@ -99,7 +99,7 @@ class VerificationProjectScenarioEntityTest extends TestCase
             "id" => $verification_project_scenario_ref01_data["id"],
         ];
         $verification_project_scenario_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
-        $verification_project_scenario_ref01_match_dt0["project_id"] = is_scalar($verification_project_scenario_ref01_data["project_id"] ?? null) ? $verification_project_scenario_ref01_data["project_id"] : ($setup["idmap"]["project_id"] ?? null);
+        $verification_project_scenario_ref01_match_dt0["project_id"] = is_scalar($verification_project_scenario_ref01_data["project_id"] ?? null) ? $verification_project_scenario_ref01_data["project_id"] : ($setup["idmap"]["project_id"] ?? $setup["idmap"]["project01"] ?? null);
         $verification_project_scenario_ref01_data_dt0_loaded = $verification_project_scenario_ref01_ent->load($verification_project_scenario_ref01_match_dt0, null);
         $verification_project_scenario_ref01_data_dt0_load_result = Helpers::to_map(is_object($verification_project_scenario_ref01_data_dt0_loaded) && method_exists($verification_project_scenario_ref01_data_dt0_loaded, 'data_get') ? $verification_project_scenario_ref01_data_dt0_loaded->data_get() : $verification_project_scenario_ref01_data_dt0_loaded);
         $this->assertNotNull($verification_project_scenario_ref01_data_dt0_load_result);
@@ -177,7 +177,7 @@ class VerificationProjectScenarioEntityTest extends TestCase
             "id" => $verification_project_scenario_ref01_data["id"],
         ];
         $verification_project_scenario_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
-        $verification_project_scenario_ref01_match_dt0["project_id"] = is_scalar($verification_project_scenario_ref01_data["project_id"] ?? null) ? $verification_project_scenario_ref01_data["project_id"] : ($setup["idmap"]["project_id"] ?? null);
+        $verification_project_scenario_ref01_match_dt0["project_id"] = is_scalar($verification_project_scenario_ref01_data["project_id"] ?? null) ? $verification_project_scenario_ref01_data["project_id"] : ($setup["idmap"]["project_id"] ?? $setup["idmap"]["project01"] ?? null);
         $verification_project_scenario_ref01_data_dt0_loaded = $verification_project_scenario_ref01_ent->load($verification_project_scenario_ref01_match_dt0, null);
         $verification_project_scenario_ref01_data_dt0_load_result = Helpers::to_map(is_object($verification_project_scenario_ref01_data_dt0_loaded) && method_exists($verification_project_scenario_ref01_data_dt0_loaded, 'data_get') ? $verification_project_scenario_ref01_data_dt0_loaded->data_get() : $verification_project_scenario_ref01_data_dt0_loaded);
         $this->assertNotNull($verification_project_scenario_ref01_data_dt0_load_result);

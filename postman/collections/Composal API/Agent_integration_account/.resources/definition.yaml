@@ -26,4 +26,4 @@ description: |-
   | `team_sharing_enabled` | boolean | yes |  |
   | `team_sharing_version` | integer | yes |  |
   | `toolkit` | string | yes |  |
-order: 28000
+order: 27000

@@ -120,8 +120,7 @@ class PagesSessionDirectTest extends TestCase
             $params["organization_id"] = $setup["idmap"]["organization01"] ?? null;
         } else {
             $params["id"] = "direct01";
-            $params["id"] = "direct02";
-            $params["organization_id"] = "direct03";
+            $params["organization_id"] = "direct02";
         }
 
         $result = $client->direct([

@@ -11,4 +11,4 @@ description: |-
   | `note` | string | yes |  |
   | `physical` | object | yes |  |
   | `series` | array | yes |  |
-order: 435000
+order: 433000

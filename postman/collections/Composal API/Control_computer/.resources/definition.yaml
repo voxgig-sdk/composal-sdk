@@ -5,7 +5,7 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `connection` | object | yes |  |
+  | `connection` | object |  |  |
   | `consent` | object | yes |  |
   | `device` | object | yes |  |
   | `id` | string |  |  |

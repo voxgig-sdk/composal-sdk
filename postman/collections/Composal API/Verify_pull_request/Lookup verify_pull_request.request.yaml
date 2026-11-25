@@ -1,0 +1,25 @@
+$kind: http-request
+id: "151d78e0-2783-5142-a7e3-cbeb4615728b"
+description: |-
+  The `lookup` action of **verify_pull_request**, a route of its `load` operation.
+
+  SDK: `client.VerifyPullRequest().load({ "organization_id": "organization_id", "number": "number", "project_id": "project_id", "source_repository": "source_repository", $action: "lookup" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/pull_requests/lookup?number={{number}}&project_id={{project_id}}&source_repository={{source_repository}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: number
+    value: "{{number}}"
+  - key: page
+    value: ""
+    disabled: true
+  - key: project_id
+    value: "{{project_id}}"
+  - key: source_repository
+    value: "{{source_repository}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_pull_request belongs to.
+order: 4000

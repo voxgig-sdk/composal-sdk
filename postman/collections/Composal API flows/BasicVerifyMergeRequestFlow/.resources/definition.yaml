@@ -1,0 +1,4 @@
+$kind: collection
+id: "3a6ab5ce-e292-5f19-822d-74c2e11313ba"
+description: "The `BasicVerifyMergeRequestFlow` flow of **verify_merge_request**."
+order: 423000

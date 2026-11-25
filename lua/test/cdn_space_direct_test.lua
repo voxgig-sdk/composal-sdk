@@ -29,8 +29,8 @@ describe("CdnSpaceDirect", function()
       return
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" and setup.idmap["cdn_space01"] == nil then
-      print("LIVE STEP {\"id\":\"direct-load-cdn_space\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs cdn_space01, which only POST /api/v1/cdn_spaces/{id}/archive gives\"}")
-      pending("Live coverage incomplete: direct-load-cdn_space excluded (GET-only live run: needs cdn_space01, which only POST /api/v1/cdn_spaces/{id}/archive gives)")
+      print("LIVE STEP {\"id\":\"direct-load-cdn_space\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs cdn_space01, which only POST /api/v1/organizations/{org_slug}/cdn_spaces gives\"}")
+      pending("Live coverage incomplete: direct-load-cdn_space excluded (GET-only live run: needs cdn_space01, which only POST /api/v1/organizations/{org_slug}/cdn_spaces gives)")
       return
     end
     if setup.live then

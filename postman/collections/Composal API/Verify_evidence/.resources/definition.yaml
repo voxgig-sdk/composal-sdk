@@ -1,0 +1,9 @@
+$kind: collection
+id: "9ad17301-53c4-5fc0-aa74-50b3d7773cc6"
+description: |-
+  The **verify_evidence** entity, which belongs to a organization. Its requests address one record by `{{verify_evidence_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 543000

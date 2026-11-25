@@ -38,10 +38,8 @@ class A2aWellKnownDirectTest < Minitest::Test
     query = {}
     if setup[:live]
       params["a2a_id"] = setup[:idmap]["a2a01"]
-      params["a2a_id"] = setup[:idmap]["a2a01"]
     else
       params["a2a_id"] = "direct01"
-      params["a2a_id"] = "direct02"
     end
 
     result = client.direct({

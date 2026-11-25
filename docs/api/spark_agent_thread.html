@@ -12,7 +12,6 @@
 <a href="../api/agent_app.html">AgentApp</a>
 <a href="../api/agent_app_install.html">AgentAppInstall</a>
 <a href="../api/agent_attachment.html">AgentAttachment</a>
-<a href="../api/agent_automation.html">AgentAutomation</a>
 <a href="../api/agent_avatar.html">AgentAvatar</a>
 <a href="../api/agent_command.html">AgentCommand</a>
 <a href="../api/agent_computer.html">AgentComputer</a>
@@ -90,6 +89,7 @@
 <a href="../api/app_data_resource.html">AppDataResource</a>
 <a href="../api/app_deploy.html">AppDeploy</a>
 <a href="../api/app_deployment.html">AppDeployment</a>
+<a href="../api/app_deployment_dashboard.html">AppDeploymentDashboard</a>
 <a href="../api/app_deployment_operation.html">AppDeploymentOperation</a>
 <a href="../api/app_deployment_rollback.html">AppDeploymentRollback</a>
 <a href="../api/app_environment.html">AppEnvironment</a>
@@ -219,12 +219,12 @@
 <a href="../api/device.html">Device</a>
 <a href="../api/device_browser_operation.html">DeviceBrowserOperation</a>
 <a href="../api/device_control_message.html">DeviceControlMessage</a>
-<a href="../api/device_control_operation.html">DeviceControlOperation</a>
 <a href="../api/device_enterprise_relay.html">DeviceEnterpriseRelay</a>
 <a href="../api/device_folder_listing.html">DeviceFolderListing</a>
 <a href="../api/device_grant.html">DeviceGrant</a>
 <a href="../api/device_invocation.html">DeviceInvocation</a>
 <a href="../api/device_local_event.html">DeviceLocalEvent</a>
+<a href="../api/device_operation.html">DeviceOperation</a>
 <a href="../api/device_pairing.html">DevicePairing</a>
 <a href="../api/device_project.html">DeviceProject</a>
 <a href="../api/device_scheduled_check_in.html">DeviceScheduledCheckIn</a>
@@ -236,14 +236,12 @@
 <a href="../api/dream.html">Dream</a>
 <a href="../api/edge.html">Edge</a>
 <a href="../api/email_verification.html">EmailVerification</a>
-<a href="../api/environment.html">Environment</a>
 <a href="../api/environment_discovery_run.html">EnvironmentDiscoveryRun</a>
 <a href="../api/environment_exploration.html">EnvironmentExploration</a>
 <a href="../api/environment_first_run.html">EnvironmentFirstRun</a>
 <a href="../api/environment_revision.html">EnvironmentRevision</a>
 <a href="../api/environment_secret_binding.html">EnvironmentSecretBinding</a>
 <a href="../api/environment_test_account.html">EnvironmentTestAccount</a>
-<a href="../api/evidence.html">Evidence</a>
 <a href="../api/execution_desired_state.html">ExecutionDesiredState</a>
 <a href="../api/execution_reconciler_tick.html">ExecutionReconcilerTick</a>
 <a href="../api/execution_release.html">ExecutionRelease</a>
@@ -264,7 +262,6 @@
 <a href="../api/github_ci_repository.html">GithubCiRepository</a>
 <a href="../api/github_ci_repository_compatibility_report.html">GithubCiRepositoryCompatibilityReport</a>
 <a href="../api/github_connection.html">GithubConnection</a>
-<a href="../api/github_integration.html">GithubIntegration</a>
 <a href="../api/github_onboarding.html">GithubOnboarding</a>
 <a href="../api/github_onboarding_branch.html">GithubOnboardingBranch</a>
 <a href="../api/github_onboarding_import.html">GithubOnboardingImport</a>
@@ -323,7 +320,6 @@
 <a href="../api/member.html">Member</a>
 <a href="../api/memory.html">Memory</a>
 <a href="../api/merge_queue_entry.html">MergeQueueEntry</a>
-<a href="../api/merge_request.html">MergeRequest</a>
 <a href="../api/merge_resolution.html">MergeResolution</a>
 <a href="../api/messaging_conversation_message.html">MessagingConversationMessage</a>
 <a href="../api/messaging_conversation_upload.html">MessagingConversationUpload</a>
@@ -372,6 +368,7 @@
 <a href="../api/page_project_run.html">PageProjectRun</a>
 <a href="../api/page_repo_vc_commit.html">PageRepoVcCommit</a>
 <a href="../api/pages_billing.html">PagesBilling</a>
+<a href="../api/pages_github_integration.html">PagesGithubIntegration</a>
 <a href="../api/pages_github_onboarding.html">PagesGithubOnboarding</a>
 <a href="../api/pages_member.html">PagesMember</a>
 <a href="../api/pages_project_credential.html">PagesProjectCredential</a>
@@ -407,14 +404,15 @@
 <a href="../api/project_messaging_conversation.html">ProjectMessagingConversation</a>
 <a href="../api/project_overview_metric.html">ProjectOverviewMetric</a>
 <a href="../api/project_overview_pull_request.html">ProjectOverviewPullRequest</a>
+<a href="../api/project_pr_testing.html">ProjectPrTesting</a>
 <a href="../api/project_product_map.html">ProjectProductMap</a>
+<a href="../api/project_product_map_comparison.html">ProjectProductMapComparison</a>
 <a href="../api/project_recording.html">ProjectRecording</a>
 <a href="../api/project_run_plan.html">ProjectRunPlan</a>
 <a href="../api/project_run_schedule.html">ProjectRunSchedule</a>
 <a href="../api/project_scenario_option.html">ProjectScenarioOption</a>
 <a href="../api/project_scenario_row.html">ProjectScenarioRow</a>
 <a href="../api/project_setting.html">ProjectSetting</a>
-<a href="../api/pull_request.html">PullRequest</a>
 <a href="../api/pull_request_action.html">PullRequestAction</a>
 <a href="../api/pull_request_magic_merge.html">PullRequestMagicMerge</a>
 <a href="../api/pull_request_setting.html">PullRequestSetting</a>
@@ -509,11 +507,12 @@
 <a href="../api/spark_agent_local_thread.html">SparkAgentLocalThread</a>
 <a href="../api/spark_agent_site.html">SparkAgentSite</a>
 <a href="../api/spark_agent_skill.html">SparkAgentSkill</a>
-<a aria-current="page" href="../api/spark_agent_thread.html">SparkAgentThread</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1organizationsorganization_idagentsidsparkthreadsthread_idarchive">POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive</a>
+<a aria-current="page" href="../api/spark_agent_thread.html">SparkAgentThread</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1organizationsorganization_idagentsidsparkthreads">POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads</a>
+<a class="nav-section" href="#post-apiv1organizationsorganization_idagentsidsparkthreadsthread_idarchive">POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive</a>
 <a class="nav-section" href="#post-apiv1organizationsorganization_idagentsidsparkthreadsthread_idcompact">POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/compact</a>
 <a class="nav-section" href="#post-apiv1organizationsorganization_idagentsidsparkthreadsthread_idsnooze">POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/snooze</a>
-<a class="nav-section" href="#post-apiv1organizationsorganization_idagentsidsparkthreads">POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads</a>
 <a class="nav-section" href="#get-apiv1organizationsorganization_idagentsidsparkthreads">GET /api/v1/organizations/{organization_id}/agents/{id}/spark/threads</a></div>
+<a href="../api/spark_automation.html">SparkAutomation</a>
 <a href="../api/spark_credit.html">SparkCredit</a>
 <a href="../api/spark_credit_agent_usage.html">SparkCreditAgentUsage</a>
 <a href="../api/spark_credit_usage_total.html">SparkCreditUsageTotal</a>
@@ -552,6 +551,10 @@
 <a href="../api/verify_app_domain.html">VerifyAppDomain</a>
 <a href="../api/verify_browser_session.html">VerifyBrowserSession</a>
 <a href="../api/verify_email_verification.html">VerifyEmailVerification</a>
+<a href="../api/verify_environment.html">VerifyEnvironment</a>
+<a href="../api/verify_evidence.html">VerifyEvidence</a>
+<a href="../api/verify_merge_request.html">VerifyMergeRequest</a>
+<a href="../api/verify_pull_request.html">VerifyPullRequest</a>
 <a href="../api/verify_signal_integration.html">VerifySignalIntegration</a>
 <a href="../api/verify_static_site_domain.html">VerifyStaticSiteDomain</a>
 <a href="../api/version_log.html">VersionLog</a>
@@ -601,6 +604,12 @@
 <tbody>
 <tr>
 <td><code>POST</code></td>
+<td><a href="#post-apiv1organizationsorganization_idagentsidsparkthreads"><code>/api/v1/organizations/{organization_id}/agents/{id}/spark/threads</code></a></td>
+<td><code>create</code></td>
+<td>Native agent lifecycle response</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
 <td><a href="#post-apiv1organizationsorganization_idagentsidsparkthreadsthread_idarchive"><code>/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive</code></a></td>
 <td><code>create</code></td>
 <td>Thread archive state confirmed; history is retained</td>
@@ -616,12 +625,6 @@
 <td><a href="#post-apiv1organizationsorganization_idagentsidsparkthreadsthread_idsnooze"><code>/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/snooze</code></a></td>
 <td><code>create</code></td>
 <td>Snooze confirmed by the runtime. New activity in the thread also wakes it</td>
-</tr>
-<tr>
-<td><code>POST</code></td>
-<td><a href="#post-apiv1organizationsorganization_idagentsidsparkthreads"><code>/api/v1/organizations/{organization_id}/agents/{id}/spark/threads</code></a></td>
-<td><code>create</code></td>
-<td>Native agent lifecycle response</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
@@ -841,295 +844,10 @@ const created = await client.SparkAgentThread().create({ agent_id: &quot;example
 </tbody>
 </table>
 <h2 id="create">create</h2>
-<h3 id="post-apiv1organizationsorganization_idagentsidsparkthreadsthread_idarchive" class="operation" data-method="post"><code>POST</code> /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive</h3>
-<p>Operation ID: <code>post_api_v1_organizations_organization_id_agents_id_spark_threads_thread_id_archive</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>organization_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>thread_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="request-body">Request body</h4>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>archived</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="responses">Responses</h4>
-<h5 id="200-thread-archive-state-confirmed-history-is-retained" class="status" data-status="2xx">200: Thread archive state confirmed; history is retained</h5>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>archived</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>deletable_workspace_id</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>Exact workspace the manager can review for a separate deletion after archiving.</td>
-</tr>
-<tr>
-<td><code>thread_id</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h5 id="401-unauthorized" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway" class="status" data-status="5xx">502: Bad gateway</h5>
-<h3 id="post-apiv1organizationsorganization_idagentsidsparkthreadsthread_idcompact" class="operation" data-method="post"><code>POST</code> /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/compact</h3>
-<p>Operation ID: <code>post_api_v1_organizations_organization_id_agents_id_spark_threads_thread_id_compact</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-1">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>organization_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>thread_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="request-body-1">Request body</h4>
-<p><code>application/json</code></p>
-<p>The request body is <code>object</code>.</p>
-<h4 id="responses-1">Responses</h4>
-<h5 id="200-native-agent-lifecycle-response" class="status" data-status="2xx">200: Native agent lifecycle response</h5>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>status</code></td>
-<td><code>enum: completed, unchanged</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>thread_id</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h5 id="401-unauthorized-1" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-1" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="409-the-conversation-is-busy-conversation_busy-or-compaction-could-not-finish-compaction_failed" class="status" data-status="4xx">409: The conversation is busy (<code>conversation_busy</code>) or compaction could not finish (<code>compaction_failed</code>)</h5>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>code</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>error</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
-<h3 id="post-apiv1organizationsorganization_idagentsidsparkthreadsthread_idsnooze" class="operation" data-method="post"><code>POST</code> /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/snooze</h3>
-<p>Operation ID: <code>post_api_v1_organizations_organization_id_agents_id_spark_threads_thread_id_snooze</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-2">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>organization_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>thread_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="request-body-2">Request body</h4>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>snoozed_until</code></td>
-<td><code>string,null (date-time)</code></td>
-<td>Yes</td>
-<td>A future time when the thread returns to its usual group, or null to wake it now.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="responses-2">Responses</h4>
-<h5 id="200-snooze-confirmed-by-the-runtime-new-activity-in-the-thread-also-wakes-it" class="status" data-status="2xx">200: Snooze confirmed by the runtime. New activity in the thread also wakes it</h5>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>snoozed_until</code></td>
-<td><code>string,null (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>thread_id</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h5 id="401-unauthorized-2" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-2" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-2" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
 <h3 id="post-apiv1organizationsorganization_idagentsidsparkthreads" class="operation" data-method="post"><code>POST</code> /api/v1/organizations/{organization_id}/agents/{id}/spark/threads</h3>
 <p>Operation ID: <code>post_api_v1_organizations_organization_id_agents_id_spark_threads</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-3">Parameters</h4>
+<h4 id="parameters">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1164,7 +882,7 @@ const created = await client.SparkAgentThread().create({ agent_id: &quot;example
 </tr>
 </tbody>
 </table>
-<h4 id="request-body-3">Request body</h4>
+<h4 id="request-body">Request body</h4>
 <p><code>application/json</code></p>
 <table>
 <thead>
@@ -1214,8 +932,8 @@ const created = await client.SparkAgentThread().create({ agent_id: &quot;example
 </tr>
 </tbody>
 </table>
-<h4 id="responses-3">Responses</h4>
-<h5 id="200-native-agent-lifecycle-response-1" class="status" data-status="2xx">200: Native agent lifecycle response</h5>
+<h4 id="responses">Responses</h4>
+<h5 id="200-native-agent-lifecycle-response" class="status" data-status="2xx">200: Native agent lifecycle response</h5>
 <p><code>application/json</code></p>
 <table>
 <thead>
@@ -1862,6 +1580,291 @@ const created = await client.SparkAgentThread().create({ agent_id: &quot;example
 <tr>
 <td><code>thread.updated_at</code></td>
 <td><code>string,null</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorized" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="post-apiv1organizationsorganization_idagentsidsparkthreadsthread_idarchive" class="operation" data-method="post"><code>POST</code> /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive</h3>
+<p>Operation ID: <code>post_api_v1_organizations_organization_id_agents_id_spark_threads_thread_id_archive</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>organization_id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>thread_id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>archived</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-thread-archive-state-confirmed-history-is-retained" class="status" data-status="2xx">200: Thread archive state confirmed; history is retained</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>archived</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>deletable_workspace_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Exact workspace the manager can review for a separate deletion after archiving.</td>
+</tr>
+<tr>
+<td><code>thread_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorized-1" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-1" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="post-apiv1organizationsorganization_idagentsidsparkthreadsthread_idcompact" class="operation" data-method="post"><code>POST</code> /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/compact</h3>
+<p>Operation ID: <code>post_api_v1_organizations_organization_id_agents_id_spark_threads_thread_id_compact</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>organization_id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>thread_id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<p>The request body is <code>object</code>.</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-native-agent-lifecycle-response-1" class="status" data-status="2xx">200: Native agent lifecycle response</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: completed, unchanged</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>thread_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorized-2" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-2" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="409-the-conversation-is-busy-conversation_busy-or-compaction-could-not-finish-compaction_failed" class="status" data-status="4xx">409: The conversation is busy (<code>conversation_busy</code>) or compaction could not finish (<code>compaction_failed</code>)</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="422-unprocessable-entity-2" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="post-apiv1organizationsorganization_idagentsidsparkthreadsthread_idsnooze" class="operation" data-method="post"><code>POST</code> /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/snooze</h3>
+<p>Operation ID: <code>post_api_v1_organizations_organization_id_agents_id_spark_threads_thread_id_snooze</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>organization_id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>thread_id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-3">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>snoozed_until</code></td>
+<td><code>string,null (date-time)</code></td>
+<td>Yes</td>
+<td>A future time when the thread returns to its usual group, or null to wake it now.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-snooze-confirmed-by-the-runtime-new-activity-in-the-thread-also-wakes-it" class="status" data-status="2xx">200: Snooze confirmed by the runtime. New activity in the thread also wakes it</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>snoozed_until</code></td>
+<td><code>string,null (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>thread_id</code></td>
+<td><code>string</code></td>
 <td>Yes</td>
 <td></td>
 </tr>

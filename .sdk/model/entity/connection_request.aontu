@@ -179,13 +179,6 @@ main: kit: entity: connection_request: {
               }
               {
                 k: "param"
-                n: "id"
-                or: "request_key"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "organization_id"
                 or: "organization_id"
                 r: true

@@ -30,14 +30,9 @@ func TestEnvironmentDiscoveryRunDirect(t *testing.T) {
 			t.Skip(_reason)
 			return
 		}
-		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" && setup.idmap["environment01"] == nil {
-			t.Log("LIVE STEP {\"id\":\"direct-load-environment_discovery_run\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives\"}")
-			t.Skip("Live coverage incomplete: direct-load-environment_discovery_run excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)")
-			return
-		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" && setup.idmap["environment_discovery_run01"] == nil {
-			t.Log("LIVE STEP {\"id\":\"direct-load-environment_discovery_run\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment_discovery_run01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop gives\"}")
-			t.Skip("Live coverage incomplete: direct-load-environment_discovery_run excluded (GET-only live run: needs environment_discovery_run01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop gives)")
+			t.Log("LIVE STEP {\"id\":\"direct-load-environment_discovery_run\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment_discovery_run01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs gives\"}")
+			t.Skip("Live coverage incomplete: direct-load-environment_discovery_run excluded (GET-only live run: needs environment_discovery_run01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs gives)")
 			return
 		}
 		if setup.live {

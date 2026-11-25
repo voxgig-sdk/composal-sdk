@@ -245,63 +245,6 @@ main: kit: entity: static_site: {
       name: "create"
       points: [
         {
-          bf: false
-          co: {
-            id: "POST /api/v1/static_sites/{id}/provision"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "POST"
-          o: "/api/v1/static_sites/{id}/provision"
-          q: {
-            "$action": "provision"
-            exist: [
-              "id"
-            ]
-          }
-          r: {
-            param: {
-              id: "id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "static_sites"
-            }
-            {
-              var: "id"
-            }
-            {
-              lit: "provision"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body.static_site`"
-          }
-        }
-        {
           bf: [
             "description"
             "error_document"
@@ -355,6 +298,63 @@ main: kit: entity: static_site: {
             }
             {
               lit: "static_sites"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.static_site`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/static_sites/{id}/provision"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/static_sites/{id}/provision"
+          q: {
+            "$action": "provision"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "static_sites"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "provision"
             }
           ]
           t: {

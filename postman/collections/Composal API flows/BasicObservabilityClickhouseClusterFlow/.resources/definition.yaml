@@ -1,4 +1,4 @@
 $kind: collection
 id: "9bd5bc23-cffd-52d7-b653-0efe84ba77b5"
 description: "The `BasicObservabilityClickhouseClusterFlow` flow of **observability_clickhouse_cluster**."
-order: 259000
+order: 256000

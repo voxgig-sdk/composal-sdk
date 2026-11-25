@@ -46,14 +46,10 @@ class AgentAvatarDirectTest extends TestCase
         $query = [];
         if ($setup["live"]) {
             $params["agent_id"] = $setup["idmap"]["agent01"] ?? null;
-            $params["agent_id"] = $setup["idmap"]["agent01"] ?? null;
-            $params["organization_id"] = $setup["idmap"]["organization01"] ?? null;
             $params["organization_id"] = $setup["idmap"]["organization01"] ?? null;
         } else {
             $params["agent_id"] = "direct01";
-            $params["agent_id"] = "direct02";
-            $params["organization_id"] = "direct03";
-            $params["organization_id"] = "direct04";
+            $params["organization_id"] = "direct02";
         }
 
         $result = $client->direct([

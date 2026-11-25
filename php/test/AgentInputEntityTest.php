@@ -33,7 +33,7 @@ class AgentInputEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->AgentInput(null)->create(["agent_id" => 1, "organization_id" => 'x', "browser_context" => 'x', "client_time" => 'x', "conversation_id" => 'x', "text" => 'x'], null);
+            $client->AgentInput(null)->create(["agent_id" => 1, "organization_id" => 'x', "conversation_id" => 'x', "text" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }

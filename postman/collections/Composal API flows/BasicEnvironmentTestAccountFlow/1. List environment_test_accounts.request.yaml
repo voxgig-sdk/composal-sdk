@@ -14,7 +14,7 @@ pathVariables:
     description: The organization this environment_test_account belongs to.
   - key: verify_environment_id
     value: "{{environment_id}}"
-    description: The environment this environment_test_account belongs to.
+    description: "Input: environment_id."
 scripts:
   - type: beforeRequest
     code: |-

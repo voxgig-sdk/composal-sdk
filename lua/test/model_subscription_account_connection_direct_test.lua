@@ -44,10 +44,8 @@ describe("ModelSubscriptionAccountConnectionDirect", function()
     local query = {}
     if setup.live then
       params["id"] = setup.idmap["model_subscription_account_connection01"]
-      params["id"] = setup.idmap["model_subscription_account_connection01"]
     else
       params["id"] = "direct01"
-      params["id"] = "direct02"
     end
 
     local result, err = client:direct({

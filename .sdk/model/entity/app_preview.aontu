@@ -944,7 +944,7 @@ main: kit: entity: app_preview: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.preview`"
           }
         }
         {

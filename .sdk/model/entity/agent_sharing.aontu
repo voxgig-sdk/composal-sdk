@@ -79,7 +79,7 @@ main: kit: entity: agent_sharing: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.accounts`"
+            res: "`body`"
           }
         }
       ]

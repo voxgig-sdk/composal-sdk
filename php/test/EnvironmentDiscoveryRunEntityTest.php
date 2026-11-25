@@ -53,9 +53,9 @@ class EnvironmentDiscoveryRunEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
-            fwrite(STDOUT, 'LIVE STEP {"id":"environment_discovery_run.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"environment_discovery_run.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs"}' . "\n");
             fwrite(STDOUT, 'LIVE STEP {"id":"environment_discovery_run.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only environment_discovery_run.create.0 gives"}' . "\n");
-            $this->markTestSkipped('Live coverage incomplete: environment_discovery_run.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop); environment_discovery_run.load.1 excluded (GET-only live run: reads a record only environment_discovery_run.create.0 gives)');
+            $this->markTestSkipped('Live coverage incomplete: environment_discovery_run.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs); environment_discovery_run.load.1 excluded (GET-only live run: reads a record only environment_discovery_run.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {
@@ -114,7 +114,7 @@ function environment_discovery_run_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["environment_discovery_run01", "environment_discovery_run02", "environment_discovery_run03", "organization01", "organization02", "organization03", "environment01", "environment02", "environment03"] as $k) {
+    foreach (["environment_discovery_run01", "environment_discovery_run02", "environment_discovery_run03", "organization01", "organization02", "organization03", "environment01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

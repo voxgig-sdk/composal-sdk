@@ -165,6 +165,62 @@ main: kit: entity: repository_import_session: {
       name: "create"
       points: [
         {
+          bf: [
+            "client_name"
+            "client_version"
+            "github_app_installation_id"
+            "idempotency_key"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/repository_import_sessions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/repository_import_sessions"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repository_import_sessions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
           bf: false
           co: {
             id: "POST /api/v1/repository_import_sessions/{id}/authorization"
@@ -273,62 +329,6 @@ main: kit: entity: repository_import_session: {
             }
             {
               lit: "cancel"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          bf: [
-            "client_name"
-            "client_version"
-            "github_app_installation_id"
-            "idempotency_key"
-          ]
-          co: {
-            id: "POST /api/v1/organizations/{organization_id}/repository_import_sessions"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "organization_id"
-                or: "organization_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "POST"
-          o: "/api/v1/organizations/{organization_id}/repository_import_sessions"
-          q: {
-            exist: [
-              "organization_id"
-            ]
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "repository_import_sessions"
             }
           ]
           t: {

@@ -1,0 +1,22 @@
+$kind: http-request
+id: "50b0f610-5fd8-5edb-86f8-ad7ecefe7572"
+description: |-
+  The `load` operation of **verify_pull_request**.
+
+  SDK: `client.VerifyPullRequest().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/pull_requests/:id"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: page
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_pull_request belongs to.
+  - key: id
+    value: "{{verify_pull_request_id}}"
+    description: The verify_pull_request this request addresses.
+order: 1000

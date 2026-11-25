@@ -41,7 +41,6 @@ const AgentEntity_1 = require("./entity/AgentEntity");
 const AgentAppEntity_1 = require("./entity/AgentAppEntity");
 const AgentAppInstallEntity_1 = require("./entity/AgentAppInstallEntity");
 const AgentAttachmentEntity_1 = require("./entity/AgentAttachmentEntity");
-const AgentAutomationEntity_1 = require("./entity/AgentAutomationEntity");
 const AgentAvatarEntity_1 = require("./entity/AgentAvatarEntity");
 const AgentCommandEntity_1 = require("./entity/AgentCommandEntity");
 const AgentComputerEntity_1 = require("./entity/AgentComputerEntity");
@@ -119,6 +118,7 @@ const AppConfigVariableEntity_1 = require("./entity/AppConfigVariableEntity");
 const AppDataResourceEntity_1 = require("./entity/AppDataResourceEntity");
 const AppDeployEntity_1 = require("./entity/AppDeployEntity");
 const AppDeploymentEntity_1 = require("./entity/AppDeploymentEntity");
+const AppDeploymentDashboardEntity_1 = require("./entity/AppDeploymentDashboardEntity");
 const AppDeploymentOperationEntity_1 = require("./entity/AppDeploymentOperationEntity");
 const AppDeploymentRollbackEntity_1 = require("./entity/AppDeploymentRollbackEntity");
 const AppEnvironmentEntity_1 = require("./entity/AppEnvironmentEntity");
@@ -248,12 +248,12 @@ const DesktopLocalAgentResponseEntity_1 = require("./entity/DesktopLocalAgentRes
 const DeviceEntity_1 = require("./entity/DeviceEntity");
 const DeviceBrowserOperationEntity_1 = require("./entity/DeviceBrowserOperationEntity");
 const DeviceControlMessageEntity_1 = require("./entity/DeviceControlMessageEntity");
-const DeviceControlOperationEntity_1 = require("./entity/DeviceControlOperationEntity");
 const DeviceEnterpriseRelayEntity_1 = require("./entity/DeviceEnterpriseRelayEntity");
 const DeviceFolderListingEntity_1 = require("./entity/DeviceFolderListingEntity");
 const DeviceGrantEntity_1 = require("./entity/DeviceGrantEntity");
 const DeviceInvocationEntity_1 = require("./entity/DeviceInvocationEntity");
 const DeviceLocalEventEntity_1 = require("./entity/DeviceLocalEventEntity");
+const DeviceOperationEntity_1 = require("./entity/DeviceOperationEntity");
 const DevicePairingEntity_1 = require("./entity/DevicePairingEntity");
 const DeviceProjectEntity_1 = require("./entity/DeviceProjectEntity");
 const DeviceScheduledCheckInEntity_1 = require("./entity/DeviceScheduledCheckInEntity");
@@ -265,14 +265,12 @@ const DomainPathRuleEntity_1 = require("./entity/DomainPathRuleEntity");
 const DreamEntity_1 = require("./entity/DreamEntity");
 const EdgeEntity_1 = require("./entity/EdgeEntity");
 const EmailVerificationEntity_1 = require("./entity/EmailVerificationEntity");
-const EnvironmentEntity_1 = require("./entity/EnvironmentEntity");
 const EnvironmentDiscoveryRunEntity_1 = require("./entity/EnvironmentDiscoveryRunEntity");
 const EnvironmentExplorationEntity_1 = require("./entity/EnvironmentExplorationEntity");
 const EnvironmentFirstRunEntity_1 = require("./entity/EnvironmentFirstRunEntity");
 const EnvironmentRevisionEntity_1 = require("./entity/EnvironmentRevisionEntity");
 const EnvironmentSecretBindingEntity_1 = require("./entity/EnvironmentSecretBindingEntity");
 const EnvironmentTestAccountEntity_1 = require("./entity/EnvironmentTestAccountEntity");
-const EvidenceEntity_1 = require("./entity/EvidenceEntity");
 const ExecutionDesiredStateEntity_1 = require("./entity/ExecutionDesiredStateEntity");
 const ExecutionReconcilerTickEntity_1 = require("./entity/ExecutionReconcilerTickEntity");
 const ExecutionReleaseEntity_1 = require("./entity/ExecutionReleaseEntity");
@@ -293,7 +291,6 @@ const GithubAppUserAuthorizationEntity_1 = require("./entity/GithubAppUserAuthor
 const GithubCiRepositoryEntity_1 = require("./entity/GithubCiRepositoryEntity");
 const GithubCiRepositoryCompatibilityReportEntity_1 = require("./entity/GithubCiRepositoryCompatibilityReportEntity");
 const GithubConnectionEntity_1 = require("./entity/GithubConnectionEntity");
-const GithubIntegrationEntity_1 = require("./entity/GithubIntegrationEntity");
 const GithubOnboardingEntity_1 = require("./entity/GithubOnboardingEntity");
 const GithubOnboardingBranchEntity_1 = require("./entity/GithubOnboardingBranchEntity");
 const GithubOnboardingImportEntity_1 = require("./entity/GithubOnboardingImportEntity");
@@ -352,7 +349,6 @@ const MediaFileEntity_1 = require("./entity/MediaFileEntity");
 const MemberEntity_1 = require("./entity/MemberEntity");
 const MemoryEntity_1 = require("./entity/MemoryEntity");
 const MergeQueueEntryEntity_1 = require("./entity/MergeQueueEntryEntity");
-const MergeRequestEntity_1 = require("./entity/MergeRequestEntity");
 const MergeResolutionEntity_1 = require("./entity/MergeResolutionEntity");
 const MessagingConversationMessageEntity_1 = require("./entity/MessagingConversationMessageEntity");
 const MessagingConversationUploadEntity_1 = require("./entity/MessagingConversationUploadEntity");
@@ -401,6 +397,7 @@ const PageCiPipelineRunEntity_1 = require("./entity/PageCiPipelineRunEntity");
 const PageProjectRunEntity_1 = require("./entity/PageProjectRunEntity");
 const PageRepoVcCommitEntity_1 = require("./entity/PageRepoVcCommitEntity");
 const PagesBillingEntity_1 = require("./entity/PagesBillingEntity");
+const PagesGithubIntegrationEntity_1 = require("./entity/PagesGithubIntegrationEntity");
 const PagesGithubOnboardingEntity_1 = require("./entity/PagesGithubOnboardingEntity");
 const PagesMemberEntity_1 = require("./entity/PagesMemberEntity");
 const PagesProjectCredentialEntity_1 = require("./entity/PagesProjectCredentialEntity");
@@ -436,14 +433,15 @@ const ProjectIosAppEntity_1 = require("./entity/ProjectIosAppEntity");
 const ProjectMessagingConversationEntity_1 = require("./entity/ProjectMessagingConversationEntity");
 const ProjectOverviewMetricEntity_1 = require("./entity/ProjectOverviewMetricEntity");
 const ProjectOverviewPullRequestEntity_1 = require("./entity/ProjectOverviewPullRequestEntity");
+const ProjectPrTestingEntity_1 = require("./entity/ProjectPrTestingEntity");
 const ProjectProductMapEntity_1 = require("./entity/ProjectProductMapEntity");
+const ProjectProductMapComparisonEntity_1 = require("./entity/ProjectProductMapComparisonEntity");
 const ProjectRecordingEntity_1 = require("./entity/ProjectRecordingEntity");
 const ProjectRunPlanEntity_1 = require("./entity/ProjectRunPlanEntity");
 const ProjectRunScheduleEntity_1 = require("./entity/ProjectRunScheduleEntity");
 const ProjectScenarioOptionEntity_1 = require("./entity/ProjectScenarioOptionEntity");
 const ProjectScenarioRowEntity_1 = require("./entity/ProjectScenarioRowEntity");
 const ProjectSettingEntity_1 = require("./entity/ProjectSettingEntity");
-const PullRequestEntity_1 = require("./entity/PullRequestEntity");
 const PullRequestActionEntity_1 = require("./entity/PullRequestActionEntity");
 const PullRequestMagicMergeEntity_1 = require("./entity/PullRequestMagicMergeEntity");
 const PullRequestSettingEntity_1 = require("./entity/PullRequestSettingEntity");
@@ -539,6 +537,7 @@ const SparkAgentLocalThreadEntity_1 = require("./entity/SparkAgentLocalThreadEnt
 const SparkAgentSiteEntity_1 = require("./entity/SparkAgentSiteEntity");
 const SparkAgentSkillEntity_1 = require("./entity/SparkAgentSkillEntity");
 const SparkAgentThreadEntity_1 = require("./entity/SparkAgentThreadEntity");
+const SparkAutomationEntity_1 = require("./entity/SparkAutomationEntity");
 const SparkCreditEntity_1 = require("./entity/SparkCreditEntity");
 const SparkCreditAgentUsageEntity_1 = require("./entity/SparkCreditAgentUsageEntity");
 const SparkCreditUsageTotalEntity_1 = require("./entity/SparkCreditUsageTotalEntity");
@@ -577,6 +576,10 @@ const VerificationProjectScenarioEntity_1 = require("./entity/VerificationProjec
 const VerifyAppDomainEntity_1 = require("./entity/VerifyAppDomainEntity");
 const VerifyBrowserSessionEntity_1 = require("./entity/VerifyBrowserSessionEntity");
 const VerifyEmailVerificationEntity_1 = require("./entity/VerifyEmailVerificationEntity");
+const VerifyEnvironmentEntity_1 = require("./entity/VerifyEnvironmentEntity");
+const VerifyEvidenceEntity_1 = require("./entity/VerifyEvidenceEntity");
+const VerifyMergeRequestEntity_1 = require("./entity/VerifyMergeRequestEntity");
+const VerifyPullRequestEntity_1 = require("./entity/VerifyPullRequestEntity");
 const VerifySignalIntegrationEntity_1 = require("./entity/VerifySignalIntegrationEntity");
 const VerifyStaticSiteDomainEntity_1 = require("./entity/VerifyStaticSiteDomainEntity");
 const VersionLogEntity_1 = require("./entity/VersionLogEntity");
@@ -886,13 +889,6 @@ class ComposalSDK {
     AgentAttachment(entopts) {
         const self = this;
         return new AgentAttachmentEntity_1.AgentAttachmentEntity(self, entopts);
-    }
-    // Entity access: `client.AgentAutomation().list()` / `client.AgentAutomation().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    AgentAutomation(entopts) {
-        const self = this;
-        return new AgentAutomationEntity_1.AgentAutomationEntity(self, entopts);
     }
     // Entity access: `client.AgentAvatar().list()` / `client.AgentAvatar().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1432,6 +1428,13 @@ class ComposalSDK {
     AppDeployment(entopts) {
         const self = this;
         return new AppDeploymentEntity_1.AppDeploymentEntity(self, entopts);
+    }
+    // Entity access: `client.AppDeploymentDashboard().list()` / `client.AppDeploymentDashboard().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AppDeploymentDashboard(entopts) {
+        const self = this;
+        return new AppDeploymentDashboardEntity_1.AppDeploymentDashboardEntity(self, entopts);
     }
     // Entity access: `client.AppDeploymentOperation().list()` / `client.AppDeploymentOperation().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -2336,13 +2339,6 @@ class ComposalSDK {
         const self = this;
         return new DeviceControlMessageEntity_1.DeviceControlMessageEntity(self, entopts);
     }
-    // Entity access: `client.DeviceControlOperation().list()` / `client.DeviceControlOperation().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    DeviceControlOperation(entopts) {
-        const self = this;
-        return new DeviceControlOperationEntity_1.DeviceControlOperationEntity(self, entopts);
-    }
     // Entity access: `client.DeviceEnterpriseRelay().list()` / `client.DeviceEnterpriseRelay().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -2377,6 +2373,13 @@ class ComposalSDK {
     DeviceLocalEvent(entopts) {
         const self = this;
         return new DeviceLocalEventEntity_1.DeviceLocalEventEntity(self, entopts);
+    }
+    // Entity access: `client.DeviceOperation().list()` / `client.DeviceOperation().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DeviceOperation(entopts) {
+        const self = this;
+        return new DeviceOperationEntity_1.DeviceOperationEntity(self, entopts);
     }
     // Entity access: `client.DevicePairing().list()` / `client.DevicePairing().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -2455,13 +2458,6 @@ class ComposalSDK {
         const self = this;
         return new EmailVerificationEntity_1.EmailVerificationEntity(self, entopts);
     }
-    // Entity access: `client.Environment().list()` / `client.Environment().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    Environment(entopts) {
-        const self = this;
-        return new EnvironmentEntity_1.EnvironmentEntity(self, entopts);
-    }
     // Entity access: `client.EnvironmentDiscoveryRun().list()` / `client.EnvironmentDiscoveryRun().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -2503,13 +2499,6 @@ class ComposalSDK {
     EnvironmentTestAccount(entopts) {
         const self = this;
         return new EnvironmentTestAccountEntity_1.EnvironmentTestAccountEntity(self, entopts);
-    }
-    // Entity access: `client.Evidence().list()` / `client.Evidence().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    Evidence(entopts) {
-        const self = this;
-        return new EvidenceEntity_1.EvidenceEntity(self, entopts);
     }
     // Entity access: `client.ExecutionDesiredState().list()` / `client.ExecutionDesiredState().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -2650,13 +2639,6 @@ class ComposalSDK {
     GithubConnection(entopts) {
         const self = this;
         return new GithubConnectionEntity_1.GithubConnectionEntity(self, entopts);
-    }
-    // Entity access: `client.GithubIntegration().list()` / `client.GithubIntegration().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    GithubIntegration(entopts) {
-        const self = this;
-        return new GithubIntegrationEntity_1.GithubIntegrationEntity(self, entopts);
     }
     // Entity access: `client.GithubOnboarding().list()` / `client.GithubOnboarding().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -3064,13 +3046,6 @@ class ComposalSDK {
         const self = this;
         return new MergeQueueEntryEntity_1.MergeQueueEntryEntity(self, entopts);
     }
-    // Entity access: `client.MergeRequest().list()` / `client.MergeRequest().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    MergeRequest(entopts) {
-        const self = this;
-        return new MergeRequestEntity_1.MergeRequestEntity(self, entopts);
-    }
     // Entity access: `client.MergeResolution().list()` / `client.MergeResolution().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -3407,6 +3382,13 @@ class ComposalSDK {
         const self = this;
         return new PagesBillingEntity_1.PagesBillingEntity(self, entopts);
     }
+    // Entity access: `client.PagesGithubIntegration().list()` / `client.PagesGithubIntegration().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PagesGithubIntegration(entopts) {
+        const self = this;
+        return new PagesGithubIntegrationEntity_1.PagesGithubIntegrationEntity(self, entopts);
+    }
     // Entity access: `client.PagesGithubOnboarding().list()` / `client.PagesGithubOnboarding().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -3652,12 +3634,26 @@ class ComposalSDK {
         const self = this;
         return new ProjectOverviewPullRequestEntity_1.ProjectOverviewPullRequestEntity(self, entopts);
     }
+    // Entity access: `client.ProjectPrTesting().list()` / `client.ProjectPrTesting().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ProjectPrTesting(entopts) {
+        const self = this;
+        return new ProjectPrTestingEntity_1.ProjectPrTestingEntity(self, entopts);
+    }
     // Entity access: `client.ProjectProductMap().list()` / `client.ProjectProductMap().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     ProjectProductMap(entopts) {
         const self = this;
         return new ProjectProductMapEntity_1.ProjectProductMapEntity(self, entopts);
+    }
+    // Entity access: `client.ProjectProductMapComparison().list()` / `client.ProjectProductMapComparison().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ProjectProductMapComparison(entopts) {
+        const self = this;
+        return new ProjectProductMapComparisonEntity_1.ProjectProductMapComparisonEntity(self, entopts);
     }
     // Entity access: `client.ProjectRecording().list()` / `client.ProjectRecording().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -3700,13 +3696,6 @@ class ComposalSDK {
     ProjectSetting(entopts) {
         const self = this;
         return new ProjectSettingEntity_1.ProjectSettingEntity(self, entopts);
-    }
-    // Entity access: `client.PullRequest().list()` / `client.PullRequest().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    PullRequest(entopts) {
-        const self = this;
-        return new PullRequestEntity_1.PullRequestEntity(self, entopts);
     }
     // Entity access: `client.PullRequestAction().list()` / `client.PullRequestAction().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -4373,6 +4362,13 @@ class ComposalSDK {
         const self = this;
         return new SparkAgentThreadEntity_1.SparkAgentThreadEntity(self, entopts);
     }
+    // Entity access: `client.SparkAutomation().list()` / `client.SparkAutomation().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SparkAutomation(entopts) {
+        const self = this;
+        return new SparkAutomationEntity_1.SparkAutomationEntity(self, entopts);
+    }
     // Entity access: `client.SparkCredit().list()` / `client.SparkCredit().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -4638,6 +4634,34 @@ class ComposalSDK {
     VerifyEmailVerification(entopts) {
         const self = this;
         return new VerifyEmailVerificationEntity_1.VerifyEmailVerificationEntity(self, entopts);
+    }
+    // Entity access: `client.VerifyEnvironment().list()` / `client.VerifyEnvironment().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    VerifyEnvironment(entopts) {
+        const self = this;
+        return new VerifyEnvironmentEntity_1.VerifyEnvironmentEntity(self, entopts);
+    }
+    // Entity access: `client.VerifyEvidence().list()` / `client.VerifyEvidence().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    VerifyEvidence(entopts) {
+        const self = this;
+        return new VerifyEvidenceEntity_1.VerifyEvidenceEntity(self, entopts);
+    }
+    // Entity access: `client.VerifyMergeRequest().list()` / `client.VerifyMergeRequest().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    VerifyMergeRequest(entopts) {
+        const self = this;
+        return new VerifyMergeRequestEntity_1.VerifyMergeRequestEntity(self, entopts);
+    }
+    // Entity access: `client.VerifyPullRequest().list()` / `client.VerifyPullRequest().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    VerifyPullRequest(entopts) {
+        const self = this;
+        return new VerifyPullRequestEntity_1.VerifyPullRequestEntity(self, entopts);
     }
     // Entity access: `client.VerifySignalIntegration().list()` / `client.VerifySignalIntegration().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity

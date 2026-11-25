@@ -1,0 +1,22 @@
+$kind: http-request
+id: "22824350-c54a-5ee9-96eb-e1a6c33e058a"
+description: |-
+  The `demo_share` action of **verify_pull_request**, a route of its `create` operation.
+
+  SDK: `client.VerifyPullRequest().create({ "organization_id": "organization_id", "id": "ID", $action: "demo_share" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/pull_requests/:id/demo_share"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_pull_request belongs to.
+  - key: id
+    value: "{{verify_pull_request_id}}"
+    description: The verify_pull_request this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 3000

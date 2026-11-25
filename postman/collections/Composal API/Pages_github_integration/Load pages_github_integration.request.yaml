@@ -1,0 +1,22 @@
+$kind: http-request
+id: "2b07c9e2-f03a-51ca-8be2-46ffec58fd06"
+description: |-
+  The `load` operation of **pages_github_integration**.
+
+  SDK: `client.PagesGithubIntegration().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/github_integrations/:github_app_installation_id"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: page
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this pages_github_integration belongs to.
+  - key: github_app_installation_id
+    value: "{{pages_github_integration_id}}"
+    description: The pages_github_integration this request addresses.
+order: 2000

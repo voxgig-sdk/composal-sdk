@@ -45,7 +45,7 @@ class VcChangeEntityTest extends TestCase
         $setup = vc_change_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list"] as $_op) {
+        foreach (["list", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "vc_change." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -63,6 +63,12 @@ class VcChangeEntityTest extends TestCase
             }
         }
         $client = $setup["client"];
+        if (!empty($setup["live"])) {
+            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["vc_change01"] ?? null) : null;
+            Runner::live_pace();
+            Runner::live_existing($setup, self::LIVE_STRICT, "vc_change",
+                fn() => $client->VcChange(null)->list(["organization_id" => $setup["idmap"]["organization01"] ?? null, "repo_id" => $setup["idmap"]["repo01"] ?? null], null), "id", $_liveId);
+        }
 
         // Bootstrap entity data from existing test data.
         $vc_change_ref01_data_raw = Vs::items(Helpers::to_map(
@@ -84,6 +90,20 @@ class VcChangeEntityTest extends TestCase
 
         $vc_change_ref01_list_result = $vc_change_ref01_ent->list($vc_change_ref01_match, null);
         $this->assertIsArray($vc_change_ref01_list_result);
+
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
+        // LOAD
+        $vc_change_ref01_match_dt0 = [
+            "id" => $vc_change_ref01_data["id"],
+        ];
+        $vc_change_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $vc_change_ref01_match_dt0["repo_id"] = $setup["idmap"]["repo_id"] ?? $setup["idmap"]["repo01"] ?? null;
+        $vc_change_ref01_data_dt0_loaded = $vc_change_ref01_ent->load($vc_change_ref01_match_dt0, null);
+        $vc_change_ref01_data_dt0_load_result = Helpers::to_map(is_object($vc_change_ref01_data_dt0_loaded) && method_exists($vc_change_ref01_data_dt0_loaded, 'data_get') ? $vc_change_ref01_data_dt0_loaded->data_get() : $vc_change_ref01_data_dt0_loaded);
+        $this->assertNotNull($vc_change_ref01_data_dt0_load_result);
+        $this->assertTrue(Runner::live_same_id($vc_change_ref01_data_dt0_load_result["id"] ?? null, $vc_change_ref01_data["id"]));
 
             return;
         }
@@ -96,6 +116,12 @@ class VcChangeEntityTest extends TestCase
             }
         }
         $client = $setup["client"];
+        if (!empty($setup["live"])) {
+            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["vc_change01"] ?? null) : null;
+            Runner::live_pace();
+            Runner::live_existing($setup, self::LIVE_STRICT, "vc_change",
+                fn() => $client->VcChange(null)->list(["organization_id" => $setup["idmap"]["organization01"] ?? null, "repo_id" => $setup["idmap"]["repo01"] ?? null], null), "id", $_liveId);
+        }
 
         // Bootstrap entity data from existing test data.
         $vc_change_ref01_data_raw = Vs::items(Helpers::to_map(
@@ -117,6 +143,20 @@ class VcChangeEntityTest extends TestCase
 
         $vc_change_ref01_list_result = $vc_change_ref01_ent->list($vc_change_ref01_match, null);
         $this->assertIsArray($vc_change_ref01_list_result);
+
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
+        // LOAD
+        $vc_change_ref01_match_dt0 = [
+            "id" => $vc_change_ref01_data["id"],
+        ];
+        $vc_change_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $vc_change_ref01_match_dt0["repo_id"] = $setup["idmap"]["repo_id"] ?? $setup["idmap"]["repo01"] ?? null;
+        $vc_change_ref01_data_dt0_loaded = $vc_change_ref01_ent->load($vc_change_ref01_match_dt0, null);
+        $vc_change_ref01_data_dt0_load_result = Helpers::to_map(is_object($vc_change_ref01_data_dt0_loaded) && method_exists($vc_change_ref01_data_dt0_loaded, 'data_get') ? $vc_change_ref01_data_dt0_loaded->data_get() : $vc_change_ref01_data_dt0_loaded);
+        $this->assertNotNull($vc_change_ref01_data_dt0_load_result);
+        $this->assertTrue(Runner::live_same_id($vc_change_ref01_data_dt0_load_result["id"] ?? null, $vc_change_ref01_data["id"]));
 
     }
 }

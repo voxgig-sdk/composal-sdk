@@ -13,4 +13,4 @@ description: |-
   | `name` | string | yes |  |
   | `url` | string | yes |  |
   | `visibility` | string | yes |  |
-order: 503000
+order: 501000

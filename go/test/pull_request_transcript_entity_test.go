@@ -130,7 +130,7 @@ func pull_request_transcriptBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"pull_request_transcript01", "pull_request_transcript02", "pull_request_transcript03", "organization01", "organization02", "organization03", "repo01", "repo02", "repo03", "pull_request01", "pull_request02", "pull_request03"},
+		[]any{"pull_request_transcript01", "pull_request_transcript02", "pull_request_transcript03", "organization01", "organization02", "organization03", "repo01", "repo02", "repo03", "pull_request01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

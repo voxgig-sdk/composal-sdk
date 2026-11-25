@@ -52,7 +52,7 @@ class TestStaticSiteEntity:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
-            print("LIVE STEP {\"id\":\"static_site.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/static_sites/{id}/provision\"}")
+            print("LIVE STEP {\"id\":\"static_site.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/static_sites\"}")
             print("LIVE STEP {\"id\":\"static_site.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/static_sites/{id}\"}")
             print("LIVE STEP {\"id\":\"static_site.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/static_sites/{id}\"}")
             print("LIVE STEP {\"id\":\"static_site.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")

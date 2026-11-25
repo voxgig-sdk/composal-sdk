@@ -33,16 +33,8 @@ class TestPullRequestTranscriptDirect:
         if _skip:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
-        if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE" and setup["idmap"].get("pull_request01") is None:
-            print("LIVE STEP {\"id\":\"direct-list-pull_request_transcript\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}")
-            pytest.skip("Live coverage incomplete: direct-list-pull_request_transcript excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)")
-
-        if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE" and setup["idmap"].get("pull_request01") is None:
-            print("LIVE STEP {\"id\":\"direct-list-pull_request_transcript\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}")
-            pytest.skip("Live coverage incomplete: direct-list-pull_request_transcript excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)")
-
         if setup["live"]:
-            for _live_key in ["organization01", "pull_request01", "pull_request01", "repo01"]:
+            for _live_key in ["organization01", "pull_request01", "repo01"]:
                 if setup["idmap"].get(_live_key) is None:
                     runner.live_miss(LIVE_STRICT, f"Live test blocked: needs {_live_key} via COMPOSAL_TEST_PULL_REQUEST_TRANSCRIPT_ENTID")
 
@@ -61,13 +53,9 @@ class TestPullRequestTranscriptDirect:
         else:
             params["pull_request_id"] = "direct02"
         if setup["live"]:
-            params["pull_request_id"] = setup["idmap"].get("pull_request01")
-        else:
-            params["pull_request_id"] = "direct03"
-        if setup["live"]:
             params["repo_id"] = setup["idmap"].get("repo01")
         else:
-            params["repo_id"] = "direct04"
+            params["repo_id"] = "direct03"
 
         result = client.direct({
             "path": "api/v1/organizations/{organization_id}/repos/{repo_id}/pages/pull_request/{pull_request_id}/transcripts",

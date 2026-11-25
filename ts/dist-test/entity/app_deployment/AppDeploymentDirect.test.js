@@ -48,7 +48,7 @@ const utility_1 = require("../../utility");
             params.id = 'direct02';
         }
         const result = await client.direct({
-            path: 'api/v1/hosting/apps/{app_id}/deployments/{id}/live',
+            path: 'api/v1/hosting/apps/{app_id}/deployments/{id}',
             method: 'GET',
             params,
             query,

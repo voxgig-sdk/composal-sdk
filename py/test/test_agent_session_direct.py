@@ -43,11 +43,9 @@ class TestAgentSessionDirect:
         query = {}
         if setup["live"]:
             params["id"] = setup["idmap"].get("agent_session01")
-            params["id"] = setup["idmap"].get("agent_session01")
             pass
         else:
             params["id"] = "direct01"
-            params["id"] = "direct02"
             pass
 
         result = client.direct({

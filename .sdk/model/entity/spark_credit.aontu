@@ -46,7 +46,7 @@ main: kit: entity: spark_credit: {
     compute_minutes: {
       h: "Compute Minutes"
       n: "compute_minutes"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     compute_usd: {

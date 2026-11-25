@@ -79,7 +79,7 @@ main: kit: entity: run_search: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.runs`"
+            res: "`body`"
           }
         }
       ]

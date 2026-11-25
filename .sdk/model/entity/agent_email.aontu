@@ -131,13 +131,6 @@ main: kit: entity: agent_email: {
               }
               {
                 k: "param"
-                n: "id"
-                or: "message_id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "organization_id"
                 or: "organization_id"
                 r: true

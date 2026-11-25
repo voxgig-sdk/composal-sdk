@@ -1,0 +1,29 @@
+$kind: http-request
+id: d68fdf3f-a04a-5b32-8cb4-2cba48416a79
+description: |-
+  The `rerun` action of **verify_merge_request**, a route of its `create` operation.
+
+  SDK: `client.VerifyMergeRequest().create({ "organization_id": "organization_id", "id": "ID", $action: "rerun" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/merge_requests/:id/rerun"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_merge_request belongs to.
+  - key: id
+    value: "{{verify_merge_request_id}}"
+    description: The verify_merge_request this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "idempotency_key": "example",
+      "head_sha": "example",
+      "scenario_ids": [
+        "example"
+      ]
+    }
+order: 4000

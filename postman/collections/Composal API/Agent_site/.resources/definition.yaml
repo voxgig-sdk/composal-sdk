@@ -17,4 +17,4 @@ description: |-
   | `title` | string | yes |  |
   | `url` | string | yes |  |
   | `visibility` | string | yes |  |
-order: 54000
+order: 53000

@@ -38,7 +38,7 @@ func TestAgentInputEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.AgentInput(nil).Create(map[string]any{"agent_id": 1, "organization_id": "x", "browser_context": "x", "client_time": "x", "conversation_id": "x", "text": "x"}, nil)
+		_, err := client.AgentInput(nil).Create(map[string]any{"agent_id": 1, "organization_id": "x", "conversation_id": "x", "text": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}

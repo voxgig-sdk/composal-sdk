@@ -101,7 +101,7 @@ describe("ProjectEnvironmentEntity", function()
       if type(own) == "string" or type(own) == "number" or type(own) == "boolean" then
         project_environment_ref01_match_dt0["project_id"] = own
       else
-        project_environment_ref01_match_dt0["project_id"] = setup.idmap["project_id"]
+        project_environment_ref01_match_dt0["project_id"] = setup.idmap["project_id"] or setup.idmap["project01"]
       end
     end
     local project_environment_ref01_data_dt0_loaded, err = project_environment_ref01_ent:load(project_environment_ref01_match_dt0, nil)
@@ -190,7 +190,7 @@ describe("ProjectEnvironmentEntity", function()
       if type(own) == "string" or type(own) == "number" or type(own) == "boolean" then
         project_environment_ref01_match_dt0["project_id"] = own
       else
-        project_environment_ref01_match_dt0["project_id"] = setup.idmap["project_id"]
+        project_environment_ref01_match_dt0["project_id"] = setup.idmap["project_id"] or setup.idmap["project01"]
       end
     end
     local project_environment_ref01_data_dt0_loaded, err = project_environment_ref01_ent:load(project_environment_ref01_match_dt0, nil)

@@ -89,6 +89,7 @@ class ControlComputerControlOperationEntityTest extends TestCase
         $control_computer_control_operation_ref01_match_dt0 = [
             "id" => $control_computer_control_operation_ref01_data["id"],
         ];
+        $control_computer_control_operation_ref01_match_dt0["control_computer_id"] = $setup["idmap"]["control_computer_id"] ?? $setup["idmap"]["control_computer01"] ?? null;
         $control_computer_control_operation_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
         $control_computer_control_operation_ref01_data_dt0_loaded = $control_computer_control_operation_ref01_ent->load($control_computer_control_operation_ref01_match_dt0, null);
         $control_computer_control_operation_ref01_data_dt0_load_result = Helpers::to_map(is_object($control_computer_control_operation_ref01_data_dt0_loaded) && method_exists($control_computer_control_operation_ref01_data_dt0_loaded, 'data_get') ? $control_computer_control_operation_ref01_data_dt0_loaded->data_get() : $control_computer_control_operation_ref01_data_dt0_loaded);

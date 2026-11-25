@@ -21,6 +21,10 @@ main: kit: flow: BasicBazelExecutionFlow:
         suffix: "_dt0"
       }
 
+      m: {
+        id: "bazel_execution01"
+      }
+
       o: "load",
       v: [
         {

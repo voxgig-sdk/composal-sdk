@@ -35,11 +35,6 @@ func TestGithubPullRequestDirect(t *testing.T) {
 			t.Skip("Live coverage incomplete: direct-load-github_pull_request excluded (GET-only live run: needs github_pull_request01, which only POST /api/v1/organizations/{org_slug}/github/pull_requests/refresh gives)")
 			return
 		}
-		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" && setup.idmap["pull_request01"] == nil {
-			t.Log("LIVE STEP {\"id\":\"direct-load-github_pull_request\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}")
-			t.Skip("Live coverage incomplete: direct-load-github_pull_request excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)")
-			return
-		}
 		if setup.live {
 			for _, _liveKey := range []string{"github_pull_request01", "organization01", "pull_request01"} {
 				if v := setup.idmap[_liveKey]; v == nil {
@@ -57,18 +52,12 @@ func TestGithubPullRequestDirect(t *testing.T) {
 		query := map[string]any{}
 		if setup.live {
 			params["id"] = setup.idmap["github_pull_request01"]
-			params["id"] = setup.idmap["github_pull_request01"]
 			params["organization_id"] = setup.idmap["organization01"]
-			params["organization_id"] = setup.idmap["organization01"]
-			params["pull_request_id"] = setup.idmap["pull_request01"]
 			params["pull_request_id"] = setup.idmap["pull_request01"]
 		} else {
 			params["id"] = "direct01"
-			params["id"] = "direct02"
-			params["organization_id"] = "direct03"
-			params["organization_id"] = "direct04"
-			params["pull_request_id"] = "direct05"
-			params["pull_request_id"] = "direct06"
+			params["organization_id"] = "direct02"
+			params["pull_request_id"] = "direct03"
 		}
 
 		result, err := client.Direct(map[string]any{
@@ -127,15 +116,6 @@ func TestGithubPullRequestDirect(t *testing.T) {
 				}
 				if !strings.Contains(url, "direct03") {
 					t.Fatalf("expected url to contain direct03, got %v", url)
-				}
-				if !strings.Contains(url, "direct04") {
-					t.Fatalf("expected url to contain direct04, got %v", url)
-				}
-				if !strings.Contains(url, "direct05") {
-					t.Fatalf("expected url to contain direct05, got %v", url)
-				}
-				if !strings.Contains(url, "direct06") {
-					t.Fatalf("expected url to contain direct06, got %v", url)
 				}
 			}
 		}

@@ -58,13 +58,10 @@ const utility_1 = require("../../utility");
             }
             params.id = candidateId;
             params.organization_id = setup.idmap['organization01'];
-            params.organization_id = setup.idmap['organization01'];
         }
         else {
             params.id = 'direct01';
-            params.id = 'direct02';
-            params.organization_id = 'direct03';
-            params.organization_id = 'direct04';
+            params.organization_id = 'direct02';
         }
         const result = await client.direct({
             path: 'api/v1/organizations/{organization_id}/agents/{id}/spark/message_image',
@@ -89,8 +86,6 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(calls[0].init.method === 'GET');
             (0, node_assert_1.default)(calls[0].url.includes('direct01'));
             (0, node_assert_1.default)(calls[0].url.includes('direct02'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct03'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct04'));
         }
     });
     (0, node_test_1.test)('direct-list-agent', async (t) => {

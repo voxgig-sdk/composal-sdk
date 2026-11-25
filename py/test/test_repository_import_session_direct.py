@@ -31,8 +31,8 @@ class TestRepositoryImportSessionDirect:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE" and setup["idmap"].get("repository_import_session01") is None:
-            print("LIVE STEP {\"id\":\"direct-load-repository_import_session\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs repository_import_session01, which only POST /api/v1/repository_import_sessions/{id}/authorization gives\"}")
-            pytest.skip("Live coverage incomplete: direct-load-repository_import_session excluded (GET-only live run: needs repository_import_session01, which only POST /api/v1/repository_import_sessions/{id}/authorization gives)")
+            print("LIVE STEP {\"id\":\"direct-load-repository_import_session\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs repository_import_session01, which only POST /api/v1/organizations/{organization_id}/repository_import_sessions gives\"}")
+            pytest.skip("Live coverage incomplete: direct-load-repository_import_session excluded (GET-only live run: needs repository_import_session01, which only POST /api/v1/organizations/{organization_id}/repository_import_sessions gives)")
 
         if setup["live"]:
             for _live_key in ["repository_import_session01"]:

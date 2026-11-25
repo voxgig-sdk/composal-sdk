@@ -1,0 +1,49 @@
+$kind: collection
+id: a18ad3e6-5201-5918-be40-243876f464d9
+description: |-
+  The **verify_environment** entity, which belongs to a organization. Its requests address one record by `{{verify_environment_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `active_revision_id` | string | yes |  |
+  | `agent_sign_up_available` | boolean | yes |  |
+  | `allowed_actions` | string | yes |  |
+  | `billing` | object | yes |  |
+  | `cleanup` | array | yes |  |
+  | `connection` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `default_policy` | object |  |  |
+  | `default_policy_json` | object | yes |  |
+  | `discovery_defaults` | object | yes |  |
+  | `environment` | object | yes |  |
+  | `exploration_accounts` | array |  |  |
+  | `explorations` | array |  |  |
+  | `first_run` | any |  |  |
+  | `hosted_app_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `imessage_number` | string | yes |  |
+  | `included_deep_scan` | boolean | yes |  |
+  | `lock_version` | integer | yes |  |
+  | `managed_google_available` | boolean | yes |  |
+  | `managed_google_email` | string | yes |  |
+  | `messaging_tester_number` | string |  |  |
+  | `name` | string | yes |  |
+  | `network_connections` | array | yes |  |
+  | `onboarding_discovery` | any |  |  |
+  | `organization_id` | string | yes |  |
+  | `pending_accounts` | array |  |  |
+  | `permissions` | object | yes |  |
+  | `project_id` | string | yes |  |
+  | `repository_id` | string | yes |  |
+  | `revisions` | array | yes |  |
+  | `setup_discovery_id` | string |  |  |
+  | `sign_in_check_available` | boolean | yes |  |
+  | `slug` | string | yes |  |
+  | `status` | string | yes |  |
+  | `target_kind` | string | yes |  |
+  | `target_url` | string | yes |  |
+  | `test_accounts` | object | yes |  |
+  | `updated_at` | string | yes |  |
+  | `verify_network_connection_id` | string | yes |  |
+  | `version` | integer |  |  |
+order: 542000

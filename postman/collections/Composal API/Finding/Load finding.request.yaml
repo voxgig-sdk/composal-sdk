@@ -12,9 +12,6 @@ queryParams:
   - key: repository_id
     value: ""
     disabled: true
-  - key: repository_id
-    value: ""
-    disabled: true
 pathVariables:
   - key: organization_id
     value: "{{organization_id}}"

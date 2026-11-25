@@ -85,7 +85,7 @@ class ProjectEnvironmentEntityTest < Minitest::Test
       "id" => project_environment_ref01_data["id"],
     }
     project_environment_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
-    project_environment_ref01_match_dt0["project_id"] = [String, Numeric, TrueClass, FalseClass].any? { |c| project_environment_ref01_data["project_id"].is_a?(c) } ? project_environment_ref01_data["project_id"] : (setup[:idmap]["project_id"])
+    project_environment_ref01_match_dt0["project_id"] = [String, Numeric, TrueClass, FalseClass].any? { |c| project_environment_ref01_data["project_id"].is_a?(c) } ? project_environment_ref01_data["project_id"] : (setup[:idmap]["project_id"] || setup[:idmap]["project01"])
     project_environment_ref01_data_dt0_loaded = project_environment_ref01_ent.load(project_environment_ref01_match_dt0, nil)
     project_environment_ref01_data_dt0_load_result = Helpers.to_map(project_environment_ref01_data_dt0_loaded.respond_to?(:data_get) ? project_environment_ref01_data_dt0_loaded.data_get : project_environment_ref01_data_dt0_loaded)
     assert !project_environment_ref01_data_dt0_load_result.nil?
@@ -155,7 +155,7 @@ class ProjectEnvironmentEntityTest < Minitest::Test
       "id" => project_environment_ref01_data["id"],
     }
     project_environment_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
-    project_environment_ref01_match_dt0["project_id"] = [String, Numeric, TrueClass, FalseClass].any? { |c| project_environment_ref01_data["project_id"].is_a?(c) } ? project_environment_ref01_data["project_id"] : (setup[:idmap]["project_id"])
+    project_environment_ref01_match_dt0["project_id"] = [String, Numeric, TrueClass, FalseClass].any? { |c| project_environment_ref01_data["project_id"].is_a?(c) } ? project_environment_ref01_data["project_id"] : (setup[:idmap]["project_id"] || setup[:idmap]["project01"])
     project_environment_ref01_data_dt0_loaded = project_environment_ref01_ent.load(project_environment_ref01_match_dt0, nil)
     project_environment_ref01_data_dt0_load_result = Helpers.to_map(project_environment_ref01_data_dt0_loaded.respond_to?(:data_get) ? project_environment_ref01_data_dt0_loaded.data_get : project_environment_ref01_data_dt0_loaded)
     assert !project_environment_ref01_data_dt0_load_result.nil?

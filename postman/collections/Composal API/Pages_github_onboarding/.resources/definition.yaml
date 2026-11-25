@@ -7,4 +7,4 @@ description: |-
   |---|---|---|---|
   | `onboarding` | object | yes |  |
   | `organization` | object | yes |  |
-order: 371000
+order: 367000

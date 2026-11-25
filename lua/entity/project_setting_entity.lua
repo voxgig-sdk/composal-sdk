@@ -308,14 +308,16 @@ end
 
 
 
----@param reqmatch ProjectSettingLoadMatch
+
+
+---@param reqmatch ProjectSettingListMatch
 ---@param ctrl? table
----@return ProjectSettingEntity
+---@return ProjectSettingEntity[]
 ---@return string? err
-function ProjectSettingEntity:load(reqmatch, ctrl)
+function ProjectSettingEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
-    opname = "load",
+    opname = "list",
     ctrl = ctrl,
     match = self._match,
     data = self._data,
@@ -327,14 +329,9 @@ function ProjectSettingEntity:load(reqmatch, ctrl)
       if ctx.result.resmatch ~= nil then
         self._match = ctx.result.resmatch
       end
-      if ctx.result.resdata ~= nil then
-        self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
-      end
     end
   end)
 end
-
-
 
 
 

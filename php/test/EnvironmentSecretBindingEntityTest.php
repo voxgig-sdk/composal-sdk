@@ -127,7 +127,7 @@ function environment_secret_binding_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["environment_secret_binding01", "environment_secret_binding02", "environment_secret_binding03", "app01", "app02", "app03", "environment01", "environment02", "environment03"] as $k) {
+    foreach (["environment_secret_binding01", "environment_secret_binding02", "environment_secret_binding03", "app01", "app02", "app03", "environment01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

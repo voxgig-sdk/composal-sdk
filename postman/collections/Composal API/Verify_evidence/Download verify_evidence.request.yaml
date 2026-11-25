@@ -1,0 +1,22 @@
+$kind: http-request
+id: "0bd2ae59-68f8-52e4-b9a6-f67b3889e9c6"
+description: |-
+  The `download` action of **verify_evidence**, a route of its `load` operation.
+
+  SDK: `client.VerifyEvidence().load({ "organization_id": "organization_id", "id": "ID", $action: "download" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/evidence/:id/download"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: inline
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_evidence belongs to.
+  - key: id
+    value: "{{verify_evidence_id}}"
+    description: The verify_evidence this request addresses.
+order: 4000

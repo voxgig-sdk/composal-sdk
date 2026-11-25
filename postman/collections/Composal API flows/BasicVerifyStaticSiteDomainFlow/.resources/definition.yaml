@@ -1,4 +1,4 @@
 $kind: collection
 id: e5f9bd68-f07a-5470-a3fe-39315d0a307b
 description: "The `BasicVerifyStaticSiteDomainFlow` flow of **verify_static_site_domain**."
-order: 422000
+order: 426000

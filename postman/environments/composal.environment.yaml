@@ -18,7 +18,7 @@ values:
   - key: conversation_id
     value: ""
     enabled: true
-  - key: view
+  - key: uri
     value: ""
     enabled: true
   - key: index
@@ -27,7 +27,7 @@ values:
   - key: message_id
     value: ""
     enabled: true
-  - key: uri
+  - key: view
     value: ""
     enabled: true
   - key: expected_commit_id
@@ -102,6 +102,9 @@ values:
   - key: coordination_id
     value: ""
     enabled: true
+  - key: environment_id
+    value: ""
+    enabled: true
   - key: persona_id
     value: ""
     enabled: true
@@ -117,19 +120,10 @@ values:
   - key: domain_id
     value: ""
     enabled: true
-  - key: scenario_run_id
-    value: ""
-    enabled: true
   - key: name
     value: ""
     enabled: true
   - key: owner
-    value: ""
-    enabled: true
-  - key: number
-    value: ""
-    enabled: true
-  - key: source_repository
     value: ""
     enabled: true
   - key: interaction_id
@@ -189,6 +183,12 @@ values:
   - key: target
     value: ""
     enabled: true
+  - key: pull_request_id
+    value: ""
+    enabled: true
+  - key: number
+    value: ""
+    enabled: true
   - key: change
     value: ""
     enabled: true
@@ -205,6 +205,9 @@ values:
     value: ""
     enabled: true
   - key: repository_id
+    value: ""
+    enabled: true
+  - key: scenario_run_id
     value: ""
     enabled: true
   - key: runner_pool_id
@@ -232,6 +235,9 @@ values:
     value: ""
     enabled: true
   - key: head
+    value: ""
+    enabled: true
+  - key: source_repository
     value: ""
     enabled: true
   - key: version_id

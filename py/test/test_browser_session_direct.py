@@ -55,7 +55,7 @@ class TestBrowserSessionDirect:
             pass
 
         result = client.direct({
-            "path": "api/v1/organizations/{organization_id}/browser_sessions/{id}/media",
+            "path": "api/v1/organizations/{organization_id}/browser_sessions/{id}",
             "method": "GET",
             "params": params,
             "query": query,

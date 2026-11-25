@@ -19,7 +19,7 @@ body:
     {
       "idempotency_key": "example",
       "project_id": "{{project_id}}",
-      "environment_id": "{{environment_id}}",
+      "environment_id": "example",
       "credential_id": "example",
       "url": "example",
       "max_seconds": 900,

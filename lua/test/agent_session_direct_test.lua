@@ -44,10 +44,8 @@ describe("AgentSessionDirect", function()
     local query = {}
     if setup.live then
       params["id"] = setup.idmap["agent_session01"]
-      params["id"] = setup.idmap["agent_session01"]
     else
       params["id"] = "direct01"
-      params["id"] = "direct02"
     end
 
     local result, err = client:direct({

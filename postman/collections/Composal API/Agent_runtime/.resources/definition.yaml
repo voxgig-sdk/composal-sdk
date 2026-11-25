@@ -16,4 +16,4 @@ description: |-
   | `state` | string | yes |  |
   | `version` | string | yes |  |
   | `volume` | object | yes |  |
-order: 48000
+order: 47000

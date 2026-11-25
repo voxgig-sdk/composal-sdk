@@ -43,11 +43,6 @@ describe('EnvironmentTestAccountDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
     if (maybeSkipControl(t, 'direct', 'direct-list-environment_test_account', setup.live)) return
-    if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["environment01"]) {
-      console.log("LIVE STEP {\"id\":\"direct-list-environment_test_account\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives\"}")
-      t.skip("Live coverage incomplete: direct-list-environment_test_account excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)")
-      return
-    }
     if (skipIfMissingIds(t, setup, ["environment01","organization01"], LIVE_STRICT)) return
     const { client, calls } = setup
 

@@ -39,13 +39,6 @@ main: kit: entity: agent_session: {
                 r: true
                 t: "`$STRING`"
               }
-              {
-                k: "param"
-                n: "id"
-                or: "session_id"
-                r: true
-                t: "`$STRING`"
-              }
             ]
             query: [
               {
@@ -160,11 +153,8 @@ main: kit: entity: agent_session: {
             }
           ]
           t: {
-            page: {
-              more: "`body.has_more`"
-            }
             req: "`reqdata`"
-            res: "`body.events`"
+            res: "`body`"
           }
         }
       ]

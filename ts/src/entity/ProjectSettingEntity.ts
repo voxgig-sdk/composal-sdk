@@ -16,7 +16,7 @@ import type {
 
 import type {
   ProjectSetting,
-  ProjectSettingLoadMatch,
+  ProjectSettingListMatch,
 } from '../ComposalTypes'
 
 class ProjectSettingEntity extends ComposalEntityBase<ProjectSetting> {
@@ -35,7 +35,8 @@ class ProjectSettingEntity extends ComposalEntityBase<ProjectSetting> {
 
 
 
-  async load(this: any, reqmatch?: ProjectSettingLoadMatch, ctrl?: Control): Promise<ProjectSettingEntity> {
+
+  async list(this: any, reqmatch?: ProjectSettingListMatch, ctrl?: Control): Promise<ProjectSettingEntity[]> {
 
     const utility = this._utility
 
@@ -55,7 +56,7 @@ class ProjectSettingEntity extends ComposalEntityBase<ProjectSetting> {
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'load',
+      opname: 'list',
       ctrl,
       match: this._match,
       data: this._data,
@@ -121,15 +122,9 @@ class ProjectSettingEntity extends ComposalEntityBase<ProjectSetting> {
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
-
-        if (null != ctx.result.resdata) {
-          this._data = ctx.result.resdata
-        }
       }
 
-      const out = done(ctx)
-
-      return (ctx.result && ctx.result.ok) ? this : out
+      return done(ctx)
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -152,12 +147,11 @@ class ProjectSettingEntity extends ComposalEntityBase<ProjectSetting> {
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<ProjectSettingEntity> return stays clean under strict null checks.
+        // Promise<ProjectSettingEntity[]> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
-
 
 
 

@@ -22,7 +22,7 @@ description: |-
   | `name` | string | yes |  |
   | `network_connections` | array | yes |  |
   | `organization_id` | string | yes |  |
-  | `overview` | object | yes |  |
+  | `overview` | object |  |  |
   | `permissions` | object | yes |  |
   | `personas` | array | yes |  |
   | `project` | object | yes |  |
@@ -30,7 +30,7 @@ description: |-
   | `pull_requests` | array | yes |  |
   | `purpose` | string | yes |  |
   | `runs` | array | yes |  |
-  | `scenario_history` | object | yes |  |
+  | `scenario_history` | object |  |  |
   | `scenario_states` | object | yes |  |
   | `scenarios` | array | yes |  |
   | `setup_required` | boolean |  |  |

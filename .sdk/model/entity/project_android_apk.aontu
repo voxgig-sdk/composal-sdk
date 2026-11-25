@@ -8,7 +8,7 @@ main: kit: entity: project_android_apk: {
     android: {
       h: "Android"
       n: "android"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     artifact_paths: {
@@ -32,7 +32,7 @@ main: kit: entity: project_android_apk: {
     ios: {
       h: "Ios"
       n: "ios"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     launch_command: {
@@ -44,7 +44,7 @@ main: kit: entity: project_android_apk: {
     managed_binary: {
       h: "Managed Binary"
       n: "managed_binary"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     platform: {

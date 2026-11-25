@@ -6,25 +6,13 @@ description: |-
   | field | type | required | |
   |---|---|---|---|
   | `body` | string | yes |  |
-  | `capabilities` | object | yes |  |
-  | `change_id` | string |  |  |
-  | `created_at` | string |  |  |
-  | `created_at_label` | string |  |  |
-  | `id` | string | yes |  |
+  | `comment` | object |  |  |
+  | `comments` | array | yes |  |
+  | `id` | string |  |  |
   | `kind` | string |  |  |
   | `line` | integer |  |  |
-  | `outdated` | boolean | yes |  |
   | `parent_comment_id` | string |  |  |
   | `patchset_id` | string |  |  |
-  | `patchset_number` | integer | yes |  |
   | `path` | string |  |  |
-  | `replies` | array |  |  |
-  | `resolved` | boolean | yes |  |
-  | `resolved_at` | string |  |  |
-  | `resolved_at_label` | string |  |  |
-  | `resolved_by` | object | yes |  |
   | `side` | string |  |  |
-  | `updated_at` | string |  |  |
-  | `updated_at_label` | string |  |  |
-  | `user` | object | yes |  |
 order: 161000

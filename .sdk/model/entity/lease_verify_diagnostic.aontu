@@ -14,13 +14,13 @@ main: kit: entity: lease_verify_diagnostic: {
     live_browser: {
       h: "Live Browser"
       n: "live_browser"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     live_view: {
       h: "Live View"
       n: "live_view"
-      r: true
+      r: false
       sh: "The tester's read-only live stream for page viewers."
       t: "`$OBJECT`"
     }

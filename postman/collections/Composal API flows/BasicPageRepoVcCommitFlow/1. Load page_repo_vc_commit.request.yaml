@@ -54,10 +54,10 @@ scripts:
       const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
       const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
       if ("Mark01-page_repo_vc_commit_ref01" === pm.variables.get("page_repo_vc_commit_ref01_marked")) pm.test("1. Load page_repo_vc_commit: the update reads back", () => {
-        pm.expect(JSON.stringify(body)).to.include("Mark01-page_repo_vc_commit_ref01")
+        pm.expect(JSON.stringify(body?.["commit"])).to.include("Mark01-page_repo_vc_commit_ref01")
       })
       pm.test("1. Load page_repo_vc_commit: the record is the one asked for", () => {
-        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("page_repo_vc_commit_id")))
+        pm.expect(String(at(body?.["commit"], "id"))).to.eql(String(pm.variables.get("page_repo_vc_commit_id")))
       })
     language: text/javascript
 order: 1000

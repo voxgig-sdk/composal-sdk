@@ -21,7 +21,7 @@ body:
   content: |-
     {
       "role": "owner",
-      "accepted_at": "Mark01-member_ref01"
+      "created_at": "Mark01-member_ref01"
     }
 scripts:
   - type: beforeRequest

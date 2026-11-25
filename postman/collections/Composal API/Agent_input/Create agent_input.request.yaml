@@ -3,7 +3,7 @@ id: "777cb17c-d2b3-5742-8ef8-a38078e04304"
 description: |-
   The `create` operation of **agent_input**.
 
-  SDK: `client.AgentInput().create({ agent_id: "example", organization_id: "example", browser_context: {}, client_time: {}, conversation_id: "example", text: "example" })`
+  SDK: `client.AgentInput().create({ agent_id: "example", organization_id: "example", conversation_id: "example", text: "example" })`
 url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/inputs"
 method: POST
 headers:

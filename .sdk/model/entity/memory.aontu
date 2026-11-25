@@ -391,7 +391,7 @@ main: kit: entity: memory: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.memory`"
           }
         }
       ]

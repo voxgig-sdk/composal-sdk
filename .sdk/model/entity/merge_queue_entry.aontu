@@ -8,7 +8,7 @@ main: kit: entity: merge_queue_entry: {
     analytics: {
       h: "Analytics"
       n: "analytics"
-      r: true
+      r: false
       sh: "Queue performance for the reporting window."
       t: "`$OBJECT`"
     }

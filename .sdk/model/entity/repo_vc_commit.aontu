@@ -59,26 +59,6 @@ main: kit: entity: repo_vc_commit: {
                 t: "`$INTEGER`"
               }
               {
-                ex: 25
-                explode: true
-                k: "query"
-                n: "limit"
-                or: "limit"
-                r: false
-                style: "form"
-                t: "`$INTEGER`"
-              }
-              {
-                ex: 0
-                explode: true
-                k: "query"
-                n: "offset"
-                or: "offset"
-                r: false
-                style: "form"
-                t: "`$INTEGER`"
-              }
-              {
                 ex: 0
                 explode: true
                 k: "query"
@@ -119,27 +99,9 @@ main: kit: entity: repo_vc_commit: {
               {
                 explode: true
                 k: "query"
-                n: "q"
-                or: "q"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
                 n: "ref"
                 or: "ref"
                 r: true
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "ref"
-                or: "ref"
-                r: false
                 style: "form"
                 t: "`$STRING`"
               }

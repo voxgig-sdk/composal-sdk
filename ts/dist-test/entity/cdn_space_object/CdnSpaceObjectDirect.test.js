@@ -30,8 +30,8 @@ const utility_1 = require("../../utility");
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-cdn_space_object', setup.live))
             return;
         if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["cdn_space01"]) {
-            console.log("LIVE STEP {\"id\":\"direct-load-cdn_space_object\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs cdn_space01, which only POST /api/v1/cdn_spaces/{id}/archive gives\"}");
-            t.skip("Live coverage incomplete: direct-load-cdn_space_object excluded (GET-only live run: needs cdn_space01, which only POST /api/v1/cdn_spaces/{id}/archive gives)");
+            console.log("LIVE STEP {\"id\":\"direct-load-cdn_space_object\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs cdn_space01, which only POST /api/v1/organizations/{org_slug}/cdn_spaces gives\"}");
+            t.skip("Live coverage incomplete: direct-load-cdn_space_object excluded (GET-only live run: needs cdn_space01, which only POST /api/v1/organizations/{org_slug}/cdn_spaces gives)");
             return;
         }
         if ((0, utility_1.skipIfMissingIds)(t, setup, ["cdn_space01", "cdn_space_object01"], LIVE_STRICT))

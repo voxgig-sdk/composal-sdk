@@ -497,24 +497,6 @@ class ComposalSDK implements \JsonSerializable
     }
 
 
-    private $_agent_automation = null;
-
-    // Canonical facade: $client->AgentAutomation()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->agent_automation()
-    // resolves here too.
-    public function AgentAutomation($data = null)
-    {
-        require_once __DIR__ . '/entity/agent_automation_entity.php';
-        if ($data === null) {
-            if ($this->_agent_automation === null) {
-                $this->_agent_automation = new AgentAutomationEntity($this, null);
-            }
-            return $this->_agent_automation;
-        }
-        return new AgentAutomationEntity($this, $data);
-    }
-
-
     private $_agent_avatar = null;
 
     // Canonical facade: $client->AgentAvatar()->list() / ->load(["id" => ...]).
@@ -1898,6 +1880,24 @@ class ComposalSDK implements \JsonSerializable
             return $this->_app_deployment;
         }
         return new AppDeploymentEntity($this, $data);
+    }
+
+
+    private $_app_deployment_dashboard = null;
+
+    // Canonical facade: $client->AppDeploymentDashboard()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->app_deployment_dashboard()
+    // resolves here too.
+    public function AppDeploymentDashboard($data = null)
+    {
+        require_once __DIR__ . '/entity/app_deployment_dashboard_entity.php';
+        if ($data === null) {
+            if ($this->_app_deployment_dashboard === null) {
+                $this->_app_deployment_dashboard = new AppDeploymentDashboardEntity($this, null);
+            }
+            return $this->_app_deployment_dashboard;
+        }
+        return new AppDeploymentDashboardEntity($this, $data);
     }
 
 
@@ -4223,24 +4223,6 @@ class ComposalSDK implements \JsonSerializable
     }
 
 
-    private $_device_control_operation = null;
-
-    // Canonical facade: $client->DeviceControlOperation()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->device_control_operation()
-    // resolves here too.
-    public function DeviceControlOperation($data = null)
-    {
-        require_once __DIR__ . '/entity/device_control_operation_entity.php';
-        if ($data === null) {
-            if ($this->_device_control_operation === null) {
-                $this->_device_control_operation = new DeviceControlOperationEntity($this, null);
-            }
-            return $this->_device_control_operation;
-        }
-        return new DeviceControlOperationEntity($this, $data);
-    }
-
-
     private $_device_enterprise_relay = null;
 
     // Canonical facade: $client->DeviceEnterpriseRelay()->list() / ->load(["id" => ...]).
@@ -4328,6 +4310,24 @@ class ComposalSDK implements \JsonSerializable
             return $this->_device_local_event;
         }
         return new DeviceLocalEventEntity($this, $data);
+    }
+
+
+    private $_device_operation = null;
+
+    // Canonical facade: $client->DeviceOperation()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->device_operation()
+    // resolves here too.
+    public function DeviceOperation($data = null)
+    {
+        require_once __DIR__ . '/entity/device_operation_entity.php';
+        if ($data === null) {
+            if ($this->_device_operation === null) {
+                $this->_device_operation = new DeviceOperationEntity($this, null);
+            }
+            return $this->_device_operation;
+        }
+        return new DeviceOperationEntity($this, $data);
     }
 
 
@@ -4529,24 +4529,6 @@ class ComposalSDK implements \JsonSerializable
     }
 
 
-    private $_environment = null;
-
-    // Canonical facade: $client->Environment()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->environment()
-    // resolves here too.
-    public function Environment($data = null)
-    {
-        require_once __DIR__ . '/entity/environment_entity.php';
-        if ($data === null) {
-            if ($this->_environment === null) {
-                $this->_environment = new EnvironmentEntity($this, null);
-            }
-            return $this->_environment;
-        }
-        return new EnvironmentEntity($this, $data);
-    }
-
-
     private $_environment_discovery_run = null;
 
     // Canonical facade: $client->EnvironmentDiscoveryRun()->list() / ->load(["id" => ...]).
@@ -4652,24 +4634,6 @@ class ComposalSDK implements \JsonSerializable
             return $this->_environment_test_account;
         }
         return new EnvironmentTestAccountEntity($this, $data);
-    }
-
-
-    private $_evidence = null;
-
-    // Canonical facade: $client->Evidence()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->evidence()
-    // resolves here too.
-    public function Evidence($data = null)
-    {
-        require_once __DIR__ . '/entity/evidence_entity.php';
-        if ($data === null) {
-            if ($this->_evidence === null) {
-                $this->_evidence = new EvidenceEntity($this, null);
-            }
-            return $this->_evidence;
-        }
-        return new EvidenceEntity($this, $data);
     }
 
 
@@ -5030,24 +4994,6 @@ class ComposalSDK implements \JsonSerializable
             return $this->_github_connection;
         }
         return new GithubConnectionEntity($this, $data);
-    }
-
-
-    private $_github_integration = null;
-
-    // Canonical facade: $client->GithubIntegration()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->github_integration()
-    // resolves here too.
-    public function GithubIntegration($data = null)
-    {
-        require_once __DIR__ . '/entity/github_integration_entity.php';
-        if ($data === null) {
-            if ($this->_github_integration === null) {
-                $this->_github_integration = new GithubIntegrationEntity($this, null);
-            }
-            return $this->_github_integration;
-        }
-        return new GithubIntegrationEntity($this, $data);
     }
 
 
@@ -6095,24 +6041,6 @@ class ComposalSDK implements \JsonSerializable
     }
 
 
-    private $_merge_request = null;
-
-    // Canonical facade: $client->MergeRequest()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->merge_request()
-    // resolves here too.
-    public function MergeRequest($data = null)
-    {
-        require_once __DIR__ . '/entity/merge_request_entity.php';
-        if ($data === null) {
-            if ($this->_merge_request === null) {
-                $this->_merge_request = new MergeRequestEntity($this, null);
-            }
-            return $this->_merge_request;
-        }
-        return new MergeRequestEntity($this, $data);
-    }
-
-
     private $_merge_resolution = null;
 
     // Canonical facade: $client->MergeResolution()->list() / ->load(["id" => ...]).
@@ -6977,6 +6905,24 @@ class ComposalSDK implements \JsonSerializable
     }
 
 
+    private $_pages_github_integration = null;
+
+    // Canonical facade: $client->PagesGithubIntegration()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->pages_github_integration()
+    // resolves here too.
+    public function PagesGithubIntegration($data = null)
+    {
+        require_once __DIR__ . '/entity/pages_github_integration_entity.php';
+        if ($data === null) {
+            if ($this->_pages_github_integration === null) {
+                $this->_pages_github_integration = new PagesGithubIntegrationEntity($this, null);
+            }
+            return $this->_pages_github_integration;
+        }
+        return new PagesGithubIntegrationEntity($this, $data);
+    }
+
+
     private $_pages_github_onboarding = null;
 
     // Canonical facade: $client->PagesGithubOnboarding()->list() / ->load(["id" => ...]).
@@ -7607,6 +7553,24 @@ class ComposalSDK implements \JsonSerializable
     }
 
 
+    private $_project_pr_testing = null;
+
+    // Canonical facade: $client->ProjectPrTesting()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->project_pr_testing()
+    // resolves here too.
+    public function ProjectPrTesting($data = null)
+    {
+        require_once __DIR__ . '/entity/project_pr_testing_entity.php';
+        if ($data === null) {
+            if ($this->_project_pr_testing === null) {
+                $this->_project_pr_testing = new ProjectPrTestingEntity($this, null);
+            }
+            return $this->_project_pr_testing;
+        }
+        return new ProjectPrTestingEntity($this, $data);
+    }
+
+
     private $_project_product_map = null;
 
     // Canonical facade: $client->ProjectProductMap()->list() / ->load(["id" => ...]).
@@ -7622,6 +7586,24 @@ class ComposalSDK implements \JsonSerializable
             return $this->_project_product_map;
         }
         return new ProjectProductMapEntity($this, $data);
+    }
+
+
+    private $_project_product_map_comparison = null;
+
+    // Canonical facade: $client->ProjectProductMapComparison()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->project_product_map_comparison()
+    // resolves here too.
+    public function ProjectProductMapComparison($data = null)
+    {
+        require_once __DIR__ . '/entity/project_product_map_comparison_entity.php';
+        if ($data === null) {
+            if ($this->_project_product_map_comparison === null) {
+                $this->_project_product_map_comparison = new ProjectProductMapComparisonEntity($this, null);
+            }
+            return $this->_project_product_map_comparison;
+        }
+        return new ProjectProductMapComparisonEntity($this, $data);
     }
 
 
@@ -7730,24 +7712,6 @@ class ComposalSDK implements \JsonSerializable
             return $this->_project_setting;
         }
         return new ProjectSettingEntity($this, $data);
-    }
-
-
-    private $_pull_request = null;
-
-    // Canonical facade: $client->PullRequest()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->pull_request()
-    // resolves here too.
-    public function PullRequest($data = null)
-    {
-        require_once __DIR__ . '/entity/pull_request_entity.php';
-        if ($data === null) {
-            if ($this->_pull_request === null) {
-                $this->_pull_request = new PullRequestEntity($this, null);
-            }
-            return $this->_pull_request;
-        }
-        return new PullRequestEntity($this, $data);
     }
 
 
@@ -9461,6 +9425,24 @@ class ComposalSDK implements \JsonSerializable
     }
 
 
+    private $_spark_automation = null;
+
+    // Canonical facade: $client->SparkAutomation()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->spark_automation()
+    // resolves here too.
+    public function SparkAutomation($data = null)
+    {
+        require_once __DIR__ . '/entity/spark_automation_entity.php';
+        if ($data === null) {
+            if ($this->_spark_automation === null) {
+                $this->_spark_automation = new SparkAutomationEntity($this, null);
+            }
+            return $this->_spark_automation;
+        }
+        return new SparkAutomationEntity($this, $data);
+    }
+
+
     private $_spark_credit = null;
 
     // Canonical facade: $client->SparkCredit()->list() / ->load(["id" => ...]).
@@ -10142,6 +10124,78 @@ class ComposalSDK implements \JsonSerializable
             return $this->_verify_email_verification;
         }
         return new VerifyEmailVerificationEntity($this, $data);
+    }
+
+
+    private $_verify_environment = null;
+
+    // Canonical facade: $client->VerifyEnvironment()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->verify_environment()
+    // resolves here too.
+    public function VerifyEnvironment($data = null)
+    {
+        require_once __DIR__ . '/entity/verify_environment_entity.php';
+        if ($data === null) {
+            if ($this->_verify_environment === null) {
+                $this->_verify_environment = new VerifyEnvironmentEntity($this, null);
+            }
+            return $this->_verify_environment;
+        }
+        return new VerifyEnvironmentEntity($this, $data);
+    }
+
+
+    private $_verify_evidence = null;
+
+    // Canonical facade: $client->VerifyEvidence()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->verify_evidence()
+    // resolves here too.
+    public function VerifyEvidence($data = null)
+    {
+        require_once __DIR__ . '/entity/verify_evidence_entity.php';
+        if ($data === null) {
+            if ($this->_verify_evidence === null) {
+                $this->_verify_evidence = new VerifyEvidenceEntity($this, null);
+            }
+            return $this->_verify_evidence;
+        }
+        return new VerifyEvidenceEntity($this, $data);
+    }
+
+
+    private $_verify_merge_request = null;
+
+    // Canonical facade: $client->VerifyMergeRequest()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->verify_merge_request()
+    // resolves here too.
+    public function VerifyMergeRequest($data = null)
+    {
+        require_once __DIR__ . '/entity/verify_merge_request_entity.php';
+        if ($data === null) {
+            if ($this->_verify_merge_request === null) {
+                $this->_verify_merge_request = new VerifyMergeRequestEntity($this, null);
+            }
+            return $this->_verify_merge_request;
+        }
+        return new VerifyMergeRequestEntity($this, $data);
+    }
+
+
+    private $_verify_pull_request = null;
+
+    // Canonical facade: $client->VerifyPullRequest()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->verify_pull_request()
+    // resolves here too.
+    public function VerifyPullRequest($data = null)
+    {
+        require_once __DIR__ . '/entity/verify_pull_request_entity.php';
+        if ($data === null) {
+            if ($this->_verify_pull_request === null) {
+                $this->_verify_pull_request = new VerifyPullRequestEntity($this, null);
+            }
+            return $this->_verify_pull_request;
+        }
+        return new VerifyPullRequestEntity($this, $data);
     }
 
 

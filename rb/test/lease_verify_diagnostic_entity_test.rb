@@ -25,7 +25,7 @@ class LeaseVerifyDiagnosticEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.LeaseVerifyDiagnostic(nil).create({ "lease_id" => 1, "swarm_id" => "x", "task_id" => "x", "browser_events" => "x", "live_browser" => "x", "live_view" => "x" }, nil)
+      client.LeaseVerifyDiagnostic(nil).create({ "lease_id" => 1, "swarm_id" => "x", "task_id" => "x", "browser_events" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end

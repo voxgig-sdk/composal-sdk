@@ -31,8 +31,8 @@ class GitImportDirectTest extends TestCase
             return;
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE" && null === ($setup["idmap"]['git_import01'] ?? null)) {
-            fwrite(STDOUT, 'LIVE STEP {"id":"direct-load-git_import","state":"excluded","attempted":false,"reason":"GET-only live run: needs git_import01, which only POST /api/v1/git_imports/{id}/complete gives"}' . "\n");
-            $this->markTestSkipped('Live coverage incomplete: direct-load-git_import excluded (GET-only live run: needs git_import01, which only POST /api/v1/git_imports/{id}/complete gives)');
+            fwrite(STDOUT, 'LIVE STEP {"id":"direct-load-git_import","state":"excluded","attempted":false,"reason":"GET-only live run: needs git_import01, which only POST /api/v1/organizations/{organization_id}/git_imports gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: direct-load-git_import excluded (GET-only live run: needs git_import01, which only POST /api/v1/organizations/{organization_id}/git_imports gives)');
         }
         if ($setup["live"]) {
             foreach (["git_import01"] as $_liveKey) {

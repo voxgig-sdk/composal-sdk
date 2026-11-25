@@ -1,4 +1,4 @@
 $kind: collection
 id: "43b58d55-b657-57a9-ab21-172d97060490"
 description: "The `BasicAgentSwarmFlow` flow of **agent_swarm**."
-order: 41000
+order: 40000

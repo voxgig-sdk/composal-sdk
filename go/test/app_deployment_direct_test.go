@@ -59,7 +59,7 @@ func TestAppDeploymentDirect(t *testing.T) {
 		}
 
 		result, err := client.Direct(map[string]any{
-			"path":   "api/v1/hosting/apps/{app_id}/deployments/{id}/live",
+			"path":   "api/v1/hosting/apps/{app_id}/deployments/{id}",
 			"method": "GET",
 			"params": params,
 			"query":  query,

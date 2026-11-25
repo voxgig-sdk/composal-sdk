@@ -1,0 +1,21 @@
+$kind: http-request
+id: ced92537-c3ea-59de-ba0f-4a0ca2342422
+description: |-
+  The `load` operation of **spark_automation**.
+
+  SDK: `client.SparkAutomation().load({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/automations/:automation_key"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this spark_automation belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this spark_automation belongs to.
+  - key: automation_key
+    value: "{{spark_automation_id}}"
+    description: The spark_automation this request addresses.
+order: 2000

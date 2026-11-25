@@ -52,9 +52,9 @@ class TestGitImportEntity:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
-            print("LIVE STEP {\"id\":\"git_import.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/git_imports/{id}/complete\"}")
+            print("LIVE STEP {\"id\":\"git_import.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/git_imports\"}")
             print("LIVE STEP {\"id\":\"git_import.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only git_import.create.0 gives\"}")
-            pytest.skip("Live coverage incomplete: git_import.create.0 excluded (GET-only live run: needs POST /api/v1/git_imports/{id}/complete); git_import.load.1 excluded (GET-only live run: reads a record only git_import.create.0 gives)")
+            pytest.skip("Live coverage incomplete: git_import.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/git_imports); git_import.load.1 excluded (GET-only live run: reads a record only git_import.create.0 gives)")
 
         if setup["live"]:
             for _live_key in ["organization01"]:

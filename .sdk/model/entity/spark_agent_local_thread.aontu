@@ -59,7 +59,7 @@ main: kit: entity: spark_agent_local_thread: {
     delivery: {
       h: "Delivery"
       n: "delivery"
-      r: true
+      r: false
       sh: "Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did."
       t: "`$OBJECT`"
     }
@@ -85,6 +85,12 @@ main: kit: entity: spark_agent_local_thread: {
     end: {
       h: "End"
       n: "end"
+      op: {
+        create: {
+          req: false
+          type: "`$OBJECT`"
+        }
+      }
       r: true
       t: "`$ANY`"
     }
@@ -173,7 +179,7 @@ main: kit: entity: spark_agent_local_thread: {
     relay_participant: {
       h: "Relay Participant"
       n: "relay_participant"
-      r: true
+      r: false
       t: "`$OBJECT`"
       union: {
         branches: 2
@@ -532,7 +538,7 @@ main: kit: entity: spark_agent_local_thread: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.policy`"
+            res: "`body`"
           }
         }
         {
@@ -740,7 +746,7 @@ main: kit: entity: spark_agent_local_thread: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.policy`"
+            res: "`body`"
           }
         }
       ]

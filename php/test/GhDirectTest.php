@@ -46,22 +46,14 @@ class GhDirectTest extends TestCase
         $query = [];
         if ($setup["live"]) {
             $params["gh_id"] = $setup["idmap"]["gh01"] ?? null;
-            $params["gh_id"] = $setup["idmap"]["gh01"] ?? null;
-            $params["github_repo"] = $setup["idmap"]["github_repo01"] ?? null;
             $params["github_repo"] = $setup["idmap"]["github_repo01"] ?? null;
             $params["id"] = $setup["idmap"]["gh01"] ?? null;
-            $params["id"] = $setup["idmap"]["gh01"] ?? null;
-            $params["organization_id"] = $setup["idmap"]["organization01"] ?? null;
             $params["organization_id"] = $setup["idmap"]["organization01"] ?? null;
         } else {
             $params["gh_id"] = "direct01";
-            $params["gh_id"] = "direct02";
-            $params["github_repo"] = "direct03";
-            $params["github_repo"] = "direct04";
-            $params["id"] = "direct05";
-            $params["id"] = "direct06";
-            $params["organization_id"] = "direct07";
-            $params["organization_id"] = "direct08";
+            $params["github_repo"] = "direct02";
+            $params["id"] = "direct03";
+            $params["organization_id"] = "direct04";
         }
 
         $result = $client->direct([

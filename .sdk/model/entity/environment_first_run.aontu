@@ -160,7 +160,7 @@ main: kit: entity: environment_first_run: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.environment`"
           }
         }
       ]
@@ -172,7 +172,7 @@ main: kit: entity: environment_first_run: {
 
 
   relations: ancestors: [
-    [path("$.main.kit.entity.organization") path("$.main.kit.entity.environment")]
+    [path("$.main.kit.entity.organization")]
   ]
 
 }

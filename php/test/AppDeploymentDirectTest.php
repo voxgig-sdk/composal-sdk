@@ -57,7 +57,7 @@ class AppDeploymentDirectTest extends TestCase
         }
 
         $result = $client->direct([
-            "path" => "api/v1/hosting/apps/{app_id}/deployments/{id}/live",
+            "path" => "api/v1/hosting/apps/{app_id}/deployments/{id}",
             "method" => "GET",
             "params" => $params,
             "query" => $query,

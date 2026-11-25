@@ -29,17 +29,7 @@ const utility_1 = require("../../utility");
         const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }]);
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-list-pull_request_transcript', setup.live))
             return;
-        if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["pull_request01"]) {
-            console.log("LIVE STEP {\"id\":\"direct-list-pull_request_transcript\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}");
-            t.skip("Live coverage incomplete: direct-list-pull_request_transcript excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)");
-            return;
-        }
-        if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["pull_request01"]) {
-            console.log("LIVE STEP {\"id\":\"direct-list-pull_request_transcript\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}");
-            t.skip("Live coverage incomplete: direct-list-pull_request_transcript excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)");
-            return;
-        }
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["organization01", "pull_request01", "pull_request01", "repo01"], LIVE_STRICT))
+        if ((0, utility_1.skipIfMissingIds)(t, setup, ["organization01", "pull_request01", "repo01"], LIVE_STRICT))
             return;
         const { client, calls } = setup;
         const params = {};
@@ -47,14 +37,12 @@ const utility_1 = require("../../utility");
         if (setup.live) {
             params.organization_id = setup.idmap['organization01'];
             params.pull_request_id = setup.idmap['pull_request01'];
-            params.pull_request_id = setup.idmap['pull_request01'];
             params.repo_id = setup.idmap['repo01'];
         }
         else {
             params.organization_id = 'direct01';
             params.pull_request_id = 'direct02';
-            params.pull_request_id = 'direct03';
-            params.repo_id = 'direct04';
+            params.repo_id = 'direct03';
         }
         const result = await client.direct({
             path: 'api/v1/organizations/{organization_id}/repos/{repo_id}/pages/pull_request/{pull_request_id}/transcripts',
@@ -82,7 +70,6 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(calls[0].url.includes('direct01'));
             (0, node_assert_1.default)(calls[0].url.includes('direct02'));
             (0, node_assert_1.default)(calls[0].url.includes('direct03'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct04'));
         }
     });
 });

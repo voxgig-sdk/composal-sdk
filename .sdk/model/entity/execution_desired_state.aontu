@@ -186,7 +186,7 @@ main: kit: entity: execution_desired_state: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.desired_state`"
           }
         }
         {

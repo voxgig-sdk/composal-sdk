@@ -30,29 +30,8 @@ main: kit: entity: pull_request_magic_merge: {
               }
               {
                 k: "param"
-                n: "number"
-                or: "number"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "organization_id"
                 or: "org_slug"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "org_slug"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "pull_request_id"
-                or: "github_repository_id"
                 r: true
                 t: "`$STRING`"
               }
@@ -143,29 +122,8 @@ main: kit: entity: pull_request_magic_merge: {
               }
               {
                 k: "param"
-                n: "number"
-                or: "number"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "organization_id"
                 or: "org_slug"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "org_slug"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "pull_request_id"
-                or: "github_repository_id"
                 r: true
                 t: "`$STRING`"
               }
@@ -259,29 +217,8 @@ main: kit: entity: pull_request_magic_merge: {
               }
               {
                 k: "param"
-                n: "number"
-                or: "number"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "organization_id"
                 or: "org_slug"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "org_slug"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "pull_request_id"
-                or: "github_repository_id"
                 r: true
                 t: "`$STRING`"
               }
@@ -361,7 +298,7 @@ main: kit: entity: pull_request_magic_merge: {
 
 
   relations: ancestors: [
-    [path("$.main.kit.entity.organization") path("$.main.kit.entity.pull_request")]
+    [path("$.main.kit.entity.organization")]
   ]
 
 }

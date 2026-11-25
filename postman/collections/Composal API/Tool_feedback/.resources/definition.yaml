@@ -15,4 +15,4 @@ description: |-
   | `source` | string | yes |  |
   | `summary` | string | yes |  |
   | `user_id` | string | yes |  |
-order: 524000
+order: 523000

@@ -17,13 +17,16 @@ import (
 const project_settingDirectLiveStrict = true
 
 func TestProjectSettingDirect(t *testing.T) {
-	t.Run("direct-load-project_setting", func(t *testing.T) {
-		setup := project_settingDirectSetup(map[string]any{"id": "direct01"})
+	t.Run("direct-list-project_setting", func(t *testing.T) {
+		setup := project_settingDirectSetup([]any{
+			map[string]any{"id": "direct01"},
+			map[string]any{"id": "direct02"},
+		})
 		_mode := "unit"
 		if setup.live {
 			_mode = "live"
 		}
-		if _shouldSkip, _reason := isControlSkipped("direct", "direct-load-project_setting", _mode); _shouldSkip {
+		if _shouldSkip, _reason := isControlSkipped("direct", "direct-list-project_setting", _mode); _shouldSkip {
 			if _reason == "" {
 				_reason = "skipped via sdk-test-control.json"
 			}
@@ -47,9 +50,12 @@ func TestProjectSettingDirect(t *testing.T) {
 		query := map[string]any{}
 		if setup.live {
 			params["organization_id"] = setup.idmap["organization01"]
-			params["project_id"] = setup.idmap["project01"]
 		} else {
 			params["organization_id"] = "direct01"
+		}
+		if setup.live {
+			params["project_id"] = setup.idmap["project01"]
+		} else {
 			params["project_id"] = "direct02"
 		}
 
@@ -61,13 +67,13 @@ func TestProjectSettingDirect(t *testing.T) {
 		})
 		if setup.live {
 			if err != nil {
-				liveMiss(t, project_settingDirectLiveStrict, "Live load failed: %v", err)
+				liveMiss(t, project_settingDirectLiveStrict, "Live list failed: %v", err)
 			}
 			if status := core.ToInt(result["status"]); result["ok"] != true || status < 200 || status >= 300 {
-				liveMiss(t, project_settingDirectLiveStrict, "Live load failed: %s", liveDescribe(result))
+				liveMiss(t, project_settingDirectLiveStrict, "Live list failed: %s", liveDescribe(result))
 			}
-			if result["data"] == nil {
-				liveMiss(t, project_settingDirectLiveStrict, "Live load returned no data: %s", liveDescribe(result))
+			if _, ok := liveList(result["data"]); !ok {
+				liveMiss(t, project_settingDirectLiveStrict, "Live list returned no list: %s", liveDescribe(result))
 			}
 		} else {
 			if err != nil {
@@ -79,16 +85,15 @@ func TestProjectSettingDirect(t *testing.T) {
 			if core.ToInt(result["status"]) != 200 {
 				t.Fatalf("expected status 200, got %v", result["status"])
 			}
-			if result["data"] == nil {
-				t.Fatal("expected data to be non-nil")
-			}
 		}
 
 		if !setup.live {
-			if dataMap, ok := result["data"].(map[string]any); ok {
-				if dataMap["id"] != "direct01" {
-					t.Fatalf("expected data.id to be direct01, got %v", dataMap["id"])
+			if dataList, ok := result["data"].([]any); ok {
+				if len(dataList) != 2 {
+					t.Fatalf("expected 2 items, got %d", len(dataList))
 				}
+			} else {
+				t.Fatalf("expected data to be an array, got %T", result["data"])
 			}
 
 			if len(*setup.calls) != 1 {

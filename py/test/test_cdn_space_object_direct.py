@@ -31,8 +31,8 @@ class TestCdnSpaceObjectDirect:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE" and setup["idmap"].get("cdn_space01") is None:
-            print("LIVE STEP {\"id\":\"direct-load-cdn_space_object\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs cdn_space01, which only POST /api/v1/cdn_spaces/{id}/archive gives\"}")
-            pytest.skip("Live coverage incomplete: direct-load-cdn_space_object excluded (GET-only live run: needs cdn_space01, which only POST /api/v1/cdn_spaces/{id}/archive gives)")
+            print("LIVE STEP {\"id\":\"direct-load-cdn_space_object\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs cdn_space01, which only POST /api/v1/organizations/{org_slug}/cdn_spaces gives\"}")
+            pytest.skip("Live coverage incomplete: direct-load-cdn_space_object excluded (GET-only live run: needs cdn_space01, which only POST /api/v1/organizations/{org_slug}/cdn_spaces gives)")
 
         if setup["live"]:
             for _live_key in ["cdn_space01", "cdn_space_object01"]:

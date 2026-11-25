@@ -43,29 +43,21 @@ describe('GhDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-gh', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["gh01","gh01","github_repo01","github_repo01","gh01","gh01","organization01","organization01"], LIVE_STRICT)) return
+    if (skipIfMissingIds(t, setup, ["gh01","github_repo01","gh01","organization01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
       params.gh_id = setup.idmap['gh01']
-      params.gh_id = setup.idmap['gh01']
-      params.github_repo = setup.idmap['github_repo01']
       params.github_repo = setup.idmap['github_repo01']
       params.id = setup.idmap['gh01']
-      params.id = setup.idmap['gh01']
-      params.organization_id = setup.idmap['organization01']
       params.organization_id = setup.idmap['organization01']
     } else {
       params.gh_id = 'direct01'
-      params.gh_id = 'direct02'
-      params.github_repo = 'direct03'
-      params.github_repo = 'direct04'
-      params.id = 'direct05'
-      params.id = 'direct06'
-      params.organization_id = 'direct07'
-      params.organization_id = 'direct08'
+      params.github_repo = 'direct02'
+      params.id = 'direct03'
+      params.organization_id = 'direct04'
     }
 
     const result: any = await client.direct({
@@ -93,10 +85,6 @@ describe('GhDirect', async () => {
       assert(calls[0].url.includes('direct02'))
       assert(calls[0].url.includes('direct03'))
       assert(calls[0].url.includes('direct04'))
-      assert(calls[0].url.includes('direct05'))
-      assert(calls[0].url.includes('direct06'))
-      assert(calls[0].url.includes('direct07'))
-      assert(calls[0].url.includes('direct08'))
     }
   })
 

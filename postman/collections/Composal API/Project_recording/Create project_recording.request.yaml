@@ -21,7 +21,7 @@ body:
   content: |-
     {
       "persona_id": "example",
-      "environment_id": "{{environment_id}}",
+      "environment_id": "example",
       "start_path": "example"
     }
 scripts:

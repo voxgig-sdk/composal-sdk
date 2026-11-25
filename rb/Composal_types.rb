@@ -724,134 +724,6 @@ AgentAttachmentCreateData = Struct.new(
   keyword_init: true
 )
 
-# AgentAutomation entity data model.
-#
-# @!attribute [rw] can_manage
-#   @return [Boolean]
-#
-# @!attribute [rw] can_manage_events
-#   @return [Boolean]
-#
-# @!attribute [rw] can_run
-#   @return [Boolean]
-#
-# @!attribute [rw] can_schedule
-#   @return [Boolean]
-#
-# @!attribute [rw] definition
-#   @return [Hash]
-#
-# @!attribute [rw] event_subscriptions
-#   @return [Array]
-#
-# @!attribute [rw] event_triggers
-#   @return [Array]
-#
-# @!attribute [rw] expected_revision
-#   @return [Integer]
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] key
-#   @return [String]
-#
-# @!attribute [rw] name
-#   @return [String]
-#
-# @!attribute [rw] revision
-#   @return [Integer]
-#
-# @!attribute [rw] schedule
-#   @return [Object]
-#
-# @!attribute [rw] schedules
-#   @return [Array]
-#
-# @!attribute [rw] version
-#   @return [Hash]
-AgentAutomation = Struct.new(
-  :can_manage,
-  :can_manage_events,
-  :can_run,
-  :can_schedule,
-  :definition,
-  :event_subscriptions,
-  :event_triggers,
-  :expected_revision,
-  :id,
-  :key,
-  :name,
-  :revision,
-  :schedule,
-  :schedules,
-  :version,
-  keyword_init: true
-)
-
-# Request payload for AgentAutomation#load.
-#
-# @!attribute [rw] agent_id
-#   @return [String]
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-AgentAutomationLoadMatch = Struct.new(
-  :agent_id,
-  :id,
-  :organization_id,
-  keyword_init: true
-)
-
-# Request payload for AgentAutomation#list.
-#
-# @!attribute [rw] agent_id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] cursor
-#   @return [String, nil]
-#
-# @!attribute [rw] limit
-#   @return [Integer, nil]
-AgentAutomationListMatch = Struct.new(
-  :agent_id,
-  :organization_id,
-  :cursor,
-  :limit,
-  keyword_init: true
-)
-
-# Request payload for AgentAutomation#update.
-#
-# @!attribute [rw] agent_id
-#   @return [String]
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] definition
-#   @return [Hash, nil]
-#
-# @!attribute [rw] expected_revision
-#   @return [Integer, nil]
-AgentAutomationUpdateData = Struct.new(
-  :agent_id,
-  :id,
-  :organization_id,
-  :definition,
-  :expected_revision,
-  keyword_init: true
-)
-
 # AgentAvatar entity data model.
 class AgentAvatar
 end
@@ -2045,10 +1917,10 @@ AgentFileLoadMatch = Struct.new(
 #   @return [Array, nil]
 #
 # @!attribute [rw] browser_context
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] client_time
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] conversation_id
 #   @return [String]
@@ -2092,10 +1964,10 @@ AgentInput = Struct.new(
 #   @return [Array, nil]
 #
 # @!attribute [rw] browser_context
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] client_time
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] conversation_id
 #   @return [String]
@@ -3777,7 +3649,7 @@ AgentRoderCreateData = Struct.new(
 #   @return [Integer]
 #
 # @!attribute [rw] credit_wait
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] description
 #   @return [Object]
@@ -3819,7 +3691,7 @@ AgentRoderCreateData = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] utility_model
-#   @return [Hash]
+#   @return [Hash, nil]
 AgentRoutine = Struct.new(
   :can_manage,
   :consecutive_errors,
@@ -4498,7 +4370,7 @@ AgentSlackCreateData = Struct.new(
 #   @return [Boolean]
 #
 # @!attribute [rw] attention
-#   @return [Object]
+#   @return [Object, nil]
 #
 # @!attribute [rw] ended_at
 #   @return [Object]
@@ -4774,7 +4646,7 @@ AgentSubscriptionCreateData = Struct.new(
 #   @return [Hash]
 #
 # @!attribute [rw] target
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] task_count
 #   @return [Integer]
@@ -4916,7 +4788,7 @@ AgentSwarmListMatch = Struct.new(
 #   @return [String, nil]
 #
 # @!attribute [rw] target
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] task_template_json
 #   @return [Object, nil]
@@ -5510,7 +5382,7 @@ AgentWorkflowUpdateData = Struct.new(
 # AgentWorkflowProposal entity data model.
 #
 # @!attribute [rw] agent_steps
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] base_digest
 #   @return [Object]
@@ -5656,7 +5528,7 @@ AgentWorkflowProposalCreateData = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] automation
-#   @return [Object]
+#   @return [Object, nil]
 #
 # @!attribute [rw] budget_seconds
 #   @return [Object]
@@ -5680,7 +5552,7 @@ AgentWorkflowProposalCreateData = Struct.new(
 #   @return [Object]
 #
 # @!attribute [rw] decision_history
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] error
 #   @return [Object]
@@ -7612,6 +7484,124 @@ AppDeploymentPatchData = Struct.new(
 AppDeploymentRemoveMatch = Struct.new(
   :app_id,
   :id,
+  keyword_init: true
+)
+
+# AppDeploymentDashboard entity data model.
+#
+# @!attribute [rw] activity
+#   @return [Array]
+#
+# @!attribute [rw] app
+#   @return [Hash]
+#
+# @!attribute [rw] audit_events
+#   @return [Array]
+#
+# @!attribute [rw] capacity
+#   @return [Hash]
+#
+# @!attribute [rw] connections
+#   @return [Array]
+#
+# @!attribute [rw] data_resources
+#   @return [Array]
+#
+# @!attribute [rw] deployments
+#   @return [Array]
+#
+# @!attribute [rw] desired_states
+#   @return [Array]
+#
+# @!attribute [rw] environments
+#   @return [Array]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] locations
+#   @return [Array]
+#
+# @!attribute [rw] managed_database_catalog
+#   @return [Hash]
+#
+# @!attribute [rw] observability
+#   @return [Hash]
+#
+# @!attribute [rw] operations
+#   @return [Array]
+#
+# @!attribute [rw] placements
+#   @return [Array]
+#
+# @!attribute [rw] reconciler_ticks
+#   @return [Array]
+#
+# @!attribute [rw] releases
+#   @return [Array]
+#
+# @!attribute [rw] rollback_deployments
+#   @return [Array]
+#
+# @!attribute [rw] rollouts
+#   @return [Array]
+#
+# @!attribute [rw] runtime_instances
+#   @return [Array]
+#
+# @!attribute [rw] service_bindings
+#   @return [Array]
+#
+# @!attribute [rw] service_views
+#   @return [Array]
+#
+# @!attribute [rw] services
+#   @return [Array]
+#
+# @!attribute [rw] storage_resources
+#   @return [Array]
+#
+# @!attribute [rw] summary
+#   @return [Hash]
+AppDeploymentDashboard = Struct.new(
+  :activity,
+  :app,
+  :audit_events,
+  :capacity,
+  :connections,
+  :data_resources,
+  :deployments,
+  :desired_states,
+  :environments,
+  :id,
+  :locations,
+  :managed_database_catalog,
+  :observability,
+  :operations,
+  :placements,
+  :reconciler_ticks,
+  :releases,
+  :rollback_deployments,
+  :rollouts,
+  :runtime_instances,
+  :service_bindings,
+  :service_views,
+  :services,
+  :storage_resources,
+  :summary,
+  keyword_init: true
+)
+
+# Request payload for AppDeploymentDashboard#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] metrics_range
+#   @return [String, nil]
+AppDeploymentDashboardLoadMatch = Struct.new(
+  :id,
+  :metrics_range,
   keyword_init: true
 )
 
@@ -11018,7 +11008,7 @@ AutomationEventUpdateData = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] automation
-#   @return [Object]
+#   @return [Object, nil]
 #
 # @!attribute [rw] budget_seconds
 #   @return [Object]
@@ -11042,7 +11032,7 @@ AutomationEventUpdateData = Struct.new(
 #   @return [Object]
 #
 # @!attribute [rw] decision_history
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] error
 #   @return [Object]
@@ -14096,7 +14086,7 @@ CdnSpaceObjectRemoveMatch = Struct.new(
 #   @return [Hash]
 #
 # @!attribute [rw] github_sync
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] result
 #   @return [Object]
@@ -14260,20 +14250,14 @@ ChangeAssetCreateData = Struct.new(
 # @!attribute [rw] body
 #   @return [String]
 #
-# @!attribute [rw] capabilities
-#   @return [Hash]
+# @!attribute [rw] comment
+#   @return [Hash, nil]
 #
-# @!attribute [rw] change_id
-#   @return [Object, nil]
-#
-# @!attribute [rw] created_at
-#   @return [Object, nil]
-#
-# @!attribute [rw] created_at_label
-#   @return [Object, nil]
+# @!attribute [rw] comments
+#   @return [Array]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] kind
 #   @return [Object, nil]
@@ -14281,74 +14265,32 @@ ChangeAssetCreateData = Struct.new(
 # @!attribute [rw] line
 #   @return [Object, nil]
 #
-# @!attribute [rw] outdated
-#   @return [Boolean]
-#
 # @!attribute [rw] parent_comment_id
 #   @return [Object, nil]
 #
 # @!attribute [rw] patchset_id
 #   @return [Object, nil]
 #
-# @!attribute [rw] patchset_number
-#   @return [Object]
-#
 # @!attribute [rw] path
 #   @return [Object, nil]
 #
-# @!attribute [rw] replies
-#   @return [Array, nil]
-#
-# @!attribute [rw] resolved
-#   @return [Boolean]
-#
-# @!attribute [rw] resolved_at
-#   @return [Object, nil]
-#
-# @!attribute [rw] resolved_at_label
-#   @return [Object, nil]
-#
-# @!attribute [rw] resolved_by
-#   @return [Hash]
-#
 # @!attribute [rw] side
 #   @return [Object, nil]
-#
-# @!attribute [rw] updated_at
-#   @return [Object, nil]
-#
-# @!attribute [rw] updated_at_label
-#   @return [Object, nil]
-#
-# @!attribute [rw] user
-#   @return [Hash]
 ChangeComment = Struct.new(
   :body,
-  :capabilities,
-  :change_id,
-  :created_at,
-  :created_at_label,
+  :comment,
+  :comments,
   :id,
   :kind,
   :line,
-  :outdated,
   :parent_comment_id,
   :patchset_id,
-  :patchset_number,
   :path,
-  :replies,
-  :resolved,
-  :resolved_at,
-  :resolved_at_label,
-  :resolved_by,
   :side,
-  :updated_at,
-  :updated_at_label,
-  :user,
   keyword_init: true
 )
 
-# Request payload for ChangeComment#list.
+# Request payload for ChangeComment#load.
 #
 # @!attribute [rw] change_id
 #   @return [String]
@@ -14364,7 +14306,7 @@ ChangeComment = Struct.new(
 #
 # @!attribute [rw] resolved
 #   @return [Boolean, nil]
-ChangeCommentListMatch = Struct.new(
+ChangeCommentLoadMatch = Struct.new(
   :change_id,
   :organization_id,
   :repo_id,
@@ -14723,7 +14665,7 @@ ChangeGroupMemberRemoveMatch = Struct.new(
 #   @return [Array, nil]
 #
 # @!attribute [rw] approval
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] assets
 #   @return [Array, nil]
@@ -14732,7 +14674,7 @@ ChangeGroupMemberRemoveMatch = Struct.new(
 #   @return [Object, nil]
 #
 # @!attribute [rw] capabilities
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] change_key
 #   @return [String, nil]
@@ -14756,7 +14698,7 @@ ChangeGroupMemberRemoveMatch = Struct.new(
 #   @return [Object, nil]
 #
 # @!attribute [rw] current_patchset
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] description
 #   @return [Object, nil]
@@ -14771,7 +14713,7 @@ ChangeGroupMemberRemoveMatch = Struct.new(
 #   @return [Object, nil]
 #
 # @!attribute [rw] github_pull_request
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] github_pull_requests
 #   @return [Array, nil]
@@ -14795,7 +14737,7 @@ ChangeGroupMemberRemoveMatch = Struct.new(
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] landed_by
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] number
 #   @return [Integer]
@@ -15248,7 +15190,7 @@ ChangeReviewerUpdateData = Struct.new(
 #   @return [Boolean]
 #
 # @!attribute [rw] user
-#   @return [Hash]
+#   @return [Hash, nil]
 ChangeTranscript = Struct.new(
   :capture_kind,
   :captured_at,
@@ -16519,7 +16461,7 @@ ContactSubmissionCreateData = Struct.new(
 # ControlComputer entity data model.
 #
 # @!attribute [rw] connection
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] consent
 #   @return [Hash]
@@ -16603,7 +16545,7 @@ ControlComputerUpdateData = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] delivery
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] device_id
 #   @return [String]
@@ -16612,7 +16554,7 @@ ControlComputerUpdateData = Struct.new(
 #   @return [String, nil]
 #
 # @!attribute [rw] end
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] expires_at
 #   @return [String]
@@ -16859,7 +16801,7 @@ CoordinationWaitListMatch = Struct.new(
 #   @return [Array]
 #
 # @!attribute [rw] scenario_generation
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] sign_in_needs_answer
 #   @return [Boolean]
@@ -17053,9 +16995,6 @@ DataResourceRotateCredentialCreateData = Struct.new(
 # @!attribute [rw] account_id
 #   @return [Object, nil]
 #
-# @!attribute [rw] active
-#   @return [Array]
-#
 # @!attribute [rw] agent_filters
 #   @return [Hash]
 #
@@ -17068,6 +17007,9 @@ DataResourceRotateCredentialCreateData = Struct.new(
 # @!attribute [rw] chat_messages
 #   @return [Array, nil]
 #
+# @!attribute [rw] check_count
+#   @return [Integer]
+#
 # @!attribute [rw] concurrency
 #   @return [Integer]
 #
@@ -17077,10 +17019,16 @@ DataResourceRotateCredentialCreateData = Struct.new(
 # @!attribute [rw] created_at
 #   @return [String]
 #
+# @!attribute [rw] credential_name
+#   @return [Object, nil]
+#
 # @!attribute [rw] deadline_at
 #   @return [String]
 #
 # @!attribute [rw] demo_project
+#   @return [Object]
+#
+# @!attribute [rw] duration_ms
 #   @return [Object]
 #
 # @!attribute [rw] ended_early
@@ -17091,9 +17039,6 @@ DataResourceRotateCredentialCreateData = Struct.new(
 #
 # @!attribute [rw] environment_name
 #   @return [String]
-#
-# @!attribute [rw] explorations
-#   @return [Array]
 #
 # @!attribute [rw] explorer_activity
 #   @return [Hash]
@@ -17122,9 +17067,6 @@ DataResourceRotateCredentialCreateData = Struct.new(
 # @!attribute [rw] idempotency_key
 #   @return [String, nil]
 #
-# @!attribute [rw] launch_options
-#   @return [Hash]
-#
 # @!attribute [rw] max_seconds
 #   @return [Integer]
 #
@@ -17142,9 +17084,6 @@ DataResourceRotateCredentialCreateData = Struct.new(
 #
 # @!attribute [rw] onboarding
 #   @return [Boolean]
-#
-# @!attribute [rw] pagination
-#   @return [Hash]
 #
 # @!attribute [rw] paywalled
 #   @return [Boolean]
@@ -17176,8 +17115,14 @@ DataResourceRotateCredentialCreateData = Struct.new(
 # @!attribute [rw] scannable_flows
 #   @return [Array]
 #
+# @!attribute [rw] scenario_count
+#   @return [Integer, nil]
+#
 # @!attribute [rw] scenario_generation
-#   @return [Hash]
+#   @return [Hash, nil]
+#
+# @!attribute [rw] scenarios_pending
+#   @return [Boolean, nil]
 #
 # @!attribute [rw] sign_in_needs_answer
 #   @return [Boolean]
@@ -17187,6 +17132,9 @@ DataResourceRotateCredentialCreateData = Struct.new(
 #
 # @!attribute [rw] sign_in_question
 #   @return [Object, nil]
+#
+# @!attribute [rw] started_at
+#   @return [String]
 #
 # @!attribute [rw] startup_retryable
 #   @return [Boolean, nil]
@@ -17207,20 +17155,21 @@ DataResourceRotateCredentialCreateData = Struct.new(
 #   @return [String]
 DeepScan = Struct.new(
   :account_id,
-  :active,
   :agent_filters,
   :agents,
   :can_continue,
   :chat_messages,
+  :check_count,
   :concurrency,
   :covered_areas,
   :created_at,
+  :credential_name,
   :deadline_at,
   :demo_project,
+  :duration_ms,
   :ended_early,
   :environment_id,
   :environment_name,
-  :explorations,
   :explorer_activity,
   :finding_count,
   :findings,
@@ -17230,14 +17179,12 @@ DeepScan = Struct.new(
   :huntable_flows,
   :id,
   :idempotency_key,
-  :launch_options,
   :max_seconds,
   :max_testers,
   :mode,
   :next_scan_improvements,
   :observed_at,
   :onboarding,
-  :pagination,
   :paywalled,
   :permissions,
   :priority_counts,
@@ -17248,10 +17195,13 @@ DeepScan = Struct.new(
   :reproductions,
   :saves_scenarios,
   :scannable_flows,
+  :scenario_count,
   :scenario_generation,
+  :scenarios_pending,
   :sign_in_needs_answer,
   :sign_in_outcome,
   :sign_in_question,
+  :started_at,
   :startup_retryable,
   :status,
   :time_limit_reached,
@@ -17264,7 +17214,7 @@ DeepScan = Struct.new(
 # Request payload for DeepScan#load.
 #
 # @!attribute [rw] id
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
@@ -17280,18 +17230,6 @@ DeepScan = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
-#
-# @!attribute [rw] finding
-#   @return [String, nil]
-#
-# @!attribute [rw] page
-#   @return [Integer, nil]
-#
-# @!attribute [rw] query
-#   @return [String, nil]
-#
-# @!attribute [rw] status
-#   @return [String, nil]
 DeepScanLoadMatch = Struct.new(
   :id,
   :organization_id,
@@ -17299,8 +17237,33 @@ DeepScanLoadMatch = Struct.new(
   :evidence,
   :finding_id,
   :project_id,
+  keyword_init: true
+)
+
+# Request payload for DeepScan#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] finding
+#   @return [String, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] project_id
+#   @return [String, nil]
+#
+# @!attribute [rw] query
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+DeepScanListMatch = Struct.new(
+  :organization_id,
   :finding,
   :page,
+  :project_id,
   :query,
   :status,
   keyword_init: true
@@ -18434,7 +18397,7 @@ DesktopLocalAgentResponseCreateData = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] coding_connection
-#   @return [Object]
+#   @return [Object, nil]
 #
 # @!attribute [rw] connection_checked_at
 #   @return [Object]
@@ -18446,7 +18409,7 @@ DesktopLocalAgentResponseCreateData = Struct.new(
 #   @return [Hash]
 #
 # @!attribute [rw] control_spawn_policy
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] created_at
 #   @return [String]
@@ -18726,113 +18689,6 @@ DeviceControlMessageListMatch = Struct.new(
   keyword_init: true
 )
 
-# DeviceControlOperation entity data model.
-#
-# @!attribute [rw] action
-#   @return [String]
-#
-# @!attribute [rw] arguments
-#   @return [Hash]
-#
-# @!attribute [rw] created_at
-#   @return [String]
-#
-# @!attribute [rw] delivery
-#   @return [Hash]
-#
-# @!attribute [rw] device_id
-#   @return [String]
-#
-# @!attribute [rw] diagnostic_code
-#   @return [String, nil]
-#
-# @!attribute [rw] end
-#   @return [Hash]
-#
-# @!attribute [rw] expires_at
-#   @return [String]
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] key
-#   @return [String]
-#
-# @!attribute [rw] provider
-#   @return [String]
-#
-# @!attribute [rw] references
-#   @return [Hash]
-#
-# @!attribute [rw] result
-#   @return [Object]
-#
-# @!attribute [rw] result_expired
-#   @return [Boolean]
-#
-# @!attribute [rw] state
-#   @return [String]
-DeviceControlOperation = Struct.new(
-  :action,
-  :arguments,
-  :created_at,
-  :delivery,
-  :device_id,
-  :diagnostic_code,
-  :end,
-  :expires_at,
-  :id,
-  :key,
-  :provider,
-  :references,
-  :result,
-  :result_expired,
-  :state,
-  keyword_init: true
-)
-
-# Request payload for DeviceControlOperation#load.
-#
-# @!attribute [rw] device_id
-#   @return [String]
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-DeviceControlOperationLoadMatch = Struct.new(
-  :device_id,
-  :id,
-  :organization_id,
-  keyword_init: true
-)
-
-# Request payload for DeviceControlOperation#create.
-#
-# @!attribute [rw] device_id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] action
-#   @return [String]
-#
-# @!attribute [rw] arguments
-#   @return [Hash]
-#
-# @!attribute [rw] key
-#   @return [String]
-DeviceControlOperationCreateData = Struct.new(
-  :device_id,
-  :organization_id,
-  :action,
-  :arguments,
-  :key,
-  keyword_init: true
-)
-
 # DeviceEnterpriseRelay entity data model.
 class DeviceEnterpriseRelay
 end
@@ -19075,6 +18931,113 @@ DeviceLocalEventCreateData = Struct.new(
   :device_id,
   :organization_id,
   :event,
+  keyword_init: true
+)
+
+# DeviceOperation entity data model.
+#
+# @!attribute [rw] action
+#   @return [String]
+#
+# @!attribute [rw] arguments
+#   @return [Hash]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] delivery
+#   @return [Hash, nil]
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] diagnostic_code
+#   @return [String, nil]
+#
+# @!attribute [rw] end
+#   @return [Hash, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] key
+#   @return [String]
+#
+# @!attribute [rw] provider
+#   @return [String]
+#
+# @!attribute [rw] references
+#   @return [Hash]
+#
+# @!attribute [rw] result
+#   @return [Object]
+#
+# @!attribute [rw] result_expired
+#   @return [Boolean]
+#
+# @!attribute [rw] state
+#   @return [String]
+DeviceOperation = Struct.new(
+  :action,
+  :arguments,
+  :created_at,
+  :delivery,
+  :device_id,
+  :diagnostic_code,
+  :end,
+  :expires_at,
+  :id,
+  :key,
+  :provider,
+  :references,
+  :result,
+  :result_expired,
+  :state,
+  keyword_init: true
+)
+
+# Request payload for DeviceOperation#load.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+DeviceOperationLoadMatch = Struct.new(
+  :device_id,
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for DeviceOperation#create.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] action
+#   @return [String]
+#
+# @!attribute [rw] arguments
+#   @return [Hash]
+#
+# @!attribute [rw] key
+#   @return [String]
+DeviceOperationCreateData = Struct.new(
+  :device_id,
+  :organization_id,
+  :action,
+  :arguments,
+  :key,
   keyword_init: true
 )
 
@@ -19949,308 +19912,6 @@ EmailVerificationCreateData = Struct.new(
   keyword_init: true
 )
 
-# Environment entity data model.
-#
-# @!attribute [rw] active_revision_id
-#   @return [Object]
-#
-# @!attribute [rw] agent_sign_up_available
-#   @return [Boolean]
-#
-# @!attribute [rw] allowed_actions
-#   @return [String]
-#
-# @!attribute [rw] billing
-#   @return [Hash]
-#
-# @!attribute [rw] cleanup
-#   @return [Array]
-#
-# @!attribute [rw] connection
-#   @return [String]
-#
-# @!attribute [rw] created_at
-#   @return [String]
-#
-# @!attribute [rw] default_policy
-#   @return [Hash, nil]
-#
-# @!attribute [rw] default_policy_json
-#   @return [Hash]
-#
-# @!attribute [rw] discovery_defaults
-#   @return [Hash]
-#
-# @!attribute [rw] environment
-#   @return [Hash]
-#
-# @!attribute [rw] exploration_accounts
-#   @return [Array, nil]
-#
-# @!attribute [rw] explorations
-#   @return [Array, nil]
-#
-# @!attribute [rw] first_run
-#   @return [Object, nil]
-#
-# @!attribute [rw] hosted_app_id
-#   @return [Object]
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] imessage_number
-#   @return [Object]
-#
-# @!attribute [rw] included_deep_scan
-#   @return [Boolean]
-#
-# @!attribute [rw] lock_version
-#   @return [Integer]
-#
-# @!attribute [rw] managed_google_available
-#   @return [Boolean]
-#
-# @!attribute [rw] managed_google_email
-#   @return [String]
-#
-# @!attribute [rw] messaging_tester_number
-#   @return [Object, nil]
-#
-# @!attribute [rw] name
-#   @return [String]
-#
-# @!attribute [rw] network_connections
-#   @return [Array]
-#
-# @!attribute [rw] onboarding_discovery
-#   @return [Object, nil]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] pending_accounts
-#   @return [Array, nil]
-#
-# @!attribute [rw] permissions
-#   @return [Hash]
-#
-# @!attribute [rw] project_id
-#   @return [Object]
-#
-# @!attribute [rw] repository_id
-#   @return [Object]
-#
-# @!attribute [rw] revisions
-#   @return [Array]
-#
-# @!attribute [rw] setup_discovery_id
-#   @return [Object, nil]
-#
-# @!attribute [rw] sign_in_check_available
-#   @return [Boolean]
-#
-# @!attribute [rw] slug
-#   @return [String]
-#
-# @!attribute [rw] status
-#   @return [String]
-#
-# @!attribute [rw] target_kind
-#   @return [Object]
-#
-# @!attribute [rw] target_url
-#   @return [Object]
-#
-# @!attribute [rw] test_accounts
-#   @return [Hash]
-#
-# @!attribute [rw] updated_at
-#   @return [String]
-#
-# @!attribute [rw] verify_network_connection_id
-#   @return [Object]
-#
-# @!attribute [rw] version
-#   @return [Integer, nil]
-Environment = Struct.new(
-  :active_revision_id,
-  :agent_sign_up_available,
-  :allowed_actions,
-  :billing,
-  :cleanup,
-  :connection,
-  :created_at,
-  :default_policy,
-  :default_policy_json,
-  :discovery_defaults,
-  :environment,
-  :exploration_accounts,
-  :explorations,
-  :first_run,
-  :hosted_app_id,
-  :id,
-  :imessage_number,
-  :included_deep_scan,
-  :lock_version,
-  :managed_google_available,
-  :managed_google_email,
-  :messaging_tester_number,
-  :name,
-  :network_connections,
-  :onboarding_discovery,
-  :organization_id,
-  :pending_accounts,
-  :permissions,
-  :project_id,
-  :repository_id,
-  :revisions,
-  :setup_discovery_id,
-  :sign_in_check_available,
-  :slug,
-  :status,
-  :target_kind,
-  :target_url,
-  :test_accounts,
-  :updated_at,
-  :verify_network_connection_id,
-  :version,
-  keyword_init: true
-)
-
-# Request payload for Environment#load.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] project_id
-#   @return [String, nil]
-EnvironmentLoadMatch = Struct.new(
-  :id,
-  :organization_id,
-  :project_id,
-  keyword_init: true
-)
-
-# Request payload for Environment#create.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] allowed_actions
-#   @return [String, nil]
-#
-# @!attribute [rw] default_policy
-#   @return [Hash, nil]
-#
-# @!attribute [rw] imessage_number
-#   @return [Object, nil]
-#
-# @!attribute [rw] messaging_tester_number
-#   @return [Object, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] project_id
-#   @return [Object, nil]
-#
-# @!attribute [rw] repository_id
-#   @return [Object, nil]
-#
-# @!attribute [rw] slug
-#   @return [String]
-#
-# @!attribute [rw] target_kind
-#   @return [Object, nil]
-#
-# @!attribute [rw] target_url
-#   @return [Object, nil]
-EnvironmentCreateData = Struct.new(
-  :organization_id,
-  :allowed_actions,
-  :default_policy,
-  :imessage_number,
-  :messaging_tester_number,
-  :name,
-  :project_id,
-  :repository_id,
-  :slug,
-  :target_kind,
-  :target_url,
-  keyword_init: true
-)
-
-# Request payload for Environment#update.
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-EnvironmentUpdateData = Struct.new(
-  :id,
-  :organization_id,
-  keyword_init: true
-)
-
-# Request payload for Environment#patch.
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] allowed_actions
-#   @return [String, nil]
-#
-# @!attribute [rw] imessage_number
-#   @return [Object, nil]
-#
-# @!attribute [rw] messaging_tester_number
-#   @return [Object, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] target_url
-#   @return [Object, nil]
-#
-# @!attribute [rw] verify_network_connection_id
-#   @return [Object, nil]
-#
-# @!attribute [rw] version
-#   @return [Integer, nil]
-EnvironmentPatchData = Struct.new(
-  :id,
-  :organization_id,
-  :allowed_actions,
-  :imessage_number,
-  :messaging_tester_number,
-  :name,
-  :target_url,
-  :verify_network_connection_id,
-  :version,
-  keyword_init: true
-)
-
-# Request payload for Environment#remove.
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-EnvironmentRemoveMatch = Struct.new(
-  :id,
-  :organization_id,
-  keyword_init: true
-)
-
 # EnvironmentDiscoveryRun entity data model.
 #
 # @!attribute [rw] account_id
@@ -20275,7 +19936,7 @@ EnvironmentRemoveMatch = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] recording
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] result
 #   @return [Object]
@@ -20450,7 +20111,7 @@ EnvironmentDiscoveryRunCreateData = Struct.new(
 #   @return [Array]
 #
 # @!attribute [rw] scenario_generation
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] sign_in_needs_answer
 #   @return [Boolean]
@@ -20933,56 +20594,6 @@ EnvironmentTestAccountPatchData = Struct.new(
   keyword_init: true
 )
 
-# Evidence entity data model.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-Evidence = Struct.new(
-  :id,
-  keyword_init: true
-)
-
-# Request payload for Evidence#load.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] agent_id
-#   @return [String, nil]
-#
-# @!attribute [rw] cursor
-#   @return [String, nil]
-#
-# @!attribute [rw] exploration_id
-#   @return [String, nil]
-#
-# @!attribute [rw] kind
-#   @return [String, nil]
-#
-# @!attribute [rw] limit
-#   @return [Integer, nil]
-#
-# @!attribute [rw] repository_id
-#   @return [String, nil]
-#
-# @!attribute [rw] scenario_run_id
-#   @return [String, nil]
-EvidenceLoadMatch = Struct.new(
-  :id,
-  :organization_id,
-  :agent_id,
-  :cursor,
-  :exploration_id,
-  :kind,
-  :limit,
-  :repository_id,
-  :scenario_run_id,
-  keyword_init: true
-)
-
 # ExecutionDesiredState entity data model.
 #
 # @!attribute [rw] desired_state
@@ -21414,7 +21025,7 @@ ExecutionRuntimeInstanceRemoveMatch = Struct.new(
 #   @return [Integer, nil]
 #
 # @!attribute [rw] scenario_generation
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] scenarios_pending
 #   @return [Boolean, nil]
@@ -21713,7 +21324,7 @@ ExplorationCreateData = Struct.new(
 #   @return [Array]
 #
 # @!attribute [rw] scenario_generation
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] sign_in_needs_answer
 #   @return [Boolean]
@@ -21969,7 +21580,7 @@ ExplorationReportCreateData = Struct.new(
 #   @return [Array]
 #
 # @!attribute [rw] scenario_generation
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] sign_in_needs_answer
 #   @return [Boolean]
@@ -22106,7 +21717,7 @@ ExplorationScenarioCreateData = Struct.new(
 #   @return [String, nil]
 #
 # @!attribute [rw] reported_occurrence
-#   @return [Object]
+#   @return [Object, nil]
 #
 # @!attribute [rw] repository_id
 #   @return [Object]
@@ -23223,85 +22834,6 @@ GithubConnectionCreateData = Struct.new(
   keyword_init: true
 )
 
-# GithubIntegration entity data model.
-#
-# @!attribute [rw] account_avatar_url
-#   @return [Object]
-#
-# @!attribute [rw] account_login
-#   @return [String]
-#
-# @!attribute [rw] connection_status
-#   @return [String]
-#
-# @!attribute [rw] connection_status_label
-#   @return [String]
-#
-# @!attribute [rw] github_installation
-#   @return [Object]
-#
-# @!attribute [rw] health
-#   @return [Hash]
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] imported_repositories_count
-#   @return [Integer]
-#
-# @!attribute [rw] imported_repositories_count_label
-#   @return [String]
-#
-# @!attribute [rw] organization
-#   @return [Hash]
-#
-# @!attribute [rw] pagination
-#   @return [Hash]
-#
-# @!attribute [rw] repositories
-#   @return [Array]
-GithubIntegration = Struct.new(
-  :account_avatar_url,
-  :account_login,
-  :connection_status,
-  :connection_status_label,
-  :github_installation,
-  :health,
-  :id,
-  :imported_repositories_count,
-  :imported_repositories_count_label,
-  :organization,
-  :pagination,
-  :repositories,
-  keyword_init: true
-)
-
-# Request payload for GithubIntegration#load.
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] page
-#   @return [Integer, nil]
-GithubIntegrationLoadMatch = Struct.new(
-  :id,
-  :organization_id,
-  :page,
-  keyword_init: true
-)
-
-# Request payload for GithubIntegration#list.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-GithubIntegrationListMatch = Struct.new(
-  :organization_id,
-  keyword_init: true
-)
-
 # GithubOnboarding entity data model.
 #
 # @!attribute [rw] accounts
@@ -23771,7 +23303,7 @@ GithubRunnerEgressCreateData = Struct.new(
 #   @return [Object]
 #
 # @!attribute [rw] usage
-#   @return [Hash]
+#   @return [Hash, nil]
 GithubRunnerHistory = Struct.new(
   :activity,
   :counts,
@@ -25708,10 +25240,10 @@ LeaseStepUpdateData = Struct.new(
 #   @return [Hash]
 #
 # @!attribute [rw] live_browser
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] live_view
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] steps
 #   @return [Array, nil]
@@ -25738,10 +25270,10 @@ LeaseVerifyDiagnostic = Struct.new(
 #   @return [Hash]
 #
 # @!attribute [rw] live_browser
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] live_view
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] steps
 #   @return [Array, nil]
@@ -25986,7 +25518,7 @@ LocalThreadDeliveryUpdateData = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] delivery
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] device_id
 #   @return [String]
@@ -25995,7 +25527,7 @@ LocalThreadDeliveryUpdateData = Struct.new(
 #   @return [String, nil]
 #
 # @!attribute [rw] end
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] expires_at
 #   @return [String]
@@ -26395,7 +25927,7 @@ McpOauthCreateData = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] impersonation
-#   @return [Object]
+#   @return [Object, nil]
 #
 # @!attribute [rw] name
 #   @return [Object]
@@ -26884,52 +26416,19 @@ MediaFileLoadMatch = Struct.new(
 
 # Member entity data model.
 #
-# @!attribute [rw] accepted_at
-#   @return [Object]
-#
-# @!attribute [rw] accepted_by_user
-#   @return [Object]
-#
 # @!attribute [rw] created_at
 #   @return [String]
 #
 # @!attribute [rw] created_at_label
 #   @return [Object]
 #
-# @!attribute [rw] email
-#   @return [String]
-#
-# @!attribute [rw] email_delivery_status
-#   @return [String, nil]
-#
-# @!attribute [rw] expires_at
-#   @return [Object]
-#
-# @!attribute [rw] expires_at_label
-#   @return [Object]
-#
 # @!attribute [rw] id
 #   @return [String]
-#
-# @!attribute [rw] invite_url
-#   @return [Object]
-#
-# @!attribute [rw] invited_by_user
-#   @return [Object]
 #
 # @!attribute [rw] is_self
 #   @return [Boolean]
 #
-# @!attribute [rw] organization
-#   @return [Hash]
-#
-# @!attribute [rw] revoked_at
-#   @return [Object]
-#
 # @!attribute [rw] role
-#   @return [String]
-#
-# @!attribute [rw] status
 #   @return [String]
 #
 # @!attribute [rw] updated_at
@@ -26941,22 +26440,11 @@ MediaFileLoadMatch = Struct.new(
 # @!attribute [rw] user
 #   @return [Hash]
 Member = Struct.new(
-  :accepted_at,
-  :accepted_by_user,
   :created_at,
   :created_at_label,
-  :email,
-  :email_delivery_status,
-  :expires_at,
-  :expires_at_label,
   :id,
-  :invite_url,
-  :invited_by_user,
   :is_self,
-  :organization,
-  :revoked_at,
   :role,
-  :status,
   :updated_at,
   :updated_at_label,
   :user,
@@ -27191,7 +26679,7 @@ MemoryRemoveMatch = Struct.new(
 # MergeQueueEntry entity data model.
 #
 # @!attribute [rw] analytics
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] change_id
 #   @return [Object, nil]
@@ -27323,193 +26811,6 @@ MergeQueueEntryRemoveMatch = Struct.new(
   keyword_init: true
 )
 
-# MergeRequest entity data model.
-#
-# @!attribute [rw] available_tests
-#   @return [Array]
-#
-# @!attribute [rw] base_sha
-#   @return [String]
-#
-# @!attribute [rw] branch
-#   @return [String, nil]
-#
-# @!attribute [rw] comment_url
-#   @return [Object]
-#
-# @!attribute [rw] current_run
-#   @return [Object, nil]
-#
-# @!attribute [rw] draft
-#   @return [Boolean]
-#
-# @!attribute [rw] findings
-#   @return [Array]
-#
-# @!attribute [rw] github_repository
-#   @return [Object]
-#
-# @!attribute [rw] github_url
-#   @return [Object]
-#
-# @!attribute [rw] head_sha
-#   @return [String]
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] idempotency_key
-#   @return [String]
-#
-# @!attribute [rw] number
-#   @return [Integer]
-#
-# @!attribute [rw] pagination
-#   @return [Hash]
-#
-# @!attribute [rw] permissions
-#   @return [Hash]
-#
-# @!attribute [rw] preview_cleanup_ready
-#   @return [Boolean]
-#
-# @!attribute [rw] preview_url
-#   @return [Object, nil]
-#
-# @!attribute [rw] project
-#   @return [Object, nil]
-#
-# @!attribute [rw] project_id
-#   @return [Object]
-#
-# @!attribute [rw] project_slug
-#   @return [Object]
-#
-# @!attribute [rw] provider
-#   @return [String]
-#
-# @!attribute [rw] pull_request
-#   @return [Hash]
-#
-# @!attribute [rw] repository_id
-#   @return [String]
-#
-# @!attribute [rw] request_label
-#   @return [String]
-#
-# @!attribute [rw] requested_run_id
-#   @return [Object]
-#
-# @!attribute [rw] runs
-#   @return [Array]
-#
-# @!attribute [rw] source_branch
-#   @return [Object]
-#
-# @!attribute [rw] source_repository
-#   @return [Object]
-#
-# @!attribute [rw] source_url
-#   @return [Object]
-#
-# @!attribute [rw] state
-#   @return [String]
-#
-# @!attribute [rw] title
-#   @return [String]
-#
-# @!attribute [rw] updated_at
-#   @return [String]
-#
-# @!attribute [rw] web_path
-#   @return [String]
-MergeRequest = Struct.new(
-  :available_tests,
-  :base_sha,
-  :branch,
-  :comment_url,
-  :current_run,
-  :draft,
-  :findings,
-  :github_repository,
-  :github_url,
-  :head_sha,
-  :id,
-  :idempotency_key,
-  :number,
-  :pagination,
-  :permissions,
-  :preview_cleanup_ready,
-  :preview_url,
-  :project,
-  :project_id,
-  :project_slug,
-  :provider,
-  :pull_request,
-  :repository_id,
-  :request_label,
-  :requested_run_id,
-  :runs,
-  :source_branch,
-  :source_repository,
-  :source_url,
-  :state,
-  :title,
-  :updated_at,
-  :web_path,
-  keyword_init: true
-)
-
-# Request payload for MergeRequest#load.
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] page
-#   @return [Integer, nil]
-MergeRequestLoadMatch = Struct.new(
-  :id,
-  :organization_id,
-  :page,
-  keyword_init: true
-)
-
-# Request payload for MergeRequest#create.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] branch
-#   @return [String, nil]
-#
-# @!attribute [rw] head_sha
-#   @return [String, nil]
-#
-# @!attribute [rw] idempotency_key
-#   @return [String]
-#
-# @!attribute [rw] number
-#   @return [Integer]
-#
-# @!attribute [rw] project_id
-#   @return [Object, nil]
-#
-# @!attribute [rw] repository_id
-#   @return [String, nil]
-MergeRequestCreateData = Struct.new(
-  :organization_id,
-  :branch,
-  :head_sha,
-  :idempotency_key,
-  :number,
-  :project_id,
-  :repository_id,
-  keyword_init: true
-)
-
 # MergeResolution entity data model.
 #
 # @!attribute [rw] action
@@ -27602,7 +26903,7 @@ MergeResolutionCreateData = Struct.new(
 #   @return [String, nil]
 #
 # @!attribute [rw] media
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] media_upload_ids
 #   @return [Array, nil]
@@ -27663,7 +26964,7 @@ MessagingConversationMessage = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] media
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] media_upload_ids
 #   @return [Array, nil]
@@ -30603,6 +29904,85 @@ PagesBillingLoadMatch = Struct.new(
   keyword_init: true
 )
 
+# PagesGithubIntegration entity data model.
+#
+# @!attribute [rw] account_avatar_url
+#   @return [Object]
+#
+# @!attribute [rw] account_login
+#   @return [String]
+#
+# @!attribute [rw] connection_status
+#   @return [String]
+#
+# @!attribute [rw] connection_status_label
+#   @return [String]
+#
+# @!attribute [rw] github_installation
+#   @return [Object]
+#
+# @!attribute [rw] health
+#   @return [Hash]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] imported_repositories_count
+#   @return [Integer]
+#
+# @!attribute [rw] imported_repositories_count_label
+#   @return [String]
+#
+# @!attribute [rw] organization
+#   @return [Hash]
+#
+# @!attribute [rw] pagination
+#   @return [Hash]
+#
+# @!attribute [rw] repositories
+#   @return [Array]
+PagesGithubIntegration = Struct.new(
+  :account_avatar_url,
+  :account_login,
+  :connection_status,
+  :connection_status_label,
+  :github_installation,
+  :health,
+  :id,
+  :imported_repositories_count,
+  :imported_repositories_count_label,
+  :organization,
+  :pagination,
+  :repositories,
+  keyword_init: true
+)
+
+# Request payload for PagesGithubIntegration#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+PagesGithubIntegrationLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :page,
+  keyword_init: true
+)
+
+# Request payload for PagesGithubIntegration#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+PagesGithubIntegrationListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
 # PagesGithubOnboarding entity data model.
 #
 # @!attribute [rw] onboarding
@@ -31990,7 +31370,7 @@ ProductCreateData = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] target
-#   @return [Hash]
+#   @return [Hash, nil]
 ProductMapIdentityDecision = Struct.new(
   :observations,
   :operation,
@@ -32017,7 +31397,7 @@ ProductMapIdentityDecision = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] target
-#   @return [Hash]
+#   @return [Hash, nil]
 ProductMapIdentityDecisionCreateData = Struct.new(
   :organization_id,
   :project_id,
@@ -32713,7 +32093,7 @@ ProductMapStateListMatch = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] overview
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] permissions
 #   @return [Hash]
@@ -32737,7 +32117,7 @@ ProductMapStateListMatch = Struct.new(
 #   @return [Array]
 #
 # @!attribute [rw] scenario_history
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] scenario_states
 #   @return [Hash]
@@ -32990,7 +32370,7 @@ ProjectPatchData = Struct.new(
 # ProjectAndroidApk entity data model.
 #
 # @!attribute [rw] android
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] artifact_paths
 #   @return [Array, nil]
@@ -33002,13 +32382,13 @@ ProjectPatchData = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] ios
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] launch_command
 #   @return [String, nil]
 #
 # @!attribute [rw] managed_binary
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] platform
 #   @return [String, nil]
@@ -33072,7 +32452,7 @@ ProjectAndroidApkCreateData = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] revision
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] slug
 #   @return [String]
@@ -33738,7 +33118,7 @@ ProjectFixtureRemoveMatch = Struct.new(
 # ProjectIosApp entity data model.
 #
 # @!attribute [rw] android
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] artifact_paths
 #   @return [Array, nil]
@@ -33750,13 +33130,13 @@ ProjectFixtureRemoveMatch = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] ios
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] launch_command
 #   @return [String, nil]
 #
 # @!attribute [rw] managed_binary
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] platform
 #   @return [String, nil]
@@ -34114,6 +33494,52 @@ ProjectOverviewPullRequestListMatch = Struct.new(
   keyword_init: true
 )
 
+# ProjectPrTesting entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] project
+#   @return [Hash]
+#
+# @!attribute [rw] pull_request_options
+#   @return [Hash]
+ProjectPrTesting = Struct.new(
+  :id,
+  :project,
+  :pull_request_options,
+  keyword_init: true
+)
+
+# Request payload for ProjectPrTesting#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] provider
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_id
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_search
+#   @return [String, nil]
+#
+# @!attribute [rw] source_repository
+#   @return [String, nil]
+ProjectPrTestingLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :provider,
+  :repository_id,
+  :repository_search,
+  :source_repository,
+  keyword_init: true
+)
+
 # ProjectProductMap entity data model.
 class ProjectProductMap
 end
@@ -34189,6 +33615,84 @@ ProjectProductMapLoadMatch = Struct.new(
 ProjectProductMapCreateData = Struct.new(
   :organization_id,
   :project_id,
+  keyword_init: true
+)
+
+# ProjectProductMapComparison entity data model.
+#
+# @!attribute [rw] accounts
+#   @return [Array]
+#
+# @!attribute [rw] comparison
+#   @return [Object]
+#
+# @!attribute [rw] filters
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] project
+#   @return [Hash]
+#
+# @!attribute [rw] requirements
+#   @return [Array]
+#
+# @!attribute [rw] revisions
+#   @return [Array]
+ProjectProductMapComparison = Struct.new(
+  :accounts,
+  :comparison,
+  :filters,
+  :id,
+  :project,
+  :requirements,
+  :revisions,
+  keyword_init: true
+)
+
+# Request payload for ProjectProductMapComparison#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] account_id
+#   @return [String, nil]
+#
+# @!attribute [rw] area
+#   @return [String, nil]
+#
+# @!attribute [rw] before
+#   @return [String, nil]
+#
+# @!attribute [rw] compare_revision_id
+#   @return [String, nil]
+#
+# @!attribute [rw] persona_id
+#   @return [String, nil]
+#
+# @!attribute [rw] query
+#   @return [String, nil]
+#
+# @!attribute [rw] revision_id
+#   @return [String, nil]
+#
+# @!attribute [rw] since
+#   @return [String, nil]
+ProjectProductMapComparisonLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :account_id,
+  :area,
+  :before,
+  :compare_revision_id,
+  :persona_id,
+  :query,
+  :revision_id,
+  :since,
   keyword_init: true
 )
 
@@ -34415,7 +33919,7 @@ ProjectRunPlanListMatch = Struct.new(
 #   @return [Array]
 #
 # @!attribute [rw] identity_probe
-#   @return [Object]
+#   @return [Object, nil]
 #
 # @!attribute [rw] name
 #   @return [String]
@@ -34910,199 +34414,27 @@ ProjectScenarioRowListMatch = Struct.new(
 
 # ProjectSetting entity data model.
 #
-# @!attribute [rw] available_messaging_environments
-#   @return [Array]
+# @!attribute [rw] id
+#   @return [String]
 #
-# @!attribute [rw] messaging_conversations
-#   @return [Array]
-#
-# @!attribute [rw] messaging_enabled
-#   @return [Boolean]
-#
-# @!attribute [rw] permissions
-#   @return [Hash]
-#
-# @!attribute [rw] project
-#   @return [Hash]
-#
-# @!attribute [rw] tester_numbers
-#   @return [Array]
+# @!attribute [rw] name
+#   @return [String]
 ProjectSetting = Struct.new(
-  :available_messaging_environments,
-  :messaging_conversations,
-  :messaging_enabled,
-  :permissions,
-  :project,
-  :tester_numbers,
+  :id,
+  :name,
   keyword_init: true
 )
 
-# Request payload for ProjectSetting#load.
+# Request payload for ProjectSetting#list.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 #
 # @!attribute [rw] project_id
 #   @return [String]
-ProjectSettingLoadMatch = Struct.new(
+ProjectSettingListMatch = Struct.new(
   :organization_id,
   :project_id,
-  keyword_init: true
-)
-
-# PullRequest entity data model.
-#
-# @!attribute [rw] available_tests
-#   @return [Array]
-#
-# @!attribute [rw] branch
-#   @return [String, nil]
-#
-# @!attribute [rw] cleanup_only
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] current_run
-#   @return [Object, nil]
-#
-# @!attribute [rw] findings
-#   @return [Array]
-#
-# @!attribute [rw] head_sha
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] idempotency_key
-#   @return [String]
-#
-# @!attribute [rw] imessage_number
-#   @return [String, nil]
-#
-# @!attribute [rw] number
-#   @return [Integer, nil]
-#
-# @!attribute [rw] pagination
-#   @return [Hash]
-#
-# @!attribute [rw] permissions
-#   @return [Hash]
-#
-# @!attribute [rw] preview_cleanup_ready
-#   @return [Boolean]
-#
-# @!attribute [rw] preview_url
-#   @return [Object, nil]
-#
-# @!attribute [rw] project
-#   @return [Object, nil]
-#
-# @!attribute [rw] project_id
-#   @return [String, nil]
-#
-# @!attribute [rw] pull_request
-#   @return [Hash]
-#
-# @!attribute [rw] repository_id
-#   @return [String, nil]
-#
-# @!attribute [rw] runs
-#   @return [Array]
-PullRequest = Struct.new(
-  :available_tests,
-  :branch,
-  :cleanup_only,
-  :current_run,
-  :findings,
-  :head_sha,
-  :id,
-  :idempotency_key,
-  :imessage_number,
-  :number,
-  :pagination,
-  :permissions,
-  :preview_cleanup_ready,
-  :preview_url,
-  :project,
-  :project_id,
-  :pull_request,
-  :repository_id,
-  :runs,
-  keyword_init: true
-)
-
-# Request payload for PullRequest#load.
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] page
-#   @return [Integer, nil]
-PullRequestLoadMatch = Struct.new(
-  :id,
-  :organization_id,
-  :page,
-  keyword_init: true
-)
-
-# Request payload for PullRequest#create.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] branch
-#   @return [String, nil]
-#
-# @!attribute [rw] cleanup_only
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] head_sha
-#   @return [String, nil]
-#
-# @!attribute [rw] idempotency_key
-#   @return [String]
-#
-# @!attribute [rw] imessage_number
-#   @return [String, nil]
-#
-# @!attribute [rw] number
-#   @return [Integer, nil]
-#
-# @!attribute [rw] preview_url
-#   @return [Object, nil]
-#
-# @!attribute [rw] project_id
-#   @return [String, nil]
-#
-# @!attribute [rw] repository_id
-#   @return [String, nil]
-PullRequestCreateData = Struct.new(
-  :organization_id,
-  :branch,
-  :cleanup_only,
-  :head_sha,
-  :idempotency_key,
-  :imessage_number,
-  :number,
-  :preview_url,
-  :project_id,
-  :repository_id,
-  keyword_init: true
-)
-
-# Request payload for PullRequest#remove.
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-PullRequestRemoveMatch = Struct.new(
-  :id,
-  :organization_id,
   keyword_init: true
 )
 
@@ -38409,7 +37741,7 @@ RunArtifactCreateData = Struct.new(
 #   @return [Boolean]
 #
 # @!attribute [rw] cache_archive_observations
-#   @return [Object]
+#   @return [Object, nil]
 #
 # @!attribute [rw] ci_pipeline_run_id
 #   @return [String]
@@ -38472,7 +37804,7 @@ RunArtifactCreateData = Struct.new(
 #   @return [Integer]
 #
 # @!attribute [rw] reuse
-#   @return [Object]
+#   @return [Object, nil]
 #
 # @!attribute [rw] runner_label_selector
 #   @return [Object]
@@ -38684,118 +38016,82 @@ RunSearchLoadMatch = Struct.new(
 
 # RunUpdate entity data model.
 #
-# @!attribute [rw] base_sha
-#   @return [String]
+# @!attribute [rw] active_runs
+#   @return [Array]
 #
-# @!attribute [rw] can_verify
+# @!attribute [rw] checkout_required
 #   @return [Boolean]
 #
-# @!attribute [rw] comment_url
+# @!attribute [rw] cli_signed_in_at
 #   @return [Object]
 #
-# @!attribute [rw] draft
+# @!attribute [rw] counts
+#   @return [Hash]
+#
+# @!attribute [rw] demo_project
+#   @return [Object]
+#
+# @!attribute [rw] environments
+#   @return [Array]
+#
+# @!attribute [rw] included_deep_scan
 #   @return [Boolean]
 #
-# @!attribute [rw] github_repository
+# @!attribute [rw] onboarding_discovery
+#   @return [Object, nil]
+#
+# @!attribute [rw] organization
+#   @return [Hash]
+#
+# @!attribute [rw] permissions
+#   @return [Hash]
+#
+# @!attribute [rw] project
 #   @return [Object]
 #
-# @!attribute [rw] github_url
+# @!attribute [rw] pull_request_launch_options
+#   @return [Array, nil]
+#
+# @!attribute [rw] pull_requests
+#   @return [Array, nil]
+#
+# @!attribute [rw] repositories
+#   @return [Array]
+#
+# @!attribute [rw] runs
+#   @return [Array]
+#
+# @!attribute [rw] runs_pagination
+#   @return [Hash]
+#
+# @!attribute [rw] suggested_app_url
 #   @return [Object]
 #
-# @!attribute [rw] head_sha
-#   @return [String]
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] latest_created_at
-#   @return [Object]
-#
-# @!attribute [rw] latest_current
+# @!attribute [rw] url_first_start
 #   @return [Boolean]
-#
-# @!attribute [rw] latest_head_sha
-#   @return [Object]
-#
-# @!attribute [rw] latest_reason
-#   @return [Object]
-#
-# @!attribute [rw] latest_run_id
-#   @return [Object]
-#
-# @!attribute [rw] latest_state
-#   @return [Object]
-#
-# @!attribute [rw] number
-#   @return [Integer]
-#
-# @!attribute [rw] project_id
-#   @return [Object]
-#
-# @!attribute [rw] project_slug
-#   @return [Object]
-#
-# @!attribute [rw] provider
-#   @return [String]
-#
-# @!attribute [rw] repository_id
-#   @return [String]
-#
-# @!attribute [rw] request_label
-#   @return [String]
-#
-# @!attribute [rw] source_branch
-#   @return [Object]
-#
-# @!attribute [rw] source_repository
-#   @return [Object]
-#
-# @!attribute [rw] source_url
-#   @return [Object]
-#
-# @!attribute [rw] state
-#   @return [String]
-#
-# @!attribute [rw] title
-#   @return [String]
-#
-# @!attribute [rw] updated_at
-#   @return [String]
-#
-# @!attribute [rw] web_path
-#   @return [String]
 RunUpdate = Struct.new(
-  :base_sha,
-  :can_verify,
-  :comment_url,
-  :draft,
-  :github_repository,
-  :github_url,
-  :head_sha,
-  :id,
-  :latest_created_at,
-  :latest_current,
-  :latest_head_sha,
-  :latest_reason,
-  :latest_run_id,
-  :latest_state,
-  :number,
-  :project_id,
-  :project_slug,
-  :provider,
-  :repository_id,
-  :request_label,
-  :source_branch,
-  :source_repository,
-  :source_url,
-  :state,
-  :title,
-  :updated_at,
-  :web_path,
+  :active_runs,
+  :checkout_required,
+  :cli_signed_in_at,
+  :counts,
+  :demo_project,
+  :environments,
+  :included_deep_scan,
+  :onboarding_discovery,
+  :organization,
+  :permissions,
+  :project,
+  :pull_request_launch_options,
+  :pull_requests,
+  :repositories,
+  :runs,
+  :runs_pagination,
+  :suggested_app_url,
+  :url_first_start,
   keyword_init: true
 )
 
-# Request payload for RunUpdate#list.
+# Request payload for RunUpdate#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
@@ -38811,7 +38107,7 @@ RunUpdate = Struct.new(
 #
 # @!attribute [rw] verify_environment_id
 #   @return [String, nil]
-RunUpdateListMatch = Struct.new(
+RunUpdateLoadMatch = Struct.new(
   :organization_id,
   :page,
   :query,
@@ -39710,10 +39006,10 @@ SettingMutationLeaseCreateData = Struct.new(
 #   @return [Object]
 #
 # @!attribute [rw] acked_by
-#   @return [Object]
+#   @return [Object, nil]
 #
 # @!attribute [rw] agent_runs
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] app_service_id
 #   @return [Object]
@@ -39749,10 +39045,10 @@ SettingMutationLeaseCreateData = Struct.new(
 #   @return [Hash]
 #
 # @!attribute [rw] recovery
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] resolution
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] severity
 #   @return [String]
@@ -41905,7 +41201,7 @@ SparkAgentIntegrationCreateData = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] delivery
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] device_id
 #   @return [String]
@@ -41950,7 +41246,7 @@ SparkAgentIntegrationCreateData = Struct.new(
 #   @return [Object, nil]
 #
 # @!attribute [rw] relay_participant
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] result
 #   @return [Object]
@@ -42414,6 +41710,134 @@ SparkAgentThreadCreateData = Struct.new(
   keyword_init: true
 )
 
+# SparkAutomation entity data model.
+#
+# @!attribute [rw] can_manage
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_events
+#   @return [Boolean]
+#
+# @!attribute [rw] can_run
+#   @return [Boolean]
+#
+# @!attribute [rw] can_schedule
+#   @return [Boolean]
+#
+# @!attribute [rw] definition
+#   @return [Hash]
+#
+# @!attribute [rw] event_subscriptions
+#   @return [Array]
+#
+# @!attribute [rw] event_triggers
+#   @return [Array]
+#
+# @!attribute [rw] expected_revision
+#   @return [Integer]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] key
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] revision
+#   @return [Integer]
+#
+# @!attribute [rw] schedule
+#   @return [Object]
+#
+# @!attribute [rw] schedules
+#   @return [Array]
+#
+# @!attribute [rw] version
+#   @return [Hash]
+SparkAutomation = Struct.new(
+  :can_manage,
+  :can_manage_events,
+  :can_run,
+  :can_schedule,
+  :definition,
+  :event_subscriptions,
+  :event_triggers,
+  :expected_revision,
+  :id,
+  :key,
+  :name,
+  :revision,
+  :schedule,
+  :schedules,
+  :version,
+  keyword_init: true
+)
+
+# Request payload for SparkAutomation#load.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SparkAutomationLoadMatch = Struct.new(
+  :agent_id,
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for SparkAutomation#list.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+SparkAutomationListMatch = Struct.new(
+  :agent_id,
+  :organization_id,
+  :cursor,
+  :limit,
+  keyword_init: true
+)
+
+# Request payload for SparkAutomation#update.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] definition
+#   @return [Hash, nil]
+#
+# @!attribute [rw] expected_revision
+#   @return [Integer, nil]
+SparkAutomationUpdateData = Struct.new(
+  :agent_id,
+  :id,
+  :organization_id,
+  :definition,
+  :expected_revision,
+  keyword_init: true
+)
+
 # SparkCredit entity data model.
 #
 # @!attribute [rw] amount_cents
@@ -42435,7 +41859,7 @@ SparkAgentThreadCreateData = Struct.new(
 #   @return [Boolean]
 #
 # @!attribute [rw] compute_minutes
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] compute_usd
 #   @return [String, nil]
@@ -44598,7 +44022,7 @@ VcFileListMatch = Struct.new(
 # VcMergeQueue entity data model.
 #
 # @!attribute [rw] analytics
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] id
 #   @return [String, nil]
@@ -44751,7 +44175,7 @@ VcMergeQueueUpdateData = Struct.new(
 #   @return [String, nil]
 #
 # @!attribute [rw] landing
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] member_count
 #   @return [Integer]
@@ -45930,7 +45354,7 @@ VerificationProjectRunCreateData = Struct.new(
 #   @return [Array, nil]
 #
 # @!attribute [rw] health
-#   @return [Hash]
+#   @return [Hash, nil]
 #
 # @!attribute [rw] id
 #   @return [String]
@@ -46413,6 +45837,701 @@ end
 # Request payload for VerifyEmailVerification#load.
 class VerifyEmailVerificationLoadMatch
 end
+
+# VerifyEnvironment entity data model.
+#
+# @!attribute [rw] active_revision_id
+#   @return [Object]
+#
+# @!attribute [rw] agent_sign_up_available
+#   @return [Boolean]
+#
+# @!attribute [rw] allowed_actions
+#   @return [String]
+#
+# @!attribute [rw] billing
+#   @return [Hash]
+#
+# @!attribute [rw] cleanup
+#   @return [Array]
+#
+# @!attribute [rw] connection
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] default_policy
+#   @return [Hash, nil]
+#
+# @!attribute [rw] default_policy_json
+#   @return [Hash]
+#
+# @!attribute [rw] discovery_defaults
+#   @return [Hash]
+#
+# @!attribute [rw] environment
+#   @return [Hash]
+#
+# @!attribute [rw] exploration_accounts
+#   @return [Array, nil]
+#
+# @!attribute [rw] explorations
+#   @return [Array, nil]
+#
+# @!attribute [rw] first_run
+#   @return [Object, nil]
+#
+# @!attribute [rw] hosted_app_id
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] imessage_number
+#   @return [Object]
+#
+# @!attribute [rw] included_deep_scan
+#   @return [Boolean]
+#
+# @!attribute [rw] lock_version
+#   @return [Integer]
+#
+# @!attribute [rw] managed_google_available
+#   @return [Boolean]
+#
+# @!attribute [rw] managed_google_email
+#   @return [String]
+#
+# @!attribute [rw] messaging_tester_number
+#   @return [Object, nil]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] network_connections
+#   @return [Array]
+#
+# @!attribute [rw] onboarding_discovery
+#   @return [Object, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] pending_accounts
+#   @return [Array, nil]
+#
+# @!attribute [rw] permissions
+#   @return [Hash]
+#
+# @!attribute [rw] project_id
+#   @return [Object]
+#
+# @!attribute [rw] repository_id
+#   @return [Object]
+#
+# @!attribute [rw] revisions
+#   @return [Array]
+#
+# @!attribute [rw] setup_discovery_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] sign_in_check_available
+#   @return [Boolean]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] target_kind
+#   @return [Object]
+#
+# @!attribute [rw] target_url
+#   @return [Object]
+#
+# @!attribute [rw] test_accounts
+#   @return [Hash]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] verify_network_connection_id
+#   @return [Object]
+#
+# @!attribute [rw] version
+#   @return [Integer, nil]
+VerifyEnvironment = Struct.new(
+  :active_revision_id,
+  :agent_sign_up_available,
+  :allowed_actions,
+  :billing,
+  :cleanup,
+  :connection,
+  :created_at,
+  :default_policy,
+  :default_policy_json,
+  :discovery_defaults,
+  :environment,
+  :exploration_accounts,
+  :explorations,
+  :first_run,
+  :hosted_app_id,
+  :id,
+  :imessage_number,
+  :included_deep_scan,
+  :lock_version,
+  :managed_google_available,
+  :managed_google_email,
+  :messaging_tester_number,
+  :name,
+  :network_connections,
+  :onboarding_discovery,
+  :organization_id,
+  :pending_accounts,
+  :permissions,
+  :project_id,
+  :repository_id,
+  :revisions,
+  :setup_discovery_id,
+  :sign_in_check_available,
+  :slug,
+  :status,
+  :target_kind,
+  :target_url,
+  :test_accounts,
+  :updated_at,
+  :verify_network_connection_id,
+  :version,
+  keyword_init: true
+)
+
+# Request payload for VerifyEnvironment#load.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] project_id
+#   @return [String, nil]
+VerifyEnvironmentLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :project_id,
+  keyword_init: true
+)
+
+# Request payload for VerifyEnvironment#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] allowed_actions
+#   @return [String, nil]
+#
+# @!attribute [rw] default_policy
+#   @return [Hash, nil]
+#
+# @!attribute [rw] imessage_number
+#   @return [Object, nil]
+#
+# @!attribute [rw] messaging_tester_number
+#   @return [Object, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] project_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] repository_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] target_kind
+#   @return [Object, nil]
+#
+# @!attribute [rw] target_url
+#   @return [Object, nil]
+VerifyEnvironmentCreateData = Struct.new(
+  :organization_id,
+  :allowed_actions,
+  :default_policy,
+  :imessage_number,
+  :messaging_tester_number,
+  :name,
+  :project_id,
+  :repository_id,
+  :slug,
+  :target_kind,
+  :target_url,
+  keyword_init: true
+)
+
+# Request payload for VerifyEnvironment#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+VerifyEnvironmentUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for VerifyEnvironment#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] allowed_actions
+#   @return [String, nil]
+#
+# @!attribute [rw] imessage_number
+#   @return [Object, nil]
+#
+# @!attribute [rw] messaging_tester_number
+#   @return [Object, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] target_url
+#   @return [Object, nil]
+#
+# @!attribute [rw] verify_network_connection_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] version
+#   @return [Integer, nil]
+VerifyEnvironmentPatchData = Struct.new(
+  :id,
+  :organization_id,
+  :allowed_actions,
+  :imessage_number,
+  :messaging_tester_number,
+  :name,
+  :target_url,
+  :verify_network_connection_id,
+  :version,
+  keyword_init: true
+)
+
+# Request payload for VerifyEnvironment#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+VerifyEnvironmentRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# VerifyEvidence entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+VerifyEvidence = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for VerifyEvidence#load.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] agent_id
+#   @return [String, nil]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] exploration_id
+#   @return [String, nil]
+#
+# @!attribute [rw] kind
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] repository_id
+#   @return [String, nil]
+#
+# @!attribute [rw] scenario_run_id
+#   @return [String, nil]
+VerifyEvidenceLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :agent_id,
+  :cursor,
+  :exploration_id,
+  :kind,
+  :limit,
+  :repository_id,
+  :scenario_run_id,
+  keyword_init: true
+)
+
+# VerifyMergeRequest entity data model.
+#
+# @!attribute [rw] available_tests
+#   @return [Array]
+#
+# @!attribute [rw] base_sha
+#   @return [String]
+#
+# @!attribute [rw] branch
+#   @return [String, nil]
+#
+# @!attribute [rw] comment_url
+#   @return [Object]
+#
+# @!attribute [rw] current_run
+#   @return [Object, nil]
+#
+# @!attribute [rw] draft
+#   @return [Boolean]
+#
+# @!attribute [rw] findings
+#   @return [Array]
+#
+# @!attribute [rw] github_repository
+#   @return [Object]
+#
+# @!attribute [rw] github_url
+#   @return [Object]
+#
+# @!attribute [rw] head_sha
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] idempotency_key
+#   @return [String]
+#
+# @!attribute [rw] number
+#   @return [Integer]
+#
+# @!attribute [rw] pagination
+#   @return [Hash]
+#
+# @!attribute [rw] permissions
+#   @return [Hash]
+#
+# @!attribute [rw] preview_cleanup_ready
+#   @return [Boolean]
+#
+# @!attribute [rw] preview_url
+#   @return [Object, nil]
+#
+# @!attribute [rw] project
+#   @return [Object, nil]
+#
+# @!attribute [rw] project_id
+#   @return [Object]
+#
+# @!attribute [rw] project_slug
+#   @return [Object]
+#
+# @!attribute [rw] provider
+#   @return [String]
+#
+# @!attribute [rw] pull_request
+#   @return [Hash]
+#
+# @!attribute [rw] repository_id
+#   @return [String]
+#
+# @!attribute [rw] request_label
+#   @return [String]
+#
+# @!attribute [rw] requested_run_id
+#   @return [Object]
+#
+# @!attribute [rw] runs
+#   @return [Array]
+#
+# @!attribute [rw] source_branch
+#   @return [Object]
+#
+# @!attribute [rw] source_repository
+#   @return [Object]
+#
+# @!attribute [rw] source_url
+#   @return [Object]
+#
+# @!attribute [rw] state
+#   @return [String]
+#
+# @!attribute [rw] title
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] web_path
+#   @return [String]
+VerifyMergeRequest = Struct.new(
+  :available_tests,
+  :base_sha,
+  :branch,
+  :comment_url,
+  :current_run,
+  :draft,
+  :findings,
+  :github_repository,
+  :github_url,
+  :head_sha,
+  :id,
+  :idempotency_key,
+  :number,
+  :pagination,
+  :permissions,
+  :preview_cleanup_ready,
+  :preview_url,
+  :project,
+  :project_id,
+  :project_slug,
+  :provider,
+  :pull_request,
+  :repository_id,
+  :request_label,
+  :requested_run_id,
+  :runs,
+  :source_branch,
+  :source_repository,
+  :source_url,
+  :state,
+  :title,
+  :updated_at,
+  :web_path,
+  keyword_init: true
+)
+
+# Request payload for VerifyMergeRequest#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+VerifyMergeRequestLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :page,
+  keyword_init: true
+)
+
+# Request payload for VerifyMergeRequest#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] branch
+#   @return [String, nil]
+#
+# @!attribute [rw] head_sha
+#   @return [String, nil]
+#
+# @!attribute [rw] idempotency_key
+#   @return [String]
+#
+# @!attribute [rw] number
+#   @return [Integer]
+#
+# @!attribute [rw] project_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] repository_id
+#   @return [String, nil]
+VerifyMergeRequestCreateData = Struct.new(
+  :organization_id,
+  :branch,
+  :head_sha,
+  :idempotency_key,
+  :number,
+  :project_id,
+  :repository_id,
+  keyword_init: true
+)
+
+# VerifyPullRequest entity data model.
+#
+# @!attribute [rw] available_tests
+#   @return [Array]
+#
+# @!attribute [rw] branch
+#   @return [String, nil]
+#
+# @!attribute [rw] cleanup_only
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] current_run
+#   @return [Object, nil]
+#
+# @!attribute [rw] findings
+#   @return [Array]
+#
+# @!attribute [rw] head_sha
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] idempotency_key
+#   @return [String]
+#
+# @!attribute [rw] imessage_number
+#   @return [String, nil]
+#
+# @!attribute [rw] number
+#   @return [Integer, nil]
+#
+# @!attribute [rw] pagination
+#   @return [Hash]
+#
+# @!attribute [rw] permissions
+#   @return [Hash]
+#
+# @!attribute [rw] preview_cleanup_ready
+#   @return [Boolean]
+#
+# @!attribute [rw] preview_url
+#   @return [Object, nil]
+#
+# @!attribute [rw] project
+#   @return [Object, nil]
+#
+# @!attribute [rw] project_id
+#   @return [String, nil]
+#
+# @!attribute [rw] pull_request
+#   @return [Hash]
+#
+# @!attribute [rw] repository_id
+#   @return [String, nil]
+#
+# @!attribute [rw] runs
+#   @return [Array]
+VerifyPullRequest = Struct.new(
+  :available_tests,
+  :branch,
+  :cleanup_only,
+  :current_run,
+  :findings,
+  :head_sha,
+  :id,
+  :idempotency_key,
+  :imessage_number,
+  :number,
+  :pagination,
+  :permissions,
+  :preview_cleanup_ready,
+  :preview_url,
+  :project,
+  :project_id,
+  :pull_request,
+  :repository_id,
+  :runs,
+  keyword_init: true
+)
+
+# Request payload for VerifyPullRequest#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+VerifyPullRequestLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :page,
+  keyword_init: true
+)
+
+# Request payload for VerifyPullRequest#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] branch
+#   @return [String, nil]
+#
+# @!attribute [rw] cleanup_only
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] head_sha
+#   @return [String, nil]
+#
+# @!attribute [rw] idempotency_key
+#   @return [String]
+#
+# @!attribute [rw] imessage_number
+#   @return [String, nil]
+#
+# @!attribute [rw] number
+#   @return [Integer, nil]
+#
+# @!attribute [rw] preview_url
+#   @return [Object, nil]
+#
+# @!attribute [rw] project_id
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_id
+#   @return [String, nil]
+VerifyPullRequestCreateData = Struct.new(
+  :organization_id,
+  :branch,
+  :cleanup_only,
+  :head_sha,
+  :idempotency_key,
+  :imessage_number,
+  :number,
+  :preview_url,
+  :project_id,
+  :repository_id,
+  keyword_init: true
+)
+
+# Request payload for VerifyPullRequest#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+VerifyPullRequestRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
 
 # VerifySignalIntegration entity data model.
 #

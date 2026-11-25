@@ -6,7 +6,7 @@ description: |-
   | field | type | required | |
   |---|---|---|---|
   | `action` | string | yes |  |
-  | `automation` | object | yes |  |
+  | `automation` | object |  |  |
   | `budget_seconds` | integer | yes |  |
   | `budget_usd` | number | yes |  |
   | `can_answer` | boolean | yes |  |
@@ -14,7 +14,7 @@ description: |-
   | `can_dismiss` | boolean | yes |  |
   | `checkpoint` | object | yes |  |
   | `conversation_id` | string | yes |  |
-  | `decision_history` | object | yes |  |
+  | `decision_history` | object |  |  |
   | `error` | string | yes |  |
   | `finished_at` | string | yes |  |
   | `flow_steps` | array | yes |  |

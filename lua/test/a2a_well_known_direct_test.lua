@@ -44,10 +44,8 @@ describe("A2aWellKnownDirect", function()
     local query = {}
     if setup.live then
       params["a2a_id"] = setup.idmap["a2a01"]
-      params["a2a_id"] = setup.idmap["a2a01"]
     else
       params["a2a_id"] = "direct01"
-      params["a2a_id"] = "direct02"
     end
 
     local result, err = client:direct({

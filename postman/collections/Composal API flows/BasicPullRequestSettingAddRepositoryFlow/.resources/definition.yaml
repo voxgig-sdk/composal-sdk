@@ -1,4 +1,4 @@
 $kind: collection
 id: "66001b94-dc91-5d06-b462-50c15da3d10a"
 description: "The `BasicPullRequestSettingAddRepositoryFlow` flow of **pull_request_setting_add_repository**."
-order: 315000
+order: 316000

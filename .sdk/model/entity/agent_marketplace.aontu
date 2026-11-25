@@ -8,6 +8,12 @@ main: kit: entity: agent_marketplace: {
     bundle: {
       h: "Bundle"
       n: "bundle"
+      op: {
+        patch: {
+          req: false
+          type: "`$OBJECT`"
+        }
+      }
       r: true
       t: "`$OBJECT`"
     }
@@ -730,7 +736,7 @@ main: kit: entity: agent_marketplace: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.page_app_choices`"
+            res: "`body`"
           }
         }
         {

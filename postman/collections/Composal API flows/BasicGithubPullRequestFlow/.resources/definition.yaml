@@ -1,4 +1,4 @@
 $kind: collection
 id: e17e21be-be8c-59d2-b484-32afb5c47c48
 description: "The `BasicGithubPullRequestFlow` flow of **github_pull_request**."
-order: 208000
+order: 206000

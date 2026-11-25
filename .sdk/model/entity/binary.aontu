@@ -267,7 +267,7 @@ main: kit: entity: binary: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.binary`"
           }
         }
         {
@@ -346,7 +346,7 @@ main: kit: entity: binary: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.binary`"
           }
         }
       ]

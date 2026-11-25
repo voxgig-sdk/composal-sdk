@@ -62,7 +62,7 @@ describe('BrowserSessionDirect', async () => {
     }
 
     const result: any = await client.direct({
-      path: 'api/v1/organizations/{organization_id}/browser_sessions/{id}/media',
+      path: 'api/v1/organizations/{organization_id}/browser_sessions/{id}',
       method: 'GET',
       params,
       query,

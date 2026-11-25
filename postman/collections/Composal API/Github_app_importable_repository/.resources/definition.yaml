@@ -9,4 +9,4 @@ description: |-
   | `github_app_installation_id` | string | yes |  |
   | `next_page` | integer | yes |  |
   | `repositories` | array | yes |  |
-order: 256000
+order: 254000

@@ -29,7 +29,7 @@ describe("LeaseVerifyDiagnosticEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:LeaseVerifyDiagnostic(nil):create({ ["lease_id"] = 1, ["swarm_id"] = "x", ["task_id"] = "x", ["browser_events"] = "x", ["live_browser"] = "x", ["live_view"] = "x" }, nil)
+    local _, err = client:LeaseVerifyDiagnostic(nil):create({ ["lease_id"] = 1, ["swarm_id"] = "x", ["task_id"] = "x", ["browser_events"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 

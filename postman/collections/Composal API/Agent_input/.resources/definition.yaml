@@ -9,11 +9,11 @@ description: |-
   |---|---|---|---|
   | `attachment_ids` | array |  |  |
   | `attachments` | array |  |  |
-  | `browser_context` | object | yes |  |
-  | `client_time` | object | yes |  |
+  | `browser_context` | object |  |  |
+  | `client_time` | object |  |  |
   | `conversation_id` | string | yes |  |
   | `model_policy` | any |  |  |
   | `requester_membership_id` | string |  |  |
   | `speed` | string |  |  |
   | `text` | string | yes |  |
-order: 26000
+order: 25000

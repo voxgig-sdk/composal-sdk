@@ -39,7 +39,7 @@ main: kit: entity: vc_stack: {
     landing: {
       h: "Landing"
       n: "landing"
-      r: true
+      r: false
       sh: "Compact landing state for the Stack CLI."
       t: "`$OBJECT`"
     }
@@ -205,13 +205,6 @@ main: kit: entity: vc_stack: {
               }
               {
                 k: "param"
-                n: "id"
-                or: "code"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "organization_id"
                 or: "org_slug"
                 r: true
@@ -296,13 +289,6 @@ main: kit: entity: vc_stack: {
           }
           g: {
             params: [
-              {
-                k: "param"
-                n: "id"
-                or: "code"
-                r: true
-                t: "`$STRING`"
-              }
               {
                 k: "param"
                 n: "id"

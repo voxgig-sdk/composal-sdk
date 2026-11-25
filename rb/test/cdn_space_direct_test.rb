@@ -25,8 +25,8 @@ class CdnSpaceDirectTest < Minitest::Test
       return
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE" && setup[:idmap]["cdn_space01"].nil?
-      puts "LIVE STEP {\"id\":\"direct-load-cdn_space\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs cdn_space01, which only POST /api/v1/cdn_spaces/{id}/archive gives\"}"
-      skip("Live coverage incomplete: direct-load-cdn_space excluded (GET-only live run: needs cdn_space01, which only POST /api/v1/cdn_spaces/{id}/archive gives)")
+      puts "LIVE STEP {\"id\":\"direct-load-cdn_space\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs cdn_space01, which only POST /api/v1/organizations/{org_slug}/cdn_spaces gives\"}"
+      skip("Live coverage incomplete: direct-load-cdn_space excluded (GET-only live run: needs cdn_space01, which only POST /api/v1/organizations/{org_slug}/cdn_spaces gives)")
     end
     if setup[:live]
       ["cdn_space01"].each do |_live_key|

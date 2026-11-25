@@ -1,0 +1,11 @@
+$kind: collection
+id: "45dc546f-a1fd-52f9-ba1d-78bc81e22eb2"
+description: |-
+  The **project_pr_testing** entity, which belongs to a organization. Its requests address one record by `{{project_pr_testing_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+  | `project` | object | yes |  |
+  | `pull_request_options` | object | yes |  |
+order: 401000

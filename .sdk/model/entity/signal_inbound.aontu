@@ -47,20 +47,6 @@ main: kit: entity: signal_inbound: {
               }
               {
                 k: "param"
-                n: "id"
-                or: "inbound_token"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "inbound_id"
-                or: "provider"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "inbound_id"
                 or: "provider"
                 r: true

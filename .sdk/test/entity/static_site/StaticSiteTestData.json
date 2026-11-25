@@ -103,12 +103,12 @@
     }
   },
   "requests": {
-    "POST /api/v1/static_sites/{id}/provision": {
+    "POST /api/v1/organizations/{organization_id}/static_sites": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "POST /api/v1/organizations/{organization_id}/static_sites": {
+    "POST /api/v1/static_sites/{id}/provision": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

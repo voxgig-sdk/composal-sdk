@@ -43,23 +43,15 @@ class TestGhDirect:
         query = {}
         if setup["live"]:
             params["gh_id"] = setup["idmap"].get("gh01")
-            params["gh_id"] = setup["idmap"].get("gh01")
-            params["github_repo"] = setup["idmap"].get("github_repo01")
             params["github_repo"] = setup["idmap"].get("github_repo01")
             params["id"] = setup["idmap"].get("gh01")
-            params["id"] = setup["idmap"].get("gh01")
-            params["organization_id"] = setup["idmap"].get("organization01")
             params["organization_id"] = setup["idmap"].get("organization01")
             pass
         else:
             params["gh_id"] = "direct01"
-            params["gh_id"] = "direct02"
-            params["github_repo"] = "direct03"
-            params["github_repo"] = "direct04"
-            params["id"] = "direct05"
-            params["id"] = "direct06"
-            params["organization_id"] = "direct07"
-            params["organization_id"] = "direct08"
+            params["github_repo"] = "direct02"
+            params["id"] = "direct03"
+            params["organization_id"] = "direct04"
             pass
 
         result = client.direct({

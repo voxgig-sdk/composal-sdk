@@ -11,4 +11,4 @@ description: |-
   | `summary` | string | yes |  |
   | `title` | string | yes |  |
   | `version` | string | yes |  |
-order: 76000
+order: 75000

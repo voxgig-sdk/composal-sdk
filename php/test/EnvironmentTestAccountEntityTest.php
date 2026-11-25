@@ -160,7 +160,7 @@ function environment_test_account_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["environment_test_account01", "environment_test_account02", "environment_test_account03", "organization01", "organization02", "organization03", "environment01", "environment02", "environment03"] as $k) {
+    foreach (["environment_test_account01", "environment_test_account02", "environment_test_account03", "organization01", "organization02", "organization03", "environment01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

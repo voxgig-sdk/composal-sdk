@@ -48,7 +48,7 @@ const utility_1 = require("../../utility");
             params.organization_id = 'direct02';
         }
         const result = await client.direct({
-            path: 'api/v1/organizations/{organization_id}/browser_sessions/{id}/media',
+            path: 'api/v1/organizations/{organization_id}/browser_sessions/{id}',
             method: 'GET',
             params,
             query,

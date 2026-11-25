@@ -99,6 +99,7 @@ class ProjectRunScheduleEntityTest extends TestCase
             "id" => $project_run_schedule_ref01_data["id"],
         ];
         $project_run_schedule_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $project_run_schedule_ref01_match_dt0["project_id"] = $setup["idmap"]["project_id"] ?? $setup["idmap"]["project01"] ?? null;
         $project_run_schedule_ref01_data_dt0_loaded = $project_run_schedule_ref01_ent->load($project_run_schedule_ref01_match_dt0, null);
         $project_run_schedule_ref01_data_dt0_load_result = Helpers::to_map(is_object($project_run_schedule_ref01_data_dt0_loaded) && method_exists($project_run_schedule_ref01_data_dt0_loaded, 'data_get') ? $project_run_schedule_ref01_data_dt0_loaded->data_get() : $project_run_schedule_ref01_data_dt0_loaded);
         $this->assertNotNull($project_run_schedule_ref01_data_dt0_load_result);
@@ -176,6 +177,7 @@ class ProjectRunScheduleEntityTest extends TestCase
             "id" => $project_run_schedule_ref01_data["id"],
         ];
         $project_run_schedule_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $project_run_schedule_ref01_match_dt0["project_id"] = $setup["idmap"]["project_id"] ?? $setup["idmap"]["project01"] ?? null;
         $project_run_schedule_ref01_data_dt0_loaded = $project_run_schedule_ref01_ent->load($project_run_schedule_ref01_match_dt0, null);
         $project_run_schedule_ref01_data_dt0_load_result = Helpers::to_map(is_object($project_run_schedule_ref01_data_dt0_loaded) && method_exists($project_run_schedule_ref01_data_dt0_loaded, 'data_get') ? $project_run_schedule_ref01_data_dt0_loaded->data_get() : $project_run_schedule_ref01_data_dt0_loaded);
         $this->assertNotNull($project_run_schedule_ref01_data_dt0_load_result);

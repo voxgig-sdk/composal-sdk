@@ -71,7 +71,7 @@ func TestDockerBuilderSessionEntity(t *testing.T) {
 		}
 
 		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
+			for _, _liveKey := range []string{"docker_builder01", "organization01"} {
 				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
 					liveMiss(t, docker_builder_sessionEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_DOCKER_BUILDER_SESSION_ENTID", _liveKey)
 				}
@@ -87,6 +87,7 @@ func TestDockerBuilderSessionEntity(t *testing.T) {
 		dockerBuilderSessionRef01Ent := client.DockerBuilderSession(nil)
 		dockerBuilderSessionRef01Data := core.ToMapAny(vs.GetProp(
 			vs.GetPath(setup.data, []any{"new", "docker_builder_session"}), "docker_builder_session_ref01"))
+		dockerBuilderSessionRef01Data["docker_builder_id"] = setup.idmap["docker_builder01"]
 		dockerBuilderSessionRef01Data["organization_id"] = setup.idmap["organization01"]
 
 		dockerBuilderSessionRef01DataResult, err := dockerBuilderSessionRef01Ent.Create(dockerBuilderSessionRef01Data, nil)

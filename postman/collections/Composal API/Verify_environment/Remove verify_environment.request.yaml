@@ -1,0 +1,25 @@
+$kind: http-request
+id: f4b6a54a-ce74-5c97-aba2-aaca28d0dd09
+description: |-
+  The `remove` operation of **verify_environment**.
+
+  SDK: `client.VerifyEnvironment().remove({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/environments/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_environment belongs to.
+  - key: id
+    value: "{{verify_environment_id}}"
+    description: The verify_environment this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("verify_environment_id")
+      }
+    language: text/javascript
+order: 7000

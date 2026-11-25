@@ -1,0 +1,19 @@
+$kind: http-request
+id: d7878047-5016-58e7-a8b8-63e4b3fb03a1
+description: |-
+  The `load` operation of **app_deployment_dashboard**.
+
+  SDK: `client.AppDeploymentDashboard().load({ id: "example_id" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/deployment_dashboard"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: metrics_range
+    value: ""
+    disabled: true
+pathVariables:
+  - key: app_id
+    value: "{{app_deployment_dashboard_id}}"
+    description: The app_deployment_dashboard this request addresses.
+order: 1000

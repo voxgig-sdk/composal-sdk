@@ -58,7 +58,7 @@ const utility_1 = require("../../utility");
             params.id = 'direct01';
         }
         const result = await client.direct({
-            path: 'api/v1/hosting/apps/{id}/catalog',
+            path: 'api/v1/hosting/apps/{id}',
             method: 'GET',
             params,
             query,

@@ -1,0 +1,26 @@
+$kind: http-request
+id: b5a2c3b3-018c-5b90-bcf6-afab16f706d8
+description: |-
+  The `spark_input_delivery` action of **agent**, a route of its `load` operation.
+
+  SDK: `client.Agent().load({ "organization_id": "organization_id", "id": "ID", "idempotency_key": "idempotency_key", $action: "spark_input_delivery" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/input_delivery"
+method: GET
+headers:
+  Accept: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+queryParams:
+  - key: conversation_id
+    value: main
+    disabled: true
+  - key: requester_membership_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+order: 32000

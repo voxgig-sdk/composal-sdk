@@ -69,7 +69,8 @@ main: kit: flow: BasicVcChangeFlow:
 
       m: {
         id: "vc_change01",
-        organization_id: "organization01"
+        organization_id: "organization01",
+        repo_id: "repo01"
       }
 
       o: "load",

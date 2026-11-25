@@ -1,8 +1,8 @@
 $kind: collection
 id: b12db551-bcfd-500b-8274-8becca2a6333
 description: |-
-  The **environment_first_run** entity, which belongs to a organization and a environment. Its requests address one record by `{{environment_first_run_id}}`, which a list or a create remembers.
+  The **environment_first_run** entity, which belongs to a organization. Its requests address one record by `{{environment_first_run_id}}`, which a list or a create remembers.
 
   | field | type | required | |
   |---|---|---|---|
-order: 238000
+order: 237000

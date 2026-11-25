@@ -17,5 +17,5 @@ description: |-
   | `session_title` | string |  |  |
   | `status` | string | yes |  |
   | `superseded` | boolean | yes |  |
-  | `user` | object | yes |  |
+  | `user` | object |  |  |
 order: 172000

@@ -1,0 +1,4 @@
+$kind: collection
+id: "245d80f2-3534-56d7-b618-c682cdbbaed3"
+description: "The `BasicVerifyPullRequestFlow` flow of **verify_pull_request**."
+order: 424000

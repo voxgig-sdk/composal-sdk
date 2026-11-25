@@ -238,7 +238,6 @@ new ComposalSDK(options?: {
 | `AgentApp(data?)` | `AgentAppEntity` | Create an AgentApp entity instance. |
 | `AgentAppInstall(data?)` | `AgentAppInstallEntity` | Create an AgentAppInstall entity instance. |
 | `AgentAttachment(data?)` | `AgentAttachmentEntity` | Create an AgentAttachment entity instance. |
-| `AgentAutomation(data?)` | `AgentAutomationEntity` | Create an AgentAutomation entity instance. |
 | `AgentAvatar(data?)` | `AgentAvatarEntity` | Create an AgentAvatar entity instance. |
 | `AgentCommand(data?)` | `AgentCommandEntity` | Create an AgentCommand entity instance. |
 | `AgentComputer(data?)` | `AgentComputerEntity` | Create an AgentComputer entity instance. |
@@ -316,6 +315,7 @@ new ComposalSDK(options?: {
 | `AppDataResource(data?)` | `AppDataResourceEntity` | Create an AppDataResource entity instance. |
 | `AppDeploy(data?)` | `AppDeployEntity` | Create an AppDeploy entity instance. |
 | `AppDeployment(data?)` | `AppDeploymentEntity` | Create an AppDeployment entity instance. |
+| `AppDeploymentDashboard(data?)` | `AppDeploymentDashboardEntity` | Create an AppDeploymentDashboard entity instance. |
 | `AppDeploymentOperation(data?)` | `AppDeploymentOperationEntity` | Create an AppDeploymentOperation entity instance. |
 | `AppDeploymentRollback(data?)` | `AppDeploymentRollbackEntity` | Create an AppDeploymentRollback entity instance. |
 | `AppEnvironment(data?)` | `AppEnvironmentEntity` | Create an AppEnvironment entity instance. |
@@ -445,12 +445,12 @@ new ComposalSDK(options?: {
 | `Device(data?)` | `DeviceEntity` | Create a Device entity instance. |
 | `DeviceBrowserOperation(data?)` | `DeviceBrowserOperationEntity` | Create a DeviceBrowserOperation entity instance. |
 | `DeviceControlMessage(data?)` | `DeviceControlMessageEntity` | Create a DeviceControlMessage entity instance. |
-| `DeviceControlOperation(data?)` | `DeviceControlOperationEntity` | Create a DeviceControlOperation entity instance. |
 | `DeviceEnterpriseRelay(data?)` | `DeviceEnterpriseRelayEntity` | Create a DeviceEnterpriseRelay entity instance. |
 | `DeviceFolderListing(data?)` | `DeviceFolderListingEntity` | Create a DeviceFolderListing entity instance. |
 | `DeviceGrant(data?)` | `DeviceGrantEntity` | Create a DeviceGrant entity instance. |
 | `DeviceInvocation(data?)` | `DeviceInvocationEntity` | Create a DeviceInvocation entity instance. |
 | `DeviceLocalEvent(data?)` | `DeviceLocalEventEntity` | Create a DeviceLocalEvent entity instance. |
+| `DeviceOperation(data?)` | `DeviceOperationEntity` | Create a DeviceOperation entity instance. |
 | `DevicePairing(data?)` | `DevicePairingEntity` | Create a DevicePairing entity instance. |
 | `DeviceProject(data?)` | `DeviceProjectEntity` | Create a DeviceProject entity instance. |
 | `DeviceScheduledCheckIn(data?)` | `DeviceScheduledCheckInEntity` | Create a DeviceScheduledCheckIn entity instance. |
@@ -462,14 +462,12 @@ new ComposalSDK(options?: {
 | `Dream(data?)` | `DreamEntity` | Create a Dream entity instance. |
 | `Edge(data?)` | `EdgeEntity` | Create an Edge entity instance. |
 | `EmailVerification(data?)` | `EmailVerificationEntity` | Create an EmailVerification entity instance. |
-| `Environment(data?)` | `EnvironmentEntity` | Create an Environment entity instance. |
 | `EnvironmentDiscoveryRun(data?)` | `EnvironmentDiscoveryRunEntity` | Create an EnvironmentDiscoveryRun entity instance. |
 | `EnvironmentExploration(data?)` | `EnvironmentExplorationEntity` | Create an EnvironmentExploration entity instance. |
 | `EnvironmentFirstRun(data?)` | `EnvironmentFirstRunEntity` | Create an EnvironmentFirstRun entity instance. |
 | `EnvironmentRevision(data?)` | `EnvironmentRevisionEntity` | Create an EnvironmentRevision entity instance. |
 | `EnvironmentSecretBinding(data?)` | `EnvironmentSecretBindingEntity` | Create an EnvironmentSecretBinding entity instance. |
 | `EnvironmentTestAccount(data?)` | `EnvironmentTestAccountEntity` | Create an EnvironmentTestAccount entity instance. |
-| `Evidence(data?)` | `EvidenceEntity` | Create an Evidence entity instance. |
 | `ExecutionDesiredState(data?)` | `ExecutionDesiredStateEntity` | Create an ExecutionDesiredState entity instance. |
 | `ExecutionReconcilerTick(data?)` | `ExecutionReconcilerTickEntity` | Create an ExecutionReconcilerTick entity instance. |
 | `ExecutionRelease(data?)` | `ExecutionReleaseEntity` | Create an ExecutionRelease entity instance. |
@@ -490,7 +488,6 @@ new ComposalSDK(options?: {
 | `GithubCiRepository(data?)` | `GithubCiRepositoryEntity` | Create a GithubCiRepository entity instance. |
 | `GithubCiRepositoryCompatibilityReport(data?)` | `GithubCiRepositoryCompatibilityReportEntity` | Create a GithubCiRepositoryCompatibilityReport entity instance. |
 | `GithubConnection(data?)` | `GithubConnectionEntity` | Create a GithubConnection entity instance. |
-| `GithubIntegration(data?)` | `GithubIntegrationEntity` | Create a GithubIntegration entity instance. |
 | `GithubOnboarding(data?)` | `GithubOnboardingEntity` | Create a GithubOnboarding entity instance. |
 | `GithubOnboardingBranch(data?)` | `GithubOnboardingBranchEntity` | Create a GithubOnboardingBranch entity instance. |
 | `GithubOnboardingImport(data?)` | `GithubOnboardingImportEntity` | Create a GithubOnboardingImport entity instance. |
@@ -549,7 +546,6 @@ new ComposalSDK(options?: {
 | `Member(data?)` | `MemberEntity` | Create a Member entity instance. |
 | `Memory(data?)` | `MemoryEntity` | Create a Memory entity instance. |
 | `MergeQueueEntry(data?)` | `MergeQueueEntryEntity` | Create a MergeQueueEntry entity instance. |
-| `MergeRequest(data?)` | `MergeRequestEntity` | Create a MergeRequest entity instance. |
 | `MergeResolution(data?)` | `MergeResolutionEntity` | Create a MergeResolution entity instance. |
 | `MessagingConversationMessage(data?)` | `MessagingConversationMessageEntity` | Create a MessagingConversationMessage entity instance. |
 | `MessagingConversationUpload(data?)` | `MessagingConversationUploadEntity` | Create a MessagingConversationUpload entity instance. |
@@ -598,6 +594,7 @@ new ComposalSDK(options?: {
 | `PageProjectRun(data?)` | `PageProjectRunEntity` | Create a PageProjectRun entity instance. |
 | `PageRepoVcCommit(data?)` | `PageRepoVcCommitEntity` | Create a PageRepoVcCommit entity instance. |
 | `PagesBilling(data?)` | `PagesBillingEntity` | Create a PagesBilling entity instance. |
+| `PagesGithubIntegration(data?)` | `PagesGithubIntegrationEntity` | Create a PagesGithubIntegration entity instance. |
 | `PagesGithubOnboarding(data?)` | `PagesGithubOnboardingEntity` | Create a PagesGithubOnboarding entity instance. |
 | `PagesMember(data?)` | `PagesMemberEntity` | Create a PagesMember entity instance. |
 | `PagesProjectCredential(data?)` | `PagesProjectCredentialEntity` | Create a PagesProjectCredential entity instance. |
@@ -633,14 +630,15 @@ new ComposalSDK(options?: {
 | `ProjectMessagingConversation(data?)` | `ProjectMessagingConversationEntity` | Create a ProjectMessagingConversation entity instance. |
 | `ProjectOverviewMetric(data?)` | `ProjectOverviewMetricEntity` | Create a ProjectOverviewMetric entity instance. |
 | `ProjectOverviewPullRequest(data?)` | `ProjectOverviewPullRequestEntity` | Create a ProjectOverviewPullRequest entity instance. |
+| `ProjectPrTesting(data?)` | `ProjectPrTestingEntity` | Create a ProjectPrTesting entity instance. |
 | `ProjectProductMap(data?)` | `ProjectProductMapEntity` | Create a ProjectProductMap entity instance. |
+| `ProjectProductMapComparison(data?)` | `ProjectProductMapComparisonEntity` | Create a ProjectProductMapComparison entity instance. |
 | `ProjectRecording(data?)` | `ProjectRecordingEntity` | Create a ProjectRecording entity instance. |
 | `ProjectRunPlan(data?)` | `ProjectRunPlanEntity` | Create a ProjectRunPlan entity instance. |
 | `ProjectRunSchedule(data?)` | `ProjectRunScheduleEntity` | Create a ProjectRunSchedule entity instance. |
 | `ProjectScenarioOption(data?)` | `ProjectScenarioOptionEntity` | Create a ProjectScenarioOption entity instance. |
 | `ProjectScenarioRow(data?)` | `ProjectScenarioRowEntity` | Create a ProjectScenarioRow entity instance. |
 | `ProjectSetting(data?)` | `ProjectSettingEntity` | Create a ProjectSetting entity instance. |
-| `PullRequest(data?)` | `PullRequestEntity` | Create a PullRequest entity instance. |
 | `PullRequestAction(data?)` | `PullRequestActionEntity` | Create a PullRequestAction entity instance. |
 | `PullRequestMagicMerge(data?)` | `PullRequestMagicMergeEntity` | Create a PullRequestMagicMerge entity instance. |
 | `PullRequestSetting(data?)` | `PullRequestSettingEntity` | Create a PullRequestSetting entity instance. |
@@ -736,6 +734,7 @@ new ComposalSDK(options?: {
 | `SparkAgentSite(data?)` | `SparkAgentSiteEntity` | Create a SparkAgentSite entity instance. |
 | `SparkAgentSkill(data?)` | `SparkAgentSkillEntity` | Create a SparkAgentSkill entity instance. |
 | `SparkAgentThread(data?)` | `SparkAgentThreadEntity` | Create a SparkAgentThread entity instance. |
+| `SparkAutomation(data?)` | `SparkAutomationEntity` | Create a SparkAutomation entity instance. |
 | `SparkCredit(data?)` | `SparkCreditEntity` | Create a SparkCredit entity instance. |
 | `SparkCreditAgentUsage(data?)` | `SparkCreditAgentUsageEntity` | Create a SparkCreditAgentUsage entity instance. |
 | `SparkCreditUsageTotal(data?)` | `SparkCreditUsageTotalEntity` | Create a SparkCreditUsageTotal entity instance. |
@@ -774,6 +773,10 @@ new ComposalSDK(options?: {
 | `VerifyAppDomain(data?)` | `VerifyAppDomainEntity` | Create a VerifyAppDomain entity instance. |
 | `VerifyBrowserSession(data?)` | `VerifyBrowserSessionEntity` | Create a VerifyBrowserSession entity instance. |
 | `VerifyEmailVerification(data?)` | `VerifyEmailVerificationEntity` | Create a VerifyEmailVerification entity instance. |
+| `VerifyEnvironment(data?)` | `VerifyEnvironmentEntity` | Create a VerifyEnvironment entity instance. |
+| `VerifyEvidence(data?)` | `VerifyEvidenceEntity` | Create a VerifyEvidence entity instance. |
+| `VerifyMergeRequest(data?)` | `VerifyMergeRequestEntity` | Create a VerifyMergeRequest entity instance. |
+| `VerifyPullRequest(data?)` | `VerifyPullRequestEntity` | Create a VerifyPullRequest entity instance. |
 | `VerifySignalIntegration(data?)` | `VerifySignalIntegrationEntity` | Create a VerifySignalIntegration entity instance. |
 | `VerifyStaticSiteDomain(data?)` | `VerifyStaticSiteDomainEntity` | Create a VerifyStaticSiteDomain entity instance. |
 | `VersionLog(data?)` | `VersionLogEntity` | Create a VersionLog entity instance. |
@@ -990,30 +993,6 @@ API path: `/api/v1/organizations/{organization_id}/agent_apps/{id}/installs/{age
 Operations: create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/attachments/{attachment_id}/complete`
-
-#### AgentAutomation
-
-| Field | Description |
-| --- | --- |
-| `can_manage` |  |
-| `can_manage_events` | Whether new event triggers can be attached or existing settings saved. |
-| `can_run` | Whether the viewer can request a manual Temporal run |
-| `can_schedule` |  |
-| `definition` |  |
-| `event_subscriptions` |  |
-| `event_triggers` |  |
-| `expected_revision` |  |
-| `id` |  |
-| `key` |  |
-| `name` |  |
-| `revision` |  |
-| `schedule` |  |
-| `schedules` |  |
-| `version` |  |
-
-Operations: list, load, update.
-
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations`
 
 #### AgentAvatar
 
@@ -2482,6 +2461,40 @@ Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployments/{id}/cancel`
 
+#### AppDeploymentDashboard
+
+| Field | Description |
+| --- | --- |
+| `activity` |  |
+| `app` |  |
+| `audit_events` |  |
+| `capacity` |  |
+| `connections` |  |
+| `data_resources` |  |
+| `deployments` |  |
+| `desired_states` |  |
+| `environments` |  |
+| `id` |  |
+| `locations` |  |
+| `managed_database_catalog` |  |
+| `observability` |  |
+| `operations` |  |
+| `placements` |  |
+| `reconciler_ticks` |  |
+| `releases` |  |
+| `rollback_deployments` |  |
+| `rollouts` |  |
+| `runtime_instances` |  |
+| `service_bindings` |  |
+| `service_views` |  |
+| `services` |  |
+| `storage_resources` |  |
+| `summary` |  |
+
+Operations: load.
+
+API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard`
+
 #### AppDeploymentOperation
 
 | Field | Description |
@@ -3820,7 +3833,7 @@ API path: `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames`
 
 Operations: create, load, patch, remove, update.
 
-API path: `/api/v1/cdn_spaces/{id}/archive`
+API path: `/api/v1/organizations/{org_slug}/cdn_spaces`
 
 #### CdnSpaceObject
 
@@ -3866,29 +3879,17 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets
 | Field | Description |
 | --- | --- |
 | `body` |  |
-| `capabilities` |  |
-| `change_id` |  |
-| `created_at` |  |
-| `created_at_label` |  |
+| `comment` |  |
+| `comments` |  |
 | `id` |  |
 | `kind` |  |
 | `line` |  |
-| `outdated` |  |
 | `parent_comment_id` |  |
 | `patchset_id` |  |
-| `patchset_number` |  |
 | `path` |  |
-| `replies` |  |
-| `resolved` |  |
-| `resolved_at` |  |
-| `resolved_at_label` |  |
-| `resolved_by` |  |
 | `side` |  |
-| `updated_at` |  |
-| `updated_at_label` |  |
-| `user` |  |
 
-Operations: create, list.
+Operations: create, load.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve`
 
@@ -4577,20 +4578,21 @@ API path: `/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials`
 | Field | Description |
 | --- | --- |
 | `account_id` |  |
-| `active` |  |
 | `agent_filters` | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` |  |
 | `can_continue` | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` |  |
+| `check_count` |  |
 | `concurrency` |  |
 | `covered_areas` | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` |  |
-| `deadline_at` |  |
+| `credential_name` | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | When the team's time limit ends. |
 | `demo_project` | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` |  |
 | `ended_early` | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` |  |
 | `environment_name` |  |
-| `explorations` |  |
 | `explorer_activity` | What the team is doing now. |
 | `finding_count` | Findings at every priority, locked ones included. |
 | `findings` | Every tester's findings, most severe first, with the checks each one cites. |
@@ -4600,14 +4602,12 @@ API path: `/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials`
 | `huntable_flows` | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` |  |
 | `idempotency_key` |  |
-| `launch_options` | Present only when launch was requested by an admin |
 | `max_seconds` |  |
 | `max_testers` |  |
 | `mode` |  |
 | `next_scan_improvements` | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` |  |
 | `paywalled` | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` |  |
 | `priority_counts` |  |
@@ -4618,10 +4618,13 @@ API path: `/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials`
 | `reproductions` | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | Flows a finished exploration recorded that deep scans can start from. |
+| `scenario_count` | Scenarios saved from this discovery. |
 | `scenario_generation` |  |
+| `scenarios_pending` | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` |  |
 | `startup_retryable` | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` |  |
 | `time_limit_reached` | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -4629,7 +4632,7 @@ API path: `/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials`
 | `unlock` | Once a paywalled scan ends, whether a paid plan would unlock its locked findings and whether this person may choose one, as on its findings page. |
 | `web_url` | The run's page in the Composal web app |
 
-Operations: create, load.
+Operations: create, list, load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce`
 
@@ -5000,30 +5003,6 @@ Operations: list.
 
 API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_messages`
 
-#### DeviceControlOperation
-
-| Field | Description |
-| --- | --- |
-| `action` |  |
-| `arguments` |  |
-| `created_at` |  |
-| `delivery` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
-| `device_id` |  |
-| `diagnostic_code` | Approved product error code retained after copied diagnostics expire. |
-| `end` |  |
-| `expires_at` |  |
-| `id` |  |
-| `key` |  |
-| `provider` |  |
-| `references` |  |
-| `result` |  |
-| `result_expired` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
-| `state` |  |
-
-Operations: create, load.
-
-API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations`
-
 #### DeviceEnterpriseRelay
 
 | Field | Description |
@@ -5091,6 +5070,30 @@ API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{devic
 Operations: create.
 
 API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/local_events`
+
+#### DeviceOperation
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `arguments` |  |
+| `created_at` |  |
+| `delivery` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` |  |
+| `diagnostic_code` | Approved product error code retained after copied diagnostics expire. |
+| `end` |  |
+| `expires_at` |  |
+| `id` |  |
+| `key` |  |
+| `provider` |  |
+| `references` |  |
+| `result` |  |
+| `result_expired` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations`
 
 #### DevicePairing
 
@@ -5267,56 +5270,6 @@ Operations: create.
 
 API path: `/api/v1/email_verifications/resend`
 
-#### Environment
-
-| Field | Description |
-| --- | --- |
-| `active_revision_id` |  |
-| `agent_sign_up_available` | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
-| `allowed_actions` | read_only only looks around; writes may create, change and delete data. |
-| `billing` |  |
-| `cleanup` |  |
-| `connection` |  |
-| `created_at` |  |
-| `default_policy` |  |
-| `default_policy_json` |  |
-| `discovery_defaults` |  |
-| `environment` |  |
-| `exploration_accounts` |  |
-| `explorations` |  |
-| `first_run` |  |
-| `hosted_app_id` |  |
-| `id` |  |
-| `imessage_number` | International destination number; blank or null clears it on an added environment. |
-| `included_deep_scan` | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
-| `lock_version` |  |
-| `managed_google_available` | Whether the managed Google account can be offered for this app. |
-| `managed_google_email` |  |
-| `messaging_tester_number` | One configured tester number. |
-| `name` | Optional for a website target; defaults to its hostname. |
-| `network_connections` |  |
-| `onboarding_discovery` |  |
-| `organization_id` |  |
-| `pending_accounts` | Credentials on a Composal address still waiting for the password the customer chose at signup. |
-| `permissions` |  |
-| `project_id` | Owning project. |
-| `repository_id` |  |
-| `revisions` |  |
-| `setup_discovery_id` | Existing discovery to resume after setup or Checkout, selected within this environment. |
-| `sign_in_check_available` | Whether a test account's live sign-in check can run on this app. |
-| `slug` |  |
-| `status` |  |
-| `target_kind` |  |
-| `target_url` |  |
-| `test_accounts` |  |
-| `updated_at` |  |
-| `verify_network_connection_id` |  |
-| `version` | Required for target or tester changes; use lock_version from the environment. |
-
-Operations: create, load, patch, remove, update.
-
-API path: `/api/v1/organizations/{organization_id}/verify/environments`
-
 #### EnvironmentDiscoveryRun
 
 | Field | Description |
@@ -5334,7 +5287,7 @@ API path: `/api/v1/organizations/{organization_id}/verify/environments`
 
 Operations: create, load.
 
-API path: `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop`
+API path: `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs`
 
 #### EnvironmentExploration
 
@@ -5467,16 +5420,6 @@ API path: `/api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bi
 Operations: list, patch, update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/test_accounts`
-
-#### Evidence
-
-| Field | Description |
-| --- | --- |
-| `id` |  |
-
-Operations: load.
-
-API path: `/api/v1/organizations/{organization_id}/verify/evidence/{id}`
 
 #### ExecutionDesiredState
 
@@ -5805,7 +5748,7 @@ API path: `/api/v1/organizations/{org_slug}/gh/{github_owner}/{github_repo}/{num
 
 Operations: create, load.
 
-API path: `/api/v1/git_imports/{id}/complete`
+API path: `/api/v1/organizations/{organization_id}/git_imports`
 
 #### Github
 
@@ -5978,27 +5921,6 @@ API path: `/api/v1/organizations/{organization_id}/github_ci_repositories/{githu
 Operations: create, load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/github_connections`
-
-#### GithubIntegration
-
-| Field | Description |
-| --- | --- |
-| `account_avatar_url` |  |
-| `account_login` |  |
-| `connection_status` |  |
-| `connection_status_label` |  |
-| `github_installation` |  |
-| `health` |  |
-| `id` |  |
-| `imported_repositories_count` |  |
-| `imported_repositories_count_label` |  |
-| `organization` |  |
-| `pagination` |  |
-| `repositories` |  |
-
-Operations: list, load.
-
-API path: `/api/v1/organizations/{org_slug}/pages/github_integrations`
 
 #### GithubOnboarding
 
@@ -6853,22 +6775,11 @@ API path: `/api/v1/organizations/{organization_id}/browser_sessions/{browser_ses
 
 | Field | Description |
 | --- | --- |
-| `accepted_at` |  |
-| `accepted_by_user` |  |
 | `created_at` |  |
 | `created_at_label` |  |
-| `email` |  |
-| `email_delivery_status` |  |
-| `expires_at` |  |
-| `expires_at_label` |  |
 | `id` |  |
-| `invite_url` |  |
-| `invited_by_user` |  |
 | `is_self` |  |
-| `organization` |  |
-| `revoked_at` |  |
 | `role` |  |
-| `status` |  |
 | `updated_at` |  |
 | `updated_at_label` |  |
 | `user` |  |
@@ -6923,48 +6834,6 @@ API path: `/api/v1/organizations/{organization_id}/verify/memories`
 Operations: create, remove.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/merge`
-
-#### MergeRequest
-
-| Field | Description |
-| --- | --- |
-| `available_tests` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `base_sha` |  |
-| `branch` | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `comment_url` |  |
-| `current_run` | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `draft` |  |
-| `findings` |  |
-| `github_repository` | GitHub owner/repository associated with this pull request. |
-| `github_url` |  |
-| `head_sha` | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` |  |
-| `idempotency_key` |  |
-| `number` |  |
-| `pagination` |  |
-| `permissions` |  |
-| `preview_cleanup_ready` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` |  |
-| `project_id` | Composal project slug or public ID for PR preview environments. |
-| `project_slug` |  |
-| `provider` |  |
-| `pull_request` |  |
-| `repository_id` |  |
-| `request_label` |  |
-| `requested_run_id` |  |
-| `runs` |  |
-| `source_branch` |  |
-| `source_repository` |  |
-| `source_url` |  |
-| `state` |  |
-| `title` |  |
-| `updated_at` |  |
-| `web_path` |  |
-
-Operations: create, load.
-
-API path: `/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun`
 
 #### MergeResolution
 
@@ -7700,6 +7569,27 @@ Operations: load.
 
 API path: `/api/v1/organizations/{org_slug}/pages/billing`
 
+#### PagesGithubIntegration
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_login` |  |
+| `connection_status` |  |
+| `connection_status_label` |  |
+| `github_installation` |  |
+| `health` |  |
+| `id` |  |
+| `imported_repositories_count` |  |
+| `imported_repositories_count_label` |  |
+| `organization` |  |
+| `pagination` |  |
+| `repositories` |  |
+
+Operations: list, load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/github_integrations`
+
 #### PagesGithubOnboarding
 
 | Field | Description |
@@ -8433,6 +8323,18 @@ Operations: list.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_pull_requests`
 
+#### ProjectPrTesting
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `project` |  |
+| `pull_request_options` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/pr_testing`
+
 #### ProjectProductMap
 
 | Field | Description |
@@ -8441,6 +8343,22 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 Operations: create, load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/overview`
+
+#### ProjectProductMapComparison
+
+| Field | Description |
+| --- | --- |
+| `accounts` |  |
+| `comparison` |  |
+| `filters` |  |
+| `id` |  |
+| `project` |  |
+| `requirements` |  |
+| `revisions` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison`
 
 #### ProjectRecording
 
@@ -8554,44 +8472,12 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 
 | Field | Description |
 | --- | --- |
-| `available_messaging_environments` |  |
-| `messaging_conversations` |  |
-| `messaging_enabled` |  |
-| `permissions` |  |
-| `project` |  |
-| `tester_numbers` |  |
+| `id` |  |
+| `name` |  |
 
-Operations: load.
+Operations: list.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings`
-
-#### PullRequest
-
-| Field | Description |
-| --- | --- |
-| `available_tests` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `branch` | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `cleanup_only` | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
-| `current_run` | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `findings` |  |
-| `head_sha` | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` |  |
-| `idempotency_key` |  |
-| `imessage_number` | International destination of this exact deployed commit. |
-| `number` |  |
-| `pagination` |  |
-| `permissions` |  |
-| `preview_cleanup_ready` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` |  |
-| `project_id` | Composal project slug or public ID for PR preview environments. |
-| `pull_request` |  |
-| `repository_id` |  |
-| `runs` |  |
-
-Operations: create, load, remove.
-
-API path: `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share`
 
 #### PullRequestAction
 
@@ -8820,7 +8706,7 @@ API path: `/api/v1/registry/v2/authorize`
 
 Operations: create, list, load, remove, update.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup`
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections`
 
 #### RelayAgentLocalThread
 
@@ -9212,7 +9098,7 @@ API path: `/api/v1/organizations/{org_slug}/pages/repository_import`
 
 Operations: create, load.
 
-API path: `/api/v1/repository_import_sessions/{id}/authorization`
+API path: `/api/v1/organizations/{organization_id}/repository_import_sessions`
 
 #### RepositoryImportSessionRepository
 
@@ -9417,35 +9303,26 @@ API path: `/api/v1/organizations/{organization_id}/verify/run_search`
 
 | Field | Description |
 | --- | --- |
-| `base_sha` |  |
-| `can_verify` |  |
-| `comment_url` |  |
-| `draft` |  |
-| `github_repository` | GitHub owner/repository associated with this pull request. |
-| `github_url` |  |
-| `head_sha` |  |
-| `id` |  |
-| `latest_created_at` |  |
-| `latest_current` |  |
-| `latest_head_sha` |  |
-| `latest_reason` |  |
-| `latest_run_id` |  |
-| `latest_state` |  |
-| `number` |  |
-| `project_id` |  |
-| `project_slug` |  |
-| `provider` |  |
-| `repository_id` |  |
-| `request_label` |  |
-| `source_branch` |  |
-| `source_repository` |  |
-| `source_url` |  |
-| `state` |  |
-| `title` |  |
-| `updated_at` |  |
-| `web_path` |  |
+| `active_runs` |  |
+| `checkout_required` |  |
+| `cli_signed_in_at` | When the signed-in user last finished a CLI sign-in for this organization, so agent setup can show the CLI is connected. |
+| `counts` |  |
+| `demo_project` | The workspace's copy of the demo project, which setup offers as example data. |
+| `environments` |  |
+| `included_deep_scan` | Whether a new app gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account, so setup asks for one right after the app. |
+| `onboarding_discovery` |  |
+| `organization` |  |
+| `permissions` |  |
+| `project` | The project the page is limited to, or null for the whole organization. |
+| `pull_request_launch_options` |  |
+| `pull_requests` |  |
+| `repositories` |  |
+| `runs` |  |
+| `runs_pagination` |  |
+| `suggested_app_url` | The URL first-run setup prefills for a new app, from the workspace's project website or the signed-in user's work email domain. |
+| `url_first_start` | Whether setup opens on the URL-first screen, which saves the app and asks for test access next. |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/run_updates`
 
@@ -10178,7 +10055,31 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills`
 
 Operations: create, list.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive`
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads`
+
+#### SparkAutomation
+
+| Field | Description |
+| --- | --- |
+| `can_manage` |  |
+| `can_manage_events` | Whether new event triggers can be attached or existing settings saved. |
+| `can_run` | Whether the viewer can request a manual Temporal run |
+| `can_schedule` |  |
+| `definition` |  |
+| `event_subscriptions` |  |
+| `event_triggers` |  |
+| `expected_revision` |  |
+| `id` |  |
+| `key` |  |
+| `name` |  |
+| `revision` |  |
+| `schedule` |  |
+| `schedules` |  |
+| `version` |  |
+
+Operations: list, load, update.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations`
 
 #### SparkCredit
 
@@ -10269,7 +10170,7 @@ API path: `/api/v1/organizations/{org_slug}/spark_credits/usage_totals`
 
 Operations: create, list, load, patch, remove, update.
 
-API path: `/api/v1/static_sites/{id}/provision`
+API path: `/api/v1/organizations/{organization_id}/static_sites`
 
 #### StaticSiteDeployment
 
@@ -10941,6 +10842,136 @@ Operations: load.
 
 API path: `/api/v1/email_verifications/verify`
 
+#### VerifyEnvironment
+
+| Field | Description |
+| --- | --- |
+| `active_revision_id` |  |
+| `agent_sign_up_available` | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
+| `allowed_actions` | read_only only looks around; writes may create, change and delete data. |
+| `billing` |  |
+| `cleanup` |  |
+| `connection` |  |
+| `created_at` |  |
+| `default_policy` |  |
+| `default_policy_json` |  |
+| `discovery_defaults` |  |
+| `environment` |  |
+| `exploration_accounts` |  |
+| `explorations` |  |
+| `first_run` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `imessage_number` | International destination number; blank or null clears it on an added environment. |
+| `included_deep_scan` | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
+| `lock_version` |  |
+| `managed_google_available` | Whether the managed Google account can be offered for this app. |
+| `managed_google_email` |  |
+| `messaging_tester_number` | One configured tester number. |
+| `name` | Optional for a website target; defaults to its hostname. |
+| `network_connections` |  |
+| `onboarding_discovery` |  |
+| `organization_id` |  |
+| `pending_accounts` | Credentials on a Composal address still waiting for the password the customer chose at signup. |
+| `permissions` |  |
+| `project_id` | Owning project. |
+| `repository_id` |  |
+| `revisions` |  |
+| `setup_discovery_id` | Existing discovery to resume after setup or Checkout, selected within this environment. |
+| `sign_in_check_available` | Whether a test account's live sign-in check can run on this app. |
+| `slug` |  |
+| `status` |  |
+| `target_kind` |  |
+| `target_url` |  |
+| `test_accounts` |  |
+| `updated_at` |  |
+| `verify_network_connection_id` |  |
+| `version` | Required for target or tester changes; use lock_version from the environment. |
+
+Operations: create, load, patch, remove, update.
+
+API path: `/api/v1/organizations/{organization_id}/verify/environments`
+
+#### VerifyEvidence
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{organization_id}/verify/evidence/{id}`
+
+#### VerifyMergeRequest
+
+| Field | Description |
+| --- | --- |
+| `available_tests` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `base_sha` |  |
+| `branch` | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `comment_url` |  |
+| `current_run` | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `draft` |  |
+| `findings` |  |
+| `github_repository` | GitHub owner/repository associated with this pull request. |
+| `github_url` |  |
+| `head_sha` | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` |  |
+| `idempotency_key` |  |
+| `number` |  |
+| `pagination` |  |
+| `permissions` |  |
+| `preview_cleanup_ready` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` |  |
+| `project_id` | Composal project slug or public ID for PR preview environments. |
+| `project_slug` |  |
+| `provider` |  |
+| `pull_request` |  |
+| `repository_id` |  |
+| `request_label` |  |
+| `requested_run_id` |  |
+| `runs` |  |
+| `source_branch` |  |
+| `source_repository` |  |
+| `source_url` |  |
+| `state` |  |
+| `title` |  |
+| `updated_at` |  |
+| `web_path` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun`
+
+#### VerifyPullRequest
+
+| Field | Description |
+| --- | --- |
+| `available_tests` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `branch` | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `cleanup_only` | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
+| `current_run` | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `findings` |  |
+| `head_sha` | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` |  |
+| `idempotency_key` |  |
+| `imessage_number` | International destination of this exact deployed commit. |
+| `number` |  |
+| `pagination` |  |
+| `permissions` |  |
+| `preview_cleanup_ready` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` |  |
+| `project_id` | Composal project slug or public ID for PR preview environments. |
+| `pull_request` |  |
+| `repository_id` |  |
+| `runs` |  |
+
+Operations: create, load, remove.
+
+API path: `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share`
+
 #### VerifySignalIntegration
 
 | Field | Description |
@@ -11376,51 +11407,6 @@ const agent_attachment = await client.AgentAttachment().create({
   content_type: 'example_content_type',
   file_name: 'example_file_name',
 })
-```
-
-
-### AgentAutomation
-
-Create an instance: `const agent_automation = client.AgentAutomation()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-| `load(match)` | Load a single entity by match criteria. |
-| `update(data)` | Update an existing entity. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `can_manage` | `boolean` |  |
-| `can_manage_events` | `boolean` | Whether new event triggers can be attached or existing settings saved. |
-| `can_run` | `boolean` | Whether the viewer can request a manual Temporal run |
-| `can_schedule` | `boolean` |  |
-| `definition` | `Record<string, any>` |  |
-| `event_subscriptions` | `any[]` |  |
-| `event_triggers` | `any[]` |  |
-| `expected_revision` | `number` |  |
-| `id` | `string` |  |
-| `key` | `string` |  |
-| `name` | `string` |  |
-| `revision` | `number` |  |
-| `schedule` | `any` |  |
-| `schedules` | `any[]` |  |
-| `version` | `Record<string, any>` |  |
-
-#### Example: Load
-
-```ts
-const agent_automation = await client.AgentAutomation().load({ id: 'agent_automation_id', agent_id: 'agent_id', organization_id: 'organization_id' })
-```
-
-#### Example: List
-
-```ts
-const agent_automations = await client.AgentAutomation().list({ agent_id: "example", organization_id: "example" })
 ```
 
 
@@ -11939,8 +11925,6 @@ Create an instance: `const agent_input = client.AgentInput()`
 const agent_input = await client.AgentInput().create({
   agent_id: 'example_agent_id',
   organization_id: 'example_organization_id',
-  browser_context: {},
-  client_time: {},
   conversation_id: 'example_conversation_id',
   text: 'example_text',
 })
@@ -13063,7 +13047,6 @@ const agent_swarms = await client.AgentSwarm().list({ org: "example" })
 ```ts
 const agent_swarm = await client.AgentSwarm().create({
   organization_slug: 'example_organization_slug',
-  target: {},
 })
 ```
 
@@ -14077,6 +14060,53 @@ const app_deployment = await client.AppDeployment().load({ id: 'app_deployment_i
 const app_deployment = await client.AppDeployment().create({
   app_id: 'example_app_id',
 })
+```
+
+
+### AppDeploymentDashboard
+
+Create an instance: `const app_deployment_dashboard = client.AppDeploymentDashboard()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `any[]` |  |
+| `app` | `Record<string, any>` |  |
+| `audit_events` | `any[]` |  |
+| `capacity` | `Record<string, any>` |  |
+| `connections` | `any[]` |  |
+| `data_resources` | `any[]` |  |
+| `deployments` | `any[]` |  |
+| `desired_states` | `any[]` |  |
+| `environments` | `any[]` |  |
+| `id` | `string` |  |
+| `locations` | `any[]` |  |
+| `managed_database_catalog` | `Record<string, any>` |  |
+| `observability` | `Record<string, any>` |  |
+| `operations` | `any[]` |  |
+| `placements` | `any[]` |  |
+| `reconciler_ticks` | `any[]` |  |
+| `releases` | `any[]` |  |
+| `rollback_deployments` | `any[]` |  |
+| `rollouts` | `any[]` |  |
+| `runtime_instances` | `any[]` |  |
+| `service_bindings` | `any[]` |  |
+| `service_views` | `any[]` |  |
+| `services` | `any[]` |  |
+| `storage_resources` | `any[]` |  |
+| `summary` | `Record<string, any>` |  |
+
+#### Example: Load
+
+```ts
+const app_deployment_dashboard = await client.AppDeploymentDashboard().load({ id: 'app_deployment_dashboard_id' })
 ```
 
 
@@ -16768,39 +16798,27 @@ Create an instance: `const change_comment = client.ChangeComment()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
 | `body` | `string` |  |
-| `capabilities` | `Record<string, any>` |  |
-| `change_id` | `string | null` |  |
-| `created_at` | `string | null` |  |
-| `created_at_label` | `string | null` |  |
+| `comment` | `Record<string, any>` |  |
+| `comments` | `any[]` |  |
 | `id` | `string` |  |
 | `kind` | `string | null` |  |
 | `line` | `number | null` |  |
-| `outdated` | `boolean` |  |
 | `parent_comment_id` | `string | null` |  |
 | `patchset_id` | `string | null` |  |
-| `patchset_number` | `number | null` |  |
 | `path` | `string | null` |  |
-| `replies` | `any[]` |  |
-| `resolved` | `boolean` |  |
-| `resolved_at` | `string | null` |  |
-| `resolved_at_label` | `string | null` |  |
-| `resolved_by` | `Record<string, any>` |  |
 | `side` | `string | null` |  |
-| `updated_at` | `string | null` |  |
-| `updated_at_label` | `string | null` |  |
-| `user` | `Record<string, any>` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const change_comments = await client.ChangeComment().list({ change_id: "example", organization_id: "example", repo_id: "example" })
+const change_comment = await client.ChangeComment().load({ change_id: 'change_id', organization_id: 'organization_id', repo_id: 'repo_id' })
 ```
 
 #### Example: Create
@@ -18037,6 +18055,7 @@ Create an instance: `const deep_scan = client.DeepScan()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -18044,20 +18063,21 @@ Create an instance: `const deep_scan = client.DeepScan()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `account_id` | `string | null` |  |
-| `active` | `any[]` |  |
 | `agent_filters` | `Record<string, any>` | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` | `any[]` |  |
 | `can_continue` | `boolean` | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` | `any[]` |  |
+| `check_count` | `number` |  |
 | `concurrency` | `number` |  |
 | `covered_areas` | `any[]` | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` | `string` |  |
-| `deadline_at` | `string` |  |
+| `credential_name` | `string | null` | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | `string` | When the team's time limit ends. |
 | `demo_project` | `Record<string, any> | null` | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` | `number | null` |  |
 | `ended_early` | `boolean` | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` | `string` |  |
 | `environment_name` | `string` |  |
-| `explorations` | `any[]` |  |
 | `explorer_activity` | `Record<string, any>` | What the team is doing now. |
 | `finding_count` | `number` | Findings at every priority, locked ones included. |
 | `findings` | `any[]` | Every tester's findings, most severe first, with the checks each one cites. |
@@ -18067,14 +18087,12 @@ Create an instance: `const deep_scan = client.DeepScan()`
 | `huntable_flows` | `any[]` | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` | `string` |  |
 | `idempotency_key` | `string` |  |
-| `launch_options` | `Record<string, any>` | Present only when launch was requested by an admin |
 | `max_seconds` | `number` |  |
 | `max_testers` | `number` |  |
 | `mode` | `string` |  |
 | `next_scan_improvements` | `any[]` | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | `string` | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | `boolean` | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` | `Record<string, any>` |  |
 | `paywalled` | `boolean` | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` | `Record<string, any>` |  |
 | `priority_counts` | `Record<string, any>` |  |
@@ -18085,10 +18103,13 @@ Create an instance: `const deep_scan = client.DeepScan()`
 | `reproductions` | `any[]` | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `boolean` | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `any[]` | Flows a finished exploration recorded that deep scans can start from. |
+| `scenario_count` | `number` | Scenarios saved from this discovery. |
 | `scenario_generation` | `Record<string, any>` |  |
+| `scenarios_pending` | `boolean` | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `boolean` | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `string | null` | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` | `string` |  |
 | `startup_retryable` | `boolean` | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` | `string` |  |
 | `time_limit_reached` | `boolean` | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -18100,6 +18121,12 @@ Create an instance: `const deep_scan = client.DeepScan()`
 
 ```ts
 const deep_scan = await client.DeepScan().load({ id: 'deep_scan_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const deep_scans = await client.DeepScan().list({ organization_id: "example" })
 ```
 
 #### Example: Create
@@ -18723,56 +18750,6 @@ const device_control_messages = await client.DeviceControlMessage().list({ devic
 ```
 
 
-### DeviceControlOperation
-
-Create an instance: `const device_control_operation = client.DeviceControlOperation()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `create(data)` | Create a new entity with the given data. |
-| `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `action` | `string` |  |
-| `arguments` | `Record<string, any>` |  |
-| `created_at` | `string` |  |
-| `delivery` | `Record<string, any>` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
-| `device_id` | `string` |  |
-| `diagnostic_code` | `string` | Approved product error code retained after copied diagnostics expire. |
-| `end` | `Record<string, any>` |  |
-| `expires_at` | `string` |  |
-| `id` | `string` |  |
-| `key` | `string` |  |
-| `provider` | `string` |  |
-| `references` | `Record<string, any>` |  |
-| `result` | `any` |  |
-| `result_expired` | `boolean` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
-| `state` | `string` |  |
-
-#### Example: Load
-
-```ts
-const device_control_operation = await client.DeviceControlOperation().load({ id: 'device_control_operation_id', device_id: 'device_id', organization_id: 'organization_id' })
-```
-
-#### Example: Create
-
-```ts
-const device_control_operation = await client.DeviceControlOperation().create({
-  device_id: 'example_device_id',
-  organization_id: 'example_organization_id',
-  action: 'example_action',
-  arguments: {},
-  key: 'example_key',
-})
-```
-
-
 ### DeviceEnterpriseRelay
 
 Create an instance: `const device_enterprise_relay = client.DeviceEnterpriseRelay()`
@@ -18915,6 +18892,56 @@ const device_local_event = await client.DeviceLocalEvent().create({
   device_id: 'example_device_id',
   organization_id: 'example_organization_id',
   event: 'example_event',
+})
+```
+
+
+### DeviceOperation
+
+Create an instance: `const device_operation = client.DeviceOperation()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `arguments` | `Record<string, any>` |  |
+| `created_at` | `string` |  |
+| `delivery` | `Record<string, any>` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` |  |
+| `diagnostic_code` | `string` | Approved product error code retained after copied diagnostics expire. |
+| `end` | `Record<string, any>` |  |
+| `expires_at` | `string` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `provider` | `string` |  |
+| `references` | `Record<string, any>` |  |
+| `result` | `any` |  |
+| `result_expired` | `boolean` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```ts
+const device_operation = await client.DeviceOperation().load({ id: 'device_operation_id', device_id: 'device_id', organization_id: 'organization_id' })
+```
+
+#### Example: Create
+
+```ts
+const device_operation = await client.DeviceOperation().create({
+  device_id: 'example_device_id',
+  organization_id: 'example_organization_id',
+  action: 'example_action',
+  arguments: {},
+  key: 'example_key',
 })
 ```
 
@@ -19291,82 +19318,6 @@ Create an instance: `const email_verification = client.EmailVerification()`
 | `create(data)` | Create a new entity with the given data. |
 
 
-### Environment
-
-Create an instance: `const environment = client.Environment()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `create(data)` | Create a new entity with the given data. |
-| `load(match)` | Load a single entity by match criteria. |
-| `patch(data)` | Change part of an existing entity. |
-| `remove(match)` | Remove the matching entity. |
-| `update(data)` | Update an existing entity. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `active_revision_id` | `string | null` |  |
-| `agent_sign_up_available` | `boolean` | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
-| `allowed_actions` | `string` | read_only only looks around; writes may create, change and delete data. |
-| `billing` | `Record<string, any>` |  |
-| `cleanup` | `any[]` |  |
-| `connection` | `string` |  |
-| `created_at` | `string` |  |
-| `default_policy` | `Record<string, any>` |  |
-| `default_policy_json` | `Record<string, any>` |  |
-| `discovery_defaults` | `Record<string, any>` |  |
-| `environment` | `Record<string, any>` |  |
-| `exploration_accounts` | `any[]` |  |
-| `explorations` | `any[]` |  |
-| `first_run` | `any` |  |
-| `hosted_app_id` | `string | null` |  |
-| `id` | `string` |  |
-| `imessage_number` | `string | null` | International destination number; blank or null clears it on an added environment. |
-| `included_deep_scan` | `boolean` | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
-| `lock_version` | `number` |  |
-| `managed_google_available` | `boolean` | Whether the managed Google account can be offered for this app. |
-| `managed_google_email` | `string` |  |
-| `messaging_tester_number` | `string | null` | One configured tester number. |
-| `name` | `string` | Optional for a website target; defaults to its hostname. |
-| `network_connections` | `any[]` |  |
-| `onboarding_discovery` | `any` |  |
-| `organization_id` | `string` |  |
-| `pending_accounts` | `any[]` | Credentials on a Composal address still waiting for the password the customer chose at signup. |
-| `permissions` | `Record<string, any>` |  |
-| `project_id` | `string | null` | Owning project. |
-| `repository_id` | `string | null` |  |
-| `revisions` | `any[]` |  |
-| `setup_discovery_id` | `string | null` | Existing discovery to resume after setup or Checkout, selected within this environment. |
-| `sign_in_check_available` | `boolean` | Whether a test account's live sign-in check can run on this app. |
-| `slug` | `string` |  |
-| `status` | `string` |  |
-| `target_kind` | `string | null` |  |
-| `target_url` | `string | null` |  |
-| `test_accounts` | `Record<string, any>` |  |
-| `updated_at` | `string` |  |
-| `verify_network_connection_id` | `string | null` |  |
-| `version` | `number` | Required for target or tester changes; use lock_version from the environment. |
-
-#### Example: Load
-
-```ts
-const environment = await client.Environment().load({ id: 'environment_id', organization_id: 'organization_id' })
-```
-
-#### Example: Create
-
-```ts
-const environment = await client.Environment().create({
-  organization_id: 'example_organization_id',
-  slug: 'example_slug',
-})
-```
-
-
 ### EnvironmentDiscoveryRun
 
 Create an instance: `const environment_discovery_run = client.EnvironmentDiscoveryRun()`
@@ -19623,29 +19574,6 @@ Create an instance: `const environment_test_account = client.EnvironmentTestAcco
 
 ```ts
 const environment_test_accounts = await client.EnvironmentTestAccount().list({ environment_id: "example", organization_id: "example" })
-```
-
-
-### Evidence
-
-Create an instance: `const evidence = client.Evidence()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `string` |  |
-
-#### Example: Load
-
-```ts
-const evidence = await client.Evidence().load({ id: 'evidence_id', organization_id: 'organization_id' })
 ```
 
 
@@ -20509,47 +20437,6 @@ const github_connection = await client.GithubConnection().create({
   github_app_installation_id: 'example_github_app_installation_id',
   repositories: [],
 })
-```
-
-
-### GithubIntegration
-
-Create an instance: `const github_integration = client.GithubIntegration()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-| `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `account_avatar_url` | `string | null` |  |
-| `account_login` | `string` |  |
-| `connection_status` | `string` |  |
-| `connection_status_label` | `string` |  |
-| `github_installation` | `any` |  |
-| `health` | `Record<string, any>` |  |
-| `id` | `string` |  |
-| `imported_repositories_count` | `number` |  |
-| `imported_repositories_count_label` | `string` |  |
-| `organization` | `Record<string, any>` |  |
-| `pagination` | `Record<string, any>` |  |
-| `repositories` | `any[]` |  |
-
-#### Example: Load
-
-```ts
-const github_integration = await client.GithubIntegration().load({ id: 'github_integration_id', organization_id: 'organization_id' })
-```
-
-#### Example: List
-
-```ts
-const github_integrations = await client.GithubIntegration().list({ organization_id: "example" })
 ```
 
 
@@ -21778,8 +21665,6 @@ const lease_verify_diagnostic = await client.LeaseVerifyDiagnostic().create({
   swarm_id: 'example_swarm_id',
   task_id: 'example_task_id',
   browser_events: {},
-  live_browser: {},
-  live_view: {},
 })
 ```
 
@@ -22246,22 +22131,11 @@ Create an instance: `const member = client.Member()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accepted_at` | `string | null` |  |
-| `accepted_by_user` | `any` |  |
 | `created_at` | `string` |  |
 | `created_at_label` | `string | null` |  |
-| `email` | `string` |  |
-| `email_delivery_status` | `string` |  |
-| `expires_at` | `string | null` |  |
-| `expires_at_label` | `string | null` |  |
 | `id` | `string` |  |
-| `invite_url` | `string | null` |  |
-| `invited_by_user` | `any` |  |
 | `is_self` | `boolean` |  |
-| `organization` | `Record<string, any>` |  |
-| `revoked_at` | `string | null` |  |
 | `role` | `string` |  |
-| `status` | `string` |  |
 | `updated_at` | `string` |  |
 | `updated_at_label` | `string | null` |  |
 | `user` | `Record<string, any>` |  |
@@ -22373,72 +22247,6 @@ const merge_queue_entry = await client.MergeQueueEntry().create({
 ```
 
 
-### MergeRequest
-
-Create an instance: `const merge_request = client.MergeRequest()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `create(data)` | Create a new entity with the given data. |
-| `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `available_tests` | `any[]` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `base_sha` | `string` |  |
-| `branch` | `string` | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `comment_url` | `string | null` |  |
-| `current_run` | `any` | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `draft` | `boolean` |  |
-| `findings` | `any[]` |  |
-| `github_repository` | `string | null` | GitHub owner/repository associated with this pull request. |
-| `github_url` | `string | null` |  |
-| `head_sha` | `string` | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` | `string` |  |
-| `idempotency_key` | `string` |  |
-| `number` | `number` |  |
-| `pagination` | `Record<string, any>` |  |
-| `permissions` | `Record<string, any>` |  |
-| `preview_cleanup_ready` | `boolean` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | `string | null` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` | `any` |  |
-| `project_id` | `string | null` | Composal project slug or public ID for PR preview environments. |
-| `project_slug` | `string | null` |  |
-| `provider` | `string` |  |
-| `pull_request` | `Record<string, any>` |  |
-| `repository_id` | `string` |  |
-| `request_label` | `string` |  |
-| `requested_run_id` | `string | null` |  |
-| `runs` | `any[]` |  |
-| `source_branch` | `string | null` |  |
-| `source_repository` | `string | null` |  |
-| `source_url` | `string | null` |  |
-| `state` | `string` |  |
-| `title` | `string` |  |
-| `updated_at` | `string` |  |
-| `web_path` | `string` |  |
-
-#### Example: Load
-
-```ts
-const merge_request = await client.MergeRequest().load({ id: 'merge_request_id', organization_id: 'organization_id' })
-```
-
-#### Example: Create
-
-```ts
-const merge_request = await client.MergeRequest().create({
-  organization_id: 'example_organization_id',
-  idempotency_key: 'example_idempotency_key',
-  number: 1,
-})
-```
-
-
 ### MergeResolution
 
 Create an instance: `const merge_resolution = client.MergeResolution()`
@@ -22514,7 +22322,6 @@ const messaging_conversation_message = await client.MessagingConversationMessage
   project_id: 'example_project_id',
   client_operation_id: 'example_client_operation_id',
   content: 'example_content',
-  media: {},
 })
 ```
 
@@ -23897,6 +23704,47 @@ const pages_billing = await client.PagesBilling().load({ organization_id: 'organ
 ```
 
 
+### PagesGithubIntegration
+
+Create an instance: `const pages_github_integration = client.PagesGithubIntegration()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `string | null` |  |
+| `account_login` | `string` |  |
+| `connection_status` | `string` |  |
+| `connection_status_label` | `string` |  |
+| `github_installation` | `any` |  |
+| `health` | `Record<string, any>` |  |
+| `id` | `string` |  |
+| `imported_repositories_count` | `number` |  |
+| `imported_repositories_count_label` | `string` |  |
+| `organization` | `Record<string, any>` |  |
+| `pagination` | `Record<string, any>` |  |
+| `repositories` | `any[]` |  |
+
+#### Example: Load
+
+```ts
+const pages_github_integration = await client.PagesGithubIntegration().load({ id: 'pages_github_integration_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const pages_github_integrations = await client.PagesGithubIntegration().list({ organization_id: "example" })
+```
+
+
 ### PagesGithubOnboarding
 
 Create an instance: `const pages_github_onboarding = client.PagesGithubOnboarding()`
@@ -24584,7 +24432,6 @@ const product_map_identity_decision = await client.ProductMapIdentityDecision().
   observations: [],
   operation: 'example_operation',
   reason: 'example_reason',
-  target: {},
 })
 ```
 
@@ -25257,6 +25104,31 @@ const project_overview_pull_requests = await client.ProjectOverviewPullRequest()
 ```
 
 
+### ProjectPrTesting
+
+Create an instance: `const project_pr_testing = client.ProjectPrTesting()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `project` | `Record<string, any>` |  |
+| `pull_request_options` | `Record<string, any>` |  |
+
+#### Example: Load
+
+```ts
+const project_pr_testing = await client.ProjectPrTesting().load({ id: 'project_pr_testing_id', organization_id: 'organization_id' })
+```
+
+
 ### ProjectProductMap
 
 Create an instance: `const project_product_map = client.ProjectProductMap()`
@@ -25267,6 +25139,35 @@ Create an instance: `const project_product_map = client.ProjectProductMap()`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
+
+
+### ProjectProductMapComparison
+
+Create an instance: `const project_product_map_comparison = client.ProjectProductMapComparison()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accounts` | `any[]` |  |
+| `comparison` | `any` |  |
+| `filters` | `any` |  |
+| `id` | `string` |  |
+| `project` | `Record<string, any>` |  |
+| `requirements` | `any[]` |  |
+| `revisions` | `any[]` |  |
+
+#### Example: Load
+
+```ts
+const project_product_map_comparison = await client.ProjectProductMapComparison().load({ id: 'project_product_map_comparison_id', organization_id: 'organization_id' })
+```
 
 
 ### ProjectRecording
@@ -25369,7 +25270,6 @@ const project_run_plan = await client.ProjectRunPlan().create({
   organization_id: 'example_organization_id',
   project_id: 'example_project_id',
   dependencies: [],
-  identity_probe: {},
   name: 'example_name',
   nodes: [],
 })
@@ -25513,75 +25413,19 @@ Create an instance: `const project_setting = client.ProjectSetting()`
 
 | Method | Description |
 | --- | --- |
-| `load(match)` | Load a single entity by match criteria. |
+| `list(match)` | List entities matching the criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `available_messaging_environments` | `any[]` |  |
-| `messaging_conversations` | `any[]` |  |
-| `messaging_enabled` | `boolean` |  |
-| `permissions` | `Record<string, any>` |  |
-| `project` | `Record<string, any>` |  |
-| `tester_numbers` | `any[]` |  |
-
-#### Example: Load
-
-```ts
-const project_setting = await client.ProjectSetting().load({ organization_id: 'organization_id', project_id: 'project_id' })
-```
-
-
-### PullRequest
-
-Create an instance: `const pull_request = client.PullRequest()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `create(data)` | Create a new entity with the given data. |
-| `load(match)` | Load a single entity by match criteria. |
-| `remove(match)` | Remove the matching entity. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `available_tests` | `any[]` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `branch` | `string` | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `cleanup_only` | `boolean` | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
-| `current_run` | `any` | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `findings` | `any[]` |  |
-| `head_sha` | `string` | If supplied, refuse to create a run unless this is the current PR head. |
 | `id` | `string` |  |
-| `idempotency_key` | `string` |  |
-| `imessage_number` | `string` | International destination of this exact deployed commit. |
-| `number` | `number` |  |
-| `pagination` | `Record<string, any>` |  |
-| `permissions` | `Record<string, any>` |  |
-| `preview_cleanup_ready` | `boolean` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | `string | null` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` | `any` |  |
-| `project_id` | `string` | Composal project slug or public ID for PR preview environments. |
-| `pull_request` | `Record<string, any>` |  |
-| `repository_id` | `string` |  |
-| `runs` | `any[]` |  |
+| `name` | `string` |  |
 
-#### Example: Load
+#### Example: List
 
 ```ts
-const pull_request = await client.PullRequest().load({ id: 'pull_request_id', organization_id: 'organization_id' })
-```
-
-#### Example: Create
-
-```ts
-const pull_request = await client.PullRequest().create({
-  organization_id: 'example_organization_id',
-  idempotency_key: 'example_idempotency_key',
-})
+const project_settings = await client.ProjectSetting().list({ organization_id: "example", project_id: "example" })
 ```
 
 
@@ -27144,44 +26988,35 @@ Create an instance: `const run_update = client.RunUpdate()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `base_sha` | `string` |  |
-| `can_verify` | `boolean` |  |
-| `comment_url` | `string | null` |  |
-| `draft` | `boolean` |  |
-| `github_repository` | `string | null` | GitHub owner/repository associated with this pull request. |
-| `github_url` | `string | null` |  |
-| `head_sha` | `string` |  |
-| `id` | `string` |  |
-| `latest_created_at` | `string | null` |  |
-| `latest_current` | `boolean` |  |
-| `latest_head_sha` | `string | null` |  |
-| `latest_reason` | `string | null` |  |
-| `latest_run_id` | `string | null` |  |
-| `latest_state` | `string | null` |  |
-| `number` | `number` |  |
-| `project_id` | `string | null` |  |
-| `project_slug` | `string | null` |  |
-| `provider` | `string` |  |
-| `repository_id` | `string` |  |
-| `request_label` | `string` |  |
-| `source_branch` | `string | null` |  |
-| `source_repository` | `string | null` |  |
-| `source_url` | `string | null` |  |
-| `state` | `string` |  |
-| `title` | `string` |  |
-| `updated_at` | `string` |  |
-| `web_path` | `string` |  |
+| `active_runs` | `any[]` |  |
+| `checkout_required` | `boolean` |  |
+| `cli_signed_in_at` | `string | null` | When the signed-in user last finished a CLI sign-in for this organization, so agent setup can show the CLI is connected. |
+| `counts` | `Record<string, any>` |  |
+| `demo_project` | `Record<string, any> | null` | The workspace's copy of the demo project, which setup offers as example data. |
+| `environments` | `any[]` |  |
+| `included_deep_scan` | `boolean` | Whether a new app gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account, so setup asks for one right after the app. |
+| `onboarding_discovery` | `any` |  |
+| `organization` | `Record<string, any>` |  |
+| `permissions` | `Record<string, any>` |  |
+| `project` | `any` | The project the page is limited to, or null for the whole organization. |
+| `pull_request_launch_options` | `any[]` |  |
+| `pull_requests` | `any[]` |  |
+| `repositories` | `any[]` |  |
+| `runs` | `any[]` |  |
+| `runs_pagination` | `Record<string, any>` |  |
+| `suggested_app_url` | `string | null` | The URL first-run setup prefills for a new app, from the workspace's project website or the signed-in user's work email domain. |
+| `url_first_start` | `boolean` | Whether setup opens on the URL-first screen, which saves the app and asks for test access next. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const run_updates = await client.RunUpdate().list({ organization_id: "example" })
+const run_update = await client.RunUpdate().load({ organization_id: 'organization_id' })
 ```
 
 
@@ -28849,6 +28684,51 @@ const spark_agent_thread = await client.SparkAgentThread().create({
 ```
 
 
+### SparkAutomation
+
+Create an instance: `const spark_automation = client.SparkAutomation()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage` | `boolean` |  |
+| `can_manage_events` | `boolean` | Whether new event triggers can be attached or existing settings saved. |
+| `can_run` | `boolean` | Whether the viewer can request a manual Temporal run |
+| `can_schedule` | `boolean` |  |
+| `definition` | `Record<string, any>` |  |
+| `event_subscriptions` | `any[]` |  |
+| `event_triggers` | `any[]` |  |
+| `expected_revision` | `number` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `name` | `string` |  |
+| `revision` | `number` |  |
+| `schedule` | `any` |  |
+| `schedules` | `any[]` |  |
+| `version` | `Record<string, any>` |  |
+
+#### Example: Load
+
+```ts
+const spark_automation = await client.SparkAutomation().load({ id: 'spark_automation_id', agent_id: 'agent_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const spark_automations = await client.SparkAutomation().list({ agent_id: "example", organization_id: "example" })
+```
+
+
 ### SparkCredit
 
 Create an instance: `const spark_credit = client.SparkCredit()`
@@ -30292,6 +30172,223 @@ const verify_email_verification = await client.VerifyEmailVerification().load()
 ```
 
 
+### VerifyEnvironment
+
+Create an instance: `const verify_environment = client.VerifyEnvironment()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_revision_id` | `string | null` |  |
+| `agent_sign_up_available` | `boolean` | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
+| `allowed_actions` | `string` | read_only only looks around; writes may create, change and delete data. |
+| `billing` | `Record<string, any>` |  |
+| `cleanup` | `any[]` |  |
+| `connection` | `string` |  |
+| `created_at` | `string` |  |
+| `default_policy` | `Record<string, any>` |  |
+| `default_policy_json` | `Record<string, any>` |  |
+| `discovery_defaults` | `Record<string, any>` |  |
+| `environment` | `Record<string, any>` |  |
+| `exploration_accounts` | `any[]` |  |
+| `explorations` | `any[]` |  |
+| `first_run` | `any` |  |
+| `hosted_app_id` | `string | null` |  |
+| `id` | `string` |  |
+| `imessage_number` | `string | null` | International destination number; blank or null clears it on an added environment. |
+| `included_deep_scan` | `boolean` | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
+| `lock_version` | `number` |  |
+| `managed_google_available` | `boolean` | Whether the managed Google account can be offered for this app. |
+| `managed_google_email` | `string` |  |
+| `messaging_tester_number` | `string | null` | One configured tester number. |
+| `name` | `string` | Optional for a website target; defaults to its hostname. |
+| `network_connections` | `any[]` |  |
+| `onboarding_discovery` | `any` |  |
+| `organization_id` | `string` |  |
+| `pending_accounts` | `any[]` | Credentials on a Composal address still waiting for the password the customer chose at signup. |
+| `permissions` | `Record<string, any>` |  |
+| `project_id` | `string | null` | Owning project. |
+| `repository_id` | `string | null` |  |
+| `revisions` | `any[]` |  |
+| `setup_discovery_id` | `string | null` | Existing discovery to resume after setup or Checkout, selected within this environment. |
+| `sign_in_check_available` | `boolean` | Whether a test account's live sign-in check can run on this app. |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `target_kind` | `string | null` |  |
+| `target_url` | `string | null` |  |
+| `test_accounts` | `Record<string, any>` |  |
+| `updated_at` | `string` |  |
+| `verify_network_connection_id` | `string | null` |  |
+| `version` | `number` | Required for target or tester changes; use lock_version from the environment. |
+
+#### Example: Load
+
+```ts
+const verify_environment = await client.VerifyEnvironment().load({ id: 'verify_environment_id', organization_id: 'organization_id' })
+```
+
+#### Example: Create
+
+```ts
+const verify_environment = await client.VerifyEnvironment().create({
+  organization_id: 'example_organization_id',
+  slug: 'example_slug',
+})
+```
+
+
+### VerifyEvidence
+
+Create an instance: `const verify_evidence = client.VerifyEvidence()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const verify_evidence = await client.VerifyEvidence().load({ id: 'verify_evidence_id', organization_id: 'organization_id' })
+```
+
+
+### VerifyMergeRequest
+
+Create an instance: `const verify_merge_request = client.VerifyMergeRequest()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `available_tests` | `any[]` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `base_sha` | `string` |  |
+| `branch` | `string` | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `comment_url` | `string | null` |  |
+| `current_run` | `any` | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `draft` | `boolean` |  |
+| `findings` | `any[]` |  |
+| `github_repository` | `string | null` | GitHub owner/repository associated with this pull request. |
+| `github_url` | `string | null` |  |
+| `head_sha` | `string` | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `number` | `number` |  |
+| `pagination` | `Record<string, any>` |  |
+| `permissions` | `Record<string, any>` |  |
+| `preview_cleanup_ready` | `boolean` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | `string | null` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` | `any` |  |
+| `project_id` | `string | null` | Composal project slug or public ID for PR preview environments. |
+| `project_slug` | `string | null` |  |
+| `provider` | `string` |  |
+| `pull_request` | `Record<string, any>` |  |
+| `repository_id` | `string` |  |
+| `request_label` | `string` |  |
+| `requested_run_id` | `string | null` |  |
+| `runs` | `any[]` |  |
+| `source_branch` | `string | null` |  |
+| `source_repository` | `string | null` |  |
+| `source_url` | `string | null` |  |
+| `state` | `string` |  |
+| `title` | `string` |  |
+| `updated_at` | `string` |  |
+| `web_path` | `string` |  |
+
+#### Example: Load
+
+```ts
+const verify_merge_request = await client.VerifyMergeRequest().load({ id: 'verify_merge_request_id', organization_id: 'organization_id' })
+```
+
+#### Example: Create
+
+```ts
+const verify_merge_request = await client.VerifyMergeRequest().create({
+  organization_id: 'example_organization_id',
+  idempotency_key: 'example_idempotency_key',
+  number: 1,
+})
+```
+
+
+### VerifyPullRequest
+
+Create an instance: `const verify_pull_request = client.VerifyPullRequest()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `available_tests` | `any[]` | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `branch` | `string` | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `cleanup_only` | `boolean` | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
+| `current_run` | `any` | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `findings` | `any[]` |  |
+| `head_sha` | `string` | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `imessage_number` | `string` | International destination of this exact deployed commit. |
+| `number` | `number` |  |
+| `pagination` | `Record<string, any>` |  |
+| `permissions` | `Record<string, any>` |  |
+| `preview_cleanup_ready` | `boolean` | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | `string | null` | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` | `any` |  |
+| `project_id` | `string` | Composal project slug or public ID for PR preview environments. |
+| `pull_request` | `Record<string, any>` |  |
+| `repository_id` | `string` |  |
+| `runs` | `any[]` |  |
+
+#### Example: Load
+
+```ts
+const verify_pull_request = await client.VerifyPullRequest().load({ id: 'verify_pull_request_id', organization_id: 'organization_id' })
+```
+
+#### Example: Create
+
+```ts
+const verify_pull_request = await client.VerifyPullRequest().create({
+  organization_id: 'example_organization_id',
+  idempotency_key: 'example_idempotency_key',
+})
+```
+
+
 ### VerifySignalIntegration
 
 Create an instance: `const verify_signal_integration = client.VerifySignalIntegration()`
@@ -30638,12 +30735,11 @@ Create an instance: `const workspace_space_preference = client.WorkspaceSpacePre
 
 ## Features
 
-This SDK ships 9 optional features. Each is **inactive until you
-switch it on**, so an SDK you have not configured behaves exactly as if none of
-them existed — no retries, no cache, no logging, no measurable overhead.
+This SDK ships 9 optional features.
+Each is **inactive until you switch it on**, so an SDK you have not
+configured behaves exactly as if none of them existed, with no measurable overhead.
 
-Activate a feature by name in the client options, alongside the options shown
-above:
+Activate a feature by name in the `feature` client option:
 
 | Feature | What it does |
 |---|---|
@@ -30804,12 +30900,12 @@ guarantee.
 
 | Entity | Field | Variants | Nesting |
 | --- | --- | --- | --- |
-| `agent_automation` | `definition` | 12 | 10 levels |
-| `agent_automation` | `version` | 12 | 12 levels |
 | `agent_interaction` | `interactions` | 12 | 17 levels |
 | `automation_event` | `version` | 12 | 12 levels |
+| `spark_automation` | `definition` | 12 | 10 levels |
+| `spark_automation` | `version` | 12 | 12 levels |
 | `control_computer_control_operation` | `result` | 10 | 2 levels |
-| `device_control_operation` | `result` | 10 | 2 levels |
+| `device_operation` | `result` | 10 | 2 levels |
 | `local_thread_operation` | `result` | 10 | 2 levels |
 | `spark_agent_local_thread` | `result` | 10 | 2 levels |
 | `workspace_activity` | `recent_items` | 7 | 1 level |
@@ -30841,16 +30937,12 @@ feature hook before executing:
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 ```
 
-- **PrePoint**: Resolves which API endpoint to call based on the
-  operation name and entity configuration.
-- **PreSpec**: Builds the HTTP spec — URL, method, headers, body —
-  from the resolved point and the caller's parameters.
-- **PreRequest**: Sends the HTTP request. Features can intercept here
-  to replace the transport (as TestFeature does with mocks).
+- **PrePoint**: Resolves which API endpoint to call based on the operation name and entity configuration.
+- **PreSpec**: Builds the HTTP spec — URL, method, headers, body — from the resolved point and the caller's parameters.
+- **PreRequest**: Sends the HTTP request. Features can intercept here to replace the transport.
 - **PreResponse**: Parses the raw HTTP response.
 - **PreResult**: Extracts the business data from the parsed response.
-- **PreDone**: Final stage before returning to the caller. Entity
-  state (match, data) is updated here.
+- **PreDone**: Final stage before returning to the caller. Entity state (match, data) is updated here.
 
 If any stage errors, the pipeline short-circuits and the error surfaces
 to the caller — see [Error handling](#error-handling) for how that looks
@@ -30916,7 +31008,8 @@ but no stored state.
 ### Direct vs entity access
 
 The entity interface handles URL construction, parameter placement,
-and response parsing automatically. Use it for standard CRUD operations.
+and response parsing automatically. Use it for the operations each
+entity declares.
 
 The `direct` method gives full control over the HTTP request. Use it
 for non-standard endpoints, bulk operations, or any path not modelled

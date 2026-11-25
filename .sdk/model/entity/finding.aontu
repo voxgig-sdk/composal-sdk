@@ -99,7 +99,7 @@ main: kit: entity: finding: {
     reported_occurrence: {
       h: "Reported Occurrence"
       n: "reported_occurrence"
-      r: true
+      r: false
       sh: "The Discovery or Deep Scan report behind the finding; null for scenario run findings"
       t: [
         "`$ONE`"
@@ -279,15 +279,6 @@ main: kit: entity: finding: {
                 style: "form"
                 t: "`$STRING`"
               }
-              {
-                explode: true
-                k: "query"
-                n: "repository_id"
-                or: "repository_id"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
             ]
           }
           m: "GET"
@@ -332,7 +323,7 @@ main: kit: entity: finding: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.finding`"
           }
         }
       ]
@@ -362,15 +353,6 @@ main: kit: entity: finding: {
                 style: "simple"
                 t: "`$STRING`"
               }
-              {
-                explode: false
-                k: "header"
-                n: "idempotency_key"
-                or: "Idempotency-Key"
-                r: true
-                style: "simple"
-                t: "`$STRING`"
-              }
             ]
             params: [
               {
@@ -389,15 +371,6 @@ main: kit: entity: finding: {
               }
             ]
             query: [
-              {
-                explode: true
-                k: "query"
-                n: "repository_id"
-                or: "repository_id"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
               {
                 explode: true
                 k: "query"

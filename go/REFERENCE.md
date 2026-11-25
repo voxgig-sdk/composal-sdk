@@ -72,10 +72,6 @@ Create a new `AgentAppInstall` entity instance. Pass `nil` for no initial data.
 
 Create a new `AgentAttachment` entity instance. Pass `nil` for no initial data.
 
-#### `AgentAutomation(data map[string]any) ComposalEntityBase`
-
-Create a new `AgentAutomation` entity instance. Pass `nil` for no initial data.
-
 #### `AgentAvatar(data map[string]any) ComposalEntityBase`
 
 Create a new `AgentAvatar` entity instance. Pass `nil` for no initial data.
@@ -383,6 +379,10 @@ Create a new `AppDeploy` entity instance. Pass `nil` for no initial data.
 #### `AppDeployment(data map[string]any) ComposalEntityBase`
 
 Create a new `AppDeployment` entity instance. Pass `nil` for no initial data.
+
+#### `AppDeploymentDashboard(data map[string]any) ComposalEntityBase`
+
+Create a new `AppDeploymentDashboard` entity instance. Pass `nil` for no initial data.
 
 #### `AppDeploymentOperation(data map[string]any) ComposalEntityBase`
 
@@ -900,10 +900,6 @@ Create a new `DeviceBrowserOperation` entity instance. Pass `nil` for no initial
 
 Create a new `DeviceControlMessage` entity instance. Pass `nil` for no initial data.
 
-#### `DeviceControlOperation(data map[string]any) ComposalEntityBase`
-
-Create a new `DeviceControlOperation` entity instance. Pass `nil` for no initial data.
-
 #### `DeviceEnterpriseRelay(data map[string]any) ComposalEntityBase`
 
 Create a new `DeviceEnterpriseRelay` entity instance. Pass `nil` for no initial data.
@@ -923,6 +919,10 @@ Create a new `DeviceInvocation` entity instance. Pass `nil` for no initial data.
 #### `DeviceLocalEvent(data map[string]any) ComposalEntityBase`
 
 Create a new `DeviceLocalEvent` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceOperation(data map[string]any) ComposalEntityBase`
+
+Create a new `DeviceOperation` entity instance. Pass `nil` for no initial data.
 
 #### `DevicePairing(data map[string]any) ComposalEntityBase`
 
@@ -968,10 +968,6 @@ Create a new `Edge` entity instance. Pass `nil` for no initial data.
 
 Create a new `EmailVerification` entity instance. Pass `nil` for no initial data.
 
-#### `Environment(data map[string]any) ComposalEntityBase`
-
-Create a new `Environment` entity instance. Pass `nil` for no initial data.
-
 #### `EnvironmentDiscoveryRun(data map[string]any) ComposalEntityBase`
 
 Create a new `EnvironmentDiscoveryRun` entity instance. Pass `nil` for no initial data.
@@ -995,10 +991,6 @@ Create a new `EnvironmentSecretBinding` entity instance. Pass `nil` for no initi
 #### `EnvironmentTestAccount(data map[string]any) ComposalEntityBase`
 
 Create a new `EnvironmentTestAccount` entity instance. Pass `nil` for no initial data.
-
-#### `Evidence(data map[string]any) ComposalEntityBase`
-
-Create a new `Evidence` entity instance. Pass `nil` for no initial data.
 
 #### `ExecutionDesiredState(data map[string]any) ComposalEntityBase`
 
@@ -1079,10 +1071,6 @@ Create a new `GithubCiRepositoryCompatibilityReport` entity instance. Pass `nil`
 #### `GithubConnection(data map[string]any) ComposalEntityBase`
 
 Create a new `GithubConnection` entity instance. Pass `nil` for no initial data.
-
-#### `GithubIntegration(data map[string]any) ComposalEntityBase`
-
-Create a new `GithubIntegration` entity instance. Pass `nil` for no initial data.
 
 #### `GithubOnboarding(data map[string]any) ComposalEntityBase`
 
@@ -1316,10 +1304,6 @@ Create a new `Memory` entity instance. Pass `nil` for no initial data.
 
 Create a new `MergeQueueEntry` entity instance. Pass `nil` for no initial data.
 
-#### `MergeRequest(data map[string]any) ComposalEntityBase`
-
-Create a new `MergeRequest` entity instance. Pass `nil` for no initial data.
-
 #### `MergeResolution(data map[string]any) ComposalEntityBase`
 
 Create a new `MergeResolution` entity instance. Pass `nil` for no initial data.
@@ -1512,6 +1496,10 @@ Create a new `PageRepoVcCommit` entity instance. Pass `nil` for no initial data.
 
 Create a new `PagesBilling` entity instance. Pass `nil` for no initial data.
 
+#### `PagesGithubIntegration(data map[string]any) ComposalEntityBase`
+
+Create a new `PagesGithubIntegration` entity instance. Pass `nil` for no initial data.
+
 #### `PagesGithubOnboarding(data map[string]any) ComposalEntityBase`
 
 Create a new `PagesGithubOnboarding` entity instance. Pass `nil` for no initial data.
@@ -1652,9 +1640,17 @@ Create a new `ProjectOverviewMetric` entity instance. Pass `nil` for no initial 
 
 Create a new `ProjectOverviewPullRequest` entity instance. Pass `nil` for no initial data.
 
+#### `ProjectPrTesting(data map[string]any) ComposalEntityBase`
+
+Create a new `ProjectPrTesting` entity instance. Pass `nil` for no initial data.
+
 #### `ProjectProductMap(data map[string]any) ComposalEntityBase`
 
 Create a new `ProjectProductMap` entity instance. Pass `nil` for no initial data.
+
+#### `ProjectProductMapComparison(data map[string]any) ComposalEntityBase`
+
+Create a new `ProjectProductMapComparison` entity instance. Pass `nil` for no initial data.
 
 #### `ProjectRecording(data map[string]any) ComposalEntityBase`
 
@@ -1679,10 +1675,6 @@ Create a new `ProjectScenarioRow` entity instance. Pass `nil` for no initial dat
 #### `ProjectSetting(data map[string]any) ComposalEntityBase`
 
 Create a new `ProjectSetting` entity instance. Pass `nil` for no initial data.
-
-#### `PullRequest(data map[string]any) ComposalEntityBase`
-
-Create a new `PullRequest` entity instance. Pass `nil` for no initial data.
 
 #### `PullRequestAction(data map[string]any) ComposalEntityBase`
 
@@ -2064,6 +2056,10 @@ Create a new `SparkAgentSkill` entity instance. Pass `nil` for no initial data.
 
 Create a new `SparkAgentThread` entity instance. Pass `nil` for no initial data.
 
+#### `SparkAutomation(data map[string]any) ComposalEntityBase`
+
+Create a new `SparkAutomation` entity instance. Pass `nil` for no initial data.
+
 #### `SparkCredit(data map[string]any) ComposalEntityBase`
 
 Create a new `SparkCredit` entity instance. Pass `nil` for no initial data.
@@ -2215,6 +2211,22 @@ Create a new `VerifyBrowserSession` entity instance. Pass `nil` for no initial d
 #### `VerifyEmailVerification(data map[string]any) ComposalEntityBase`
 
 Create a new `VerifyEmailVerification` entity instance. Pass `nil` for no initial data.
+
+#### `VerifyEnvironment(data map[string]any) ComposalEntityBase`
+
+Create a new `VerifyEnvironment` entity instance. Pass `nil` for no initial data.
+
+#### `VerifyEvidence(data map[string]any) ComposalEntityBase`
+
+Create a new `VerifyEvidence` entity instance. Pass `nil` for no initial data.
+
+#### `VerifyMergeRequest(data map[string]any) ComposalEntityBase`
+
+Create a new `VerifyMergeRequest` entity instance. Pass `nil` for no initial data.
+
+#### `VerifyPullRequest(data map[string]any) ComposalEntityBase`
+
+Create a new `VerifyPullRequest` entity instance. Pass `nil` for no initial data.
 
 #### `VerifySignalIntegration(data map[string]any) ComposalEntityBase`
 
@@ -2855,110 +2867,6 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `AgentAttachmentEntity` instance with the same client and
-options.
-
-#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
-
-Run an operation through the pipeline and send its result items on the
-returned channel, which closes when the stream ends. A `StreamItem` holds
-one item in `Item`, or in `Err` the error that ended the stream: the
-error the operation itself would return, sent as the last value. Under
-`throw: false` in `callopts["ctrl"]`, no error is sent.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## AgentAutomationEntity
-
-```go
-agentAutomation := client.AgentAutomation(nil)
-fmt.Println(agentAutomation.GetName()) // "agent_automation"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `can_manage` | `bool` | Yes |  |
-| `can_manage_events` | `bool` | Yes | Whether new event triggers can be attached or existing settings saved. |
-| `can_run` | `bool` | Yes | Whether the viewer can request a manual Temporal run |
-| `can_schedule` | `bool` | Yes |  |
-| `definition` | `map[string]any` | Yes |  |
-| `event_subscriptions` | `[]any` | Yes |  |
-| `event_triggers` | `[]any` | Yes |  |
-| `expected_revision` | `int` | Yes |  |
-| `id` | `string` | Yes |  |
-| `key` | `string` | Yes |  |
-| `name` | `string` | Yes |  |
-| `revision` | `int` | Yes |  |
-| `schedule` | `any` | Yes |  |
-| `schedules` | `[]any` | Yes |  |
-| `version` | `map[string]any` | Yes |  |
-
-### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AgentAutomation(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
-
-```go
-result, err := client.AgentAutomation(nil).Load(map[string]any{"id": "agent_automation_id", "agent_id": "agent_id", "organization_id": "organization_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data())
-```
-
-#### `Update(reqdata, ctrl map[string]any) (any, error)`
-
-Update an existing entity. The data must include the entity `id`. Returns the updated entity; `err` is non-nil on failure.
-
-```go
-result, err := client.AgentAutomation(nil).Update(map[string]any{
-    "id": "agent_automation_id",
-    "agent_id": "agent_id",
-    "organization_id": "organization_id",
-    // Fields to update
-}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data())
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `AgentAutomationEntity` instance with the same client and
 options.
 
 #### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
@@ -4097,8 +4005,8 @@ fmt.Println(agentInput.GetName()) // "agent_input"
 | --- | --- | --- | --- |
 | `attachment_ids` | `[]any` | No | Completed uploads from the attachments endpoint, in order. |
 | `attachments` | `[]any` | No |  |
-| `browser_context` | `map[string]any` | Yes | Advisory snapshot of the browser pane beside this conversation when the message was sent. |
-| `client_time` | `map[string]any` | Yes | The sending app's IANA time zone and clock, so the agent answers in the person's local time. |
+| `browser_context` | `map[string]any` | No | Advisory snapshot of the browser pane beside this conversation when the message was sent. |
+| `client_time` | `map[string]any` | No | The sending app's IANA time zone and clock, so the agent answers in the person's local time. |
 | `conversation_id` | `string` | Yes | Main or a conversation identity returned by the agent thread list. |
 | `model_policy` | `any` | No |  |
 | `requester_membership_id` | `string` | No | Snapshot the membership supplied by conversation history for a NEW V1 input. |
@@ -4115,8 +4023,6 @@ Create a new entity with the given data. Returns the created entity; `err` is no
 result, err := client.AgentInput(nil).Create(map[string]any{
     "agent_id": "example_agent_id",
     "organization_id": "example_organization_id",
-    "browser_context": map[string]any{},
-    "client_time": map[string]any{},
     "conversation_id": "example_conversation_id",
     "text": "example_text",
 }, nil)
@@ -4757,7 +4663,7 @@ fmt.Println(agentMarketplace.GetName()) // "agent_marketplace"
 
 | Field | load | create | update | patch | remove |
 | --- | --- | --- | --- | --- | --- |
-| `bundle` | - | - | - | - | - |
+| `bundle` | - | - | - | Yes | - |
 | `can_manage` | - | - | - | - | - |
 | `catalog_key` | - | - | - | - | - |
 | `categories` | - | - | - | - | - |
@@ -5645,7 +5551,7 @@ fmt.Println(agentRoutine.GetName()) // "agent_routine"
 | --- | --- | --- | --- |
 | `can_manage` | `bool` | Yes |  |
 | `consecutive_errors` | `int` | Yes |  |
-| `credit_wait` | `map[string]any` | Yes | The wallet funding an enabled routine that is waiting for inference credit. |
+| `credit_wait` | `map[string]any` | No | The wallet funding an enabled routine that is waiting for inference credit. |
 | `description` | `any` | Yes |  |
 | `enabled` | `bool` | Yes |  |
 | `id` | `string` | Yes |  |
@@ -5659,7 +5565,7 @@ fmt.Println(agentRoutine.GetName()) // "agent_routine"
 | `routine` | `map[string]any` | Yes |  |
 | `schedule` | `map[string]any` | Yes |  |
 | `schedule_label` | `string` | Yes |  |
-| `utility_model` | `map[string]any` | Yes |  |
+| `utility_model` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -6379,7 +6285,7 @@ fmt.Println(agentSubagent.GetName()) // "agent_subagent"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `active` | `bool` | Yes |  |
-| `attention` | `any` | Yes | Why the person should open this thread, as the Threads panel shows it: a pending question, the agent asking for attention, or a run that did not finish. |
+| `attention` | `any` | No | Why the person should open this thread, as the Threads panel shows it: a pending question, the agent asking for attention, or a run that did not finish. |
 | `ended_at` | `any` | Yes |  |
 | `id` | `string` | Yes |  |
 | `model` | `any` | Yes |  |
@@ -6559,7 +6465,7 @@ fmt.Println(agentSwarm.GetName()) // "agent_swarm"
 | `started_at_label` | `any` | Yes |  |
 | `status` | `string` | Yes |  |
 | `summary` | `map[string]any` | Yes |  |
-| `target` | `map[string]any` | Yes | Where the swarm lands. |
+| `target` | `map[string]any` | No | Where the swarm lands. |
 | `task_count` | `int` | Yes |  |
 | `task_template_json` | `any` | Yes |  |
 | `tasks` | `[]any` | Yes |  |
@@ -6655,7 +6561,6 @@ Create a new entity with the given data. Returns the created entity; `err` is no
 ```go
 result, err := client.AgentSwarm(nil).Create(map[string]any{
     "organization_slug": "example_organization_slug",
-    "target": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7452,7 +7357,7 @@ fmt.Println(agentWorkflowProposal.GetName()) // "agent_workflow_proposal"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `agent_steps` | `map[string]any` | Yes | The model and reasoning the workflow's agent steps share. |
+| `agent_steps` | `map[string]any` | No | The model and reasoning the workflow's agent steps share. |
 | `base_digest` | `any` | Yes | The saved workflow this proposal changes; null for a new workflow. |
 | `can_manage` | `bool` | Yes |  |
 | `can_revise` | `bool` | Yes | The viewer can choose the model and reasoning of the agent steps now, before saving. |
@@ -7534,7 +7439,7 @@ fmt.Println(agentWorkflowRun.GetName()) // "agent_workflow_run"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `action` | `string` | Yes |  |
-| `automation` | `any` | Yes | Saved native automation identity. |
+| `automation` | `any` | No | Saved native automation identity. |
 | `budget_seconds` | `any` | Yes | The run stops once it has been running this long |
 | `budget_usd` | `any` | Yes | The run stops before a step once it has spent this much |
 | `can_answer` | `bool` | Yes | Whether this viewer can answer the step that stopped the run; the answer runs that step again |
@@ -7542,7 +7447,7 @@ fmt.Println(agentWorkflowRun.GetName()) // "agent_workflow_run"
 | `can_dismiss` | `bool` | Yes | Whether this viewer can dismiss the run waiting for them, which ends it unanswered |
 | `checkpoint` | `any` | Yes | The question a run waiting at a checkpoint is asking |
 | `conversation_id` | `any` | Yes | The thread the run works in, which the person opens to follow it |
-| `decision_history` | `map[string]any` | Yes |  |
+| `decision_history` | `map[string]any` | No |  |
 | `error` | `any` | Yes |  |
 | `finished_at` | `any` | Yes |  |
 | `flow_steps` | `any` | Yes | How the run went at each step of its workflow file, in the order it reached them; null when steps were recorded without their step of the file |
@@ -9188,6 +9093,89 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `AppDeploymentEntity` instance with the same client and
+options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## AppDeploymentDashboardEntity
+
+```go
+appDeploymentDashboard := client.AppDeploymentDashboard(nil)
+fmt.Println(appDeploymentDashboard.GetName()) // "app_deployment_dashboard"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `[]any` | Yes |  |
+| `app` | `map[string]any` | Yes |  |
+| `audit_events` | `[]any` | Yes |  |
+| `capacity` | `map[string]any` | Yes |  |
+| `connections` | `[]any` | Yes |  |
+| `data_resources` | `[]any` | Yes |  |
+| `deployments` | `[]any` | Yes |  |
+| `desired_states` | `[]any` | Yes |  |
+| `environments` | `[]any` | Yes |  |
+| `id` | `string` | No |  |
+| `locations` | `[]any` | Yes |  |
+| `managed_database_catalog` | `map[string]any` | Yes |  |
+| `observability` | `map[string]any` | Yes |  |
+| `operations` | `[]any` | Yes |  |
+| `placements` | `[]any` | Yes |  |
+| `reconciler_ticks` | `[]any` | Yes |  |
+| `releases` | `[]any` | Yes |  |
+| `rollback_deployments` | `[]any` | Yes |  |
+| `rollouts` | `[]any` | Yes |  |
+| `runtime_instances` | `[]any` | Yes |  |
+| `service_bindings` | `[]any` | Yes |  |
+| `service_views` | `[]any` | Yes |  |
+| `services` | `[]any` | Yes |  |
+| `storage_resources` | `[]any` | Yes |  |
+| `summary` | `map[string]any` | Yes |  |
+
+### Operations
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
+
+```go
+result, err := client.AppDeploymentDashboard(nil).Load(map[string]any{"id": "app_deployment_dashboard_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `AppDeploymentDashboardEntity` instance with the same client and
 options.
 
 #### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
@@ -12471,7 +12459,7 @@ fmt.Println(automationRun.GetName()) // "automation_run"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `action` | `string` | Yes |  |
-| `automation` | `any` | Yes | Saved native automation identity. |
+| `automation` | `any` | No | Saved native automation identity. |
 | `budget_seconds` | `any` | Yes | The run stops once it has been running this long |
 | `budget_usd` | `any` | Yes | The run stops before a step once it has spent this much |
 | `can_answer` | `bool` | Yes | Whether this viewer can answer the step that stopped the run; the answer runs that step again |
@@ -12479,7 +12467,7 @@ fmt.Println(automationRun.GetName()) // "automation_run"
 | `can_dismiss` | `bool` | Yes | Whether this viewer can dismiss the run waiting for them, which ends it unanswered |
 | `checkpoint` | `any` | Yes | The question a run waiting at a checkpoint is asking |
 | `conversation_id` | `any` | Yes | The thread the run works in, which the person opens to follow it |
-| `decision_history` | `map[string]any` | Yes |  |
+| `decision_history` | `map[string]any` | No |  |
 | `error` | `any` | Yes |  |
 | `finished_at` | `any` | Yes |  |
 | `flow_steps` | `any` | Yes | How the run went at each step of its workflow file, in the order it reached them; null when steps were recorded without their step of the file |
@@ -15840,7 +15828,7 @@ fmt.Println(change.GetName()) // "change"
 | --- | --- | --- | --- |
 | `counts` | `map[string]any` | Yes | Counts for each state across the active non-state filters. |
 | `filters` | `map[string]any` | Yes |  |
-| `github_sync` | `map[string]any` | Yes |  |
+| `github_sync` | `map[string]any` | No |  |
 | `result` | `any` | Yes | What this page is a page of. |
 
 ### Operations
@@ -15975,69 +15963,28 @@ fmt.Println(changeComment.GetName()) // "change_comment"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `body` | `string` | Yes |  |
-| `capabilities` | `map[string]any` | Yes |  |
-| `change_id` | `any` | No |  |
-| `created_at` | `any` | No |  |
-| `created_at_label` | `any` | No |  |
-| `id` | `string` | Yes |  |
+| `comment` | `map[string]any` | No |  |
+| `comments` | `[]any` | Yes |  |
+| `id` | `string` | No |  |
 | `kind` | `any` | No |  |
 | `line` | `any` | No |  |
-| `outdated` | `bool` | Yes |  |
 | `parent_comment_id` | `any` | No |  |
 | `patchset_id` | `any` | No |  |
-| `patchset_number` | `any` | Yes |  |
 | `path` | `any` | No |  |
-| `replies` | `[]any` | No |  |
-| `resolved` | `bool` | Yes |  |
-| `resolved_at` | `any` | No |  |
-| `resolved_at_label` | `any` | No |  |
-| `resolved_by` | `map[string]any` | Yes |  |
 | `side` | `any` | No |  |
-| `updated_at` | `any` | No |  |
-| `updated_at_label` | `any` | No |  |
-| `user` | `map[string]any` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | list | create |
-| --- | --- | --- |
-| `body` | - | - |
-| `capabilities` | - | - |
-| `change_id` | - | - |
-| `created_at` | - | - |
-| `created_at_label` | - | - |
-| `id` | - | - |
-| `kind` | - | - |
-| `line` | - | - |
-| `outdated` | - | - |
-| `parent_comment_id` | - | - |
-| `patchset_id` | Yes | - |
-| `patchset_number` | - | - |
-| `path` | - | - |
-| `replies` | - | - |
-| `resolved` | - | - |
-| `resolved_at` | - | - |
-| `resolved_at_label` | - | - |
-| `resolved_by` | - | - |
-| `side` | - | - |
-| `updated_at` | - | - |
-| `updated_at_label` | - | - |
-| `user` | - | - |
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.ChangeComment(nil).List(map[string]any{"change_id": "example", "organization_id": "example", "repo_id": "example"}, nil)
+result, err := client.ChangeComment(nil).Load(map[string]any{"change_id": "change_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -16476,10 +16423,10 @@ fmt.Println(changeLabel.GetName()) // "change_label"
 | --- | --- | --- | --- |
 | `accepted` | `bool` | No |  |
 | `add` | `[]any` | No |  |
-| `approval` | `map[string]any` | Yes |  |
+| `approval` | `map[string]any` | No |  |
 | `assets` | `[]any` | No | Proof assets referenced from the description as `vex-asset:<id>`. |
 | `author` | `any` | No | Human user summary or organization automation identity. |
-| `capabilities` | `map[string]any` | Yes |  |
+| `capabilities` | `map[string]any` | No |  |
 | `change_key` | `string` | No |  |
 | `checks` | `[]any` | No |  |
 | `checks_status` | `string` | No |  |
@@ -16487,12 +16434,12 @@ fmt.Println(changeLabel.GetName()) // "change_label"
 | `comments_count` | `int` | No |  |
 | `comments_count_label` | `string` | No |  |
 | `commit_message` | `any` | No |  |
-| `current_patchset` | `map[string]any` | Yes |  |
+| `current_patchset` | `map[string]any` | No |  |
 | `description` | `any` | No |  |
 | `draft` | `bool` | No |  |
 | `folded_into_number` | `any` | No |  |
 | `github_projection_status` | `any` | No |  |
-| `github_pull_request` | `map[string]any` | Yes |  |
+| `github_pull_request` | `map[string]any` | No |  |
 | `github_pull_requests` | `[]any` | No |  |
 | `group` | `any` | No |  |
 | `has_description` | `bool` | No | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
@@ -16500,7 +16447,7 @@ fmt.Println(changeLabel.GetName()) // "change_label"
 | `jj_change_id` | `any` | No |  |
 | `labels` | `[]any` | No |  |
 | `landable` | `bool` | No |  |
-| `landed_by` | `map[string]any` | Yes |  |
+| `landed_by` | `map[string]any` | No |  |
 | `number` | `int` | Yes |  |
 | `orphaned` | `bool` | No |  |
 | `orphaned_at` | `string` | No |  |
@@ -16876,7 +16823,7 @@ fmt.Println(changeTranscript.GetName()) // "change_transcript"
 | `session_title` | `any` | No |  |
 | `status` | `string` | Yes |  |
 | `superseded` | `bool` | Yes |  |
-| `user` | `map[string]any` | Yes |  |
+| `user` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -18263,7 +18210,7 @@ fmt.Println(controlComputer.GetName()) // "control_computer"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `connection` | `map[string]any` | Yes | A point-in-time control transport observation. |
+| `connection` | `map[string]any` | No | A point-in-time control transport observation. |
 | `consent` | `map[string]any` | Yes |  |
 | `device` | `map[string]any` | Yes |  |
 | `id` | `string` | No |  |
@@ -18331,10 +18278,10 @@ fmt.Println(controlComputerControlOperation.GetName()) // "control_computer_cont
 | `action` | `string` | Yes |  |
 | `arguments` | `map[string]any` | Yes |  |
 | `created_at` | `string` | Yes |  |
-| `delivery` | `map[string]any` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `delivery` | `map[string]any` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
 | `device_id` | `string` | Yes |  |
 | `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
-| `end` | `map[string]any` | Yes |  |
+| `end` | `map[string]any` | No |  |
 | `expires_at` | `string` | Yes |  |
 | `id` | `string` | Yes |  |
 | `key` | `string` | Yes |  |
@@ -18521,7 +18468,7 @@ fmt.Println(credentialSignInCheck.GetName()) // "credential_sign_in_check"
 | `reproductions` | `[]any` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `[]any` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `map[string]any` | Yes |  |
+| `scenario_generation` | `map[string]any` | No |  |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `any` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -18674,20 +18621,21 @@ fmt.Println(deepScan.GetName()) // "deep_scan"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `account_id` | `any` | No |  |
-| `active` | `[]any` | Yes |  |
 | `agent_filters` | `map[string]any` | Yes | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` | `[]any` | Yes |  |
 | `can_continue` | `bool` | No | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` | `[]any` | No |  |
+| `check_count` | `int` | Yes |  |
 | `concurrency` | `int` | Yes |  |
 | `covered_areas` | `[]any` | Yes | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` | `string` | Yes |  |
-| `deadline_at` | `string` | Yes |  |
+| `credential_name` | `any` | No | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | `string` | Yes | When the team's time limit ends. |
 | `demo_project` | `any` | Yes | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` | `any` | Yes |  |
 | `ended_early` | `bool` | Yes | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` | `string` | Yes |  |
 | `environment_name` | `string` | Yes |  |
-| `explorations` | `[]any` | Yes |  |
 | `explorer_activity` | `map[string]any` | Yes | What the team is doing now. |
 | `finding_count` | `int` | Yes | Findings at every priority, locked ones included. |
 | `findings` | `[]any` | Yes | Every tester's findings, most severe first, with the checks each one cites. |
@@ -18697,14 +18645,12 @@ fmt.Println(deepScan.GetName()) // "deep_scan"
 | `huntable_flows` | `[]any` | Yes | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` | `string` | Yes |  |
 | `idempotency_key` | `string` | No |  |
-| `launch_options` | `map[string]any` | Yes | Present only when launch was requested by an admin |
 | `max_seconds` | `int` | Yes |  |
 | `max_testers` | `int` | Yes |  |
 | `mode` | `string` | No |  |
 | `next_scan_improvements` | `[]any` | Yes | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | `string` | No | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | `bool` | Yes | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` | `map[string]any` | Yes |  |
 | `paywalled` | `bool` | Yes | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` | `map[string]any` | Yes |  |
 | `priority_counts` | `map[string]any` | Yes |  |
@@ -18715,10 +18661,13 @@ fmt.Println(deepScan.GetName()) // "deep_scan"
 | `reproductions` | `[]any` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `[]any` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `map[string]any` | Yes |  |
+| `scenario_count` | `int` | No | Scenarios saved from this discovery. |
+| `scenario_generation` | `map[string]any` | No |  |
+| `scenarios_pending` | `bool` | No | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `any` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` | `string` | Yes |  |
 | `startup_retryable` | `bool` | No | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` | `string` | Yes |  |
 | `time_limit_reached` | `bool` | Yes | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -18728,62 +18677,78 @@ fmt.Println(deepScan.GetName()) // "deep_scan"
 
 ### Field Usage by Operation
 
-| Field | load | create |
-| --- | --- | --- |
-| `account_id` | - | - |
-| `active` | - | - |
-| `agent_filters` | - | - |
-| `agents` | - | - |
-| `can_continue` | - | - |
-| `chat_messages` | - | - |
-| `concurrency` | - | Yes |
-| `covered_areas` | - | - |
-| `created_at` | - | - |
-| `deadline_at` | - | - |
-| `demo_project` | - | - |
-| `ended_early` | - | - |
-| `environment_id` | - | - |
-| `environment_name` | - | - |
-| `explorations` | - | - |
-| `explorer_activity` | - | - |
-| `finding_count` | - | - |
-| `findings` | - | - |
-| `findings_fix_prompt` | - | - |
-| `finished_at` | - | - |
-| `goal` | - | - |
-| `huntable_flows` | - | - |
-| `id` | - | - |
-| `idempotency_key` | - | - |
-| `launch_options` | - | - |
-| `max_seconds` | - | Yes |
-| `max_testers` | - | Yes |
-| `mode` | - | - |
-| `next_scan_improvements` | - | - |
-| `observed_at` | - | - |
-| `onboarding` | - | - |
-| `pagination` | - | - |
-| `paywalled` | - | - |
-| `permissions` | - | - |
-| `priority_counts` | - | - |
-| `project_id` | - | - |
-| `related_explorations` | - | - |
-| `report` | - | - |
-| `reproduction_of` | - | - |
-| `reproductions` | - | - |
-| `saves_scenarios` | - | - |
-| `scannable_flows` | - | - |
-| `scenario_generation` | - | - |
-| `sign_in_needs_answer` | - | - |
-| `sign_in_outcome` | - | - |
-| `sign_in_question` | - | - |
-| `startup_retryable` | - | - |
-| `status` | - | - |
-| `time_limit_reached` | - | - |
-| `title` | - | - |
-| `unlock` | - | - |
-| `web_url` | - | - |
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `account_id` | - | - | - |
+| `agent_filters` | - | - | - |
+| `agents` | - | - | - |
+| `can_continue` | - | - | - |
+| `chat_messages` | - | - | - |
+| `check_count` | - | - | - |
+| `concurrency` | - | - | Yes |
+| `covered_areas` | - | - | - |
+| `created_at` | - | - | - |
+| `credential_name` | - | - | - |
+| `deadline_at` | - | Yes | - |
+| `demo_project` | - | - | - |
+| `duration_ms` | - | - | - |
+| `ended_early` | - | - | - |
+| `environment_id` | - | - | - |
+| `environment_name` | - | - | - |
+| `explorer_activity` | - | - | - |
+| `finding_count` | - | - | - |
+| `findings` | - | - | - |
+| `findings_fix_prompt` | - | - | - |
+| `finished_at` | - | Yes | - |
+| `goal` | - | - | - |
+| `huntable_flows` | - | - | - |
+| `id` | - | - | - |
+| `idempotency_key` | - | - | - |
+| `max_seconds` | - | - | Yes |
+| `max_testers` | - | - | Yes |
+| `mode` | - | - | - |
+| `next_scan_improvements` | - | - | - |
+| `observed_at` | - | - | - |
+| `onboarding` | - | - | - |
+| `paywalled` | - | - | - |
+| `permissions` | - | - | - |
+| `priority_counts` | - | - | - |
+| `project_id` | - | - | - |
+| `related_explorations` | - | - | - |
+| `report` | - | - | - |
+| `reproduction_of` | - | - | - |
+| `reproductions` | - | - | - |
+| `saves_scenarios` | - | - | - |
+| `scannable_flows` | - | - | - |
+| `scenario_count` | - | - | - |
+| `scenario_generation` | - | - | - |
+| `scenarios_pending` | - | - | - |
+| `sign_in_needs_answer` | - | - | - |
+| `sign_in_outcome` | - | - | - |
+| `sign_in_question` | - | - | - |
+| `started_at` | - | - | - |
+| `startup_retryable` | - | - | - |
+| `status` | - | - | - |
+| `time_limit_reached` | - | - | - |
+| `title` | - | Yes | - |
+| `unlock` | - | - | - |
+| `web_url` | - | - | - |
 
 ### Operations
+
+#### `List(reqmatch, ctrl map[string]any) (any, error)`
+
+List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+
+```go
+results, err := client.DeepScan(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+for _, item := range results.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -19952,11 +19917,11 @@ fmt.Println(device.GetName()) // "device"
 | --- | --- | --- | --- |
 | `architecture` | `string` | Yes |  |
 | `channel` | `string` | Yes |  |
-| `coding_connection` | `any` | Yes | Independent organization coding-control service state for the current device owner. |
+| `coding_connection` | `any` | No | Independent organization coding-control service state for the current device owner. |
 | `connection_checked_at` | `any` | Yes | When this native presence observation was obtained; null when unobserved or unavailable. |
 | `connection_status` | `string` | Yes | Display-only native presence. |
 | `control_delivery_policy` | `map[string]any` | Yes |  |
-| `control_spawn_policy` | `map[string]any` | Yes |  |
+| `control_spawn_policy` | `map[string]any` | No |  |
 | `created_at` | `string` | Yes |  |
 | `device` | `map[string]any` | Yes |  |
 | `environment` | `string` | Yes |  |
@@ -20147,97 +20112,6 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `DeviceControlMessageEntity` instance with the same client and
-options.
-
-#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
-
-Run an operation through the pipeline and send its result items on the
-returned channel, which closes when the stream ends. A `StreamItem` holds
-one item in `Item`, or in `Err` the error that ended the stream: the
-error the operation itself would return, sent as the last value. Under
-`throw: false` in `callopts["ctrl"]`, no error is sent.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## DeviceControlOperationEntity
-
-```go
-deviceControlOperation := client.DeviceControlOperation(nil)
-fmt.Println(deviceControlOperation.GetName()) // "device_control_operation"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `action` | `string` | Yes |  |
-| `arguments` | `map[string]any` | Yes |  |
-| `created_at` | `string` | Yes |  |
-| `delivery` | `map[string]any` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
-| `device_id` | `string` | Yes |  |
-| `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
-| `end` | `map[string]any` | Yes |  |
-| `expires_at` | `string` | Yes |  |
-| `id` | `string` | Yes |  |
-| `key` | `string` | Yes |  |
-| `provider` | `string` | Yes |  |
-| `references` | `map[string]any` | Yes |  |
-| `result` | `any` | Yes |  |
-| `result_expired` | `bool` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
-| `state` | `string` | Yes |  |
-
-### Operations
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
-
-```go
-result, err := client.DeviceControlOperation(nil).Load(map[string]any{"id": "device_control_operation_id", "device_id": "device_id", "organization_id": "organization_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data())
-```
-
-#### `Create(reqdata, ctrl map[string]any) (any, error)`
-
-Create a new entity with the given data. Returns the created entity; `err` is non-nil on failure.
-
-```go
-result, err := client.DeviceControlOperation(nil).Create(map[string]any{
-    "device_id": "example_device_id",
-    "organization_id": "example_organization_id",
-    "action": "example_action",
-    "arguments": map[string]any{},
-    "key": "example_key",
-}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data())
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `DeviceControlOperationEntity` instance with the same client and
 options.
 
 #### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
@@ -20582,6 +20456,97 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `DeviceLocalEventEntity` instance with the same client and
+options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## DeviceOperationEntity
+
+```go
+deviceOperation := client.DeviceOperation(nil)
+fmt.Println(deviceOperation.GetName()) // "device_operation"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `arguments` | `map[string]any` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `delivery` | `map[string]any` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` | Yes |  |
+| `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
+| `end` | `map[string]any` | No |  |
+| `expires_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `references` | `map[string]any` | Yes |  |
+| `result` | `any` | Yes |  |
+| `result_expired` | `bool` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` | Yes |  |
+
+### Operations
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
+
+```go
+result, err := client.DeviceOperation(nil).Load(map[string]any{"id": "device_operation_id", "device_id": "device_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+#### `Create(reqdata, ctrl map[string]any) (any, error)`
+
+Create a new entity with the given data. Returns the created entity; `err` is non-nil on failure.
+
+```go
+result, err := client.DeviceOperation(nil).Create(map[string]any{
+    "device_id": "example_device_id",
+    "organization_id": "example_organization_id",
+    "action": "example_action",
+    "arguments": map[string]any{},
+    "key": "example_key",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `DeviceOperationEntity` instance with the same client and
 options.
 
 #### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
@@ -21572,210 +21537,6 @@ Return the entity name.
 
 ---
 
-## EnvironmentEntity
-
-```go
-environment := client.Environment(nil)
-fmt.Println(environment.GetName()) // "environment"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `active_revision_id` | `any` | Yes |  |
-| `agent_sign_up_available` | `bool` | Yes | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
-| `allowed_actions` | `string` | Yes | read_only only looks around; writes may create, change and delete data. |
-| `billing` | `map[string]any` | Yes |  |
-| `cleanup` | `[]any` | Yes |  |
-| `connection` | `string` | Yes |  |
-| `created_at` | `string` | Yes |  |
-| `default_policy` | `map[string]any` | No |  |
-| `default_policy_json` | `map[string]any` | Yes |  |
-| `discovery_defaults` | `map[string]any` | Yes |  |
-| `environment` | `map[string]any` | Yes |  |
-| `exploration_accounts` | `[]any` | No |  |
-| `explorations` | `[]any` | No |  |
-| `first_run` | `any` | No |  |
-| `hosted_app_id` | `any` | Yes |  |
-| `id` | `string` | Yes |  |
-| `imessage_number` | `any` | Yes | International destination number; blank or null clears it on an added environment. |
-| `included_deep_scan` | `bool` | Yes | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
-| `lock_version` | `int` | Yes |  |
-| `managed_google_available` | `bool` | Yes | Whether the managed Google account can be offered for this app. |
-| `managed_google_email` | `string` | Yes |  |
-| `messaging_tester_number` | `any` | No | One configured tester number. |
-| `name` | `string` | Yes | Optional for a website target; defaults to its hostname. |
-| `network_connections` | `[]any` | Yes |  |
-| `onboarding_discovery` | `any` | No |  |
-| `organization_id` | `string` | Yes |  |
-| `pending_accounts` | `[]any` | No | Credentials on a Composal address still waiting for the password the customer chose at signup. |
-| `permissions` | `map[string]any` | Yes |  |
-| `project_id` | `any` | Yes | Owning project. |
-| `repository_id` | `any` | Yes |  |
-| `revisions` | `[]any` | Yes |  |
-| `setup_discovery_id` | `any` | No | Existing discovery to resume after setup or Checkout, selected within this environment. |
-| `sign_in_check_available` | `bool` | Yes | Whether a test account's live sign-in check can run on this app. |
-| `slug` | `string` | Yes |  |
-| `status` | `string` | Yes |  |
-| `target_kind` | `any` | Yes |  |
-| `target_url` | `any` | Yes |  |
-| `test_accounts` | `map[string]any` | Yes |  |
-| `updated_at` | `string` | Yes |  |
-| `verify_network_connection_id` | `any` | Yes |  |
-| `version` | `int` | No | Required for target or tester changes; use lock_version from the environment. |
-
-### Field Usage by Operation
-
-| Field | load | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- |
-| `active_revision_id` | - | - | - | - | - |
-| `agent_sign_up_available` | - | - | - | - | - |
-| `allowed_actions` | - | Yes | - | Yes | - |
-| `billing` | - | - | - | - | - |
-| `cleanup` | - | - | - | - | - |
-| `connection` | - | - | - | - | - |
-| `created_at` | - | - | - | - | - |
-| `default_policy` | - | - | - | - | - |
-| `default_policy_json` | - | - | - | - | - |
-| `discovery_defaults` | - | - | - | - | - |
-| `environment` | - | - | - | - | - |
-| `exploration_accounts` | - | - | - | - | - |
-| `explorations` | - | - | - | - | - |
-| `first_run` | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - |
-| `id` | - | - | - | - | - |
-| `imessage_number` | - | Yes | - | Yes | - |
-| `included_deep_scan` | - | - | - | - | - |
-| `lock_version` | - | - | - | - | - |
-| `managed_google_available` | - | - | - | - | - |
-| `managed_google_email` | - | - | - | - | - |
-| `messaging_tester_number` | - | - | - | - | - |
-| `name` | - | Yes | - | Yes | - |
-| `network_connections` | - | - | - | - | - |
-| `onboarding_discovery` | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - |
-| `pending_accounts` | - | - | - | - | - |
-| `permissions` | - | - | - | - | - |
-| `project_id` | - | Yes | - | - | - |
-| `repository_id` | - | Yes | - | - | - |
-| `revisions` | - | - | - | - | - |
-| `setup_discovery_id` | - | - | - | - | - |
-| `sign_in_check_available` | - | - | - | - | - |
-| `slug` | - | - | - | - | - |
-| `status` | - | - | - | - | - |
-| `target_kind` | - | Yes | - | - | - |
-| `target_url` | - | Yes | - | Yes | - |
-| `test_accounts` | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - |
-| `verify_network_connection_id` | - | - | - | Yes | - |
-| `version` | - | - | - | - | - |
-
-### Operations
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
-
-```go
-result, err := client.Environment(nil).Load(map[string]any{"id": "environment_id", "organization_id": "organization_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data())
-```
-
-#### `Create(reqdata, ctrl map[string]any) (any, error)`
-
-Create a new entity with the given data. Returns the created entity; `err` is non-nil on failure.
-
-```go
-result, err := client.Environment(nil).Create(map[string]any{
-    "organization_id": "example_organization_id",
-    "slug": "example_slug",
-}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data())
-```
-
-#### `Update(reqdata, ctrl map[string]any) (any, error)`
-
-Update an existing entity. The data must include the entity `id`. Returns the updated entity; `err` is non-nil on failure.
-
-```go
-result, err := client.Environment(nil).Update(map[string]any{
-    "id": "environment_id",
-    "organization_id": "organization_id",
-    // Fields to update
-}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data())
-```
-
-#### `Patch(reqdata, ctrl map[string]any) (any, error)`
-
-Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity; `err` is non-nil on failure.
-
-```go
-result, err := client.Environment(nil).Patch(map[string]any{
-    "id": "environment_id",
-    "organization_id": "organization_id",
-    // Only the fields to change
-}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data())
-```
-
-#### `Remove(reqmatch, ctrl map[string]any) (any, error)`
-
-Remove the entity matching the given criteria. Returns the entity, marked as deleted; `err` is non-nil on failure.
-
-```go
-result, err := client.Environment(nil).Remove(map[string]any{"id": "environment_id", "organization_id": "organization_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data())
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `EnvironmentEntity` instance with the same client and
-options.
-
-#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
-
-Run an operation through the pipeline and send its result items on the
-returned channel, which closes when the stream ends. A `StreamItem` holds
-one item in `Item`, or in `Err` the error that ended the stream: the
-error the operation itself would return, sent as the last value. Under
-`throw: false` in `callopts["ctrl"]`, no error is sent.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
 ## EnvironmentDiscoveryRunEntity
 
 ```go
@@ -21794,7 +21555,7 @@ fmt.Println(environmentDiscoveryRun.GetName()) // "environment_discovery_run"
 | `failure_code` | `any` | Yes |  |
 | `id` | `string` | Yes |  |
 | `queued_at` | `string` | Yes |  |
-| `recording` | `map[string]any` | Yes |  |
+| `recording` | `map[string]any` | No |  |
 | `result` | `any` | Yes |  |
 | `status` | `string` | Yes |  |
 
@@ -21924,7 +21685,7 @@ fmt.Println(environmentExploration.GetName()) // "environment_exploration"
 | `reproductions` | `[]any` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `[]any` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `map[string]any` | Yes |  |
+| `scenario_generation` | `map[string]any` | No |  |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `any` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -22371,65 +22132,6 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `EnvironmentTestAccountEntity` instance with the same client and
-options.
-
-#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
-
-Run an operation through the pipeline and send its result items on the
-returned channel, which closes when the stream ends. A `StreamItem` holds
-one item in `Item`, or in `Err` the error that ended the stream: the
-error the operation itself would return, sent as the last value. Under
-`throw: false` in `callopts["ctrl"]`, no error is sent.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## EvidenceEntity
-
-```go
-evidence := client.Evidence(nil)
-fmt.Println(evidence.GetName()) // "evidence"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | No |  |
-
-### Operations
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
-
-```go
-result, err := client.Evidence(nil).Load(map[string]any{"id": "evidence_id", "organization_id": "organization_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data())
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `EvidenceEntity` instance with the same client and
 options.
 
 #### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
@@ -22920,7 +22622,7 @@ fmt.Println(exploration.GetName()) // "exploration"
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `[]any` | Yes | Flows a finished exploration recorded that deep scans can start from. |
 | `scenario_count` | `int` | No | Scenarios saved from this discovery. |
-| `scenario_generation` | `map[string]any` | Yes |  |
+| `scenario_generation` | `map[string]any` | No |  |
 | `scenarios_pending` | `bool` | No | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
@@ -23116,7 +22818,7 @@ fmt.Println(explorationMessage.GetName()) // "exploration_message"
 | `reproductions` | `[]any` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `[]any` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `map[string]any` | Yes |  |
+| `scenario_generation` | `map[string]any` | No |  |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `any` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -23264,7 +22966,7 @@ fmt.Println(explorationScenario.GetName()) // "exploration_scenario"
 | `reproductions` | `[]any` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `[]any` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `map[string]any` | Yes |  |
+| `scenario_generation` | `map[string]any` | No |  |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `any` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -23348,7 +23050,7 @@ fmt.Println(finding.GetName()) // "finding"
 | `organization_id` | `string` | Yes |  |
 | `permissions` | `map[string]any` | Yes |  |
 | `reason` | `string` | No | Why the finding was resolved or ignored, such as "Expected for trial accounts". |
-| `reported_occurrence` | `any` | Yes | The Discovery or Deep Scan report behind the finding; null for scenario run findings |
+| `reported_occurrence` | `any` | No | The Discovery or Deep Scan report behind the finding; null for scenario run findings |
 | `repository_id` | `any` | Yes |  |
 | `safe_summary` | `string` | Yes |  |
 | `scenario_occurrences` | `[]any` | No |  |
@@ -24346,90 +24048,6 @@ Return the entity name.
 
 ---
 
-## GithubIntegrationEntity
-
-```go
-githubIntegration := client.GithubIntegration(nil)
-fmt.Println(githubIntegration.GetName()) // "github_integration"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `account_avatar_url` | `any` | Yes |  |
-| `account_login` | `string` | Yes |  |
-| `connection_status` | `string` | Yes |  |
-| `connection_status_label` | `string` | Yes |  |
-| `github_installation` | `any` | Yes |  |
-| `health` | `map[string]any` | Yes |  |
-| `id` | `string` | Yes |  |
-| `imported_repositories_count` | `int` | Yes |  |
-| `imported_repositories_count_label` | `string` | Yes |  |
-| `organization` | `map[string]any` | Yes |  |
-| `pagination` | `map[string]any` | Yes |  |
-| `repositories` | `[]any` | Yes |  |
-
-### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.GithubIntegration(nil).List(map[string]any{"organization_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
-
-```go
-result, err := client.GithubIntegration(nil).Load(map[string]any{"id": "github_integration_id", "organization_id": "organization_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data())
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `GithubIntegrationEntity` instance with the same client and
-options.
-
-#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
-
-Run an operation through the pipeline and send its result items on the
-returned channel, which closes when the stream ends. A `StreamItem` holds
-one item in `Item`, or in `Err` the error that ended the stream: the
-error the operation itself would return, sent as the last value. Under
-`throw: false` in `callopts["ctrl"]`, no error is sent.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
 ## GithubOnboardingEntity
 
 ```go
@@ -25030,7 +24648,7 @@ fmt.Println(githubRunnerHistory.GetName()) // "github_runner_history"
 | `runs` | `[]any` | Yes |  |
 | `setup` | `any` | No | CI onboarding. |
 | `success_rate` | `any` | Yes |  |
-| `usage` | `map[string]any` | Yes |  |
+| `usage` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -27379,8 +26997,8 @@ fmt.Println(leaseVerifyDiagnostic.GetName()) // "lease_verify_diagnostic"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `browser_events` | `map[string]any` | Yes |  |
-| `live_browser` | `map[string]any` | Yes |  |
-| `live_view` | `map[string]any` | Yes | The tester's read-only live stream for page viewers. |
+| `live_browser` | `map[string]any` | No |  |
+| `live_view` | `map[string]any` | No | The tester's read-only live stream for page viewers. |
 | `steps` | `[]any` | No |  |
 
 ### Operations
@@ -27395,8 +27013,6 @@ result, err := client.LeaseVerifyDiagnostic(nil).Create(map[string]any{
     "swarm_id": "example_swarm_id",
     "task_id": "example_task_id",
     "browser_events": map[string]any{},
-    "live_browser": map[string]any{},
-    "live_view": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -27708,6 +27324,18 @@ fmt.Println(localThreadDelivery.GetName()) // "local_thread_delivery"
 | `policy` | `map[string]any` | Yes |  |
 | `recovery_message` | `any` | Yes |  |
 
+### Field Usage by Operation
+
+| Field | load | update |
+| --- | --- | --- |
+| `decision` | - | - |
+| `decision_pending` | - | - |
+| `delivery` | - | - |
+| `expected_version` | - | - |
+| `id` | - | - |
+| `policy` | - | Yes |
+| `recovery_message` | - | - |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -27786,10 +27414,10 @@ fmt.Println(localThreadOperation.GetName()) // "local_thread_operation"
 | `action` | `string` | Yes |  |
 | `arguments` | `map[string]any` | Yes |  |
 | `created_at` | `string` | Yes |  |
-| `delivery` | `map[string]any` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `delivery` | `map[string]any` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
 | `device_id` | `string` | Yes |  |
 | `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
-| `end` | `map[string]any` | Yes |  |
+| `end` | `map[string]any` | No |  |
 | `expires_at` | `string` | Yes |  |
 | `id` | `string` | Yes |  |
 | `key` | `string` | Yes |  |
@@ -28222,7 +27850,7 @@ fmt.Println(me.GetName()) // "me"
 | `github_pr_user_authorization_login` | `any` | Yes |  |
 | `github_prs_authored_by_change_author` | `bool` | Yes |  |
 | `id` | `string` | Yes |  |
-| `impersonation` | `any` | Yes |  |
+| `impersonation` | `any` | No |  |
 | `name` | `any` | Yes |  |
 | `next_path` | `string` | No | Present on a sign-in that created the person's first workspace; its setup page, where they go next. |
 | `onboarding` | `map[string]any` | Yes | V2 agent onboarding progress. |
@@ -28532,22 +28160,11 @@ fmt.Println(member.GetName()) // "member"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accepted_at` | `any` | Yes |  |
-| `accepted_by_user` | `any` | Yes |  |
 | `created_at` | `string` | Yes |  |
 | `created_at_label` | `any` | Yes |  |
-| `email` | `string` | Yes |  |
-| `email_delivery_status` | `string` | No |  |
-| `expires_at` | `any` | Yes |  |
-| `expires_at_label` | `any` | Yes |  |
 | `id` | `string` | Yes |  |
-| `invite_url` | `any` | Yes |  |
-| `invited_by_user` | `any` | Yes |  |
 | `is_self` | `bool` | Yes |  |
-| `organization` | `map[string]any` | Yes |  |
-| `revoked_at` | `any` | Yes |  |
 | `role` | `string` | Yes |  |
-| `status` | `string` | Yes |  |
 | `updated_at` | `string` | Yes |  |
 | `updated_at_label` | `any` | Yes |  |
 | `user` | `map[string]any` | Yes |  |
@@ -28790,7 +28407,7 @@ fmt.Println(mergeQueueEntry.GetName()) // "merge_queue_entry"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analytics` | `map[string]any` | Yes | Queue performance for the reporting window. |
+| `analytics` | `map[string]any` | No | Queue performance for the reporting window. |
 | `change_id` | `any` | No |  |
 | `expected_target_commit_id` | `any` | No |  |
 | `expected_target_version` | `any` | No |  |
@@ -28853,151 +28470,6 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `MergeQueueEntryEntity` instance with the same client and
-options.
-
-#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
-
-Run an operation through the pipeline and send its result items on the
-returned channel, which closes when the stream ends. A `StreamItem` holds
-one item in `Item`, or in `Err` the error that ended the stream: the
-error the operation itself would return, sent as the last value. Under
-`throw: false` in `callopts["ctrl"]`, no error is sent.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## MergeRequestEntity
-
-```go
-mergeRequest := client.MergeRequest(nil)
-fmt.Println(mergeRequest.GetName()) // "merge_request"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `available_tests` | `[]any` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `base_sha` | `string` | Yes |  |
-| `branch` | `string` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `comment_url` | `any` | Yes |  |
-| `current_run` | `any` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `draft` | `bool` | Yes |  |
-| `findings` | `[]any` | Yes |  |
-| `github_repository` | `any` | Yes | GitHub owner/repository associated with this pull request. |
-| `github_url` | `any` | Yes |  |
-| `head_sha` | `string` | Yes | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` | `string` | Yes |  |
-| `idempotency_key` | `string` | Yes |  |
-| `number` | `int` | Yes |  |
-| `pagination` | `map[string]any` | Yes |  |
-| `permissions` | `map[string]any` | Yes |  |
-| `preview_cleanup_ready` | `bool` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | `any` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` | `any` | No |  |
-| `project_id` | `any` | Yes | Composal project slug or public ID for PR preview environments. |
-| `project_slug` | `any` | Yes |  |
-| `provider` | `string` | Yes |  |
-| `pull_request` | `map[string]any` | Yes |  |
-| `repository_id` | `string` | Yes |  |
-| `request_label` | `string` | Yes |  |
-| `requested_run_id` | `any` | Yes |  |
-| `runs` | `[]any` | Yes |  |
-| `source_branch` | `any` | Yes |  |
-| `source_repository` | `any` | Yes |  |
-| `source_url` | `any` | Yes |  |
-| `state` | `string` | Yes |  |
-| `title` | `string` | Yes |  |
-| `updated_at` | `string` | Yes |  |
-| `web_path` | `string` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | load | create |
-| --- | --- | --- |
-| `available_tests` | - | - |
-| `base_sha` | - | - |
-| `branch` | - | - |
-| `comment_url` | - | - |
-| `current_run` | - | - |
-| `draft` | - | - |
-| `findings` | - | - |
-| `github_repository` | - | - |
-| `github_url` | - | - |
-| `head_sha` | - | Yes |
-| `id` | - | - |
-| `idempotency_key` | - | - |
-| `number` | - | - |
-| `pagination` | - | - |
-| `permissions` | - | - |
-| `preview_cleanup_ready` | - | - |
-| `preview_url` | - | - |
-| `project` | - | - |
-| `project_id` | - | Yes |
-| `project_slug` | - | - |
-| `provider` | - | - |
-| `pull_request` | - | - |
-| `repository_id` | - | Yes |
-| `request_label` | - | - |
-| `requested_run_id` | - | - |
-| `runs` | - | - |
-| `source_branch` | - | - |
-| `source_repository` | - | - |
-| `source_url` | - | - |
-| `state` | - | - |
-| `title` | - | - |
-| `updated_at` | - | - |
-| `web_path` | - | - |
-
-### Operations
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
-
-```go
-result, err := client.MergeRequest(nil).Load(map[string]any{"id": "merge_request_id", "organization_id": "organization_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data())
-```
-
-#### `Create(reqdata, ctrl map[string]any) (any, error)`
-
-Create a new entity with the given data. Returns the created entity; `err` is non-nil on failure.
-
-```go
-result, err := client.MergeRequest(nil).Create(map[string]any{
-    "organization_id": "example_organization_id",
-    "idempotency_key": "example_idempotency_key",
-    "number": 1,
-}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data())
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `MergeRequestEntity` instance with the same client and
 options.
 
 #### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
@@ -29104,7 +28576,7 @@ fmt.Println(messagingConversationMessage.GetName()) // "messaging_conversation_m
 | `client_operation_id` | `string` | Yes |  |
 | `content` | `string` | Yes |  |
 | `id` | `string` | No |  |
-| `media` | `map[string]any` | Yes |  |
+| `media` | `map[string]any` | No |  |
 | `media_upload_ids` | `[]any` | No | Ordered staged upload IDs; six on Photon, one on Sendblue. |
 | `messages` | `[]any` | Yes |  |
 | `reply_to` | `string` | No | Public ID of a visible message |
@@ -29127,7 +28599,6 @@ result, err := client.MessagingConversationMessage(nil).Create(map[string]any{
     "project_id": "example_project_id",
     "client_operation_id": "example_client_operation_id",
     "content": "example_content",
-    "media": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -32795,6 +32266,90 @@ Return the entity name.
 
 ---
 
+## PagesGithubIntegrationEntity
+
+```go
+pagesGithubIntegration := client.PagesGithubIntegration(nil)
+fmt.Println(pagesGithubIntegration.GetName()) // "pages_github_integration"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `any` | Yes |  |
+| `account_login` | `string` | Yes |  |
+| `connection_status` | `string` | Yes |  |
+| `connection_status_label` | `string` | Yes |  |
+| `github_installation` | `any` | Yes |  |
+| `health` | `map[string]any` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imported_repositories_count` | `int` | Yes |  |
+| `imported_repositories_count_label` | `string` | Yes |  |
+| `organization` | `map[string]any` | Yes |  |
+| `pagination` | `map[string]any` | Yes |  |
+| `repositories` | `[]any` | Yes |  |
+
+### Operations
+
+#### `List(reqmatch, ctrl map[string]any) (any, error)`
+
+List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+
+```go
+results, err := client.PagesGithubIntegration(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+for _, item := range results.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
+
+```go
+result, err := client.PagesGithubIntegration(nil).Load(map[string]any{"id": "pages_github_integration_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `PagesGithubIntegrationEntity` instance with the same client and
+options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
 ## PagesGithubOnboardingEntity
 
 ```go
@@ -34282,7 +33837,7 @@ fmt.Println(productMapIdentityDecision.GetName()) // "product_map_identity_decis
 | `observations` | `[]any` | Yes |  |
 | `operation` | `string` | Yes |  |
 | `reason` | `string` | Yes |  |
-| `target` | `map[string]any` | Yes |  |
+| `target` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -34297,7 +33852,6 @@ result, err := client.ProductMapIdentityDecision(nil).Create(map[string]any{
     "observations": []any{},
     "operation": "example_operation",
     "reason": "example_reason",
-    "target": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -34754,7 +34308,7 @@ fmt.Println(project.GetName()) // "project"
 | `name` | `string` | Yes |  |
 | `network_connections` | `[]any` | Yes |  |
 | `organization_id` | `string` | Yes |  |
-| `overview` | `map[string]any` | Yes |  |
+| `overview` | `map[string]any` | No |  |
 | `permissions` | `map[string]any` | Yes |  |
 | `personas` | `[]any` | Yes |  |
 | `project` | `map[string]any` | Yes |  |
@@ -34762,7 +34316,7 @@ fmt.Println(project.GetName()) // "project"
 | `pull_requests` | `[]any` | Yes |  |
 | `purpose` | `any` | Yes |  |
 | `runs` | `[]any` | Yes |  |
-| `scenario_history` | `map[string]any` | Yes |  |
+| `scenario_history` | `map[string]any` | No |  |
 | `scenario_states` | `map[string]any` | Yes | Scenarios by the state of their latest execution. |
 | `scenarios` | `[]any` | Yes |  |
 | `setup_required` | `bool` | No |  |
@@ -34927,13 +34481,13 @@ fmt.Println(projectAndroidApk.GetName()) // "project_android_apk"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `android` | `map[string]any` | Yes |  |
+| `android` | `map[string]any` | No |  |
 | `artifact_paths` | `[]any` | No |  |
 | `description` | `string` | Yes |  |
 | `image` | `string` | Yes |  |
-| `ios` | `map[string]any` | Yes |  |
+| `ios` | `map[string]any` | No |  |
 | `launch_command` | `string` | No |  |
-| `managed_binary` | `map[string]any` | Yes |  |
+| `managed_binary` | `map[string]any` | No |  |
 | `platform` | `string` | No |  |
 | `provider` | `string` | No |  |
 | `setup_command` | `string` | No |  |
@@ -35006,7 +34560,7 @@ fmt.Println(projectCodeMap.GetName()) // "project_code_map"
 | `name` | `string` | Yes |  |
 | `ref` | `string` | No |  |
 | `repository_id` | `string` | Yes |  |
-| `revision` | `map[string]any` | Yes |  |
+| `revision` | `map[string]any` | No |  |
 | `slug` | `string` | Yes |  |
 | `status` | `string` | Yes |  |
 
@@ -35496,13 +35050,13 @@ fmt.Println(projectIosApp.GetName()) // "project_ios_app"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `android` | `map[string]any` | Yes |  |
+| `android` | `map[string]any` | No |  |
 | `artifact_paths` | `[]any` | No |  |
 | `description` | `string` | Yes |  |
 | `image` | `string` | Yes |  |
-| `ios` | `map[string]any` | Yes |  |
+| `ios` | `map[string]any` | No |  |
 | `launch_command` | `string` | No |  |
-| `managed_binary` | `map[string]any` | Yes |  |
+| `managed_binary` | `map[string]any` | No |  |
 | `platform` | `string` | No |  |
 | `provider` | `string` | No |  |
 | `setup_command` | `string` | No |  |
@@ -35831,6 +35385,67 @@ Return the entity name.
 
 ---
 
+## ProjectPrTestingEntity
+
+```go
+projectPrTesting := client.ProjectPrTesting(nil)
+fmt.Println(projectPrTesting.GetName()) // "project_pr_testing"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+| `project` | `map[string]any` | Yes |  |
+| `pull_request_options` | `map[string]any` | Yes |  |
+
+### Operations
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
+
+```go
+result, err := client.ProjectPrTesting(nil).Load(map[string]any{"id": "project_pr_testing_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `ProjectPrTestingEntity` instance with the same client and
+options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
 ## ProjectProductMapEntity
 
 ```go
@@ -35853,6 +35468,71 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `ProjectProductMapEntity` instance with the same client and
+options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## ProjectProductMapComparisonEntity
+
+```go
+projectProductMapComparison := client.ProjectProductMapComparison(nil)
+fmt.Println(projectProductMapComparison.GetName()) // "project_product_map_comparison"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accounts` | `[]any` | Yes |  |
+| `comparison` | `any` | Yes |  |
+| `filters` | `any` | Yes |  |
+| `id` | `string` | No |  |
+| `project` | `map[string]any` | Yes |  |
+| `requirements` | `[]any` | Yes |  |
+| `revisions` | `[]any` | Yes |  |
+
+### Operations
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
+
+```go
+result, err := client.ProjectProductMapComparison(nil).Load(map[string]any{"id": "project_product_map_comparison_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `ProjectProductMapComparisonEntity` instance with the same client and
 options.
 
 #### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
@@ -35996,6 +35676,25 @@ fmt.Println(projectRunPlan.GetName()) // "project_run_plan"
 | `updated_at` | `string` | Yes |  |
 | `version` | `int` | Yes |  |
 
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `archived_at` | - | - | - | - | - |
+| `base_url` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dependencies` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `identity_probe` | - | - | Yes | Yes | Yes |
+| `kind` | - | - | - | - | - |
+| `lock_version` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `nodes` | - | - | - | - | - |
+| `preview` | - | - | - | - | - |
+| `project_id` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `version` | - | - | - | - | - |
+
 ### Operations
 
 #### `List(reqmatch, ctrl map[string]any) (any, error)`
@@ -36033,7 +35732,6 @@ result, err := client.ProjectRunPlan(nil).Create(map[string]any{
     "organization_id": "example_organization_id",
     "project_id": "example_project_id",
     "dependencies": []any{},
-    "identity_probe": map[string]any{},
     "name": "example_name",
     "nodes": []any{},
 }, nil)
@@ -36427,25 +36125,23 @@ fmt.Println(projectSetting.GetName()) // "project_setting"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `available_messaging_environments` | `[]any` | Yes |  |
-| `messaging_conversations` | `[]any` | Yes |  |
-| `messaging_enabled` | `bool` | Yes |  |
-| `permissions` | `map[string]any` | Yes |  |
-| `project` | `map[string]any` | Yes |  |
-| `tester_numbers` | `[]any` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
 
 ### Operations
 
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+#### `List(reqmatch, ctrl map[string]any) (any, error)`
 
-Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
+List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
 
 ```go
-result, err := client.ProjectSetting(nil).Load(map[string]any{"organization_id": "organization_id", "project_id": "project_id"}, nil)
+results, err := client.ProjectSetting(nil).List(map[string]any{"organization_id": "example", "project_id": "example"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(result.(sdk.Entity).Data())
+for _, item := range results.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 ### Common Methods
@@ -36463,98 +36159,6 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `ProjectSettingEntity` instance with the same client and
-options.
-
-#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
-
-Run an operation through the pipeline and send its result items on the
-returned channel, which closes when the stream ends. A `StreamItem` holds
-one item in `Item`, or in `Err` the error that ended the stream: the
-error the operation itself would return, sent as the last value. Under
-`throw: false` in `callopts["ctrl"]`, no error is sent.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## PullRequestEntity
-
-```go
-pullRequest := client.PullRequest(nil)
-fmt.Println(pullRequest.GetName()) // "pull_request"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `available_tests` | `[]any` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `branch` | `string` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `cleanup_only` | `bool` | No | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
-| `current_run` | `any` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `findings` | `[]any` | Yes |  |
-| `head_sha` | `string` | No | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` | `string` | No |  |
-| `idempotency_key` | `string` | Yes |  |
-| `imessage_number` | `string` | No | International destination of this exact deployed commit. |
-| `number` | `int` | No |  |
-| `pagination` | `map[string]any` | Yes |  |
-| `permissions` | `map[string]any` | Yes |  |
-| `preview_cleanup_ready` | `bool` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | `any` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` | `any` | No |  |
-| `project_id` | `string` | No | Composal project slug or public ID for PR preview environments. |
-| `pull_request` | `map[string]any` | Yes |  |
-| `repository_id` | `string` | No |  |
-| `runs` | `[]any` | Yes |  |
-
-### Operations
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
-
-```go
-result, err := client.PullRequest(nil).Load(map[string]any{"id": "pull_request_id", "organization_id": "organization_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data())
-```
-
-#### `Create(reqdata, ctrl map[string]any) (any, error)`
-
-Create a new entity with the given data. Returns the created entity; `err` is non-nil on failure.
-
-```go
-result, err := client.PullRequest(nil).Create(map[string]any{
-    "organization_id": "example_organization_id",
-    "idempotency_key": "example_idempotency_key",
-}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result.(sdk.Entity).Data())
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `PullRequestEntity` instance with the same client and
 options.
 
 #### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
@@ -39915,7 +39519,7 @@ fmt.Println(runJob.GetName()) // "run_job"
 | --- | --- | --- | --- |
 | `active` | `bool` | Yes |  |
 | `allow_failure` | `bool` | Yes |  |
-| `cache_archive_observations` | `any` | Yes | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `cache_archive_observations` | `any` | No | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
 | `ci_pipeline_run_id` | `string` | Yes |  |
 | `ci_runner_id` | `any` | Yes |  |
 | `created_at` | `string` | Yes |  |
@@ -39936,7 +39540,7 @@ fmt.Println(runJob.GetName()) // "run_job"
 | `queued_at` | `any` | Yes |  |
 | `reconciliation_id` | `any` | No |  |
 | `retry_number` | `int` | Yes |  |
-| `reuse` | `any` | Yes |  |
+| `reuse` | `any` | No |  |
 | `runner_label_selector` | `any` | Yes |  |
 | `slug` | `string` | Yes |  |
 | `started_at` | `any` | Yes |  |
@@ -40186,48 +39790,37 @@ fmt.Println(runUpdate.GetName()) // "run_update"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `base_sha` | `string` | Yes |  |
-| `can_verify` | `bool` | Yes |  |
-| `comment_url` | `any` | Yes |  |
-| `draft` | `bool` | Yes |  |
-| `github_repository` | `any` | Yes | GitHub owner/repository associated with this pull request. |
-| `github_url` | `any` | Yes |  |
-| `head_sha` | `string` | Yes |  |
-| `id` | `string` | Yes |  |
-| `latest_created_at` | `any` | Yes |  |
-| `latest_current` | `bool` | Yes |  |
-| `latest_head_sha` | `any` | Yes |  |
-| `latest_reason` | `any` | Yes |  |
-| `latest_run_id` | `any` | Yes |  |
-| `latest_state` | `any` | Yes |  |
-| `number` | `int` | Yes |  |
-| `project_id` | `any` | Yes |  |
-| `project_slug` | `any` | Yes |  |
-| `provider` | `string` | Yes |  |
-| `repository_id` | `string` | Yes |  |
-| `request_label` | `string` | Yes |  |
-| `source_branch` | `any` | Yes |  |
-| `source_repository` | `any` | Yes |  |
-| `source_url` | `any` | Yes |  |
-| `state` | `string` | Yes |  |
-| `title` | `string` | Yes |  |
-| `updated_at` | `string` | Yes |  |
-| `web_path` | `string` | Yes |  |
+| `active_runs` | `[]any` | Yes |  |
+| `checkout_required` | `bool` | Yes |  |
+| `cli_signed_in_at` | `any` | Yes | When the signed-in user last finished a CLI sign-in for this organization, so agent setup can show the CLI is connected. |
+| `counts` | `map[string]any` | Yes |  |
+| `demo_project` | `any` | Yes | The workspace's copy of the demo project, which setup offers as example data. |
+| `environments` | `[]any` | Yes |  |
+| `included_deep_scan` | `bool` | Yes | Whether a new app gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account, so setup asks for one right after the app. |
+| `onboarding_discovery` | `any` | No |  |
+| `organization` | `map[string]any` | Yes |  |
+| `permissions` | `map[string]any` | Yes |  |
+| `project` | `any` | Yes | The project the page is limited to, or null for the whole organization. |
+| `pull_request_launch_options` | `[]any` | No |  |
+| `pull_requests` | `[]any` | No |  |
+| `repositories` | `[]any` | Yes |  |
+| `runs` | `[]any` | Yes |  |
+| `runs_pagination` | `map[string]any` | Yes |  |
+| `suggested_app_url` | `any` | Yes | The URL first-run setup prefills for a new app, from the workspace's project website or the signed-in user's work email domain. |
+| `url_first_start` | `bool` | Yes | Whether setup opens on the URL-first screen, which saves the app and asks for test access next. |
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.RunUpdate(nil).List(map[string]any{"organization_id": "example"}, nil)
+result, err := client.RunUpdate(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -41471,8 +41064,8 @@ fmt.Println(signal.GetName()) // "signal"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `acked_at` | `any` | Yes |  |
-| `acked_by` | `any` | Yes | Who acked the signal, read from `acked_by_user_id`. |
-| `agent_runs` | `map[string]any` | Yes | Dispatched-run summary (docs §6c). |
+| `acked_by` | `any` | No | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | `map[string]any` | No | Dispatched-run summary (docs §6c). |
 | `app_service_id` | `any` | Yes |  |
 | `attribution` | `map[string]any` | Yes | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
 | `created_at` | `string` | Yes | ISO8601 row insert time — retention math and debugging only. |
@@ -41484,8 +41077,8 @@ fmt.Println(signal.GetName()) // "signal"
 | `occurred_at` | `string` | Yes | ISO8601 domain event time — what the UI displays and `since` filters on. |
 | `organization_id` | `string` | Yes |  |
 | `payload` | `map[string]any` | Yes | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
-| `recovery` | `map[string]any` | Yes | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
-| `resolution` | `map[string]any` | Yes | Recovery pairing (docs §6b). |
+| `recovery` | `map[string]any` | No | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | `map[string]any` | No | Recovery pairing (docs §6b). |
 | `severity` | `string` | Yes | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
 | `source` | `map[string]any` | Yes | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
 | `subject_id` | `any` | Yes |  |
@@ -44324,7 +43917,7 @@ fmt.Println(sparkAgentLocalThread.GetName()) // "spark_agent_local_thread"
 | `can_interrupt` | `bool` | Yes |  |
 | `can_send` | `bool` | Yes |  |
 | `created_at` | `string` | Yes |  |
-| `delivery` | `map[string]any` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `delivery` | `map[string]any` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
 | `device_id` | `string` | Yes |  |
 | `device_name` | `string` | Yes |  |
 | `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
@@ -44339,7 +43932,7 @@ fmt.Println(sparkAgentLocalThread.GetName()) // "spark_agent_local_thread"
 | `provider` | `string` | Yes |  |
 | `references` | `map[string]any` | Yes |  |
 | `relay_disconnected_at` | `any` | No |  |
-| `relay_participant` | `map[string]any` | Yes |  |
+| `relay_participant` | `map[string]any` | No |  |
 | `result` | `any` | Yes |  |
 | `result_expired` | `bool` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
 | `result_schema` | `any` | No |  |
@@ -44349,6 +43942,44 @@ fmt.Println(sparkAgentLocalThread.GetName()) // "spark_agent_local_thread"
 | `task_configured` | `bool` | Yes |  |
 | `thread_id` | `string` | Yes |  |
 | `title` | `string` | Yes | Short title: the native name, or the first prompt's first line without the agent's task preamble. |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `action` | - | - |
+| `archived` | - | - |
+| `can_archive` | - | - |
+| `can_disconnect_relay` | - | - |
+| `can_end` | - | - |
+| `can_interrupt` | - | - |
+| `can_send` | - | - |
+| `created_at` | - | - |
+| `delivery` | - | - |
+| `device_id` | - | - |
+| `device_name` | - | - |
+| `diagnostic_code` | - | - |
+| `end` | - | Yes |
+| `expires_at` | - | - |
+| `full_title` | - | - |
+| `id` | - | - |
+| `key` | - | - |
+| `last_activity_at` | - | - |
+| `native_thread_id` | - | - |
+| `parent_conversation_id` | - | - |
+| `provider` | - | - |
+| `references` | - | - |
+| `relay_disconnected_at` | - | - |
+| `relay_participant` | - | - |
+| `result` | - | - |
+| `result_expired` | - | - |
+| `result_schema` | - | - |
+| `section` | - | - |
+| `state` | - | - |
+| `status` | - | - |
+| `task_configured` | - | - |
+| `thread_id` | - | - |
+| `title` | - | - |
 
 ### Operations
 
@@ -44619,7 +44250,7 @@ fmt.Println(sparkAgentThread.GetName()) // "spark_agent_thread"
 | `can_compact` | - | - |
 | `can_snooze` | - | - |
 | `coordination_status` | - | - |
-| `execution` | Yes | - |
+| `execution` | - | - |
 | `first_input` | - | - |
 | `first_input_key` | - | - |
 | `first_input_requester_membership_id` | - | - |
@@ -44702,6 +44333,110 @@ Return the entity name.
 
 ---
 
+## SparkAutomationEntity
+
+```go
+sparkAutomation := client.SparkAutomation(nil)
+fmt.Println(sparkAutomation.GetName()) // "spark_automation"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage` | `bool` | Yes |  |
+| `can_manage_events` | `bool` | Yes | Whether new event triggers can be attached or existing settings saved. |
+| `can_run` | `bool` | Yes | Whether the viewer can request a manual Temporal run |
+| `can_schedule` | `bool` | Yes |  |
+| `definition` | `map[string]any` | Yes |  |
+| `event_subscriptions` | `[]any` | Yes |  |
+| `event_triggers` | `[]any` | Yes |  |
+| `expected_revision` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `revision` | `int` | Yes |  |
+| `schedule` | `any` | Yes |  |
+| `schedules` | `[]any` | Yes |  |
+| `version` | `map[string]any` | Yes |  |
+
+### Operations
+
+#### `List(reqmatch, ctrl map[string]any) (any, error)`
+
+List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+
+```go
+results, err := client.SparkAutomation(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+for _, item := range results.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
+
+```go
+result, err := client.SparkAutomation(nil).Load(map[string]any{"id": "spark_automation_id", "agent_id": "agent_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+#### `Update(reqdata, ctrl map[string]any) (any, error)`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity; `err` is non-nil on failure.
+
+```go
+result, err := client.SparkAutomation(nil).Update(map[string]any{
+    "id": "spark_automation_id",
+    "agent_id": "agent_id",
+    "organization_id": "organization_id",
+    // Fields to update
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `SparkAutomationEntity` instance with the same client and
+options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
 ## SparkCreditEntity
 
 ```go
@@ -44719,7 +44454,7 @@ fmt.Println(sparkCredit.GetName()) // "spark_credit"
 | `available_usd` | `string` | Yes |  |
 | `billing_unit` | `string` | No | Compute minute quote version returned by the billing summary. |
 | `can_manage` | `bool` | Yes |  |
-| `compute_minutes` | `map[string]any` | Yes |  |
+| `compute_minutes` | `map[string]any` | No |  |
 | `compute_usd` | `string` | No |  |
 | `credits_per_usd` | `int` | Yes |  |
 | `inference_usd` | `string` | No |  |
@@ -46891,7 +46626,7 @@ fmt.Println(vcMergeQueue.GetName()) // "vc_merge_queue"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analytics` | `map[string]any` | Yes | Queue performance for the reporting window. |
+| `analytics` | `map[string]any` | No | Queue performance for the reporting window. |
 | `id` | `string` | No |  |
 | `policy` | `map[string]any` | Yes |  |
 | `queue` | `map[string]any` | Yes |  |
@@ -46972,7 +46707,7 @@ fmt.Println(vcStack.GetName()) // "vc_stack"
 | `changes` | `[]any` | Yes |  |
 | `code` | `string` | Yes |  |
 | `id` | `string` | No |  |
-| `landing` | `map[string]any` | Yes | Compact landing state for the Stack CLI. |
+| `landing` | `map[string]any` | No | Compact landing state for the Stack CLI. |
 | `member_count` | `int` | Yes |  |
 | `name` | `any` | Yes |  |
 | `ref_name` | `string` | Yes |  |
@@ -47682,7 +47417,7 @@ fmt.Println(verificationProjectScenario.GetName()) // "verification_project_scen
 | `created_at` | `string` | Yes |  |
 | `dependencies` | `[]any` | Yes |  |
 | `fixtures` | `[]any` | No | Files upload steps choose, ordered by name. |
-| `health` | `map[string]any` | Yes |  |
+| `health` | `map[string]any` | No |  |
 | `id` | `string` | Yes |  |
 | `identity_probe` | `any` | No |  |
 | `if` | `any` | No | A documented subset of Actions expressions. |
@@ -48050,6 +47785,506 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `VerifyEmailVerificationEntity` instance with the same client and
+options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## VerifyEnvironmentEntity
+
+```go
+verifyEnvironment := client.VerifyEnvironment(nil)
+fmt.Println(verifyEnvironment.GetName()) // "verify_environment"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_revision_id` | `any` | Yes |  |
+| `agent_sign_up_available` | `bool` | Yes | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
+| `allowed_actions` | `string` | Yes | read_only only looks around; writes may create, change and delete data. |
+| `billing` | `map[string]any` | Yes |  |
+| `cleanup` | `[]any` | Yes |  |
+| `connection` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `default_policy` | `map[string]any` | No |  |
+| `default_policy_json` | `map[string]any` | Yes |  |
+| `discovery_defaults` | `map[string]any` | Yes |  |
+| `environment` | `map[string]any` | Yes |  |
+| `exploration_accounts` | `[]any` | No |  |
+| `explorations` | `[]any` | No |  |
+| `first_run` | `any` | No |  |
+| `hosted_app_id` | `any` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imessage_number` | `any` | Yes | International destination number; blank or null clears it on an added environment. |
+| `included_deep_scan` | `bool` | Yes | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
+| `lock_version` | `int` | Yes |  |
+| `managed_google_available` | `bool` | Yes | Whether the managed Google account can be offered for this app. |
+| `managed_google_email` | `string` | Yes |  |
+| `messaging_tester_number` | `any` | No | One configured tester number. |
+| `name` | `string` | Yes | Optional for a website target; defaults to its hostname. |
+| `network_connections` | `[]any` | Yes |  |
+| `onboarding_discovery` | `any` | No |  |
+| `organization_id` | `string` | Yes |  |
+| `pending_accounts` | `[]any` | No | Credentials on a Composal address still waiting for the password the customer chose at signup. |
+| `permissions` | `map[string]any` | Yes |  |
+| `project_id` | `any` | Yes | Owning project. |
+| `repository_id` | `any` | Yes |  |
+| `revisions` | `[]any` | Yes |  |
+| `setup_discovery_id` | `any` | No | Existing discovery to resume after setup or Checkout, selected within this environment. |
+| `sign_in_check_available` | `bool` | Yes | Whether a test account's live sign-in check can run on this app. |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `target_kind` | `any` | Yes |  |
+| `target_url` | `any` | Yes |  |
+| `test_accounts` | `map[string]any` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `verify_network_connection_id` | `any` | Yes |  |
+| `version` | `int` | No | Required for target or tester changes; use lock_version from the environment. |
+
+### Field Usage by Operation
+
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `active_revision_id` | - | - | - | - | - |
+| `agent_sign_up_available` | - | - | - | - | - |
+| `allowed_actions` | - | Yes | - | Yes | - |
+| `billing` | - | - | - | - | - |
+| `cleanup` | - | - | - | - | - |
+| `connection` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `default_policy` | - | - | - | - | - |
+| `default_policy_json` | - | - | - | - | - |
+| `discovery_defaults` | - | - | - | - | - |
+| `environment` | - | - | - | - | - |
+| `exploration_accounts` | - | - | - | - | - |
+| `explorations` | - | - | - | - | - |
+| `first_run` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `imessage_number` | - | Yes | - | Yes | - |
+| `included_deep_scan` | - | - | - | - | - |
+| `lock_version` | - | - | - | - | - |
+| `managed_google_available` | - | - | - | - | - |
+| `managed_google_email` | - | - | - | - | - |
+| `messaging_tester_number` | - | - | - | - | - |
+| `name` | - | Yes | - | Yes | - |
+| `network_connections` | - | - | - | - | - |
+| `onboarding_discovery` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `pending_accounts` | - | - | - | - | - |
+| `permissions` | - | - | - | - | - |
+| `project_id` | - | Yes | - | - | - |
+| `repository_id` | - | Yes | - | - | - |
+| `revisions` | - | - | - | - | - |
+| `setup_discovery_id` | - | - | - | - | - |
+| `sign_in_check_available` | - | - | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `target_kind` | - | Yes | - | - | - |
+| `target_url` | - | Yes | - | Yes | - |
+| `test_accounts` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verify_network_connection_id` | - | - | - | Yes | - |
+| `version` | - | - | - | - | - |
+
+### Operations
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
+
+```go
+result, err := client.VerifyEnvironment(nil).Load(map[string]any{"id": "verify_environment_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+#### `Create(reqdata, ctrl map[string]any) (any, error)`
+
+Create a new entity with the given data. Returns the created entity; `err` is non-nil on failure.
+
+```go
+result, err := client.VerifyEnvironment(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "slug": "example_slug",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+#### `Update(reqdata, ctrl map[string]any) (any, error)`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity; `err` is non-nil on failure.
+
+```go
+result, err := client.VerifyEnvironment(nil).Update(map[string]any{
+    "id": "verify_environment_id",
+    "organization_id": "organization_id",
+    // Fields to update
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+#### `Patch(reqdata, ctrl map[string]any) (any, error)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity; `err` is non-nil on failure.
+
+```go
+result, err := client.VerifyEnvironment(nil).Patch(map[string]any{
+    "id": "verify_environment_id",
+    "organization_id": "organization_id",
+    // Only the fields to change
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+#### `Remove(reqmatch, ctrl map[string]any) (any, error)`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted; `err` is non-nil on failure.
+
+```go
+result, err := client.VerifyEnvironment(nil).Remove(map[string]any{"id": "verify_environment_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `VerifyEnvironmentEntity` instance with the same client and
+options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## VerifyEvidenceEntity
+
+```go
+verifyEvidence := client.VerifyEvidence(nil)
+fmt.Println(verifyEvidence.GetName()) // "verify_evidence"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
+
+```go
+result, err := client.VerifyEvidence(nil).Load(map[string]any{"id": "verify_evidence_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `VerifyEvidenceEntity` instance with the same client and
+options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## VerifyMergeRequestEntity
+
+```go
+verifyMergeRequest := client.VerifyMergeRequest(nil)
+fmt.Println(verifyMergeRequest.GetName()) // "verify_merge_request"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available_tests` | `[]any` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `base_sha` | `string` | Yes |  |
+| `branch` | `string` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `comment_url` | `any` | Yes |  |
+| `current_run` | `any` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `draft` | `bool` | Yes |  |
+| `findings` | `[]any` | Yes |  |
+| `github_repository` | `any` | Yes | GitHub owner/repository associated with this pull request. |
+| `github_url` | `any` | Yes |  |
+| `head_sha` | `string` | Yes | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` | `string` | Yes |  |
+| `idempotency_key` | `string` | Yes |  |
+| `number` | `int` | Yes |  |
+| `pagination` | `map[string]any` | Yes |  |
+| `permissions` | `map[string]any` | Yes |  |
+| `preview_cleanup_ready` | `bool` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | `any` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` | `any` | No |  |
+| `project_id` | `any` | Yes | Composal project slug or public ID for PR preview environments. |
+| `project_slug` | `any` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `pull_request` | `map[string]any` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `request_label` | `string` | Yes |  |
+| `requested_run_id` | `any` | Yes |  |
+| `runs` | `[]any` | Yes |  |
+| `source_branch` | `any` | Yes |  |
+| `source_repository` | `any` | Yes |  |
+| `source_url` | `any` | Yes |  |
+| `state` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `web_path` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `available_tests` | - | - |
+| `base_sha` | - | - |
+| `branch` | - | - |
+| `comment_url` | - | - |
+| `current_run` | - | - |
+| `draft` | - | - |
+| `findings` | - | - |
+| `github_repository` | - | - |
+| `github_url` | - | - |
+| `head_sha` | - | Yes |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `number` | - | - |
+| `pagination` | - | - |
+| `permissions` | - | - |
+| `preview_cleanup_ready` | - | - |
+| `preview_url` | - | - |
+| `project` | - | - |
+| `project_id` | - | Yes |
+| `project_slug` | - | - |
+| `provider` | - | - |
+| `pull_request` | - | - |
+| `repository_id` | - | Yes |
+| `request_label` | - | - |
+| `requested_run_id` | - | - |
+| `runs` | - | - |
+| `source_branch` | - | - |
+| `source_repository` | - | - |
+| `source_url` | - | - |
+| `state` | - | - |
+| `title` | - | - |
+| `updated_at` | - | - |
+| `web_path` | - | - |
+
+### Operations
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
+
+```go
+result, err := client.VerifyMergeRequest(nil).Load(map[string]any{"id": "verify_merge_request_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+#### `Create(reqdata, ctrl map[string]any) (any, error)`
+
+Create a new entity with the given data. Returns the created entity; `err` is non-nil on failure.
+
+```go
+result, err := client.VerifyMergeRequest(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "idempotency_key": "example_idempotency_key",
+    "number": 1,
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `VerifyMergeRequestEntity` instance with the same client and
+options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## VerifyPullRequestEntity
+
+```go
+verifyPullRequest := client.VerifyPullRequest(nil)
+fmt.Println(verifyPullRequest.GetName()) // "verify_pull_request"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available_tests` | `[]any` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `branch` | `string` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `cleanup_only` | `bool` | No | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
+| `current_run` | `any` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `findings` | `[]any` | Yes |  |
+| `head_sha` | `string` | No | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` | `string` | No |  |
+| `idempotency_key` | `string` | Yes |  |
+| `imessage_number` | `string` | No | International destination of this exact deployed commit. |
+| `number` | `int` | No |  |
+| `pagination` | `map[string]any` | Yes |  |
+| `permissions` | `map[string]any` | Yes |  |
+| `preview_cleanup_ready` | `bool` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | `any` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` | `any` | No |  |
+| `project_id` | `string` | No | Composal project slug or public ID for PR preview environments. |
+| `pull_request` | `map[string]any` | Yes |  |
+| `repository_id` | `string` | No |  |
+| `runs` | `[]any` | Yes |  |
+
+### Operations
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
+
+```go
+result, err := client.VerifyPullRequest(nil).Load(map[string]any{"id": "verify_pull_request_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+#### `Create(reqdata, ctrl map[string]any) (any, error)`
+
+Create a new entity with the given data. Returns the created entity; `err` is non-nil on failure.
+
+```go
+result, err := client.VerifyPullRequest(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "idempotency_key": "example_idempotency_key",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `VerifyPullRequestEntity` instance with the same client and
 options.
 
 #### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
@@ -48937,10 +49172,10 @@ client := sdk.NewComposalSDK(map[string]any{
 ### Configuring features
 
 Each feature is inactive until switched on, and an SDK with no feature
-configured does no feature work at all. Every option below keeps its default
-unless you name it.
+configured does no feature work at all.
+Every option below keeps its default unless you name it.
 
-The array form of \`feature\` is significant: several features wrap the
+The array form of `feature` is significant: several features wrap the
 transport, and the order you list them in is the order they nest.
 
 #### Ordering
@@ -48951,10 +49186,10 @@ a feature activated later sits OUTSIDE one activated earlier, and sees the call
 first.
 
 That decides behaviour, not just sequence: a feature that short-circuits the
-call, such as a cache serving a hit, stops every feature nested inside it from
+call stops every feature nested inside it from
 ever seeing that call.
 
-`debug`, `idempotency`, `metrics`, `paging`, `test` attach to pipeline hooks
+`debug`, `idempotency`, `metrics`, `paging` attach to pipeline hooks
 rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
@@ -49170,6 +49405,7 @@ its default unless you name it.
 
 - Wraps the transport: its place in the activation order decides what it
   sees. See [Ordering](#ordering) above.
+- Also attaches to pipeline hooks.
 - Inactive by default: leaving it out costs nothing at runtime.
 
 #### `test`
@@ -49197,10 +49433,9 @@ its default unless you name it.
 
 **Considerations**
 
-- Attaches to pipeline hooks, not the transport, so activation order does
-  not change what it observes.
 - Installs the BASE transport that the wrapping features wrap, so it must be
   activated before them.
+- Also attaches to pipeline hooks.
 - Inactive by default: leaving it out costs nothing at runtime.
 
 #### `timeout`

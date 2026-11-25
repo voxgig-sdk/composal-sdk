@@ -69,7 +69,8 @@ main: kit: flow: BasicProjectEnvironmentFlow:
 
       m: {
         id: "project_environment01",
-        organization_id: "organization01"
+        organization_id: "organization01",
+        project_id: "project01"
       }
 
       o: "load",

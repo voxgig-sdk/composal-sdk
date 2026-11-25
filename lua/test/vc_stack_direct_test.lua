@@ -127,9 +127,8 @@ describe("VcStackDirect", function()
       params["repo_id"] = setup.idmap["repo01"]
     else
       params["id"] = "direct01"
-      params["id"] = "direct02"
-      params["organization_id"] = "direct03"
-      params["repo_id"] = "direct04"
+      params["organization_id"] = "direct02"
+      params["repo_id"] = "direct03"
     end
 
     local result, err = client:direct({

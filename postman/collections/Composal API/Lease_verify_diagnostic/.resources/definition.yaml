@@ -6,7 +6,7 @@ description: |-
   | field | type | required | |
   |---|---|---|---|
   | `browser_events` | object | yes |  |
-  | `live_browser` | object | yes |  |
-  | `live_view` | object | yes |  |
+  | `live_browser` | object |  |  |
+  | `live_view` | object |  |  |
   | `steps` | array |  |  |
-order: 305000
+order: 301000

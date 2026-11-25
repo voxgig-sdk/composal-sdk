@@ -98,7 +98,7 @@ func pull_request_magic_mergeBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"pull_request_magic_merge01", "pull_request_magic_merge02", "pull_request_magic_merge03", "organization01", "organization02", "organization03", "pull_request01", "pull_request02", "pull_request03"},
+		[]any{"pull_request_magic_merge01", "pull_request_magic_merge02", "pull_request_magic_merge03", "organization01", "organization02", "organization03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

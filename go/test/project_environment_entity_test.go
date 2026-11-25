@@ -132,7 +132,11 @@ func TestProjectEnvironmentEntity(t *testing.T) {
 		case string, bool, float64, int, int64:
 			projectEnvironmentRef01MatchDt0["project_id"] = v
 		default:
-			projectEnvironmentRef01MatchDt0["project_id"] = setup.idmap["project_id"]
+			if v := setup.idmap["project_id"]; v != nil {
+				projectEnvironmentRef01MatchDt0["project_id"] = v
+			} else {
+				projectEnvironmentRef01MatchDt0["project_id"] = setup.idmap["project01"]
+			}
 		}
 		projectEnvironmentRef01DataDt0Loaded, err := projectEnvironmentRef01Ent.Load(projectEnvironmentRef01MatchDt0, nil)
 		if err != nil {
@@ -249,7 +253,11 @@ func TestProjectEnvironmentEntity(t *testing.T) {
 		case string, bool, float64, int, int64:
 			projectEnvironmentRef01MatchDt0["project_id"] = v
 		default:
-			projectEnvironmentRef01MatchDt0["project_id"] = setup.idmap["project_id"]
+			if v := setup.idmap["project_id"]; v != nil {
+				projectEnvironmentRef01MatchDt0["project_id"] = v
+			} else {
+				projectEnvironmentRef01MatchDt0["project_id"] = setup.idmap["project01"]
+			}
 		}
 		projectEnvironmentRef01DataDt0Loaded, err := projectEnvironmentRef01Ent.Load(projectEnvironmentRef01MatchDt0, nil)
 		if err != nil {

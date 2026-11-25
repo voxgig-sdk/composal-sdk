@@ -11,4 +11,4 @@ description: |-
   | `project_id` | string |  |  |
   | `replace` | boolean |  |  |
   | `repositories` | array | yes |  |
-order: 262000
+order: 260000

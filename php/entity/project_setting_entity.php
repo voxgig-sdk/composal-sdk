@@ -290,20 +290,22 @@ class ProjectSettingEntity
     }
 
     
+
+    
     /**
-     * Load a single ProjectSetting.
+     * List ProjectSetting items matching the given filter.
      *
-     * @param ProjectSettingLoadMatch|array|null $reqmatch Match criteria (id/query
-     *   fields) as an assoc-array; a typed ProjectSettingLoadMatch names the shape.
+     * @param ProjectSettingListMatch|array|null $reqmatch Match filter (any subset
+     *   of ProjectSetting fields) as an assoc-array; ProjectSettingListMatch names the shape.
      * @param mixed $ctrl Optional per-call control overrides.
-     * @return ProjectSettingEntity The loaded ProjectSetting entity, whose data_get() reads
-     *   its record; throws ComposalError on failure (item-5 convention).
+     * @return ProjectSettingEntity[] The ProjectSetting entities, one per record, each read
+     *   with data_get(); throws ComposalError on failure (item-5 convention).
      */
-    public function load(?array $reqmatch = null, $ctrl = null): mixed
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
-            "opname" => "load",
+            "opname" => "list",
             "ctrl" => $ctrl,
             "match" => $this->_match,
             "data" => $this->_data,
@@ -315,16 +317,11 @@ class ProjectSettingEntity
                 if ($ctx->result->resmatch) {
                     $this->_match = $ctx->result->resmatch;
                 }
-                if ($ctx->result->resdata) {
-                    $this->_data = ComposalHelpers::to_map(Struct::clone($ctx->result->resdata)) ?? [];
-                }
             }
         });
     }
 
 
-
-    
 
     
 

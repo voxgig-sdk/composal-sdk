@@ -31,8 +31,8 @@ class CdnSpaceObjectDirectTest extends TestCase
             return;
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE" && null === ($setup["idmap"]['cdn_space01'] ?? null)) {
-            fwrite(STDOUT, 'LIVE STEP {"id":"direct-load-cdn_space_object","state":"excluded","attempted":false,"reason":"GET-only live run: needs cdn_space01, which only POST /api/v1/cdn_spaces/{id}/archive gives"}' . "\n");
-            $this->markTestSkipped('Live coverage incomplete: direct-load-cdn_space_object excluded (GET-only live run: needs cdn_space01, which only POST /api/v1/cdn_spaces/{id}/archive gives)');
+            fwrite(STDOUT, 'LIVE STEP {"id":"direct-load-cdn_space_object","state":"excluded","attempted":false,"reason":"GET-only live run: needs cdn_space01, which only POST /api/v1/organizations/{org_slug}/cdn_spaces gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: direct-load-cdn_space_object excluded (GET-only live run: needs cdn_space01, which only POST /api/v1/organizations/{org_slug}/cdn_spaces gives)');
         }
         if ($setup["live"]) {
             foreach (["cdn_space01", "cdn_space_object01"] as $_liveKey) {

@@ -52,9 +52,9 @@ class TestRepositoryImportSessionEntity:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
-            print("LIVE STEP {\"id\":\"repository_import_session.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/repository_import_sessions/{id}/authorization\"}")
+            print("LIVE STEP {\"id\":\"repository_import_session.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/repository_import_sessions\"}")
             print("LIVE STEP {\"id\":\"repository_import_session.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only repository_import_session.create.0 gives\"}")
-            pytest.skip("Live coverage incomplete: repository_import_session.create.0 excluded (GET-only live run: needs POST /api/v1/repository_import_sessions/{id}/authorization); repository_import_session.load.1 excluded (GET-only live run: reads a record only repository_import_session.create.0 gives)")
+            pytest.skip("Live coverage incomplete: repository_import_session.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/repository_import_sessions); repository_import_session.load.1 excluded (GET-only live run: reads a record only repository_import_session.create.0 gives)")
 
         if setup["live"]:
             for _live_key in ["organization01"]:

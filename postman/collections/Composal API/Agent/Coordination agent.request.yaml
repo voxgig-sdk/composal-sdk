@@ -21,4 +21,4 @@ pathVariables:
   - key: id
     value: "{{agent_id}}"
     description: The agent this request addresses.
-order: 12000
+order: 11000

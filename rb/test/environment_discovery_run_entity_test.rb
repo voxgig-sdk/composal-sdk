@@ -42,9 +42,9 @@ class EnvironmentDiscoveryRunEntityTest < Minitest::Test
       end
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
-      puts "LIVE STEP {\"id\":\"environment_discovery_run.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop\"}"
+      puts "LIVE STEP {\"id\":\"environment_discovery_run.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs\"}"
       puts "LIVE STEP {\"id\":\"environment_discovery_run.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only environment_discovery_run.create.0 gives\"}"
-      skip("Live coverage incomplete: environment_discovery_run.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop); environment_discovery_run.load.1 excluded (GET-only live run: reads a record only environment_discovery_run.create.0 gives)")
+      skip("Live coverage incomplete: environment_discovery_run.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs); environment_discovery_run.load.1 excluded (GET-only live run: reads a record only environment_discovery_run.create.0 gives)")
     end
 
     if setup[:live]
@@ -98,7 +98,7 @@ def environment_discovery_run_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["environment_discovery_run01", "environment_discovery_run02", "environment_discovery_run03", "organization01", "organization02", "organization03", "environment01", "environment02", "environment03"],
+    ["environment_discovery_run01", "environment_discovery_run02", "environment_discovery_run03", "organization01", "organization02", "organization03", "environment01"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

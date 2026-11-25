@@ -25,7 +25,7 @@ class MessagingConversationMessageEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.MessagingConversationMessage(nil).create({ "messaging_conversation_id" => 1, "organization_id" => "x", "project_id" => "x", "client_operation_id" => "x", "content" => "x", "media" => "x" }, nil)
+      client.MessagingConversationMessage(nil).create({ "messaging_conversation_id" => 1, "organization_id" => "x", "project_id" => "x", "client_operation_id" => "x", "content" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end

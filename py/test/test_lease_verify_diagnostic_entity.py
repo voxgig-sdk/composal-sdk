@@ -37,7 +37,7 @@ class TestLeaseVerifyDiagnosticEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.LeaseVerifyDiagnostic(None).create({"lease_id": 1, "swarm_id": "x", "task_id": "x", "browser_events": "x", "live_browser": "x", "live_view": "x"}, None)
+            client.LeaseVerifyDiagnostic(None).create({"lease_id": 1, "swarm_id": "x", "task_id": "x", "browser_events": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):

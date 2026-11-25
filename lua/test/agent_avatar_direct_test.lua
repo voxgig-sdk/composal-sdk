@@ -44,14 +44,10 @@ describe("AgentAvatarDirect", function()
     local query = {}
     if setup.live then
       params["agent_id"] = setup.idmap["agent01"]
-      params["agent_id"] = setup.idmap["agent01"]
-      params["organization_id"] = setup.idmap["organization01"]
       params["organization_id"] = setup.idmap["organization01"]
     else
       params["agent_id"] = "direct01"
-      params["agent_id"] = "direct02"
-      params["organization_id"] = "direct03"
-      params["organization_id"] = "direct04"
+      params["organization_id"] = "direct02"
     end
 
     local result, err = client:direct({

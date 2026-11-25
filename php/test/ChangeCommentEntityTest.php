@@ -33,7 +33,7 @@ class ChangeCommentEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->ChangeComment(null)->list(["change_id" => 1, "organization_id" => 'x', "repo_id" => 'x'], null);
+            $client->ChangeComment(null)->load(["change_id" => 1, "organization_id" => 'x', "repo_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class ChangeCommentEntityTest extends TestCase
         $setup = change_comment_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "change_comment." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,38 +54,8 @@ class ChangeCommentEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"change_comment.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["change01", "organization01", "repo01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_CHANGE_COMMENT_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-
-        // Bootstrap entity data from existing test data.
-        $change_comment_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.change_comment")));
-        $change_comment_ref01_data = null;
-        if (count($change_comment_ref01_data_raw) > 0) {
-            $change_comment_ref01_data = Helpers::to_map($change_comment_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $change_comment_ref01_ent = $client->ChangeComment(null);
-        $change_comment_ref01_match = [
-            "change_id" => $setup["idmap"]["change01"],
-            "organization_id" => $setup["idmap"]["organization01"],
-            "repo_id" => $setup["idmap"]["repo01"],
-        ];
-
-        $change_comment_ref01_list_result = $change_comment_ref01_ent->list($change_comment_ref01_match, null);
-        $this->assertIsArray($change_comment_ref01_list_result);
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"change_comment.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only change_comment.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: change_comment.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve); change_comment.load.1 excluded (GET-only live run: reads a record only change_comment.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {
@@ -116,20 +86,18 @@ class ChangeCommentEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $change_comment_ref01_match = [
-            "change_id" => $setup["idmap"]["change01"],
-            "organization_id" => $setup["idmap"]["organization01"],
-            "repo_id" => $setup["idmap"]["repo01"],
+        // LOAD
+        $change_comment_ref01_match_dt0 = [
+            "id" => $change_comment_ref01_data["id"],
         ];
-
-        $change_comment_ref01_list_result = $change_comment_ref01_ent->list($change_comment_ref01_match, null);
-        $this->assertIsArray($change_comment_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($change_comment_ref01_list_result),
-            ["id" => $change_comment_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
+        $change_comment_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $change_comment_ref01_match_dt0["repo_id"] = $setup["idmap"]["repo_id"] ?? $setup["idmap"]["repo01"] ?? null;
+        $change_comment_ref01_data_dt0_loaded = $change_comment_ref01_ent->load($change_comment_ref01_match_dt0, null);
+        $change_comment_ref01_data_dt0_load_result = Helpers::to_map(is_object($change_comment_ref01_data_dt0_loaded) && method_exists($change_comment_ref01_data_dt0_loaded, 'data_get') ? $change_comment_ref01_data_dt0_loaded->data_get() : $change_comment_ref01_data_dt0_loaded);
+        $this->assertNotNull($change_comment_ref01_data_dt0_load_result);
+        if (empty($setup["live"])) {
+            $this->assertTrue(Runner::live_same_id($change_comment_ref01_data_dt0_load_result["id"] ?? null, $change_comment_ref01_data["id"]));
+        }
 
     }
 }

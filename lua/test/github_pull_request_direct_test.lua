@@ -33,11 +33,6 @@ describe("GithubPullRequestDirect", function()
       pending("Live coverage incomplete: direct-load-github_pull_request excluded (GET-only live run: needs github_pull_request01, which only POST /api/v1/organizations/{org_slug}/github/pull_requests/refresh gives)")
       return
     end
-    if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" and setup.idmap["pull_request01"] == nil then
-      print("LIVE STEP {\"id\":\"direct-load-github_pull_request\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}")
-      pending("Live coverage incomplete: direct-load-github_pull_request excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)")
-      return
-    end
     if setup.live then
       for _, _live_key in ipairs({"github_pull_request01", "organization01", "pull_request01"}) do
         if setup.idmap[_live_key] == nil then
@@ -54,18 +49,12 @@ describe("GithubPullRequestDirect", function()
     local query = {}
     if setup.live then
       params["id"] = setup.idmap["github_pull_request01"]
-      params["id"] = setup.idmap["github_pull_request01"]
       params["organization_id"] = setup.idmap["organization01"]
-      params["organization_id"] = setup.idmap["organization01"]
-      params["pull_request_id"] = setup.idmap["pull_request01"]
       params["pull_request_id"] = setup.idmap["pull_request01"]
     else
       params["id"] = "direct01"
-      params["id"] = "direct02"
-      params["organization_id"] = "direct03"
-      params["organization_id"] = "direct04"
-      params["pull_request_id"] = "direct05"
-      params["pull_request_id"] = "direct06"
+      params["organization_id"] = "direct02"
+      params["pull_request_id"] = "direct03"
     end
 
     local result, err = client:direct({

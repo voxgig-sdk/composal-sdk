@@ -46,10 +46,8 @@ class ModelSubscriptionAccountConnectionDirectTest extends TestCase
         $query = [];
         if ($setup["live"]) {
             $params["id"] = $setup["idmap"]["model_subscription_account_connection01"] ?? null;
-            $params["id"] = $setup["idmap"]["model_subscription_account_connection01"] ?? null;
         } else {
             $params["id"] = "direct01";
-            $params["id"] = "direct02";
         }
 
         $result = $client->direct([

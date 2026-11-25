@@ -113,7 +113,7 @@ main: kit: entity: docker_builder_setting: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.docker_builder_settings`"
+            res: "`body`"
           }
         }
       ]
@@ -174,7 +174,7 @@ main: kit: entity: docker_builder_setting: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.docker_builder_settings`"
+            res: "`body`"
           }
         }
       ]

@@ -194,7 +194,7 @@ func environment_revisionBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"environment_revision01", "environment_revision02", "environment_revision03", "organization01", "organization02", "organization03", "environment01", "environment02", "environment03"},
+		[]any{"environment_revision01", "environment_revision02", "environment_revision03", "organization01", "organization02", "organization03", "environment01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

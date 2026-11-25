@@ -33,4 +33,4 @@ description: |-
   | `target_branch` | string | yes |  |
   | `title` | string | yes |  |
   | `url` | string |  |  |
-order: 529000
+order: 528000

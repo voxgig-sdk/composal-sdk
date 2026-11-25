@@ -127,6 +127,7 @@ describe("GithubRunnerPoolEntity", function()
     -- UPDATE
     local github_runner_pool_ref01_data_up0_up = {
       id = github_runner_pool_ref01_data["id"],
+      ["organization_id"] = setup.idmap["organization_id"],
     }
 
     local github_runner_pool_ref01_markdef_up0_name = "github_app_installation_id"
@@ -188,6 +189,9 @@ function github_runner_pool_basic_setup(extra)
     env["COMPOSAL_TEST_GITHUB_RUNNER_POOL_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
+  end
+  if idmap_resolved["organization_id"] == nil then
+    idmap_resolved["organization_id"] = idmap_resolved["organization01"]
   end
 
   if env["COMPOSAL_TEST_LIVE"] == "TRUE" then

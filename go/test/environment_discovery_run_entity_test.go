@@ -63,9 +63,9 @@ func TestEnvironmentDiscoveryRunEntity(t *testing.T) {
 			}
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
-			t.Log("LIVE STEP {\"id\":\"environment_discovery_run.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop\"}")
+			t.Log("LIVE STEP {\"id\":\"environment_discovery_run.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs\"}")
 			t.Log("LIVE STEP {\"id\":\"environment_discovery_run.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only environment_discovery_run.create.0 gives\"}")
-			t.Skip("Live coverage incomplete: environment_discovery_run.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop); environment_discovery_run.load.1 excluded (GET-only live run: reads a record only environment_discovery_run.create.0 gives)")
+			t.Skip("Live coverage incomplete: environment_discovery_run.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs); environment_discovery_run.load.1 excluded (GET-only live run: reads a record only environment_discovery_run.create.0 gives)")
 			return
 		}
 
@@ -158,7 +158,7 @@ func environment_discovery_runBasicSetup(extra map[string]any) *entityTestSetup 
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"environment_discovery_run01", "environment_discovery_run02", "environment_discovery_run03", "organization01", "organization02", "organization03", "environment01", "environment02", "environment03"},
+		[]any{"environment_discovery_run01", "environment_discovery_run02", "environment_discovery_run03", "organization01", "organization02", "organization03", "environment01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

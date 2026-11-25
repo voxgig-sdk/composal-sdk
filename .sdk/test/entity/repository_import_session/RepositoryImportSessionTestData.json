@@ -83,17 +83,17 @@
     }
   },
   "requests": {
+    "POST /api/v1/organizations/{organization_id}/repository_import_sessions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
     "POST /api/v1/repository_import_sessions/{id}/authorization": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
     "POST /api/v1/repository_import_sessions/{id}/cancel": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "POST /api/v1/organizations/{organization_id}/repository_import_sessions": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

@@ -123,7 +123,7 @@ export interface AgentLoadMatch {
   organization_id: string
 
   // Selects a custom action instead of the plain load:
-  //   'activity' | 'avatar' | 'compute' | 'computer' | 'conversation' | 'coordination' | 'debug' | 'email' | 'environment' | 'github_access' | 'input_delivery' | 'inspection' | 'library' | 'lifecycle' | 'message_image' | 'mission_control_card' | 'resource' | 'run_usage' | 'runtime' | 'sandbox' | 'thread_model' | 'usage'
+  //   'avatar' | 'compute' | 'computer' | 'conversation' | 'coordination' | 'email' | 'environment' | 'github_access' | 'library' | 'lifecycle' | 'resource' | 'runtime' | 'sandbox' | 'spark_debug' | 'spark_input_delivery' | 'spark_message_image' | 'spark_mission_control_card' | 'spark_relay_activity' | 'spark_relay_inspection' | 'spark_run_usage' | 'spark_usage' | 'thread_model'
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
@@ -264,51 +264,6 @@ export interface AgentAttachmentCreateData {
 
   // Selects a custom action instead of the plain create:
   //   'complete'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
-}
-
-export interface AgentAutomation {
-  can_manage: boolean
-  can_manage_events: boolean
-  can_run: boolean
-  can_schedule: boolean
-  definition: Record<string, any>
-  event_subscriptions: any[]
-  event_triggers: any[]
-  expected_revision: number
-  id: string
-  key: string
-  name: string
-  revision: number
-  schedule: any
-  schedules: any[]
-  version: Record<string, any>
-}
-
-export interface AgentAutomationLoadMatch {
-  agent_id: string
-  id: string
-  organization_id: string
-}
-
-export interface AgentAutomationListMatch {
-  agent_id: string
-  organization_id: string
-  cursor?: string
-  limit?: number
-}
-
-export interface AgentAutomationUpdateData {
-  agent_id: string
-  id: string
-  organization_id: string
-  definition?: Record<string, any>
-  expected_revision?: number
-
-  // Selects a custom action instead of the plain update:
-  //   'schedule'
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
@@ -749,8 +704,8 @@ export interface AgentFileLoadMatch {
 export interface AgentInput {
   attachment_ids?: any[]
   attachments?: any[]
-  browser_context: Record<string, any>
-  client_time: Record<string, any>
+  browser_context?: Record<string, any>
+  client_time?: Record<string, any>
   conversation_id: string
   model_policy?: any
   requester_membership_id?: string
@@ -763,8 +718,8 @@ export interface AgentInputCreateData {
   organization_id: string
   attachment_ids?: any[]
   attachments?: any[]
-  browser_context: Record<string, any>
-  client_time: Record<string, any>
+  browser_context?: Record<string, any>
+  client_time?: Record<string, any>
   conversation_id: string
   model_policy?: any
   requester_membership_id?: string
@@ -1359,7 +1314,7 @@ export interface AgentRoderCreateData {
 export interface AgentRoutine {
   can_manage: boolean
   consecutive_errors: number
-  credit_wait: Record<string, any>
+  credit_wait?: Record<string, any>
   description: string | null
   enabled: boolean
   id: string
@@ -1373,7 +1328,7 @@ export interface AgentRoutine {
   routine: Record<string, any>
   schedule: Record<string, any>
   schedule_label: string
-  utility_model: Record<string, any>
+  utility_model?: Record<string, any>
 }
 
 export interface AgentRoutineListMatch {
@@ -1658,7 +1613,7 @@ export interface AgentSlackCreateData {
 
 export interface AgentSubagent {
   active: boolean
-  attention: Record<string, any> | null
+  attention?: Record<string, any> | null
   ended_at: string | null
   id: string
   model: string | null
@@ -1746,7 +1701,7 @@ export interface AgentSwarm {
   started_at_label: string | null
   status: string
   summary: Record<string, any>
-  target: Record<string, any>
+  target?: Record<string, any>
   task_count: number
   task_template_json: string | null
   tasks: any[]
@@ -1786,7 +1741,7 @@ export interface AgentSwarmCreateData {
   queued_at?: string | null
   repository?: string
   slug?: string
-  target: Record<string, any>
+  target?: Record<string, any>
   task_template_json?: string | null
   tasks?: any[]
 
@@ -2020,7 +1975,7 @@ export interface AgentWorkflowUpdateData {
 }
 
 export interface AgentWorkflowProposal {
-  agent_steps: Record<string, any>
+  agent_steps?: Record<string, any>
   base_digest: string | null
   can_manage: boolean
   can_revise: boolean
@@ -2068,7 +2023,7 @@ export interface AgentWorkflowProposalCreateData {
 
 export interface AgentWorkflowRun {
   action: string
-  automation: Record<string, any> | null
+  automation?: Record<string, any> | null
   budget_seconds: number | null
   budget_usd: number | null
   can_answer: boolean
@@ -2076,7 +2031,7 @@ export interface AgentWorkflowRun {
   can_dismiss: boolean
   checkpoint: Record<string, any> | null
   conversation_id: string | null
-  decision_history: Record<string, any>
+  decision_history?: Record<string, any>
   error: string | null
   finished_at: string | null
   flow_steps: any[] | null
@@ -2346,7 +2301,7 @@ export interface AppLoadMatch {
   id: string
 
   // Selects a custom action instead of the plain load:
-  //   'catalog' | 'deployment_dashboard'
+  //   'catalog'
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
@@ -2743,6 +2698,39 @@ export interface AppDeploymentPatchData {
 export interface AppDeploymentRemoveMatch {
   app_id: string
   id: string
+}
+
+export interface AppDeploymentDashboard {
+  activity: any[]
+  app: Record<string, any>
+  audit_events: any[]
+  capacity: Record<string, any>
+  connections: any[]
+  data_resources: any[]
+  deployments: any[]
+  desired_states: any[]
+  environments: any[]
+  id?: string
+  locations: any[]
+  managed_database_catalog: Record<string, any>
+  observability: Record<string, any>
+  operations: any[]
+  placements: any[]
+  reconciler_ticks: any[]
+  releases: any[]
+  rollback_deployments: any[]
+  rollouts: any[]
+  runtime_instances: any[]
+  service_bindings: any[]
+  service_views: any[]
+  services: any[]
+  storage_resources: any[]
+  summary: Record<string, any>
+}
+
+export interface AppDeploymentDashboardLoadMatch {
+  id: string
+  metrics_range?: string
 }
 
 export interface AppDeploymentOperation {
@@ -3989,7 +3977,7 @@ export interface AutomationEventUpdateData {
 
 export interface AutomationRun {
   action: string
-  automation: Record<string, any> | null
+  automation?: Record<string, any> | null
   budget_seconds: number | null
   budget_usd: number | null
   can_answer: boolean
@@ -3997,7 +3985,7 @@ export interface AutomationRun {
   can_dismiss: boolean
   checkpoint: Record<string, any> | null
   conversation_id: string | null
-  decision_history: Record<string, any>
+  decision_history?: Record<string, any>
   error: string | null
   finished_at: string | null
   flow_steps: any[] | null
@@ -5063,7 +5051,7 @@ export interface CdnSpaceObjectRemoveMatch {
 export interface Change {
   counts: Record<string, any>
   filters: Record<string, any>
-  github_sync: Record<string, any>
+  github_sync?: Record<string, any>
   result: any
 }
 
@@ -5117,30 +5105,18 @@ export interface ChangeAssetCreateData {
 
 export interface ChangeComment {
   body: string
-  capabilities: Record<string, any>
-  change_id?: string | null
-  created_at?: string | null
-  created_at_label?: string | null
-  id: string
+  comment?: Record<string, any>
+  comments: any[]
+  id?: string
   kind?: string | null
   line?: number | null
-  outdated: boolean
   parent_comment_id?: string | null
   patchset_id?: string | null
-  patchset_number: number | null
   path?: string | null
-  replies?: any[]
-  resolved: boolean
-  resolved_at?: string | null
-  resolved_at_label?: string | null
-  resolved_by: Record<string, any>
   side?: string | null
-  updated_at?: string | null
-  updated_at_label?: string | null
-  user: Record<string, any>
 }
 
-export interface ChangeCommentListMatch {
+export interface ChangeCommentLoadMatch {
   change_id: string
   organization_id: string
   repo_id: string
@@ -5267,10 +5243,10 @@ export interface ChangeGroupMemberRemoveMatch {
 export interface ChangeLabel {
   accepted?: boolean
   add?: any[]
-  approval: Record<string, any>
+  approval?: Record<string, any>
   assets?: any[]
   author?: any
-  capabilities: Record<string, any>
+  capabilities?: Record<string, any>
   change_key?: string
   checks?: any[]
   checks_status?: string
@@ -5278,12 +5254,12 @@ export interface ChangeLabel {
   comments_count?: number
   comments_count_label?: string
   commit_message?: string | null
-  current_patchset: Record<string, any>
+  current_patchset?: Record<string, any>
   description?: string | null
   draft?: boolean
   folded_into_number?: number | null
   github_projection_status?: string | null
-  github_pull_request: Record<string, any>
+  github_pull_request?: Record<string, any>
   github_pull_requests?: any[]
   group?: Record<string, any> | null
   has_description?: boolean
@@ -5291,7 +5267,7 @@ export interface ChangeLabel {
   jj_change_id?: string | null
   labels?: any[]
   landable?: boolean
-  landed_by: Record<string, any>
+  landed_by?: Record<string, any>
   number: number
   orphaned?: boolean
   orphaned_at?: string
@@ -5428,7 +5404,7 @@ export interface ChangeTranscript {
   session_title?: string | null
   status: string
   superseded: boolean
-  user: Record<string, any>
+  user?: Record<string, any>
 }
 
 export interface ChangeTranscriptListMatch {
@@ -5871,7 +5847,7 @@ export interface ContactSubmissionCreateData {
 }
 
 export interface ControlComputer {
-  connection: Record<string, any>
+  connection?: Record<string, any>
   consent: Record<string, any>
   device: Record<string, any>
   id?: string
@@ -5904,10 +5880,10 @@ export interface ControlComputerControlOperation {
   action: string
   arguments: Record<string, any>
   created_at: string
-  delivery: Record<string, any>
+  delivery?: Record<string, any>
   device_id: string
   diagnostic_code?: string
-  end: Record<string, any>
+  end?: Record<string, any>
   expires_at: string
   id: string
   key: string
@@ -5991,7 +5967,7 @@ export interface CredentialSignInCheck {
   reproductions: any[]
   saves_scenarios: boolean
   scannable_flows: any[]
-  scenario_generation: Record<string, any>
+  scenario_generation?: Record<string, any>
   sign_in_needs_answer: boolean
   sign_in_outcome: string
   sign_in_question?: string | null
@@ -6044,20 +6020,21 @@ export interface DataResourceRotateCredentialCreateData {
 
 export interface DeepScan {
   account_id?: string | null
-  active: any[]
   agent_filters: Record<string, any>
   agents: any[]
   can_continue?: boolean
   chat_messages?: any[]
+  check_count: number
   concurrency: number
   covered_areas: any[]
   created_at: string
+  credential_name?: string | null
   deadline_at: string
   demo_project: Record<string, any> | null
+  duration_ms: number | null
   ended_early: boolean
   environment_id: string
   environment_name: string
-  explorations: any[]
   explorer_activity: Record<string, any>
   finding_count: number
   findings: any[]
@@ -6067,14 +6044,12 @@ export interface DeepScan {
   huntable_flows: any[]
   id: string
   idempotency_key?: string
-  launch_options: Record<string, any>
   max_seconds: number
   max_testers: number
   mode?: string
   next_scan_improvements: any[]
   observed_at?: string
   onboarding: boolean
-  pagination: Record<string, any>
   paywalled: boolean
   permissions: Record<string, any>
   priority_counts: Record<string, any>
@@ -6085,10 +6060,13 @@ export interface DeepScan {
   reproductions: any[]
   saves_scenarios: boolean
   scannable_flows: any[]
-  scenario_generation: Record<string, any>
+  scenario_count?: number
+  scenario_generation?: Record<string, any>
+  scenarios_pending?: boolean
   sign_in_needs_answer: boolean
   sign_in_outcome: string
   sign_in_question?: string | null
+  started_at: string
   startup_retryable?: boolean
   status: string
   time_limit_reached: boolean
@@ -6098,22 +6076,27 @@ export interface DeepScan {
 }
 
 export interface DeepScanLoadMatch {
-  id?: string
+  id: string
   organization_id: string
   agent_id?: string
   evidence?: string
   finding_id?: string
   project_id?: string
-  finding?: string
-  page?: number
-  query?: string
-  status?: string
 
   // Selects a custom action instead of the plain load:
   //   'agent' | 'context'
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
+}
+
+export interface DeepScanListMatch {
+  organization_id: string
+  finding?: string
+  page?: number
+  project_id?: string
+  query?: string
+  status?: string
 }
 
 export interface DeepScanCreateData {
@@ -6481,11 +6464,11 @@ export interface DesktopLocalAgentResponseCreateData {
 export interface Device {
   architecture: string
   channel: string
-  coding_connection: Record<string, any> | null
+  coding_connection?: Record<string, any> | null
   connection_checked_at: string | null
   connection_status: string
   control_delivery_policy: Record<string, any>
-  control_spawn_policy: Record<string, any>
+  control_spawn_policy?: Record<string, any>
   created_at: string
   device: Record<string, any>
   environment: string
@@ -6587,44 +6570,6 @@ export interface DeviceControlMessageListMatch {
   cursor?: string
 }
 
-export interface DeviceControlOperation {
-  action: string
-  arguments: Record<string, any>
-  created_at: string
-  delivery: Record<string, any>
-  device_id: string
-  diagnostic_code?: string
-  end: Record<string, any>
-  expires_at: string
-  id: string
-  key: string
-  provider: string
-  references: Record<string, any>
-  result: any
-  result_expired: boolean
-  state: string
-}
-
-export interface DeviceControlOperationLoadMatch {
-  device_id: string
-  id: string
-  organization_id: string
-
-  // Selects a custom action instead of the plain load:
-  //   'request'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
-}
-
-export interface DeviceControlOperationCreateData {
-  device_id: string
-  organization_id: string
-  action: string
-  arguments: Record<string, any>
-  key: string
-}
-
 export interface DeviceEnterpriseRelay {
 }
 
@@ -6718,6 +6663,44 @@ export interface DeviceLocalEventCreateData {
   device_id: string
   organization_id: string
   event: string
+}
+
+export interface DeviceOperation {
+  action: string
+  arguments: Record<string, any>
+  created_at: string
+  delivery?: Record<string, any>
+  device_id: string
+  diagnostic_code?: string
+  end?: Record<string, any>
+  expires_at: string
+  id: string
+  key: string
+  provider: string
+  references: Record<string, any>
+  result: any
+  result_expired: boolean
+  state: string
+}
+
+export interface DeviceOperationLoadMatch {
+  device_id: string
+  id: string
+  organization_id: string
+
+  // Selects a custom action instead of the plain load:
+  //   'request'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
+}
+
+export interface DeviceOperationCreateData {
+  device_id: string
+  organization_id: string
+  action: string
+  arguments: Record<string, any>
+  key: string
 }
 
 export interface DevicePairing {
@@ -7041,104 +7024,6 @@ export interface EmailVerificationCreateData {
   [action: string]: any
 }
 
-export interface Environment {
-  active_revision_id: string | null
-  agent_sign_up_available: boolean
-  allowed_actions: string
-  billing: Record<string, any>
-  cleanup: any[]
-  connection: string
-  created_at: string
-  default_policy?: Record<string, any>
-  default_policy_json: Record<string, any>
-  discovery_defaults: Record<string, any>
-  environment: Record<string, any>
-  exploration_accounts?: any[]
-  explorations?: any[]
-  first_run?: any
-  hosted_app_id: string | null
-  id: string
-  imessage_number: string | null
-  included_deep_scan: boolean
-  lock_version: number
-  managed_google_available: boolean
-  managed_google_email: string
-  messaging_tester_number?: string | null
-  name: string
-  network_connections: any[]
-  onboarding_discovery?: any
-  organization_id: string
-  pending_accounts?: any[]
-  permissions: Record<string, any>
-  project_id: string | null
-  repository_id: string | null
-  revisions: any[]
-  setup_discovery_id?: string | null
-  sign_in_check_available: boolean
-  slug: string
-  status: string
-  target_kind: string | null
-  target_url: string | null
-  test_accounts: Record<string, any>
-  updated_at: string
-  verify_network_connection_id: string | null
-  version?: number
-}
-
-export interface EnvironmentLoadMatch {
-  id?: string
-  organization_id: string
-  project_id?: string
-}
-
-export interface EnvironmentCreateData {
-  organization_id: string
-  allowed_actions?: string
-  default_policy?: Record<string, any>
-  imessage_number?: string | null
-  messaging_tester_number?: string | null
-  name?: string
-  project_id?: string | null
-  repository_id?: string | null
-  slug: string
-  target_kind?: string | null
-  target_url?: string | null
-}
-
-export interface EnvironmentUpdateData {
-  id: string
-  organization_id: string
-
-  // Selects a custom action instead of the plain update:
-  //   'first_run'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
-}
-
-export interface EnvironmentPatchData {
-  id: string
-  organization_id: string
-  allowed_actions?: string
-  imessage_number?: string | null
-  messaging_tester_number?: string | null
-  name?: string
-  target_url?: string | null
-  verify_network_connection_id?: string | null
-  version?: number
-}
-
-export interface EnvironmentRemoveMatch {
-  id: string
-  organization_id: string
-
-  // Selects a custom action instead of the plain remove:
-  //   'first_run'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
-}
-
 export interface EnvironmentDiscoveryRun {
   account_id: string | null
   deadline_at: string
@@ -7147,7 +7032,7 @@ export interface EnvironmentDiscoveryRun {
   failure_code: string | null
   id: string
   queued_at: string
-  recording: Record<string, any>
+  recording?: Record<string, any>
   result: Record<string, any> | null
   status: string
 }
@@ -7210,7 +7095,7 @@ export interface EnvironmentExploration {
   reproductions: any[]
   saves_scenarios: boolean
   scannable_flows: any[]
-  scenario_generation: Record<string, any>
+  scenario_generation?: Record<string, any>
   sign_in_needs_answer: boolean
   sign_in_outcome: string
   sign_in_question?: string | null
@@ -7365,28 +7250,6 @@ export interface EnvironmentTestAccountPatchData {
   organization_id: string
   credentials?: any[]
   revision_id?: string
-}
-
-export interface Evidence {
-  id?: string
-}
-
-export interface EvidenceLoadMatch {
-  id?: string
-  organization_id: string
-  agent_id?: string
-  cursor?: string
-  exploration_id?: string
-  kind?: string
-  limit?: number
-  repository_id?: string
-  scenario_run_id?: string
-
-  // Selects a custom action instead of the plain load:
-  //   'archive' | 'download'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
 }
 
 export interface ExecutionDesiredState {
@@ -7560,7 +7423,7 @@ export interface Exploration {
   saves_scenarios: boolean
   scannable_flows: any[]
   scenario_count?: number
-  scenario_generation: Record<string, any>
+  scenario_generation?: Record<string, any>
   scenarios_pending?: boolean
   sign_in_needs_answer: boolean
   sign_in_outcome: string
@@ -7652,7 +7515,7 @@ export interface ExplorationMessage {
   reproductions: any[]
   saves_scenarios: boolean
   scannable_flows: any[]
-  scenario_generation: Record<string, any>
+  scenario_generation?: Record<string, any>
   sign_in_needs_answer: boolean
   sign_in_outcome: string
   sign_in_question?: string | null
@@ -7737,7 +7600,7 @@ export interface ExplorationScenario {
   reproductions: any[]
   saves_scenarios: boolean
   scannable_flows: any[]
-  scenario_generation: Record<string, any>
+  scenario_generation?: Record<string, any>
   sign_in_needs_answer: boolean
   sign_in_outcome: string
   sign_in_question?: string | null
@@ -7769,7 +7632,7 @@ export interface Finding {
   organization_id: string
   permissions: Record<string, any>
   reason?: string
-  reported_occurrence: Record<string, any> | null
+  reported_occurrence?: Record<string, any> | null
   repository_id: string | null
   safe_summary: string
   scenario_occurrences?: any[]
@@ -8139,31 +8002,6 @@ export interface GithubConnectionCreateData {
   repositories: any[]
 }
 
-export interface GithubIntegration {
-  account_avatar_url: string | null
-  account_login: string
-  connection_status: string
-  connection_status_label: string
-  github_installation: any
-  health: Record<string, any>
-  id: string
-  imported_repositories_count: number
-  imported_repositories_count_label: string
-  organization: Record<string, any>
-  pagination: Record<string, any>
-  repositories: any[]
-}
-
-export interface GithubIntegrationLoadMatch {
-  id: string
-  organization_id: string
-  page?: number
-}
-
-export interface GithubIntegrationListMatch {
-  organization_id: string
-}
-
 export interface GithubOnboarding {
   accounts: any[]
   active_batch_id: string | null
@@ -8331,7 +8169,7 @@ export interface GithubRunnerHistory {
   runs: any[]
   setup?: any
   success_rate: number | null
-  usage: Record<string, any>
+  usage?: Record<string, any>
 }
 
 export interface GithubRunnerHistoryLoadMatch {
@@ -9038,8 +8876,8 @@ export interface LeaseStepUpdateData {
 
 export interface LeaseVerifyDiagnostic {
   browser_events: Record<string, any>
-  live_browser: Record<string, any>
-  live_view: Record<string, any>
+  live_browser?: Record<string, any>
+  live_view?: Record<string, any>
   steps?: any[]
 }
 
@@ -9048,8 +8886,8 @@ export interface LeaseVerifyDiagnosticCreateData {
   swarm_id: string
   task_id: string
   browser_events: Record<string, any>
-  live_browser: Record<string, any>
-  live_view: Record<string, any>
+  live_browser?: Record<string, any>
+  live_view?: Record<string, any>
   steps?: any[]
 }
 
@@ -9131,10 +8969,10 @@ export interface LocalThreadOperation {
   action: string
   arguments: Record<string, any>
   created_at: string
-  delivery: Record<string, any>
+  delivery?: Record<string, any>
   device_id: string
   diagnostic_code?: string
-  end: Record<string, any>
+  end?: Record<string, any>
   expires_at: string
   id: string
   key: string
@@ -9276,7 +9114,7 @@ export interface Me {
   github_pr_user_authorization_login: string | null
   github_prs_authored_by_change_author: boolean
   id: string
-  impersonation: Record<string, any> | null
+  impersonation?: Record<string, any> | null
   name: string | null
   next_path?: string
   onboarding: Record<string, any>
@@ -9458,22 +9296,11 @@ export interface MediaFileLoadMatch {
 }
 
 export interface Member {
-  accepted_at: string | null
-  accepted_by_user: any
   created_at: string
   created_at_label: string | null
-  email: string
-  email_delivery_status?: string
-  expires_at: string | null
-  expires_at_label: string | null
   id: string
-  invite_url: string | null
-  invited_by_user: any
   is_self: boolean
-  organization: Record<string, any>
-  revoked_at: string | null
   role: string
-  status: string
   updated_at: string
   updated_at_label: string | null
   user: Record<string, any>
@@ -9552,7 +9379,7 @@ export interface MemoryRemoveMatch {
 }
 
 export interface MergeQueueEntry {
-  analytics: Record<string, any>
+  analytics?: Record<string, any>
   change_id?: string | null
   expected_target_commit_id?: string | null
   expected_target_version?: number | null
@@ -9596,64 +9423,6 @@ export interface MergeQueueEntryRemoveMatch {
   repo_id: string
 }
 
-export interface MergeRequest {
-  available_tests: any[]
-  base_sha: string
-  branch?: string
-  comment_url: string | null
-  current_run?: any
-  draft: boolean
-  findings: any[]
-  github_repository: string | null
-  github_url: string | null
-  head_sha: string
-  id: string
-  idempotency_key: string
-  number: number
-  pagination: Record<string, any>
-  permissions: Record<string, any>
-  preview_cleanup_ready: boolean
-  preview_url?: string | null
-  project?: any
-  project_id: string | null
-  project_slug: string | null
-  provider: string
-  pull_request: Record<string, any>
-  repository_id: string
-  request_label: string
-  requested_run_id: string | null
-  runs: any[]
-  source_branch: string | null
-  source_repository: string | null
-  source_url: string | null
-  state: string
-  title: string
-  updated_at: string
-  web_path: string
-}
-
-export interface MergeRequestLoadMatch {
-  id: string
-  organization_id: string
-  page?: number
-}
-
-export interface MergeRequestCreateData {
-  organization_id: string
-  branch?: string
-  head_sha?: string
-  idempotency_key: string
-  number: number
-  project_id?: string | null
-  repository_id?: string
-
-  // Selects a custom action instead of the plain create:
-  //   'preview' | 'rerun'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
-}
-
 export interface MergeResolution {
   action: string
   base: string
@@ -9682,7 +9451,7 @@ export interface MessagingConversationMessage {
   client_operation_id: string
   content: string
   id?: string
-  media: Record<string, any>
+  media?: Record<string, any>
   media_upload_ids?: any[]
   messages: any[]
   reply_to?: string
@@ -9699,7 +9468,7 @@ export interface MessagingConversationMessageCreateData {
   project_id: string
   client_operation_id: string
   content: string
-  media: Record<string, any>
+  media?: Record<string, any>
   media_upload_ids?: any[]
   reply_to?: string
   retry_attachment?: boolean
@@ -10870,6 +10639,31 @@ export interface PagesBillingLoadMatch {
   organization_id: string
 }
 
+export interface PagesGithubIntegration {
+  account_avatar_url: string | null
+  account_login: string
+  connection_status: string
+  connection_status_label: string
+  github_installation: any
+  health: Record<string, any>
+  id: string
+  imported_repositories_count: number
+  imported_repositories_count_label: string
+  organization: Record<string, any>
+  pagination: Record<string, any>
+  repositories: any[]
+}
+
+export interface PagesGithubIntegrationLoadMatch {
+  id: string
+  organization_id: string
+  page?: number
+}
+
+export interface PagesGithubIntegrationListMatch {
+  organization_id: string
+}
+
 export interface PagesGithubOnboarding {
   onboarding: Record<string, any>
   organization: Record<string, any>
@@ -11321,7 +11115,7 @@ export interface ProductMapIdentityDecision {
   observations: any[]
   operation: string
   reason: string
-  target: Record<string, any>
+  target?: Record<string, any>
 }
 
 export interface ProductMapIdentityDecisionCreateData {
@@ -11330,7 +11124,7 @@ export interface ProductMapIdentityDecisionCreateData {
   observations: any[]
   operation: string
   reason: string
-  target: Record<string, any>
+  target?: Record<string, any>
 }
 
 export interface ProductMapJourney {
@@ -11543,7 +11337,7 @@ export interface Project {
   name: string
   network_connections: any[]
   organization_id: string
-  overview: Record<string, any>
+  overview?: Record<string, any>
   permissions: Record<string, any>
   personas: any[]
   project: Record<string, any>
@@ -11551,7 +11345,7 @@ export interface Project {
   pull_requests: any[]
   purpose: string | null
   runs: any[]
-  scenario_history: Record<string, any>
+  scenario_history?: Record<string, any>
   scenario_states: Record<string, any>
   scenarios: any[]
   setup_required?: boolean
@@ -11574,7 +11368,7 @@ export interface ProjectLoadMatch {
   view?: string
 
   // Selects a custom action instead of the plain load:
-  //   'environment' | 'header' | 'overview' | 'overview_activity' | 'overview_discovery' | 'overview_history' | 'persona' | 'pr_testing' | 'product_map' | 'product_map_comparison' | 'recorder' | 'scenario' | 'scenario_editor'
+  //   'environment' | 'header' | 'overview' | 'overview_activity' | 'overview_discovery' | 'overview_history' | 'persona' | 'product_map' | 'recorder' | 'scenario' | 'scenario_editor'
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
@@ -11637,13 +11431,13 @@ export interface ProjectPatchData {
 }
 
 export interface ProjectAndroidApk {
-  android: Record<string, any>
+  android?: Record<string, any>
   artifact_paths?: any[]
   description: string
   image: string
-  ios: Record<string, any>
+  ios?: Record<string, any>
   launch_command?: string
-  managed_binary: Record<string, any>
+  managed_binary?: Record<string, any>
   platform?: string
   provider?: string
   setup_command?: string
@@ -11663,7 +11457,7 @@ export interface ProjectCodeMap {
   name: string
   ref?: string
   repository_id: string
-  revision: Record<string, any>
+  revision?: Record<string, any>
   slug: string
   status: string
 }
@@ -11877,13 +11671,13 @@ export interface ProjectFixtureRemoveMatch {
 }
 
 export interface ProjectIosApp {
-  android: Record<string, any>
+  android?: Record<string, any>
   artifact_paths?: any[]
   description: string
   image: string
-  ios: Record<string, any>
+  ios?: Record<string, any>
   launch_command?: string
-  managed_binary: Record<string, any>
+  managed_binary?: Record<string, any>
   platform?: string
   provider?: string
   setup_command?: string
@@ -11996,6 +11790,21 @@ export interface ProjectOverviewPullRequestListMatch {
   project_id: string
 }
 
+export interface ProjectPrTesting {
+  id?: string
+  project: Record<string, any>
+  pull_request_options: Record<string, any>
+}
+
+export interface ProjectPrTestingLoadMatch {
+  id: string
+  organization_id: string
+  provider?: string
+  repository_id?: string
+  repository_search?: string
+  source_repository?: string
+}
+
 export interface ProjectProductMap {
 }
 
@@ -12031,6 +11840,29 @@ export interface ProjectProductMapCreateData {
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
+}
+
+export interface ProjectProductMapComparison {
+  accounts: any[]
+  comparison: any
+  filters: any
+  id?: string
+  project: Record<string, any>
+  requirements: any[]
+  revisions: any[]
+}
+
+export interface ProjectProductMapComparisonLoadMatch {
+  id: string
+  organization_id: string
+  account_id?: string
+  area?: string
+  before?: string
+  compare_revision_id?: string
+  persona_id?: string
+  query?: string
+  revision_id?: string
+  since?: string
 }
 
 export interface ProjectRecording {
@@ -12108,7 +11940,7 @@ export interface ProjectRunPlanCreateData {
   organization_id: string
   project_id: string
   dependencies: any[]
-  identity_probe: Record<string, any> | null
+  identity_probe?: Record<string, any> | null
   name: string
   nodes: any[]
 
@@ -12272,81 +12104,13 @@ export interface ProjectScenarioRowListMatch {
 }
 
 export interface ProjectSetting {
-  available_messaging_environments: any[]
-  messaging_conversations: any[]
-  messaging_enabled: boolean
-  permissions: Record<string, any>
-  project: Record<string, any>
-  tester_numbers: any[]
+  id: string
+  name: string
 }
 
-export interface ProjectSettingLoadMatch {
+export interface ProjectSettingListMatch {
   organization_id: string
   project_id: string
-}
-
-export interface PullRequest {
-  available_tests: any[]
-  branch?: string
-  cleanup_only?: boolean
-  current_run?: any
-  findings: any[]
-  head_sha?: string
-  id?: string
-  idempotency_key: string
-  imessage_number?: string
-  number?: number
-  pagination: Record<string, any>
-  permissions: Record<string, any>
-  preview_cleanup_ready: boolean
-  preview_url?: string | null
-  project?: any
-  project_id?: string
-  pull_request: Record<string, any>
-  repository_id?: string
-  runs: any[]
-}
-
-export interface PullRequestLoadMatch {
-  id: string
-  organization_id: string
-  page?: number
-
-  // Selects a custom action instead of the plain load:
-  //   'lookup'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
-}
-
-export interface PullRequestCreateData {
-  organization_id: string
-  branch?: string
-  cleanup_only?: boolean
-  head_sha?: string
-  idempotency_key: string
-  imessage_number?: string
-  number?: number
-  preview_url?: string | null
-  project_id?: string
-  repository_id?: string
-
-  // Selects a custom action instead of the plain create:
-  //   'demo_share' | 'preview' | 'rerun'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
-}
-
-export interface PullRequestRemoveMatch {
-  id: string
-  organization_id: string
-
-  // Selects a custom action instead of the plain remove:
-  //   'demo_share'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
 }
 
 export interface PullRequestAction {
@@ -12771,7 +12535,7 @@ export interface RepoLoadMatch {
   organization_id: string
 
   // Selects a custom action instead of the plain load:
-  //   'access' | 'sync'
+  //   'access' | 'page_sync'
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
@@ -13551,7 +13315,7 @@ export interface RunArtifactCreateData {
 export interface RunJob {
   active: boolean
   allow_failure: boolean
-  cache_archive_observations: Record<string, any> | null
+  cache_archive_observations?: Record<string, any> | null
   ci_pipeline_run_id: string
   ci_runner_id: string | null
   created_at: string
@@ -13572,7 +13336,7 @@ export interface RunJob {
   queued_at: string | null
   reconciliation_id?: string | null
   retry_number: number
-  reuse: Record<string, any> | null
+  reuse?: Record<string, any> | null
   runner_label_selector: string | null
   slug: string
   started_at: string | null
@@ -13649,36 +13413,27 @@ export interface RunSearchLoadMatch {
 }
 
 export interface RunUpdate {
-  base_sha: string
-  can_verify: boolean
-  comment_url: string | null
-  draft: boolean
-  github_repository: string | null
-  github_url: string | null
-  head_sha: string
-  id: string
-  latest_created_at: string | null
-  latest_current: boolean
-  latest_head_sha: string | null
-  latest_reason: string | null
-  latest_run_id: string | null
-  latest_state: string | null
-  number: number
-  project_id: string | null
-  project_slug: string | null
-  provider: string
-  repository_id: string
-  request_label: string
-  source_branch: string | null
-  source_repository: string | null
-  source_url: string | null
-  state: string
-  title: string
-  updated_at: string
-  web_path: string
+  active_runs: any[]
+  checkout_required: boolean
+  cli_signed_in_at: string | null
+  counts: Record<string, any>
+  demo_project: Record<string, any> | null
+  environments: any[]
+  included_deep_scan: boolean
+  onboarding_discovery?: any
+  organization: Record<string, any>
+  permissions: Record<string, any>
+  project: any
+  pull_request_launch_options?: any[]
+  pull_requests?: any[]
+  repositories: any[]
+  runs: any[]
+  runs_pagination: Record<string, any>
+  suggested_app_url: string | null
+  url_first_start: boolean
 }
 
-export interface RunUpdateListMatch {
+export interface RunUpdateLoadMatch {
   organization_id: string
   page?: number
   query?: string
@@ -14038,8 +13793,8 @@ export interface SettingMutationLeaseCreateData {
 
 export interface Signal {
   acked_at: string | null
-  acked_by: Record<string, any> | null
-  agent_runs: Record<string, any>
+  acked_by?: Record<string, any> | null
+  agent_runs?: Record<string, any>
   app_service_id: string | null
   attribution: Record<string, any>
   created_at: string
@@ -14051,8 +13806,8 @@ export interface Signal {
   occurred_at: string
   organization_id: string
   payload: Record<string, any>
-  recovery: Record<string, any>
-  resolution: Record<string, any>
+  recovery?: Record<string, any>
+  resolution?: Record<string, any>
   severity: string
   source: Record<string, any>
   subject_id: string | null
@@ -14895,7 +14650,7 @@ export interface SparkAgentLocalThread {
   can_interrupt: boolean
   can_send: boolean
   created_at: string
-  delivery: Record<string, any>
+  delivery?: Record<string, any>
   device_id: string
   device_name: string
   diagnostic_code?: string
@@ -14910,7 +14665,7 @@ export interface SparkAgentLocalThread {
   provider: string
   references: Record<string, any>
   relay_disconnected_at?: string | null
-  relay_participant: Record<string, any>
+  relay_participant?: Record<string, any>
   result: any
   result_expired: boolean
   result_schema?: Record<string, any> | boolean
@@ -15059,6 +14814,51 @@ export interface SparkAgentThreadCreateData {
   [action: string]: any
 }
 
+export interface SparkAutomation {
+  can_manage: boolean
+  can_manage_events: boolean
+  can_run: boolean
+  can_schedule: boolean
+  definition: Record<string, any>
+  event_subscriptions: any[]
+  event_triggers: any[]
+  expected_revision: number
+  id: string
+  key: string
+  name: string
+  revision: number
+  schedule: any
+  schedules: any[]
+  version: Record<string, any>
+}
+
+export interface SparkAutomationLoadMatch {
+  agent_id: string
+  id: string
+  organization_id: string
+}
+
+export interface SparkAutomationListMatch {
+  agent_id: string
+  organization_id: string
+  cursor?: string
+  limit?: number
+}
+
+export interface SparkAutomationUpdateData {
+  agent_id: string
+  id: string
+  organization_id: string
+  definition?: Record<string, any>
+  expected_revision?: number
+
+  // Selects a custom action instead of the plain update:
+  //   'schedule'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
+}
+
 export interface SparkCredit {
   amount_cents?: number
   autofill: any
@@ -15066,7 +14866,7 @@ export interface SparkCredit {
   available_usd: string
   billing_unit?: string
   can_manage: boolean
-  compute_minutes: Record<string, any>
+  compute_minutes?: Record<string, any>
   compute_usd?: string
   credits_per_usd: number
   inference_usd?: string
@@ -15839,7 +15639,7 @@ export interface VcFileListMatch {
 }
 
 export interface VcMergeQueue {
-  analytics: Record<string, any>
+  analytics?: Record<string, any>
   id?: string
   policy: Record<string, any>
   queue: Record<string, any>
@@ -15899,7 +15699,7 @@ export interface VcStack {
   changes: any[]
   code: string
   id?: string
-  landing: Record<string, any>
+  landing?: Record<string, any>
   member_count: number
   name: string | null
   ref_name: string
@@ -16276,7 +16076,7 @@ export interface VerificationProjectScenario {
   created_at: string
   dependencies: any[]
   fixtures?: any[]
-  health: Record<string, any>
+  health?: Record<string, any>
   id: string
   identity_probe?: any
   if?: string | null
@@ -16436,6 +16236,248 @@ export interface VerifyEmailVerification {
 }
 
 export interface VerifyEmailVerificationLoadMatch {
+}
+
+export interface VerifyEnvironment {
+  active_revision_id: string | null
+  agent_sign_up_available: boolean
+  allowed_actions: string
+  billing: Record<string, any>
+  cleanup: any[]
+  connection: string
+  created_at: string
+  default_policy?: Record<string, any>
+  default_policy_json: Record<string, any>
+  discovery_defaults: Record<string, any>
+  environment: Record<string, any>
+  exploration_accounts?: any[]
+  explorations?: any[]
+  first_run?: any
+  hosted_app_id: string | null
+  id: string
+  imessage_number: string | null
+  included_deep_scan: boolean
+  lock_version: number
+  managed_google_available: boolean
+  managed_google_email: string
+  messaging_tester_number?: string | null
+  name: string
+  network_connections: any[]
+  onboarding_discovery?: any
+  organization_id: string
+  pending_accounts?: any[]
+  permissions: Record<string, any>
+  project_id: string | null
+  repository_id: string | null
+  revisions: any[]
+  setup_discovery_id?: string | null
+  sign_in_check_available: boolean
+  slug: string
+  status: string
+  target_kind: string | null
+  target_url: string | null
+  test_accounts: Record<string, any>
+  updated_at: string
+  verify_network_connection_id: string | null
+  version?: number
+}
+
+export interface VerifyEnvironmentLoadMatch {
+  id?: string
+  organization_id: string
+  project_id?: string
+}
+
+export interface VerifyEnvironmentCreateData {
+  organization_id: string
+  allowed_actions?: string
+  default_policy?: Record<string, any>
+  imessage_number?: string | null
+  messaging_tester_number?: string | null
+  name?: string
+  project_id?: string | null
+  repository_id?: string | null
+  slug: string
+  target_kind?: string | null
+  target_url?: string | null
+}
+
+export interface VerifyEnvironmentUpdateData {
+  id: string
+  organization_id: string
+
+  // Selects a custom action instead of the plain update:
+  //   'first_run'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
+}
+
+export interface VerifyEnvironmentPatchData {
+  id: string
+  organization_id: string
+  allowed_actions?: string
+  imessage_number?: string | null
+  messaging_tester_number?: string | null
+  name?: string
+  target_url?: string | null
+  verify_network_connection_id?: string | null
+  version?: number
+}
+
+export interface VerifyEnvironmentRemoveMatch {
+  id: string
+  organization_id: string
+
+  // Selects a custom action instead of the plain remove:
+  //   'first_run'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
+}
+
+export interface VerifyEvidence {
+  id?: string
+}
+
+export interface VerifyEvidenceLoadMatch {
+  id?: string
+  organization_id: string
+  agent_id?: string
+  cursor?: string
+  exploration_id?: string
+  kind?: string
+  limit?: number
+  repository_id?: string
+  scenario_run_id?: string
+
+  // Selects a custom action instead of the plain load:
+  //   'archive' | 'download'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
+}
+
+export interface VerifyMergeRequest {
+  available_tests: any[]
+  base_sha: string
+  branch?: string
+  comment_url: string | null
+  current_run?: any
+  draft: boolean
+  findings: any[]
+  github_repository: string | null
+  github_url: string | null
+  head_sha: string
+  id: string
+  idempotency_key: string
+  number: number
+  pagination: Record<string, any>
+  permissions: Record<string, any>
+  preview_cleanup_ready: boolean
+  preview_url?: string | null
+  project?: any
+  project_id: string | null
+  project_slug: string | null
+  provider: string
+  pull_request: Record<string, any>
+  repository_id: string
+  request_label: string
+  requested_run_id: string | null
+  runs: any[]
+  source_branch: string | null
+  source_repository: string | null
+  source_url: string | null
+  state: string
+  title: string
+  updated_at: string
+  web_path: string
+}
+
+export interface VerifyMergeRequestLoadMatch {
+  id: string
+  organization_id: string
+  page?: number
+}
+
+export interface VerifyMergeRequestCreateData {
+  organization_id: string
+  branch?: string
+  head_sha?: string
+  idempotency_key: string
+  number: number
+  project_id?: string | null
+  repository_id?: string
+
+  // Selects a custom action instead of the plain create:
+  //   'preview' | 'rerun'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
+}
+
+export interface VerifyPullRequest {
+  available_tests: any[]
+  branch?: string
+  cleanup_only?: boolean
+  current_run?: any
+  findings: any[]
+  head_sha?: string
+  id?: string
+  idempotency_key: string
+  imessage_number?: string
+  number?: number
+  pagination: Record<string, any>
+  permissions: Record<string, any>
+  preview_cleanup_ready: boolean
+  preview_url?: string | null
+  project?: any
+  project_id?: string
+  pull_request: Record<string, any>
+  repository_id?: string
+  runs: any[]
+}
+
+export interface VerifyPullRequestLoadMatch {
+  id: string
+  organization_id: string
+  page?: number
+
+  // Selects a custom action instead of the plain load:
+  //   'lookup'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
+}
+
+export interface VerifyPullRequestCreateData {
+  organization_id: string
+  branch?: string
+  cleanup_only?: boolean
+  head_sha?: string
+  idempotency_key: string
+  imessage_number?: string
+  number?: number
+  preview_url?: string | null
+  project_id?: string
+  repository_id?: string
+
+  // Selects a custom action instead of the plain create:
+  //   'demo_share' | 'preview' | 'rerun'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
+}
+
+export interface VerifyPullRequestRemoveMatch {
+  id: string
+  organization_id: string
+
+  // Selects a custom action instead of the plain remove:
+  //   'demo_share'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface VerifySignalIntegration {

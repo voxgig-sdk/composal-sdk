@@ -256,7 +256,7 @@ main: kit: entity: page: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.organization`"
           }
         }
       ]

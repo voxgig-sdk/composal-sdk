@@ -1,7 +1,7 @@
 $kind: collection
 id: "6987e440-1d2f-5dfb-b7ac-dcf99e30fadd"
 description: |-
-  The **github_pull_request** entity, which belongs to a organization and a pull_request. Its requests address one record by `{{github_pull_request_pull_request_id}}` and `{{github_pull_request_id}}`, which a list or a create remembers.
+  The **github_pull_request** entity, which belongs to a organization. Its requests address one record by `{{github_pull_request_pull_request_id}}` and `{{github_pull_request_id}}`, which a list or a create remembers.
 
   | field | type | required | |
   |---|---|---|---|
@@ -13,4 +13,4 @@ description: |-
   | `pull_request` | any | yes |  |
   | `stack` | object | yes |  |
   | `transcript_paths` | array | yes |  |
-order: 270000
+order: 266000

@@ -61,12 +61,12 @@
     }
   },
   "requests": {
-    "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop": {
+    "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs": {
+    "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

@@ -29,18 +29,16 @@ const utility_1 = require("../../utility");
         const setup = directSetup({ id: 'direct01' });
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-a2a_well_known', setup.live))
             return;
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["a2a01", "a2a01"], LIVE_STRICT))
+        if ((0, utility_1.skipIfMissingIds)(t, setup, ["a2a01"], LIVE_STRICT))
             return;
         const { client, calls } = setup;
         const params = {};
         const query = {};
         if (setup.live) {
             params.a2a_id = setup.idmap['a2a01'];
-            params.a2a_id = setup.idmap['a2a01'];
         }
         else {
             params.a2a_id = 'direct01';
-            params.a2a_id = 'direct02';
         }
         const result = await client.direct({
             path: 'api/v1/control/a2a/{a2a_id}/.well-known/agent-card.json',
@@ -64,7 +62,6 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(calls.length === 1);
             (0, node_assert_1.default)(calls[0].init.method === 'GET');
             (0, node_assert_1.default)(calls[0].url.includes('direct01'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct02'));
         }
     });
 });

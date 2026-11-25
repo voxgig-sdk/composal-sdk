@@ -1,7 +1,7 @@
 $kind: collection
 id: bdc85fe5-b6a1-5f23-bebc-2532b802a0d0
 description: |-
-  The **pull_request_transcript** entity, which belongs to a organization and a repo and a pull_request. Its requests address one record by `{{pull_request_transcript_id}}`, which a list or a create remembers.
+  The **pull_request_transcript** entity, which belongs to a organization and a repo. Its requests address one record by `{{pull_request_transcript_id}}`, which a list or a create remembers.
 
   | field | type | required | |
   |---|---|---|---|
@@ -20,4 +20,4 @@ description: |-
   | `title` | string | yes |  |
   | `updated_at` | string | yes |  |
   | `user` | any | yes |  |
-order: 417000
+order: 415000

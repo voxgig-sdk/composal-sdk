@@ -3,7 +3,7 @@ id: "3b1cc08a-13ee-5049-bf56-e9a9357da11d"
 description: |-
   The `create` operation of **messaging_conversation_message**.
 
-  SDK: `client.MessagingConversationMessage().create({ messaging_conversation_id: "example", organization_id: "example", project_id: "example", client_operation_id: "example", content: "example", media: {} })`
+  SDK: `client.MessagingConversationMessage().create({ messaging_conversation_id: "example", organization_id: "example", project_id: "example", client_operation_id: "example", content: "example" })`
 url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/messaging_conversations/:id/messages"
 method: POST
 headers:

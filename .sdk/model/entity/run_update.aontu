@@ -5,78 +5,24 @@ main: kit: entity: run_update: {
   alias: field: {}
 
   fields: {
-    base_sha: {
-      h: "Base Sha"
-      n: "base_sha"
+    active_runs: {
+      h: "Active Runs"
+      n: "active_runs"
       r: true
-      t: "`$STRING`"
+      t: "`$ARRAY`"
     }
-    can_verify: {
-      h: "Can Verify"
-      n: "can_verify"
-      r: true
-      t: "`$BOOLEAN`"
-    }
-    comment_url: {
-      h: "Comment Url"
-      n: "comment_url"
-      r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    draft: {
-      h: "Draft"
-      n: "draft"
+    checkout_required: {
+      h: "Checkout Required"
+      n: "checkout_required"
       r: true
       t: "`$BOOLEAN`"
     }
-    github_repository: {
-      h: "Github Repository"
-      n: "github_repository"
-      r: true
-      sh: "GitHub owner/repository associated with this pull request."
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    github_url: {
-      h: "Github Url"
-      n: "github_url"
-      r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    head_sha: {
-      h: "Head Sha"
-      n: "head_sha"
-      r: true
-      t: "`$STRING`"
-    }
-    id: {
-      h: "Id"
-      n: "id"
-      r: true
-      t: "`$STRING`"
-    }
-    latest_created_at: {
+    cli_signed_in_at: {
       fo: "date-time"
-      h: "Latest Created At"
-      n: "latest_created_at"
+      h: "Cli Signed In At"
+      n: "cli_signed_in_at"
       r: true
+      sh: "When the signed-in user last finished a CLI sign-in for this organization, so agent setup can show the CLI is connected."
       t: [
         "`$ONE`"
         [
@@ -85,16 +31,103 @@ main: kit: entity: run_update: {
         ]
       ]
     }
-    latest_current: {
-      h: "Latest Current"
-      n: "latest_current"
+    counts: {
+      h: "Counts"
+      n: "counts"
       r: true
+      t: "`$OBJECT`"
+    }
+    demo_project: {
+      h: "Demo Project"
+      n: "demo_project"
+      r: true
+      sh: "The workspace's copy of the demo project, which setup offers as example data."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    environments: {
+      h: "Environments"
+      n: "environments"
+      r: true
+      t: "`$ARRAY`"
+    }
+    included_deep_scan: {
+      h: "Included Deep Scan"
+      n: "included_deep_scan"
+      r: true
+      sh: "Whether a new app gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account, so setup asks for one right after the app."
       t: "`$BOOLEAN`"
     }
-    latest_head_sha: {
-      h: "Latest Head Sha"
-      n: "latest_head_sha"
+    onboarding_discovery: {
+      h: "Onboarding Discovery"
+      n: "onboarding_discovery"
+      r: false
+      t: "`$ANY`"
+    }
+    organization: {
+      h: "Organization"
+      n: "organization"
       r: true
+      t: "`$OBJECT`"
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: true
+      t: "`$OBJECT`"
+    }
+    project: {
+      h: "Project"
+      n: "project"
+      r: true
+      sh: "The project the page is limited to, or null for the whole organization."
+      t: "`$ANY`"
+    }
+    pull_request_launch_options: {
+      h: "Pull Request Launch Options"
+      n: "pull_request_launch_options"
+      r: false
+      t: "`$ARRAY`"
+    }
+    pull_requests: {
+      h: "Pull Requests"
+      n: "pull_requests"
+      r: false
+      t: "`$ARRAY`"
+    }
+    repositories: {
+      h: "Repositories"
+      n: "repositories"
+      r: true
+      t: "`$ARRAY`"
+    }
+    runs: {
+      h: "Runs"
+      n: "runs"
+      r: true
+      t: "`$ARRAY`"
+    }
+    runs_pagination: {
+      h: "Runs Pagination"
+      n: "runs_pagination"
+      r: true
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 3
+      }
+    }
+    suggested_app_url: {
+      h: "Suggested App Url"
+      n: "suggested_app_url"
+      r: true
+      sh: "The URL first-run setup prefills for a new app, from the workspace's project website or the signed-in user's work email domain."
       t: [
         "`$ONE`"
         [
@@ -103,162 +136,19 @@ main: kit: entity: run_update: {
         ]
       ]
     }
-    latest_reason: {
-      h: "Latest Reason"
-      n: "latest_reason"
+    url_first_start: {
+      h: "Url First Start"
+      n: "url_first_start"
       r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
+      sh: "Whether setup opens on the URL-first screen, which saves the app and asks for test access next."
+      t: "`$BOOLEAN`"
     }
-    latest_run_id: {
-      h: "Latest Run Id"
-      n: "latest_run_id"
-      r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    latest_state: {
-      h: "Latest State"
-      n: "latest_state"
-      r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    number: {
-      h: "Number"
-      n: "number"
-      r: true
-      t: "`$INTEGER`"
-    }
-    project_id: {
-      h: "Project Id"
-      n: "project_id"
-      r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    project_slug: {
-      h: "Project Slug"
-      n: "project_slug"
-      r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    provider: {
-      h: "Provider"
-      n: "provider"
-      r: true
-      t: "`$STRING`"
-    }
-    repository_id: {
-      h: "Repository Id"
-      n: "repository_id"
-      r: true
-      t: "`$STRING`"
-    }
-    request_label: {
-      h: "Request Label"
-      n: "request_label"
-      r: true
-      t: "`$STRING`"
-    }
-    source_branch: {
-      h: "Source Branch"
-      n: "source_branch"
-      r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    source_repository: {
-      h: "Source Repository"
-      n: "source_repository"
-      r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    source_url: {
-      h: "Source Url"
-      n: "source_url"
-      r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    state: {
-      h: "State"
-      n: "state"
-      r: true
-      t: "`$STRING`"
-    }
-    title: {
-      h: "Title"
-      n: "title"
-      r: true
-      t: "`$STRING`"
-    }
-    updated_at: {
-      fo: "date-time"
-      h: "Updated At"
-      n: "updated_at"
-      r: true
-      t: "`$STRING`"
-    }
-    web_path: {
-      h: "Web Path"
-      n: "web_path"
-      r: true
-      t: "`$STRING`"
-    }
-  }
-
-  id: {
-    field: "id"
-    name: "id"
   }
 
   name: "run_update"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {
@@ -348,7 +238,7 @@ main: kit: entity: run_update: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.pull_requests`"
+            res: "`body.organization`"
           }
         }
       ]

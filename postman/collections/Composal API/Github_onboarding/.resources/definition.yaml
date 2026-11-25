@@ -10,4 +10,4 @@ description: |-
   | `batches` | array | yes |  |
   | `capabilities` | object | yes |  |
   | `installations` | array | yes |  |
-order: 264000
+order: 261000

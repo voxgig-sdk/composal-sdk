@@ -20,4 +20,4 @@ description: |-
   | `slug` | string | yes |  |
   | `source_branch` | string | yes |  |
   | `target_branch` | string | yes |  |
-order: 253000
+order: 251000

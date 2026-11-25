@@ -14,4 +14,4 @@ description: |-
   | `roles` | array | yes |  |
   | `usable` | boolean | yes |  |
   | `user_id` | string | yes |  |
-order: 13000
+order: 12000

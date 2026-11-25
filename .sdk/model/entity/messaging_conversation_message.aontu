@@ -39,7 +39,7 @@ main: kit: entity: messaging_conversation_message: {
     media: {
       h: "Media"
       n: "media"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     media_upload_ids: {

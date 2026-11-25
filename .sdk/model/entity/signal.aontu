@@ -20,7 +20,7 @@ main: kit: entity: signal: {
     acked_by: {
       h: "Acked By"
       n: "acked_by"
-      r: true
+      r: false
       sh: "Who acked the signal, read from `acked_by_user_id`."
       t: [
         "`$ONE`"
@@ -33,7 +33,7 @@ main: kit: entity: signal: {
     agent_runs: {
       h: "Agent Runs"
       n: "agent_runs"
-      r: true
+      r: false
       sh: "Dispatched-run summary (docs §6c)."
       t: "`$OBJECT`"
     }
@@ -131,14 +131,14 @@ main: kit: entity: signal: {
     recovery: {
       h: "Recovery"
       n: "recovery"
-      r: true
+      r: false
       sh: "Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d)."
       t: "`$OBJECT`"
     }
     resolution: {
       h: "Resolution"
       n: "resolution"
-      r: true
+      r: false
       sh: "Recovery pairing (docs §6b)."
       t: "`$OBJECT`"
     }

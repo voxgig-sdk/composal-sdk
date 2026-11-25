@@ -20,7 +20,7 @@ main: kit: entity: run_job: {
     cache_archive_observations: {
       h: "Cache Archive Observations"
       n: "cache_archive_observations"
-      r: true
+      r: false
       sh: "Bounded server response history; it does not confirm runner extraction or test-result reuse."
       t: [
         "`$ONE`"
@@ -204,7 +204,7 @@ main: kit: entity: run_job: {
     reuse: {
       h: "Reuse"
       n: "reuse"
-      r: true
+      r: false
       t: [
         "`$ONE`"
         [

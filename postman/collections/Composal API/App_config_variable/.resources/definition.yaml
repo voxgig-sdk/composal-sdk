@@ -18,4 +18,4 @@ description: |-
   | `updated_at` | string | yes |  |
   | `value` | string | yes |  |
   | `value_kind` | string | yes |  |
-order: 84000
+order: 83000

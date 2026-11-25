@@ -12,7 +12,6 @@
 <a href="../api/agent_app.html">AgentApp</a>
 <a href="../api/agent_app_install.html">AgentAppInstall</a>
 <a href="../api/agent_attachment.html">AgentAttachment</a>
-<a href="../api/agent_automation.html">AgentAutomation</a>
 <a href="../api/agent_avatar.html">AgentAvatar</a>
 <a href="../api/agent_command.html">AgentCommand</a>
 <a href="../api/agent_computer.html">AgentComputer</a>
@@ -90,6 +89,7 @@
 <a href="../api/app_data_resource.html">AppDataResource</a>
 <a href="../api/app_deploy.html">AppDeploy</a>
 <a href="../api/app_deployment.html">AppDeployment</a>
+<a href="../api/app_deployment_dashboard.html">AppDeploymentDashboard</a>
 <a href="../api/app_deployment_operation.html">AppDeploymentOperation</a>
 <a href="../api/app_deployment_rollback.html">AppDeploymentRollback</a>
 <a href="../api/app_environment.html">AppEnvironment</a>
@@ -160,9 +160,9 @@
 <a href="../api/catalog_selector.html">CatalogSelector</a>
 <a href="../api/cdn_deployment.html">CdnDeployment</a>
 <a href="../api/cdn_hostname.html">CdnHostname</a>
-<a aria-current="page" href="../api/cdn_space.html">CdnSpace</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1cdn_spacesidarchive">POST /api/v1/cdn_spaces/{id}/archive</a>
+<a aria-current="page" href="../api/cdn_space.html">CdnSpace</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1organizationsorg_slugcdn_spaces">POST /api/v1/organizations/{org_slug}/cdn_spaces</a>
+<a class="nav-section" href="#post-apiv1cdn_spacesidarchive">POST /api/v1/cdn_spaces/{id}/archive</a>
 <a class="nav-section" href="#post-apiv1cdn_spacesidprovision">POST /api/v1/cdn_spaces/{id}/provision</a>
-<a class="nav-section" href="#post-apiv1organizationsorg_slugcdn_spaces">POST /api/v1/organizations/{org_slug}/cdn_spaces</a>
 <a class="nav-section" href="#get-apiv1cdn_spacesid">GET /api/v1/cdn_spaces/{id}</a>
 <a class="nav-section" href="#get-apiv1organizationsorg_slugcdn_spaces">GET /api/v1/organizations/{org_slug}/cdn_spaces</a>
 <a class="nav-section" href="#patch-apiv1cdn_spacesid">PATCH /api/v1/cdn_spaces/{id}</a>
@@ -226,12 +226,12 @@
 <a href="../api/device.html">Device</a>
 <a href="../api/device_browser_operation.html">DeviceBrowserOperation</a>
 <a href="../api/device_control_message.html">DeviceControlMessage</a>
-<a href="../api/device_control_operation.html">DeviceControlOperation</a>
 <a href="../api/device_enterprise_relay.html">DeviceEnterpriseRelay</a>
 <a href="../api/device_folder_listing.html">DeviceFolderListing</a>
 <a href="../api/device_grant.html">DeviceGrant</a>
 <a href="../api/device_invocation.html">DeviceInvocation</a>
 <a href="../api/device_local_event.html">DeviceLocalEvent</a>
+<a href="../api/device_operation.html">DeviceOperation</a>
 <a href="../api/device_pairing.html">DevicePairing</a>
 <a href="../api/device_project.html">DeviceProject</a>
 <a href="../api/device_scheduled_check_in.html">DeviceScheduledCheckIn</a>
@@ -243,14 +243,12 @@
 <a href="../api/dream.html">Dream</a>
 <a href="../api/edge.html">Edge</a>
 <a href="../api/email_verification.html">EmailVerification</a>
-<a href="../api/environment.html">Environment</a>
 <a href="../api/environment_discovery_run.html">EnvironmentDiscoveryRun</a>
 <a href="../api/environment_exploration.html">EnvironmentExploration</a>
 <a href="../api/environment_first_run.html">EnvironmentFirstRun</a>
 <a href="../api/environment_revision.html">EnvironmentRevision</a>
 <a href="../api/environment_secret_binding.html">EnvironmentSecretBinding</a>
 <a href="../api/environment_test_account.html">EnvironmentTestAccount</a>
-<a href="../api/evidence.html">Evidence</a>
 <a href="../api/execution_desired_state.html">ExecutionDesiredState</a>
 <a href="../api/execution_reconciler_tick.html">ExecutionReconcilerTick</a>
 <a href="../api/execution_release.html">ExecutionRelease</a>
@@ -271,7 +269,6 @@
 <a href="../api/github_ci_repository.html">GithubCiRepository</a>
 <a href="../api/github_ci_repository_compatibility_report.html">GithubCiRepositoryCompatibilityReport</a>
 <a href="../api/github_connection.html">GithubConnection</a>
-<a href="../api/github_integration.html">GithubIntegration</a>
 <a href="../api/github_onboarding.html">GithubOnboarding</a>
 <a href="../api/github_onboarding_branch.html">GithubOnboardingBranch</a>
 <a href="../api/github_onboarding_import.html">GithubOnboardingImport</a>
@@ -330,7 +327,6 @@
 <a href="../api/member.html">Member</a>
 <a href="../api/memory.html">Memory</a>
 <a href="../api/merge_queue_entry.html">MergeQueueEntry</a>
-<a href="../api/merge_request.html">MergeRequest</a>
 <a href="../api/merge_resolution.html">MergeResolution</a>
 <a href="../api/messaging_conversation_message.html">MessagingConversationMessage</a>
 <a href="../api/messaging_conversation_upload.html">MessagingConversationUpload</a>
@@ -379,6 +375,7 @@
 <a href="../api/page_project_run.html">PageProjectRun</a>
 <a href="../api/page_repo_vc_commit.html">PageRepoVcCommit</a>
 <a href="../api/pages_billing.html">PagesBilling</a>
+<a href="../api/pages_github_integration.html">PagesGithubIntegration</a>
 <a href="../api/pages_github_onboarding.html">PagesGithubOnboarding</a>
 <a href="../api/pages_member.html">PagesMember</a>
 <a href="../api/pages_project_credential.html">PagesProjectCredential</a>
@@ -414,14 +411,15 @@
 <a href="../api/project_messaging_conversation.html">ProjectMessagingConversation</a>
 <a href="../api/project_overview_metric.html">ProjectOverviewMetric</a>
 <a href="../api/project_overview_pull_request.html">ProjectOverviewPullRequest</a>
+<a href="../api/project_pr_testing.html">ProjectPrTesting</a>
 <a href="../api/project_product_map.html">ProjectProductMap</a>
+<a href="../api/project_product_map_comparison.html">ProjectProductMapComparison</a>
 <a href="../api/project_recording.html">ProjectRecording</a>
 <a href="../api/project_run_plan.html">ProjectRunPlan</a>
 <a href="../api/project_run_schedule.html">ProjectRunSchedule</a>
 <a href="../api/project_scenario_option.html">ProjectScenarioOption</a>
 <a href="../api/project_scenario_row.html">ProjectScenarioRow</a>
 <a href="../api/project_setting.html">ProjectSetting</a>
-<a href="../api/pull_request.html">PullRequest</a>
 <a href="../api/pull_request_action.html">PullRequestAction</a>
 <a href="../api/pull_request_magic_merge.html">PullRequestMagicMerge</a>
 <a href="../api/pull_request_setting.html">PullRequestSetting</a>
@@ -517,6 +515,7 @@
 <a href="../api/spark_agent_site.html">SparkAgentSite</a>
 <a href="../api/spark_agent_skill.html">SparkAgentSkill</a>
 <a href="../api/spark_agent_thread.html">SparkAgentThread</a>
+<a href="../api/spark_automation.html">SparkAutomation</a>
 <a href="../api/spark_credit.html">SparkCredit</a>
 <a href="../api/spark_credit_agent_usage.html">SparkCreditAgentUsage</a>
 <a href="../api/spark_credit_usage_total.html">SparkCreditUsageTotal</a>
@@ -555,6 +554,10 @@
 <a href="../api/verify_app_domain.html">VerifyAppDomain</a>
 <a href="../api/verify_browser_session.html">VerifyBrowserSession</a>
 <a href="../api/verify_email_verification.html">VerifyEmailVerification</a>
+<a href="../api/verify_environment.html">VerifyEnvironment</a>
+<a href="../api/verify_evidence.html">VerifyEvidence</a>
+<a href="../api/verify_merge_request.html">VerifyMergeRequest</a>
+<a href="../api/verify_pull_request.html">VerifyPullRequest</a>
 <a href="../api/verify_signal_integration.html">VerifySignalIntegration</a>
 <a href="../api/verify_static_site_domain.html">VerifyStaticSiteDomain</a>
 <a href="../api/version_log.html">VersionLog</a>
@@ -605,6 +608,12 @@
 <tbody>
 <tr>
 <td><code>POST</code></td>
+<td><a href="#post-apiv1organizationsorg_slugcdn_spaces"><code>/api/v1/organizations/{org_slug}/cdn_spaces</code></a></td>
+<td><code>create</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
 <td><a href="#post-apiv1cdn_spacesidarchive"><code>/api/v1/cdn_spaces/{id}/archive</code></a></td>
 <td><code>create</code></td>
 <td>Success</td>
@@ -612,12 +621,6 @@
 <tr>
 <td><code>POST</code></td>
 <td><a href="#post-apiv1cdn_spacesidprovision"><code>/api/v1/cdn_spaces/{id}/provision</code></a></td>
-<td><code>create</code></td>
-<td>Success</td>
-</tr>
-<tr>
-<td><code>POST</code></td>
-<td><a href="#post-apiv1organizationsorg_slugcdn_spaces"><code>/api/v1/organizations/{org_slug}/cdn_spaces</code></a></td>
 <td><code>create</code></td>
 <td>Success</td>
 </tr>
@@ -743,8 +746,8 @@ await client.CdnSpace().remove({ id: &quot;example_id&quot; })
 </tbody>
 </table>
 <h2 id="create">create</h2>
-<h3 id="post-apiv1cdn_spacesidarchive" class="operation" data-method="post"><code>POST</code> /api/v1/cdn_spaces/{id}/archive</h3>
-<p>Operation ID: <code>archive_api_v1_cdn_space</code>.</p>
+<h3 id="post-apiv1organizationsorg_slugcdn_spaces" class="operation" data-method="post"><code>POST</code> /api/v1/organizations/{org_slug}/cdn_spaces</h3>
+<p>Operation ID: <code>post_api_v1_organizations_org_slug_cdn_spaces</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters">Parameters</h4>
 <table>
@@ -759,7 +762,7 @@ await client.CdnSpace().remove({ id: &quot;example_id&quot; })
 </thead>
 <tbody>
 <tr>
-<td><code>id</code></td>
+<td><code>org_slug</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
@@ -779,8 +782,8 @@ await client.CdnSpace().remove({ id: &quot;example_id&quot; })
 <h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway" class="status" data-status="5xx">502: Bad gateway</h5>
-<h3 id="post-apiv1cdn_spacesidprovision" class="operation" data-method="post"><code>POST</code> /api/v1/cdn_spaces/{id}/provision</h3>
-<p>Operation ID: <code>provision_api_v1_cdn_space</code>.</p>
+<h3 id="post-apiv1cdn_spacesidarchive" class="operation" data-method="post"><code>POST</code> /api/v1/cdn_spaces/{id}/archive</h3>
+<p>Operation ID: <code>archive_api_v1_cdn_space</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-1">Parameters</h4>
 <table>
@@ -815,8 +818,8 @@ await client.CdnSpace().remove({ id: &quot;example_id&quot; })
 <h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
-<h3 id="post-apiv1organizationsorg_slugcdn_spaces" class="operation" data-method="post"><code>POST</code> /api/v1/organizations/{org_slug}/cdn_spaces</h3>
-<p>Operation ID: <code>post_api_v1_organizations_org_slug_cdn_spaces</code>.</p>
+<h3 id="post-apiv1cdn_spacesidprovision" class="operation" data-method="post"><code>POST</code> /api/v1/cdn_spaces/{id}/provision</h3>
+<p>Operation ID: <code>provision_api_v1_cdn_space</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-2">Parameters</h4>
 <table>
@@ -831,7 +834,7 @@ await client.CdnSpace().remove({ id: &quot;example_id&quot; })
 </thead>
 <tbody>
 <tr>
-<td><code>org_slug</code></td>
+<td><code>id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

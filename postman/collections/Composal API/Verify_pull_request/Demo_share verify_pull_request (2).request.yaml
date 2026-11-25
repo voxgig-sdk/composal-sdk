@@ -1,0 +1,18 @@
+$kind: http-request
+id: "8bd0effc-48b4-5de5-8339-f266eecfa290"
+description: |-
+  The `demo_share` action of **verify_pull_request**, a route of its `remove` operation.
+
+  SDK: `client.VerifyPullRequest().remove({ "organization_id": "organization_id", "id": "ID", $action: "demo_share" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/pull_requests/:id/demo_share"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_pull_request belongs to.
+  - key: id
+    value: "{{verify_pull_request_id}}"
+    description: The verify_pull_request this request addresses.
+order: 7000

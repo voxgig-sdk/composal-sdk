@@ -26,7 +26,7 @@ main: kit: entity: product_map_identity_decision: {
     target: {
       h: "Target"
       n: "target"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
   }

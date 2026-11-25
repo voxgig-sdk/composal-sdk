@@ -28,7 +28,7 @@ body:
       "time_of_day": "example",
       "time_zone": "example",
       "credential_ids": {},
-      "environment_id": "{{environment_id}}",
+      "environment_id": "example",
       "notification_channel": "email",
       "slack_subscription_id": "example",
       "version": 1,
@@ -44,7 +44,7 @@ scripts:
       const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
       const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
       const getonly = flag("getonly", false)
-      const missing = ["base","organization_id","project_id","project_run_schedule_ref01","environment_id"].filter((name) => !given(name))
+      const missing = ["base","organization_id","project_id","project_run_schedule_ref01"].filter((name) => !given(name))
       if (!given("apikey")) missing.unshift("apikey")
       const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
       if (getonly && "GET" !== pm.request.method) {

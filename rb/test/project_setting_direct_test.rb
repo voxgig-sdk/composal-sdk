@@ -17,9 +17,12 @@ class ProjectSettingDirectTest < Minitest::Test
     result["err"].nil? && result["ok"] && status >= 200 && status < 300
   end
 
-  def test_direct_load_project_setting
-    setup = project_setting_direct_setup({ "id" => "direct01" })
-    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-load-project_setting", setup[:live] ? "live" : "unit")
+  def test_direct_list_project_setting
+    setup = project_setting_direct_setup([
+      { "id" => "direct01" },
+      { "id" => "direct02" },
+    ])
+    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-list-project_setting", setup[:live] ? "live" : "unit")
     if _should_skip
       skip(_reason || "skipped via sdk-test-control.json")
       return
@@ -36,13 +39,8 @@ class ProjectSettingDirectTest < Minitest::Test
 
     params = {}
     query = {}
-    if setup[:live]
-      params["organization_id"] = setup[:idmap]["organization01"]
-      params["project_id"] = setup[:idmap]["project01"]
-    else
-      params["organization_id"] = "direct01"
-      params["project_id"] = "direct02"
-    end
+    params["organization_id"] = setup[:live] ? setup[:idmap]["organization01"] : "direct01"
+    params["project_id"] = setup[:live] ? setup[:idmap]["project01"] : "direct02"
 
     result = client.direct({
       "path" => "api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings",
@@ -52,20 +50,18 @@ class ProjectSettingDirectTest < Minitest::Test
     })
     if setup[:live]
       unless live_ok(result)
-        Runner.live_miss(LIVE_STRICT, "Live load failed: " + Runner.live_describe(result))
+        Runner.live_miss(LIVE_STRICT, "Live list failed: " + Runner.live_describe(result))
       end
-      if result["data"].nil?
-        Runner.live_miss(LIVE_STRICT, "Live load returned no data: " + Runner.live_describe(result))
+      if Runner.live_list(result["data"]).nil?
+        Runner.live_miss(LIVE_STRICT, "Live list returned no list: " + Runner.live_describe(result))
       end
-      assert !result["data"].nil?
+      assert Runner.live_list(result["data"]).is_a?(Array)
     else
       assert_nil result["err"]
       assert result["ok"]
       assert_equal 200, Helpers.to_int(result["status"])
-      assert !result["data"].nil?
-      if result["data"].is_a?(Hash)
-        assert_equal "direct01", result["data"]["id"]
-      end
+      assert result["data"].is_a?(Array)
+      assert_equal 2, result["data"].length
       assert_equal 1, setup[:calls].length
     end
   end

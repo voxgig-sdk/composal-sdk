@@ -112,7 +112,7 @@ main: kit: entity: page_ci_pipeline_run: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.jobs`"
+            res: "`body`"
           }
         }
       ]

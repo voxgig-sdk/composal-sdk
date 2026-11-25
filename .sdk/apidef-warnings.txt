@@ -12,18 +12,6 @@
 
 {
   point: "warning"
-  note: "list GET /api/v1/agent/swarms/{id}/live/replay reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/activity reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
   note: "list GET /api/v1/agent_marketplace reads `body.featured` and drops `listings`, `sections`: declare the one it reads in guide.aontu"
 }
 
@@ -42,19 +30,7 @@
 
 {
   point: "warning"
-  note: "list GET /api/v1/control/a2a/{connection_id}/.well-known/agent-card.json reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
   note: "list GET /api/v1/hosting/apps/{app_id}/deployment_dashboard reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
 }
 
 
@@ -66,31 +42,139 @@
 
 {
   point: "warning"
-  note: "list GET /api/v1/hosting/apps/{app_id}/previews/{id}/administration reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
   note: "list GET /api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
 }
 
 
 {
   point: "warning"
-  note: "list GET /api/v1/me reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+  note: "list GET /api/v1/organizations/{organization_id}/agent_apps reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
 }
 
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{org_slug}/github_runner_history reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+  note: "list GET /api/v1/organizations/{organization_id}/agent_connections reads `body.catalog` and drops `connections`, `custom_connections`: declare the one it reads in guide.aontu"
 }
 
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{org_slug}/gitlab reads `body.connections` and drops `integrations`, `projects`: declare the one it reads in guide.aontu"
+  note: "list GET /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions reads `body.catalog` and drops `subscriptions`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agent_integrations reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agent_integrations/github reads `body.installations`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agent_marketplace reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agent_skills reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/page/roster reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/computer reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/relay/connections reads `body.connections`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/repositories reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/teammates reads `body.agents` and drops `browsers`, `integrations`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/threads reads `body.threads` and drops `local_threads`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/computer reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections reads `body.connections`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/repositories reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/teammates reads `body.agents` and drops `browsers`, `integrations`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/threads reads `body.threads` and drops `local_threads`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/billing/invoices reads `body.invoices`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants reads `body.active_grants` and drops `agent_choices`, `grants`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/github_onboarding reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/members reads `body.members` and drops `invitations`: declare the one it reads in guide.aontu"
 }
 
 
@@ -103,12 +187,6 @@
 {
   point: "warning"
   note: "list GET /api/v1/organizations/{org_slug}/pages/agreements reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{org_slug}/pages/billing reads `body.addons`, beside data of the object it is in: declare what it lists in guide.aontu"
 }
 
 
@@ -156,6 +234,12 @@
 
 {
   point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/pages/nodes reads `body.github_installations` and drops `github_runner_pools`, `github_runner_private_links`, `github_runner_repositories`, `pool_catalogs`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
   note: "list GET /api/v1/organizations/{org_slug}/pages/now reads `body.needs_attention` and drops `recently_landed`, `shipping_now`: declare the one it reads in guide.aontu"
 }
 
@@ -163,12 +247,6 @@
 {
   point: "warning"
   note: "list GET /api/v1/organizations/{org_slug}/pages/pull_zones reads `body.apps` and drops `cdn_deployments`, `cdns`, `environments`, `services`: declare the one it reads in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{org_slug}/pages/repository_import reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
 }
 
 
@@ -210,12 +288,6 @@
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/ref reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
   note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules reads `body.code_rules`, beside data of the object it is in: declare what it lists in guide.aontu"
 }
 
@@ -240,19 +312,7 @@
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/blame reads `body.revisions`, beside data of the object it is in: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
   note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/branches reads `body.branches`, beside data of the object it is in: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/browser/tree reads `body.synced_spaces`, beside data of the object it is in: declare what it lists in guide.aontu"
 }
 
 
@@ -264,13 +324,7 @@
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/diff reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/ci reads `body.checks` and drops `history`, `retryable_runs`: declare the one it reads in guide.aontu"
+  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments reads `body.comment` and drops `comments`: declare the one it reads in guide.aontu"
 }
 
 
@@ -288,6 +342,12 @@
 
 {
   point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/sandbox_integrations reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
   note: "list GET /api/v1/organizations/{org_slug}/spark_credits reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
 }
 
@@ -300,271 +360,7 @@
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agent_apps reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agent_connections reads `body.catalog` and drops `connections`, `custom_connections`: declare the one it reads in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions reads `body.catalog` and drops `subscriptions`: declare the one it reads in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agent_connections/{id}/custody reads `body.events`, beside data of the object it is in: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agent_integrations reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agent_integrations/github reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agent_marketplace reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agent_skills reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/page reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/page/roster reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/avatar/configuration reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder reads `body.pending_inputs` and drops `messages`, `stopped_runs`, `waiting_runs`: declare the one it reads in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/computer reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/debug reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/integrations reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/relay/connections reads `body.connections`, beside data of the object it is in: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/relay/inspection reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/repositories reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/run_usage reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/sandbox reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/teammates reads `body.agents` and drops `browsers`, `integrations`: declare the one it reads in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/threads reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/verify_projects reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/computer reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/debug reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/integrations reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections reads `body.connections`, beside data of the object it is in: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/inspection reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/repositories reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/run_usage reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/sandbox reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/teammates reads `body.agents` and drops `browsers`, `integrations`: declare the one it reads in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/threads reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/verify_projects reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/page reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/billing reads `body.addons`, beside data of the object it is in: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/billing/invoices reads `body.invoices`, beside data of the object it is in: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/billing/usage/breakdown reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/github_onboarding reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/import_branch_policy reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/members reads `body.invitations` and drops `members`: declare the one it reads in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/pages/nodes reads `body.github_installations` and drops `github_runner_pools`, `github_runner_private_links`, `github_runner_repositories`, `pool_catalogs`: declare the one it reads in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/sandbox_integrations reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+  note: "list POST /api/v1/organizations/{org_slug}/transcripts/search reads `body.results`, beside data of the object it is in: declare what it lists in guide.aontu"
 }
 
 
@@ -588,7 +384,7 @@
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/environment reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/environment reads `body.environment` and drops `binary_choices`, `credentials`, `network_connections`, `schedules`: declare the one it reads in guide.aontu"
 }
 
 
@@ -606,13 +402,7 @@
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/personas reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/personas reads `body.personas` and drops `credentials`: declare the one it reads in guide.aontu"
 }
 
 
@@ -630,7 +420,7 @@
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/runs reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/runs reads `body.runs` and drops `environments`: declare the one it reads in guide.aontu"
 }
 
 
@@ -660,37 +450,7 @@
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/brief reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/compare reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/observations/{observation_id}/identity_history reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/overview reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/path reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings reads `body.available_messaging_environments` and drops `messaging_conversations`: declare the one it reads in guide.aontu"
 }
 
 
@@ -702,25 +462,7 @@
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/lookup reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
   note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/options reads `body.credentials` and drops `environments`, `slack_channels`: declare the one it reads in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/page reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit reads its whole body, an object holding no list of records: declare what it lists in guide.aontu"
 }
 
 
@@ -732,37 +474,25 @@
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verify/bug_hunts reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/bug_hunts reads `body.active` and drops `explorations`: declare the one it reads in guide.aontu"
 }
 
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verify/bug_hunts/options reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/bug_hunts/options reads `body.environments`, beside data of the object it is in: declare what it lists in guide.aontu"
 }
 
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verify/deep_scans reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/deep_scans reads `body.active` and drops `explorations`: declare the one it reads in guide.aontu"
 }
 
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verify/deep_scans/options reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/agent reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/context reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/deep_scans/options reads `body.environments`, beside data of the object it is in: declare what it lists in guide.aontu"
 }
 
 
@@ -780,13 +510,7 @@
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verify/explorations reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verify/explorations/{id}/report reads `body.related_explorations`, beside data of the object it is in: declare what it lists in guide.aontu"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/explorations reads `body.active` and drops `explorations`: declare the one it reads in guide.aontu"
 }
 
 
@@ -810,12 +534,6 @@
 
 {
   point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verify/page reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
   note: "list GET /api/v1/organizations/{organization_id}/verify/projects/{project_id}/code_maps reads `body.repositories`, beside data of the object it is in: declare what it lists in guide.aontu"
 }
 
@@ -823,18 +541,6 @@
 {
   point: "warning"
   note: "list GET /api/v1/organizations/{organization_id}/verify/pull_request_settings reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verify/pull_requests/lookup reads `body.available_tests` and drops `findings`, `runs`: declare the one it reads in guide.aontu"
-}
-
-
-{
-  point: "warning"
-  note: "list GET /api/v1/organizations/{organization_id}/verify/run_updates reads `body.pull_requests` and drops `active_runs`, `environments`, `pull_request_launch_options`, `repositories`, `runs`: declare the one it reads in guide.aontu"
 }
 
 
@@ -853,6 +559,486 @@
 {
   point: "warning"
   note: "header parameter `Authorization` of POST /api/v1/organizations/{organization_id}/docker_builder_gateway/authorize ignored: OpenAPI ignores Accept, Content-Type and Authorization header parameters"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `session_id` of GET /api/v1/agent_sessions/{session_id}/transcript is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `connection_id` of GET /api/v1/control/a2a/{connection_id}/.well-known/agent-card.json is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `connection_id` of POST /api/v1/control/a2a/{connection_id}/rpc is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `id` of DELETE /api/v1/me/emails/{id} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `id` of PATCH /api/v1/me/emails/{id} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `id` of POST /api/v1/me/emails/{id}/resend_verification is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `agent_id` of GET /api/v1/model_subscription_accounts/connection/{agent_id} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `agent_id` of POST /api/v1/model_subscription_accounts/connection/{agent_id} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `id` of DELETE /api/v1/model_subscription_accounts/{id} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `id` of PATCH /api/v1/model_subscription_accounts/{id} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `org_slug` of GET /api/v1/organizations/{org_slug}/gh/{github_owner}/{github_repo}/{number} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `github_owner` of GET /api/v1/organizations/{org_slug}/gh/{github_owner}/{github_repo}/{number} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `github_repo` of GET /api/v1/organizations/{org_slug}/gh/{github_owner}/{github_repo}/{number} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `number` of GET /api/v1/organizations/{org_slug}/gh/{github_owner}/{github_repo}/{number} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `org_slug` of GET /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `github_repository_id` of GET /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `number` of GET /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `org_slug` of POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/actions is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `github_repository_id` of POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/actions is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `number` of POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/actions is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `org_slug` of POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/merge is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `github_repository_id` of POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/merge is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `number` of POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/merge is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `org_slug` of POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/rebase is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `github_repository_id` of POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/rebase is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `number` of POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/rebase is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `org_slug` of POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/resolve is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `github_repository_id` of POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/resolve is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `number` of POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/resolve is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `session_id` of GET /api/v1/organizations/{org_slug}/pages/session/{session_id} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `org_slug` of POST /api/v1/organizations/{org_slug}/pages/sessions is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `id` of GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript_index is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `org_slug` of GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/access is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `repo_slug` of GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/access is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `number` of GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/pull_request/{number}/transcripts is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `patchset_number` of GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/patchsets/{patchset_number}/diff/{fingerprint} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `fingerprint` of GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/patchsets/{patchset_number}/diff/{fingerprint} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "query parameter `ref` of GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "query parameter `limit` of GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "query parameter `offset` of GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "query parameter `q` of GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `fingerprint` of GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits/{id}/diff/{fingerprint} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "query parameter `ref` of GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/files is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "query parameter `prefix` of GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/files is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `code` of GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks/{code} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `code` of PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks/{code}/name is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `org_slug` of POST /api/v1/organizations/{org_slug}/transcripts/search is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `organization_id` of POST /api/v1/organizations/{organization_id}/agent_connections/custom_mcp is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `organization_id` of GET /api/v1/organizations/{organization_id}/agents/{id}/avatar is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `id` of GET /api/v1/organizations/{organization_id}/agents/{id}/avatar is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `organization_id` of GET /api/v1/organizations/{organization_id}/agents/{id}/avatar/configuration is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `id` of GET /api/v1/organizations/{organization_id}/agents/{id}/avatar/configuration is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `organization_id` of POST /api/v1/organizations/{organization_id}/agents/{id}/avatar/generate is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `id` of POST /api/v1/organizations/{organization_id}/agents/{id}/avatar/generate is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `organization_id` of POST /api/v1/organizations/{organization_id}/agents/{id}/avatar/retry is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `id` of POST /api/v1/organizations/{organization_id}/agents/{id}/avatar/retry is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `message_id` of GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/email/{message_id} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `organization_id` of GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/message_image is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `id` of GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/message_image is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `question_id` of POST /api/v1/organizations/{organization_id}/agents/{id}/clawder/questions/{question_id}/answer is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `request_key` of GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/relay/connections/requests/{request_key} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `connection_id` of GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/relay/connections/{connection_id}/change is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `file_id` of GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/relay/files/{file_id} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `repository` of POST /api/v1/organizations/{organization_id}/agents/{id}/clawder/repositories/{repository}/environment is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `message_id` of GET /api/v1/organizations/{organization_id}/agents/{id}/spark/email/{message_id} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `organization_id` of GET /api/v1/organizations/{organization_id}/agents/{id}/spark/message_image is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `id` of GET /api/v1/organizations/{organization_id}/agents/{id}/spark/message_image is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `question_id` of POST /api/v1/organizations/{organization_id}/agents/{id}/spark/questions/{question_id}/answer is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `request_key` of GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/requests/{request_key} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `connection_id` of GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/change is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `file_id` of GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/files/{file_id} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `repository` of POST /api/v1/organizations/{organization_id}/agents/{id}/spark/repositories/{repository}/environment is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `observation_id` of GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/observations/{observation_id} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `observation_id` of GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/observations/{observation_id}/identity_history is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `state_id` of GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/states/{state_id} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "query parameter `repository_id` of GET /api/v1/organizations/{organization_id}/verify/findings/{id} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "query parameter `repository_id` of PATCH /api/v1/organizations/{organization_id}/verify/findings/{id} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "header parameter `Idempotency-Key` of PATCH /api/v1/organizations/{organization_id}/verify/findings/{id} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `provider` of POST /api/v1/signals/inbound/{provider}/{inbound_token} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
+}
+
+
+{
+  point: "warning"
+  note: "path parameter `inbound_token` of POST /api/v1/signals/inbound/{provider}/{inbound_token} is declared more than once: the first declaration is used (OpenAPI forbids a repeated parameter; fix the definition)"
 }
 
 

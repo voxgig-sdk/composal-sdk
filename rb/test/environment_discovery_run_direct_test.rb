@@ -24,13 +24,9 @@ class EnvironmentDiscoveryRunDirectTest < Minitest::Test
       skip(_reason || "skipped via sdk-test-control.json")
       return
     end
-    if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE" && setup[:idmap]["environment01"].nil?
-      puts "LIVE STEP {\"id\":\"direct-load-environment_discovery_run\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives\"}"
-      skip("Live coverage incomplete: direct-load-environment_discovery_run excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)")
-    end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE" && setup[:idmap]["environment_discovery_run01"].nil?
-      puts "LIVE STEP {\"id\":\"direct-load-environment_discovery_run\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment_discovery_run01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop gives\"}"
-      skip("Live coverage incomplete: direct-load-environment_discovery_run excluded (GET-only live run: needs environment_discovery_run01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop gives)")
+      puts "LIVE STEP {\"id\":\"direct-load-environment_discovery_run\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment_discovery_run01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs gives\"}"
+      skip("Live coverage incomplete: direct-load-environment_discovery_run excluded (GET-only live run: needs environment_discovery_run01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs gives)")
     end
     if setup[:live]
       ["environment01", "environment_discovery_run01", "organization01"].each do |_live_key|

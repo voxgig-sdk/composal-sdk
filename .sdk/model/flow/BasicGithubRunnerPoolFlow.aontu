@@ -35,6 +35,10 @@ main: kit: flow: BasicGithubRunnerPoolFlow:
     }
 
     {
+      d: {
+        organization_id: "organization01"
+      }
+
       i: {
         ref: "github_runner_pool_ref01",
         srcdatavar: "github_runner_pool_ref01_data",

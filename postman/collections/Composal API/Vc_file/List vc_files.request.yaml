@@ -4,7 +4,7 @@ description: |-
   The `list` operation of **vc_file**.
 
   SDK: `client.VcFile().list({ organization_id: "example", repo_id: "example", ref: "example" })`
-url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/files?ref={{ref}}&ref={{ref}}"
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/files?ref={{ref}}"
 method: GET
 headers:
   Accept: application/json
@@ -12,11 +12,6 @@ queryParams:
   - key: prefix
     value: ""
     disabled: true
-  - key: prefix
-    value: ""
-    disabled: true
-  - key: ref
-    value: "{{ref}}"
   - key: ref
     value: "{{ref}}"
 pathVariables:

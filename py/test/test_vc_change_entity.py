@@ -46,7 +46,7 @@ class TestVcChangeEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["list"]:
+        for _op in ["list", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "vc_change." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -61,6 +61,12 @@ class TestVcChangeEntity:
                 if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
                     runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_VC_CHANGE_ENTID")
         client = setup["client"]
+        if setup["live"]:
+            _live_id = None if setup.get("synthetic_only") else setup["idmap"].get("vc_change01")
+            runner.live_pace()
+            runner.live_existing(setup, LIVE_STRICT, "vc_change",
+                                 lambda: client.VcChange(None).list({"organization_id": setup["idmap"].get("organization01"), "repo_id": setup["idmap"].get("repo01")}, None),
+                                 "id", _live_id)
 
         # Bootstrap entity data from existing test data.
         vc_change_ref01_data_raw = vs.items(helpers.to_map(
@@ -80,6 +86,19 @@ class TestVcChangeEntity:
 
         vc_change_ref01_list_result = vc_change_ref01_ent.list(vc_change_ref01_match, None)
         assert isinstance(vc_change_ref01_list_result, list)
+
+        if setup["live"]:
+            runner.live_pace()
+        # LOAD
+        vc_change_ref01_match_dt0 = {
+            "id": vc_change_ref01_data["id"],
+        }
+        vc_change_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
+        vc_change_ref01_match_dt0["repo_id"] = setup["idmap"].get("repo_id") or setup["idmap"].get("repo01")
+        vc_change_ref01_data_dt0_loaded = vc_change_ref01_ent.load(vc_change_ref01_match_dt0, None)
+        vc_change_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(vc_change_ref01_data_dt0_loaded))
+        assert vc_change_ref01_data_dt0_load_result is not None
+        assert runner.live_same_id(vc_change_ref01_data_dt0_load_result.get("id"), vc_change_ref01_data["id"])
 
 
     def _run_get_only_flow(self, setup):
@@ -88,6 +107,12 @@ class TestVcChangeEntity:
                 if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
                     runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_VC_CHANGE_ENTID")
         client = setup["client"]
+        if setup["live"]:
+            _live_id = None if setup.get("synthetic_only") else setup["idmap"].get("vc_change01")
+            runner.live_pace()
+            runner.live_existing(setup, LIVE_STRICT, "vc_change",
+                                 lambda: client.VcChange(None).list({"organization_id": setup["idmap"].get("organization01"), "repo_id": setup["idmap"].get("repo01")}, None),
+                                 "id", _live_id)
 
         # Bootstrap entity data from existing test data.
         vc_change_ref01_data_raw = vs.items(helpers.to_map(
@@ -107,6 +132,19 @@ class TestVcChangeEntity:
 
         vc_change_ref01_list_result = vc_change_ref01_ent.list(vc_change_ref01_match, None)
         assert isinstance(vc_change_ref01_list_result, list)
+
+        if setup["live"]:
+            runner.live_pace()
+        # LOAD
+        vc_change_ref01_match_dt0 = {
+            "id": vc_change_ref01_data["id"],
+        }
+        vc_change_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
+        vc_change_ref01_match_dt0["repo_id"] = setup["idmap"].get("repo_id") or setup["idmap"].get("repo01")
+        vc_change_ref01_data_dt0_loaded = vc_change_ref01_ent.load(vc_change_ref01_match_dt0, None)
+        vc_change_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(vc_change_ref01_data_dt0_loaded))
+        assert vc_change_ref01_data_dt0_load_result is not None
+        assert runner.live_same_id(vc_change_ref01_data_dt0_load_result.get("id"), vc_change_ref01_data["id"])
 
 
 

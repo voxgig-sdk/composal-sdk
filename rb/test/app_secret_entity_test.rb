@@ -85,6 +85,7 @@ class AppSecretEntityTest < Minitest::Test
     app_secret_ref01_match_dt0 = {
       "id" => app_secret_ref01_data["id"],
     }
+    app_secret_ref01_match_dt0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
     app_secret_ref01_data_dt0_loaded = app_secret_ref01_ent.load(app_secret_ref01_match_dt0, nil)
     app_secret_ref01_data_dt0_load_result = Helpers.to_map(app_secret_ref01_data_dt0_loaded.respond_to?(:data_get) ? app_secret_ref01_data_dt0_loaded.data_get : app_secret_ref01_data_dt0_loaded)
     assert !app_secret_ref01_data_dt0_load_result.nil?
@@ -150,6 +151,7 @@ class AppSecretEntityTest < Minitest::Test
     app_secret_ref01_match_dt0 = {
       "id" => app_secret_ref01_data["id"],
     }
+    app_secret_ref01_match_dt0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
     app_secret_ref01_data_dt0_loaded = app_secret_ref01_ent.load(app_secret_ref01_match_dt0, nil)
     app_secret_ref01_data_dt0_load_result = Helpers.to_map(app_secret_ref01_data_dt0_loaded.respond_to?(:data_get) ? app_secret_ref01_data_dt0_loaded.data_get : app_secret_ref01_data_dt0_loaded)
     assert !app_secret_ref01_data_dt0_load_result.nil?

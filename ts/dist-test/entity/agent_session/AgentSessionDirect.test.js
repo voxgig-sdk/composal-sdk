@@ -29,18 +29,16 @@ const utility_1 = require("../../utility");
         const setup = directSetup({ id: 'direct01' });
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-agent_session', setup.live))
             return;
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["agent_session01", "agent_session01"], LIVE_STRICT))
+        if ((0, utility_1.skipIfMissingIds)(t, setup, ["agent_session01"], LIVE_STRICT))
             return;
         const { client, calls } = setup;
         const params = {};
         const query = {};
         if (setup.live) {
             params.id = setup.idmap['agent_session01'];
-            params.id = setup.idmap['agent_session01'];
         }
         else {
             params.id = 'direct01';
-            params.id = 'direct02';
         }
         const result = await client.direct({
             path: 'api/v1/agent_sessions/{id}/transcript',
@@ -64,7 +62,6 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(calls.length === 1);
             (0, node_assert_1.default)(calls[0].init.method === 'GET');
             (0, node_assert_1.default)(calls[0].url.includes('direct01'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct02'));
         }
     });
 });

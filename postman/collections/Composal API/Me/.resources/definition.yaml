@@ -20,7 +20,7 @@ description: |-
   | `github_pr_user_authorization_login` | string | yes |  |
   | `github_prs_authored_by_change_author` | boolean | yes |  |
   | `id` | string | yes |  |
-  | `impersonation` | object | yes |  |
+  | `impersonation` | object |  |  |
   | `name` | string | yes |  |
   | `next_path` | string |  |  |
   | `onboarding` | object | yes |  |
@@ -32,4 +32,4 @@ description: |-
   | `picture_url` | string | yes |  |
   | `superadmin` | boolean |  |  |
   | `time_zone` | string |  |  |
-order: 317000
+order: 313000

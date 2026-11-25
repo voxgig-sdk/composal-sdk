@@ -127,9 +127,8 @@ describe("ProductMapStateDirect", function()
       params["project_id"] = setup.idmap["project01"]
     else
       params["id"] = "direct01"
-      params["id"] = "direct02"
-      params["organization_id"] = "direct03"
-      params["project_id"] = "direct04"
+      params["organization_id"] = "direct02"
+      params["project_id"] = "direct03"
     end
 
     local result, err = client:direct({

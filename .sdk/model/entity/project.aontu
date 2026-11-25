@@ -178,7 +178,7 @@ main: kit: entity: project: {
     overview: {
       h: "Overview"
       n: "overview"
-      r: true
+      r: false
       t: "`$OBJECT`"
       union: {
         branches: 2
@@ -251,7 +251,7 @@ main: kit: entity: project: {
     scenario_history: {
       h: "Scenario History"
       n: "scenario_history"
-      r: true
+      r: false
       t: "`$OBJECT`"
       union: {
         branches: 2
@@ -767,7 +767,7 @@ main: kit: entity: project: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.environment`"
           }
         }
         {
@@ -1171,7 +1171,7 @@ main: kit: entity: project: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.project`"
           }
         }
         {
@@ -1480,120 +1480,6 @@ main: kit: entity: project: {
         }
         {
           co: {
-            id: "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/pr_testing"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "id"
-                or: "project_id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "organization_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-            query: [
-              {
-                explode: true
-                k: "query"
-                n: "provider"
-                or: "provider"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "repository_id"
-                or: "repository_id"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "repository_search"
-                or: "repository_search"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "source_repository"
-                or: "source_repository"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/pr_testing"
-          q: {
-            "$action": "pr_testing"
-            exist: [
-              "id"
-              "organization_id"
-            ]
-          }
-          r: {
-            param: {
-              project_id: "id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "verification"
-            }
-            {
-              lit: "projects"
-            }
-            {
-              var: "id"
-            }
-            {
-              lit: "pages"
-            }
-            {
-              lit: "pr_testing"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
             id: "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map"
             source: "openapi3"
             version: 2
@@ -1769,156 +1655,6 @@ main: kit: entity: project: {
           t: {
             req: "`reqdata`"
             res: "`body`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "id"
-                or: "project_id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "organization_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-            query: [
-              {
-                explode: true
-                k: "query"
-                n: "account_id"
-                or: "account_id"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "area"
-                or: "area"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "before"
-                or: "before"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "compare_revision_id"
-                or: "compare_revision_id"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "persona_id"
-                or: "persona_id"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "query"
-                or: "query"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "revision_id"
-                or: "revision_id"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "since"
-                or: "since"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison"
-          q: {
-            "$action": "product_map_comparison"
-            exist: [
-              "id"
-              "organization_id"
-            ]
-          }
-          r: {
-            param: {
-              project_id: "id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "verification"
-            }
-            {
-              lit: "projects"
-            }
-            {
-              var: "id"
-            }
-            {
-              lit: "pages"
-            }
-            {
-              lit: "product_map_comparison"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body.accounts`"
           }
         }
         {

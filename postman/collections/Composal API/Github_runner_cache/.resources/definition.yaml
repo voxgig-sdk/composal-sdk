@@ -15,4 +15,4 @@ description: |-
   | `size_bytes` | string |  |  |
   | `upload_path` | string |  |  |
   | `version` | string |  |  |
-order: 272000
+order: 268000

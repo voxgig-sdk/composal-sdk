@@ -43,21 +43,17 @@ describe('AgentAvatarDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-agent_avatar', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["agent01","agent01","organization01","organization01"], LIVE_STRICT)) return
+    if (skipIfMissingIds(t, setup, ["agent01","organization01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
       params.agent_id = setup.idmap['agent01']
-      params.agent_id = setup.idmap['agent01']
-      params.organization_id = setup.idmap['organization01']
       params.organization_id = setup.idmap['organization01']
     } else {
       params.agent_id = 'direct01'
-      params.agent_id = 'direct02'
-      params.organization_id = 'direct03'
-      params.organization_id = 'direct04'
+      params.organization_id = 'direct02'
     }
 
     const result: any = await client.direct({
@@ -83,8 +79,6 @@ describe('AgentAvatarDirect', async () => {
       assert(calls[0].init.method === 'GET')
       assert(calls[0].url.includes('direct01'))
       assert(calls[0].url.includes('direct02'))
-      assert(calls[0].url.includes('direct03'))
-      assert(calls[0].url.includes('direct04'))
     }
   })
 

@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "verify_evidence": {
+      "VERIFY_EVIDENCE00": {
+        "id": "VERIFY_EVIDENCE00",
+        "organization_id": "ORGANIZATION01"
+      },
+      "VERIFY_EVIDENCE01": {
+        "id": "VERIFY_EVIDENCE01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "VERIFY_EVIDENCE02": {
+        "id": "VERIFY_EVIDENCE02",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "verify_evidence": {
+      "verify_evidence_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verify/evidence/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/evidence/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/evidence/{id}/download": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/evidence": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

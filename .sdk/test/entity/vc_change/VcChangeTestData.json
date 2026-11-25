@@ -188,16 +188,6 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/diff": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_preview": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}": {
       "provenance": "operation-contract",
       "version": 2,
@@ -208,12 +198,22 @@
       "version": 2,
       "source": "openapi3"
     },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/diff": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
     "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/github_projection": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
     "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/state": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_preview": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

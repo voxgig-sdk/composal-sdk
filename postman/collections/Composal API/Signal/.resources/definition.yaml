@@ -6,8 +6,8 @@ description: |-
   | field | type | required | |
   |---|---|---|---|
   | `acked_at` | string | yes |  |
-  | `acked_by` | object | yes |  |
-  | `agent_runs` | object | yes |  |
+  | `acked_by` | object |  |  |
+  | `agent_runs` | object |  |  |
   | `app_service_id` | string | yes |  |
   | `attribution` | object | yes |  |
   | `created_at` | string | yes |  |
@@ -19,11 +19,11 @@ description: |-
   | `occurred_at` | string | yes |  |
   | `organization_id` | string | yes |  |
   | `payload` | object | yes |  |
-  | `recovery` | object | yes |  |
-  | `resolution` | object | yes |  |
+  | `recovery` | object |  |  |
+  | `resolution` | object |  |  |
   | `severity` | string | yes |  |
   | `source` | object | yes |  |
   | `subject_id` | string | yes |  |
   | `subject_type` | string | yes |  |
   | `summary` | string | yes |  |
-order: 473000
+order: 471000

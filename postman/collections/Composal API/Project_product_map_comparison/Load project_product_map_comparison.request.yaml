@@ -1,0 +1,43 @@
+$kind: http-request
+id: "0192dba0-2bea-513a-817f-2ae0bf55a04a"
+description: |-
+  The `load` operation of **project_product_map_comparison**.
+
+  SDK: `client.ProjectProductMapComparison().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/pages/product_map_comparison"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: account_id
+    value: ""
+    disabled: true
+  - key: area
+    value: ""
+    disabled: true
+  - key: before
+    value: ""
+    disabled: true
+  - key: compare_revision_id
+    value: ""
+    disabled: true
+  - key: persona_id
+    value: ""
+    disabled: true
+  - key: query
+    value: ""
+    disabled: true
+  - key: revision_id
+    value: ""
+    disabled: true
+  - key: since
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_product_map_comparison belongs to.
+  - key: project_id
+    value: "{{project_product_map_comparison_id}}"
+    description: The project_product_map_comparison this request addresses.
+order: 1000

@@ -121,18 +121,6 @@ Create a new `AgentAttachment` entity instance.
 
 **Returns:** `AgentAttachmentEntity` instance.
 
-#### `AgentAutomation(data?: object)`
-
-Create a new `AgentAutomation` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `AgentAutomationEntity` instance.
-
 #### `AgentAvatar(data?: object)`
 
 Create a new `AgentAvatar` entity instance.
@@ -1056,6 +1044,18 @@ Create a new `AppDeployment` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `AppDeploymentEntity` instance.
+
+#### `AppDeploymentDashboard(data?: object)`
+
+Create a new `AppDeploymentDashboard` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AppDeploymentDashboardEntity` instance.
 
 #### `AppDeploymentOperation(data?: object)`
 
@@ -2605,18 +2605,6 @@ Create a new `DeviceControlMessage` entity instance.
 
 **Returns:** `DeviceControlMessageEntity` instance.
 
-#### `DeviceControlOperation(data?: object)`
-
-Create a new `DeviceControlOperation` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `DeviceControlOperationEntity` instance.
-
 #### `DeviceEnterpriseRelay(data?: object)`
 
 Create a new `DeviceEnterpriseRelay` entity instance.
@@ -2676,6 +2664,18 @@ Create a new `DeviceLocalEvent` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `DeviceLocalEventEntity` instance.
+
+#### `DeviceOperation(data?: object)`
+
+Create a new `DeviceOperation` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeviceOperationEntity` instance.
 
 #### `DevicePairing(data?: object)`
 
@@ -2809,18 +2809,6 @@ Create a new `EmailVerification` entity instance.
 
 **Returns:** `EmailVerificationEntity` instance.
 
-#### `Environment(data?: object)`
-
-Create a new `Environment` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `EnvironmentEntity` instance.
-
 #### `EnvironmentDiscoveryRun(data?: object)`
 
 Create a new `EnvironmentDiscoveryRun` entity instance.
@@ -2892,18 +2880,6 @@ Create a new `EnvironmentTestAccount` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `EnvironmentTestAccountEntity` instance.
-
-#### `Evidence(data?: object)`
-
-Create a new `Evidence` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `EvidenceEntity` instance.
 
 #### `ExecutionDesiredState(data?: object)`
 
@@ -3144,18 +3120,6 @@ Create a new `GithubConnection` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `GithubConnectionEntity` instance.
-
-#### `GithubIntegration(data?: object)`
-
-Create a new `GithubIntegration` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `GithubIntegrationEntity` instance.
 
 #### `GithubOnboarding(data?: object)`
 
@@ -3853,18 +3817,6 @@ Create a new `MergeQueueEntry` entity instance.
 
 **Returns:** `MergeQueueEntryEntity` instance.
 
-#### `MergeRequest(data?: object)`
-
-Create a new `MergeRequest` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `MergeRequestEntity` instance.
-
 #### `MergeResolution(data?: object)`
 
 Create a new `MergeResolution` entity instance.
@@ -4441,6 +4393,18 @@ Create a new `PagesBilling` entity instance.
 
 **Returns:** `PagesBillingEntity` instance.
 
+#### `PagesGithubIntegration(data?: object)`
+
+Create a new `PagesGithubIntegration` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PagesGithubIntegrationEntity` instance.
+
 #### `PagesGithubOnboarding(data?: object)`
 
 Create a new `PagesGithubOnboarding` entity instance.
@@ -4861,6 +4825,18 @@ Create a new `ProjectOverviewPullRequest` entity instance.
 
 **Returns:** `ProjectOverviewPullRequestEntity` instance.
 
+#### `ProjectPrTesting(data?: object)`
+
+Create a new `ProjectPrTesting` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ProjectPrTestingEntity` instance.
+
 #### `ProjectProductMap(data?: object)`
 
 Create a new `ProjectProductMap` entity instance.
@@ -4872,6 +4848,18 @@ Create a new `ProjectProductMap` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `ProjectProductMapEntity` instance.
+
+#### `ProjectProductMapComparison(data?: object)`
+
+Create a new `ProjectProductMapComparison` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ProjectProductMapComparisonEntity` instance.
 
 #### `ProjectRecording(data?: object)`
 
@@ -4944,18 +4932,6 @@ Create a new `ProjectSetting` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `ProjectSettingEntity` instance.
-
-#### `PullRequest(data?: object)`
-
-Create a new `PullRequest` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `PullRequestEntity` instance.
 
 #### `PullRequestAction(data?: object)`
 
@@ -6097,6 +6073,18 @@ Create a new `SparkAgentThread` entity instance.
 
 **Returns:** `SparkAgentThreadEntity` instance.
 
+#### `SparkAutomation(data?: object)`
+
+Create a new `SparkAutomation` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SparkAutomationEntity` instance.
+
 #### `SparkCredit(data?: object)`
 
 Create a new `SparkCredit` entity instance.
@@ -6552,6 +6540,54 @@ Create a new `VerifyEmailVerification` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `VerifyEmailVerificationEntity` instance.
+
+#### `VerifyEnvironment(data?: object)`
+
+Create a new `VerifyEnvironment` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `VerifyEnvironmentEntity` instance.
+
+#### `VerifyEvidence(data?: object)`
+
+Create a new `VerifyEvidence` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `VerifyEvidenceEntity` instance.
+
+#### `VerifyMergeRequest(data?: object)`
+
+Create a new `VerifyMergeRequest` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `VerifyMergeRequestEntity` instance.
+
+#### `VerifyPullRequest(data?: object)`
+
+Create a new `VerifyPullRequest` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `VerifyPullRequestEntity` instance.
 
 #### `VerifySignalIntegration(data?: object)`
 
@@ -7065,28 +7101,28 @@ remaining keys are sent as that action's payload.
 | `slack` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/slack` | `client.Agent().create({ $action: 'slack', ... })` |
 | `transcription_session` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/transcription_session` | `client.Agent().create({ $action: 'transcription_session', ... })` |
 | `warm` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/warm` | `client.Agent().create({ $action: 'warm', ... })` |
-| `activity` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/activity` | `client.Agent().load({ $action: 'activity', ... })` |
 | `avatar` | `/api/v1/organizations/{organization_id}/agents/{id}/avatar` | `client.Agent().load({ $action: 'avatar', ... })` |
 | `compute` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/compute` | `client.Agent().load({ $action: 'compute', ... })` |
 | `computer` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/computer` | `client.Agent().load({ $action: 'computer', ... })` |
 | `conversation` | `/api/v1/organizations/{organization_id}/agents/{id}/spark` | `client.Agent().load({ $action: 'conversation', ... })` |
 | `coordination` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/coordination` | `client.Agent().load({ $action: 'coordination', ... })` |
-| `debug` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/debug` | `client.Agent().load({ $action: 'debug', ... })` |
 | `email` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/email` | `client.Agent().load({ $action: 'email', ... })` |
 | `environment` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/environment` | `client.Agent().load({ $action: 'environment', ... })` |
 | `github_access` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/github_access` | `client.Agent().load({ $action: 'github_access', ... })` |
-| `input_delivery` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/input_delivery` | `client.Agent().load({ $action: 'input_delivery', ... })` |
-| `inspection` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/inspection` | `client.Agent().load({ $action: 'inspection', ... })` |
 | `library` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/library` | `client.Agent().load({ $action: 'library', ... })` |
 | `lifecycle` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/lifecycle` | `client.Agent().load({ $action: 'lifecycle', ... })` |
-| `message_image` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/message_image` | `client.Agent().load({ $action: 'message_image', ... })` |
-| `mission_control_card` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/mission_control_card` | `client.Agent().load({ $action: 'mission_control_card', ... })` |
 | `resource` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resource` | `client.Agent().load({ $action: 'resource', ... })` |
-| `run_usage` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/run_usage` | `client.Agent().load({ $action: 'run_usage', ... })` |
 | `runtime` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/runtime` | `client.Agent().load({ $action: 'runtime', ... })` |
 | `sandbox` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/sandbox` | `client.Agent().load({ $action: 'sandbox', ... })` |
+| `spark_debug` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/debug` | `client.Agent().load({ $action: 'spark_debug', ... })` |
+| `spark_input_delivery` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/input_delivery` | `client.Agent().load({ $action: 'spark_input_delivery', ... })` |
+| `spark_message_image` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/message_image` | `client.Agent().load({ $action: 'spark_message_image', ... })` |
+| `spark_mission_control_card` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/mission_control_card` | `client.Agent().load({ $action: 'spark_mission_control_card', ... })` |
+| `spark_relay_activity` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/activity` | `client.Agent().load({ $action: 'spark_relay_activity', ... })` |
+| `spark_relay_inspection` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/inspection` | `client.Agent().load({ $action: 'spark_relay_inspection', ... })` |
+| `spark_run_usage` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/run_usage` | `client.Agent().load({ $action: 'spark_run_usage', ... })` |
+| `spark_usage` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/usage` | `client.Agent().load({ $action: 'spark_usage', ... })` |
 | `thread_model` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/thread_model` | `client.Agent().load({ $action: 'thread_model', ... })` |
-| `usage` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/usage` | `client.Agent().load({ $action: 'usage', ... })` |
 | `environment` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/environment` | `client.Agent().update({ $action: 'environment', ... })` |
 | `github_access` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/github_access` | `client.Agent().update({ $action: 'github_access', ... })` |
 | `model` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/model` | `client.Agent().update({ $action: 'model', ... })` |
@@ -7402,111 +7438,6 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `AgentAttachmentEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `ComposalSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## AgentAutomationEntity
-
-```ts
-const agent_automation = client.AgentAutomation()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `can_manage` | `boolean` | Yes |  |
-| `can_manage_events` | `boolean` | Yes | Whether new event triggers can be attached or existing settings saved. |
-| `can_run` | `boolean` | Yes | Whether the viewer can request a manual Temporal run |
-| `can_schedule` | `boolean` | Yes |  |
-| `definition` | `Record<string, any>` | Yes |  |
-| `event_subscriptions` | `any[]` | Yes |  |
-| `event_triggers` | `any[]` | Yes |  |
-| `expected_revision` | `number` | Yes |  |
-| `id` | `string` | Yes |  |
-| `key` | `string` | Yes |  |
-| `name` | `string` | Yes |  |
-| `revision` | `number` | Yes |  |
-| `schedule` | `any` | Yes |  |
-| `schedules` | `any[]` | Yes |  |
-| `version` | `Record<string, any>` | Yes |  |
-
-### Actions
-
-This entity exposes custom API actions in addition to the standard
-operations. Select one with `$action` in the call's argument; the
-remaining keys are sent as that action's payload.
-
-| Action | Route | Call |
-| --- | --- | --- |
-| `schedule` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/schedule` | `client.AgentAutomation().update({ $action: 'schedule', ... })` |
-
-An action returns that action's OWN response, which is not necessarily a
-AgentAutomation record — check the API definition for its shape.
-
-```ts
-const result = await client.AgentAutomation().update({
-  $action: 'schedule',
-  /* ...the action's own arguments */
-})
-```
-
-### Operations
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AgentAutomation().list({ agent_id: "example", organization_id: "example" })
-```
-
-#### `load(match: object, ctrl?: object)`
-
-Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
-
-```ts
-const result = await client.AgentAutomation().load({ id: 'agent_automation_id', agent_id: 'agent_id', organization_id: 'organization_id' })
-```
-
-#### `update(data: object, ctrl?: object)`
-
-Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
-
-```ts
-const result = await client.AgentAutomation().update({
-  id: 'agent_automation_id',
-  agent_id: 'agent_id',
-  organization_id: 'organization_id',
-  // Fields to update
-})
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `AgentAutomationEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -8662,8 +8593,8 @@ const agent_input = client.AgentInput()
 | --- | --- | --- | --- |
 | `attachment_ids` | `any[]` | No | Completed uploads from the attachments endpoint, in order. |
 | `attachments` | `any[]` | No |  |
-| `browser_context` | `Record<string, any>` | Yes | Advisory snapshot of the browser pane beside this conversation when the message was sent. |
-| `client_time` | `Record<string, any>` | Yes | The sending app's IANA time zone and clock, so the agent answers in the person's local time. |
+| `browser_context` | `Record<string, any>` | No | Advisory snapshot of the browser pane beside this conversation when the message was sent. |
+| `client_time` | `Record<string, any>` | No | The sending app's IANA time zone and clock, so the agent answers in the person's local time. |
 | `conversation_id` | `string` | Yes | Main or a conversation identity returned by the agent thread list. |
 | `model_policy` | `any` | No |  |
 | `requester_membership_id` | `string` | No | Snapshot the membership supplied by conversation history for a NEW V1 input. |
@@ -8680,8 +8611,6 @@ Create a new entity with the given data. Resolves to the created entity.
 const result = await client.AgentInput().create({
   agent_id: 'example_agent_id',
   organization_id: 'example_organization_id',
-  browser_context: {},
-  client_time: {},
   conversation_id: 'example_conversation_id',
   text: 'example_text',
 })
@@ -9311,7 +9240,7 @@ const agent_marketplace = client.AgentMarketplace()
 
 | Field | load | create | update | patch | remove |
 | --- | --- | --- | --- | --- | --- |
-| `bundle` | - | - | - | - | - |
+| `bundle` | - | - | - | Yes | - |
 | `can_manage` | - | - | - | - | - |
 | `catalog_key` | - | - | - | - | - |
 | `categories` | - | - | - | - | - |
@@ -10240,7 +10169,7 @@ const agent_routine = client.AgentRoutine()
 | --- | --- | --- | --- |
 | `can_manage` | `boolean` | Yes |  |
 | `consecutive_errors` | `number` | Yes |  |
-| `credit_wait` | `Record<string, any>` | Yes | The wallet funding an enabled routine that is waiting for inference credit. |
+| `credit_wait` | `Record<string, any>` | No | The wallet funding an enabled routine that is waiting for inference credit. |
 | `description` | `string | null` | Yes |  |
 | `enabled` | `boolean` | Yes |  |
 | `id` | `string` | Yes |  |
@@ -10254,7 +10183,7 @@ const agent_routine = client.AgentRoutine()
 | `routine` | `Record<string, any>` | Yes |  |
 | `schedule` | `Record<string, any>` | Yes |  |
 | `schedule_label` | `string` | Yes |  |
-| `utility_model` | `Record<string, any>` | Yes |  |
+| `utility_model` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -11041,7 +10970,7 @@ const agent_subagent = client.AgentSubagent()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `active` | `boolean` | Yes |  |
-| `attention` | `Record<string, any> | null` | Yes | Why the person should open this thread, as the Threads panel shows it: a pending question, the agent asking for attention, or a run that did not finish. |
+| `attention` | `Record<string, any> | null` | No | Why the person should open this thread, as the Threads panel shows it: a pending question, the agent asking for attention, or a run that did not finish. |
 | `ended_at` | `string | null` | Yes |  |
 | `id` | `string` | Yes |  |
 | `model` | `string | null` | Yes |  |
@@ -11197,7 +11126,7 @@ const agent_swarm = client.AgentSwarm()
 | `started_at_label` | `string | null` | Yes |  |
 | `status` | `string` | Yes |  |
 | `summary` | `Record<string, any>` | Yes |  |
-| `target` | `Record<string, any>` | Yes | Where the swarm lands. |
+| `target` | `Record<string, any>` | No | Where the swarm lands. |
 | `task_count` | `number` | Yes |  |
 | `task_template_json` | `string | null` | Yes |  |
 | `tasks` | `any[]` | Yes |  |
@@ -11290,7 +11219,6 @@ Create a new entity with the given data. Resolves to the created entity.
 ```ts
 const result = await client.AgentSwarm().create({
   organization_slug: 'example_organization_slug',
-  target: {},
 })
 ```
 
@@ -12079,7 +12007,7 @@ const agent_workflow_proposal = client.AgentWorkflowProposal()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `agent_steps` | `Record<string, any>` | Yes | The model and reasoning the workflow's agent steps share. |
+| `agent_steps` | `Record<string, any>` | No | The model and reasoning the workflow's agent steps share. |
 | `base_digest` | `string | null` | Yes | The saved workflow this proposal changes; null for a new workflow. |
 | `can_manage` | `boolean` | Yes |  |
 | `can_revise` | `boolean` | Yes | The viewer can choose the model and reasoning of the agent steps now, before saving. |
@@ -12177,7 +12105,7 @@ const agent_workflow_run = client.AgentWorkflowRun()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `action` | `string` | Yes |  |
-| `automation` | `Record<string, any> | null` | Yes | Saved native automation identity. |
+| `automation` | `Record<string, any> | null` | No | Saved native automation identity. |
 | `budget_seconds` | `number | null` | Yes | The run stops once it has been running this long |
 | `budget_usd` | `number | null` | Yes | The run stops before a step once it has spent this much |
 | `can_answer` | `boolean` | Yes | Whether this viewer can answer the step that stopped the run; the answer runs that step again |
@@ -12185,7 +12113,7 @@ const agent_workflow_run = client.AgentWorkflowRun()
 | `can_dismiss` | `boolean` | Yes | Whether this viewer can dismiss the run waiting for them, which ends it unanswered |
 | `checkpoint` | `Record<string, any> | null` | Yes | The question a run waiting at a checkpoint is asking |
 | `conversation_id` | `string | null` | Yes | The thread the run works in, which the person opens to follow it |
-| `decision_history` | `Record<string, any>` | Yes |  |
+| `decision_history` | `Record<string, any>` | No |  |
 | `error` | `string | null` | Yes |  |
 | `finished_at` | `string | null` | Yes |  |
 | `flow_steps` | `any[] | null` | Yes | How the run went at each step of its workflow file, in the order it reached them; null when steps were recorded without their step of the file |
@@ -12855,7 +12783,6 @@ remaining keys are sent as that action's payload.
 | `activate` | `/api/v1/hosting/apps/{id}/activate` | `client.App().create({ $action: 'activate', ... })` |
 | `archive` | `/api/v1/hosting/apps/{id}/archive` | `client.App().create({ $action: 'archive', ... })` |
 | `catalog` | `/api/v1/hosting/apps/{app_id}/catalog` | `client.App().load({ $action: 'catalog', ... })` |
-| `deployment_dashboard` | `/api/v1/hosting/apps/{app_id}/deployment_dashboard` | `client.App().load({ $action: 'deployment_dashboard', ... })` |
 
 An action returns that action's OWN response, which is not necessarily a
 App record — check the API definition for its shape.
@@ -13785,6 +13712,80 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `AppDeploymentEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AppDeploymentDashboardEntity
+
+```ts
+const app_deployment_dashboard = client.AppDeploymentDashboard()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `any[]` | Yes |  |
+| `app` | `Record<string, any>` | Yes |  |
+| `audit_events` | `any[]` | Yes |  |
+| `capacity` | `Record<string, any>` | Yes |  |
+| `connections` | `any[]` | Yes |  |
+| `data_resources` | `any[]` | Yes |  |
+| `deployments` | `any[]` | Yes |  |
+| `desired_states` | `any[]` | Yes |  |
+| `environments` | `any[]` | Yes |  |
+| `id` | `string` | No |  |
+| `locations` | `any[]` | Yes |  |
+| `managed_database_catalog` | `Record<string, any>` | Yes |  |
+| `observability` | `Record<string, any>` | Yes |  |
+| `operations` | `any[]` | Yes |  |
+| `placements` | `any[]` | Yes |  |
+| `reconciler_ticks` | `any[]` | Yes |  |
+| `releases` | `any[]` | Yes |  |
+| `rollback_deployments` | `any[]` | Yes |  |
+| `rollouts` | `any[]` | Yes |  |
+| `runtime_instances` | `any[]` | Yes |  |
+| `service_bindings` | `any[]` | Yes |  |
+| `service_views` | `any[]` | Yes |  |
+| `services` | `any[]` | Yes |  |
+| `storage_resources` | `any[]` | Yes |  |
+| `summary` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.AppDeploymentDashboard().load({ id: 'app_deployment_dashboard_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AppDeploymentDashboardEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -17047,7 +17048,7 @@ const automation_run = client.AutomationRun()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `action` | `string` | Yes |  |
-| `automation` | `Record<string, any> | null` | Yes | Saved native automation identity. |
+| `automation` | `Record<string, any> | null` | No | Saved native automation identity. |
 | `budget_seconds` | `number | null` | Yes | The run stops once it has been running this long |
 | `budget_usd` | `number | null` | Yes | The run stops before a step once it has spent this much |
 | `can_answer` | `boolean` | Yes | Whether this viewer can answer the step that stopped the run; the answer runs that step again |
@@ -17055,7 +17056,7 @@ const automation_run = client.AutomationRun()
 | `can_dismiss` | `boolean` | Yes | Whether this viewer can dismiss the run waiting for them, which ends it unanswered |
 | `checkpoint` | `Record<string, any> | null` | Yes | The question a run waiting at a checkpoint is asking |
 | `conversation_id` | `string | null` | Yes | The thread the run works in, which the person opens to follow it |
-| `decision_history` | `Record<string, any>` | Yes |  |
+| `decision_history` | `Record<string, any>` | No |  |
 | `error` | `string | null` | Yes |  |
 | `finished_at` | `string | null` | Yes |  |
 | `flow_steps` | `any[] | null` | Yes | How the run went at each step of its workflow file, in the order it reached them; null when steps were recorded without their step of the file |
@@ -20202,7 +20203,7 @@ const change = client.Change()
 | --- | --- | --- | --- |
 | `counts` | `Record<string, any>` | Yes | Counts for each state across the active non-state filters. |
 | `filters` | `Record<string, any>` | Yes |  |
-| `github_sync` | `Record<string, any>` | Yes |  |
+| `github_sync` | `Record<string, any>` | No |  |
 | `result` | `any` | Yes | What this page is a page of. |
 
 ### Operations
@@ -20339,54 +20340,15 @@ const change_comment = client.ChangeComment()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `body` | `string` | Yes |  |
-| `capabilities` | `Record<string, any>` | Yes |  |
-| `change_id` | `string | null` | No |  |
-| `created_at` | `string | null` | No |  |
-| `created_at_label` | `string | null` | No |  |
-| `id` | `string` | Yes |  |
+| `comment` | `Record<string, any>` | No |  |
+| `comments` | `any[]` | Yes |  |
+| `id` | `string` | No |  |
 | `kind` | `string | null` | No |  |
 | `line` | `number | null` | No |  |
-| `outdated` | `boolean` | Yes |  |
 | `parent_comment_id` | `string | null` | No |  |
 | `patchset_id` | `string | null` | No |  |
-| `patchset_number` | `number | null` | Yes |  |
 | `path` | `string | null` | No |  |
-| `replies` | `any[]` | No |  |
-| `resolved` | `boolean` | Yes |  |
-| `resolved_at` | `string | null` | No |  |
-| `resolved_at_label` | `string | null` | No |  |
-| `resolved_by` | `Record<string, any>` | Yes |  |
 | `side` | `string | null` | No |  |
-| `updated_at` | `string | null` | No |  |
-| `updated_at_label` | `string | null` | No |  |
-| `user` | `Record<string, any>` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | list | create |
-| --- | --- | --- |
-| `body` | - | - |
-| `capabilities` | - | - |
-| `change_id` | - | - |
-| `created_at` | - | - |
-| `created_at_label` | - | - |
-| `id` | - | - |
-| `kind` | - | - |
-| `line` | - | - |
-| `outdated` | - | - |
-| `parent_comment_id` | - | - |
-| `patchset_id` | Yes | - |
-| `patchset_number` | - | - |
-| `path` | - | - |
-| `replies` | - | - |
-| `resolved` | - | - |
-| `resolved_at` | - | - |
-| `resolved_at_label` | - | - |
-| `resolved_by` | - | - |
-| `side` | - | - |
-| `updated_at` | - | - |
-| `updated_at_label` | - | - |
-| `user` | - | - |
 
 ### Actions
 
@@ -20424,12 +20386,12 @@ const result = await client.ChangeComment().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.ChangeComment().list({ change_id: "example", organization_id: "example", repo_id: "example" })
+const result = await client.ChangeComment().load({ change_id: 'change_id', organization_id: 'organization_id', repo_id: 'repo_id' })
 ```
 
 ### Common Methods
@@ -20789,10 +20751,10 @@ const change_label = client.ChangeLabel()
 | --- | --- | --- | --- |
 | `accepted` | `boolean` | No |  |
 | `add` | `any[]` | No |  |
-| `approval` | `Record<string, any>` | Yes |  |
+| `approval` | `Record<string, any>` | No |  |
 | `assets` | `any[]` | No | Proof assets referenced from the description as `vex-asset:<id>`. |
 | `author` | `any` | No | Human user summary or organization automation identity. |
-| `capabilities` | `Record<string, any>` | Yes |  |
+| `capabilities` | `Record<string, any>` | No |  |
 | `change_key` | `string` | No |  |
 | `checks` | `any[]` | No |  |
 | `checks_status` | `string` | No |  |
@@ -20800,12 +20762,12 @@ const change_label = client.ChangeLabel()
 | `comments_count` | `number` | No |  |
 | `comments_count_label` | `string` | No |  |
 | `commit_message` | `string | null` | No |  |
-| `current_patchset` | `Record<string, any>` | Yes |  |
+| `current_patchset` | `Record<string, any>` | No |  |
 | `description` | `string | null` | No |  |
 | `draft` | `boolean` | No |  |
 | `folded_into_number` | `number | null` | No |  |
 | `github_projection_status` | `string | null` | No |  |
-| `github_pull_request` | `Record<string, any>` | Yes |  |
+| `github_pull_request` | `Record<string, any>` | No |  |
 | `github_pull_requests` | `any[]` | No |  |
 | `group` | `Record<string, any> | null` | No |  |
 | `has_description` | `boolean` | No | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
@@ -20813,7 +20775,7 @@ const change_label = client.ChangeLabel()
 | `jj_change_id` | `string | null` | No |  |
 | `labels` | `any[]` | No |  |
 | `landable` | `boolean` | No |  |
-| `landed_by` | `Record<string, any>` | Yes |  |
+| `landed_by` | `Record<string, any>` | No |  |
 | `number` | `number` | Yes |  |
 | `orphaned` | `boolean` | No |  |
 | `orphaned_at` | `string` | No |  |
@@ -21164,7 +21126,7 @@ const change_transcript = client.ChangeTranscript()
 | `session_title` | `string | null` | No |  |
 | `status` | `string` | Yes |  |
 | `superseded` | `boolean` | Yes |  |
-| `user` | `Record<string, any>` | Yes |  |
+| `user` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -22493,7 +22455,7 @@ const control_computer = client.ControlComputer()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `connection` | `Record<string, any>` | Yes | A point-in-time control transport observation. |
+| `connection` | `Record<string, any>` | No | A point-in-time control transport observation. |
 | `consent` | `Record<string, any>` | Yes |  |
 | `device` | `Record<string, any>` | Yes |  |
 | `id` | `string` | No |  |
@@ -22574,10 +22536,10 @@ const control_computer_control_operation = client.ControlComputerControlOperatio
 | `action` | `string` | Yes |  |
 | `arguments` | `Record<string, any>` | Yes |  |
 | `created_at` | `string` | Yes |  |
-| `delivery` | `Record<string, any>` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `delivery` | `Record<string, any>` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
 | `device_id` | `string` | Yes |  |
 | `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
-| `end` | `Record<string, any>` | Yes |  |
+| `end` | `Record<string, any>` | No |  |
 | `expires_at` | `string` | Yes |  |
 | `id` | `string` | Yes |  |
 | `key` | `string` | Yes |  |
@@ -22760,7 +22722,7 @@ const credential_sign_in_check = client.CredentialSignInCheck()
 | `reproductions` | `any[]` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `boolean` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `any[]` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `Record<string, any>` | Yes |  |
+| `scenario_generation` | `Record<string, any>` | No |  |
 | `sign_in_needs_answer` | `boolean` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `string | null` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -22915,20 +22877,21 @@ const deep_scan = client.DeepScan()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `account_id` | `string | null` | No |  |
-| `active` | `any[]` | Yes |  |
 | `agent_filters` | `Record<string, any>` | Yes | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` | `any[]` | Yes |  |
 | `can_continue` | `boolean` | No | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` | `any[]` | No |  |
+| `check_count` | `number` | Yes |  |
 | `concurrency` | `number` | Yes |  |
 | `covered_areas` | `any[]` | Yes | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` | `string` | Yes |  |
-| `deadline_at` | `string` | Yes |  |
+| `credential_name` | `string | null` | No | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | `string` | Yes | When the team's time limit ends. |
 | `demo_project` | `Record<string, any> | null` | Yes | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` | `number | null` | Yes |  |
 | `ended_early` | `boolean` | Yes | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` | `string` | Yes |  |
 | `environment_name` | `string` | Yes |  |
-| `explorations` | `any[]` | Yes |  |
 | `explorer_activity` | `Record<string, any>` | Yes | What the team is doing now. |
 | `finding_count` | `number` | Yes | Findings at every priority, locked ones included. |
 | `findings` | `any[]` | Yes | Every tester's findings, most severe first, with the checks each one cites. |
@@ -22938,14 +22901,12 @@ const deep_scan = client.DeepScan()
 | `huntable_flows` | `any[]` | Yes | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` | `string` | Yes |  |
 | `idempotency_key` | `string` | No |  |
-| `launch_options` | `Record<string, any>` | Yes | Present only when launch was requested by an admin |
 | `max_seconds` | `number` | Yes |  |
 | `max_testers` | `number` | Yes |  |
 | `mode` | `string` | No |  |
 | `next_scan_improvements` | `any[]` | Yes | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | `string` | No | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | `boolean` | Yes | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` | `Record<string, any>` | Yes |  |
 | `paywalled` | `boolean` | Yes | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` | `Record<string, any>` | Yes |  |
 | `priority_counts` | `Record<string, any>` | Yes |  |
@@ -22956,10 +22917,13 @@ const deep_scan = client.DeepScan()
 | `reproductions` | `any[]` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `boolean` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `any[]` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `Record<string, any>` | Yes |  |
+| `scenario_count` | `number` | No | Scenarios saved from this discovery. |
+| `scenario_generation` | `Record<string, any>` | No |  |
+| `scenarios_pending` | `boolean` | No | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `boolean` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `string | null` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` | `string` | Yes |  |
 | `startup_retryable` | `boolean` | No | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` | `string` | Yes |  |
 | `time_limit_reached` | `boolean` | Yes | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -22969,60 +22933,62 @@ const deep_scan = client.DeepScan()
 
 ### Field Usage by Operation
 
-| Field | load | create |
-| --- | --- | --- |
-| `account_id` | - | - |
-| `active` | - | - |
-| `agent_filters` | - | - |
-| `agents` | - | - |
-| `can_continue` | - | - |
-| `chat_messages` | - | - |
-| `concurrency` | - | Yes |
-| `covered_areas` | - | - |
-| `created_at` | - | - |
-| `deadline_at` | - | - |
-| `demo_project` | - | - |
-| `ended_early` | - | - |
-| `environment_id` | - | - |
-| `environment_name` | - | - |
-| `explorations` | - | - |
-| `explorer_activity` | - | - |
-| `finding_count` | - | - |
-| `findings` | - | - |
-| `findings_fix_prompt` | - | - |
-| `finished_at` | - | - |
-| `goal` | - | - |
-| `huntable_flows` | - | - |
-| `id` | - | - |
-| `idempotency_key` | - | - |
-| `launch_options` | - | - |
-| `max_seconds` | - | Yes |
-| `max_testers` | - | Yes |
-| `mode` | - | - |
-| `next_scan_improvements` | - | - |
-| `observed_at` | - | - |
-| `onboarding` | - | - |
-| `pagination` | - | - |
-| `paywalled` | - | - |
-| `permissions` | - | - |
-| `priority_counts` | - | - |
-| `project_id` | - | - |
-| `related_explorations` | - | - |
-| `report` | - | - |
-| `reproduction_of` | - | - |
-| `reproductions` | - | - |
-| `saves_scenarios` | - | - |
-| `scannable_flows` | - | - |
-| `scenario_generation` | - | - |
-| `sign_in_needs_answer` | - | - |
-| `sign_in_outcome` | - | - |
-| `sign_in_question` | - | - |
-| `startup_retryable` | - | - |
-| `status` | - | - |
-| `time_limit_reached` | - | - |
-| `title` | - | - |
-| `unlock` | - | - |
-| `web_url` | - | - |
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `account_id` | - | - | - |
+| `agent_filters` | - | - | - |
+| `agents` | - | - | - |
+| `can_continue` | - | - | - |
+| `chat_messages` | - | - | - |
+| `check_count` | - | - | - |
+| `concurrency` | - | - | Yes |
+| `covered_areas` | - | - | - |
+| `created_at` | - | - | - |
+| `credential_name` | - | - | - |
+| `deadline_at` | - | Yes | - |
+| `demo_project` | - | - | - |
+| `duration_ms` | - | - | - |
+| `ended_early` | - | - | - |
+| `environment_id` | - | - | - |
+| `environment_name` | - | - | - |
+| `explorer_activity` | - | - | - |
+| `finding_count` | - | - | - |
+| `findings` | - | - | - |
+| `findings_fix_prompt` | - | - | - |
+| `finished_at` | - | Yes | - |
+| `goal` | - | - | - |
+| `huntable_flows` | - | - | - |
+| `id` | - | - | - |
+| `idempotency_key` | - | - | - |
+| `max_seconds` | - | - | Yes |
+| `max_testers` | - | - | Yes |
+| `mode` | - | - | - |
+| `next_scan_improvements` | - | - | - |
+| `observed_at` | - | - | - |
+| `onboarding` | - | - | - |
+| `paywalled` | - | - | - |
+| `permissions` | - | - | - |
+| `priority_counts` | - | - | - |
+| `project_id` | - | - | - |
+| `related_explorations` | - | - | - |
+| `report` | - | - | - |
+| `reproduction_of` | - | - | - |
+| `reproductions` | - | - | - |
+| `saves_scenarios` | - | - | - |
+| `scannable_flows` | - | - | - |
+| `scenario_count` | - | - | - |
+| `scenario_generation` | - | - | - |
+| `scenarios_pending` | - | - | - |
+| `sign_in_needs_answer` | - | - | - |
+| `sign_in_outcome` | - | - | - |
+| `sign_in_question` | - | - | - |
+| `started_at` | - | - | - |
+| `startup_retryable` | - | - | - |
+| `status` | - | - | - |
+| `time_limit_reached` | - | - | - |
+| `title` | - | Yes | - |
+| `unlock` | - | - | - |
+| `web_url` | - | - | - |
 
 ### Actions
 
@@ -23059,6 +23025,14 @@ const result = await client.DeepScan().create({
   environment_id: 'example_environment_id',
   goal: 'example_goal',
 })
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.DeepScan().list({ organization_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -24116,11 +24090,11 @@ const device = client.Device()
 | --- | --- | --- | --- |
 | `architecture` | `string` | Yes |  |
 | `channel` | `string` | Yes |  |
-| `coding_connection` | `Record<string, any> | null` | Yes | Independent organization coding-control service state for the current device owner. |
+| `coding_connection` | `Record<string, any> | null` | No | Independent organization coding-control service state for the current device owner. |
 | `connection_checked_at` | `string | null` | Yes | When this native presence observation was obtained; null when unobserved or unavailable. |
 | `connection_status` | `string` | Yes | Display-only native presence. |
 | `control_delivery_policy` | `Record<string, any>` | Yes |  |
-| `control_spawn_policy` | `Record<string, any>` | Yes |  |
+| `control_spawn_policy` | `Record<string, any>` | No |  |
 | `created_at` | `string` | Yes |  |
 | `device` | `Record<string, any>` | Yes |  |
 | `environment` | `string` | Yes |  |
@@ -24340,104 +24314,6 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `DeviceControlMessageEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `ComposalSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## DeviceControlOperationEntity
-
-```ts
-const device_control_operation = client.DeviceControlOperation()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `action` | `string` | Yes |  |
-| `arguments` | `Record<string, any>` | Yes |  |
-| `created_at` | `string` | Yes |  |
-| `delivery` | `Record<string, any>` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
-| `device_id` | `string` | Yes |  |
-| `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
-| `end` | `Record<string, any>` | Yes |  |
-| `expires_at` | `string` | Yes |  |
-| `id` | `string` | Yes |  |
-| `key` | `string` | Yes |  |
-| `provider` | `string` | Yes |  |
-| `references` | `Record<string, any>` | Yes |  |
-| `result` | `any` | Yes |  |
-| `result_expired` | `boolean` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
-| `state` | `string` | Yes |  |
-
-### Actions
-
-This entity exposes custom API actions in addition to the standard
-operations. Select one with `$action` in the call's argument; the
-remaining keys are sent as that action's payload.
-
-| Action | Route | Call |
-| --- | --- | --- |
-| `request` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/request` | `client.DeviceControlOperation().load({ $action: 'request', ... })` |
-
-An action returns that action's OWN response, which is not necessarily a
-DeviceControlOperation record — check the API definition for its shape.
-
-```ts
-const result = await client.DeviceControlOperation().load({
-  $action: 'request',
-  /* ...the action's own arguments */
-})
-```
-
-### Operations
-
-#### `create(data: object, ctrl?: object)`
-
-Create a new entity with the given data. Resolves to the created entity.
-
-```ts
-const result = await client.DeviceControlOperation().create({
-  device_id: 'example_device_id',
-  organization_id: 'example_organization_id',
-  action: 'example_action',
-  arguments: {},
-  key: 'example_key',
-})
-```
-
-#### `load(match: object, ctrl?: object)`
-
-Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
-
-```ts
-const result = await client.DeviceControlOperation().load({ id: 'device_control_operation_id', device_id: 'device_id', organization_id: 'organization_id' })
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `DeviceControlOperationEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -24779,6 +24655,104 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `DeviceLocalEventEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DeviceOperationEntity
+
+```ts
+const device_operation = client.DeviceOperation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `arguments` | `Record<string, any>` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `delivery` | `Record<string, any>` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` | Yes |  |
+| `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
+| `end` | `Record<string, any>` | No |  |
+| `expires_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `references` | `Record<string, any>` | Yes |  |
+| `result` | `any` | Yes |  |
+| `result_expired` | `boolean` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `request` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/request` | `client.DeviceOperation().load({ $action: 'request', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+DeviceOperation record — check the API definition for its shape.
+
+```ts
+const result = await client.DeviceOperation().load({
+  $action: 'request',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.DeviceOperation().create({
+  device_id: 'example_device_id',
+  organization_id: 'example_organization_id',
+  action: 'example_action',
+  arguments: {},
+  key: 'example_key',
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.DeviceOperation().load({ id: 'device_operation_id', device_id: 'device_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeviceOperationEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -25745,206 +25719,6 @@ Return a copy of the entity options.
 
 ---
 
-## EnvironmentEntity
-
-```ts
-const environment = client.Environment()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `active_revision_id` | `string | null` | Yes |  |
-| `agent_sign_up_available` | `boolean` | Yes | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
-| `allowed_actions` | `string` | Yes | read_only only looks around; writes may create, change and delete data. |
-| `billing` | `Record<string, any>` | Yes |  |
-| `cleanup` | `any[]` | Yes |  |
-| `connection` | `string` | Yes |  |
-| `created_at` | `string` | Yes |  |
-| `default_policy` | `Record<string, any>` | No |  |
-| `default_policy_json` | `Record<string, any>` | Yes |  |
-| `discovery_defaults` | `Record<string, any>` | Yes |  |
-| `environment` | `Record<string, any>` | Yes |  |
-| `exploration_accounts` | `any[]` | No |  |
-| `explorations` | `any[]` | No |  |
-| `first_run` | `any` | No |  |
-| `hosted_app_id` | `string | null` | Yes |  |
-| `id` | `string` | Yes |  |
-| `imessage_number` | `string | null` | Yes | International destination number; blank or null clears it on an added environment. |
-| `included_deep_scan` | `boolean` | Yes | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
-| `lock_version` | `number` | Yes |  |
-| `managed_google_available` | `boolean` | Yes | Whether the managed Google account can be offered for this app. |
-| `managed_google_email` | `string` | Yes |  |
-| `messaging_tester_number` | `string | null` | No | One configured tester number. |
-| `name` | `string` | Yes | Optional for a website target; defaults to its hostname. |
-| `network_connections` | `any[]` | Yes |  |
-| `onboarding_discovery` | `any` | No |  |
-| `organization_id` | `string` | Yes |  |
-| `pending_accounts` | `any[]` | No | Credentials on a Composal address still waiting for the password the customer chose at signup. |
-| `permissions` | `Record<string, any>` | Yes |  |
-| `project_id` | `string | null` | Yes | Owning project. |
-| `repository_id` | `string | null` | Yes |  |
-| `revisions` | `any[]` | Yes |  |
-| `setup_discovery_id` | `string | null` | No | Existing discovery to resume after setup or Checkout, selected within this environment. |
-| `sign_in_check_available` | `boolean` | Yes | Whether a test account's live sign-in check can run on this app. |
-| `slug` | `string` | Yes |  |
-| `status` | `string` | Yes |  |
-| `target_kind` | `string | null` | Yes |  |
-| `target_url` | `string | null` | Yes |  |
-| `test_accounts` | `Record<string, any>` | Yes |  |
-| `updated_at` | `string` | Yes |  |
-| `verify_network_connection_id` | `string | null` | Yes |  |
-| `version` | `number` | No | Required for target or tester changes; use lock_version from the environment. |
-
-### Field Usage by Operation
-
-| Field | load | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- |
-| `active_revision_id` | - | - | - | - | - |
-| `agent_sign_up_available` | - | - | - | - | - |
-| `allowed_actions` | - | Yes | - | Yes | - |
-| `billing` | - | - | - | - | - |
-| `cleanup` | - | - | - | - | - |
-| `connection` | - | - | - | - | - |
-| `created_at` | - | - | - | - | - |
-| `default_policy` | - | - | - | - | - |
-| `default_policy_json` | - | - | - | - | - |
-| `discovery_defaults` | - | - | - | - | - |
-| `environment` | - | - | - | - | - |
-| `exploration_accounts` | - | - | - | - | - |
-| `explorations` | - | - | - | - | - |
-| `first_run` | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - |
-| `id` | - | - | - | - | - |
-| `imessage_number` | - | Yes | - | Yes | - |
-| `included_deep_scan` | - | - | - | - | - |
-| `lock_version` | - | - | - | - | - |
-| `managed_google_available` | - | - | - | - | - |
-| `managed_google_email` | - | - | - | - | - |
-| `messaging_tester_number` | - | - | - | - | - |
-| `name` | - | Yes | - | Yes | - |
-| `network_connections` | - | - | - | - | - |
-| `onboarding_discovery` | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - |
-| `pending_accounts` | - | - | - | - | - |
-| `permissions` | - | - | - | - | - |
-| `project_id` | - | Yes | - | - | - |
-| `repository_id` | - | Yes | - | - | - |
-| `revisions` | - | - | - | - | - |
-| `setup_discovery_id` | - | - | - | - | - |
-| `sign_in_check_available` | - | - | - | - | - |
-| `slug` | - | - | - | - | - |
-| `status` | - | - | - | - | - |
-| `target_kind` | - | Yes | - | - | - |
-| `target_url` | - | Yes | - | Yes | - |
-| `test_accounts` | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - |
-| `verify_network_connection_id` | - | - | - | Yes | - |
-| `version` | - | - | - | - | - |
-
-### Actions
-
-This entity exposes custom API actions in addition to the standard
-operations. Select one with `$action` in the call's argument; the
-remaining keys are sent as that action's payload.
-
-| Action | Route | Call |
-| --- | --- | --- |
-| `first_run` | `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run` | `client.Environment().remove({ $action: 'first_run', ... })` |
-| `first_run` | `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run` | `client.Environment().update({ $action: 'first_run', ... })` |
-
-An action returns that action's OWN response, which is not necessarily a
-Environment record — check the API definition for its shape.
-
-```ts
-const result = await client.Environment().remove({
-  $action: 'first_run',
-  /* ...the action's own arguments */
-})
-```
-
-### Operations
-
-#### `create(data: object, ctrl?: object)`
-
-Create a new entity with the given data. Resolves to the created entity.
-
-```ts
-const result = await client.Environment().create({
-  organization_id: 'example_organization_id',
-  slug: 'example_slug',
-})
-```
-
-#### `load(match: object, ctrl?: object)`
-
-Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
-
-```ts
-const result = await client.Environment().load({ id: 'environment_id', organization_id: 'organization_id' })
-```
-
-#### `patch(data: object, ctrl?: object)`
-
-Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
-
-```ts
-const result = await client.Environment().patch({
-  id: 'environment_id',
-  organization_id: 'organization_id',
-  // Only the fields to change
-})
-```
-
-#### `remove(match: object, ctrl?: object)`
-
-Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
-
-```ts
-const result = await client.Environment().remove({ id: 'environment_id', organization_id: 'organization_id' })
-```
-
-#### `update(data: object, ctrl?: object)`
-
-Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
-
-```ts
-const result = await client.Environment().update({
-  id: 'environment_id',
-  organization_id: 'organization_id',
-  // Fields to update
-})
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `EnvironmentEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `ComposalSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
 ## EnvironmentDiscoveryRunEntity
 
 ```ts
@@ -25962,7 +25736,7 @@ const environment_discovery_run = client.EnvironmentDiscoveryRun()
 | `failure_code` | `string | null` | Yes |  |
 | `id` | `string` | Yes |  |
 | `queued_at` | `string` | Yes |  |
-| `recording` | `Record<string, any>` | Yes |  |
+| `recording` | `Record<string, any>` | No |  |
 | `result` | `Record<string, any> | null` | Yes |  |
 | `status` | `string` | Yes |  |
 
@@ -26099,7 +25873,7 @@ const environment_exploration = client.EnvironmentExploration()
 | `reproductions` | `any[]` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `boolean` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `any[]` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `Record<string, any>` | Yes |  |
+| `scenario_generation` | `Record<string, any>` | No |  |
 | `sign_in_needs_answer` | `boolean` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `string | null` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -26566,77 +26340,6 @@ Return a copy of the entity options.
 
 ---
 
-## EvidenceEntity
-
-```ts
-const evidence = client.Evidence()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | No |  |
-
-### Actions
-
-This entity exposes custom API actions in addition to the standard
-operations. Select one with `$action` in the call's argument; the
-remaining keys are sent as that action's payload.
-
-| Action | Route | Call |
-| --- | --- | --- |
-| `archive` | `/api/v1/organizations/{organization_id}/verify/evidence/archive` | `client.Evidence().load({ $action: 'archive', ... })` |
-| `download` | `/api/v1/organizations/{organization_id}/verify/evidence/{id}/download` | `client.Evidence().load({ $action: 'download', ... })` |
-
-An action returns that action's OWN response, which is not necessarily a
-Evidence record — check the API definition for its shape.
-
-```ts
-const result = await client.Evidence().load({
-  $action: 'archive',
-  /* ...the action's own arguments */
-})
-```
-
-### Operations
-
-#### `load(match: object, ctrl?: object)`
-
-Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
-
-```ts
-const result = await client.Evidence().load({ id: 'evidence_id', organization_id: 'organization_id' })
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `EvidenceEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `ComposalSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
 ## ExecutionDesiredStateEntity
 
 ```ts
@@ -27090,7 +26793,7 @@ const exploration = client.Exploration()
 | `saves_scenarios` | `boolean` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `any[]` | Yes | Flows a finished exploration recorded that deep scans can start from. |
 | `scenario_count` | `number` | No | Scenarios saved from this discovery. |
-| `scenario_generation` | `Record<string, any>` | Yes |  |
+| `scenario_generation` | `Record<string, any>` | No |  |
 | `scenarios_pending` | `boolean` | No | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `boolean` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
@@ -27293,7 +26996,7 @@ const exploration_message = client.ExplorationMessage()
 | `reproductions` | `any[]` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `boolean` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `any[]` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `Record<string, any>` | Yes |  |
+| `scenario_generation` | `Record<string, any>` | No |  |
 | `sign_in_needs_answer` | `boolean` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `string | null` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -27458,7 +27161,7 @@ const exploration_scenario = client.ExplorationScenario()
 | `reproductions` | `any[]` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `boolean` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `any[]` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `Record<string, any>` | Yes |  |
+| `scenario_generation` | `Record<string, any>` | No |  |
 | `sign_in_needs_answer` | `boolean` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `string | null` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -27533,7 +27236,7 @@ const finding = client.Finding()
 | `organization_id` | `string` | Yes |  |
 | `permissions` | `Record<string, any>` | Yes |  |
 | `reason` | `string` | No | Why the finding was resolved or ignored, such as "Expected for trial accounts". |
-| `reported_occurrence` | `Record<string, any> | null` | Yes | The Discovery or Deep Scan report behind the finding; null for scenario run findings |
+| `reported_occurrence` | `Record<string, any> | null` | No | The Discovery or Deep Scan report behind the finding; null for scenario run findings |
 | `repository_id` | `string | null` | Yes |  |
 | `safe_summary` | `string` | Yes |  |
 | `scenario_occurrences` | `any[]` | No |  |
@@ -28496,75 +28199,6 @@ Return a copy of the entity options.
 
 ---
 
-## GithubIntegrationEntity
-
-```ts
-const github_integration = client.GithubIntegration()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `account_avatar_url` | `string | null` | Yes |  |
-| `account_login` | `string` | Yes |  |
-| `connection_status` | `string` | Yes |  |
-| `connection_status_label` | `string` | Yes |  |
-| `github_installation` | `any` | Yes |  |
-| `health` | `Record<string, any>` | Yes |  |
-| `id` | `string` | Yes |  |
-| `imported_repositories_count` | `number` | Yes |  |
-| `imported_repositories_count_label` | `string` | Yes |  |
-| `organization` | `Record<string, any>` | Yes |  |
-| `pagination` | `Record<string, any>` | Yes |  |
-| `repositories` | `any[]` | Yes |  |
-
-### Operations
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.GithubIntegration().list({ organization_id: "example" })
-```
-
-#### `load(match: object, ctrl?: object)`
-
-Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
-
-```ts
-const result = await client.GithubIntegration().load({ id: 'github_integration_id', organization_id: 'organization_id' })
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `GithubIntegrationEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `ComposalSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
 ## GithubOnboardingEntity
 
 ```ts
@@ -29131,7 +28765,7 @@ const github_runner_history = client.GithubRunnerHistory()
 | `runs` | `any[]` | Yes |  |
 | `setup` | `any` | No | CI onboarding. |
 | `success_rate` | `number | null` | Yes |  |
-| `usage` | `Record<string, any>` | Yes |  |
+| `usage` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -31414,8 +31048,8 @@ const lease_verify_diagnostic = client.LeaseVerifyDiagnostic()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `browser_events` | `Record<string, any>` | Yes |  |
-| `live_browser` | `Record<string, any>` | Yes |  |
-| `live_view` | `Record<string, any>` | Yes | The tester's read-only live stream for page viewers. |
+| `live_browser` | `Record<string, any>` | No |  |
+| `live_view` | `Record<string, any>` | No | The tester's read-only live stream for page viewers. |
 | `steps` | `any[]` | No |  |
 
 ### Operations
@@ -31430,8 +31064,6 @@ const result = await client.LeaseVerifyDiagnostic().create({
   swarm_id: 'example_swarm_id',
   task_id: 'example_task_id',
   browser_events: {},
-  live_browser: {},
-  live_view: {},
 })
 ```
 
@@ -31698,6 +31330,18 @@ const local_thread_delivery = client.LocalThreadDelivery()
 | `policy` | `Record<string, any>` | Yes |  |
 | `recovery_message` | `string | null` | Yes |  |
 
+### Field Usage by Operation
+
+| Field | load | update |
+| --- | --- | --- |
+| `decision` | - | - |
+| `decision_pending` | - | - |
+| `delivery` | - | - |
+| `expected_version` | - | - |
+| `id` | - | - |
+| `policy` | - | Yes |
+| `recovery_message` | - | - |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -31763,10 +31407,10 @@ const local_thread_operation = client.LocalThreadOperation()
 | `action` | `string` | Yes |  |
 | `arguments` | `Record<string, any>` | Yes |  |
 | `created_at` | `string` | Yes |  |
-| `delivery` | `Record<string, any>` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `delivery` | `Record<string, any>` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
 | `device_id` | `string` | Yes |  |
 | `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
-| `end` | `Record<string, any>` | Yes |  |
+| `end` | `Record<string, any>` | No |  |
 | `expires_at` | `string` | Yes |  |
 | `id` | `string` | Yes |  |
 | `key` | `string` | Yes |  |
@@ -32170,7 +31814,7 @@ const me = client.Me()
 | `github_pr_user_authorization_login` | `string | null` | Yes |  |
 | `github_prs_authored_by_change_author` | `boolean` | Yes |  |
 | `id` | `string` | Yes |  |
-| `impersonation` | `Record<string, any> | null` | Yes |  |
+| `impersonation` | `Record<string, any> | null` | No |  |
 | `name` | `string | null` | Yes |  |
 | `next_path` | `string` | No | Present on a sign-in that created the person's first workspace; its setup page, where they go next. |
 | `onboarding` | `Record<string, any>` | Yes | V2 agent onboarding progress. |
@@ -32509,22 +32153,11 @@ const member = client.Member()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accepted_at` | `string | null` | Yes |  |
-| `accepted_by_user` | `any` | Yes |  |
 | `created_at` | `string` | Yes |  |
 | `created_at_label` | `string | null` | Yes |  |
-| `email` | `string` | Yes |  |
-| `email_delivery_status` | `string` | No |  |
-| `expires_at` | `string | null` | Yes |  |
-| `expires_at_label` | `string | null` | Yes |  |
 | `id` | `string` | Yes |  |
-| `invite_url` | `string | null` | Yes |  |
-| `invited_by_user` | `any` | Yes |  |
 | `is_self` | `boolean` | Yes |  |
-| `organization` | `Record<string, any>` | Yes |  |
-| `revoked_at` | `string | null` | Yes |  |
 | `role` | `string` | Yes |  |
-| `status` | `string` | Yes |  |
 | `updated_at` | `string` | Yes |  |
 | `updated_at_label` | `string | null` | Yes |  |
 | `user` | `Record<string, any>` | Yes |  |
@@ -32721,7 +32354,7 @@ const merge_queue_entry = client.MergeQueueEntry()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analytics` | `Record<string, any>` | Yes | Queue performance for the reporting window. |
+| `analytics` | `Record<string, any>` | No | Queue performance for the reporting window. |
 | `change_id` | `string | null` | No |  |
 | `expected_target_commit_id` | `string | null` | No |  |
 | `expected_target_version` | `number | null` | No |  |
@@ -32800,159 +32433,6 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `MergeQueueEntryEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `ComposalSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## MergeRequestEntity
-
-```ts
-const merge_request = client.MergeRequest()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `available_tests` | `any[]` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `base_sha` | `string` | Yes |  |
-| `branch` | `string` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `comment_url` | `string | null` | Yes |  |
-| `current_run` | `any` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `draft` | `boolean` | Yes |  |
-| `findings` | `any[]` | Yes |  |
-| `github_repository` | `string | null` | Yes | GitHub owner/repository associated with this pull request. |
-| `github_url` | `string | null` | Yes |  |
-| `head_sha` | `string` | Yes | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` | `string` | Yes |  |
-| `idempotency_key` | `string` | Yes |  |
-| `number` | `number` | Yes |  |
-| `pagination` | `Record<string, any>` | Yes |  |
-| `permissions` | `Record<string, any>` | Yes |  |
-| `preview_cleanup_ready` | `boolean` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | `string | null` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` | `any` | No |  |
-| `project_id` | `string | null` | Yes | Composal project slug or public ID for PR preview environments. |
-| `project_slug` | `string | null` | Yes |  |
-| `provider` | `string` | Yes |  |
-| `pull_request` | `Record<string, any>` | Yes |  |
-| `repository_id` | `string` | Yes |  |
-| `request_label` | `string` | Yes |  |
-| `requested_run_id` | `string | null` | Yes |  |
-| `runs` | `any[]` | Yes |  |
-| `source_branch` | `string | null` | Yes |  |
-| `source_repository` | `string | null` | Yes |  |
-| `source_url` | `string | null` | Yes |  |
-| `state` | `string` | Yes |  |
-| `title` | `string` | Yes |  |
-| `updated_at` | `string` | Yes |  |
-| `web_path` | `string` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | load | create |
-| --- | --- | --- |
-| `available_tests` | - | - |
-| `base_sha` | - | - |
-| `branch` | - | - |
-| `comment_url` | - | - |
-| `current_run` | - | - |
-| `draft` | - | - |
-| `findings` | - | - |
-| `github_repository` | - | - |
-| `github_url` | - | - |
-| `head_sha` | - | Yes |
-| `id` | - | - |
-| `idempotency_key` | - | - |
-| `number` | - | - |
-| `pagination` | - | - |
-| `permissions` | - | - |
-| `preview_cleanup_ready` | - | - |
-| `preview_url` | - | - |
-| `project` | - | - |
-| `project_id` | - | Yes |
-| `project_slug` | - | - |
-| `provider` | - | - |
-| `pull_request` | - | - |
-| `repository_id` | - | Yes |
-| `request_label` | - | - |
-| `requested_run_id` | - | - |
-| `runs` | - | - |
-| `source_branch` | - | - |
-| `source_repository` | - | - |
-| `source_url` | - | - |
-| `state` | - | - |
-| `title` | - | - |
-| `updated_at` | - | - |
-| `web_path` | - | - |
-
-### Actions
-
-This entity exposes custom API actions in addition to the standard
-operations. Select one with `$action` in the call's argument; the
-remaining keys are sent as that action's payload.
-
-| Action | Route | Call |
-| --- | --- | --- |
-| `preview` | `/api/v1/organizations/{organization_id}/verify/merge_requests/preview` | `client.MergeRequest().create({ $action: 'preview', ... })` |
-| `rerun` | `/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun` | `client.MergeRequest().create({ $action: 'rerun', ... })` |
-
-An action returns that action's OWN response, which is not necessarily a
-MergeRequest record — check the API definition for its shape.
-
-```ts
-const result = await client.MergeRequest().create({
-  $action: 'preview',
-  /* ...the action's own arguments */
-})
-```
-
-### Operations
-
-#### `create(data: object, ctrl?: object)`
-
-Create a new entity with the given data. Resolves to the created entity.
-
-```ts
-const result = await client.MergeRequest().create({
-  organization_id: 'example_organization_id',
-  idempotency_key: 'example_idempotency_key',
-  number: 1,
-})
-```
-
-#### `load(match: object, ctrl?: object)`
-
-Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
-
-```ts
-const result = await client.MergeRequest().load({ id: 'merge_request_id', organization_id: 'organization_id' })
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `MergeRequestEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -33045,7 +32525,7 @@ const messaging_conversation_message = client.MessagingConversationMessage()
 | `client_operation_id` | `string` | Yes |  |
 | `content` | `string` | Yes |  |
 | `id` | `string` | No |  |
-| `media` | `Record<string, any>` | Yes |  |
+| `media` | `Record<string, any>` | No |  |
 | `media_upload_ids` | `any[]` | No | Ordered staged upload IDs; six on Photon, one on Sendblue. |
 | `messages` | `any[]` | Yes |  |
 | `reply_to` | `string` | No | Public ID of a visible message |
@@ -33088,7 +32568,6 @@ const result = await client.MessagingConversationMessage().create({
   project_id: 'example_project_id',
   client_operation_id: 'example_client_operation_id',
   content: 'example_content',
-  media: {},
 })
 ```
 
@@ -36628,6 +36107,75 @@ Return a copy of the entity options.
 
 ---
 
+## PagesGithubIntegrationEntity
+
+```ts
+const pages_github_integration = client.PagesGithubIntegration()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `string | null` | Yes |  |
+| `account_login` | `string` | Yes |  |
+| `connection_status` | `string` | Yes |  |
+| `connection_status_label` | `string` | Yes |  |
+| `github_installation` | `any` | Yes |  |
+| `health` | `Record<string, any>` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imported_repositories_count` | `number` | Yes |  |
+| `imported_repositories_count_label` | `string` | Yes |  |
+| `organization` | `Record<string, any>` | Yes |  |
+| `pagination` | `Record<string, any>` | Yes |  |
+| `repositories` | `any[]` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.PagesGithubIntegration().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.PagesGithubIntegration().load({ id: 'pages_github_integration_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PagesGithubIntegrationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## PagesGithubOnboardingEntity
 
 ```ts
@@ -37962,7 +37510,7 @@ const product_map_identity_decision = client.ProductMapIdentityDecision()
 | `observations` | `any[]` | Yes |  |
 | `operation` | `string` | Yes |  |
 | `reason` | `string` | Yes |  |
-| `target` | `Record<string, any>` | Yes |  |
+| `target` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -37977,7 +37525,6 @@ const result = await client.ProductMapIdentityDecision().create({
   observations: [],
   operation: 'example_operation',
   reason: 'example_reason',
-  target: {},
 })
 ```
 
@@ -38412,7 +37959,7 @@ const project = client.Project()
 | `name` | `string` | Yes |  |
 | `network_connections` | `any[]` | Yes |  |
 | `organization_id` | `string` | Yes |  |
-| `overview` | `Record<string, any>` | Yes |  |
+| `overview` | `Record<string, any>` | No |  |
 | `permissions` | `Record<string, any>` | Yes |  |
 | `personas` | `any[]` | Yes |  |
 | `project` | `Record<string, any>` | Yes |  |
@@ -38420,7 +37967,7 @@ const project = client.Project()
 | `pull_requests` | `any[]` | Yes |  |
 | `purpose` | `string | null` | Yes |  |
 | `runs` | `any[]` | Yes |  |
-| `scenario_history` | `Record<string, any>` | Yes |  |
+| `scenario_history` | `Record<string, any>` | No |  |
 | `scenario_states` | `Record<string, any>` | Yes | Scenarios by the state of their latest execution. |
 | `scenarios` | `any[]` | Yes |  |
 | `setup_required` | `boolean` | No |  |
@@ -38484,9 +38031,7 @@ remaining keys are sent as that action's payload.
 | `overview_discovery` | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_discovery` | `client.Project().load({ $action: 'overview_discovery', ... })` |
 | `overview_history` | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_history` | `client.Project().load({ $action: 'overview_history', ... })` |
 | `persona` | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/persona` | `client.Project().load({ $action: 'persona', ... })` |
-| `pr_testing` | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/pr_testing` | `client.Project().load({ $action: 'pr_testing', ... })` |
 | `product_map` | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map` | `client.Project().load({ $action: 'product_map', ... })` |
-| `product_map_comparison` | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison` | `client.Project().load({ $action: 'product_map_comparison', ... })` |
 | `recorder` | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/recorder` | `client.Project().load({ $action: 'recorder', ... })` |
 | `scenario` | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario` | `client.Project().load({ $action: 'scenario', ... })` |
 | `scenario_editor` | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_editor` | `client.Project().load({ $action: 'scenario_editor', ... })` |
@@ -38593,13 +38138,13 @@ const project_android_apk = client.ProjectAndroidApk()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `android` | `Record<string, any>` | Yes |  |
+| `android` | `Record<string, any>` | No |  |
 | `artifact_paths` | `any[]` | No |  |
 | `description` | `string` | Yes |  |
 | `image` | `string` | Yes |  |
-| `ios` | `Record<string, any>` | Yes |  |
+| `ios` | `Record<string, any>` | No |  |
 | `launch_command` | `string` | No |  |
-| `managed_binary` | `Record<string, any>` | Yes |  |
+| `managed_binary` | `Record<string, any>` | No |  |
 | `platform` | `string` | No |  |
 | `provider` | `string` | No |  |
 | `setup_command` | `string` | No |  |
@@ -38663,7 +38208,7 @@ const project_code_map = client.ProjectCodeMap()
 | `name` | `string` | Yes |  |
 | `ref` | `string` | No |  |
 | `repository_id` | `string` | Yes |  |
-| `revision` | `Record<string, any>` | Yes |  |
+| `revision` | `Record<string, any>` | No |  |
 | `slug` | `string` | Yes |  |
 | `status` | `string` | Yes |  |
 
@@ -39110,13 +38655,13 @@ const project_ios_app = client.ProjectIosApp()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `android` | `Record<string, any>` | Yes |  |
+| `android` | `Record<string, any>` | No |  |
 | `artifact_paths` | `any[]` | No |  |
 | `description` | `string` | Yes |  |
 | `image` | `string` | Yes |  |
-| `ios` | `Record<string, any>` | Yes |  |
+| `ios` | `Record<string, any>` | No |  |
 | `launch_command` | `string` | No |  |
-| `managed_binary` | `Record<string, any>` | Yes |  |
+| `managed_binary` | `Record<string, any>` | No |  |
 | `platform` | `string` | No |  |
 | `provider` | `string` | No |  |
 | `setup_command` | `string` | No |  |
@@ -39418,6 +38963,58 @@ Return a copy of the entity options.
 
 ---
 
+## ProjectPrTestingEntity
+
+```ts
+const project_pr_testing = client.ProjectPrTesting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+| `project` | `Record<string, any>` | Yes |  |
+| `pull_request_options` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ProjectPrTesting().load({ id: 'project_pr_testing_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ProjectPrTestingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## ProjectProductMapEntity
 
 ```ts
@@ -39475,6 +39072,62 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `ProjectProductMapEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ProjectProductMapComparisonEntity
+
+```ts
+const project_product_map_comparison = client.ProjectProductMapComparison()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accounts` | `any[]` | Yes |  |
+| `comparison` | `any` | Yes |  |
+| `filters` | `any` | Yes |  |
+| `id` | `string` | No |  |
+| `project` | `Record<string, any>` | Yes |  |
+| `requirements` | `any[]` | Yes |  |
+| `revisions` | `any[]` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ProjectProductMapComparison().load({ id: 'project_product_map_comparison_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ProjectProductMapComparisonEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -39617,6 +39270,25 @@ const project_run_plan = client.ProjectRunPlan()
 | `updated_at` | `string` | Yes |  |
 | `version` | `number` | Yes |  |
 
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `archived_at` | - | - | - | - | - |
+| `base_url` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dependencies` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `identity_probe` | - | - | Yes | Yes | Yes |
+| `kind` | - | - | - | - | - |
+| `lock_version` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `nodes` | - | - | - | - | - |
+| `preview` | - | - | - | - | - |
+| `project_id` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `version` | - | - | - | - | - |
+
 ### Actions
 
 This entity exposes custom API actions in addition to the standard
@@ -39648,7 +39320,6 @@ const result = await client.ProjectRunPlan().create({
   organization_id: 'example_organization_id',
   project_id: 'example_project_id',
   dependencies: [],
-  identity_probe: {},
   name: 'example_name',
   nodes: [],
 })
@@ -40015,21 +39686,17 @@ const project_setting = client.ProjectSetting()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `available_messaging_environments` | `any[]` | Yes |  |
-| `messaging_conversations` | `any[]` | Yes |  |
-| `messaging_enabled` | `boolean` | Yes |  |
-| `permissions` | `Record<string, any>` | Yes |  |
-| `project` | `Record<string, any>` | Yes |  |
-| `tester_numbers` | `any[]` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
 
 ### Operations
 
-#### `load(match: object, ctrl?: object)`
+#### `list(match: object, ctrl?: object)`
 
-Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+List entities matching the given criteria. Resolves to an array of entities, one per record.
 
 ```ts
-const result = await client.ProjectSetting().load({ organization_id: 'organization_id', project_id: 'project_id' })
+const results = await client.ProjectSetting().list({ organization_id: "example", project_id: "example" })
 ```
 
 ### Common Methods
@@ -40047,113 +39714,6 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `ProjectSettingEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `ComposalSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## PullRequestEntity
-
-```ts
-const pull_request = client.PullRequest()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `available_tests` | `any[]` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `branch` | `string` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `cleanup_only` | `boolean` | No | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
-| `current_run` | `any` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `findings` | `any[]` | Yes |  |
-| `head_sha` | `string` | No | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` | `string` | No |  |
-| `idempotency_key` | `string` | Yes |  |
-| `imessage_number` | `string` | No | International destination of this exact deployed commit. |
-| `number` | `number` | No |  |
-| `pagination` | `Record<string, any>` | Yes |  |
-| `permissions` | `Record<string, any>` | Yes |  |
-| `preview_cleanup_ready` | `boolean` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | `string | null` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` | `any` | No |  |
-| `project_id` | `string` | No | Composal project slug or public ID for PR preview environments. |
-| `pull_request` | `Record<string, any>` | Yes |  |
-| `repository_id` | `string` | No |  |
-| `runs` | `any[]` | Yes |  |
-
-### Actions
-
-This entity exposes custom API actions in addition to the standard
-operations. Select one with `$action` in the call's argument; the
-remaining keys are sent as that action's payload.
-
-| Action | Route | Call |
-| --- | --- | --- |
-| `demo_share` | `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share` | `client.PullRequest().create({ $action: 'demo_share', ... })` |
-| `preview` | `/api/v1/organizations/{organization_id}/verify/pull_requests/preview` | `client.PullRequest().create({ $action: 'preview', ... })` |
-| `rerun` | `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/rerun` | `client.PullRequest().create({ $action: 'rerun', ... })` |
-| `lookup` | `/api/v1/organizations/{organization_id}/verify/pull_requests/lookup` | `client.PullRequest().load({ $action: 'lookup', ... })` |
-| `demo_share` | `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share` | `client.PullRequest().remove({ $action: 'demo_share', ... })` |
-
-An action returns that action's OWN response, which is not necessarily a
-PullRequest record — check the API definition for its shape.
-
-```ts
-const result = await client.PullRequest().create({
-  $action: 'demo_share',
-  /* ...the action's own arguments */
-})
-```
-
-### Operations
-
-#### `create(data: object, ctrl?: object)`
-
-Create a new entity with the given data. Resolves to the created entity.
-
-```ts
-const result = await client.PullRequest().create({
-  organization_id: 'example_organization_id',
-  idempotency_key: 'example_idempotency_key',
-})
-```
-
-#### `load(match: object, ctrl?: object)`
-
-Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
-
-```ts
-const result = await client.PullRequest().load({ id: 'pull_request_id', organization_id: 'organization_id' })
-```
-
-#### `remove(match: object, ctrl?: object)`
-
-Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `PullRequestEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -41242,7 +40802,7 @@ remaining keys are sent as that action's payload.
 | Action | Route | Call |
 | --- | --- | --- |
 | `access` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/access` | `client.Repo().load({ $action: 'access', ... })` |
-| `sync` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/sync` | `client.Repo().load({ $action: 'sync', ... })` |
+| `page_sync` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/sync` | `client.Repo().load({ $action: 'page_sync', ... })` |
 
 An action returns that action's OWN response, which is not necessarily a
 Repo record — check the API definition for its shape.
@@ -43526,7 +43086,7 @@ const run_job = client.RunJob()
 | --- | --- | --- | --- |
 | `active` | `boolean` | Yes |  |
 | `allow_failure` | `boolean` | Yes |  |
-| `cache_archive_observations` | `Record<string, any> | null` | Yes | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `cache_archive_observations` | `Record<string, any> | null` | No | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
 | `ci_pipeline_run_id` | `string` | Yes |  |
 | `ci_runner_id` | `string | null` | Yes |  |
 | `created_at` | `string` | Yes |  |
@@ -43547,7 +43107,7 @@ const run_job = client.RunJob()
 | `queued_at` | `string | null` | Yes |  |
 | `reconciliation_id` | `string | null` | No |  |
 | `retry_number` | `number` | Yes |  |
-| `reuse` | `Record<string, any> | null` | Yes |  |
+| `reuse` | `Record<string, any> | null` | No |  |
 | `runner_label_selector` | `string | null` | Yes |  |
 | `slug` | `string` | Yes |  |
 | `started_at` | `string | null` | Yes |  |
@@ -43791,42 +43351,33 @@ const run_update = client.RunUpdate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `base_sha` | `string` | Yes |  |
-| `can_verify` | `boolean` | Yes |  |
-| `comment_url` | `string | null` | Yes |  |
-| `draft` | `boolean` | Yes |  |
-| `github_repository` | `string | null` | Yes | GitHub owner/repository associated with this pull request. |
-| `github_url` | `string | null` | Yes |  |
-| `head_sha` | `string` | Yes |  |
-| `id` | `string` | Yes |  |
-| `latest_created_at` | `string | null` | Yes |  |
-| `latest_current` | `boolean` | Yes |  |
-| `latest_head_sha` | `string | null` | Yes |  |
-| `latest_reason` | `string | null` | Yes |  |
-| `latest_run_id` | `string | null` | Yes |  |
-| `latest_state` | `string | null` | Yes |  |
-| `number` | `number` | Yes |  |
-| `project_id` | `string | null` | Yes |  |
-| `project_slug` | `string | null` | Yes |  |
-| `provider` | `string` | Yes |  |
-| `repository_id` | `string` | Yes |  |
-| `request_label` | `string` | Yes |  |
-| `source_branch` | `string | null` | Yes |  |
-| `source_repository` | `string | null` | Yes |  |
-| `source_url` | `string | null` | Yes |  |
-| `state` | `string` | Yes |  |
-| `title` | `string` | Yes |  |
-| `updated_at` | `string` | Yes |  |
-| `web_path` | `string` | Yes |  |
+| `active_runs` | `any[]` | Yes |  |
+| `checkout_required` | `boolean` | Yes |  |
+| `cli_signed_in_at` | `string | null` | Yes | When the signed-in user last finished a CLI sign-in for this organization, so agent setup can show the CLI is connected. |
+| `counts` | `Record<string, any>` | Yes |  |
+| `demo_project` | `Record<string, any> | null` | Yes | The workspace's copy of the demo project, which setup offers as example data. |
+| `environments` | `any[]` | Yes |  |
+| `included_deep_scan` | `boolean` | Yes | Whether a new app gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account, so setup asks for one right after the app. |
+| `onboarding_discovery` | `any` | No |  |
+| `organization` | `Record<string, any>` | Yes |  |
+| `permissions` | `Record<string, any>` | Yes |  |
+| `project` | `any` | Yes | The project the page is limited to, or null for the whole organization. |
+| `pull_request_launch_options` | `any[]` | No |  |
+| `pull_requests` | `any[]` | No |  |
+| `repositories` | `any[]` | Yes |  |
+| `runs` | `any[]` | Yes |  |
+| `runs_pagination` | `Record<string, any>` | Yes |  |
+| `suggested_app_url` | `string | null` | Yes | The URL first-run setup prefills for a new app, from the workspace's project website or the signed-in user's work email domain. |
+| `url_first_start` | `boolean` | Yes | Whether setup opens on the URL-first screen, which saves the app and asks for test access next. |
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.RunUpdate().list({ organization_id: "example" })
+const result = await client.RunUpdate().load({ organization_id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -45018,8 +44569,8 @@ const signal = client.Signal()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `acked_at` | `string | null` | Yes |  |
-| `acked_by` | `Record<string, any> | null` | Yes | Who acked the signal, read from `acked_by_user_id`. |
-| `agent_runs` | `Record<string, any>` | Yes | Dispatched-run summary (docs §6c). |
+| `acked_by` | `Record<string, any> | null` | No | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | `Record<string, any>` | No | Dispatched-run summary (docs §6c). |
 | `app_service_id` | `string | null` | Yes |  |
 | `attribution` | `Record<string, any>` | Yes | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
 | `created_at` | `string` | Yes | ISO8601 row insert time — retention math and debugging only. |
@@ -45031,8 +44582,8 @@ const signal = client.Signal()
 | `occurred_at` | `string` | Yes | ISO8601 domain event time — what the UI displays and `since` filters on. |
 | `organization_id` | `string` | Yes |  |
 | `payload` | `Record<string, any>` | Yes | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
-| `recovery` | `Record<string, any>` | Yes | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
-| `resolution` | `Record<string, any>` | Yes | Recovery pairing (docs §6b). |
+| `recovery` | `Record<string, any>` | No | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | `Record<string, any>` | No | Recovery pairing (docs §6b). |
 | `severity` | `string` | Yes | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
 | `source` | `Record<string, any>` | Yes | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
 | `subject_id` | `string | null` | Yes |  |
@@ -47568,7 +47119,7 @@ const spark_agent_local_thread = client.SparkAgentLocalThread()
 | `can_interrupt` | `boolean` | Yes |  |
 | `can_send` | `boolean` | Yes |  |
 | `created_at` | `string` | Yes |  |
-| `delivery` | `Record<string, any>` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `delivery` | `Record<string, any>` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
 | `device_id` | `string` | Yes |  |
 | `device_name` | `string` | Yes |  |
 | `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
@@ -47583,7 +47134,7 @@ const spark_agent_local_thread = client.SparkAgentLocalThread()
 | `provider` | `string` | Yes |  |
 | `references` | `Record<string, any>` | Yes |  |
 | `relay_disconnected_at` | `string | null` | No |  |
-| `relay_participant` | `Record<string, any>` | Yes |  |
+| `relay_participant` | `Record<string, any>` | No |  |
 | `result` | `any` | Yes |  |
 | `result_expired` | `boolean` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
 | `result_schema` | `Record<string, any> | boolean` | No |  |
@@ -47593,6 +47144,44 @@ const spark_agent_local_thread = client.SparkAgentLocalThread()
 | `task_configured` | `boolean` | Yes |  |
 | `thread_id` | `string` | Yes |  |
 | `title` | `string` | Yes | Short title: the native name, or the first prompt's first line without the agent's task preamble. |
+
+### Field Usage by Operation
+
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `action` | - | - | - |
+| `archived` | - | - | - |
+| `can_archive` | - | - | - |
+| `can_disconnect_relay` | - | - | - |
+| `can_end` | - | - | - |
+| `can_interrupt` | - | - | - |
+| `can_send` | - | - | - |
+| `created_at` | - | - | - |
+| `delivery` | - | - | - |
+| `device_id` | - | - | - |
+| `device_name` | - | - | - |
+| `diagnostic_code` | - | - | - |
+| `end` | - | Yes | - |
+| `expires_at` | - | - | - |
+| `full_title` | - | - | - |
+| `id` | - | - | - |
+| `key` | - | - | - |
+| `last_activity_at` | - | - | - |
+| `native_thread_id` | - | - | - |
+| `parent_conversation_id` | - | - | - |
+| `provider` | - | - | - |
+| `references` | - | - | - |
+| `relay_disconnected_at` | - | - | - |
+| `relay_participant` | - | - | - |
+| `result` | - | - | - |
+| `result_expired` | - | - | - |
+| `result_schema` | - | - | - |
+| `section` | - | - | - |
+| `state` | - | - | - |
+| `status` | - | - | - |
+| `task_configured` | - | - | - |
+| `thread_id` | - | - | - |
+| `title` | - | - | - |
 
 ### Actions
 
@@ -47850,7 +47439,7 @@ const spark_agent_thread = client.SparkAgentThread()
 | `can_compact` | - | - |
 | `can_snooze` | - | - |
 | `coordination_status` | - | - |
-| `execution` | Yes | - |
+| `execution` | - | - |
 | `first_input` | - | - |
 | `first_input_key` | - | - |
 | `first_input_requester_membership_id` | - | - |
@@ -47941,6 +47530,111 @@ Return a copy of the entity options.
 
 ---
 
+## SparkAutomationEntity
+
+```ts
+const spark_automation = client.SparkAutomation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage` | `boolean` | Yes |  |
+| `can_manage_events` | `boolean` | Yes | Whether new event triggers can be attached or existing settings saved. |
+| `can_run` | `boolean` | Yes | Whether the viewer can request a manual Temporal run |
+| `can_schedule` | `boolean` | Yes |  |
+| `definition` | `Record<string, any>` | Yes |  |
+| `event_subscriptions` | `any[]` | Yes |  |
+| `event_triggers` | `any[]` | Yes |  |
+| `expected_revision` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `revision` | `number` | Yes |  |
+| `schedule` | `any` | Yes |  |
+| `schedules` | `any[]` | Yes |  |
+| `version` | `Record<string, any>` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `schedule` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/schedule` | `client.SparkAutomation().update({ $action: 'schedule', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SparkAutomation record — check the API definition for its shape.
+
+```ts
+const result = await client.SparkAutomation().update({
+  $action: 'schedule',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SparkAutomation().list({ agent_id: "example", organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.SparkAutomation().load({ id: 'spark_automation_id', agent_id: 'agent_id', organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SparkAutomation().update({
+  id: 'spark_automation_id',
+  agent_id: 'agent_id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SparkAutomationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## SparkCreditEntity
 
 ```ts
@@ -47957,7 +47651,7 @@ const spark_credit = client.SparkCredit()
 | `available_usd` | `string` | Yes |  |
 | `billing_unit` | `string` | No | Compute minute quote version returned by the billing summary. |
 | `can_manage` | `boolean` | Yes |  |
-| `compute_minutes` | `Record<string, any>` | Yes |  |
+| `compute_minutes` | `Record<string, any>` | No |  |
 | `compute_usd` | `string` | No |  |
 | `credits_per_usd` | `number` | Yes |  |
 | `inference_usd` | `string` | No |  |
@@ -50087,7 +49781,7 @@ const vc_merge_queue = client.VcMergeQueue()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analytics` | `Record<string, any>` | Yes | Queue performance for the reporting window. |
+| `analytics` | `Record<string, any>` | No | Queue performance for the reporting window. |
 | `id` | `string` | No |  |
 | `policy` | `Record<string, any>` | Yes |  |
 | `queue` | `Record<string, any>` | Yes |  |
@@ -50184,7 +49878,7 @@ const vc_stack = client.VcStack()
 | `changes` | `any[]` | Yes |  |
 | `code` | `string` | Yes |  |
 | `id` | `string` | No |  |
-| `landing` | `Record<string, any>` | Yes | Compact landing state for the Stack CLI. |
+| `landing` | `Record<string, any>` | No | Compact landing state for the Stack CLI. |
 | `member_count` | `number` | Yes |  |
 | `name` | `string | null` | Yes |  |
 | `ref_name` | `string` | Yes |  |
@@ -50877,7 +50571,7 @@ const verification_project_scenario = client.VerificationProjectScenario()
 | `created_at` | `string` | Yes |  |
 | `dependencies` | `any[]` | Yes |  |
 | `fixtures` | `any[]` | No | Files upload steps choose, ordered by name. |
-| `health` | `Record<string, any>` | Yes |  |
+| `health` | `Record<string, any>` | No |  |
 | `id` | `string` | Yes |  |
 | `identity_probe` | `any` | No |  |
 | `if` | `string | null` | No | A documented subset of Actions expressions. |
@@ -51232,6 +50926,537 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `VerifyEmailVerificationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## VerifyEnvironmentEntity
+
+```ts
+const verify_environment = client.VerifyEnvironment()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_revision_id` | `string | null` | Yes |  |
+| `agent_sign_up_available` | `boolean` | Yes | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
+| `allowed_actions` | `string` | Yes | read_only only looks around; writes may create, change and delete data. |
+| `billing` | `Record<string, any>` | Yes |  |
+| `cleanup` | `any[]` | Yes |  |
+| `connection` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `default_policy` | `Record<string, any>` | No |  |
+| `default_policy_json` | `Record<string, any>` | Yes |  |
+| `discovery_defaults` | `Record<string, any>` | Yes |  |
+| `environment` | `Record<string, any>` | Yes |  |
+| `exploration_accounts` | `any[]` | No |  |
+| `explorations` | `any[]` | No |  |
+| `first_run` | `any` | No |  |
+| `hosted_app_id` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imessage_number` | `string | null` | Yes | International destination number; blank or null clears it on an added environment. |
+| `included_deep_scan` | `boolean` | Yes | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
+| `lock_version` | `number` | Yes |  |
+| `managed_google_available` | `boolean` | Yes | Whether the managed Google account can be offered for this app. |
+| `managed_google_email` | `string` | Yes |  |
+| `messaging_tester_number` | `string | null` | No | One configured tester number. |
+| `name` | `string` | Yes | Optional for a website target; defaults to its hostname. |
+| `network_connections` | `any[]` | Yes |  |
+| `onboarding_discovery` | `any` | No |  |
+| `organization_id` | `string` | Yes |  |
+| `pending_accounts` | `any[]` | No | Credentials on a Composal address still waiting for the password the customer chose at signup. |
+| `permissions` | `Record<string, any>` | Yes |  |
+| `project_id` | `string | null` | Yes | Owning project. |
+| `repository_id` | `string | null` | Yes |  |
+| `revisions` | `any[]` | Yes |  |
+| `setup_discovery_id` | `string | null` | No | Existing discovery to resume after setup or Checkout, selected within this environment. |
+| `sign_in_check_available` | `boolean` | Yes | Whether a test account's live sign-in check can run on this app. |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `target_kind` | `string | null` | Yes |  |
+| `target_url` | `string | null` | Yes |  |
+| `test_accounts` | `Record<string, any>` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `verify_network_connection_id` | `string | null` | Yes |  |
+| `version` | `number` | No | Required for target or tester changes; use lock_version from the environment. |
+
+### Field Usage by Operation
+
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `active_revision_id` | - | - | - | - | - |
+| `agent_sign_up_available` | - | - | - | - | - |
+| `allowed_actions` | - | Yes | - | Yes | - |
+| `billing` | - | - | - | - | - |
+| `cleanup` | - | - | - | - | - |
+| `connection` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `default_policy` | - | - | - | - | - |
+| `default_policy_json` | - | - | - | - | - |
+| `discovery_defaults` | - | - | - | - | - |
+| `environment` | - | - | - | - | - |
+| `exploration_accounts` | - | - | - | - | - |
+| `explorations` | - | - | - | - | - |
+| `first_run` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `imessage_number` | - | Yes | - | Yes | - |
+| `included_deep_scan` | - | - | - | - | - |
+| `lock_version` | - | - | - | - | - |
+| `managed_google_available` | - | - | - | - | - |
+| `managed_google_email` | - | - | - | - | - |
+| `messaging_tester_number` | - | - | - | - | - |
+| `name` | - | Yes | - | Yes | - |
+| `network_connections` | - | - | - | - | - |
+| `onboarding_discovery` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `pending_accounts` | - | - | - | - | - |
+| `permissions` | - | - | - | - | - |
+| `project_id` | - | Yes | - | - | - |
+| `repository_id` | - | Yes | - | - | - |
+| `revisions` | - | - | - | - | - |
+| `setup_discovery_id` | - | - | - | - | - |
+| `sign_in_check_available` | - | - | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `target_kind` | - | Yes | - | - | - |
+| `target_url` | - | Yes | - | Yes | - |
+| `test_accounts` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verify_network_connection_id` | - | - | - | Yes | - |
+| `version` | - | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `first_run` | `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run` | `client.VerifyEnvironment().remove({ $action: 'first_run', ... })` |
+| `first_run` | `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run` | `client.VerifyEnvironment().update({ $action: 'first_run', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+VerifyEnvironment record — check the API definition for its shape.
+
+```ts
+const result = await client.VerifyEnvironment().remove({
+  $action: 'first_run',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.VerifyEnvironment().create({
+  organization_id: 'example_organization_id',
+  slug: 'example_slug',
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.VerifyEnvironment().load({ id: 'verify_environment_id', organization_id: 'organization_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.VerifyEnvironment().patch({
+  id: 'verify_environment_id',
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.VerifyEnvironment().remove({ id: 'verify_environment_id', organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.VerifyEnvironment().update({
+  id: 'verify_environment_id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `VerifyEnvironmentEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## VerifyEvidenceEntity
+
+```ts
+const verify_evidence = client.VerifyEvidence()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `archive` | `/api/v1/organizations/{organization_id}/verify/evidence/archive` | `client.VerifyEvidence().load({ $action: 'archive', ... })` |
+| `download` | `/api/v1/organizations/{organization_id}/verify/evidence/{id}/download` | `client.VerifyEvidence().load({ $action: 'download', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+VerifyEvidence record — check the API definition for its shape.
+
+```ts
+const result = await client.VerifyEvidence().load({
+  $action: 'archive',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.VerifyEvidence().load({ id: 'verify_evidence_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `VerifyEvidenceEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## VerifyMergeRequestEntity
+
+```ts
+const verify_merge_request = client.VerifyMergeRequest()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available_tests` | `any[]` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `base_sha` | `string` | Yes |  |
+| `branch` | `string` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `comment_url` | `string | null` | Yes |  |
+| `current_run` | `any` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `draft` | `boolean` | Yes |  |
+| `findings` | `any[]` | Yes |  |
+| `github_repository` | `string | null` | Yes | GitHub owner/repository associated with this pull request. |
+| `github_url` | `string | null` | Yes |  |
+| `head_sha` | `string` | Yes | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` | `string` | Yes |  |
+| `idempotency_key` | `string` | Yes |  |
+| `number` | `number` | Yes |  |
+| `pagination` | `Record<string, any>` | Yes |  |
+| `permissions` | `Record<string, any>` | Yes |  |
+| `preview_cleanup_ready` | `boolean` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | `string | null` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` | `any` | No |  |
+| `project_id` | `string | null` | Yes | Composal project slug or public ID for PR preview environments. |
+| `project_slug` | `string | null` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `pull_request` | `Record<string, any>` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `request_label` | `string` | Yes |  |
+| `requested_run_id` | `string | null` | Yes |  |
+| `runs` | `any[]` | Yes |  |
+| `source_branch` | `string | null` | Yes |  |
+| `source_repository` | `string | null` | Yes |  |
+| `source_url` | `string | null` | Yes |  |
+| `state` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `web_path` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `available_tests` | - | - |
+| `base_sha` | - | - |
+| `branch` | - | - |
+| `comment_url` | - | - |
+| `current_run` | - | - |
+| `draft` | - | - |
+| `findings` | - | - |
+| `github_repository` | - | - |
+| `github_url` | - | - |
+| `head_sha` | - | Yes |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `number` | - | - |
+| `pagination` | - | - |
+| `permissions` | - | - |
+| `preview_cleanup_ready` | - | - |
+| `preview_url` | - | - |
+| `project` | - | - |
+| `project_id` | - | Yes |
+| `project_slug` | - | - |
+| `provider` | - | - |
+| `pull_request` | - | - |
+| `repository_id` | - | Yes |
+| `request_label` | - | - |
+| `requested_run_id` | - | - |
+| `runs` | - | - |
+| `source_branch` | - | - |
+| `source_repository` | - | - |
+| `source_url` | - | - |
+| `state` | - | - |
+| `title` | - | - |
+| `updated_at` | - | - |
+| `web_path` | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `preview` | `/api/v1/organizations/{organization_id}/verify/merge_requests/preview` | `client.VerifyMergeRequest().create({ $action: 'preview', ... })` |
+| `rerun` | `/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun` | `client.VerifyMergeRequest().create({ $action: 'rerun', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+VerifyMergeRequest record — check the API definition for its shape.
+
+```ts
+const result = await client.VerifyMergeRequest().create({
+  $action: 'preview',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.VerifyMergeRequest().create({
+  organization_id: 'example_organization_id',
+  idempotency_key: 'example_idempotency_key',
+  number: 1,
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.VerifyMergeRequest().load({ id: 'verify_merge_request_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `VerifyMergeRequestEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## VerifyPullRequestEntity
+
+```ts
+const verify_pull_request = client.VerifyPullRequest()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available_tests` | `any[]` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `branch` | `string` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `cleanup_only` | `boolean` | No | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
+| `current_run` | `any` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `findings` | `any[]` | Yes |  |
+| `head_sha` | `string` | No | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` | `string` | No |  |
+| `idempotency_key` | `string` | Yes |  |
+| `imessage_number` | `string` | No | International destination of this exact deployed commit. |
+| `number` | `number` | No |  |
+| `pagination` | `Record<string, any>` | Yes |  |
+| `permissions` | `Record<string, any>` | Yes |  |
+| `preview_cleanup_ready` | `boolean` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | `string | null` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` | `any` | No |  |
+| `project_id` | `string` | No | Composal project slug or public ID for PR preview environments. |
+| `pull_request` | `Record<string, any>` | Yes |  |
+| `repository_id` | `string` | No |  |
+| `runs` | `any[]` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `demo_share` | `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share` | `client.VerifyPullRequest().create({ $action: 'demo_share', ... })` |
+| `preview` | `/api/v1/organizations/{organization_id}/verify/pull_requests/preview` | `client.VerifyPullRequest().create({ $action: 'preview', ... })` |
+| `rerun` | `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/rerun` | `client.VerifyPullRequest().create({ $action: 'rerun', ... })` |
+| `lookup` | `/api/v1/organizations/{organization_id}/verify/pull_requests/lookup` | `client.VerifyPullRequest().load({ $action: 'lookup', ... })` |
+| `demo_share` | `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share` | `client.VerifyPullRequest().remove({ $action: 'demo_share', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+VerifyPullRequest record — check the API definition for its shape.
+
+```ts
+const result = await client.VerifyPullRequest().create({
+  $action: 'demo_share',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.VerifyPullRequest().create({
+  organization_id: 'example_organization_id',
+  idempotency_key: 'example_idempotency_key',
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.VerifyPullRequest().load({ id: 'verify_pull_request_id', organization_id: 'organization_id' })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `VerifyPullRequestEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -52106,10 +52331,10 @@ const client = new ComposalSDK({
 ### Configuring features
 
 Each feature is inactive until switched on, and an SDK with no feature
-configured does no feature work at all. Every option below keeps its default
-unless you name it.
+configured does no feature work at all.
+Every option below keeps its default unless you name it.
 
-The array form of \`feature\` is significant: several features wrap the
+The array form of `feature` is significant: several features wrap the
 transport, and the order you list them in is the order they nest.
 
 #### Ordering
@@ -52120,10 +52345,10 @@ a feature activated later sits OUTSIDE one activated earlier, and sees the call
 first.
 
 That decides behaviour, not just sequence: a feature that short-circuits the
-call, such as a cache serving a hit, stops every feature nested inside it from
+call stops every feature nested inside it from
 ever seeing that call.
 
-`debug`, `idempotency`, `metrics`, `paging`, `test` attach to pipeline hooks
+`debug`, `idempotency`, `metrics`, `paging` attach to pipeline hooks
 rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
@@ -52339,6 +52564,7 @@ its default unless you name it.
 
 - Wraps the transport: its place in the activation order decides what it
   sees. See [Ordering](#ordering) above.
+- Also attaches to pipeline hooks.
 - Inactive by default: leaving it out costs nothing at runtime.
 
 #### `test`
@@ -52366,10 +52592,9 @@ its default unless you name it.
 
 **Considerations**
 
-- Attaches to pipeline hooks, not the transport, so activation order does
-  not change what it observes.
 - Installs the BASE transport that the wrapping features wrap, so it must be
   activated before them.
+- Also attaches to pipeline hooks.
 - Inactive by default: leaving it out costs nothing at runtime.
 
 #### `timeout`

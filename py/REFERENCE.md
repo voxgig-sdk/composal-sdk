@@ -66,10 +66,6 @@ Create a new `AgentAppInstallEntity` instance. Pass `None` for no initial data.
 
 Create a new `AgentAttachmentEntity` instance. Pass `None` for no initial data.
 
-#### `AgentAutomation(data=None)`
-
-Create a new `AgentAutomationEntity` instance. Pass `None` for no initial data.
-
 #### `AgentAvatar(data=None)`
 
 Create a new `AgentAvatarEntity` instance. Pass `None` for no initial data.
@@ -377,6 +373,10 @@ Create a new `AppDeployEntity` instance. Pass `None` for no initial data.
 #### `AppDeployment(data=None)`
 
 Create a new `AppDeploymentEntity` instance. Pass `None` for no initial data.
+
+#### `AppDeploymentDashboard(data=None)`
+
+Create a new `AppDeploymentDashboardEntity` instance. Pass `None` for no initial data.
 
 #### `AppDeploymentOperation(data=None)`
 
@@ -894,10 +894,6 @@ Create a new `DeviceBrowserOperationEntity` instance. Pass `None` for no initial
 
 Create a new `DeviceControlMessageEntity` instance. Pass `None` for no initial data.
 
-#### `DeviceControlOperation(data=None)`
-
-Create a new `DeviceControlOperationEntity` instance. Pass `None` for no initial data.
-
 #### `DeviceEnterpriseRelay(data=None)`
 
 Create a new `DeviceEnterpriseRelayEntity` instance. Pass `None` for no initial data.
@@ -917,6 +913,10 @@ Create a new `DeviceInvocationEntity` instance. Pass `None` for no initial data.
 #### `DeviceLocalEvent(data=None)`
 
 Create a new `DeviceLocalEventEntity` instance. Pass `None` for no initial data.
+
+#### `DeviceOperation(data=None)`
+
+Create a new `DeviceOperationEntity` instance. Pass `None` for no initial data.
 
 #### `DevicePairing(data=None)`
 
@@ -962,10 +962,6 @@ Create a new `EdgeEntity` instance. Pass `None` for no initial data.
 
 Create a new `EmailVerificationEntity` instance. Pass `None` for no initial data.
 
-#### `Environment(data=None)`
-
-Create a new `EnvironmentEntity` instance. Pass `None` for no initial data.
-
 #### `EnvironmentDiscoveryRun(data=None)`
 
 Create a new `EnvironmentDiscoveryRunEntity` instance. Pass `None` for no initial data.
@@ -989,10 +985,6 @@ Create a new `EnvironmentSecretBindingEntity` instance. Pass `None` for no initi
 #### `EnvironmentTestAccount(data=None)`
 
 Create a new `EnvironmentTestAccountEntity` instance. Pass `None` for no initial data.
-
-#### `Evidence(data=None)`
-
-Create a new `EvidenceEntity` instance. Pass `None` for no initial data.
 
 #### `ExecutionDesiredState(data=None)`
 
@@ -1073,10 +1065,6 @@ Create a new `GithubCiRepositoryCompatibilityReportEntity` instance. Pass `None`
 #### `GithubConnection(data=None)`
 
 Create a new `GithubConnectionEntity` instance. Pass `None` for no initial data.
-
-#### `GithubIntegration(data=None)`
-
-Create a new `GithubIntegrationEntity` instance. Pass `None` for no initial data.
 
 #### `GithubOnboarding(data=None)`
 
@@ -1310,10 +1298,6 @@ Create a new `MemoryEntity` instance. Pass `None` for no initial data.
 
 Create a new `MergeQueueEntryEntity` instance. Pass `None` for no initial data.
 
-#### `MergeRequest(data=None)`
-
-Create a new `MergeRequestEntity` instance. Pass `None` for no initial data.
-
 #### `MergeResolution(data=None)`
 
 Create a new `MergeResolutionEntity` instance. Pass `None` for no initial data.
@@ -1506,6 +1490,10 @@ Create a new `PageRepoVcCommitEntity` instance. Pass `None` for no initial data.
 
 Create a new `PagesBillingEntity` instance. Pass `None` for no initial data.
 
+#### `PagesGithubIntegration(data=None)`
+
+Create a new `PagesGithubIntegrationEntity` instance. Pass `None` for no initial data.
+
 #### `PagesGithubOnboarding(data=None)`
 
 Create a new `PagesGithubOnboardingEntity` instance. Pass `None` for no initial data.
@@ -1646,9 +1634,17 @@ Create a new `ProjectOverviewMetricEntity` instance. Pass `None` for no initial 
 
 Create a new `ProjectOverviewPullRequestEntity` instance. Pass `None` for no initial data.
 
+#### `ProjectPrTesting(data=None)`
+
+Create a new `ProjectPrTestingEntity` instance. Pass `None` for no initial data.
+
 #### `ProjectProductMap(data=None)`
 
 Create a new `ProjectProductMapEntity` instance. Pass `None` for no initial data.
+
+#### `ProjectProductMapComparison(data=None)`
+
+Create a new `ProjectProductMapComparisonEntity` instance. Pass `None` for no initial data.
 
 #### `ProjectRecording(data=None)`
 
@@ -1673,10 +1669,6 @@ Create a new `ProjectScenarioRowEntity` instance. Pass `None` for no initial dat
 #### `ProjectSetting(data=None)`
 
 Create a new `ProjectSettingEntity` instance. Pass `None` for no initial data.
-
-#### `PullRequest(data=None)`
-
-Create a new `PullRequestEntity` instance. Pass `None` for no initial data.
 
 #### `PullRequestAction(data=None)`
 
@@ -2058,6 +2050,10 @@ Create a new `SparkAgentSkillEntity` instance. Pass `None` for no initial data.
 
 Create a new `SparkAgentThreadEntity` instance. Pass `None` for no initial data.
 
+#### `SparkAutomation(data=None)`
+
+Create a new `SparkAutomationEntity` instance. Pass `None` for no initial data.
+
 #### `SparkCredit(data=None)`
 
 Create a new `SparkCreditEntity` instance. Pass `None` for no initial data.
@@ -2209,6 +2205,22 @@ Create a new `VerifyBrowserSessionEntity` instance. Pass `None` for no initial d
 #### `VerifyEmailVerification(data=None)`
 
 Create a new `VerifyEmailVerificationEntity` instance. Pass `None` for no initial data.
+
+#### `VerifyEnvironment(data=None)`
+
+Create a new `VerifyEnvironmentEntity` instance. Pass `None` for no initial data.
+
+#### `VerifyEvidence(data=None)`
+
+Create a new `VerifyEvidenceEntity` instance. Pass `None` for no initial data.
+
+#### `VerifyMergeRequest(data=None)`
+
+Create a new `VerifyMergeRequestEntity` instance. Pass `None` for no initial data.
+
+#### `VerifyPullRequest(data=None)`
+
+Create a new `VerifyPullRequestEntity` instance. Pass `None` for no initial data.
 
 #### `VerifySignalIntegration(data=None)`
 
@@ -2804,94 +2816,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AgentAttachmentEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
-## AgentAutomationEntity
-
-```python
-agent_automation = client.AgentAutomation()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `can_manage` | `bool` | Yes |  |
-| `can_manage_events` | `bool` | Yes | Whether new event triggers can be attached or existing settings saved. |
-| `can_run` | `bool` | Yes | Whether the viewer can request a manual Temporal run |
-| `can_schedule` | `bool` | Yes |  |
-| `definition` | `dict` | Yes |  |
-| `event_subscriptions` | `list` | Yes |  |
-| `event_triggers` | `list` | Yes |  |
-| `expected_revision` | `int` | Yes |  |
-| `id` | `str` | Yes |  |
-| `key` | `str` | Yes |  |
-| `name` | `str` | Yes |  |
-| `revision` | `int` | Yes |  |
-| `schedule` | `Any` | Yes |  |
-| `schedules` | `list` | Yes |  |
-| `version` | `dict` | Yes |  |
-
-### Operations
-
-#### `list(reqmatch=None, ctrl=None) -> list[AgentAutomationEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AgentAutomation().list({"agent_id": "example", "organization_id": "example"})
-for agent_automation in results:
-    print(agent_automation.data_get())
-```
-
-#### `load(reqmatch, ctrl=None) -> AgentAutomationEntity`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
-
-```python
-result = client.AgentAutomation().load({"id": "agent_automation_id", "agent_id": "agent_id", "organization_id": "organization_id"})
-```
-
-#### `update(reqdata, ctrl=None) -> AgentAutomationEntity`
-
-Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
-
-```python
-result = client.AgentAutomation().update({
-    "id": "agent_automation_id",
-    "agent_id": "agent_id",
-    "organization_id": "organization_id",
-    # Fields to update
-})
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `AgentAutomationEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -3912,8 +3836,8 @@ agent_input = client.AgentInput()
 | --- | --- | --- | --- |
 | `attachment_ids` | `list` | No | Completed uploads from the attachments endpoint, in order. |
 | `attachments` | `list` | No |  |
-| `browser_context` | `dict` | Yes | Advisory snapshot of the browser pane beside this conversation when the message was sent. |
-| `client_time` | `dict` | Yes | The sending app's IANA time zone and clock, so the agent answers in the person's local time. |
+| `browser_context` | `dict` | No | Advisory snapshot of the browser pane beside this conversation when the message was sent. |
+| `client_time` | `dict` | No | The sending app's IANA time zone and clock, so the agent answers in the person's local time. |
 | `conversation_id` | `str` | Yes | Main or a conversation identity returned by the agent thread list. |
 | `model_policy` | `Any` | No |  |
 | `requester_membership_id` | `str` | No | Snapshot the membership supplied by conversation history for a NEW V1 input. |
@@ -3930,8 +3854,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.AgentInput().create({
     "agent_id": "example_agent_id",  # str
     "organization_id": "example_organization_id",  # str
-    "browser_context": {},  # dict
-    "client_time": {},  # dict
     "conversation_id": "example_conversation_id",  # str
     "text": "example_text",  # str
 })
@@ -4506,7 +4428,7 @@ agent_marketplace = client.AgentMarketplace()
 
 | Field | load | create | update | patch | remove |
 | --- | --- | --- | --- | --- | --- |
-| `bundle` | - | - | - | - | - |
+| `bundle` | - | - | - | Yes | - |
 | `can_manage` | - | - | - | - | - |
 | `catalog_key` | - | - | - | - | - |
 | `categories` | - | - | - | - | - |
@@ -5310,7 +5232,7 @@ agent_routine = client.AgentRoutine()
 | --- | --- | --- | --- |
 | `can_manage` | `bool` | Yes |  |
 | `consecutive_errors` | `int` | Yes |  |
-| `credit_wait` | `dict` | Yes | The wallet funding an enabled routine that is waiting for inference credit. |
+| `credit_wait` | `dict` | No | The wallet funding an enabled routine that is waiting for inference credit. |
 | `description` | `str | None` | Yes |  |
 | `enabled` | `bool` | Yes |  |
 | `id` | `str` | Yes |  |
@@ -5324,7 +5246,7 @@ agent_routine = client.AgentRoutine()
 | `routine` | `dict` | Yes |  |
 | `schedule` | `dict` | Yes |  |
 | `schedule_label` | `str` | Yes |  |
-| `utility_model` | `dict` | Yes |  |
+| `utility_model` | `dict` | No |  |
 
 ### Operations
 
@@ -5980,7 +5902,7 @@ agent_subagent = client.AgentSubagent()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `active` | `bool` | Yes |  |
-| `attention` | `dict | None` | Yes | Why the person should open this thread, as the Threads panel shows it: a pending question, the agent asking for attention, or a run that did not finish. |
+| `attention` | `dict | None` | No | Why the person should open this thread, as the Threads panel shows it: a pending question, the agent asking for attention, or a run that did not finish. |
 | `ended_at` | `str | None` | Yes |  |
 | `id` | `str` | Yes |  |
 | `model` | `str | None` | Yes |  |
@@ -6140,7 +6062,7 @@ agent_swarm = client.AgentSwarm()
 | `started_at_label` | `str | None` | Yes |  |
 | `status` | `str` | Yes |  |
 | `summary` | `dict` | Yes |  |
-| `target` | `dict` | Yes | Where the swarm lands. |
+| `target` | `dict` | No | Where the swarm lands. |
 | `task_count` | `int` | Yes |  |
 | `task_template_json` | `str | None` | Yes |  |
 | `tasks` | `list` | Yes |  |
@@ -6210,7 +6132,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 ```python
 result = client.AgentSwarm().create({
     "organization_slug": "example_organization_slug",  # str | None
-    "target": {},  # dict
 })
 ```
 
@@ -6939,7 +6860,7 @@ agent_workflow_proposal = client.AgentWorkflowProposal()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `agent_steps` | `dict` | Yes | The model and reasoning the workflow's agent steps share. |
+| `agent_steps` | `dict` | No | The model and reasoning the workflow's agent steps share. |
 | `base_digest` | `str | None` | Yes | The saved workflow this proposal changes; null for a new workflow. |
 | `can_manage` | `bool` | Yes |  |
 | `can_revise` | `bool` | Yes | The viewer can choose the model and reasoning of the agent steps now, before saving. |
@@ -7017,7 +6938,7 @@ agent_workflow_run = client.AgentWorkflowRun()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `action` | `str` | Yes |  |
-| `automation` | `dict | None` | Yes | Saved native automation identity. |
+| `automation` | `dict | None` | No | Saved native automation identity. |
 | `budget_seconds` | `int | None` | Yes | The run stops once it has been running this long |
 | `budget_usd` | `float | None` | Yes | The run stops before a step once it has spent this much |
 | `can_answer` | `bool` | Yes | Whether this viewer can answer the step that stopped the run; the answer runs that step again |
@@ -7025,7 +6946,7 @@ agent_workflow_run = client.AgentWorkflowRun()
 | `can_dismiss` | `bool` | Yes | Whether this viewer can dismiss the run waiting for them, which ends it unanswered |
 | `checkpoint` | `dict | None` | Yes | The question a run waiting at a checkpoint is asking |
 | `conversation_id` | `str | None` | Yes | The thread the run works in, which the person opens to follow it |
-| `decision_history` | `dict` | Yes |  |
+| `decision_history` | `dict` | No |  |
 | `error` | `str | None` | Yes |  |
 | `finished_at` | `str | None` | Yes |  |
 | `flow_steps` | `list | None` | Yes | How the run went at each step of its workflow file, in the order it reached them; null when steps were recorded without their step of the file |
@@ -8451,6 +8372,81 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AppDeploymentEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AppDeploymentDashboardEntity
+
+```python
+app_deployment_dashboard = client.AppDeploymentDashboard()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `list` | Yes |  |
+| `app` | `dict` | Yes |  |
+| `audit_events` | `list` | Yes |  |
+| `capacity` | `dict` | Yes |  |
+| `connections` | `list` | Yes |  |
+| `data_resources` | `list` | Yes |  |
+| `deployments` | `list` | Yes |  |
+| `desired_states` | `list` | Yes |  |
+| `environments` | `list` | Yes |  |
+| `id` | `str` | No |  |
+| `locations` | `list` | Yes |  |
+| `managed_database_catalog` | `dict` | Yes |  |
+| `observability` | `dict` | Yes |  |
+| `operations` | `list` | Yes |  |
+| `placements` | `list` | Yes |  |
+| `reconciler_ticks` | `list` | Yes |  |
+| `releases` | `list` | Yes |  |
+| `rollback_deployments` | `list` | Yes |  |
+| `rollouts` | `list` | Yes |  |
+| `runtime_instances` | `list` | Yes |  |
+| `service_bindings` | `list` | Yes |  |
+| `service_views` | `list` | Yes |  |
+| `services` | `list` | Yes |  |
+| `storage_resources` | `list` | Yes |  |
+| `summary` | `dict` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> AppDeploymentDashboardEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.AppDeploymentDashboard().load({"id": "app_deployment_dashboard_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AppDeploymentDashboardEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -11288,7 +11284,7 @@ automation_run = client.AutomationRun()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `action` | `str` | Yes |  |
-| `automation` | `dict | None` | Yes | Saved native automation identity. |
+| `automation` | `dict | None` | No | Saved native automation identity. |
 | `budget_seconds` | `int | None` | Yes | The run stops once it has been running this long |
 | `budget_usd` | `float | None` | Yes | The run stops before a step once it has spent this much |
 | `can_answer` | `bool` | Yes | Whether this viewer can answer the step that stopped the run; the answer runs that step again |
@@ -11296,7 +11292,7 @@ automation_run = client.AutomationRun()
 | `can_dismiss` | `bool` | Yes | Whether this viewer can dismiss the run waiting for them, which ends it unanswered |
 | `checkpoint` | `dict | None` | Yes | The question a run waiting at a checkpoint is asking |
 | `conversation_id` | `str | None` | Yes | The thread the run works in, which the person opens to follow it |
-| `decision_history` | `dict` | Yes |  |
+| `decision_history` | `dict` | No |  |
 | `error` | `str | None` | Yes |  |
 | `finished_at` | `str | None` | Yes |  |
 | `flow_steps` | `list | None` | Yes | How the run went at each step of its workflow file, in the order it reached them; null when steps were recorded without their step of the file |
@@ -14205,7 +14201,7 @@ change = client.Change()
 | --- | --- | --- | --- |
 | `counts` | `dict` | Yes | Counts for each state across the active non-state filters. |
 | `filters` | `dict` | Yes |  |
-| `github_sync` | `dict` | Yes |  |
+| `github_sync` | `dict` | No |  |
 | `result` | `Any` | Yes | What this page is a page of. |
 
 ### Operations
@@ -14324,54 +14320,15 @@ change_comment = client.ChangeComment()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `body` | `str` | Yes |  |
-| `capabilities` | `dict` | Yes |  |
-| `change_id` | `str | None` | No |  |
-| `created_at` | `str | None` | No |  |
-| `created_at_label` | `str | None` | No |  |
-| `id` | `str` | Yes |  |
+| `comment` | `dict` | No |  |
+| `comments` | `list` | Yes |  |
+| `id` | `str` | No |  |
 | `kind` | `str | None` | No |  |
 | `line` | `int | None` | No |  |
-| `outdated` | `bool` | Yes |  |
 | `parent_comment_id` | `str | None` | No |  |
 | `patchset_id` | `str | None` | No |  |
-| `patchset_number` | `int | None` | Yes |  |
 | `path` | `str | None` | No |  |
-| `replies` | `list` | No |  |
-| `resolved` | `bool` | Yes |  |
-| `resolved_at` | `str | None` | No |  |
-| `resolved_at_label` | `str | None` | No |  |
-| `resolved_by` | `dict` | Yes |  |
 | `side` | `str | None` | No |  |
-| `updated_at` | `str | None` | No |  |
-| `updated_at_label` | `str | None` | No |  |
-| `user` | `dict` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | list | create |
-| --- | --- | --- |
-| `body` | - | - |
-| `capabilities` | - | - |
-| `change_id` | - | - |
-| `created_at` | - | - |
-| `created_at_label` | - | - |
-| `id` | - | - |
-| `kind` | - | - |
-| `line` | - | - |
-| `outdated` | - | - |
-| `parent_comment_id` | - | - |
-| `patchset_id` | Yes | - |
-| `patchset_number` | - | - |
-| `path` | - | - |
-| `replies` | - | - |
-| `resolved` | - | - |
-| `resolved_at` | - | - |
-| `resolved_at_label` | - | - |
-| `resolved_by` | - | - |
-| `side` | - | - |
-| `updated_at` | - | - |
-| `updated_at_label` | - | - |
-| `user` | - | - |
 
 ### Operations
 
@@ -14388,14 +14345,12 @@ result = client.ChangeComment().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[ChangeCommentEntity]`
+#### `load(reqmatch, ctrl=None) -> ChangeCommentEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.ChangeComment().list({"change_id": "example", "organization_id": "example", "repo_id": "example"})
-for change_comment in results:
-    print(change_comment.data_get())
+result = client.ChangeComment().load({"change_id": "change_id", "organization_id": "organization_id", "repo_id": "repo_id"})
 ```
 
 ### Common Methods
@@ -14761,10 +14716,10 @@ change_label = client.ChangeLabel()
 | --- | --- | --- | --- |
 | `accepted` | `bool` | No |  |
 | `add` | `list` | No |  |
-| `approval` | `dict` | Yes |  |
+| `approval` | `dict` | No |  |
 | `assets` | `list` | No | Proof assets referenced from the description as `vex-asset:<id>`. |
 | `author` | `Any` | No | Human user summary or organization automation identity. |
-| `capabilities` | `dict` | Yes |  |
+| `capabilities` | `dict` | No |  |
 | `change_key` | `str` | No |  |
 | `checks` | `list` | No |  |
 | `checks_status` | `str` | No |  |
@@ -14772,12 +14727,12 @@ change_label = client.ChangeLabel()
 | `comments_count` | `int` | No |  |
 | `comments_count_label` | `str` | No |  |
 | `commit_message` | `str | None` | No |  |
-| `current_patchset` | `dict` | Yes |  |
+| `current_patchset` | `dict` | No |  |
 | `description` | `str | None` | No |  |
 | `draft` | `bool` | No |  |
 | `folded_into_number` | `int | None` | No |  |
 | `github_projection_status` | `str | None` | No |  |
-| `github_pull_request` | `dict` | Yes |  |
+| `github_pull_request` | `dict` | No |  |
 | `github_pull_requests` | `list` | No |  |
 | `group` | `dict | None` | No |  |
 | `has_description` | `bool` | No | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
@@ -14785,7 +14740,7 @@ change_label = client.ChangeLabel()
 | `jj_change_id` | `str | None` | No |  |
 | `labels` | `list` | No |  |
 | `landable` | `bool` | No |  |
-| `landed_by` | `dict` | Yes |  |
+| `landed_by` | `dict` | No |  |
 | `number` | `int` | Yes |  |
 | `orphaned` | `bool` | No |  |
 | `orphaned_at` | `str` | No |  |
@@ -15123,7 +15078,7 @@ change_transcript = client.ChangeTranscript()
 | `session_title` | `str | None` | No |  |
 | `status` | `str` | Yes |  |
 | `superseded` | `bool` | Yes |  |
-| `user` | `dict` | Yes |  |
+| `user` | `dict` | No |  |
 
 ### Operations
 
@@ -16354,7 +16309,7 @@ control_computer = client.ControlComputer()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `connection` | `dict` | Yes | A point-in-time control transport observation. |
+| `connection` | `dict` | No | A point-in-time control transport observation. |
 | `consent` | `dict` | Yes |  |
 | `device` | `dict` | Yes |  |
 | `id` | `str` | No |  |
@@ -16418,10 +16373,10 @@ control_computer_control_operation = client.ControlComputerControlOperation()
 | `action` | `str` | Yes |  |
 | `arguments` | `dict` | Yes |  |
 | `created_at` | `str` | Yes |  |
-| `delivery` | `dict` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `delivery` | `dict` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
 | `device_id` | `str` | Yes |  |
 | `diagnostic_code` | `str` | No | Approved product error code retained after copied diagnostics expire. |
-| `end` | `dict` | Yes |  |
+| `end` | `dict` | No |  |
 | `expires_at` | `str` | Yes |  |
 | `id` | `str` | Yes |  |
 | `key` | `str` | Yes |  |
@@ -16588,7 +16543,7 @@ credential_sign_in_check = client.CredentialSignInCheck()
 | `reproductions` | `list` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `list` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `dict` | Yes |  |
+| `scenario_generation` | `dict` | No |  |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `str` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `str | None` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -16725,20 +16680,21 @@ deep_scan = client.DeepScan()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `account_id` | `str | None` | No |  |
-| `active` | `list` | Yes |  |
 | `agent_filters` | `dict` | Yes | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` | `list` | Yes |  |
 | `can_continue` | `bool` | No | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` | `list` | No |  |
+| `check_count` | `int` | Yes |  |
 | `concurrency` | `int` | Yes |  |
 | `covered_areas` | `list` | Yes | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` | `str` | Yes |  |
-| `deadline_at` | `str` | Yes |  |
+| `credential_name` | `str | None` | No | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | `str` | Yes | When the team's time limit ends. |
 | `demo_project` | `dict | None` | Yes | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` | `int | None` | Yes |  |
 | `ended_early` | `bool` | Yes | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` | `str` | Yes |  |
 | `environment_name` | `str` | Yes |  |
-| `explorations` | `list` | Yes |  |
 | `explorer_activity` | `dict` | Yes | What the team is doing now. |
 | `finding_count` | `int` | Yes | Findings at every priority, locked ones included. |
 | `findings` | `list` | Yes | Every tester's findings, most severe first, with the checks each one cites. |
@@ -16748,14 +16704,12 @@ deep_scan = client.DeepScan()
 | `huntable_flows` | `list` | Yes | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` | `str` | Yes |  |
 | `idempotency_key` | `str` | No |  |
-| `launch_options` | `dict` | Yes | Present only when launch was requested by an admin |
 | `max_seconds` | `int` | Yes |  |
 | `max_testers` | `int` | Yes |  |
 | `mode` | `str` | No |  |
 | `next_scan_improvements` | `list` | Yes | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | `str` | No | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | `bool` | Yes | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` | `dict` | Yes |  |
 | `paywalled` | `bool` | Yes | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` | `dict` | Yes |  |
 | `priority_counts` | `dict` | Yes |  |
@@ -16766,10 +16720,13 @@ deep_scan = client.DeepScan()
 | `reproductions` | `list` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `list` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `dict` | Yes |  |
+| `scenario_count` | `int` | No | Scenarios saved from this discovery. |
+| `scenario_generation` | `dict` | No |  |
+| `scenarios_pending` | `bool` | No | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `str` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `str | None` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` | `str` | Yes |  |
 | `startup_retryable` | `bool` | No | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` | `str` | Yes |  |
 | `time_limit_reached` | `bool` | Yes | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -16779,60 +16736,62 @@ deep_scan = client.DeepScan()
 
 ### Field Usage by Operation
 
-| Field | load | create |
-| --- | --- | --- |
-| `account_id` | - | - |
-| `active` | - | - |
-| `agent_filters` | - | - |
-| `agents` | - | - |
-| `can_continue` | - | - |
-| `chat_messages` | - | - |
-| `concurrency` | - | Yes |
-| `covered_areas` | - | - |
-| `created_at` | - | - |
-| `deadline_at` | - | - |
-| `demo_project` | - | - |
-| `ended_early` | - | - |
-| `environment_id` | - | - |
-| `environment_name` | - | - |
-| `explorations` | - | - |
-| `explorer_activity` | - | - |
-| `finding_count` | - | - |
-| `findings` | - | - |
-| `findings_fix_prompt` | - | - |
-| `finished_at` | - | - |
-| `goal` | - | - |
-| `huntable_flows` | - | - |
-| `id` | - | - |
-| `idempotency_key` | - | - |
-| `launch_options` | - | - |
-| `max_seconds` | - | Yes |
-| `max_testers` | - | Yes |
-| `mode` | - | - |
-| `next_scan_improvements` | - | - |
-| `observed_at` | - | - |
-| `onboarding` | - | - |
-| `pagination` | - | - |
-| `paywalled` | - | - |
-| `permissions` | - | - |
-| `priority_counts` | - | - |
-| `project_id` | - | - |
-| `related_explorations` | - | - |
-| `report` | - | - |
-| `reproduction_of` | - | - |
-| `reproductions` | - | - |
-| `saves_scenarios` | - | - |
-| `scannable_flows` | - | - |
-| `scenario_generation` | - | - |
-| `sign_in_needs_answer` | - | - |
-| `sign_in_outcome` | - | - |
-| `sign_in_question` | - | - |
-| `startup_retryable` | - | - |
-| `status` | - | - |
-| `time_limit_reached` | - | - |
-| `title` | - | - |
-| `unlock` | - | - |
-| `web_url` | - | - |
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `account_id` | - | - | - |
+| `agent_filters` | - | - | - |
+| `agents` | - | - | - |
+| `can_continue` | - | - | - |
+| `chat_messages` | - | - | - |
+| `check_count` | - | - | - |
+| `concurrency` | - | - | Yes |
+| `covered_areas` | - | - | - |
+| `created_at` | - | - | - |
+| `credential_name` | - | - | - |
+| `deadline_at` | - | Yes | - |
+| `demo_project` | - | - | - |
+| `duration_ms` | - | - | - |
+| `ended_early` | - | - | - |
+| `environment_id` | - | - | - |
+| `environment_name` | - | - | - |
+| `explorer_activity` | - | - | - |
+| `finding_count` | - | - | - |
+| `findings` | - | - | - |
+| `findings_fix_prompt` | - | - | - |
+| `finished_at` | - | Yes | - |
+| `goal` | - | - | - |
+| `huntable_flows` | - | - | - |
+| `id` | - | - | - |
+| `idempotency_key` | - | - | - |
+| `max_seconds` | - | - | Yes |
+| `max_testers` | - | - | Yes |
+| `mode` | - | - | - |
+| `next_scan_improvements` | - | - | - |
+| `observed_at` | - | - | - |
+| `onboarding` | - | - | - |
+| `paywalled` | - | - | - |
+| `permissions` | - | - | - |
+| `priority_counts` | - | - | - |
+| `project_id` | - | - | - |
+| `related_explorations` | - | - | - |
+| `report` | - | - | - |
+| `reproduction_of` | - | - | - |
+| `reproductions` | - | - | - |
+| `saves_scenarios` | - | - | - |
+| `scannable_flows` | - | - | - |
+| `scenario_count` | - | - | - |
+| `scenario_generation` | - | - | - |
+| `scenarios_pending` | - | - | - |
+| `sign_in_needs_answer` | - | - | - |
+| `sign_in_outcome` | - | - | - |
+| `sign_in_question` | - | - | - |
+| `started_at` | - | - | - |
+| `startup_retryable` | - | - | - |
+| `status` | - | - | - |
+| `time_limit_reached` | - | - | - |
+| `title` | - | Yes | - |
+| `unlock` | - | - | - |
+| `web_url` | - | - | - |
 
 ### Operations
 
@@ -16846,6 +16805,16 @@ result = client.DeepScan().create({
     "environment_id": "example_environment_id",  # str
     "goal": "example_goal",  # str
 })
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[DeepScanEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.DeepScan().list({"organization_id": "example"})
+for deep_scan in results:
+    print(deep_scan.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> DeepScanEntity`
@@ -17873,11 +17842,11 @@ device = client.Device()
 | --- | --- | --- | --- |
 | `architecture` | `str` | Yes |  |
 | `channel` | `str` | Yes |  |
-| `coding_connection` | `dict | None` | Yes | Independent organization coding-control service state for the current device owner. |
+| `coding_connection` | `dict | None` | No | Independent organization coding-control service state for the current device owner. |
 | `connection_checked_at` | `str | None` | Yes | When this native presence observation was obtained; null when unobserved or unavailable. |
 | `connection_status` | `str` | Yes | Display-only native presence. |
 | `control_delivery_policy` | `dict` | Yes |  |
-| `control_spawn_policy` | `dict` | Yes |  |
+| `control_spawn_policy` | `dict` | No |  |
 | `created_at` | `str` | Yes |  |
 | `device` | `dict` | Yes |  |
 | `environment` | `str` | Yes |  |
@@ -18058,85 +18027,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `DeviceControlMessageEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
-## DeviceControlOperationEntity
-
-```python
-device_control_operation = client.DeviceControlOperation()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `action` | `str` | Yes |  |
-| `arguments` | `dict` | Yes |  |
-| `created_at` | `str` | Yes |  |
-| `delivery` | `dict` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
-| `device_id` | `str` | Yes |  |
-| `diagnostic_code` | `str` | No | Approved product error code retained after copied diagnostics expire. |
-| `end` | `dict` | Yes |  |
-| `expires_at` | `str` | Yes |  |
-| `id` | `str` | Yes |  |
-| `key` | `str` | Yes |  |
-| `provider` | `str` | Yes |  |
-| `references` | `dict` | Yes |  |
-| `result` | `Any` | Yes |  |
-| `result_expired` | `bool` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
-| `state` | `str` | Yes |  |
-
-### Operations
-
-#### `create(reqdata, ctrl=None) -> DeviceControlOperationEntity`
-
-Create a new entity with the given data. Returns the created entity and raises on error.
-
-```python
-result = client.DeviceControlOperation().create({
-    "device_id": "example_device_id",  # str
-    "organization_id": "example_organization_id",  # str
-    "action": "example_action",  # str
-    "arguments": {},  # dict
-    "key": "example_key",  # str
-})
-```
-
-#### `load(reqmatch, ctrl=None) -> DeviceControlOperationEntity`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
-
-```python
-result = client.DeviceControlOperation().load({"id": "device_control_operation_id", "device_id": "device_id", "organization_id": "organization_id"})
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `DeviceControlOperationEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -18443,6 +18333,85 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `DeviceLocalEventEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeviceOperationEntity
+
+```python
+device_operation = client.DeviceOperation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `str` | Yes |  |
+| `arguments` | `dict` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `delivery` | `dict` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `str` | Yes |  |
+| `diagnostic_code` | `str` | No | Approved product error code retained after copied diagnostics expire. |
+| `end` | `dict` | No |  |
+| `expires_at` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `key` | `str` | Yes |  |
+| `provider` | `str` | Yes |  |
+| `references` | `dict` | Yes |  |
+| `result` | `Any` | Yes |  |
+| `result_expired` | `bool` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> DeviceOperationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.DeviceOperation().create({
+    "device_id": "example_device_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "action": "example_action",  # str
+    "arguments": {},  # dict
+    "key": "example_key",  # str
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> DeviceOperationEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.DeviceOperation().load({"id": "device_operation_id", "device_id": "device_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceOperationEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -19300,186 +19269,6 @@ Return the entity name.
 
 ---
 
-## EnvironmentEntity
-
-```python
-environment = client.Environment()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `active_revision_id` | `str | None` | Yes |  |
-| `agent_sign_up_available` | `bool` | Yes | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
-| `allowed_actions` | `str` | Yes | read_only only looks around; writes may create, change and delete data. |
-| `billing` | `dict` | Yes |  |
-| `cleanup` | `list` | Yes |  |
-| `connection` | `str` | Yes |  |
-| `created_at` | `str` | Yes |  |
-| `default_policy` | `dict` | No |  |
-| `default_policy_json` | `dict` | Yes |  |
-| `discovery_defaults` | `dict` | Yes |  |
-| `environment` | `dict` | Yes |  |
-| `exploration_accounts` | `list` | No |  |
-| `explorations` | `list` | No |  |
-| `first_run` | `Any` | No |  |
-| `hosted_app_id` | `str | None` | Yes |  |
-| `id` | `str` | Yes |  |
-| `imessage_number` | `str | None` | Yes | International destination number; blank or null clears it on an added environment. |
-| `included_deep_scan` | `bool` | Yes | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
-| `lock_version` | `int` | Yes |  |
-| `managed_google_available` | `bool` | Yes | Whether the managed Google account can be offered for this app. |
-| `managed_google_email` | `str` | Yes |  |
-| `messaging_tester_number` | `str | None` | No | One configured tester number. |
-| `name` | `str` | Yes | Optional for a website target; defaults to its hostname. |
-| `network_connections` | `list` | Yes |  |
-| `onboarding_discovery` | `Any` | No |  |
-| `organization_id` | `str` | Yes |  |
-| `pending_accounts` | `list` | No | Credentials on a Composal address still waiting for the password the customer chose at signup. |
-| `permissions` | `dict` | Yes |  |
-| `project_id` | `str | None` | Yes | Owning project. |
-| `repository_id` | `str | None` | Yes |  |
-| `revisions` | `list` | Yes |  |
-| `setup_discovery_id` | `str | None` | No | Existing discovery to resume after setup or Checkout, selected within this environment. |
-| `sign_in_check_available` | `bool` | Yes | Whether a test account's live sign-in check can run on this app. |
-| `slug` | `str` | Yes |  |
-| `status` | `str` | Yes |  |
-| `target_kind` | `str | None` | Yes |  |
-| `target_url` | `str | None` | Yes |  |
-| `test_accounts` | `dict` | Yes |  |
-| `updated_at` | `str` | Yes |  |
-| `verify_network_connection_id` | `str | None` | Yes |  |
-| `version` | `int` | No | Required for target or tester changes; use lock_version from the environment. |
-
-### Field Usage by Operation
-
-| Field | load | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- |
-| `active_revision_id` | - | - | - | - | - |
-| `agent_sign_up_available` | - | - | - | - | - |
-| `allowed_actions` | - | Yes | - | Yes | - |
-| `billing` | - | - | - | - | - |
-| `cleanup` | - | - | - | - | - |
-| `connection` | - | - | - | - | - |
-| `created_at` | - | - | - | - | - |
-| `default_policy` | - | - | - | - | - |
-| `default_policy_json` | - | - | - | - | - |
-| `discovery_defaults` | - | - | - | - | - |
-| `environment` | - | - | - | - | - |
-| `exploration_accounts` | - | - | - | - | - |
-| `explorations` | - | - | - | - | - |
-| `first_run` | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - |
-| `id` | - | - | - | - | - |
-| `imessage_number` | - | Yes | - | Yes | - |
-| `included_deep_scan` | - | - | - | - | - |
-| `lock_version` | - | - | - | - | - |
-| `managed_google_available` | - | - | - | - | - |
-| `managed_google_email` | - | - | - | - | - |
-| `messaging_tester_number` | - | - | - | - | - |
-| `name` | - | Yes | - | Yes | - |
-| `network_connections` | - | - | - | - | - |
-| `onboarding_discovery` | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - |
-| `pending_accounts` | - | - | - | - | - |
-| `permissions` | - | - | - | - | - |
-| `project_id` | - | Yes | - | - | - |
-| `repository_id` | - | Yes | - | - | - |
-| `revisions` | - | - | - | - | - |
-| `setup_discovery_id` | - | - | - | - | - |
-| `sign_in_check_available` | - | - | - | - | - |
-| `slug` | - | - | - | - | - |
-| `status` | - | - | - | - | - |
-| `target_kind` | - | Yes | - | - | - |
-| `target_url` | - | Yes | - | Yes | - |
-| `test_accounts` | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - |
-| `verify_network_connection_id` | - | - | - | Yes | - |
-| `version` | - | - | - | - | - |
-
-### Operations
-
-#### `create(reqdata, ctrl=None) -> EnvironmentEntity`
-
-Create a new entity with the given data. Returns the created entity and raises on error.
-
-```python
-result = client.Environment().create({
-    "organization_id": "example_organization_id",  # str
-    "slug": "example_slug",  # str
-})
-```
-
-#### `load(reqmatch, ctrl=None) -> EnvironmentEntity`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
-
-```python
-result = client.Environment().load({"id": "environment_id", "organization_id": "organization_id"})
-```
-
-#### `patch(reqdata, ctrl=None) -> EnvironmentEntity`
-
-Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
-
-```python
-result = client.Environment().patch({
-    "id": "environment_id",
-    "organization_id": "organization_id",
-    # Only the fields to change
-})
-```
-
-#### `remove(reqmatch, ctrl=None) -> EnvironmentEntity`
-
-Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
-
-```python
-result = client.Environment().remove({"id": "environment_id", "organization_id": "organization_id"})
-```
-
-#### `update(reqdata, ctrl=None) -> EnvironmentEntity`
-
-Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
-
-```python
-result = client.Environment().update({
-    "id": "environment_id",
-    "organization_id": "organization_id",
-    # Fields to update
-})
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `EnvironmentEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
 ## EnvironmentDiscoveryRunEntity
 
 ```python
@@ -19497,7 +19286,7 @@ environment_discovery_run = client.EnvironmentDiscoveryRun()
 | `failure_code` | `str | None` | Yes |  |
 | `id` | `str` | Yes |  |
 | `queued_at` | `str` | Yes |  |
-| `recording` | `dict` | Yes |  |
+| `recording` | `dict` | No |  |
 | `result` | `dict | None` | Yes |  |
 | `status` | `str` | Yes |  |
 
@@ -19615,7 +19404,7 @@ environment_exploration = client.EnvironmentExploration()
 | `reproductions` | `list` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `list` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `dict` | Yes |  |
+| `scenario_generation` | `dict` | No |  |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `str` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `str | None` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -20026,57 +19815,6 @@ Return the entity name.
 
 ---
 
-## EvidenceEntity
-
-```python
-evidence = client.Evidence()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `str` | No |  |
-
-### Operations
-
-#### `load(reqmatch, ctrl=None) -> EvidenceEntity`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
-
-```python
-result = client.Evidence().load({"id": "evidence_id", "organization_id": "organization_id"})
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `EvidenceEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
 ## ExecutionDesiredStateEntity
 
 ```python
@@ -20473,7 +20211,7 @@ exploration = client.Exploration()
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `list` | Yes | Flows a finished exploration recorded that deep scans can start from. |
 | `scenario_count` | `int` | No | Scenarios saved from this discovery. |
-| `scenario_generation` | `dict` | Yes |  |
+| `scenario_generation` | `dict` | No |  |
 | `scenarios_pending` | `bool` | No | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `str` | Yes | A sign-in check's outcome; null for other runs. |
@@ -20653,7 +20391,7 @@ exploration_message = client.ExplorationMessage()
 | `reproductions` | `list` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `list` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `dict` | Yes |  |
+| `scenario_generation` | `dict` | No |  |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `str` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `str | None` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -20799,7 +20537,7 @@ exploration_scenario = client.ExplorationScenario()
 | `reproductions` | `list` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `list` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `dict` | Yes |  |
+| `scenario_generation` | `dict` | No |  |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `str` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `str | None` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -20875,7 +20613,7 @@ finding = client.Finding()
 | `organization_id` | `str` | Yes |  |
 | `permissions` | `dict` | Yes |  |
 | `reason` | `str` | No | Why the finding was resolved or ignored, such as "Expected for trial accounts". |
-| `reported_occurrence` | `dict | None` | Yes | The Discovery or Deep Scan report behind the finding; null for scenario run findings |
+| `reported_occurrence` | `dict | None` | No | The Discovery or Deep Scan report behind the finding; null for scenario run findings |
 | `repository_id` | `str | None` | Yes |  |
 | `safe_summary` | `str` | Yes |  |
 | `scenario_occurrences` | `list` | No |  |
@@ -21758,78 +21496,6 @@ Return the entity name.
 
 ---
 
-## GithubIntegrationEntity
-
-```python
-github_integration = client.GithubIntegration()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `account_avatar_url` | `str | None` | Yes |  |
-| `account_login` | `str` | Yes |  |
-| `connection_status` | `str` | Yes |  |
-| `connection_status_label` | `str` | Yes |  |
-| `github_installation` | `Any` | Yes |  |
-| `health` | `dict` | Yes |  |
-| `id` | `str` | Yes |  |
-| `imported_repositories_count` | `int` | Yes |  |
-| `imported_repositories_count_label` | `str` | Yes |  |
-| `organization` | `dict` | Yes |  |
-| `pagination` | `dict` | Yes |  |
-| `repositories` | `list` | Yes |  |
-
-### Operations
-
-#### `list(reqmatch=None, ctrl=None) -> list[GithubIntegrationEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.GithubIntegration().list({"organization_id": "example"})
-for github_integration in results:
-    print(github_integration.data_get())
-```
-
-#### `load(reqmatch, ctrl=None) -> GithubIntegrationEntity`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
-
-```python
-result = client.GithubIntegration().load({"id": "github_integration_id", "organization_id": "organization_id"})
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `GithubIntegrationEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
 ## GithubOnboardingEntity
 
 ```python
@@ -22367,7 +22033,7 @@ github_runner_history = client.GithubRunnerHistory()
 | `runs` | `list` | Yes |  |
 | `setup` | `Any` | No | CI onboarding. |
 | `success_rate` | `int | None` | Yes |  |
-| `usage` | `dict` | Yes |  |
+| `usage` | `dict` | No |  |
 
 ### Operations
 
@@ -24450,8 +24116,8 @@ lease_verify_diagnostic = client.LeaseVerifyDiagnostic()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `browser_events` | `dict` | Yes |  |
-| `live_browser` | `dict` | Yes |  |
-| `live_view` | `dict` | Yes | The tester's read-only live stream for page viewers. |
+| `live_browser` | `dict` | No |  |
+| `live_view` | `dict` | No | The tester's read-only live stream for page viewers. |
 | `steps` | `list` | No |  |
 
 ### Operations
@@ -24466,8 +24132,6 @@ result = client.LeaseVerifyDiagnostic().create({
     "swarm_id": "example_swarm_id",  # str
     "task_id": "example_task_id",  # str
     "browser_events": {},  # dict
-    "live_browser": {},  # dict
-    "live_view": {},  # dict
 })
 ```
 
@@ -24739,6 +24403,18 @@ local_thread_delivery = client.LocalThreadDelivery()
 | `policy` | `dict` | Yes |  |
 | `recovery_message` | `str | None` | Yes |  |
 
+### Field Usage by Operation
+
+| Field | load | update |
+| --- | --- | --- |
+| `decision` | - | - |
+| `decision_pending` | - | - |
+| `delivery` | - | - |
+| `expected_version` | - | - |
+| `id` | - | - |
+| `policy` | - | Yes |
+| `recovery_message` | - | - |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> LocalThreadDeliveryEntity`
@@ -24805,10 +24481,10 @@ local_thread_operation = client.LocalThreadOperation()
 | `action` | `str` | Yes |  |
 | `arguments` | `dict` | Yes |  |
 | `created_at` | `str` | Yes |  |
-| `delivery` | `dict` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `delivery` | `dict` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
 | `device_id` | `str` | Yes |  |
 | `diagnostic_code` | `str` | No | Approved product error code retained after copied diagnostics expire. |
-| `end` | `dict` | Yes |  |
+| `end` | `dict` | No |  |
 | `expires_at` | `str` | Yes |  |
 | `id` | `str` | Yes |  |
 | `key` | `str` | Yes |  |
@@ -25195,7 +24871,7 @@ me = client.Me()
 | `github_pr_user_authorization_login` | `str | None` | Yes |  |
 | `github_prs_authored_by_change_author` | `bool` | Yes |  |
 | `id` | `str` | Yes |  |
-| `impersonation` | `dict | None` | Yes |  |
+| `impersonation` | `dict | None` | No |  |
 | `name` | `str | None` | Yes |  |
 | `next_path` | `str` | No | Present on a sign-in that created the person's first workspace; its setup page, where they go next. |
 | `onboarding` | `dict` | Yes | V2 agent onboarding progress. |
@@ -25471,22 +25147,11 @@ member = client.Member()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accepted_at` | `str | None` | Yes |  |
-| `accepted_by_user` | `Any` | Yes |  |
 | `created_at` | `str` | Yes |  |
 | `created_at_label` | `str | None` | Yes |  |
-| `email` | `str` | Yes |  |
-| `email_delivery_status` | `str` | No |  |
-| `expires_at` | `str | None` | Yes |  |
-| `expires_at_label` | `str | None` | Yes |  |
 | `id` | `str` | Yes |  |
-| `invite_url` | `str | None` | Yes |  |
-| `invited_by_user` | `Any` | Yes |  |
 | `is_self` | `bool` | Yes |  |
-| `organization` | `dict` | Yes |  |
-| `revoked_at` | `str | None` | Yes |  |
 | `role` | `str` | Yes |  |
-| `status` | `str` | Yes |  |
 | `updated_at` | `str` | Yes |  |
 | `updated_at_label` | `str | None` | Yes |  |
 | `user` | `dict` | Yes |  |
@@ -25689,7 +25354,7 @@ merge_queue_entry = client.MergeQueueEntry()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analytics` | `dict` | Yes | Queue performance for the reporting window. |
+| `analytics` | `dict` | No | Queue performance for the reporting window. |
 | `change_id` | `str | None` | No |  |
 | `expected_target_commit_id` | `str | None` | No |  |
 | `expected_target_version` | `int | None` | No |  |
@@ -25750,139 +25415,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `MergeQueueEntryEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
-## MergeRequestEntity
-
-```python
-merge_request = client.MergeRequest()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `available_tests` | `list` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `base_sha` | `str` | Yes |  |
-| `branch` | `str` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `comment_url` | `str | None` | Yes |  |
-| `current_run` | `Any` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `draft` | `bool` | Yes |  |
-| `findings` | `list` | Yes |  |
-| `github_repository` | `str | None` | Yes | GitHub owner/repository associated with this pull request. |
-| `github_url` | `str | None` | Yes |  |
-| `head_sha` | `str` | Yes | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` | `str` | Yes |  |
-| `idempotency_key` | `str` | Yes |  |
-| `number` | `int` | Yes |  |
-| `pagination` | `dict` | Yes |  |
-| `permissions` | `dict` | Yes |  |
-| `preview_cleanup_ready` | `bool` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | `str | None` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` | `Any` | No |  |
-| `project_id` | `str | None` | Yes | Composal project slug or public ID for PR preview environments. |
-| `project_slug` | `str | None` | Yes |  |
-| `provider` | `str` | Yes |  |
-| `pull_request` | `dict` | Yes |  |
-| `repository_id` | `str` | Yes |  |
-| `request_label` | `str` | Yes |  |
-| `requested_run_id` | `str | None` | Yes |  |
-| `runs` | `list` | Yes |  |
-| `source_branch` | `str | None` | Yes |  |
-| `source_repository` | `str | None` | Yes |  |
-| `source_url` | `str | None` | Yes |  |
-| `state` | `str` | Yes |  |
-| `title` | `str` | Yes |  |
-| `updated_at` | `str` | Yes |  |
-| `web_path` | `str` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | load | create |
-| --- | --- | --- |
-| `available_tests` | - | - |
-| `base_sha` | - | - |
-| `branch` | - | - |
-| `comment_url` | - | - |
-| `current_run` | - | - |
-| `draft` | - | - |
-| `findings` | - | - |
-| `github_repository` | - | - |
-| `github_url` | - | - |
-| `head_sha` | - | Yes |
-| `id` | - | - |
-| `idempotency_key` | - | - |
-| `number` | - | - |
-| `pagination` | - | - |
-| `permissions` | - | - |
-| `preview_cleanup_ready` | - | - |
-| `preview_url` | - | - |
-| `project` | - | - |
-| `project_id` | - | Yes |
-| `project_slug` | - | - |
-| `provider` | - | - |
-| `pull_request` | - | - |
-| `repository_id` | - | Yes |
-| `request_label` | - | - |
-| `requested_run_id` | - | - |
-| `runs` | - | - |
-| `source_branch` | - | - |
-| `source_repository` | - | - |
-| `source_url` | - | - |
-| `state` | - | - |
-| `title` | - | - |
-| `updated_at` | - | - |
-| `web_path` | - | - |
-
-### Operations
-
-#### `create(reqdata, ctrl=None) -> MergeRequestEntity`
-
-Create a new entity with the given data. Returns the created entity and raises on error.
-
-```python
-result = client.MergeRequest().create({
-    "organization_id": "example_organization_id",  # str
-    "idempotency_key": "example_idempotency_key",  # str
-    "number": 1,  # int
-})
-```
-
-#### `load(reqmatch, ctrl=None) -> MergeRequestEntity`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
-
-```python
-result = client.MergeRequest().load({"id": "merge_request_id", "organization_id": "organization_id"})
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `MergeRequestEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -25971,7 +25503,7 @@ messaging_conversation_message = client.MessagingConversationMessage()
 | `client_operation_id` | `str` | Yes |  |
 | `content` | `str` | Yes |  |
 | `id` | `str` | No |  |
-| `media` | `dict` | Yes |  |
+| `media` | `dict` | No |  |
 | `media_upload_ids` | `list` | No | Ordered staged upload IDs; six on Photon, one on Sendblue. |
 | `messages` | `list` | Yes |  |
 | `reply_to` | `str` | No | Public ID of a visible message |
@@ -25994,7 +25526,6 @@ result = client.MessagingConversationMessage().create({
     "project_id": "example_project_id",  # str
     "client_operation_id": "example_client_operation_id",  # str
     "content": "example_content",  # str
-    "media": {},  # dict
 })
 ```
 
@@ -29155,6 +28686,78 @@ Return the entity name.
 
 ---
 
+## PagesGithubIntegrationEntity
+
+```python
+pages_github_integration = client.PagesGithubIntegration()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `str | None` | Yes |  |
+| `account_login` | `str` | Yes |  |
+| `connection_status` | `str` | Yes |  |
+| `connection_status_label` | `str` | Yes |  |
+| `github_installation` | `Any` | Yes |  |
+| `health` | `dict` | Yes |  |
+| `id` | `str` | Yes |  |
+| `imported_repositories_count` | `int` | Yes |  |
+| `imported_repositories_count_label` | `str` | Yes |  |
+| `organization` | `dict` | Yes |  |
+| `pagination` | `dict` | Yes |  |
+| `repositories` | `list` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[PagesGithubIntegrationEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.PagesGithubIntegration().list({"organization_id": "example"})
+for pages_github_integration in results:
+    print(pages_github_integration.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> PagesGithubIntegrationEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.PagesGithubIntegration().load({"id": "pages_github_integration_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PagesGithubIntegrationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## PagesGithubOnboardingEntity
 
 ```python
@@ -30459,7 +30062,7 @@ product_map_identity_decision = client.ProductMapIdentityDecision()
 | `observations` | `list` | Yes |  |
 | `operation` | `str` | Yes |  |
 | `reason` | `str` | Yes |  |
-| `target` | `dict` | Yes |  |
+| `target` | `dict` | No |  |
 
 ### Operations
 
@@ -30474,7 +30077,6 @@ result = client.ProductMapIdentityDecision().create({
     "observations": [],  # list
     "operation": "example_operation",  # str
     "reason": "example_reason",  # str
-    "target": {},  # dict
 })
 ```
 
@@ -30879,7 +30481,7 @@ project = client.Project()
 | `name` | `str` | Yes |  |
 | `network_connections` | `list` | Yes |  |
 | `organization_id` | `str` | Yes |  |
-| `overview` | `dict` | Yes |  |
+| `overview` | `dict` | No |  |
 | `permissions` | `dict` | Yes |  |
 | `personas` | `list` | Yes |  |
 | `project` | `dict` | Yes |  |
@@ -30887,7 +30489,7 @@ project = client.Project()
 | `pull_requests` | `list` | Yes |  |
 | `purpose` | `str | None` | Yes |  |
 | `runs` | `list` | Yes |  |
-| `scenario_history` | `dict` | Yes |  |
+| `scenario_history` | `dict` | No |  |
 | `scenario_states` | `dict` | Yes | Scenarios by the state of their latest execution. |
 | `scenarios` | `list` | Yes |  |
 | `setup_required` | `bool` | No |  |
@@ -31028,13 +30630,13 @@ project_android_apk = client.ProjectAndroidApk()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `android` | `dict` | Yes |  |
+| `android` | `dict` | No |  |
 | `artifact_paths` | `list` | No |  |
 | `description` | `str` | Yes |  |
 | `image` | `str` | Yes |  |
-| `ios` | `dict` | Yes |  |
+| `ios` | `dict` | No |  |
 | `launch_command` | `str` | No |  |
-| `managed_binary` | `dict` | Yes |  |
+| `managed_binary` | `dict` | No |  |
 | `platform` | `str` | No |  |
 | `provider` | `str` | No |  |
 | `setup_command` | `str` | No |  |
@@ -31099,7 +30701,7 @@ project_code_map = client.ProjectCodeMap()
 | `name` | `str` | Yes |  |
 | `ref` | `str` | No |  |
 | `repository_id` | `str` | Yes |  |
-| `revision` | `dict` | Yes |  |
+| `revision` | `dict` | No |  |
 | `slug` | `str` | Yes |  |
 | `status` | `str` | Yes |  |
 
@@ -31517,13 +31119,13 @@ project_ios_app = client.ProjectIosApp()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `android` | `dict` | Yes |  |
+| `android` | `dict` | No |  |
 | `artifact_paths` | `list` | No |  |
 | `description` | `str` | Yes |  |
 | `image` | `str` | Yes |  |
-| `ios` | `dict` | Yes |  |
+| `ios` | `dict` | No |  |
 | `launch_command` | `str` | No |  |
-| `managed_binary` | `dict` | Yes |  |
+| `managed_binary` | `dict` | No |  |
 | `platform` | `str` | No |  |
 | `provider` | `str` | No |  |
 | `setup_command` | `str` | No |  |
@@ -31809,6 +31411,59 @@ Return the entity name.
 
 ---
 
+## ProjectPrTestingEntity
+
+```python
+project_pr_testing = client.ProjectPrTesting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+| `project` | `dict` | Yes |  |
+| `pull_request_options` | `dict` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> ProjectPrTestingEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ProjectPrTesting().load({"id": "project_pr_testing_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ProjectPrTestingEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## ProjectProductMapEntity
 
 ```python
@@ -31846,6 +31501,63 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `ProjectProductMapEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ProjectProductMapComparisonEntity
+
+```python
+project_product_map_comparison = client.ProjectProductMapComparison()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accounts` | `list` | Yes |  |
+| `comparison` | `Any` | Yes |  |
+| `filters` | `Any` | Yes |  |
+| `id` | `str` | No |  |
+| `project` | `dict` | Yes |  |
+| `requirements` | `list` | Yes |  |
+| `revisions` | `list` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> ProjectProductMapComparisonEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ProjectProductMapComparison().load({"id": "project_product_map_comparison_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ProjectProductMapComparisonEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -31963,6 +31675,25 @@ project_run_plan = client.ProjectRunPlan()
 | `updated_at` | `str` | Yes |  |
 | `version` | `int` | Yes |  |
 
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `archived_at` | - | - | - | - | - |
+| `base_url` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dependencies` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `identity_probe` | - | - | Yes | Yes | Yes |
+| `kind` | - | - | - | - | - |
+| `lock_version` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `nodes` | - | - | - | - | - |
+| `preview` | - | - | - | - | - |
+| `project_id` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `version` | - | - | - | - | - |
+
 ### Operations
 
 #### `create(reqdata, ctrl=None) -> ProjectRunPlanEntity`
@@ -31974,7 +31705,6 @@ result = client.ProjectRunPlan().create({
     "organization_id": "example_organization_id",  # str
     "project_id": "example_project_id",  # str
     "dependencies": [],  # list
-    "identity_probe": {},  # dict | None
     "name": "example_name",  # str
     "nodes": [],  # list
 })
@@ -32330,21 +32060,19 @@ project_setting = client.ProjectSetting()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `available_messaging_environments` | `list` | Yes |  |
-| `messaging_conversations` | `list` | Yes |  |
-| `messaging_enabled` | `bool` | Yes |  |
-| `permissions` | `dict` | Yes |  |
-| `project` | `dict` | Yes |  |
-| `tester_numbers` | `list` | Yes |  |
+| `id` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> ProjectSettingEntity`
+#### `list(reqmatch=None, ctrl=None) -> list[ProjectSettingEntity]`
 
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
 
 ```python
-result = client.ProjectSetting().load({"organization_id": "organization_id", "project_id": "project_id"})
+results = client.ProjectSetting().list({"organization_id": "example", "project_id": "example"})
+for project_setting in results:
+    print(project_setting.data_get())
 ```
 
 ### Common Methods
@@ -32368,90 +32096,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `ProjectSettingEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
-## PullRequestEntity
-
-```python
-pull_request = client.PullRequest()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `available_tests` | `list` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `branch` | `str` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `cleanup_only` | `bool` | No | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
-| `current_run` | `Any` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `findings` | `list` | Yes |  |
-| `head_sha` | `str` | No | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` | `str` | No |  |
-| `idempotency_key` | `str` | Yes |  |
-| `imessage_number` | `str` | No | International destination of this exact deployed commit. |
-| `number` | `int` | No |  |
-| `pagination` | `dict` | Yes |  |
-| `permissions` | `dict` | Yes |  |
-| `preview_cleanup_ready` | `bool` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | `str | None` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` | `Any` | No |  |
-| `project_id` | `str` | No | Composal project slug or public ID for PR preview environments. |
-| `pull_request` | `dict` | Yes |  |
-| `repository_id` | `str` | No |  |
-| `runs` | `list` | Yes |  |
-
-### Operations
-
-#### `create(reqdata, ctrl=None) -> PullRequestEntity`
-
-Create a new entity with the given data. Returns the created entity and raises on error.
-
-```python
-result = client.PullRequest().create({
-    "organization_id": "example_organization_id",  # str
-    "idempotency_key": "example_idempotency_key",  # str
-})
-```
-
-#### `load(reqmatch, ctrl=None) -> PullRequestEntity`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
-
-```python
-result = client.PullRequest().load({"id": "pull_request_id", "organization_id": "organization_id"})
-```
-
-#### `remove(reqmatch, ctrl=None) -> PullRequestEntity`
-
-Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `PullRequestEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -35440,7 +35084,7 @@ run_job = client.RunJob()
 | --- | --- | --- | --- |
 | `active` | `bool` | Yes |  |
 | `allow_failure` | `bool` | Yes |  |
-| `cache_archive_observations` | `dict | None` | Yes | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `cache_archive_observations` | `dict | None` | No | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
 | `ci_pipeline_run_id` | `str` | Yes |  |
 | `ci_runner_id` | `str | None` | Yes |  |
 | `created_at` | `str` | Yes |  |
@@ -35461,7 +35105,7 @@ run_job = client.RunJob()
 | `queued_at` | `str | None` | Yes |  |
 | `reconciliation_id` | `str | None` | No |  |
 | `retry_number` | `int` | Yes |  |
-| `reuse` | `dict | None` | Yes |  |
+| `reuse` | `dict | None` | No |  |
 | `runner_label_selector` | `str | None` | Yes |  |
 | `slug` | `str` | Yes |  |
 | `started_at` | `str | None` | Yes |  |
@@ -35689,44 +35333,33 @@ run_update = client.RunUpdate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `base_sha` | `str` | Yes |  |
-| `can_verify` | `bool` | Yes |  |
-| `comment_url` | `str | None` | Yes |  |
-| `draft` | `bool` | Yes |  |
-| `github_repository` | `str | None` | Yes | GitHub owner/repository associated with this pull request. |
-| `github_url` | `str | None` | Yes |  |
-| `head_sha` | `str` | Yes |  |
-| `id` | `str` | Yes |  |
-| `latest_created_at` | `str | None` | Yes |  |
-| `latest_current` | `bool` | Yes |  |
-| `latest_head_sha` | `str | None` | Yes |  |
-| `latest_reason` | `str | None` | Yes |  |
-| `latest_run_id` | `str | None` | Yes |  |
-| `latest_state` | `str | None` | Yes |  |
-| `number` | `int` | Yes |  |
-| `project_id` | `str | None` | Yes |  |
-| `project_slug` | `str | None` | Yes |  |
-| `provider` | `str` | Yes |  |
-| `repository_id` | `str` | Yes |  |
-| `request_label` | `str` | Yes |  |
-| `source_branch` | `str | None` | Yes |  |
-| `source_repository` | `str | None` | Yes |  |
-| `source_url` | `str | None` | Yes |  |
-| `state` | `str` | Yes |  |
-| `title` | `str` | Yes |  |
-| `updated_at` | `str` | Yes |  |
-| `web_path` | `str` | Yes |  |
+| `active_runs` | `list` | Yes |  |
+| `checkout_required` | `bool` | Yes |  |
+| `cli_signed_in_at` | `str | None` | Yes | When the signed-in user last finished a CLI sign-in for this organization, so agent setup can show the CLI is connected. |
+| `counts` | `dict` | Yes |  |
+| `demo_project` | `dict | None` | Yes | The workspace's copy of the demo project, which setup offers as example data. |
+| `environments` | `list` | Yes |  |
+| `included_deep_scan` | `bool` | Yes | Whether a new app gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account, so setup asks for one right after the app. |
+| `onboarding_discovery` | `Any` | No |  |
+| `organization` | `dict` | Yes |  |
+| `permissions` | `dict` | Yes |  |
+| `project` | `Any` | Yes | The project the page is limited to, or null for the whole organization. |
+| `pull_request_launch_options` | `list` | No |  |
+| `pull_requests` | `list` | No |  |
+| `repositories` | `list` | Yes |  |
+| `runs` | `list` | Yes |  |
+| `runs_pagination` | `dict` | Yes |  |
+| `suggested_app_url` | `str | None` | Yes | The URL first-run setup prefills for a new app, from the workspace's project website or the signed-in user's work email domain. |
+| `url_first_start` | `bool` | Yes | Whether setup opens on the URL-first screen, which saves the app and asks for test access next. |
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[RunUpdateEntity]`
+#### `load(reqmatch, ctrl=None) -> RunUpdateEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.RunUpdate().list({"organization_id": "example"})
-for run_update in results:
-    print(run_update.data_get())
+result = client.RunUpdate().load({"organization_id": "organization_id"})
 ```
 
 ### Common Methods
@@ -36790,8 +36423,8 @@ signal = client.Signal()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `acked_at` | `str | None` | Yes |  |
-| `acked_by` | `dict | None` | Yes | Who acked the signal, read from `acked_by_user_id`. |
-| `agent_runs` | `dict` | Yes | Dispatched-run summary (docs §6c). |
+| `acked_by` | `dict | None` | No | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | `dict` | No | Dispatched-run summary (docs §6c). |
 | `app_service_id` | `str | None` | Yes |  |
 | `attribution` | `dict` | Yes | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
 | `created_at` | `str` | Yes | ISO8601 row insert time — retention math and debugging only. |
@@ -36803,8 +36436,8 @@ signal = client.Signal()
 | `occurred_at` | `str` | Yes | ISO8601 domain event time — what the UI displays and `since` filters on. |
 | `organization_id` | `str` | Yes |  |
 | `payload` | `dict` | Yes | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
-| `recovery` | `dict` | Yes | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
-| `resolution` | `dict` | Yes | Recovery pairing (docs §6b). |
+| `recovery` | `dict` | No | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | `dict` | No | Recovery pairing (docs §6b). |
 | `severity` | `str` | Yes | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
 | `source` | `dict` | Yes | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
 | `subject_id` | `str | None` | Yes |  |
@@ -39161,7 +38794,7 @@ spark_agent_local_thread = client.SparkAgentLocalThread()
 | `can_interrupt` | `bool` | Yes |  |
 | `can_send` | `bool` | Yes |  |
 | `created_at` | `str` | Yes |  |
-| `delivery` | `dict` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `delivery` | `dict` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
 | `device_id` | `str` | Yes |  |
 | `device_name` | `str` | Yes |  |
 | `diagnostic_code` | `str` | No | Approved product error code retained after copied diagnostics expire. |
@@ -39176,7 +38809,7 @@ spark_agent_local_thread = client.SparkAgentLocalThread()
 | `provider` | `str` | Yes |  |
 | `references` | `dict` | Yes |  |
 | `relay_disconnected_at` | `str | None` | No |  |
-| `relay_participant` | `dict` | Yes |  |
+| `relay_participant` | `dict` | No |  |
 | `result` | `Any` | Yes |  |
 | `result_expired` | `bool` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
 | `result_schema` | `dict | bool` | No |  |
@@ -39186,6 +38819,44 @@ spark_agent_local_thread = client.SparkAgentLocalThread()
 | `task_configured` | `bool` | Yes |  |
 | `thread_id` | `str` | Yes |  |
 | `title` | `str` | Yes | Short title: the native name, or the first prompt's first line without the agent's task preamble. |
+
+### Field Usage by Operation
+
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `action` | - | - | - |
+| `archived` | - | - | - |
+| `can_archive` | - | - | - |
+| `can_disconnect_relay` | - | - | - |
+| `can_end` | - | - | - |
+| `can_interrupt` | - | - | - |
+| `can_send` | - | - | - |
+| `created_at` | - | - | - |
+| `delivery` | - | - | - |
+| `device_id` | - | - | - |
+| `device_name` | - | - | - |
+| `diagnostic_code` | - | - | - |
+| `end` | - | Yes | - |
+| `expires_at` | - | - | - |
+| `full_title` | - | - | - |
+| `id` | - | - | - |
+| `key` | - | - | - |
+| `last_activity_at` | - | - | - |
+| `native_thread_id` | - | - | - |
+| `parent_conversation_id` | - | - | - |
+| `provider` | - | - | - |
+| `references` | - | - | - |
+| `relay_disconnected_at` | - | - | - |
+| `relay_participant` | - | - | - |
+| `result` | - | - | - |
+| `result_expired` | - | - | - |
+| `result_schema` | - | - | - |
+| `section` | - | - | - |
+| `state` | - | - | - |
+| `status` | - | - | - |
+| `task_configured` | - | - | - |
+| `thread_id` | - | - | - |
+| `title` | - | - | - |
 
 ### Operations
 
@@ -39428,7 +39099,7 @@ spark_agent_thread = client.SparkAgentThread()
 | `can_compact` | - | - |
 | `can_snooze` | - | - |
 | `coordination_status` | - | - |
-| `execution` | Yes | - |
+| `execution` | - | - |
 | `first_input` | - | - |
 | `first_input_key` | - | - |
 | `first_input_requester_membership_id` | - | - |
@@ -39500,6 +39171,94 @@ Return the entity name.
 
 ---
 
+## SparkAutomationEntity
+
+```python
+spark_automation = client.SparkAutomation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage` | `bool` | Yes |  |
+| `can_manage_events` | `bool` | Yes | Whether new event triggers can be attached or existing settings saved. |
+| `can_run` | `bool` | Yes | Whether the viewer can request a manual Temporal run |
+| `can_schedule` | `bool` | Yes |  |
+| `definition` | `dict` | Yes |  |
+| `event_subscriptions` | `list` | Yes |  |
+| `event_triggers` | `list` | Yes |  |
+| `expected_revision` | `int` | Yes |  |
+| `id` | `str` | Yes |  |
+| `key` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `revision` | `int` | Yes |  |
+| `schedule` | `Any` | Yes |  |
+| `schedules` | `list` | Yes |  |
+| `version` | `dict` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[SparkAutomationEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SparkAutomation().list({"agent_id": "example", "organization_id": "example"})
+for spark_automation in results:
+    print(spark_automation.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> SparkAutomationEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.SparkAutomation().load({"id": "spark_automation_id", "agent_id": "agent_id", "organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SparkAutomationEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SparkAutomation().update({
+    "id": "spark_automation_id",
+    "agent_id": "agent_id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkAutomationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## SparkCreditEntity
 
 ```python
@@ -39516,7 +39275,7 @@ spark_credit = client.SparkCredit()
 | `available_usd` | `str` | Yes |  |
 | `billing_unit` | `str` | No | Compute minute quote version returned by the billing summary. |
 | `can_manage` | `bool` | Yes |  |
-| `compute_minutes` | `dict` | Yes |  |
+| `compute_minutes` | `dict` | No |  |
 | `compute_usd` | `str` | No |  |
 | `credits_per_usd` | `int` | Yes |  |
 | `inference_usd` | `str` | No |  |
@@ -41442,7 +41201,7 @@ vc_merge_queue = client.VcMergeQueue()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analytics` | `dict` | Yes | Queue performance for the reporting window. |
+| `analytics` | `dict` | No | Queue performance for the reporting window. |
 | `id` | `str` | No |  |
 | `policy` | `dict` | Yes |  |
 | `queue` | `dict` | Yes |  |
@@ -41519,7 +41278,7 @@ vc_stack = client.VcStack()
 | `changes` | `list` | Yes |  |
 | `code` | `str` | Yes |  |
 | `id` | `str` | No |  |
-| `landing` | `dict` | Yes | Compact landing state for the Stack CLI. |
+| `landing` | `dict` | No | Compact landing state for the Stack CLI. |
 | `member_count` | `int` | Yes |  |
 | `name` | `str | None` | Yes |  |
 | `ref_name` | `str` | Yes |  |
@@ -42141,7 +41900,7 @@ verification_project_scenario = client.VerificationProjectScenario()
 | `created_at` | `str` | Yes |  |
 | `dependencies` | `list` | Yes |  |
 | `fixtures` | `list` | No | Files upload steps choose, ordered by name. |
-| `health` | `dict` | Yes |  |
+| `health` | `dict` | No |  |
 | `id` | `str` | Yes |  |
 | `identity_probe` | `Any` | No |  |
 | `if` | `str | None` | No | A documented subset of Actions expressions. |
@@ -42463,6 +42222,454 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `VerifyEmailVerificationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## VerifyEnvironmentEntity
+
+```python
+verify_environment = client.VerifyEnvironment()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_revision_id` | `str | None` | Yes |  |
+| `agent_sign_up_available` | `bool` | Yes | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
+| `allowed_actions` | `str` | Yes | read_only only looks around; writes may create, change and delete data. |
+| `billing` | `dict` | Yes |  |
+| `cleanup` | `list` | Yes |  |
+| `connection` | `str` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `default_policy` | `dict` | No |  |
+| `default_policy_json` | `dict` | Yes |  |
+| `discovery_defaults` | `dict` | Yes |  |
+| `environment` | `dict` | Yes |  |
+| `exploration_accounts` | `list` | No |  |
+| `explorations` | `list` | No |  |
+| `first_run` | `Any` | No |  |
+| `hosted_app_id` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `imessage_number` | `str | None` | Yes | International destination number; blank or null clears it on an added environment. |
+| `included_deep_scan` | `bool` | Yes | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
+| `lock_version` | `int` | Yes |  |
+| `managed_google_available` | `bool` | Yes | Whether the managed Google account can be offered for this app. |
+| `managed_google_email` | `str` | Yes |  |
+| `messaging_tester_number` | `str | None` | No | One configured tester number. |
+| `name` | `str` | Yes | Optional for a website target; defaults to its hostname. |
+| `network_connections` | `list` | Yes |  |
+| `onboarding_discovery` | `Any` | No |  |
+| `organization_id` | `str` | Yes |  |
+| `pending_accounts` | `list` | No | Credentials on a Composal address still waiting for the password the customer chose at signup. |
+| `permissions` | `dict` | Yes |  |
+| `project_id` | `str | None` | Yes | Owning project. |
+| `repository_id` | `str | None` | Yes |  |
+| `revisions` | `list` | Yes |  |
+| `setup_discovery_id` | `str | None` | No | Existing discovery to resume after setup or Checkout, selected within this environment. |
+| `sign_in_check_available` | `bool` | Yes | Whether a test account's live sign-in check can run on this app. |
+| `slug` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `target_kind` | `str | None` | Yes |  |
+| `target_url` | `str | None` | Yes |  |
+| `test_accounts` | `dict` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `verify_network_connection_id` | `str | None` | Yes |  |
+| `version` | `int` | No | Required for target or tester changes; use lock_version from the environment. |
+
+### Field Usage by Operation
+
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `active_revision_id` | - | - | - | - | - |
+| `agent_sign_up_available` | - | - | - | - | - |
+| `allowed_actions` | - | Yes | - | Yes | - |
+| `billing` | - | - | - | - | - |
+| `cleanup` | - | - | - | - | - |
+| `connection` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `default_policy` | - | - | - | - | - |
+| `default_policy_json` | - | - | - | - | - |
+| `discovery_defaults` | - | - | - | - | - |
+| `environment` | - | - | - | - | - |
+| `exploration_accounts` | - | - | - | - | - |
+| `explorations` | - | - | - | - | - |
+| `first_run` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `imessage_number` | - | Yes | - | Yes | - |
+| `included_deep_scan` | - | - | - | - | - |
+| `lock_version` | - | - | - | - | - |
+| `managed_google_available` | - | - | - | - | - |
+| `managed_google_email` | - | - | - | - | - |
+| `messaging_tester_number` | - | - | - | - | - |
+| `name` | - | Yes | - | Yes | - |
+| `network_connections` | - | - | - | - | - |
+| `onboarding_discovery` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `pending_accounts` | - | - | - | - | - |
+| `permissions` | - | - | - | - | - |
+| `project_id` | - | Yes | - | - | - |
+| `repository_id` | - | Yes | - | - | - |
+| `revisions` | - | - | - | - | - |
+| `setup_discovery_id` | - | - | - | - | - |
+| `sign_in_check_available` | - | - | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `target_kind` | - | Yes | - | - | - |
+| `target_url` | - | Yes | - | Yes | - |
+| `test_accounts` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verify_network_connection_id` | - | - | - | Yes | - |
+| `version` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> VerifyEnvironmentEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.VerifyEnvironment().create({
+    "organization_id": "example_organization_id",  # str
+    "slug": "example_slug",  # str
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> VerifyEnvironmentEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.VerifyEnvironment().load({"id": "verify_environment_id", "organization_id": "organization_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> VerifyEnvironmentEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.VerifyEnvironment().patch({
+    "id": "verify_environment_id",
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> VerifyEnvironmentEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.VerifyEnvironment().remove({"id": "verify_environment_id", "organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> VerifyEnvironmentEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.VerifyEnvironment().update({
+    "id": "verify_environment_id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VerifyEnvironmentEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## VerifyEvidenceEntity
+
+```python
+verify_evidence = client.VerifyEvidence()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> VerifyEvidenceEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.VerifyEvidence().load({"id": "verify_evidence_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VerifyEvidenceEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## VerifyMergeRequestEntity
+
+```python
+verify_merge_request = client.VerifyMergeRequest()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available_tests` | `list` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `base_sha` | `str` | Yes |  |
+| `branch` | `str` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `comment_url` | `str | None` | Yes |  |
+| `current_run` | `Any` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `draft` | `bool` | Yes |  |
+| `findings` | `list` | Yes |  |
+| `github_repository` | `str | None` | Yes | GitHub owner/repository associated with this pull request. |
+| `github_url` | `str | None` | Yes |  |
+| `head_sha` | `str` | Yes | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` | `str` | Yes |  |
+| `idempotency_key` | `str` | Yes |  |
+| `number` | `int` | Yes |  |
+| `pagination` | `dict` | Yes |  |
+| `permissions` | `dict` | Yes |  |
+| `preview_cleanup_ready` | `bool` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | `str | None` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` | `Any` | No |  |
+| `project_id` | `str | None` | Yes | Composal project slug or public ID for PR preview environments. |
+| `project_slug` | `str | None` | Yes |  |
+| `provider` | `str` | Yes |  |
+| `pull_request` | `dict` | Yes |  |
+| `repository_id` | `str` | Yes |  |
+| `request_label` | `str` | Yes |  |
+| `requested_run_id` | `str | None` | Yes |  |
+| `runs` | `list` | Yes |  |
+| `source_branch` | `str | None` | Yes |  |
+| `source_repository` | `str | None` | Yes |  |
+| `source_url` | `str | None` | Yes |  |
+| `state` | `str` | Yes |  |
+| `title` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `web_path` | `str` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `available_tests` | - | - |
+| `base_sha` | - | - |
+| `branch` | - | - |
+| `comment_url` | - | - |
+| `current_run` | - | - |
+| `draft` | - | - |
+| `findings` | - | - |
+| `github_repository` | - | - |
+| `github_url` | - | - |
+| `head_sha` | - | Yes |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `number` | - | - |
+| `pagination` | - | - |
+| `permissions` | - | - |
+| `preview_cleanup_ready` | - | - |
+| `preview_url` | - | - |
+| `project` | - | - |
+| `project_id` | - | Yes |
+| `project_slug` | - | - |
+| `provider` | - | - |
+| `pull_request` | - | - |
+| `repository_id` | - | Yes |
+| `request_label` | - | - |
+| `requested_run_id` | - | - |
+| `runs` | - | - |
+| `source_branch` | - | - |
+| `source_repository` | - | - |
+| `source_url` | - | - |
+| `state` | - | - |
+| `title` | - | - |
+| `updated_at` | - | - |
+| `web_path` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> VerifyMergeRequestEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.VerifyMergeRequest().create({
+    "organization_id": "example_organization_id",  # str
+    "idempotency_key": "example_idempotency_key",  # str
+    "number": 1,  # int
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> VerifyMergeRequestEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.VerifyMergeRequest().load({"id": "verify_merge_request_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VerifyMergeRequestEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## VerifyPullRequestEntity
+
+```python
+verify_pull_request = client.VerifyPullRequest()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available_tests` | `list` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `branch` | `str` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `cleanup_only` | `bool` | No | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
+| `current_run` | `Any` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `findings` | `list` | Yes |  |
+| `head_sha` | `str` | No | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` | `str` | No |  |
+| `idempotency_key` | `str` | Yes |  |
+| `imessage_number` | `str` | No | International destination of this exact deployed commit. |
+| `number` | `int` | No |  |
+| `pagination` | `dict` | Yes |  |
+| `permissions` | `dict` | Yes |  |
+| `preview_cleanup_ready` | `bool` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | `str | None` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` | `Any` | No |  |
+| `project_id` | `str` | No | Composal project slug or public ID for PR preview environments. |
+| `pull_request` | `dict` | Yes |  |
+| `repository_id` | `str` | No |  |
+| `runs` | `list` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> VerifyPullRequestEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.VerifyPullRequest().create({
+    "organization_id": "example_organization_id",  # str
+    "idempotency_key": "example_idempotency_key",  # str
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> VerifyPullRequestEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.VerifyPullRequest().load({"id": "verify_pull_request_id", "organization_id": "organization_id"})
+```
+
+#### `remove(reqmatch, ctrl=None) -> VerifyPullRequestEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VerifyPullRequestEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -43269,10 +43476,10 @@ client = ComposalSDK({
 ### Configuring features
 
 Each feature is inactive until switched on, and an SDK with no feature
-configured does no feature work at all. Every option below keeps its default
-unless you name it.
+configured does no feature work at all.
+Every option below keeps its default unless you name it.
 
-The array form of \`feature\` is significant: several features wrap the
+The array form of `feature` is significant: several features wrap the
 transport, and the order you list them in is the order they nest.
 
 #### Ordering
@@ -43283,10 +43490,10 @@ a feature activated later sits OUTSIDE one activated earlier, and sees the call
 first.
 
 That decides behaviour, not just sequence: a feature that short-circuits the
-call, such as a cache serving a hit, stops every feature nested inside it from
+call stops every feature nested inside it from
 ever seeing that call.
 
-`debug`, `idempotency`, `metrics`, `paging`, `test` attach to pipeline hooks
+`debug`, `idempotency`, `metrics`, `paging` attach to pipeline hooks
 rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
@@ -43502,6 +43709,7 @@ its default unless you name it.
 
 - Wraps the transport: its place in the activation order decides what it
   sees. See [Ordering](#ordering) above.
+- Also attaches to pipeline hooks.
 - Inactive by default: leaving it out costs nothing at runtime.
 
 #### `test`
@@ -43529,10 +43737,9 @@ its default unless you name it.
 
 **Considerations**
 
-- Attaches to pipeline hooks, not the transport, so activation order does
-  not change what it observes.
 - Installs the BASE transport that the wrapping features wrap, so it must be
   activated before them.
+- Also attaches to pipeline hooks.
 - Inactive by default: leaving it out costs nothing at runtime.
 
 #### `timeout`

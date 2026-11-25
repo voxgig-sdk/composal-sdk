@@ -76,9 +76,8 @@ describe('VcStackDirect', async () => {
       params.repo_id = setup.idmap['repo01']
     } else {
       params.id = 'direct01'
-      params.id = 'direct02'
-      params.organization_id = 'direct03'
-      params.repo_id = 'direct04'
+      params.organization_id = 'direct02'
+      params.repo_id = 'direct03'
     }
 
     const result: any = await client.direct({
@@ -105,7 +104,6 @@ describe('VcStackDirect', async () => {
       assert(calls[0].url.includes('direct01'))
       assert(calls[0].url.includes('direct02'))
       assert(calls[0].url.includes('direct03'))
-      assert(calls[0].url.includes('direct04'))
     }
   })
 

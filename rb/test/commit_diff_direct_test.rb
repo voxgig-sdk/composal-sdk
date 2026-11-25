@@ -39,15 +39,13 @@ class CommitDiffDirectTest < Minitest::Test
     if setup[:live]
       params["commit_id"] = setup[:idmap]["commit01"]
       params["id"] = setup[:idmap]["commit_diff01"]
-      params["id"] = setup[:idmap]["commit_diff01"]
       params["organization_id"] = setup[:idmap]["organization01"]
       params["repo_id"] = setup[:idmap]["repo01"]
     else
       params["commit_id"] = "direct01"
       params["id"] = "direct02"
-      params["id"] = "direct03"
-      params["organization_id"] = "direct04"
-      params["repo_id"] = "direct05"
+      params["organization_id"] = "direct03"
+      params["repo_id"] = "direct04"
     end
 
     result = client.direct({

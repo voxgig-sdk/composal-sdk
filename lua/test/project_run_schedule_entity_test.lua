@@ -96,6 +96,7 @@ describe("ProjectRunScheduleEntity", function()
       id = project_run_schedule_ref01_data["id"],
     }
     project_run_schedule_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+    project_run_schedule_ref01_match_dt0["project_id"] = setup.idmap["project_id"] or setup.idmap["project01"]
     local project_run_schedule_ref01_data_dt0_loaded, err = project_run_schedule_ref01_ent:load(project_run_schedule_ref01_match_dt0, nil)
     assert.is_nil(err)
     local project_run_schedule_ref01_data_dt0_load_result = helpers.to_map(type(project_run_schedule_ref01_data_dt0_loaded) == 'table' and project_run_schedule_ref01_data_dt0_loaded.data_get and project_run_schedule_ref01_data_dt0_loaded:data_get() or project_run_schedule_ref01_data_dt0_loaded)
@@ -177,6 +178,7 @@ describe("ProjectRunScheduleEntity", function()
       id = project_run_schedule_ref01_data["id"],
     }
     project_run_schedule_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+    project_run_schedule_ref01_match_dt0["project_id"] = setup.idmap["project_id"] or setup.idmap["project01"]
     local project_run_schedule_ref01_data_dt0_loaded, err = project_run_schedule_ref01_ent:load(project_run_schedule_ref01_match_dt0, nil)
     assert.is_nil(err)
     local project_run_schedule_ref01_data_dt0_load_result = helpers.to_map(type(project_run_schedule_ref01_data_dt0_loaded) == 'table' and project_run_schedule_ref01_data_dt0_loaded.data_get and project_run_schedule_ref01_data_dt0_loaded:data_get() or project_run_schedule_ref01_data_dt0_loaded)

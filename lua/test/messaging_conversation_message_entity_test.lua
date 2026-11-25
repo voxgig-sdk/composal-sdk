@@ -29,7 +29,7 @@ describe("MessagingConversationMessageEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:MessagingConversationMessage(nil):create({ ["messaging_conversation_id"] = 1, ["organization_id"] = "x", ["project_id"] = "x", ["client_operation_id"] = "x", ["content"] = "x", ["media"] = "x" }, nil)
+    local _, err = client:MessagingConversationMessage(nil):create({ ["messaging_conversation_id"] = 1, ["organization_id"] = "x", ["project_id"] = "x", ["client_operation_id"] = "x", ["content"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 

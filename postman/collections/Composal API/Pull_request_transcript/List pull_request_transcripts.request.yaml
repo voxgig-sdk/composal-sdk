@@ -27,7 +27,7 @@ pathVariables:
     description: The repo this pull_request_transcript belongs to.
   - key: number
     value: "{{pull_request_id}}"
-    description: The pull_request this pull_request_transcript belongs to.
+    description: "Input: pull_request_id."
 scripts:
   - type: afterResponse
     code: |-

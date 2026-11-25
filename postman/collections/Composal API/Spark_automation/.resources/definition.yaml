@@ -1,0 +1,23 @@
+$kind: collection
+id: "26f6b42c-a57b-5493-b09d-d04f53036630"
+description: |-
+  The **spark_automation** entity, which belongs to a organization and a agent. Its requests address one record by `{{spark_automation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `can_manage` | boolean | yes |  |
+  | `can_manage_events` | boolean | yes |  |
+  | `can_run` | boolean | yes |  |
+  | `can_schedule` | boolean | yes |  |
+  | `definition` | object | yes |  |
+  | `event_subscriptions` | array | yes |  |
+  | `event_triggers` | array | yes |  |
+  | `expected_revision` | integer | yes |  |
+  | `id` | string | yes |  |
+  | `key` | string | yes |  |
+  | `name` | string | yes |  |
+  | `revision` | integer | yes |  |
+  | `schedule` | any | yes |  |
+  | `schedules` | array | yes |  |
+  | `version` | object | yes |  |
+order: 504000

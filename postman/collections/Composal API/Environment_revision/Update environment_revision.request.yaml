@@ -16,7 +16,7 @@ pathVariables:
     description: The organization this environment_revision belongs to.
   - key: verify_environment_id
     value: "{{environment_id}}"
-    description: The environment this environment_revision belongs to.
+    description: "Input: environment_id."
   - key: id
     value: "{{environment_revision_id}}"
     description: The environment_revision this request addresses.

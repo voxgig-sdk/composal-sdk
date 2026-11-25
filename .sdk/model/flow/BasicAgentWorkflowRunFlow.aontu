@@ -45,6 +45,7 @@ main: kit: flow: BasicAgentWorkflowRunFlow:
       }
 
       m: {
+        agent_id: "agent01",
         id: "agent_workflow_run01",
         organization_id: "organization01"
       }

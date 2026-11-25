@@ -1,0 +1,95 @@
+$kind: http-request
+id: ad0c5451-cc6d-50c5-a99a-78dd3c00787f
+description: |-
+  The `update` operation of **spark_automation**.
+
+  SDK: `client.SparkAutomation().update({ agent_id: "example", id: "example", organization_id: "example", definition: {} })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/automations/:automation_key"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this spark_automation belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this spark_automation belongs to.
+  - key: automation_key
+    value: "{{spark_automation_ref01}}"
+    description: The spark_automation this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "definition": {
+        "version": 1,
+        "name": "example",
+        "description": "example",
+        "imported_from": {
+          "format": "example",
+          "digest": "example"
+        },
+        "arguments": {},
+        "defaults": {
+          "executor": {
+            "harness": "codex",
+            "model": "example",
+            "effort": "none",
+            "selection": {
+              "provider": "openai",
+              "billing": "platform"
+            }
+          }
+        },
+        "steps": [
+          {
+            "description": "example",
+            "id": "example",
+            "kind": "example",
+            "subject": "example",
+            "require": []
+          }
+        ]
+      },
+      "expected_revision": 1,
+      "key": "Mark01-spark_automation_ref01"
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","agent_id","spark_automation_ref01"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("2. Update spark_automation: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      pm.test("2. Update spark_automation: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("spark_automation_ref01")))
+      })
+      if (pm.response.code < 300) pm.variables.set("spark_automation_ref01_marked", "Mark01-spark_automation_ref01")
+    language: text/javascript
+order: 2000

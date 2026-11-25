@@ -62,7 +62,7 @@ main: kit: entity: project_code_map: {
     revision: {
       h: "Revision"
       n: "revision"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     slug: {

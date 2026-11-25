@@ -66,13 +66,6 @@ main: kit: entity: commit_diff: {
               }
               {
                 k: "param"
-                n: "id"
-                or: "fingerprint"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "organization_id"
                 or: "org_slug"
                 r: true

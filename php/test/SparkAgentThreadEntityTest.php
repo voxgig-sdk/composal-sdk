@@ -53,7 +53,7 @@ class SparkAgentThreadEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
-            fwrite(STDOUT, 'LIVE STEP {"id":"spark_agent_thread.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"spark_agent_thread.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads"}' . "\n");
         if (!empty($setup["live"])) {
             foreach (["agent01", "organization01"] as $_liveKey) {
                 if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {

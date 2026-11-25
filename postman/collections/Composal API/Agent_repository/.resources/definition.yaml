@@ -14,4 +14,4 @@ description: |-
   | `repository_choices_truncated` | boolean | yes |  |
   | `version` | integer | yes |  |
   | `work_repositories` | array | yes |  |
-order: 43000
+order: 42000

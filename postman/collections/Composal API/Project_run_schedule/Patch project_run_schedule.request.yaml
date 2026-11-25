@@ -28,7 +28,7 @@ body:
       "time_of_day": "example",
       "time_zone": "example",
       "credential_ids": {},
-      "environment_id": "{{environment_id}}",
+      "environment_id": "example",
       "notification_channel": "email",
       "slack_subscription_id": "example",
       "version": 1,

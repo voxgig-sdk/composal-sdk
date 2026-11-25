@@ -59,7 +59,7 @@ func TestBrowserSessionDirect(t *testing.T) {
 		}
 
 		result, err := client.Direct(map[string]any{
-			"path":   "api/v1/organizations/{organization_id}/browser_sessions/{id}/media",
+			"path":   "api/v1/organizations/{organization_id}/browser_sessions/{id}",
 			"method": "GET",
 			"params": params,
 			"query":  query,

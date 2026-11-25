@@ -39,6 +39,12 @@ main: kit: entity: local_thread_delivery: {
     policy: {
       h: "Policy"
       n: "policy"
+      op: {
+        update: {
+          req: false
+          type: "`$OBJECT`"
+        }
+      }
       r: true
       t: "`$OBJECT`"
     }
@@ -173,7 +179,7 @@ main: kit: entity: local_thread_delivery: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.delivery`"
           }
         }
       ]
@@ -281,7 +287,7 @@ main: kit: entity: local_thread_delivery: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.delivery`"
           }
         }
       ]

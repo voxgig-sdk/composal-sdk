@@ -33,7 +33,7 @@ class ProductMapIdentityDecisionEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->ProductMapIdentityDecision(null)->create(["organization_id" => 1, "project_id" => 'x', "observations" => 'x', "operation" => 'x', "reason" => 'x', "target" => 'x'], null);
+            $client->ProductMapIdentityDecision(null)->create(["organization_id" => 1, "project_id" => 'x', "observations" => 'x', "operation" => 'x', "reason" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }

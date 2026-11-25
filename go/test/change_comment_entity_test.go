@@ -38,7 +38,7 @@ func TestChangeCommentEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.ChangeComment(nil).List(map[string]any{"change_id": 1, "organization_id": "x", "repo_id": "x"}, nil)
+		_, err := client.ChangeComment(nil).Load(map[string]any{"change_id": 1, "organization_id": "x", "repo_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestChangeCommentEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "change_comment." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,47 +64,9 @@ func TestChangeCommentEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"change_comment.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"change01", "organization01", "repo01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, change_commentEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_CHANGE_COMMENT_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		changeCommentRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.change_comment")))
-		var changeCommentRef01Data map[string]any
-		if len(changeCommentRef01DataRaw) > 0 {
-			changeCommentRef01Data = core.ToMapAny(changeCommentRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = changeCommentRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		changeCommentRef01Ent := client.ChangeComment(nil)
-		changeCommentRef01Match := map[string]any{
-			"change_id": setup.idmap["change01"],
-			"organization_id": setup.idmap["organization01"],
-			"repo_id": setup.idmap["repo01"],
-		}
-
-		changeCommentRef01ListResult, err := changeCommentRef01Ent.List(changeCommentRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, changeCommentRef01ListOk := changeCommentRef01ListResult.([]any)
-		if !changeCommentRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", changeCommentRef01ListResult)
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"change_comment.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only change_comment.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: change_comment.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve); change_comment.load.1 excluded (GET-only live run: reads a record only change_comment.create.0 gives)")
+			return
 		}
 
 		if setup.live {
@@ -143,25 +105,30 @@ func TestChangeCommentEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		changeCommentRef01Match := map[string]any{
-			"change_id": setup.idmap["change01"],
-			"organization_id": setup.idmap["organization01"],
-			"repo_id": setup.idmap["repo01"],
+		// LOAD
+		changeCommentRef01MatchDt0 := map[string]any{
+			"id": changeCommentRef01Data["id"],
 		}
-
-		changeCommentRef01ListResult, err := changeCommentRef01Ent.List(changeCommentRef01Match, nil)
+		if v := setup.idmap["organization_id"]; v != nil {
+			changeCommentRef01MatchDt0["organization_id"] = v
+		} else {
+			changeCommentRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
+		}
+		if v := setup.idmap["repo_id"]; v != nil {
+			changeCommentRef01MatchDt0["repo_id"] = v
+		} else {
+			changeCommentRef01MatchDt0["repo_id"] = setup.idmap["repo01"]
+		}
+		changeCommentRef01DataDt0Loaded, err := changeCommentRef01Ent.Load(changeCommentRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		changeCommentRef01List, changeCommentRef01ListOk := changeCommentRef01ListResult.([]any)
-		if !changeCommentRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", changeCommentRef01ListResult)
+		changeCommentRef01DataDt0LoadResult := core.ToMapAny(entityData(changeCommentRef01DataDt0Loaded))
+		if changeCommentRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
 		}
-
-		foundItem := vs.Select(entityListToData(changeCommentRef01List), map[string]any{"id": changeCommentRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
+		if !setup.live && !liveSameId(changeCommentRef01DataDt0LoadResult["id"], changeCommentRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

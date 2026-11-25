@@ -33,7 +33,7 @@ class MessagingConversationMessageEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->MessagingConversationMessage(null)->create(["messaging_conversation_id" => 1, "organization_id" => 'x', "project_id" => 'x', "client_operation_id" => 'x', "content" => 'x', "media" => 'x'], null);
+            $client->MessagingConversationMessage(null)->create(["messaging_conversation_id" => 1, "organization_id" => 'x', "project_id" => 'x', "client_operation_id" => 'x', "content" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }

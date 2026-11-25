@@ -1,0 +1,32 @@
+# BasicVerifyEvidenceFlow
+
+main: kit: flow: BasicVerifyEvidenceFlow:
+{
+  entity: "verify_evidence",
+  kind: "basic",
+  name: "BasicVerifyEvidenceFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_evidence_ref01",
+        srcdatavar: "verify_evidence_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "verify_evidence01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_evidence_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyEvidenceFlow"
+}

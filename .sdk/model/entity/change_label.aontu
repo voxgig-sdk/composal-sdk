@@ -20,7 +20,7 @@ main: kit: entity: change_label: {
     approval: {
       h: "Approval"
       n: "approval"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     assets: {
@@ -40,7 +40,7 @@ main: kit: entity: change_label: {
     capabilities: {
       h: "Capabilities"
       n: "capabilities"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     change_key: {
@@ -94,7 +94,7 @@ main: kit: entity: change_label: {
     current_patchset: {
       h: "Current Patchset"
       n: "current_patchset"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     description: {
@@ -142,7 +142,7 @@ main: kit: entity: change_label: {
     github_pull_request: {
       h: "Github Pull Request"
       n: "github_pull_request"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     github_pull_requests: {
@@ -203,7 +203,7 @@ main: kit: entity: change_label: {
     landed_by: {
       h: "Landed By"
       n: "landed_by"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     number: {

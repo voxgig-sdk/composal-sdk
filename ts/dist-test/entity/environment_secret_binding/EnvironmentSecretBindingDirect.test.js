@@ -29,11 +29,6 @@ const utility_1 = require("../../utility");
         const setup = directSetup({ id: 'direct01' });
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-environment_secret_binding', setup.live))
             return;
-        if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["environment01"]) {
-            console.log("LIVE STEP {\"id\":\"direct-load-environment_secret_binding\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives\"}");
-            t.skip("Live coverage incomplete: direct-load-environment_secret_binding excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)");
-            return;
-        }
         if ((0, utility_1.skipIfMissingIds)(t, setup, ["app01", "environment01"], LIVE_STRICT))
             return;
         const { client, calls } = setup;

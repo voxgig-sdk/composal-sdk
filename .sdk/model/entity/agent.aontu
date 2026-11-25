@@ -640,6 +640,86 @@ main: kit: entity: agent: {
           }
         }
         {
+          bf: [
+            "configuration"
+            "name"
+            "runtime_version"
+            "slug"
+            "visibility"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "viewer_time_zone"
+                or: "viewer_time_zone"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents"
+          q: {
+            exist: [
+              "idempotency_key"
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.agent`"
+          }
+        }
+        {
           bf: false
           co: {
             id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/call_session"
@@ -944,86 +1024,6 @@ main: kit: entity: agent: {
           }
         }
         {
-          bf: [
-            "configuration"
-            "name"
-            "runtime_version"
-            "slug"
-            "visibility"
-          ]
-          co: {
-            id: "POST /api/v1/organizations/{organization_id}/agents"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            header: [
-              {
-                explode: false
-                k: "header"
-                n: "idempotency_key"
-                or: "Idempotency-Key"
-                r: true
-                style: "simple"
-                t: "`$STRING`"
-              }
-            ]
-            params: [
-              {
-                k: "param"
-                n: "organization_id"
-                or: "organization_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-            query: [
-              {
-                explode: true
-                k: "query"
-                n: "viewer_time_zone"
-                or: "viewer_time_zone"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "POST"
-          o: "/api/v1/organizations/{organization_id}/agents"
-          q: {
-            exist: [
-              "idempotency_key"
-              "organization_id"
-            ]
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "agents"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body.agent`"
-          }
-        }
-        {
           bf: false
           co: {
             id: "POST /api/v1/agent/chat"
@@ -1186,20 +1186,6 @@ main: kit: entity: agent: {
               }
               {
                 k: "param"
-                n: "id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "organization_id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "organization_id"
                 or: "organization_id"
                 r: true
@@ -1239,7 +1225,7 @@ main: kit: entity: agent: {
           m: "GET"
           o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/message_image"
           q: {
-            "$action": "message_image"
+            "$action": "spark_message_image"
             exist: [
               "conversation_id"
               "id"
@@ -1327,20 +1313,6 @@ main: kit: entity: agent: {
                 k: "param"
                 n: "id"
                 or: "id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "organization_id"
                 r: true
                 t: "`$STRING`"
               }
@@ -1526,6 +1498,94 @@ main: kit: entity: agent: {
         }
         {
           co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resource"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "uri"
+                or: "uri"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resource"
+          q: {
+            "$action": "resource"
+            exist: [
+              "id"
+              "organization_id"
+              "uri"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "relay"
+            }
+            {
+              lit: "resource"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
             id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/input_delivery"
             source: "openapi3"
             version: 2
@@ -1592,7 +1652,7 @@ main: kit: entity: agent: {
           m: "GET"
           o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/input_delivery"
           q: {
-            "$action": "input_delivery"
+            "$action": "spark_input_delivery"
             exist: [
               "id"
               "idempotency_key"
@@ -1713,7 +1773,7 @@ main: kit: entity: agent: {
           m: "GET"
           o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/inspection"
           q: {
-            "$action": "inspection"
+            "$action": "spark_relay_inspection"
             exist: [
               "id"
               "organization_id"
@@ -1761,94 +1821,6 @@ main: kit: entity: agent: {
           t: {
             req: "`reqdata`"
             res: "`body`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resource"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "organization_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-            query: [
-              {
-                explode: true
-                k: "query"
-                n: "uri"
-                or: "uri"
-                r: true
-                style: "form"
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resource"
-          q: {
-            "$action": "resource"
-            exist: [
-              "id"
-              "organization_id"
-              "uri"
-            ]
-          }
-          r: {
-            param: {
-              id: "id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "agents"
-            }
-            {
-              var: "id"
-            }
-            {
-              lit: "spark"
-            }
-            {
-              lit: "relay"
-            }
-            {
-              lit: "resource"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body.contents`"
           }
         }
         {
@@ -1933,7 +1905,7 @@ main: kit: entity: agent: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.choices`"
+            res: "`body`"
           }
         }
         {
@@ -2000,113 +1972,6 @@ main: kit: entity: agent: {
           t: {
             req: "`reqdata`"
             res: "`body.agent`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/activity"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "organization_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-            query: [
-              {
-                explode: true
-                k: "query"
-                n: "cursor"
-                or: "cursor"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                ex: "native"
-                explode: true
-                k: "query"
-                n: "kind"
-                or: "kind"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                ex: 20
-                explode: true
-                k: "query"
-                n: "limit"
-                or: "limit"
-                r: false
-                style: "form"
-                t: "`$INTEGER`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/activity"
-          q: {
-            "$action": "activity"
-            exist: [
-              "id"
-              "organization_id"
-            ]
-          }
-          r: {
-            param: {
-              id: "id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "agents"
-            }
-            {
-              var: "id"
-            }
-            {
-              lit: "spark"
-            }
-            {
-              lit: "relay"
-            }
-            {
-              lit: "activity"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body.activity`"
           }
         }
         {
@@ -2392,90 +2257,6 @@ main: kit: entity: agent: {
         }
         {
           co: {
-            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/debug"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "organization_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-            query: [
-              {
-                explode: true
-                k: "query"
-                n: "conversation_id"
-                or: "conversation_id"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/debug"
-          q: {
-            "$action": "debug"
-            exist: [
-              "id"
-              "organization_id"
-            ]
-          }
-          r: {
-            param: {
-              id: "id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "agents"
-            }
-            {
-              var: "id"
-            }
-            {
-              lit: "spark"
-            }
-            {
-              lit: "debug"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
             id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/email"
             source: "openapi3"
             version: 2
@@ -2620,7 +2401,7 @@ main: kit: entity: agent: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.variables`"
+            res: "`body`"
           }
         }
         {
@@ -2867,175 +2648,6 @@ main: kit: entity: agent: {
         }
         {
           co: {
-            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/mission_control_card"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "organization_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-            query: [
-              {
-                ex: "main"
-                explode: true
-                k: "query"
-                n: "conversation_id"
-                or: "conversation_id"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/mission_control_card"
-          q: {
-            "$action": "mission_control_card"
-            exist: [
-              "id"
-              "organization_id"
-            ]
-          }
-          r: {
-            param: {
-              id: "id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "agents"
-            }
-            {
-              var: "id"
-            }
-            {
-              lit: "spark"
-            }
-            {
-              lit: "mission_control_card"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/run_usage"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "organization_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-            query: [
-              {
-                explode: true
-                k: "query"
-                n: "window"
-                or: "window"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/run_usage"
-          q: {
-            "$action": "run_usage"
-            exist: [
-              "id"
-              "organization_id"
-            ]
-          }
-          r: {
-            param: {
-              id: "id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "agents"
-            }
-            {
-              var: "id"
-            }
-            {
-              lit: "spark"
-            }
-            {
-              lit: "run_usage"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
             id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/runtime"
             source: "openapi3"
             version: 2
@@ -3182,6 +2794,366 @@ main: kit: entity: agent: {
         }
         {
           co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/debug"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "conversation_id"
+                or: "conversation_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/debug"
+          q: {
+            "$action": "spark_debug"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "debug"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/mission_control_card"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "main"
+                explode: true
+                k: "query"
+                n: "conversation_id"
+                or: "conversation_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/mission_control_card"
+          q: {
+            "$action": "spark_mission_control_card"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "mission_control_card"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/activity"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "native"
+                explode: true
+                k: "query"
+                n: "kind"
+                or: "kind"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: 20
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/activity"
+          q: {
+            "$action": "spark_relay_activity"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "relay"
+            }
+            {
+              lit: "activity"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.activity`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/run_usage"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "window"
+                or: "window"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/run_usage"
+          q: {
+            "$action": "spark_run_usage"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "run_usage"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
             id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/usage"
             source: "openapi3"
             version: 2
@@ -3218,7 +3190,7 @@ main: kit: entity: agent: {
           m: "GET"
           o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/usage"
           q: {
-            "$action": "usage"
+            "$action": "spark_usage"
             exist: [
               "id"
               "organization_id"

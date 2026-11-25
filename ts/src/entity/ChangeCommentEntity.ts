@@ -16,7 +16,7 @@ import type {
 
 import type {
   ChangeComment,
-  ChangeCommentListMatch,
+  ChangeCommentLoadMatch,
   ChangeCommentCreateData,
 } from '../ComposalTypes'
 
@@ -36,8 +36,7 @@ class ChangeCommentEntity extends ComposalEntityBase<ChangeComment> {
 
 
 
-
-  async list(this: any, reqmatch?: ChangeCommentListMatch, ctrl?: Control): Promise<ChangeCommentEntity[]> {
+  async load(this: any, reqmatch?: ChangeCommentLoadMatch, ctrl?: Control): Promise<ChangeCommentEntity> {
 
     const utility = this._utility
 
@@ -57,7 +56,7 @@ class ChangeCommentEntity extends ComposalEntityBase<ChangeComment> {
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -123,9 +122,15 @@ class ChangeCommentEntity extends ComposalEntityBase<ChangeComment> {
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -148,11 +153,12 @@ class ChangeCommentEntity extends ComposalEntityBase<ChangeComment> {
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<ChangeCommentEntity[]> return stays clean under strict null checks.
+        // Promise<ChangeCommentEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

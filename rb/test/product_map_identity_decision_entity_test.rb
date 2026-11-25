@@ -25,7 +25,7 @@ class ProductMapIdentityDecisionEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.ProductMapIdentityDecision(nil).create({ "organization_id" => 1, "project_id" => "x", "observations" => "x", "operation" => "x", "reason" => "x", "target" => "x" }, nil)
+      client.ProductMapIdentityDecision(nil).create({ "organization_id" => 1, "project_id" => "x", "observations" => "x", "operation" => "x", "reason" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end

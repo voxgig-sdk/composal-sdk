@@ -37,7 +37,7 @@ class TestProjectSettingEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.ProjectSetting(None).load({"organization_id": 1, "project_id": "x"}, None)
+            client.ProjectSetting(None).list({"organization_id": 1, "project_id": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,14 +46,15 @@ class TestProjectSettingEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in []:
+        for _op in ["list"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "project_setting." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"]:
-            pytest.skip("Live coverage incomplete: the flow has no step to run")
-
+            for _live_key in ["organization01", "project01"]:
+                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
+                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_PROJECT_SETTING_ENTID")
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -62,6 +63,18 @@ class TestProjectSettingEntity:
         project_setting_ref01_data = None
         if len(project_setting_ref01_data_raw) > 0:
             project_setting_ref01_data = helpers.to_map(project_setting_ref01_data_raw[0][1])
+
+        if setup["live"]:
+            runner.live_pace()
+        # LIST
+        project_setting_ref01_ent = client.ProjectSetting(None)
+        project_setting_ref01_match = {
+            "organization_id": setup["idmap"]["organization01"],
+            "project_id": setup["idmap"]["project01"],
+        }
+
+        project_setting_ref01_list_result = project_setting_ref01_ent.list(project_setting_ref01_match, None)
+        assert isinstance(project_setting_ref01_list_result, list)
 
 
 

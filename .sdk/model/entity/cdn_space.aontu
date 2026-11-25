@@ -27,6 +27,62 @@ main: kit: entity: cdn_space: {
         {
           bf: false
           co: {
+            id: "POST /api/v1/organizations/{org_slug}/cdn_spaces"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{org_slug}/cdn_spaces"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "cdn_spaces"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
             id: "POST /api/v1/cdn_spaces/{id}/archive"
             source: "openapi3"
             version: 2
@@ -131,62 +187,6 @@ main: kit: entity: cdn_space: {
             }
             {
               lit: "provision"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          bf: false
-          co: {
-            id: "POST /api/v1/organizations/{org_slug}/cdn_spaces"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "organization_id"
-                or: "org_slug"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "POST"
-          o: "/api/v1/organizations/{org_slug}/cdn_spaces"
-          q: {
-            exist: [
-              "organization_id"
-            ]
-          }
-          r: {
-            param: {
-              org_slug: "organization_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "cdn_spaces"
             }
           ]
           t: {

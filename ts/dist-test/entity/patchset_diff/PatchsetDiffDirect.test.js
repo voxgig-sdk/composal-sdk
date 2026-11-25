@@ -29,7 +29,7 @@ const utility_1 = require("../../utility");
         const setup = directSetup({ id: 'direct01' });
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-patchset_diff', setup.live))
             return;
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["change01", "patchset_diff01", "patchset_diff01", "organization01", "patchset01", "patchset01", "repo01"], LIVE_STRICT))
+        if ((0, utility_1.skipIfMissingIds)(t, setup, ["change01", "patchset_diff01", "organization01", "patchset01", "repo01"], LIVE_STRICT))
             return;
         const { client, calls } = setup;
         const params = {};
@@ -37,20 +37,16 @@ const utility_1 = require("../../utility");
         if (setup.live) {
             params.change_id = setup.idmap['change01'];
             params.id = setup.idmap['patchset_diff01'];
-            params.id = setup.idmap['patchset_diff01'];
             params.organization_id = setup.idmap['organization01'];
-            params.patchset_id = setup.idmap['patchset01'];
             params.patchset_id = setup.idmap['patchset01'];
             params.repo_id = setup.idmap['repo01'];
         }
         else {
             params.change_id = 'direct01';
             params.id = 'direct02';
-            params.id = 'direct03';
-            params.organization_id = 'direct04';
-            params.patchset_id = 'direct05';
-            params.patchset_id = 'direct06';
-            params.repo_id = 'direct07';
+            params.organization_id = 'direct03';
+            params.patchset_id = 'direct04';
+            params.repo_id = 'direct05';
         }
         const result = await client.direct({
             path: 'api/v1/organizations/{organization_id}/repos/{repo_id}/vcs/changes/{change_id}/patchsets/{patchset_id}/diff/{id}',
@@ -78,8 +74,6 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(calls[0].url.includes('direct03'));
             (0, node_assert_1.default)(calls[0].url.includes('direct04'));
             (0, node_assert_1.default)(calls[0].url.includes('direct05'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct06'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct07'));
         }
     });
 });

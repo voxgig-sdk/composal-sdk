@@ -11,7 +11,7 @@ description: |-
   | `available_usd` | string | yes |  |
   | `billing_unit` | string |  |  |
   | `can_manage` | boolean | yes |  |
-  | `compute_minutes` | object | yes |  |
+  | `compute_minutes` | object |  |  |
   | `compute_usd` | string |  |  |
   | `credits_per_usd` | integer | yes |  |
   | `inference_usd` | string |  |  |
@@ -30,4 +30,4 @@ description: |-
   | `starter_cents` | integer | yes |  |
   | `top_up_max_cents` | integer | yes |  |
   | `top_up_step_cents` | integer | yes |  |
-order: 506000
+order: 505000

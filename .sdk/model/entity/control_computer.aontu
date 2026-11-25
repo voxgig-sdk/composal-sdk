@@ -8,7 +8,7 @@ main: kit: entity: control_computer: {
     connection: {
       h: "Connection"
       n: "connection"
-      r: true
+      r: false
       sh: "A point-in-time control transport observation."
       t: "`$OBJECT`"
     }

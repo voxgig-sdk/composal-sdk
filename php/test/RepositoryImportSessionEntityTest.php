@@ -53,9 +53,9 @@ class RepositoryImportSessionEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
-            fwrite(STDOUT, 'LIVE STEP {"id":"repository_import_session.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/repository_import_sessions/{id}/authorization"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"repository_import_session.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/repository_import_sessions"}' . "\n");
             fwrite(STDOUT, 'LIVE STEP {"id":"repository_import_session.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only repository_import_session.create.0 gives"}' . "\n");
-            $this->markTestSkipped('Live coverage incomplete: repository_import_session.create.0 excluded (GET-only live run: needs POST /api/v1/repository_import_sessions/{id}/authorization); repository_import_session.load.1 excluded (GET-only live run: reads a record only repository_import_session.create.0 gives)');
+            $this->markTestSkipped('Live coverage incomplete: repository_import_session.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/repository_import_sessions); repository_import_session.load.1 excluded (GET-only live run: reads a record only repository_import_session.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {

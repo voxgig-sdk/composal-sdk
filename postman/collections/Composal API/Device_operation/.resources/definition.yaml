@@ -1,0 +1,23 @@
+$kind: collection
+id: a01a8f97-4d8d-57f3-ab88-cf72f39ed347
+description: |-
+  The **device_operation** entity, which belongs to a organization and a device. Its requests address one record by `{{device_operation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `action` | string | yes |  |
+  | `arguments` | object | yes |  |
+  | `created_at` | string | yes |  |
+  | `delivery` | object |  |  |
+  | `device_id` | string | yes |  |
+  | `diagnostic_code` | string |  |  |
+  | `end` | object |  |  |
+  | `expires_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `key` | string | yes |  |
+  | `provider` | string | yes |  |
+  | `references` | object | yes |  |
+  | `result` | any | yes |  |
+  | `result_expired` | boolean | yes |  |
+  | `state` | string | yes |  |
+order: 223000

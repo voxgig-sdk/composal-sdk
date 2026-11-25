@@ -6,7 +6,7 @@ Composal runs AI agents for engineering teams: always-on persistent agents with 
 
 This guide introduces the API, the client libraries, and the companion tools in this repository. Start with the API capabilities, choose a client for your application, and use the linked reference when you need exact request and response details.
 
-The selected API surface contains 555 entities and 1747 HTTP routes. There are 7 SDK targets and 2 companion tools.
+The selected API surface contains 558 entities and 1747 HTTP routes. There are 7 SDK targets and 2 companion tools.
 
 An entity groups related API operations. An operation can have several routes with different inputs or authentication requirements. The SDK exposes the entity and its operations using the conventions of the selected language.
 
@@ -36,7 +36,7 @@ Key fields to recognise:
 
 A persistent agent: list, create, read or delete one, rename it, change who can see it, and read its conversation, usage and runtime (actions).
 
-Results: Success; Browser opening recorded; Read recorded; Agent Slack settings; Ephemeral OpenAI realtime client secret (never the provider API key); Native agent lifecycle response; Ephemeral OpenAI transcription client secret (never the provider API key); Preparation requested or not needed; Authorized agent with current configuration and version tokens; Private identity and initialization accepted; setup is pending Git recovery; Authorized agent roster; Private message image; Authorized private image; Recent root tasks issued by this thread, including durable waits and reports; Rails custody or native acknowledgement for this exact submission; waiting does not prove native acceptance; Authorized bounded room observation; Authorized operator result; Available models for this thread; Authorized agent settings; Bounded receipt metadata without copied prompts or results; Requester-authorized paired computer choices for a new thread; Agent workspace; Native conversation history; Superadmin debug facts beside one conversation; The agent&#39;s inbox; Agent environment metadata; values are never returned; The saved choice and the identity in use; Agent sidebar response; Validated card, or a safe text fallback while the worker generates it; What the agent&#39;s runs used over the window, subagents&#39; included; Agent sandbox resources; Sandbox configuration; Selected private agent subscription quota and conversation usage; Agent removed; runtime revocation queued; Saved agent model; Renamed agent with current permissions and version; Order saved; Agent with current sharing and permissions; Updated thread model.
+Results: Success; Browser opening recorded; Read recorded; Agent Slack settings; Authorized agent with current configuration and version tokens; Private identity and initialization accepted; setup is pending Git recovery; Ephemeral OpenAI realtime client secret (never the provider API key); Native agent lifecycle response; Ephemeral OpenAI transcription client secret (never the provider API key); Preparation requested or not needed; Authorized agent roster; Private message image; Authorized private image; Recent root tasks issued by this thread, including durable waits and reports; Authorized operator result; Rails custody or native acknowledgement for this exact submission; waiting does not prove native acceptance; Authorized bounded room observation; Available models for this thread; Authorized agent settings; Requester-authorized paired computer choices for a new thread; Agent workspace; Native conversation history; The agent&#39;s inbox; Agent environment metadata; values are never returned; The saved choice and the identity in use; Agent sidebar response; Agent sandbox resources; Sandbox configuration; Superadmin debug facts beside one conversation; Validated card, or a safe text fallback while the worker generates it; Bounded receipt metadata without copied prompts or results; What the agent&#39;s runs used over the window, subagents&#39; included; Selected private agent subscription quota and conversation usage; Agent removed; runtime revocation queued; Saved agent model; Renamed agent with current permissions and version; Order saved; Agent with current sharing and permissions; Updated thread model.
 
 SDK operations: `create`, `list`, `load`, `remove`, `update`.
 
@@ -73,17 +73,6 @@ SDK operations: `remove`, `update`.
 Results: The upload is ready to send; The upload, with the number and size of its parts.
 
 SDK operations: `create`.
-
-### [AgentAutomation](docs/api/agent_automation.html)
-
-Results: Native automation definitions stored in Rails; Automation with updated schedule.
-
-SDK operations: `list`, `load`, `update`.
-
-Key fields to recognise:
-
-- `can_manage_events`: Whether new event triggers can be attached or existing settings saved. Pause and remove use each trigger’s `can_pause` and `can_remove` fields, which remain available without Temporal enrollment.
-- `can_run`: Whether the viewer can request a manual Temporal run
 
 ### [AgentAvatar](docs/api/agent_avatar.html)
 
@@ -705,7 +694,7 @@ SDK operations: `load`.
 
 An app hosted by Composal: list, create, read, change, activate, archive or delete one.
 
-Results: Success; Hosted app created; Hosted apps visible to the current user; Hosted app configuration catalog; Hosted app deployment dashboard; Hosted app updated.
+Results: Success; Hosted app created; Hosted apps visible to the current user; Hosted app configuration catalog; Hosted app updated.
 
 SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
 
@@ -758,6 +747,12 @@ A deployment of a hosted app: list, start, read or cancel one.
 Results: Updated app deployment; App deployment created; Success.
 
 SDK operations: `create`, `load`, `patch`, `remove`, `update`.
+
+### [AppDeploymentDashboard](docs/api/app_deployment_dashboard.html)
+
+Results: Hosted app deployment dashboard.
+
+SDK operations: `load`.
 
 ### [AppDeploymentOperation](docs/api/app_deployment_operation.html)
 
@@ -1240,7 +1235,7 @@ SDK operations: `list`.
 
 A browser runner: open one, hand control between your client and the agent, read its media, or close it.
 
-Results: Success; Control handoff accepted or replayed; Admitted or previously created browser session; Up to 256 captures belonging to this browser session; Admin-only browser state; connection capabilities expire with control or session closure.; Closure requested or already finished.
+Results: Success; Control handoff accepted or replayed; Admitted or previously created browser session; Admin-only browser state; connection capabilities expire with control or session closure.; Up to 256 captures belonging to this browser session; Closure requested or already finished.
 
 SDK operations: `create`, `load`, `remove`.
 
@@ -1366,7 +1361,7 @@ SDK operations: `create`.
 
 Results: Change comment threads; Success; Created comment and refreshed change comment threads.
 
-SDK operations: `create`, `list`.
+SDK operations: `create`, `load`.
 
 ### [ChangeFileReviewCheckpoint](docs/api/change_file_review_checkpoint.html)
 
@@ -1625,17 +1620,17 @@ SDK operations: `create`.
 
 ### [DeepScan](docs/api/deep_scan.html)
 
-Results: Success; The rerun scan; Stopped deep scan; Previously accepted scan; Accepted scan with its report URL; Deep scan; The selected tester; Deep Scan navigation context; Deep scan history and active scans.
+Results: Success; The rerun scan; Stopped deep scan; Previously accepted scan; Accepted scan with its report URL; Deep scan history and active scans; Deep scan; The selected tester; Deep Scan navigation context.
 
-SDK operations: `create`, `load`.
+SDK operations: `create`, `list`, `load`.
 
 Key fields to recognise:
 
 - `agent_filters`: Status counts and matching agent IDs for every filter in this live snapshot.
 - `can_continue`: Whether a finished run can be resumed through the orchestrator.
 - `covered_areas`: Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out.
+- `credential_name`: The credential the team signed in with, by its saved name if it was deleted; null for public access. Older API releases omit this additive field.
 - `deadline_at`: When the team&#39;s time limit ends. Older API releases omit this additive field during independent web and API rollouts.
-- `demo_project`: The workspace&#39;s copy of the demo project, linked from the free first discovery as an example; null for other runs or without one.
 
 ### [DeepScanFinding](docs/api/deep_scan_finding.html)
 
@@ -1791,18 +1786,6 @@ Results: Current held messages.
 
 SDK operations: `list`.
 
-### [DeviceControlOperation](docs/api/device_control_operation.html)
-
-Results: Current authorized local agent control result.
-
-SDK operations: `create`, `load`.
-
-Key fields to recognise:
-
-- `delivery`: Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did.
-- `diagnostic_code`: Approved product error code retained after copied diagnostics expire. Absent for success, unknown codes and older cleared receipts; it does not reconcile uncertain delivery.
-- `result_expired`: Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences.
-
 ### [DeviceEnterpriseRelay](docs/api/device_enterprise_relay.html)
 
 Results: Success.
@@ -1837,6 +1820,18 @@ SDK operations: `create`.
 Results: Completion event recorded.
 
 SDK operations: `create`.
+
+### [DeviceOperation](docs/api/device_operation.html)
+
+Results: Current authorized local agent control result.
+
+SDK operations: `create`, `load`.
+
+Key fields to recognise:
+
+- `delivery`: Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did.
+- `diagnostic_code`: Approved product error code retained after copied diagnostics expire. Absent for success, unknown codes and older cleared receipts; it does not reconcile uncertain delivery.
+- `result_expired`: Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences.
 
 ### [DevicePairing](docs/api/device_pairing.html)
 
@@ -1921,23 +1916,9 @@ Results: Generic verification request acknowledgement.
 
 SDK operations: `create`.
 
-### [Environment](docs/api/environment.html)
-
-Results: Existing environment returned for an idempotent replay; Verify environment created; Combined Verify environment detail snapshot; Success; Updated Verify environment; The choice is cleared, or was already settled; The saved choice and, once started, the discovery to open.
-
-SDK operations: `create`, `load`, `patch`, `remove`, `update`.
-
-Key fields to recognise:
-
-- `agent_sign_up_available`: Whether the signed-in admin can have Verify&#39;s agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). False once the agent stopped on something only the person can resolve.
-- `allowed_actions`: `read_only` only looks around; writes may create, change and delete data.
-- `imessage_number`: International destination number; blank or null clears it on an added environment.
-- `included_deep_scan`: Whether this app still gets the signed-in user&#39;s included Deep Scan (`verify_onboarding_deep_scan`) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else.
-- `managed_google_available`: Whether the managed Google account can be offered for this app.
-
 ### [EnvironmentDiscoveryRun](docs/api/environment_discovery_run.html)
 
-Results: Discovery stopped; sandbox cleanup follows runner cancellation; Existing discovery run; Discovery admitted; exploration can change application data; Discovery status and saved report.
+Results: Existing discovery run; Discovery admitted; exploration can change application data; Discovery stopped; sandbox cleanup follows runner cancellation; Discovery status and saved report.
 
 SDK operations: `create`, `load`.
 
@@ -1986,12 +1967,6 @@ SDK operations: `create`, `load`, `remove`.
 Results: Login personas and write-only credential configuration status; Test account credentials configured without returning values; Success.
 
 SDK operations: `list`, `patch`, `update`.
-
-### [Evidence](docs/api/evidence.html)
-
-Results: Success; A zip of the scenario run&#39;s evidence in capture order; Evidence bytes with the recorded content type; Requested byte range.
-
-SDK operations: `load`.
 
 ### [ExecutionDesiredState](docs/api/execution_desired_state.html)
 
@@ -2099,7 +2074,7 @@ SDK operations: `load`.
 
 ### [GitImport](docs/api/git_import.html)
 
-Results: Success; Git is durable; conversion proceeds asynchronously; Native repair queued from retained Git storage; Scoped Git upload destination; Writer preparation is pending. Repeat the same idempotent creation request after Retry-After; no transfer credential is issued yet.; Git durability and native readiness.
+Results: Success; Scoped Git upload destination; Writer preparation is pending. Repeat the same idempotent creation request after Retry-After; no transfer credential is issued yet.; Git is durable; conversion proceeds asynchronously; Native repair queued from retained Git storage; Git durability and native readiness.
 
 SDK operations: `create`, `load`.
 
@@ -2178,12 +2153,6 @@ Key fields to recognise:
 
 - `project_id`: Project slug or public ID the repositories are added to.
 - `replace`: Make these the project&#39;s only repositories.
-
-### [GithubIntegration](docs/api/github_integration.html)
-
-Results: GitHub organization settings overview page contract; GitHub organization settings detail page contract.
-
-SDK operations: `list`, `load`.
 
 ### [GithubOnboarding](docs/api/github_onboarding.html)
 
@@ -2622,20 +2591,6 @@ Key fields to recognise:
 - `analytics`: Queue performance for the reporting window. Present on queue reads only, mutation responses omit it rather than pay for a full window scan.
 - `target_branches`: Bookmark names for the target picker. Present only on the queue-page read (`GET /vcs/merge_queues`); mutation snapshots omit it. Empty while jj-backend is degraded.
 
-### [MergeRequest](docs/api/merge_request.html)
-
-Results: PR verification response.
-
-SDK operations: `create`, `load`.
-
-Key fields to recognise:
-
-- `available_tests`: All active saved scenarios in the configured project, including scenarios outside the automatic selection.
-- `branch`: Exact deployed source branch; refused if it differs from the canonical request branch.
-- `current_run`: Latest verification request if it matches the current head and base, independent of history pagination.
-- `github_repository`: GitHub owner/repository associated with this pull request.
-- `head_sha`: If supplied, refuse to create a run unless this is the current PR head.
-
 ### [MergeResolution](docs/api/merge_resolution.html)
 
 Results: Resolved file bytes, or resolved=false when the conflict is left intact.
@@ -2992,6 +2947,12 @@ Key fields to recognise:
 - `feature_enabled`: Whether the `billing` feature is on for this organization. False renders the page as not enabled, with no Subscribe action.
 - `preview`: Metronome draft invoice and credits, or null.
 
+### [PagesGithubIntegration](docs/api/pages_github_integration.html)
+
+Results: GitHub organization settings overview page contract; GitHub organization settings detail page contract.
+
+SDK operations: `list`, `load`.
+
 ### [PagesGithubOnboarding](docs/api/pages_github_onboarding.html)
 
 Results: Organization GitHub onboarding page contract.
@@ -3182,7 +3143,7 @@ SDK operations: `list`, `load`.
 
 A Verify project: an app whose user journeys Verify tests, with its environments, credentials, personas and scenarios.
 
-Results: A replay of a discovery this key already started; The discovery started; Project; ProjectCollection; ProjectEnvironmentPage; ProjectPersonaPage; ProjectScenarioPage; ProjectPage; ProjectHeaderPage; ProjectOverviewPage; ProjectOverviewActivityPage; ProjectOverviewDiscoveryPage; ProjectOverviewHistoryPage; ProjectPrTestingPage; Persistent shared project map with optional revision and account filters; Matching-scope observation comparison with bounded retained evidence; Recorder Project options; ProjectScenarioEditorPage; Project with the uploaded icon.
+Results: A replay of a discovery this key already started; The discovery started; Project; ProjectCollection; ProjectEnvironmentPage; ProjectPersonaPage; ProjectScenarioPage; ProjectPage; ProjectHeaderPage; ProjectOverviewPage; ProjectOverviewActivityPage; ProjectOverviewDiscoveryPage; ProjectOverviewHistoryPage; Persistent shared project map with optional revision and account filters; Recorder Project options; ProjectScenarioEditorPage; Project with the uploaded icon.
 
 SDK operations: `create`, `list`, `load`, `patch`, `update`.
 
@@ -3274,11 +3235,23 @@ Key fields to recognise:
 
 - `github_repository`: GitHub owner/repository associated with this pull request.
 
+### [ProjectPrTesting](docs/api/project_pr_testing.html)
+
+Results: ProjectPrTestingPage.
+
+SDK operations: `load`.
+
 ### [ProjectProductMap](docs/api/project_product_map.html)
 
 Results: Coalesced background graph refresh intent; Bounded evidence-backed product map retrieval; Compact whole-app screen inventory and retained connections; coalesces a stale projection refresh; Cheap project change watermark without reconstructing the map.
 
 SDK operations: `create`, `load`.
+
+### [ProjectProductMapComparison](docs/api/project_product_map_comparison.html)
+
+Results: Matching-scope observation comparison with bounded retained evidence.
+
+SDK operations: `load`.
 
 ### [ProjectRecording](docs/api/project_recording.html)
 
@@ -3331,21 +3304,7 @@ SDK operations: `list`.
 
 Results: ProjectSettingsPage.
 
-SDK operations: `load`.
-
-### [PullRequest](docs/api/pull_request.html)
-
-Results: Success; Demo share link; PR verification response; Revoked.
-
-SDK operations: `create`, `load`, `remove`.
-
-Key fields to recognise:
-
-- `available_tests`: All active saved scenarios in the configured project, including scenarios outside the automatic selection.
-- `branch`: Exact deployed source branch; refused if it differs from the canonical request branch.
-- `cleanup_only`: Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing.
-- `current_run`: Latest verification request if it matches the current head and base, independent of history pagination.
-- `head_sha`: If supplied, refuse to create a run unless this is the current PR head.
+SDK operations: `list`.
 
 ### [PullRequestAction](docs/api/pull_request_action.html)
 
@@ -3595,7 +3554,7 @@ SDK operations: `load`.
 
 ### [RepositoryImportSession](docs/api/repository_import_session.html)
 
-Results: Success; One-time GitHub App installation continuation URL. Never contains API bearer credentials.; Repository import session.
+Results: Success; Repository import session; One-time GitHub App installation continuation URL. Never contains API bearer credentials.
 
 SDK operations: `create`, `load`.
 
@@ -3696,11 +3655,15 @@ SDK operations: `load`.
 
 Results: Compact Verify run updates.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 Key fields to recognise:
 
-- `github_repository`: GitHub owner/repository associated with this pull request.
+- `cli_signed_in_at`: When the signed-in user last finished a CLI sign-in for this organization, so agent setup can show the CLI is connected.
+- `demo_project`: The workspace&#39;s copy of the demo project, which setup offers as example data. Only the environments section sets it.
+- `included_deep_scan`: Whether a new app gets the signed-in user&#39;s included Deep Scan (`verify_onboarding_deep_scan`) once it has a test account, so setup asks for one right after the app. True only in the environments section.
+- `project`: The project the page is limited to, or null for the whole organization.
+- `suggested_app_url`: The URL first-run setup prefills for a new app, from the workspace&#39;s project website or the signed-in user&#39;s work email domain. Only the environments section sets it.
 
 ### [RunWorkspaceCredential](docs/api/run_workspace_credential.html)
 
@@ -4063,7 +4026,7 @@ Key fields to recognise:
 
 ### [SparkAgentThread](docs/api/spark_agent_thread.html)
 
-Results: Thread archive state confirmed; history is retained; Native agent lifecycle response; Snooze confirmed by the runtime. New activity in the thread also wakes it.
+Results: Native agent lifecycle response; Thread archive state confirmed; history is retained; Snooze confirmed by the runtime. New activity in the thread also wakes it.
 
 SDK operations: `create`, `list`.
 
@@ -4074,6 +4037,17 @@ Key fields to recognise:
 - `can_archive`: This requester can archive or restore it, and the computer&#39;s Desktop supports archiving.
 - `coordination_status`: Durable work not represented by a native run: a queued input or an outstanding thread report.
 - `execution`: `device_folder` threads also report state and path; sandbox threads run on their own machine with the coding agent in harness.
+
+### [SparkAutomation](docs/api/spark_automation.html)
+
+Results: Native automation definitions stored in Rails; Automation with updated schedule.
+
+SDK operations: `list`, `load`, `update`.
+
+Key fields to recognise:
+
+- `can_manage_events`: Whether new event triggers can be attached or existing settings saved. Pause and remove use each trigger’s `can_pause` and `can_remove` fields, which remain available without Temporal enrollment.
+- `can_run`: Whether the viewer can request a manual Temporal run
 
 ### [SparkCredit](docs/api/spark_credit.html)
 
@@ -4105,7 +4079,7 @@ SDK operations: `load`.
 
 A static site hosted by Composal: list, create, read, change or remove one.
 
-Results: Provisioned static site; Static site created; Static sites in the organization; Success.
+Results: Static site created; Provisioned static site; Static sites in the organization; Success.
 
 SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
 
@@ -4244,7 +4218,7 @@ SDK operations: `load`.
 
 ### [VcChange](docs/api/vc_change.html)
 
-Results: Abandoned change and any directly orphaned changes; Recorded vote. Reread the change page for its updated state.; The absorbing change with its new patchset, the folded change, and the changes reparented onto the absorber. For `dry_run`, the plan.; Success; Current per-change GitHub projection state; Change marked ready; Existing retries for this request; A stateless answer. Accept text/event-stream for start, delta (text), done, and error (message) SSE events.; Created or updated change outcomes; Git revision anchors are awaiting durable publication; no review was created; Created or updated Change; One page of change summaries, plus status counts for the whole filtered scope; Selected comparison, picker options, and persisted diff files; Resolved Git revision, target, and observed review lease; Change detail, canonical product path, relation chain, target state, sync preview, and landing closure; Current checks, timing history, and retryable runs; Uncached accepted revision metadata without backend or review-page reads; Ordered known and missing JJ change identities, or the canonical first change for a legacy stack; Detailed canonical change.
+Results: Abandoned change and any directly orphaned changes; Recorded vote. Reread the change page for its updated state.; The absorbing change with its new patchset, the folded change, and the changes reparented onto the absorber. For `dry_run`, the plan.; Success; Current per-change GitHub projection state; Change marked ready; Existing retries for this request; A stateless answer. Accept text/event-stream for start, delta (text), done, and error (message) SSE events.; Created or updated change outcomes; Git revision anchors are awaiting durable publication; no review was created; Created or updated Change; One page of change summaries, plus status counts for the whole filtered scope; Change detail, canonical product path, relation chain, target state, sync preview, and landing closure; Current checks, timing history, and retryable runs; Selected comparison, picker options, and persisted diff files; Uncached accepted revision metadata without backend or review-page reads; Resolved Git revision, target, and observed review lease; Ordered known and missing JJ change identities, or the canonical first change for a legacy stack; Detailed canonical change.
 
 SDK operations: `create`, `list`, `load`, `update`.
 
@@ -4391,6 +4365,54 @@ Results: Success.
 
 SDK operations: `load`.
 
+### [VerifyEnvironment](docs/api/verify_environment.html)
+
+Results: Existing environment returned for an idempotent replay; Verify environment created; Combined Verify environment detail snapshot; Success; Updated Verify environment; The choice is cleared, or was already settled; The saved choice and, once started, the discovery to open.
+
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
+
+Key fields to recognise:
+
+- `agent_sign_up_available`: Whether the signed-in admin can have Verify&#39;s agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). False once the agent stopped on something only the person can resolve.
+- `allowed_actions`: `read_only` only looks around; writes may create, change and delete data.
+- `imessage_number`: International destination number; blank or null clears it on an added environment.
+- `included_deep_scan`: Whether this app still gets the signed-in user&#39;s included Deep Scan (`verify_onboarding_deep_scan`) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else.
+- `managed_google_available`: Whether the managed Google account can be offered for this app.
+
+### [VerifyEvidence](docs/api/verify_evidence.html)
+
+Results: Success; A zip of the scenario run&#39;s evidence in capture order; Evidence bytes with the recorded content type; Requested byte range.
+
+SDK operations: `load`.
+
+### [VerifyMergeRequest](docs/api/verify_merge_request.html)
+
+Results: PR verification response.
+
+SDK operations: `create`, `load`.
+
+Key fields to recognise:
+
+- `available_tests`: All active saved scenarios in the configured project, including scenarios outside the automatic selection.
+- `branch`: Exact deployed source branch; refused if it differs from the canonical request branch.
+- `current_run`: Latest verification request if it matches the current head and base, independent of history pagination.
+- `github_repository`: GitHub owner/repository associated with this pull request.
+- `head_sha`: If supplied, refuse to create a run unless this is the current PR head.
+
+### [VerifyPullRequest](docs/api/verify_pull_request.html)
+
+Results: Success; Demo share link; PR verification response; Revoked.
+
+SDK operations: `create`, `load`, `remove`.
+
+Key fields to recognise:
+
+- `available_tests`: All active saved scenarios in the configured project, including scenarios outside the automatic selection.
+- `branch`: Exact deployed source branch; refused if it differs from the canonical request branch.
+- `cleanup_only`: Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing.
+- `current_run`: Latest verification request if it matches the current head and base, independent of history pagination.
+- `head_sha`: If supplied, refuse to create a run unless this is the current PR head.
+
 ### [VerifySignalIntegration](docs/api/verify_signal_integration.html)
 
 Results: The signal integration.
@@ -4494,35 +4516,35 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [Agent](docs/api/agent.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/browser_opened` | Required |
 | [Agent](docs/api/agent.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/marked_read` | Required |
 | [Agent](docs/api/agent.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/slack` | Required |
+| [Agent](docs/api/agent.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents` | Required |
 | [Agent](docs/api/agent.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/call_session` | Required |
 | [Agent](docs/api/agent.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/lifecycle` | Required |
 | [Agent](docs/api/agent.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/transcription_session` | Required |
 | [Agent](docs/api/agent.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/warm` | Required |
-| [Agent](docs/api/agent.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents` | Required |
 | [Agent](docs/api/agent.html) | `create` | `POST /api/v1/agent/chat` | Required |
 | [Agent](docs/api/agent.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/message_image` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/avatar` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/coordination` | Required |
+| [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resource` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/input_delivery` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/inspection` | Required |
-| [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resource` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/thread_model` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}` | Required |
-| [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/activity` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/compute` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/computer` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark` | Required |
-| [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/debug` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/email` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/environment` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/github_access` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/library` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/lifecycle` | Required |
-| [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/mission_control_card` | Required |
-| [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/run_usage` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/runtime` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/sandbox` | Required |
+| [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/debug` | Required |
+| [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/mission_control_card` | Required |
+| [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/activity` | Required |
+| [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/run_usage` | Required |
 | [Agent](docs/api/agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/usage` | Required |
 | [Agent](docs/api/agent.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/agents/{id}` | Required |
 | [Agent](docs/api/agent.html) | `update` | `PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/environment` | Required |
@@ -4541,10 +4563,6 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AgentAppInstall](docs/api/agent_app_install.html) | `update` | `PUT /api/v1/organizations/{organization_id}/agent_apps/{id}/installs/{agent_id}` | Required |
 | [AgentAttachment](docs/api/agent_attachment.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/attachments/{attachment_id}/complete` | Required |
 | [AgentAttachment](docs/api/agent_attachment.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/attachments` | Required |
-| [AgentAutomation](docs/api/agent_automation.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/automations` | Required |
-| [AgentAutomation](docs/api/agent_automation.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}` | Required |
-| [AgentAutomation](docs/api/agent_automation.html) | `update` | `PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}` | Required |
-| [AgentAutomation](docs/api/agent_automation.html) | `update` | `PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/schedule` | Required |
 | [AgentAvatar](docs/api/agent_avatar.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/avatar/generate` | Required |
 | [AgentAvatar](docs/api/agent_avatar.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/avatar/retry` | Required |
 | [AgentAvatar](docs/api/agent_avatar.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/avatar/configuration` | Required |
@@ -4743,9 +4761,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [App](docs/api/app.html) | `create` | `POST /api/v1/hosting/apps/{id}/archive` | Required |
 | [App](docs/api/app.html) | `create` | `POST /api/v1/hosting/apps` | Required |
 | [App](docs/api/app.html) | `list` | `GET /api/v1/hosting/apps` | Required |
-| [App](docs/api/app.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/catalog` | Required |
-| [App](docs/api/app.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/deployment_dashboard` | Required |
 | [App](docs/api/app.html) | `load` | `GET /api/v1/hosting/apps/{id}` | Required |
+| [App](docs/api/app.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/catalog` | Required |
 | [App](docs/api/app.html) | `patch` | `PATCH /api/v1/hosting/apps/{id}` | Required |
 | [App](docs/api/app.html) | `remove` | `DELETE /api/v1/hosting/apps/{id}` | Required |
 | [App](docs/api/app.html) | `update` | `PUT /api/v1/hosting/apps/{id}` | Required |
@@ -4788,12 +4805,13 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AppDeployment](docs/api/app_deployment.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/deployments/{id}/fail` | Required |
 | [AppDeployment](docs/api/app_deployment.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/deployments/{id}/succeed` | Required |
 | [AppDeployment](docs/api/app_deployment.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/deployments` | Required |
-| [AppDeployment](docs/api/app_deployment.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/deployments/{deployment_id}/live` | Required |
 | [AppDeployment](docs/api/app_deployment.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/deployments/{id}` | Required |
+| [AppDeployment](docs/api/app_deployment.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/deployments/{deployment_id}/live` | Required |
 | [AppDeployment](docs/api/app_deployment.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/deployments` | Required |
 | [AppDeployment](docs/api/app_deployment.html) | `patch` | `PATCH /api/v1/hosting/apps/{app_id}/deployments/{id}` | Required |
 | [AppDeployment](docs/api/app_deployment.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/deployments/{id}` | Required |
 | [AppDeployment](docs/api/app_deployment.html) | `update` | `PUT /api/v1/hosting/apps/{app_id}/deployments/{id}` | Required |
+| [AppDeploymentDashboard](docs/api/app_deployment_dashboard.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/deployment_dashboard` | Required |
 | [AppDeploymentOperation](docs/api/app_deployment_operation.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/deployment_operations/{operation_id}/cancel` | Required |
 | [AppDeploymentOperation](docs/api/app_deployment_operation.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/deployment_operations/{operation_id}/redeploy` | Required |
 | [AppDeploymentOperation](docs/api/app_deployment_operation.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/deployment_operations/{operation_id}/rollback` | Required |
@@ -5025,8 +5043,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [BrowserEgressCandidate](docs/api/browser_egress_candidate.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/browser_egress/candidates` | Required |
 | [BrowserSession](docs/api/browser_session.html) | `create` | `POST /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/control` | Required |
 | [BrowserSession](docs/api/browser_session.html) | `create` | `POST /api/v1/organizations/{organization_id}/browser_sessions` | Required |
-| [BrowserSession](docs/api/browser_session.html) | `load` | `GET /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media` | Required |
 | [BrowserSession](docs/api/browser_session.html) | `load` | `GET /api/v1/organizations/{organization_id}/browser_sessions/{id}` | Required |
+| [BrowserSession](docs/api/browser_session.html) | `load` | `GET /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media` | Required |
 | [BrowserSession](docs/api/browser_session.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/browser_sessions/{id}` | Required |
 | [BrowserSessionConnection](docs/api/browser_session_connection.html) | `create` | `POST /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/connections` | Required |
 | [BrowserSessionControl](docs/api/browser_session_control.html) | `load` | `GET /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/controls/{id}` | Required |
@@ -5058,9 +5076,9 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [CdnHostname](docs/api/cdn_hostname.html) | `patch` | `PATCH /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}` | Required |
 | [CdnHostname](docs/api/cdn_hostname.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}` | Required |
 | [CdnHostname](docs/api/cdn_hostname.html) | `update` | `PUT /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}` | Required |
+| [CdnSpace](docs/api/cdn_space.html) | `create` | `POST /api/v1/organizations/{org_slug}/cdn_spaces` | Required |
 | [CdnSpace](docs/api/cdn_space.html) | `create` | `POST /api/v1/cdn_spaces/{id}/archive` | Required |
 | [CdnSpace](docs/api/cdn_space.html) | `create` | `POST /api/v1/cdn_spaces/{id}/provision` | Required |
-| [CdnSpace](docs/api/cdn_space.html) | `create` | `POST /api/v1/organizations/{org_slug}/cdn_spaces` | Required |
 | [CdnSpace](docs/api/cdn_space.html) | `load` | `GET /api/v1/cdn_spaces/{id}` | Required |
 | [CdnSpace](docs/api/cdn_space.html) | `load` | `GET /api/v1/organizations/{org_slug}/cdn_spaces` | Required |
 | [CdnSpace](docs/api/cdn_space.html) | `patch` | `PATCH /api/v1/cdn_spaces/{id}` | Required |
@@ -5076,7 +5094,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [ChangeComment](docs/api/change_comment.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve` | Required |
 | [ChangeComment](docs/api/change_comment.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/unresolve` | Required |
 | [ChangeComment](docs/api/change_comment.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments` | Required |
-| [ChangeComment](docs/api/change_comment.html) | `list` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments` | Required |
+| [ChangeComment](docs/api/change_comment.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments` | Required |
 | [ChangeFileReviewCheckpoint](docs/api/change_file_review_checkpoint.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/file_review_checkpoints` | Required |
 | [ChangeGitBranchSubmission](docs/api/change_git_branch_submission.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_branch_submissions` | Required |
 | [ChangeGitCommitIdentity](docs/api/change_git_commit_identity.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_commit_identities` | Required |
@@ -5141,10 +5159,10 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [DeepScan](docs/api/deep_scan.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce` | Required |
 | [DeepScan](docs/api/deep_scan.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/stop` | Required |
 | [DeepScan](docs/api/deep_scan.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/deep_scans` | Required |
+| [DeepScan](docs/api/deep_scan.html) | `list` | `GET /api/v1/organizations/{organization_id}/verify/deep_scans` | Required |
 | [DeepScan](docs/api/deep_scan.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}` | Required |
 | [DeepScan](docs/api/deep_scan.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/agent` | Required |
 | [DeepScan](docs/api/deep_scan.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/context` | Required |
-| [DeepScan](docs/api/deep_scan.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/deep_scans` | Required |
 | [DeepScanFinding](docs/api/deep_scan_finding.html) | `list` | `GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/findings` | Required |
 | [DeepScanFlow](docs/api/deep_scan_flow.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/deep_scans/flows` | Required |
 | [DeepScanMappedFlow](docs/api/deep_scan_mapped_flow.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/deep_scans/mapped_flows` | Required |
@@ -5183,9 +5201,6 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [DeviceBrowserOperation](docs/api/device_browser_operation.html) | `create` | `POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/browser_operations/{id}/finish` | Required |
 | [DeviceBrowserOperation](docs/api/device_browser_operation.html) | `list` | `GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/browser_operations` | Required |
 | [DeviceControlMessage](docs/api/device_control_message.html) | `list` | `GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_messages` | Required |
-| [DeviceControlOperation](docs/api/device_control_operation.html) | `create` | `POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations` | Required |
-| [DeviceControlOperation](docs/api/device_control_operation.html) | `load` | `GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/{id}` | Required |
-| [DeviceControlOperation](docs/api/device_control_operation.html) | `load` | `GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/request` | Required |
 | [DeviceEnterpriseRelay](docs/api/device_enterprise_relay.html) | `load` | `GET /api/v1/spark/devices/enterprise_relays` | Required |
 | [DeviceFolderListing](docs/api/device_folder_listing.html) | `create` | `POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/folder_listings` | Required |
 | [DeviceFolderListing](docs/api/device_folder_listing.html) | `load` | `GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/folder_listings/{id}` | Required |
@@ -5196,6 +5211,9 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [DeviceInvocation](docs/api/device_invocation.html) | `create` | `POST /api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/challenge` | Not required |
 | [DeviceInvocation](docs/api/device_invocation.html) | `create` | `POST /api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/lease` | Not required |
 | [DeviceLocalEvent](docs/api/device_local_event.html) | `create` | `POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/local_events` | Required |
+| [DeviceOperation](docs/api/device_operation.html) | `create` | `POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations` | Required |
+| [DeviceOperation](docs/api/device_operation.html) | `load` | `GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/{id}` | Required |
+| [DeviceOperation](docs/api/device_operation.html) | `load` | `GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/request` | Required |
 | [DevicePairing](docs/api/device_pairing.html) | `create` | `POST /api/v1/organizations/{organization_id}/devices/pairings/{device_pairing_intent_id}/complete` | Required |
 | [DevicePairing](docs/api/device_pairing.html) | `create` | `POST /api/v1/organizations/{organization_id}/devices/pairings` | Required |
 | [DeviceProject](docs/api/device_project.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/devices/{device_registration_id}/projects/{id}` | Required |
@@ -5229,16 +5247,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [Dream](docs/api/dream.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/dreams/{id}` | Required |
 | [Edge](docs/api/edge.html) | `load` | `GET /api/v1/edge/tls-check` | Required |
 | [EmailVerification](docs/api/email_verification.html) | `create` | `POST /api/v1/email_verifications/resend` | Not required |
-| [Environment](docs/api/environment.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/environments` | Required |
-| [Environment](docs/api/environment.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/environments/{id}` | Required |
-| [Environment](docs/api/environment.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/environments` | Required |
-| [Environment](docs/api/environment.html) | `patch` | `PATCH /api/v1/organizations/{organization_id}/verify/environments/{id}` | Required |
-| [Environment](docs/api/environment.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/verify/environments/{id}` | Required |
-| [Environment](docs/api/environment.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run` | Required |
-| [Environment](docs/api/environment.html) | `update` | `PUT /api/v1/organizations/{organization_id}/verify/environments/{id}` | Required |
-| [Environment](docs/api/environment.html) | `update` | `PUT /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run` | Required |
-| [EnvironmentDiscoveryRun](docs/api/environment_discovery_run.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop` | Required |
 | [EnvironmentDiscoveryRun](docs/api/environment_discovery_run.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs` | Required |
+| [EnvironmentDiscoveryRun](docs/api/environment_discovery_run.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop` | Required |
 | [EnvironmentDiscoveryRun](docs/api/environment_discovery_run.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}` | Required |
 | [EnvironmentExploration](docs/api/environment_exploration.html) | `create` | `POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments/{environment_id}/explorations` | Required |
 | [EnvironmentFirstRun](docs/api/environment_first_run.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run/start` | Required |
@@ -5256,10 +5266,6 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [EnvironmentTestAccount](docs/api/environment_test_account.html) | `list` | `GET /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/test_accounts` | Required |
 | [EnvironmentTestAccount](docs/api/environment_test_account.html) | `patch` | `PATCH /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/test_accounts/{persona}` | Required |
 | [EnvironmentTestAccount](docs/api/environment_test_account.html) | `update` | `PUT /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/test_accounts/{persona}` | Required |
-| [Evidence](docs/api/evidence.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/evidence/{id}` | Required |
-| [Evidence](docs/api/evidence.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/evidence/archive` | Required |
-| [Evidence](docs/api/evidence.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/evidence/{id}/download` | Required |
-| [Evidence](docs/api/evidence.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/evidence` | Required |
 | [ExecutionDesiredState](docs/api/execution_desired_state.html) | `create` | `POST /api/v1/execution/desired_states/{id}/reconcile` | Required |
 | [ExecutionDesiredState](docs/api/execution_desired_state.html) | `create` | `POST /api/v1/execution/desired_states` | Required |
 | [ExecutionDesiredState](docs/api/execution_desired_state.html) | `load` | `GET /api/v1/execution/desired_states/{id}` | Required |
@@ -5303,9 +5309,9 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [Finding](docs/api/finding.html) | `patch` | `PATCH /api/v1/organizations/{organization_id}/verify/findings/{id}` | Required |
 | [Finding](docs/api/finding.html) | `update` | `PUT /api/v1/organizations/{organization_id}/verify/findings/{id}` | Required |
 | [Gh](docs/api/gh.html) | `load` | `GET /api/v1/organizations/{org_slug}/gh/{github_owner}/{github_repo}/{number}` | Required |
+| [GitImport](docs/api/git_import.html) | `create` | `POST /api/v1/organizations/{organization_id}/git_imports` | Required |
 | [GitImport](docs/api/git_import.html) | `create` | `POST /api/v1/git_imports/{id}/complete` | Required |
 | [GitImport](docs/api/git_import.html) | `create` | `POST /api/v1/git_imports/{id}/retry` | Required |
-| [GitImport](docs/api/git_import.html) | `create` | `POST /api/v1/organizations/{organization_id}/git_imports` | Required |
 | [GitImport](docs/api/git_import.html) | `load` | `GET /api/v1/git_imports/{id}` | Required |
 | [Github](docs/api/github.html) | `load` | `GET /api/v1/github/repository_lookup` | Required |
 | [GithubApp](docs/api/github_app.html) | `create` | `POST /api/v1/github_app/webhook` | Required |
@@ -5326,8 +5332,6 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [GithubCiRepositoryCompatibilityReport](docs/api/github_ci_repository_compatibility_report.html) | `load` | `GET /api/v1/organizations/{organization_id}/github_ci_repositories/{github_ci_repository_id}/compatibility_reports/{id}` | Required |
 | [GithubConnection](docs/api/github_connection.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/github_connections` | Required |
 | [GithubConnection](docs/api/github_connection.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/github_connections` | Required |
-| [GithubIntegration](docs/api/github_integration.html) | `list` | `GET /api/v1/organizations/{org_slug}/pages/github_integrations` | Required |
-| [GithubIntegration](docs/api/github_integration.html) | `load` | `GET /api/v1/organizations/{org_slug}/pages/github_integrations/{github_app_installation_id}` | Required |
 | [GithubOnboarding](docs/api/github_onboarding.html) | `load` | `GET /api/v1/organizations/{organization_id}/github_onboarding` | Required |
 | [GithubOnboardingBranch](docs/api/github_onboarding_branch.html) | `list` | `GET /api/v1/organizations/{organization_id}/github_onboarding/branches` | Required |
 | [GithubOnboardingImport](docs/api/github_onboarding_import.html) | `create` | `POST /api/v1/organizations/{organization_id}/github_onboarding/imports` | Required |
@@ -5463,10 +5467,6 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [MergeQueueEntry](docs/api/merge_queue_entry.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/validate_full` | Required |
 | [MergeQueueEntry](docs/api/merge_queue_entry.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries` | Required |
 | [MergeQueueEntry](docs/api/merge_queue_entry.html) | `remove` | `DELETE /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}` | Required |
-| [MergeRequest](docs/api/merge_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun` | Required |
-| [MergeRequest](docs/api/merge_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/merge_requests` | Required |
-| [MergeRequest](docs/api/merge_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/merge_requests/preview` | Required |
-| [MergeRequest](docs/api/merge_request.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/merge_requests/{id}` | Required |
 | [MergeResolution](docs/api/merge_resolution.html) | `create` | `POST /api/v1/merge_resolutions` | Required |
 | [MessagingConversationMessage](docs/api/messaging_conversation_message.html) | `create` | `POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/messages/{message_id}/reaction` | Required |
 | [MessagingConversationMessage](docs/api/messaging_conversation_message.html) | `create` | `POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/messages` | Required |
@@ -5627,6 +5627,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [PageProjectRun](docs/api/page_project_run.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/page` | Required |
 | [PageRepoVcCommit](docs/api/page_repo_vc_commit.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits/{id}/page` | Required |
 | [PagesBilling](docs/api/pages_billing.html) | `load` | `GET /api/v1/organizations/{org_slug}/pages/billing` | Required |
+| [PagesGithubIntegration](docs/api/pages_github_integration.html) | `list` | `GET /api/v1/organizations/{org_slug}/pages/github_integrations` | Required |
+| [PagesGithubIntegration](docs/api/pages_github_integration.html) | `load` | `GET /api/v1/organizations/{org_slug}/pages/github_integrations/{github_app_installation_id}` | Required |
 | [PagesGithubOnboarding](docs/api/pages_github_onboarding.html) | `load` | `GET /api/v1/organizations/{org_slug}/pages/github_onboarding` | Required |
 | [PagesMember](docs/api/pages_member.html) | `list` | `GET /api/v1/organizations/{org_slug}/pages/members` | Required |
 | [PagesProjectCredential](docs/api/pages_project_credential.html) | `list` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/credentials` | Required |
@@ -5683,9 +5685,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [Project](docs/api/project.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_activity` | Required |
 | [Project](docs/api/project.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_discovery` | Required |
 | [Project](docs/api/project.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_history` | Required |
-| [Project](docs/api/project.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/pr_testing` | Required |
 | [Project](docs/api/project.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map` | Required |
-| [Project](docs/api/project.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison` | Required |
 | [Project](docs/api/project.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/recorder` | Required |
 | [Project](docs/api/project.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_editor` | Required |
 | [Project](docs/api/project.html) | `patch` | `PATCH /api/v1/organizations/{organization_id}/verification/projects/{id}` | Required |
@@ -5719,6 +5719,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [ProjectMessagingConversation](docs/api/project_messaging_conversation.html) | `update` | `PUT /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}` | Required |
 | [ProjectOverviewMetric](docs/api/project_overview_metric.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics` | Required |
 | [ProjectOverviewPullRequest](docs/api/project_overview_pull_request.html) | `list` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_pull_requests` | Required |
+| [ProjectPrTesting](docs/api/project_pr_testing.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/pr_testing` | Required |
 | [ProjectProductMap](docs/api/project_product_map.html) | `create` | `POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/overview` | Required |
 | [ProjectProductMap](docs/api/project_product_map.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/path` | Required |
 | [ProjectProductMap](docs/api/project_product_map.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/compare` | Required |
@@ -5726,6 +5727,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [ProjectProductMap](docs/api/project_product_map.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/frontier` | Required |
 | [ProjectProductMap](docs/api/project_product_map.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/overview` | Required |
 | [ProjectProductMap](docs/api/project_product_map.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/version` | Required |
+| [ProjectProductMapComparison](docs/api/project_product_map_comparison.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison` | Required |
 | [ProjectRecording](docs/api/project_recording.html) | `create` | `POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/recordings/{id}/finish` | Required |
 | [ProjectRecording](docs/api/project_recording.html) | `create` | `POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/recordings/{id}/redraft` | Required |
 | [ProjectRecording](docs/api/project_recording.html) | `create` | `POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/recordings` | Required |
@@ -5746,14 +5748,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [ProjectRunSchedule](docs/api/project_run_schedule.html) | `update` | `PUT /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/{id}` | Required |
 | [ProjectScenarioOption](docs/api/project_scenario_option.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_options` | Required |
 | [ProjectScenarioRow](docs/api/project_scenario_row.html) | `list` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_rows` | Required |
-| [ProjectSetting](docs/api/project_setting.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings` | Required |
-| [PullRequest](docs/api/pull_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share` | Required |
-| [PullRequest](docs/api/pull_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/rerun` | Required |
-| [PullRequest](docs/api/pull_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/pull_requests` | Required |
-| [PullRequest](docs/api/pull_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/pull_requests/preview` | Required |
-| [PullRequest](docs/api/pull_request.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/pull_requests/lookup` | Required |
-| [PullRequest](docs/api/pull_request.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/pull_requests/{id}` | Required |
-| [PullRequest](docs/api/pull_request.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share` | Required |
+| [ProjectSetting](docs/api/project_setting.html) | `list` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings` | Required |
 | [PullRequestAction](docs/api/pull_request_action.html) | `create` | `POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/actions` | Required |
 | [PullRequestMagicMerge](docs/api/pull_request_magic_merge.html) | `create` | `POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/merge` | Required |
 | [PullRequestMagicMerge](docs/api/pull_request_magic_merge.html) | `create` | `POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/rebase` | Required |
@@ -5768,8 +5763,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [Recorder](docs/api/recorder.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/recorder` | Required |
 | [Registry](docs/api/registry.html) | `load` | `GET /api/v1/registry/namespace` | Required |
 | [RegistryV2](docs/api/registry_v2.html) | `create` | `POST /api/v1/registry/v2/authorize` | Required |
-| [RelayAgentConnection](docs/api/relay_agent_connection.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup` | Required |
 | [RelayAgentConnection](docs/api/relay_agent_connection.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections` | Required |
+| [RelayAgentConnection](docs/api/relay_agent_connection.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup` | Required |
 | [RelayAgentConnection](docs/api/relay_agent_connection.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections` | Required |
 | [RelayAgentConnection](docs/api/relay_agent_connection.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/change` | Required |
 | [RelayAgentConnection](docs/api/relay_agent_connection.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}` | Required |
@@ -5847,9 +5842,9 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [RepositoryAccessResolve](docs/api/repository_access_resolve.html) | `load` | `GET /api/v1/repository_access/resolve/{org_slug}/{repo_slug}` | Required |
 | [RepositoryEvent](docs/api/repository_event.html) | `create` | `POST /api/v1/repository_events/walgit` | Required |
 | [RepositoryImport](docs/api/repository_import.html) | `load` | `GET /api/v1/organizations/{org_slug}/pages/repository_import` | Required |
+| [RepositoryImportSession](docs/api/repository_import_session.html) | `create` | `POST /api/v1/organizations/{organization_id}/repository_import_sessions` | Required |
 | [RepositoryImportSession](docs/api/repository_import_session.html) | `create` | `POST /api/v1/repository_import_sessions/{id}/authorization` | Required |
 | [RepositoryImportSession](docs/api/repository_import_session.html) | `create` | `POST /api/v1/repository_import_sessions/{id}/cancel` | Required |
-| [RepositoryImportSession](docs/api/repository_import_session.html) | `create` | `POST /api/v1/organizations/{organization_id}/repository_import_sessions` | Required |
 | [RepositoryImportSession](docs/api/repository_import_session.html) | `load` | `GET /api/v1/repository_import_sessions/{id}` | Required |
 | [RepositoryImportSessionRepository](docs/api/repository_import_session_repository.html) | `list` | `GET /api/v1/repository_import_sessions/{id}/repositories` | Required |
 | [RepositoryImportSessionSelection](docs/api/repository_import_session_selection.html) | `create` | `POST /api/v1/repository_import_sessions/{id}/selections` | Required |
@@ -5877,7 +5872,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [RunScenarioRun](docs/api/run_scenario_run.html) | `update` | `PATCH /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit` | Required |
 | [RunScheduleOption](docs/api/run_schedule_option.html) | `list` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/options` | Required |
 | [RunSearch](docs/api/run_search.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/run_search` | Required |
-| [RunUpdate](docs/api/run_update.html) | `list` | `GET /api/v1/organizations/{organization_id}/verify/run_updates` | Required |
+| [RunUpdate](docs/api/run_update.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/run_updates` | Required |
 | [RunWorkspaceCredential](docs/api/run_workspace_credential.html) | `create` | `POST /api/v1/agent/roder/run/workspace_credentials` | Required |
 | [RunnerLease](docs/api/runner_lease.html) | `create` | `POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim` | Required |
 | [RunnerLease](docs/api/runner_lease.html) | `create` | `POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/heartbeat` | Required |
@@ -6070,11 +6065,15 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [SparkAgentSite](docs/api/spark_agent_site.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/sites` | Required |
 | [SparkAgentSkill](docs/api/spark_agent_skill.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/skills` | Required |
 | [SparkAgentSkill](docs/api/spark_agent_skill.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/skills` | Required |
+| [SparkAgentThread](docs/api/spark_agent_thread.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads` | Required |
 | [SparkAgentThread](docs/api/spark_agent_thread.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive` | Required |
 | [SparkAgentThread](docs/api/spark_agent_thread.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/compact` | Required |
 | [SparkAgentThread](docs/api/spark_agent_thread.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/snooze` | Required |
-| [SparkAgentThread](docs/api/spark_agent_thread.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads` | Required |
 | [SparkAgentThread](docs/api/spark_agent_thread.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/threads` | Required |
+| [SparkAutomation](docs/api/spark_automation.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/automations` | Required |
+| [SparkAutomation](docs/api/spark_automation.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}` | Required |
+| [SparkAutomation](docs/api/spark_automation.html) | `update` | `PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}` | Required |
+| [SparkAutomation](docs/api/spark_automation.html) | `update` | `PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/schedule` | Required |
 | [SparkCredit](docs/api/spark_credit.html) | `create` | `POST /api/v1/organizations/{org_slug}/spark_credits` | Required |
 | [SparkCredit](docs/api/spark_credit.html) | `load` | `GET /api/v1/organizations/{org_slug}/spark_credits` | Required |
 | [SparkCredit](docs/api/spark_credit.html) | `load` | `GET /api/v1/organizations/{org_slug}/spark_credits/daily_usage` | Required |
@@ -6082,8 +6081,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [SparkCredit](docs/api/spark_credit.html) | `update` | `PUT /api/v1/organizations/{org_slug}/spark_credits` | Required |
 | [SparkCreditAgentUsage](docs/api/spark_credit_agent_usage.html) | `load` | `GET /api/v1/organizations/{org_slug}/spark_credits/agent_usage/{agent_id}` | Required |
 | [SparkCreditUsageTotal](docs/api/spark_credit_usage_total.html) | `load` | `GET /api/v1/organizations/{org_slug}/spark_credits/usage_totals` | Required |
-| [StaticSite](docs/api/static_site.html) | `create` | `POST /api/v1/static_sites/{id}/provision` | Required |
 | [StaticSite](docs/api/static_site.html) | `create` | `POST /api/v1/organizations/{organization_id}/static_sites` | Required |
+| [StaticSite](docs/api/static_site.html) | `create` | `POST /api/v1/static_sites/{id}/provision` | Required |
 | [StaticSite](docs/api/static_site.html) | `list` | `GET /api/v1/organizations/{organization_id}/static_sites` | Required |
 | [StaticSite](docs/api/static_site.html) | `load` | `GET /api/v1/static_sites/{id}` | Required |
 | [StaticSite](docs/api/static_site.html) | `patch` | `PATCH /api/v1/static_sites/{id}` | Required |
@@ -6152,12 +6151,12 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [VcChange](docs/api/vc_change.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_ref` | Required |
 | [VcChange](docs/api/vc_change.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/sync` | Required |
 | [VcChange](docs/api/vc_change.html) | `list` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes` | Required |
-| [VcChange](docs/api/vc_change.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/diff` | Required |
-| [VcChange](docs/api/vc_change.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_preview` | Required |
 | [VcChange](docs/api/vc_change.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}` | Required |
 | [VcChange](docs/api/vc_change.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/ci` | Required |
+| [VcChange](docs/api/vc_change.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/diff` | Required |
 | [VcChange](docs/api/vc_change.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/github_projection` | Required |
 | [VcChange](docs/api/vc_change.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/state` | Required |
+| [VcChange](docs/api/vc_change.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_preview` | Required |
 | [VcChange](docs/api/vc_change.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/lookup` | Required |
 | [VcChange](docs/api/vc_change.html) | `update` | `PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/description` | Required |
 | [VcChangeGroup](docs/api/vc_change_group.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups` | Required |
@@ -6215,6 +6214,29 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [VerifyBrowserSession](docs/api/verify_browser_session.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/browser_sessions/{id}` | Required |
 | [VerifyBrowserSession](docs/api/verify_browser_session.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/verify/browser_sessions/{id}` | Required |
 | [VerifyEmailVerification](docs/api/verify_email_verification.html) | `load` | `GET /api/v1/email_verifications/verify` | Required |
+| [VerifyEnvironment](docs/api/verify_environment.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/environments` | Required |
+| [VerifyEnvironment](docs/api/verify_environment.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/environments/{id}` | Required |
+| [VerifyEnvironment](docs/api/verify_environment.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/environments` | Required |
+| [VerifyEnvironment](docs/api/verify_environment.html) | `patch` | `PATCH /api/v1/organizations/{organization_id}/verify/environments/{id}` | Required |
+| [VerifyEnvironment](docs/api/verify_environment.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/verify/environments/{id}` | Required |
+| [VerifyEnvironment](docs/api/verify_environment.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run` | Required |
+| [VerifyEnvironment](docs/api/verify_environment.html) | `update` | `PUT /api/v1/organizations/{organization_id}/verify/environments/{id}` | Required |
+| [VerifyEnvironment](docs/api/verify_environment.html) | `update` | `PUT /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run` | Required |
+| [VerifyEvidence](docs/api/verify_evidence.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/evidence/{id}` | Required |
+| [VerifyEvidence](docs/api/verify_evidence.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/evidence/archive` | Required |
+| [VerifyEvidence](docs/api/verify_evidence.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/evidence/{id}/download` | Required |
+| [VerifyEvidence](docs/api/verify_evidence.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/evidence` | Required |
+| [VerifyMergeRequest](docs/api/verify_merge_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun` | Required |
+| [VerifyMergeRequest](docs/api/verify_merge_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/merge_requests` | Required |
+| [VerifyMergeRequest](docs/api/verify_merge_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/merge_requests/preview` | Required |
+| [VerifyMergeRequest](docs/api/verify_merge_request.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/merge_requests/{id}` | Required |
+| [VerifyPullRequest](docs/api/verify_pull_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share` | Required |
+| [VerifyPullRequest](docs/api/verify_pull_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/rerun` | Required |
+| [VerifyPullRequest](docs/api/verify_pull_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/pull_requests` | Required |
+| [VerifyPullRequest](docs/api/verify_pull_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/pull_requests/preview` | Required |
+| [VerifyPullRequest](docs/api/verify_pull_request.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/pull_requests/lookup` | Required |
+| [VerifyPullRequest](docs/api/verify_pull_request.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/pull_requests/{id}` | Required |
+| [VerifyPullRequest](docs/api/verify_pull_request.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share` | Required |
 | [VerifySignalIntegration](docs/api/verify_signal_integration.html) | `create` | `POST /api/v1/organizations/{organization_id}/signal_integrations/{id}/verify` | Required |
 | [VerifyStaticSiteDomain](docs/api/verify_static_site_domain.html) | `create` | `POST /api/v1/static_sites/{static_site_id}/domains/{id}/verify` | Required |
 | [VersionLog](docs/api/version_log.html) | `list` | `GET /api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/logs` | Required |
@@ -6310,8 +6332,8 @@ Use the MCP server to expose supported API operations to an MCP client.
 
 Repository directory: `go-mcp/`. Not published. Build from the go-mcp directory.
 
-- `composal_list`: List records for an entity. Supported entities: `agent`, `agent_app`, `agent_automation`, `agent_command`, `agent_connection`, `agent_connection_delegation`, `agent_connection_grant`, `agent_connection_safety_control`, `agent_connection_trigger_subscription`, `agent_control_flow`, `agent_integration_account`, `agent_interaction`, `agent_manager_choice`, `agent_pull_request`, `agent_relay_file_grant`, `agent_relay_file_grant_account`, `agent_resource`, `agent_routine`, `agent_site`, `agent_subagent`, `agent_swarm`, `agent_teammate`, `agent_tool`, `agent_verify_project`, `agent_workflow_run`, `agent_workflow_trigger`, `agent_workspace`, `agent_write_permission`, `agreement`, `app`, `app_deployment_operation`, `app_location`, `app_secret`, `app_service_placement`, `artefact`, `artefact_comment_thread`, `audit_event`, `billing_invoice`, `billing_package`, `billing_prepaid_purchase`, `binary`, `binary_version`, `browser_egress_candidate`, `browser_session_event`, `change_comment`, `change_reviewer`, `change_transcript`, `ci_pipeline`, `ci_runner_pool`, `connection_source`, `control_computer`, `coordination_wait`, `deep_scan_finding`, `deep_scan_option`, `deployment_log`, `deployment_metric`, `deployment_preview`, `deployment_setting`, `desktop_local_agent_model`, `device`, `device_browser_operation`, `device_control_message`, `device_grant`, `docker_builder`, `domain_dns_integration`, `domain_path_rule`, `dream`, `environment_test_account`, `execution_runtime_instance`, `exploration`, `finding`, `github_app_importable_repository`, `github_app_installation`, `github_ci_repository`, `github_ci_repository_compatibility_report`, `github_integration`, `github_onboarding_branch`, `github_runner_image`, `github_runner_pool`, `image_repository`, `image_repository_tag`, `invitation`, `job_log_chunk`, `label`, `location`, `me_email`, `member`, `memory`, `model_subscription_account`, `node`, `organization`, `organization_secret`, `page_artefact`, `pages_member`, `pages_project_credential`, `pages_project_persona`, `pages_project_run`, `pages_project_scenario`, `pages_session`, `product_map_journey`, `product_map_state`, `project`, `project_code_map`, `project_environment`, `project_finding`, `project_fixture`, `project_overview_pull_request`, `project_run_plan`, `project_run_schedule`, `project_scenario_row`, `pull_request_transcript`, `pull_zone`, `relay_agent_connection`, `repo`, `repo_access_token`, `repo_action`, `repo_bookmark_protection`, `repo_bookmark_protection_event`, `repo_code_rule`, `repo_setting`, `repo_vc_commit`, `repository_import_session_repository`, `run_schedule_option`, `run_update`, `runner_pool_node_enrollment_token`, `scenario_revision`, `signal`, `signal_integration`, `signal_integration_delivery`, `signal_integration_target`, `site`, `slack_channel`, `spark_agent_site`, `spark_agent_skill`, `spark_agent_thread`, `static_site`, `static_site_deployment`, `static_site_domain`, `subscription_model`, `swarm_event`, `swarm_task`, `transcript`, `vc_branch`, `vc_change`, `vc_change_group`, `vc_file`, `vc_merge_queue`, `vc_stack`, `vcs_node`, `verification_project_credential`, `verification_project_persona`, `verification_project_run`, `verification_project_scenario`, `version_log`, `workspace_space`.
-- `composal_load`: Load one record for an entity. Supported entities: `a2a_well_known`, `admin_org`, `agent`, `agent_app`, `agent_automation`, `agent_avatar`, `agent_computer`, `agent_connection`, `agent_context_checkpoint`, `agent_control_flow`, `agent_email`, `agent_event`, `agent_file`, `agent_integration`, `agent_integration_callback`, `agent_interaction`, `agent_library`, `agent_marketplace`, `agent_marketplace_shared`, `agent_operation`, `agent_relay_file_grant`, `agent_repository`, `agent_roder`, `agent_run`, `agent_session`, `agent_session_checkpoint`, `agent_setting`, `agent_sharing`, `agent_site`, `agent_skill`, `agent_subscription`, `agent_swarm`, `agent_thread`, `agent_usage`, `agent_web_preview`, `agent_webhook`, `agent_workflow`, `agent_workflow_proposal`, `agent_workflow_run`, `agent_workflow_trigger`, `alert_rule_event`, `allocation_log`, `app`, `app_access`, `app_access_jwk`, `app_cdn`, `app_config_variable`, `app_data_resource`, `app_deployment`, `app_deployment_operation`, `app_environment`, `app_metric`, `app_preview`, `app_preview_profile`, `app_run`, `app_secret`, `app_service`, `app_service_binding`, `app_service_placement`, `app_storage_resource`, `artefact`, `artifact`, `artifact_cache_namespace`, `artifact_image_repository`, `artifact_package_mirror`, `artifact_retention_policy`, `auth`, `auth_github`, `auth_google`, `auth_openai`, `auth_registration_option`, `backend_runner_pool`, `bazel_action_result`, `bazel_backend`, `bazel_blob`, `bazel_execution`, `billing`, `billing_prepaid_period`, `billing_prepaid_purchase`, `billing_usage`, `binary`, `binary_version`, `browser_session`, `browser_session_control`, `browser_session_media`, `browser_session_task`, `cache_namespace_entry`, `catalog_selector`, `cdn_deployment`, `cdn_hostname`, `cdn_space`, `cdn_space_object`, `change`, `change_git_commit_identity`, `change_git_publication`, `change_transcript_summary`, `ci_node`, `ci_pipeline`, `ci_pipeline_run`, `ci_runner_pool`, `ci_status`, `cli_release`, `cloud_workspace_backup_object`, `com_site_access`, `commit_diff`, `connection_request`, `control_computer_control_operation`, `deep_scan`, `deep_scan_mapped_flow`, `demo_share`, `demo_share_segment`, `deployment`, `deployment_dashboard_nomad`, `deployment_detail`, `device`, `device_control_operation`, `device_enterprise_relay`, `device_folder_listing`, `docker_builder`, `docker_builder_session`, `docker_builder_setting`, `domain_path_rule`, `dream`, `edge`, `environment`, `environment_discovery_run`, `environment_revision`, `environment_secret_binding`, `evidence`, `execution_desired_state`, `execution_reconciler_tick`, `execution_release`, `execution_runtime_instance`, `exploration`, `exploration_report`, `finding`, `gh`, `git_import`, `github`, `github_ci_repository`, `github_ci_repository_compatibility_report`, `github_connection`, `github_integration`, `github_onboarding`, `github_onboarding_import_batch`, `github_pull_request`, `github_runner_egress`, `github_runner_history`, `github_runner_image`, `github_runner_setup`, `gitlab`, `gitlab_oauth`, `hosting_app_domain`, `identity_organization`, `import_branch_policy`, `integration`, `job_step`, `job_workspace`, `knowledge`, `known`, `local_thread_delivery`, `local_thread_operation`, `log_stream_chunk`, `marketing_setting`, `mcp_oauth`, `me`, `media_file`, `memory`, `merge_request`, `metric_query`, `model_subscription_account_connection`, `networking_space`, `node_lease`, `nomad_allocation`, `nomad_log`, `now`, `observability_clickhouse_cluster`, `observability_quickwit_cluster`, `observability_space`, `openapi`, `org_invitation`, `organization`, `organization_app`, `organization_identity_certificate`, `organization_oidc_trust`, `organization_secret`, `organization_service_account`, `organization_site`, `organization_workload_identity`, `page`, `page_agent`, `page_artefact`, `page_ci_pipeline_run`, `page_project_run`, `page_repo_vc_commit`, `pages_billing`, `pages_github_onboarding`, `pages_registry`, `pages_session`, `pairing`, `pairing_event`, `patchset_diff`, `personal_access_token`, `preview_operation`, `preview_profile_secret_binding`, `preview_sharing_approval`, `proactive_agent_waitlist_entry`, `product_map_journey`, `product_map_journey_replay`, `product_map_observation`, `product_map_state`, `project`, `project_environment`, `project_fixture`, `project_messaging_conversation`, `project_overview_metric`, `project_product_map`, `project_recording`, `project_run_plan`, `project_run_schedule`, `project_scenario_option`, `project_setting`, `pull_request`, `pull_request_setting`, `recorder`, `registry`, `relay_agent_connection`, `release_rollout`, `repo`, `repo_agent_checkpoint`, `repo_agent_session`, `repo_bookmark_protection`, `repo_cloud_workspace_backup`, `repo_code_rule`, `repo_stat`, `repo_vc`, `report_replay`, `repository_access`, `repository_access_resolve`, `repository_import`, `repository_import_session`, `repository_sandbox_environment`, `roder_code_repair`, `roder_code_repair_setting`, `run_artifact`, `run_job`, `run_scenario_run`, `run_search`, `runner_lease`, `runner_pool_runner`, `runtime_instance_health_snapshot`, `sandbox_integration`, `secret_grant`, `secret_version`, `service_endpoint`, `setting`, `signal`, `signal_integration`, `signal_subscription`, `site_access_key`, `site_preview`, `space_alert_rule`, `space_audit_event`, `space_dns_record`, `space_enrollment_token`, `space_gateway`, `space_group`, `space_group_membership`, `space_log_stream`, `space_metric_sery`, `space_otel_collector`, `space_peer`, `space_peer_attachment`, `space_policy`, `space_segment`, `space_trace_span`, `spark`, `spark_agent_integration`, `spark_agent_local_thread`, `spark_credit`, `spark_credit_agent_usage`, `spark_credit_usage_total`, `static_site`, `static_site_deployment`, `static_site_domain`, `status_change`, `status_commit`, `status_patchset`, `swarm_live`, `swarm_task`, `thread_preview_access`, `tool_feedback`, `transcript`, `vc_browser`, `vc_change`, `vc_change_group`, `vc_merge_queue`, `vc_stack`, `vcs_setting`, `verification_project_credential`, `verification_project_persona`, `verification_project_run`, `verification_project_scenario`, `verify_browser_session`, `verify_email_verification`, `workflow_run_step`, `workspace_activity`, `workspace_space`.
+- `composal_list`: List records for an entity. Supported entities: `agent`, `agent_app`, `agent_command`, `agent_connection`, `agent_connection_delegation`, `agent_connection_grant`, `agent_connection_safety_control`, `agent_connection_trigger_subscription`, `agent_control_flow`, `agent_integration_account`, `agent_interaction`, `agent_manager_choice`, `agent_pull_request`, `agent_relay_file_grant`, `agent_relay_file_grant_account`, `agent_resource`, `agent_routine`, `agent_site`, `agent_subagent`, `agent_swarm`, `agent_teammate`, `agent_tool`, `agent_verify_project`, `agent_workflow_run`, `agent_workflow_trigger`, `agent_workspace`, `agent_write_permission`, `agreement`, `app`, `app_deployment_operation`, `app_location`, `app_secret`, `app_service_placement`, `artefact`, `artefact_comment_thread`, `audit_event`, `billing_invoice`, `billing_package`, `billing_prepaid_purchase`, `binary`, `binary_version`, `browser_egress_candidate`, `browser_session_event`, `change_reviewer`, `change_transcript`, `ci_pipeline`, `ci_runner_pool`, `connection_source`, `control_computer`, `coordination_wait`, `deep_scan`, `deep_scan_finding`, `deep_scan_option`, `deployment_log`, `deployment_metric`, `deployment_preview`, `deployment_setting`, `desktop_local_agent_model`, `device`, `device_browser_operation`, `device_control_message`, `device_grant`, `docker_builder`, `domain_dns_integration`, `domain_path_rule`, `dream`, `environment_test_account`, `execution_runtime_instance`, `exploration`, `finding`, `github_app_importable_repository`, `github_app_installation`, `github_ci_repository`, `github_ci_repository_compatibility_report`, `github_onboarding_branch`, `github_runner_image`, `github_runner_pool`, `image_repository`, `image_repository_tag`, `invitation`, `job_log_chunk`, `label`, `location`, `me_email`, `member`, `memory`, `model_subscription_account`, `node`, `organization`, `organization_secret`, `page_artefact`, `pages_github_integration`, `pages_member`, `pages_project_credential`, `pages_project_persona`, `pages_project_run`, `pages_project_scenario`, `pages_session`, `product_map_journey`, `product_map_state`, `project`, `project_code_map`, `project_environment`, `project_finding`, `project_fixture`, `project_overview_pull_request`, `project_run_plan`, `project_run_schedule`, `project_scenario_row`, `project_setting`, `pull_request_transcript`, `pull_zone`, `relay_agent_connection`, `repo`, `repo_access_token`, `repo_action`, `repo_bookmark_protection`, `repo_bookmark_protection_event`, `repo_code_rule`, `repo_setting`, `repo_vc_commit`, `repository_import_session_repository`, `run_schedule_option`, `runner_pool_node_enrollment_token`, `scenario_revision`, `signal`, `signal_integration`, `signal_integration_delivery`, `signal_integration_target`, `site`, `slack_channel`, `spark_agent_site`, `spark_agent_skill`, `spark_agent_thread`, `spark_automation`, `static_site`, `static_site_deployment`, `static_site_domain`, `subscription_model`, `swarm_event`, `swarm_task`, `transcript`, `vc_branch`, `vc_change`, `vc_change_group`, `vc_file`, `vc_merge_queue`, `vc_stack`, `vcs_node`, `verification_project_credential`, `verification_project_persona`, `verification_project_run`, `verification_project_scenario`, `version_log`, `workspace_space`.
+- `composal_load`: Load one record for an entity. Supported entities: `a2a_well_known`, `admin_org`, `agent`, `agent_app`, `agent_avatar`, `agent_computer`, `agent_connection`, `agent_context_checkpoint`, `agent_control_flow`, `agent_email`, `agent_event`, `agent_file`, `agent_integration`, `agent_integration_callback`, `agent_interaction`, `agent_library`, `agent_marketplace`, `agent_marketplace_shared`, `agent_operation`, `agent_relay_file_grant`, `agent_repository`, `agent_roder`, `agent_run`, `agent_session`, `agent_session_checkpoint`, `agent_setting`, `agent_sharing`, `agent_site`, `agent_skill`, `agent_subscription`, `agent_swarm`, `agent_thread`, `agent_usage`, `agent_web_preview`, `agent_webhook`, `agent_workflow`, `agent_workflow_proposal`, `agent_workflow_run`, `agent_workflow_trigger`, `alert_rule_event`, `allocation_log`, `app`, `app_access`, `app_access_jwk`, `app_cdn`, `app_config_variable`, `app_data_resource`, `app_deployment`, `app_deployment_dashboard`, `app_deployment_operation`, `app_environment`, `app_metric`, `app_preview`, `app_preview_profile`, `app_run`, `app_secret`, `app_service`, `app_service_binding`, `app_service_placement`, `app_storage_resource`, `artefact`, `artifact`, `artifact_cache_namespace`, `artifact_image_repository`, `artifact_package_mirror`, `artifact_retention_policy`, `auth`, `auth_github`, `auth_google`, `auth_openai`, `auth_registration_option`, `backend_runner_pool`, `bazel_action_result`, `bazel_backend`, `bazel_blob`, `bazel_execution`, `billing`, `billing_prepaid_period`, `billing_prepaid_purchase`, `billing_usage`, `binary`, `binary_version`, `browser_session`, `browser_session_control`, `browser_session_media`, `browser_session_task`, `cache_namespace_entry`, `catalog_selector`, `cdn_deployment`, `cdn_hostname`, `cdn_space`, `cdn_space_object`, `change`, `change_comment`, `change_git_commit_identity`, `change_git_publication`, `change_transcript_summary`, `ci_node`, `ci_pipeline`, `ci_pipeline_run`, `ci_runner_pool`, `ci_status`, `cli_release`, `cloud_workspace_backup_object`, `com_site_access`, `commit_diff`, `connection_request`, `control_computer_control_operation`, `deep_scan`, `deep_scan_mapped_flow`, `demo_share`, `demo_share_segment`, `deployment`, `deployment_dashboard_nomad`, `deployment_detail`, `device`, `device_enterprise_relay`, `device_folder_listing`, `device_operation`, `docker_builder`, `docker_builder_session`, `docker_builder_setting`, `domain_path_rule`, `dream`, `edge`, `environment_discovery_run`, `environment_revision`, `environment_secret_binding`, `execution_desired_state`, `execution_reconciler_tick`, `execution_release`, `execution_runtime_instance`, `exploration`, `exploration_report`, `finding`, `gh`, `git_import`, `github`, `github_ci_repository`, `github_ci_repository_compatibility_report`, `github_connection`, `github_onboarding`, `github_onboarding_import_batch`, `github_pull_request`, `github_runner_egress`, `github_runner_history`, `github_runner_image`, `github_runner_setup`, `gitlab`, `gitlab_oauth`, `hosting_app_domain`, `identity_organization`, `import_branch_policy`, `integration`, `job_step`, `job_workspace`, `knowledge`, `known`, `local_thread_delivery`, `local_thread_operation`, `log_stream_chunk`, `marketing_setting`, `mcp_oauth`, `me`, `media_file`, `memory`, `metric_query`, `model_subscription_account_connection`, `networking_space`, `node_lease`, `nomad_allocation`, `nomad_log`, `now`, `observability_clickhouse_cluster`, `observability_quickwit_cluster`, `observability_space`, `openapi`, `org_invitation`, `organization`, `organization_app`, `organization_identity_certificate`, `organization_oidc_trust`, `organization_secret`, `organization_service_account`, `organization_site`, `organization_workload_identity`, `page`, `page_agent`, `page_artefact`, `page_ci_pipeline_run`, `page_project_run`, `page_repo_vc_commit`, `pages_billing`, `pages_github_integration`, `pages_github_onboarding`, `pages_registry`, `pages_session`, `pairing`, `pairing_event`, `patchset_diff`, `personal_access_token`, `preview_operation`, `preview_profile_secret_binding`, `preview_sharing_approval`, `proactive_agent_waitlist_entry`, `product_map_journey`, `product_map_journey_replay`, `product_map_observation`, `product_map_state`, `project`, `project_environment`, `project_fixture`, `project_messaging_conversation`, `project_overview_metric`, `project_pr_testing`, `project_product_map`, `project_product_map_comparison`, `project_recording`, `project_run_plan`, `project_run_schedule`, `project_scenario_option`, `pull_request_setting`, `recorder`, `registry`, `relay_agent_connection`, `release_rollout`, `repo`, `repo_agent_checkpoint`, `repo_agent_session`, `repo_bookmark_protection`, `repo_cloud_workspace_backup`, `repo_code_rule`, `repo_stat`, `repo_vc`, `report_replay`, `repository_access`, `repository_access_resolve`, `repository_import`, `repository_import_session`, `repository_sandbox_environment`, `roder_code_repair`, `roder_code_repair_setting`, `run_artifact`, `run_job`, `run_scenario_run`, `run_search`, `run_update`, `runner_lease`, `runner_pool_runner`, `runtime_instance_health_snapshot`, `sandbox_integration`, `secret_grant`, `secret_version`, `service_endpoint`, `setting`, `signal`, `signal_integration`, `signal_subscription`, `site_access_key`, `site_preview`, `space_alert_rule`, `space_audit_event`, `space_dns_record`, `space_enrollment_token`, `space_gateway`, `space_group`, `space_group_membership`, `space_log_stream`, `space_metric_sery`, `space_otel_collector`, `space_peer`, `space_peer_attachment`, `space_policy`, `space_segment`, `space_trace_span`, `spark`, `spark_agent_integration`, `spark_agent_local_thread`, `spark_automation`, `spark_credit`, `spark_credit_agent_usage`, `spark_credit_usage_total`, `static_site`, `static_site_deployment`, `static_site_domain`, `status_change`, `status_commit`, `status_patchset`, `swarm_live`, `swarm_task`, `thread_preview_access`, `tool_feedback`, `transcript`, `vc_browser`, `vc_change`, `vc_change_group`, `vc_merge_queue`, `vc_stack`, `vcs_setting`, `verification_project_credential`, `verification_project_persona`, `verification_project_run`, `verification_project_scenario`, `verify_browser_session`, `verify_email_verification`, `verify_environment`, `verify_evidence`, `verify_merge_request`, `verify_pull_request`, `workflow_run_step`, `workspace_activity`, `workspace_space`.
 
 ## Operational features
 

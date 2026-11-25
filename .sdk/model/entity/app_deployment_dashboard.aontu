@@ -1,0 +1,251 @@
+# Entity: app_deployment_dashboard
+
+main: kit: entity: app_deployment_dashboard: {
+
+  alias: field: {}
+
+  fields: {
+    activity: {
+      h: "Activity"
+      n: "activity"
+      r: true
+      t: "`$ARRAY`"
+    }
+    app: {
+      h: "App"
+      n: "app"
+      r: true
+      t: "`$OBJECT`"
+    }
+    audit_events: {
+      h: "Audit Events"
+      n: "audit_events"
+      r: true
+      t: "`$ARRAY`"
+    }
+    capacity: {
+      h: "Capacity"
+      n: "capacity"
+      r: true
+      t: "`$OBJECT`"
+    }
+    connections: {
+      h: "Connections"
+      n: "connections"
+      r: true
+      t: "`$ARRAY`"
+    }
+    data_resources: {
+      h: "Data Resources"
+      n: "data_resources"
+      r: true
+      t: "`$ARRAY`"
+    }
+    deployments: {
+      h: "Deployments"
+      n: "deployments"
+      r: true
+      t: "`$ARRAY`"
+    }
+    desired_states: {
+      h: "Desired States"
+      n: "desired_states"
+      r: true
+      t: "`$ARRAY`"
+    }
+    environments: {
+      h: "Environments"
+      n: "environments"
+      r: true
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+    locations: {
+      h: "Locations"
+      n: "locations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    managed_database_catalog: {
+      h: "Managed Database Catalog"
+      n: "managed_database_catalog"
+      r: true
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 4
+        depth: 8
+      }
+    }
+    observability: {
+      h: "Observability"
+      n: "observability"
+      r: true
+      t: "`$OBJECT`"
+    }
+    operations: {
+      h: "Operations"
+      n: "operations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    placements: {
+      h: "Placements"
+      n: "placements"
+      r: true
+      t: "`$ARRAY`"
+    }
+    reconciler_ticks: {
+      h: "Reconciler Ticks"
+      n: "reconciler_ticks"
+      r: true
+      t: "`$ARRAY`"
+    }
+    releases: {
+      h: "Releases"
+      n: "releases"
+      r: true
+      t: "`$ARRAY`"
+    }
+    rollback_deployments: {
+      h: "Rollback Deployments"
+      n: "rollback_deployments"
+      r: true
+      t: "`$ARRAY`"
+    }
+    rollouts: {
+      h: "Rollouts"
+      n: "rollouts"
+      r: true
+      t: "`$ARRAY`"
+    }
+    runtime_instances: {
+      h: "Runtime Instances"
+      n: "runtime_instances"
+      r: true
+      t: "`$ARRAY`"
+    }
+    service_bindings: {
+      h: "Service Bindings"
+      n: "service_bindings"
+      r: true
+      t: "`$ARRAY`"
+    }
+    service_views: {
+      h: "Service Views"
+      n: "service_views"
+      r: true
+      t: "`$ARRAY`"
+    }
+    services: {
+      h: "Services"
+      n: "services"
+      r: true
+      t: "`$ARRAY`"
+    }
+    storage_resources: {
+      h: "Storage Resources"
+      n: "storage_resources"
+      r: true
+      t: "`$ARRAY`"
+    }
+    summary: {
+      h: "Summary"
+      n: "summary"
+      r: true
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "app_deployment_dashboard"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/hosting/apps/{app_id}/deployment_dashboard"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "metrics_range"
+                or: "metrics_range"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/hosting/apps/{app_id}/deployment_dashboard"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              app_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "hosting"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "deployment_dashboard"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

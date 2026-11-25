@@ -30,10 +30,6 @@ class EnvironmentSecretBindingDirectTest extends TestCase
             $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
             return;
         }
-        if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE" && null === ($setup["idmap"]['environment01'] ?? null)) {
-            fwrite(STDOUT, 'LIVE STEP {"id":"direct-load-environment_secret_binding","state":"excluded","attempted":false,"reason":"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives"}' . "\n");
-            $this->markTestSkipped('Live coverage incomplete: direct-load-environment_secret_binding excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)');
-        }
         if ($setup["live"]) {
             foreach (["app01", "environment01"] as $_liveKey) {
                 if (null === ($setup["idmap"][$_liveKey] ?? null)) {

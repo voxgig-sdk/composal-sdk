@@ -41,7 +41,7 @@ description: |-
   | `reproductions` | array | yes |  |
   | `saves_scenarios` | boolean | yes |  |
   | `scannable_flows` | array | yes |  |
-  | `scenario_generation` | object | yes |  |
+  | `scenario_generation` | object |  |  |
   | `sign_in_needs_answer` | boolean | yes |  |
   | `sign_in_outcome` | string | yes |  |
   | `sign_in_question` | string |  |  |
@@ -52,4 +52,4 @@ description: |-
   | `title` | string |  |  |
   | `unlock` | any | yes |  |
   | `web_url` | string | yes |  |
-order: 248000
+order: 246000

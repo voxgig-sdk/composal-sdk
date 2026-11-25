@@ -29,7 +29,7 @@ const utility_1 = require("../../utility");
         const setup = directSetup({ id: 'direct01' });
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-commit_diff', setup.live))
             return;
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["commit01", "commit_diff01", "commit_diff01", "organization01", "repo01"], LIVE_STRICT))
+        if ((0, utility_1.skipIfMissingIds)(t, setup, ["commit01", "commit_diff01", "organization01", "repo01"], LIVE_STRICT))
             return;
         const { client, calls } = setup;
         const params = {};
@@ -37,16 +37,14 @@ const utility_1 = require("../../utility");
         if (setup.live) {
             params.commit_id = setup.idmap['commit01'];
             params.id = setup.idmap['commit_diff01'];
-            params.id = setup.idmap['commit_diff01'];
             params.organization_id = setup.idmap['organization01'];
             params.repo_id = setup.idmap['repo01'];
         }
         else {
             params.commit_id = 'direct01';
             params.id = 'direct02';
-            params.id = 'direct03';
-            params.organization_id = 'direct04';
-            params.repo_id = 'direct05';
+            params.organization_id = 'direct03';
+            params.repo_id = 'direct04';
         }
         const result = await client.direct({
             path: 'api/v1/organizations/{organization_id}/repos/{repo_id}/vcs/commits/{commit_id}/diff/{id}',
@@ -73,7 +71,6 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(calls[0].url.includes('direct02'));
             (0, node_assert_1.default)(calls[0].url.includes('direct03'));
             (0, node_assert_1.default)(calls[0].url.includes('direct04'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct05'));
         }
     });
 });

@@ -47,19 +47,15 @@ class PatchsetDiffDirectTest extends TestCase
         if ($setup["live"]) {
             $params["change_id"] = $setup["idmap"]["change01"] ?? null;
             $params["id"] = $setup["idmap"]["patchset_diff01"] ?? null;
-            $params["id"] = $setup["idmap"]["patchset_diff01"] ?? null;
             $params["organization_id"] = $setup["idmap"]["organization01"] ?? null;
-            $params["patchset_id"] = $setup["idmap"]["patchset01"] ?? null;
             $params["patchset_id"] = $setup["idmap"]["patchset01"] ?? null;
             $params["repo_id"] = $setup["idmap"]["repo01"] ?? null;
         } else {
             $params["change_id"] = "direct01";
             $params["id"] = "direct02";
-            $params["id"] = "direct03";
-            $params["organization_id"] = "direct04";
-            $params["patchset_id"] = "direct05";
-            $params["patchset_id"] = "direct06";
-            $params["repo_id"] = "direct07";
+            $params["organization_id"] = "direct03";
+            $params["patchset_id"] = "direct04";
+            $params["repo_id"] = "direct05";
         }
 
         $result = $client->direct([

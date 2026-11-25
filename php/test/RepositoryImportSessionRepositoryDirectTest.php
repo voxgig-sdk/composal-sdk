@@ -34,8 +34,8 @@ class RepositoryImportSessionRepositoryDirectTest extends TestCase
             return;
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE" && null === ($setup["idmap"]['repository_import_session01'] ?? null)) {
-            fwrite(STDOUT, 'LIVE STEP {"id":"direct-list-repository_import_session_repository","state":"excluded","attempted":false,"reason":"GET-only live run: needs repository_import_session01, which only POST /api/v1/repository_import_sessions/{id}/authorization gives"}' . "\n");
-            $this->markTestSkipped('Live coverage incomplete: direct-list-repository_import_session_repository excluded (GET-only live run: needs repository_import_session01, which only POST /api/v1/repository_import_sessions/{id}/authorization gives)');
+            fwrite(STDOUT, 'LIVE STEP {"id":"direct-list-repository_import_session_repository","state":"excluded","attempted":false,"reason":"GET-only live run: needs repository_import_session01, which only POST /api/v1/organizations/{organization_id}/repository_import_sessions gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: direct-list-repository_import_session_repository excluded (GET-only live run: needs repository_import_session01, which only POST /api/v1/organizations/{organization_id}/repository_import_sessions gives)');
         }
         if ($setup["live"]) {
             foreach (["repository_import_session01"] as $_liveKey) {

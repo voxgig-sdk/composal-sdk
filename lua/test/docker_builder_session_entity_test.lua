@@ -53,7 +53,7 @@ describe("DockerBuilderSessionEntity", function()
     end
 
     if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
+      for _, _live_key in ipairs({"docker_builder01", "organization01"}) do
         if setup.synthetic_only or setup.idmap[_live_key] == nil then
           runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_DOCKER_BUILDER_SESSION_ENTID")
         end
@@ -68,6 +68,7 @@ describe("DockerBuilderSessionEntity", function()
     local docker_builder_session_ref01_ent = client:DockerBuilderSession(nil)
     local docker_builder_session_ref01_data = helpers.to_map(vs.getprop(
       vs.getpath(setup.data, "new.docker_builder_session"), "docker_builder_session_ref01"))
+    docker_builder_session_ref01_data["docker_builder_id"] = setup.idmap["docker_builder01"]
     docker_builder_session_ref01_data["organization_id"] = setup.idmap["organization01"]
 
     local docker_builder_session_ref01_data_result, err = docker_builder_session_ref01_ent:create(docker_builder_session_ref01_data, nil)

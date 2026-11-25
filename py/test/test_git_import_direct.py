@@ -31,8 +31,8 @@ class TestGitImportDirect:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE" and setup["idmap"].get("git_import01") is None:
-            print("LIVE STEP {\"id\":\"direct-load-git_import\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs git_import01, which only POST /api/v1/git_imports/{id}/complete gives\"}")
-            pytest.skip("Live coverage incomplete: direct-load-git_import excluded (GET-only live run: needs git_import01, which only POST /api/v1/git_imports/{id}/complete gives)")
+            print("LIVE STEP {\"id\":\"direct-load-git_import\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs git_import01, which only POST /api/v1/organizations/{organization_id}/git_imports gives\"}")
+            pytest.skip("Live coverage incomplete: direct-load-git_import excluded (GET-only live run: needs git_import01, which only POST /api/v1/organizations/{organization_id}/git_imports gives)")
 
         if setup["live"]:
             for _live_key in ["git_import01"]:

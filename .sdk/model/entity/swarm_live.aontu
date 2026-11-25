@@ -106,7 +106,7 @@ main: kit: entity: swarm_live: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.swarm`"
           }
         }
       ]

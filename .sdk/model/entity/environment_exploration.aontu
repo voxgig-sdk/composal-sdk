@@ -327,7 +327,7 @@ main: kit: entity: environment_exploration: {
     scenario_generation: {
       h: "Scenario Generation"
       n: "scenario_generation"
-      r: true
+      r: false
       t: "`$OBJECT`"
       union: {
         branches: 2
@@ -539,7 +539,7 @@ main: kit: entity: environment_exploration: {
 
 
   relations: ancestors: [
-    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project") path("$.main.kit.entity.environment")]
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
   ]
 
 }

@@ -89,8 +89,6 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.AgentAppInstall(nil), nil
 	case "agent_attachment":
 		return client.AgentAttachment(nil), nil
-	case "agent_automation":
-		return client.AgentAutomation(nil), nil
 	case "agent_avatar":
 		return client.AgentAvatar(nil), nil
 	case "agent_command":
@@ -245,6 +243,8 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.AppDeploy(nil), nil
 	case "app_deployment":
 		return client.AppDeployment(nil), nil
+	case "app_deployment_dashboard":
+		return client.AppDeploymentDashboard(nil), nil
 	case "app_deployment_operation":
 		return client.AppDeploymentOperation(nil), nil
 	case "app_deployment_rollback":
@@ -503,8 +503,6 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.DeviceBrowserOperation(nil), nil
 	case "device_control_message":
 		return client.DeviceControlMessage(nil), nil
-	case "device_control_operation":
-		return client.DeviceControlOperation(nil), nil
 	case "device_enterprise_relay":
 		return client.DeviceEnterpriseRelay(nil), nil
 	case "device_folder_listing":
@@ -515,6 +513,8 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.DeviceInvocation(nil), nil
 	case "device_local_event":
 		return client.DeviceLocalEvent(nil), nil
+	case "device_operation":
+		return client.DeviceOperation(nil), nil
 	case "device_pairing":
 		return client.DevicePairing(nil), nil
 	case "device_project":
@@ -537,8 +537,6 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.Edge(nil), nil
 	case "email_verification":
 		return client.EmailVerification(nil), nil
-	case "environment":
-		return client.Environment(nil), nil
 	case "environment_discovery_run":
 		return client.EnvironmentDiscoveryRun(nil), nil
 	case "environment_exploration":
@@ -551,8 +549,6 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.EnvironmentSecretBinding(nil), nil
 	case "environment_test_account":
 		return client.EnvironmentTestAccount(nil), nil
-	case "evidence":
-		return client.Evidence(nil), nil
 	case "execution_desired_state":
 		return client.ExecutionDesiredState(nil), nil
 	case "execution_reconciler_tick":
@@ -593,8 +589,6 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.GithubCiRepositoryCompatibilityReport(nil), nil
 	case "github_connection":
 		return client.GithubConnection(nil), nil
-	case "github_integration":
-		return client.GithubIntegration(nil), nil
 	case "github_onboarding":
 		return client.GithubOnboarding(nil), nil
 	case "github_onboarding_branch":
@@ -711,8 +705,6 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.Memory(nil), nil
 	case "merge_queue_entry":
 		return client.MergeQueueEntry(nil), nil
-	case "merge_request":
-		return client.MergeRequest(nil), nil
 	case "merge_resolution":
 		return client.MergeResolution(nil), nil
 	case "messaging_conversation_message":
@@ -809,6 +801,8 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.PageRepoVcCommit(nil), nil
 	case "pages_billing":
 		return client.PagesBilling(nil), nil
+	case "pages_github_integration":
+		return client.PagesGithubIntegration(nil), nil
 	case "pages_github_onboarding":
 		return client.PagesGithubOnboarding(nil), nil
 	case "pages_member":
@@ -879,8 +873,12 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.ProjectOverviewMetric(nil), nil
 	case "project_overview_pull_request":
 		return client.ProjectOverviewPullRequest(nil), nil
+	case "project_pr_testing":
+		return client.ProjectPrTesting(nil), nil
 	case "project_product_map":
 		return client.ProjectProductMap(nil), nil
+	case "project_product_map_comparison":
+		return client.ProjectProductMapComparison(nil), nil
 	case "project_recording":
 		return client.ProjectRecording(nil), nil
 	case "project_run_plan":
@@ -893,8 +891,6 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.ProjectScenarioRow(nil), nil
 	case "project_setting":
 		return client.ProjectSetting(nil), nil
-	case "pull_request":
-		return client.PullRequest(nil), nil
 	case "pull_request_action":
 		return client.PullRequestAction(nil), nil
 	case "pull_request_magic_merge":
@@ -1085,6 +1081,8 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.SparkAgentSkill(nil), nil
 	case "spark_agent_thread":
 		return client.SparkAgentThread(nil), nil
+	case "spark_automation":
+		return client.SparkAutomation(nil), nil
 	case "spark_credit":
 		return client.SparkCredit(nil), nil
 	case "spark_credit_agent_usage":
@@ -1161,6 +1159,14 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.VerifyBrowserSession(nil), nil
 	case "verify_email_verification":
 		return client.VerifyEmailVerification(nil), nil
+	case "verify_environment":
+		return client.VerifyEnvironment(nil), nil
+	case "verify_evidence":
+		return client.VerifyEvidence(nil), nil
+	case "verify_merge_request":
+		return client.VerifyMergeRequest(nil), nil
+	case "verify_pull_request":
+		return client.VerifyPullRequest(nil), nil
 	case "verify_signal_integration":
 		return client.VerifySignalIntegration(nil), nil
 	case "verify_static_site_domain":

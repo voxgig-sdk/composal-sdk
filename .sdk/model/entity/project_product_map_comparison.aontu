@@ -1,0 +1,221 @@
+# Entity: project_product_map_comparison
+
+main: kit: entity: project_product_map_comparison: {
+
+  alias: field: {}
+
+  fields: {
+    accounts: {
+      h: "Accounts"
+      n: "accounts"
+      r: true
+      t: "`$ARRAY`"
+    }
+    comparison: {
+      h: "Comparison"
+      n: "comparison"
+      r: true
+      t: "`$ANY`"
+    }
+    filters: {
+      h: "Filters"
+      n: "filters"
+      r: true
+      t: "`$ANY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+    project: {
+      h: "Project"
+      n: "project"
+      r: true
+      t: "`$OBJECT`"
+    }
+    requirements: {
+      h: "Requirements"
+      n: "requirements"
+      r: true
+      t: "`$ARRAY`"
+    }
+    revisions: {
+      h: "Revisions"
+      n: "revisions"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "project_product_map_comparison"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "account_id"
+                or: "account_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "area"
+                or: "area"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "before"
+                or: "before"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "compare_revision_id"
+                or: "compare_revision_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "persona_id"
+                or: "persona_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "query"
+                or: "query"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "revision_id"
+                or: "revision_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "since"
+                or: "since"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              project_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "product_map_comparison"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

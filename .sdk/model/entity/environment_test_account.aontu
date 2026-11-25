@@ -321,7 +321,7 @@ main: kit: entity: environment_test_account: {
 
 
   relations: ancestors: [
-    [path("$.main.kit.entity.organization") path("$.main.kit.entity.environment")]
+    [path("$.main.kit.entity.organization")]
   ]
 
 }

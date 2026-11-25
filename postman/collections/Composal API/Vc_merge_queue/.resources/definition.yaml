@@ -5,9 +5,9 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `analytics` | object | yes |  |
+  | `analytics` | object |  |  |
   | `id` | string |  |  |
   | `policy` | object | yes |  |
   | `queue` | object | yes |  |
   | `target_branches` | array |  |  |
-order: 532000
+order: 531000

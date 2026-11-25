@@ -5,7 +5,7 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `analytics` | object | yes |  |
+  | `analytics` | object |  |  |
   | `change_id` | string |  |  |
   | `expected_target_commit_id` | string |  |  |
   | `expected_target_version` | integer |  |  |
@@ -19,4 +19,4 @@ description: |-
   | `queue` | object | yes |  |
   | `target_branches` | array |  |  |
   | `when_ready` | boolean |  |  |
-order: 323000
+order: 319000

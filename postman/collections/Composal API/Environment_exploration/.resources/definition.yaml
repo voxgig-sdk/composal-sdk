@@ -1,7 +1,7 @@
 $kind: collection
 id: "4bcb07a2-6ed2-547d-b3a8-06a09fbd50b5"
 description: |-
-  The **environment_exploration** entity, which belongs to a organization and a project and a environment. Its requests address one record by `{{environment_exploration_id}}`, which a list or a create remembers.
+  The **environment_exploration** entity, which belongs to a organization and a project. Its requests address one record by `{{environment_exploration_id}}`, which a list or a create remembers.
 
   | field | type | required | |
   |---|---|---|---|
@@ -44,7 +44,7 @@ description: |-
   | `reproductions` | array | yes |  |
   | `saves_scenarios` | boolean | yes |  |
   | `scannable_flows` | array | yes |  |
-  | `scenario_generation` | object | yes |  |
+  | `scenario_generation` | object |  |  |
   | `sign_in_needs_answer` | boolean | yes |  |
   | `sign_in_outcome` | string | yes |  |
   | `sign_in_question` | string |  |  |
@@ -54,4 +54,4 @@ description: |-
   | `title` | string |  |  |
   | `unlock` | any | yes |  |
   | `web_url` | string | yes |  |
-order: 237000
+order: 236000

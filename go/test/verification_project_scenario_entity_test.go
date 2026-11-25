@@ -132,7 +132,11 @@ func TestVerificationProjectScenarioEntity(t *testing.T) {
 		case string, bool, float64, int, int64:
 			verificationProjectScenarioRef01MatchDt0["project_id"] = v
 		default:
-			verificationProjectScenarioRef01MatchDt0["project_id"] = setup.idmap["project_id"]
+			if v := setup.idmap["project_id"]; v != nil {
+				verificationProjectScenarioRef01MatchDt0["project_id"] = v
+			} else {
+				verificationProjectScenarioRef01MatchDt0["project_id"] = setup.idmap["project01"]
+			}
 		}
 		verificationProjectScenarioRef01DataDt0Loaded, err := verificationProjectScenarioRef01Ent.Load(verificationProjectScenarioRef01MatchDt0, nil)
 		if err != nil {
@@ -249,7 +253,11 @@ func TestVerificationProjectScenarioEntity(t *testing.T) {
 		case string, bool, float64, int, int64:
 			verificationProjectScenarioRef01MatchDt0["project_id"] = v
 		default:
-			verificationProjectScenarioRef01MatchDt0["project_id"] = setup.idmap["project_id"]
+			if v := setup.idmap["project_id"]; v != nil {
+				verificationProjectScenarioRef01MatchDt0["project_id"] = v
+			} else {
+				verificationProjectScenarioRef01MatchDt0["project_id"] = setup.idmap["project01"]
+			}
 		}
 		verificationProjectScenarioRef01DataDt0Loaded, err := verificationProjectScenarioRef01Ent.Load(verificationProjectScenarioRef01MatchDt0, nil)
 		if err != nil {

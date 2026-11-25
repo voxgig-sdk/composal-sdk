@@ -44,10 +44,10 @@ scripts:
       const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
       const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
       if ("Mark01-execution_desired_state_ref01" === pm.variables.get("execution_desired_state_ref01_marked")) pm.test("3. Load execution_desired_state: the update reads back", () => {
-        pm.expect(JSON.stringify(body)).to.include("Mark01-execution_desired_state_ref01")
+        pm.expect(JSON.stringify(body?.["desired_state"])).to.include("Mark01-execution_desired_state_ref01")
       })
       pm.test("3. Load execution_desired_state: the record is the one asked for", () => {
-        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("execution_desired_state_ref01")))
+        pm.expect(String(at(body?.["desired_state"], "id"))).to.eql(String(pm.variables.get("execution_desired_state_ref01")))
       })
     language: text/javascript
 order: 3000

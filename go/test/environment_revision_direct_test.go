@@ -30,11 +30,6 @@ func TestEnvironmentRevisionDirect(t *testing.T) {
 			t.Skip(_reason)
 			return
 		}
-		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" && setup.idmap["environment01"] == nil {
-			t.Log("LIVE STEP {\"id\":\"direct-load-environment_revision\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives\"}")
-			t.Skip("Live coverage incomplete: direct-load-environment_revision excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)")
-			return
-		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" && setup.idmap["environment_revision01"] == nil {
 			t.Log("LIVE STEP {\"id\":\"direct-load-environment_revision\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment_revision01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}/provision gives\"}")
 			t.Skip("Live coverage incomplete: direct-load-environment_revision excluded (GET-only live run: needs environment_revision01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}/provision gives)")

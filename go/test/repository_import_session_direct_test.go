@@ -31,8 +31,8 @@ func TestRepositoryImportSessionDirect(t *testing.T) {
 			return
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" && setup.idmap["repository_import_session01"] == nil {
-			t.Log("LIVE STEP {\"id\":\"direct-load-repository_import_session\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs repository_import_session01, which only POST /api/v1/repository_import_sessions/{id}/authorization gives\"}")
-			t.Skip("Live coverage incomplete: direct-load-repository_import_session excluded (GET-only live run: needs repository_import_session01, which only POST /api/v1/repository_import_sessions/{id}/authorization gives)")
+			t.Log("LIVE STEP {\"id\":\"direct-load-repository_import_session\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs repository_import_session01, which only POST /api/v1/organizations/{organization_id}/repository_import_sessions gives\"}")
+			t.Skip("Live coverage incomplete: direct-load-repository_import_session excluded (GET-only live run: needs repository_import_session01, which only POST /api/v1/organizations/{organization_id}/repository_import_sessions gives)")
 			return
 		}
 		if setup.live {

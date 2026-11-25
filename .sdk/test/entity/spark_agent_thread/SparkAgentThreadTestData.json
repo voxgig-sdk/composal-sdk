@@ -125,6 +125,11 @@
     }
   },
   "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
     "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive": {
       "provenance": "operation-contract",
       "version": 2,
@@ -136,11 +141,6 @@
       "source": "openapi3"
     },
     "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/snooze": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

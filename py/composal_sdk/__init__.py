@@ -390,12 +390,6 @@ class ComposalSDK:
         return AgentAttachmentEntity(self, data)
 
 
-    def AgentAutomation(self, data=None) -> "AgentAutomationEntity":
-        """Entity factory: client.AgentAutomation().list() / client.AgentAutomation().load({"id": ...})."""
-        from composal_sdk.entity.agent_automation_entity import AgentAutomationEntity
-        return AgentAutomationEntity(self, data)
-
-
     def AgentAvatar(self, data=None) -> "AgentAvatarEntity":
         """Entity factory: client.AgentAvatar().list() / client.AgentAvatar().load({"id": ...})."""
         from composal_sdk.entity.agent_avatar_entity import AgentAvatarEntity
@@ -856,6 +850,12 @@ class ComposalSDK:
         """Entity factory: client.AppDeployment().list() / client.AppDeployment().load({"id": ...})."""
         from composal_sdk.entity.app_deployment_entity import AppDeploymentEntity
         return AppDeploymentEntity(self, data)
+
+
+    def AppDeploymentDashboard(self, data=None) -> "AppDeploymentDashboardEntity":
+        """Entity factory: client.AppDeploymentDashboard().list() / client.AppDeploymentDashboard().load({"id": ...})."""
+        from composal_sdk.entity.app_deployment_dashboard_entity import AppDeploymentDashboardEntity
+        return AppDeploymentDashboardEntity(self, data)
 
 
     def AppDeploymentOperation(self, data=None) -> "AppDeploymentOperationEntity":
@@ -1632,12 +1632,6 @@ class ComposalSDK:
         return DeviceControlMessageEntity(self, data)
 
 
-    def DeviceControlOperation(self, data=None) -> "DeviceControlOperationEntity":
-        """Entity factory: client.DeviceControlOperation().list() / client.DeviceControlOperation().load({"id": ...})."""
-        from composal_sdk.entity.device_control_operation_entity import DeviceControlOperationEntity
-        return DeviceControlOperationEntity(self, data)
-
-
     def DeviceEnterpriseRelay(self, data=None) -> "DeviceEnterpriseRelayEntity":
         """Entity factory: client.DeviceEnterpriseRelay().list() / client.DeviceEnterpriseRelay().load({"id": ...})."""
         from composal_sdk.entity.device_enterprise_relay_entity import DeviceEnterpriseRelayEntity
@@ -1666,6 +1660,12 @@ class ComposalSDK:
         """Entity factory: client.DeviceLocalEvent().list() / client.DeviceLocalEvent().load({"id": ...})."""
         from composal_sdk.entity.device_local_event_entity import DeviceLocalEventEntity
         return DeviceLocalEventEntity(self, data)
+
+
+    def DeviceOperation(self, data=None) -> "DeviceOperationEntity":
+        """Entity factory: client.DeviceOperation().list() / client.DeviceOperation().load({"id": ...})."""
+        from composal_sdk.entity.device_operation_entity import DeviceOperationEntity
+        return DeviceOperationEntity(self, data)
 
 
     def DevicePairing(self, data=None) -> "DevicePairingEntity":
@@ -1734,12 +1734,6 @@ class ComposalSDK:
         return EmailVerificationEntity(self, data)
 
 
-    def Environment(self, data=None) -> "EnvironmentEntity":
-        """Entity factory: client.Environment().list() / client.Environment().load({"id": ...})."""
-        from composal_sdk.entity.environment_entity import EnvironmentEntity
-        return EnvironmentEntity(self, data)
-
-
     def EnvironmentDiscoveryRun(self, data=None) -> "EnvironmentDiscoveryRunEntity":
         """Entity factory: client.EnvironmentDiscoveryRun().list() / client.EnvironmentDiscoveryRun().load({"id": ...})."""
         from composal_sdk.entity.environment_discovery_run_entity import EnvironmentDiscoveryRunEntity
@@ -1774,12 +1768,6 @@ class ComposalSDK:
         """Entity factory: client.EnvironmentTestAccount().list() / client.EnvironmentTestAccount().load({"id": ...})."""
         from composal_sdk.entity.environment_test_account_entity import EnvironmentTestAccountEntity
         return EnvironmentTestAccountEntity(self, data)
-
-
-    def Evidence(self, data=None) -> "EvidenceEntity":
-        """Entity factory: client.Evidence().list() / client.Evidence().load({"id": ...})."""
-        from composal_sdk.entity.evidence_entity import EvidenceEntity
-        return EvidenceEntity(self, data)
 
 
     def ExecutionDesiredState(self, data=None) -> "ExecutionDesiredStateEntity":
@@ -1900,12 +1888,6 @@ class ComposalSDK:
         """Entity factory: client.GithubConnection().list() / client.GithubConnection().load({"id": ...})."""
         from composal_sdk.entity.github_connection_entity import GithubConnectionEntity
         return GithubConnectionEntity(self, data)
-
-
-    def GithubIntegration(self, data=None) -> "GithubIntegrationEntity":
-        """Entity factory: client.GithubIntegration().list() / client.GithubIntegration().load({"id": ...})."""
-        from composal_sdk.entity.github_integration_entity import GithubIntegrationEntity
-        return GithubIntegrationEntity(self, data)
 
 
     def GithubOnboarding(self, data=None) -> "GithubOnboardingEntity":
@@ -2256,12 +2238,6 @@ class ComposalSDK:
         return MergeQueueEntryEntity(self, data)
 
 
-    def MergeRequest(self, data=None) -> "MergeRequestEntity":
-        """Entity factory: client.MergeRequest().list() / client.MergeRequest().load({"id": ...})."""
-        from composal_sdk.entity.merge_request_entity import MergeRequestEntity
-        return MergeRequestEntity(self, data)
-
-
     def MergeResolution(self, data=None) -> "MergeResolutionEntity":
         """Entity factory: client.MergeResolution().list() / client.MergeResolution().load({"id": ...})."""
         from composal_sdk.entity.merge_resolution_entity import MergeResolutionEntity
@@ -2550,6 +2526,12 @@ class ComposalSDK:
         return PagesBillingEntity(self, data)
 
 
+    def PagesGithubIntegration(self, data=None) -> "PagesGithubIntegrationEntity":
+        """Entity factory: client.PagesGithubIntegration().list() / client.PagesGithubIntegration().load({"id": ...})."""
+        from composal_sdk.entity.pages_github_integration_entity import PagesGithubIntegrationEntity
+        return PagesGithubIntegrationEntity(self, data)
+
+
     def PagesGithubOnboarding(self, data=None) -> "PagesGithubOnboardingEntity":
         """Entity factory: client.PagesGithubOnboarding().list() / client.PagesGithubOnboarding().load({"id": ...})."""
         from composal_sdk.entity.pages_github_onboarding_entity import PagesGithubOnboardingEntity
@@ -2760,10 +2742,22 @@ class ComposalSDK:
         return ProjectOverviewPullRequestEntity(self, data)
 
 
+    def ProjectPrTesting(self, data=None) -> "ProjectPrTestingEntity":
+        """Entity factory: client.ProjectPrTesting().list() / client.ProjectPrTesting().load({"id": ...})."""
+        from composal_sdk.entity.project_pr_testing_entity import ProjectPrTestingEntity
+        return ProjectPrTestingEntity(self, data)
+
+
     def ProjectProductMap(self, data=None) -> "ProjectProductMapEntity":
         """Entity factory: client.ProjectProductMap().list() / client.ProjectProductMap().load({"id": ...})."""
         from composal_sdk.entity.project_product_map_entity import ProjectProductMapEntity
         return ProjectProductMapEntity(self, data)
+
+
+    def ProjectProductMapComparison(self, data=None) -> "ProjectProductMapComparisonEntity":
+        """Entity factory: client.ProjectProductMapComparison().list() / client.ProjectProductMapComparison().load({"id": ...})."""
+        from composal_sdk.entity.project_product_map_comparison_entity import ProjectProductMapComparisonEntity
+        return ProjectProductMapComparisonEntity(self, data)
 
 
     def ProjectRecording(self, data=None) -> "ProjectRecordingEntity":
@@ -2800,12 +2794,6 @@ class ComposalSDK:
         """Entity factory: client.ProjectSetting().list() / client.ProjectSetting().load({"id": ...})."""
         from composal_sdk.entity.project_setting_entity import ProjectSettingEntity
         return ProjectSettingEntity(self, data)
-
-
-    def PullRequest(self, data=None) -> "PullRequestEntity":
-        """Entity factory: client.PullRequest().list() / client.PullRequest().load({"id": ...})."""
-        from composal_sdk.entity.pull_request_entity import PullRequestEntity
-        return PullRequestEntity(self, data)
 
 
     def PullRequestAction(self, data=None) -> "PullRequestActionEntity":
@@ -3378,6 +3366,12 @@ class ComposalSDK:
         return SparkAgentThreadEntity(self, data)
 
 
+    def SparkAutomation(self, data=None) -> "SparkAutomationEntity":
+        """Entity factory: client.SparkAutomation().list() / client.SparkAutomation().load({"id": ...})."""
+        from composal_sdk.entity.spark_automation_entity import SparkAutomationEntity
+        return SparkAutomationEntity(self, data)
+
+
     def SparkCredit(self, data=None) -> "SparkCreditEntity":
         """Entity factory: client.SparkCredit().list() / client.SparkCredit().load({"id": ...})."""
         from composal_sdk.entity.spark_credit_entity import SparkCreditEntity
@@ -3606,6 +3600,30 @@ class ComposalSDK:
         return VerifyEmailVerificationEntity(self, data)
 
 
+    def VerifyEnvironment(self, data=None) -> "VerifyEnvironmentEntity":
+        """Entity factory: client.VerifyEnvironment().list() / client.VerifyEnvironment().load({"id": ...})."""
+        from composal_sdk.entity.verify_environment_entity import VerifyEnvironmentEntity
+        return VerifyEnvironmentEntity(self, data)
+
+
+    def VerifyEvidence(self, data=None) -> "VerifyEvidenceEntity":
+        """Entity factory: client.VerifyEvidence().list() / client.VerifyEvidence().load({"id": ...})."""
+        from composal_sdk.entity.verify_evidence_entity import VerifyEvidenceEntity
+        return VerifyEvidenceEntity(self, data)
+
+
+    def VerifyMergeRequest(self, data=None) -> "VerifyMergeRequestEntity":
+        """Entity factory: client.VerifyMergeRequest().list() / client.VerifyMergeRequest().load({"id": ...})."""
+        from composal_sdk.entity.verify_merge_request_entity import VerifyMergeRequestEntity
+        return VerifyMergeRequestEntity(self, data)
+
+
+    def VerifyPullRequest(self, data=None) -> "VerifyPullRequestEntity":
+        """Entity factory: client.VerifyPullRequest().list() / client.VerifyPullRequest().load({"id": ...})."""
+        from composal_sdk.entity.verify_pull_request_entity import VerifyPullRequestEntity
+        return VerifyPullRequestEntity(self, data)
+
+
     def VerifySignalIntegration(self, data=None) -> "VerifySignalIntegrationEntity":
         """Entity factory: client.VerifySignalIntegration().list() / client.VerifySignalIntegration().load({"id": ...})."""
         from composal_sdk.entity.verify_signal_integration_entity import VerifySignalIntegrationEntity
@@ -3717,7 +3735,6 @@ if TYPE_CHECKING:
     from composal_sdk.entity.agent_app_entity import AgentAppEntity
     from composal_sdk.entity.agent_app_install_entity import AgentAppInstallEntity
     from composal_sdk.entity.agent_attachment_entity import AgentAttachmentEntity
-    from composal_sdk.entity.agent_automation_entity import AgentAutomationEntity
     from composal_sdk.entity.agent_avatar_entity import AgentAvatarEntity
     from composal_sdk.entity.agent_command_entity import AgentCommandEntity
     from composal_sdk.entity.agent_computer_entity import AgentComputerEntity
@@ -3795,6 +3812,7 @@ if TYPE_CHECKING:
     from composal_sdk.entity.app_data_resource_entity import AppDataResourceEntity
     from composal_sdk.entity.app_deploy_entity import AppDeployEntity
     from composal_sdk.entity.app_deployment_entity import AppDeploymentEntity
+    from composal_sdk.entity.app_deployment_dashboard_entity import AppDeploymentDashboardEntity
     from composal_sdk.entity.app_deployment_operation_entity import AppDeploymentOperationEntity
     from composal_sdk.entity.app_deployment_rollback_entity import AppDeploymentRollbackEntity
     from composal_sdk.entity.app_environment_entity import AppEnvironmentEntity
@@ -3924,12 +3942,12 @@ if TYPE_CHECKING:
     from composal_sdk.entity.device_entity import DeviceEntity
     from composal_sdk.entity.device_browser_operation_entity import DeviceBrowserOperationEntity
     from composal_sdk.entity.device_control_message_entity import DeviceControlMessageEntity
-    from composal_sdk.entity.device_control_operation_entity import DeviceControlOperationEntity
     from composal_sdk.entity.device_enterprise_relay_entity import DeviceEnterpriseRelayEntity
     from composal_sdk.entity.device_folder_listing_entity import DeviceFolderListingEntity
     from composal_sdk.entity.device_grant_entity import DeviceGrantEntity
     from composal_sdk.entity.device_invocation_entity import DeviceInvocationEntity
     from composal_sdk.entity.device_local_event_entity import DeviceLocalEventEntity
+    from composal_sdk.entity.device_operation_entity import DeviceOperationEntity
     from composal_sdk.entity.device_pairing_entity import DevicePairingEntity
     from composal_sdk.entity.device_project_entity import DeviceProjectEntity
     from composal_sdk.entity.device_scheduled_check_in_entity import DeviceScheduledCheckInEntity
@@ -3941,14 +3959,12 @@ if TYPE_CHECKING:
     from composal_sdk.entity.dream_entity import DreamEntity
     from composal_sdk.entity.edge_entity import EdgeEntity
     from composal_sdk.entity.email_verification_entity import EmailVerificationEntity
-    from composal_sdk.entity.environment_entity import EnvironmentEntity
     from composal_sdk.entity.environment_discovery_run_entity import EnvironmentDiscoveryRunEntity
     from composal_sdk.entity.environment_exploration_entity import EnvironmentExplorationEntity
     from composal_sdk.entity.environment_first_run_entity import EnvironmentFirstRunEntity
     from composal_sdk.entity.environment_revision_entity import EnvironmentRevisionEntity
     from composal_sdk.entity.environment_secret_binding_entity import EnvironmentSecretBindingEntity
     from composal_sdk.entity.environment_test_account_entity import EnvironmentTestAccountEntity
-    from composal_sdk.entity.evidence_entity import EvidenceEntity
     from composal_sdk.entity.execution_desired_state_entity import ExecutionDesiredStateEntity
     from composal_sdk.entity.execution_reconciler_tick_entity import ExecutionReconcilerTickEntity
     from composal_sdk.entity.execution_release_entity import ExecutionReleaseEntity
@@ -3969,7 +3985,6 @@ if TYPE_CHECKING:
     from composal_sdk.entity.github_ci_repository_entity import GithubCiRepositoryEntity
     from composal_sdk.entity.github_ci_repository_compatibility_report_entity import GithubCiRepositoryCompatibilityReportEntity
     from composal_sdk.entity.github_connection_entity import GithubConnectionEntity
-    from composal_sdk.entity.github_integration_entity import GithubIntegrationEntity
     from composal_sdk.entity.github_onboarding_entity import GithubOnboardingEntity
     from composal_sdk.entity.github_onboarding_branch_entity import GithubOnboardingBranchEntity
     from composal_sdk.entity.github_onboarding_import_entity import GithubOnboardingImportEntity
@@ -4028,7 +4043,6 @@ if TYPE_CHECKING:
     from composal_sdk.entity.member_entity import MemberEntity
     from composal_sdk.entity.memory_entity import MemoryEntity
     from composal_sdk.entity.merge_queue_entry_entity import MergeQueueEntryEntity
-    from composal_sdk.entity.merge_request_entity import MergeRequestEntity
     from composal_sdk.entity.merge_resolution_entity import MergeResolutionEntity
     from composal_sdk.entity.messaging_conversation_message_entity import MessagingConversationMessageEntity
     from composal_sdk.entity.messaging_conversation_upload_entity import MessagingConversationUploadEntity
@@ -4077,6 +4091,7 @@ if TYPE_CHECKING:
     from composal_sdk.entity.page_project_run_entity import PageProjectRunEntity
     from composal_sdk.entity.page_repo_vc_commit_entity import PageRepoVcCommitEntity
     from composal_sdk.entity.pages_billing_entity import PagesBillingEntity
+    from composal_sdk.entity.pages_github_integration_entity import PagesGithubIntegrationEntity
     from composal_sdk.entity.pages_github_onboarding_entity import PagesGithubOnboardingEntity
     from composal_sdk.entity.pages_member_entity import PagesMemberEntity
     from composal_sdk.entity.pages_project_credential_entity import PagesProjectCredentialEntity
@@ -4112,14 +4127,15 @@ if TYPE_CHECKING:
     from composal_sdk.entity.project_messaging_conversation_entity import ProjectMessagingConversationEntity
     from composal_sdk.entity.project_overview_metric_entity import ProjectOverviewMetricEntity
     from composal_sdk.entity.project_overview_pull_request_entity import ProjectOverviewPullRequestEntity
+    from composal_sdk.entity.project_pr_testing_entity import ProjectPrTestingEntity
     from composal_sdk.entity.project_product_map_entity import ProjectProductMapEntity
+    from composal_sdk.entity.project_product_map_comparison_entity import ProjectProductMapComparisonEntity
     from composal_sdk.entity.project_recording_entity import ProjectRecordingEntity
     from composal_sdk.entity.project_run_plan_entity import ProjectRunPlanEntity
     from composal_sdk.entity.project_run_schedule_entity import ProjectRunScheduleEntity
     from composal_sdk.entity.project_scenario_option_entity import ProjectScenarioOptionEntity
     from composal_sdk.entity.project_scenario_row_entity import ProjectScenarioRowEntity
     from composal_sdk.entity.project_setting_entity import ProjectSettingEntity
-    from composal_sdk.entity.pull_request_entity import PullRequestEntity
     from composal_sdk.entity.pull_request_action_entity import PullRequestActionEntity
     from composal_sdk.entity.pull_request_magic_merge_entity import PullRequestMagicMergeEntity
     from composal_sdk.entity.pull_request_setting_entity import PullRequestSettingEntity
@@ -4215,6 +4231,7 @@ if TYPE_CHECKING:
     from composal_sdk.entity.spark_agent_site_entity import SparkAgentSiteEntity
     from composal_sdk.entity.spark_agent_skill_entity import SparkAgentSkillEntity
     from composal_sdk.entity.spark_agent_thread_entity import SparkAgentThreadEntity
+    from composal_sdk.entity.spark_automation_entity import SparkAutomationEntity
     from composal_sdk.entity.spark_credit_entity import SparkCreditEntity
     from composal_sdk.entity.spark_credit_agent_usage_entity import SparkCreditAgentUsageEntity
     from composal_sdk.entity.spark_credit_usage_total_entity import SparkCreditUsageTotalEntity
@@ -4253,6 +4270,10 @@ if TYPE_CHECKING:
     from composal_sdk.entity.verify_app_domain_entity import VerifyAppDomainEntity
     from composal_sdk.entity.verify_browser_session_entity import VerifyBrowserSessionEntity
     from composal_sdk.entity.verify_email_verification_entity import VerifyEmailVerificationEntity
+    from composal_sdk.entity.verify_environment_entity import VerifyEnvironmentEntity
+    from composal_sdk.entity.verify_evidence_entity import VerifyEvidenceEntity
+    from composal_sdk.entity.verify_merge_request_entity import VerifyMergeRequestEntity
+    from composal_sdk.entity.verify_pull_request_entity import VerifyPullRequestEntity
     from composal_sdk.entity.verify_signal_integration_entity import VerifySignalIntegrationEntity
     from composal_sdk.entity.verify_static_site_domain_entity import VerifyStaticSiteDomainEntity
     from composal_sdk.entity.version_log_entity import VersionLogEntity

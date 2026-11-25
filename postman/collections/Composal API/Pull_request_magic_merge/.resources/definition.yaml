@@ -1,8 +1,8 @@
 $kind: collection
 id: b7e8f931-1fff-577c-9704-8e67a07f58bb
 description: |-
-  The **pull_request_magic_merge** entity, which belongs to a organization and a pull_request. Its requests address one record by `{{pull_request_magic_merge_id}}`, which a list or a create remembers.
+  The **pull_request_magic_merge** entity, which belongs to a organization. Its requests address one record by `{{pull_request_magic_merge_id}}`, which a list or a create remembers.
 
   | field | type | required | |
   |---|---|---|---|
-order: 413000
+order: 411000

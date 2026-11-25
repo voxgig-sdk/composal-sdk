@@ -43,7 +43,7 @@ describe('PatchsetDiffDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-patchset_diff', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["change01","patchset_diff01","patchset_diff01","organization01","patchset01","patchset01","repo01"], LIVE_STRICT)) return
+    if (skipIfMissingIds(t, setup, ["change01","patchset_diff01","organization01","patchset01","repo01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
@@ -51,19 +51,15 @@ describe('PatchsetDiffDirect', async () => {
     if (setup.live) {
       params.change_id = setup.idmap['change01']
       params.id = setup.idmap['patchset_diff01']
-      params.id = setup.idmap['patchset_diff01']
       params.organization_id = setup.idmap['organization01']
-      params.patchset_id = setup.idmap['patchset01']
       params.patchset_id = setup.idmap['patchset01']
       params.repo_id = setup.idmap['repo01']
     } else {
       params.change_id = 'direct01'
       params.id = 'direct02'
-      params.id = 'direct03'
-      params.organization_id = 'direct04'
-      params.patchset_id = 'direct05'
-      params.patchset_id = 'direct06'
-      params.repo_id = 'direct07'
+      params.organization_id = 'direct03'
+      params.patchset_id = 'direct04'
+      params.repo_id = 'direct05'
     }
 
     const result: any = await client.direct({
@@ -92,8 +88,6 @@ describe('PatchsetDiffDirect', async () => {
       assert(calls[0].url.includes('direct03'))
       assert(calls[0].url.includes('direct04'))
       assert(calls[0].url.includes('direct05'))
-      assert(calls[0].url.includes('direct06'))
-      assert(calls[0].url.includes('direct07'))
     }
   })
 

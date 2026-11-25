@@ -25,7 +25,7 @@ class DeepScanEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.DeepScan(nil).load({ "id" => 1, "organization_id" => "x" }, nil)
+      client.DeepScan(nil).list({ "organization_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class DeepScanEntityTest < Minitest::Test
     setup = deep_scan_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "load"].each do |_op|
+    ["create", "list", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "deep_scan." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,8 +43,52 @@ class DeepScanEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"deep_scan.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce\"}"
-      puts "LIVE STEP {\"id\":\"deep_scan.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only deep_scan.create.0 gives\"}"
-      skip("Live coverage incomplete: deep_scan.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce); deep_scan.load.1 excluded (GET-only live run: reads a record only deep_scan.create.0 gives)")
+    if setup[:live]
+      ["organization01"].each do |_live_key|
+        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
+          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_DEEP_SCAN_ENTID")
+        end
+      end
+    end
+    client = setup[:client]
+    if setup[:live]
+      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["deep_scan01"]
+      Runner.live_pace
+      Runner.live_existing(setup, LIVE_STRICT, "deep_scan", "id", _live_id) do
+        client.DeepScan(nil).list({"organization_id" => setup[:idmap]["organization01"]}, nil)
+      end
+    end
+
+    # Bootstrap entity data from existing test data.
+    deep_scan_ref01_data_raw = Vs.items(Helpers.to_map(
+      Vs.getpath(setup[:data], "existing.deep_scan")))
+    deep_scan_ref01_data = nil
+    if deep_scan_ref01_data_raw.length > 0
+      deep_scan_ref01_data = Helpers.to_map(deep_scan_ref01_data_raw[0][1])
+    end
+
+    Runner.live_pace if setup[:live]
+    # LIST
+    deep_scan_ref01_ent = client.DeepScan(nil)
+    deep_scan_ref01_match = {
+      "organization_id" => setup[:idmap]["organization01"],
+    }
+
+    deep_scan_ref01_list_result = deep_scan_ref01_ent.list(deep_scan_ref01_match, nil)
+    assert deep_scan_ref01_list_result.is_a?(Array)
+
+    Runner.live_pace if setup[:live]
+    # LOAD
+    deep_scan_ref01_match_dt0 = {
+      "id" => deep_scan_ref01_data["id"],
+    }
+    deep_scan_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
+    deep_scan_ref01_data_dt0_loaded = deep_scan_ref01_ent.load(deep_scan_ref01_match_dt0, nil)
+    deep_scan_ref01_data_dt0_load_result = Helpers.to_map(deep_scan_ref01_data_dt0_loaded.respond_to?(:data_get) ? deep_scan_ref01_data_dt0_loaded.data_get : deep_scan_ref01_data_dt0_loaded)
+    assert !deep_scan_ref01_data_dt0_load_result.nil?
+    assert Runner.live_same_id(deep_scan_ref01_data_dt0_load_result["id"], deep_scan_ref01_data["id"])
+
+      return
     end
 
     if setup[:live]
@@ -69,10 +113,25 @@ class DeepScanEntityTest < Minitest::Test
     assert !deep_scan_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
+    # LIST
+    deep_scan_ref01_match = {
+      "organization_id" => setup[:idmap]["organization01"],
+    }
+
+    deep_scan_ref01_list_result = deep_scan_ref01_ent.list(deep_scan_ref01_match, nil)
+    assert deep_scan_ref01_list_result.is_a?(Array)
+
+    found_item = Vs.select(
+      Runner.entity_list_to_data(deep_scan_ref01_list_result),
+      { "id" => deep_scan_ref01_data["id"] })
+    assert !Vs.isempty(found_item)
+
+    Runner.live_pace if setup[:live]
     # LOAD
     deep_scan_ref01_match_dt0 = {
       "id" => deep_scan_ref01_data["id"],
     }
+    deep_scan_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
     deep_scan_ref01_data_dt0_loaded = deep_scan_ref01_ent.load(deep_scan_ref01_match_dt0, nil)
     deep_scan_ref01_data_dt0_load_result = Helpers.to_map(deep_scan_ref01_data_dt0_loaded.respond_to?(:data_get) ? deep_scan_ref01_data_dt0_loaded.data_get : deep_scan_ref01_data_dt0_loaded)
     assert !deep_scan_ref01_data_dt0_load_result.nil?

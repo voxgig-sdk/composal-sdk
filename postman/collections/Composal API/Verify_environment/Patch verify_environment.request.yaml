@@ -1,0 +1,31 @@
+$kind: http-request
+id: "0a5a4b61-8a0c-5ba6-8834-6b650e5c143e"
+description: |-
+  The `patch` operation of **verify_environment**.
+
+  SDK: `client.VerifyEnvironment().patch({ id: "example", organization_id: "example", allowed_actions: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/environments/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_environment belongs to.
+  - key: id
+    value: "{{verify_environment_id}}"
+    description: The verify_environment this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "verify_network_connection_id": "example",
+      "allowed_actions": "read_only",
+      "target_url": "example",
+      "imessage_number": "example",
+      "messaging_tester_number": "example",
+      "version": 1
+    }
+order: 5000

@@ -73,7 +73,7 @@ function environment_first_run_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["environment_first_run01", "environment_first_run02", "environment_first_run03", "organization01", "organization02", "organization03", "environment01", "environment02", "environment03"] as $k) {
+    foreach (["environment_first_run01", "environment_first_run02", "environment_first_run03", "organization01", "organization02", "organization03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

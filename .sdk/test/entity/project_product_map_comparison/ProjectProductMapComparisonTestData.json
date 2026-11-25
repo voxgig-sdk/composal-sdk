@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "project_product_map_comparison": {
+      "PROJECT_PRODUCT_MAP_COMPARISON00": {
+        "accounts": [],
+        "comparison": "s47",
+        "filters": "s48",
+        "id": "PROJECT_PRODUCT_MAP_COMPARISON00",
+        "project": {},
+        "requirements": [],
+        "revisions": [],
+        "organization_id": "ORGANIZATION01"
+      },
+      "PROJECT_PRODUCT_MAP_COMPARISON01": {
+        "accounts": [],
+        "comparison": "s8d",
+        "filters": "s8e",
+        "id": "PROJECT_PRODUCT_MAP_COMPARISON01",
+        "project": {},
+        "requirements": [],
+        "revisions": [],
+        "organization_id": "ORGANIZATION01"
+      },
+      "PROJECT_PRODUCT_MAP_COMPARISON02": {
+        "accounts": [],
+        "comparison": "sd3",
+        "filters": "sd4",
+        "id": "PROJECT_PRODUCT_MAP_COMPARISON02",
+        "project": {},
+        "requirements": [],
+        "revisions": [],
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "project_product_map_comparison": {
+      "project_product_map_comparison_ref01": {
+        "accounts": [],
+        "comparison": "s119",
+        "filters": "s11a",
+        "project": {},
+        "requirements": [],
+        "revisions": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

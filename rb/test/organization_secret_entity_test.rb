@@ -85,6 +85,7 @@ class OrganizationSecretEntityTest < Minitest::Test
     organization_secret_ref01_match_dt0 = {
       "id" => organization_secret_ref01_data["id"],
     }
+    organization_secret_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
     organization_secret_ref01_data_dt0_loaded = organization_secret_ref01_ent.load(organization_secret_ref01_match_dt0, nil)
     organization_secret_ref01_data_dt0_load_result = Helpers.to_map(organization_secret_ref01_data_dt0_loaded.respond_to?(:data_get) ? organization_secret_ref01_data_dt0_loaded.data_get : organization_secret_ref01_data_dt0_loaded)
     assert !organization_secret_ref01_data_dt0_load_result.nil?
@@ -150,6 +151,7 @@ class OrganizationSecretEntityTest < Minitest::Test
     organization_secret_ref01_match_dt0 = {
       "id" => organization_secret_ref01_data["id"],
     }
+    organization_secret_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
     organization_secret_ref01_data_dt0_loaded = organization_secret_ref01_ent.load(organization_secret_ref01_match_dt0, nil)
     organization_secret_ref01_data_dt0_load_result = Helpers.to_map(organization_secret_ref01_data_dt0_loaded.respond_to?(:data_get) ? organization_secret_ref01_data_dt0_loaded.data_get : organization_secret_ref01_data_dt0_loaded)
     assert !organization_secret_ref01_data_dt0_load_result.nil?

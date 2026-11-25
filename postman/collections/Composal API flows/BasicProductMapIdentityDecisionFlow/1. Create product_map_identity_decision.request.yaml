@@ -3,7 +3,7 @@ id: "101fca8d-91a3-5efc-bfad-809617183cbb"
 description: |-
   The `create` operation of **product_map_identity_decision**.
 
-  SDK: `client.ProductMapIdentityDecision().create({ organization_id: "example", project_id: "example", observations: [], operation: "example", reason: "example", target: {} })`
+  SDK: `client.ProductMapIdentityDecision().create({ organization_id: "example", project_id: "example", observations: [], operation: "example", reason: "example" })`
 url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/product_map/identity_decisions"
 method: POST
 headers:

@@ -1,0 +1,21 @@
+$kind: http-request
+id: "95f02db7-0785-5918-bddf-b12bb6c7cfac"
+description: |-
+  The `load` operation of **device_operation**.
+
+  SDK: `client.DeviceOperation().load({ device_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/control_operations/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device_operation belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this device_operation belongs to.
+  - key: id
+    value: "{{device_operation_id}}"
+    description: The device_operation this request addresses.
+order: 1000

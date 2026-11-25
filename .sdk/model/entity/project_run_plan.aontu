@@ -50,6 +50,38 @@ main: kit: entity: project_run_plan: {
     identity_probe: {
       h: "Identity Probe"
       n: "identity_probe"
+      op: {
+        create: {
+          req: false
+          type: [
+            "`$ONE`"
+            [
+              "`$OBJECT`"
+              "`$NULL`"
+            ]
+          ]
+        }
+        patch: {
+          req: false
+          type: [
+            "`$ONE`"
+            [
+              "`$OBJECT`"
+              "`$NULL`"
+            ]
+          ]
+        }
+        update: {
+          req: false
+          type: [
+            "`$ONE`"
+            [
+              "`$OBJECT`"
+              "`$NULL`"
+            ]
+          ]
+        }
+      }
       r: true
       t: [
         "`$ONE`"

@@ -33,7 +33,7 @@ class LeaseVerifyDiagnosticEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->LeaseVerifyDiagnostic(null)->create(["lease_id" => 1, "swarm_id" => 'x', "task_id" => 'x', "browser_events" => 'x', "live_browser" => 'x', "live_view" => 'x'], null);
+            $client->LeaseVerifyDiagnostic(null)->create(["lease_id" => 1, "swarm_id" => 'x', "task_id" => 'x', "browser_events" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }

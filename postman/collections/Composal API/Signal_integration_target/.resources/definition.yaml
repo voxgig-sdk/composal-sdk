@@ -19,4 +19,4 @@ description: |-
   | `signal_integration_targets` | array | yes |  |
   | `targets` | array | yes |  |
   | `updated_at` | string |  |  |
-order: 477000
+order: 475000

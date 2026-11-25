@@ -19,4 +19,4 @@ pathVariables:
 body:
   type: json
   content: "{}"
-order: 7000
+order: 6000

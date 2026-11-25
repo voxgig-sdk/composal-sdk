@@ -76,7 +76,7 @@ def _pull_request_magic_merge_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["pull_request_magic_merge01", "pull_request_magic_merge02", "pull_request_magic_merge03", "organization01", "organization02", "organization03", "pull_request01", "pull_request02", "pull_request03"],
+        ["pull_request_magic_merge01", "pull_request_magic_merge02", "pull_request_magic_merge03", "organization01", "organization02", "organization03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

@@ -30,7 +30,7 @@ scripts:
     code: |-
       const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
       const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
-      const rec = body
+      const rec = body?.["operation"]
       if (pm.response.code < 300 && null != rec) {
         if (null != at(rec, "id")) pm.collectionVariables.set("agent_operation_id", String(at(rec, "id")))
       }

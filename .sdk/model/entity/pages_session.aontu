@@ -324,13 +324,6 @@ main: kit: entity: pages_session: {
                 r: true
                 t: "`$STRING`"
               }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "org_slug"
-                r: true
-                t: "`$STRING`"
-              }
             ]
           }
           m: "POST"
@@ -545,13 +538,6 @@ main: kit: entity: pages_session: {
               }
               {
                 k: "param"
-                n: "id"
-                or: "session_id"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "organization_id"
                 or: "org_slug"
                 r: true
@@ -631,7 +617,7 @@ main: kit: entity: pages_session: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.session`"
           }
         }
       ]

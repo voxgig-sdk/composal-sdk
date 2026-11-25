@@ -1,0 +1,75 @@
+# BasicSparkAutomationFlow
+
+main: kit: flow: BasicSparkAutomationFlow:
+{
+  entity: "spark_automation",
+  kind: "basic",
+  name: "BasicSparkAutomationFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "spark_automation_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "spark_automation_ref01",
+        srcdatavar: "spark_automation_ref01_data",
+        suffix: "_up0",
+        textfield: "key"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-spark_automation_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "spark_automation_ref01",
+        srcdatavar: "spark_automation_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "spark_automation01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-spark_automation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSparkAutomationFlow"
+}

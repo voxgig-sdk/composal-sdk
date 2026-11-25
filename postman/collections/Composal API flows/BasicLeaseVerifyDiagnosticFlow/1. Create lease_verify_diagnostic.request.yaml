@@ -3,7 +3,7 @@ id: eb742889-4301-56ad-bd65-f14e5e4042fb
 description: |-
   The `create` operation of **lease_verify_diagnostic**.
 
-  SDK: `client.LeaseVerifyDiagnostic().create({ lease_id: "example", swarm_id: "example", task_id: "example", browser_events: {}, live_browser: {}, live_view: {} })`
+  SDK: `client.LeaseVerifyDiagnostic().create({ lease_id: "example", swarm_id: "example", task_id: "example", browser_events: {} })`
 url: "{{base}}/api/v1/agent/swarms/:swarm_id/tasks/:task_id/leases/:id/verify_diagnostics"
 method: POST
 headers:

@@ -65,10 +65,6 @@ Create a new `AgentAppInstall` entity instance. Pass `nil` for no initial data.
 
 Create a new `AgentAttachment` entity instance. Pass `nil` for no initial data.
 
-#### `AgentAutomation(data)`
-
-Create a new `AgentAutomation` entity instance. Pass `nil` for no initial data.
-
 #### `AgentAvatar(data)`
 
 Create a new `AgentAvatar` entity instance. Pass `nil` for no initial data.
@@ -376,6 +372,10 @@ Create a new `AppDeploy` entity instance. Pass `nil` for no initial data.
 #### `AppDeployment(data)`
 
 Create a new `AppDeployment` entity instance. Pass `nil` for no initial data.
+
+#### `AppDeploymentDashboard(data)`
+
+Create a new `AppDeploymentDashboard` entity instance. Pass `nil` for no initial data.
 
 #### `AppDeploymentOperation(data)`
 
@@ -893,10 +893,6 @@ Create a new `DeviceBrowserOperation` entity instance. Pass `nil` for no initial
 
 Create a new `DeviceControlMessage` entity instance. Pass `nil` for no initial data.
 
-#### `DeviceControlOperation(data)`
-
-Create a new `DeviceControlOperation` entity instance. Pass `nil` for no initial data.
-
 #### `DeviceEnterpriseRelay(data)`
 
 Create a new `DeviceEnterpriseRelay` entity instance. Pass `nil` for no initial data.
@@ -916,6 +912,10 @@ Create a new `DeviceInvocation` entity instance. Pass `nil` for no initial data.
 #### `DeviceLocalEvent(data)`
 
 Create a new `DeviceLocalEvent` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceOperation(data)`
+
+Create a new `DeviceOperation` entity instance. Pass `nil` for no initial data.
 
 #### `DevicePairing(data)`
 
@@ -961,10 +961,6 @@ Create a new `Edge` entity instance. Pass `nil` for no initial data.
 
 Create a new `EmailVerification` entity instance. Pass `nil` for no initial data.
 
-#### `Environment(data)`
-
-Create a new `Environment` entity instance. Pass `nil` for no initial data.
-
 #### `EnvironmentDiscoveryRun(data)`
 
 Create a new `EnvironmentDiscoveryRun` entity instance. Pass `nil` for no initial data.
@@ -988,10 +984,6 @@ Create a new `EnvironmentSecretBinding` entity instance. Pass `nil` for no initi
 #### `EnvironmentTestAccount(data)`
 
 Create a new `EnvironmentTestAccount` entity instance. Pass `nil` for no initial data.
-
-#### `Evidence(data)`
-
-Create a new `Evidence` entity instance. Pass `nil` for no initial data.
 
 #### `ExecutionDesiredState(data)`
 
@@ -1072,10 +1064,6 @@ Create a new `GithubCiRepositoryCompatibilityReport` entity instance. Pass `nil`
 #### `GithubConnection(data)`
 
 Create a new `GithubConnection` entity instance. Pass `nil` for no initial data.
-
-#### `GithubIntegration(data)`
-
-Create a new `GithubIntegration` entity instance. Pass `nil` for no initial data.
 
 #### `GithubOnboarding(data)`
 
@@ -1309,10 +1297,6 @@ Create a new `Memory` entity instance. Pass `nil` for no initial data.
 
 Create a new `MergeQueueEntry` entity instance. Pass `nil` for no initial data.
 
-#### `MergeRequest(data)`
-
-Create a new `MergeRequest` entity instance. Pass `nil` for no initial data.
-
 #### `MergeResolution(data)`
 
 Create a new `MergeResolution` entity instance. Pass `nil` for no initial data.
@@ -1505,6 +1489,10 @@ Create a new `PageRepoVcCommit` entity instance. Pass `nil` for no initial data.
 
 Create a new `PagesBilling` entity instance. Pass `nil` for no initial data.
 
+#### `PagesGithubIntegration(data)`
+
+Create a new `PagesGithubIntegration` entity instance. Pass `nil` for no initial data.
+
 #### `PagesGithubOnboarding(data)`
 
 Create a new `PagesGithubOnboarding` entity instance. Pass `nil` for no initial data.
@@ -1645,9 +1633,17 @@ Create a new `ProjectOverviewMetric` entity instance. Pass `nil` for no initial 
 
 Create a new `ProjectOverviewPullRequest` entity instance. Pass `nil` for no initial data.
 
+#### `ProjectPrTesting(data)`
+
+Create a new `ProjectPrTesting` entity instance. Pass `nil` for no initial data.
+
 #### `ProjectProductMap(data)`
 
 Create a new `ProjectProductMap` entity instance. Pass `nil` for no initial data.
+
+#### `ProjectProductMapComparison(data)`
+
+Create a new `ProjectProductMapComparison` entity instance. Pass `nil` for no initial data.
 
 #### `ProjectRecording(data)`
 
@@ -1672,10 +1668,6 @@ Create a new `ProjectScenarioRow` entity instance. Pass `nil` for no initial dat
 #### `ProjectSetting(data)`
 
 Create a new `ProjectSetting` entity instance. Pass `nil` for no initial data.
-
-#### `PullRequest(data)`
-
-Create a new `PullRequest` entity instance. Pass `nil` for no initial data.
 
 #### `PullRequestAction(data)`
 
@@ -2057,6 +2049,10 @@ Create a new `SparkAgentSkill` entity instance. Pass `nil` for no initial data.
 
 Create a new `SparkAgentThread` entity instance. Pass `nil` for no initial data.
 
+#### `SparkAutomation(data)`
+
+Create a new `SparkAutomation` entity instance. Pass `nil` for no initial data.
+
 #### `SparkCredit(data)`
 
 Create a new `SparkCredit` entity instance. Pass `nil` for no initial data.
@@ -2208,6 +2204,22 @@ Create a new `VerifyBrowserSession` entity instance. Pass `nil` for no initial d
 #### `VerifyEmailVerification(data)`
 
 Create a new `VerifyEmailVerification` entity instance. Pass `nil` for no initial data.
+
+#### `VerifyEnvironment(data)`
+
+Create a new `VerifyEnvironment` entity instance. Pass `nil` for no initial data.
+
+#### `VerifyEvidence(data)`
+
+Create a new `VerifyEvidence` entity instance. Pass `nil` for no initial data.
+
+#### `VerifyMergeRequest(data)`
+
+Create a new `VerifyMergeRequest` entity instance. Pass `nil` for no initial data.
+
+#### `VerifyPullRequest(data)`
+
+Create a new `VerifyPullRequest` entity instance. Pass `nil` for no initial data.
 
 #### `VerifySignalIntegration(data)`
 
@@ -2808,93 +2820,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AgentAttachmentEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## AgentAutomationEntity
-
-```lua
-local agent_automation = client:AgentAutomation(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `can_manage` | `boolean` | Yes |  |
-| `can_manage_events` | `boolean` | Yes | Whether new event triggers can be attached or existing settings saved. |
-| `can_run` | `boolean` | Yes | Whether the viewer can request a manual Temporal run |
-| `can_schedule` | `boolean` | Yes |  |
-| `definition` | `table` | Yes |  |
-| `event_subscriptions` | `table` | Yes |  |
-| `event_triggers` | `table` | Yes |  |
-| `expected_revision` | `number` | Yes |  |
-| `id` | `string` | Yes |  |
-| `key` | `string` | Yes |  |
-| `name` | `string` | Yes |  |
-| `revision` | `number` | Yes |  |
-| `schedule` | `any` | Yes |  |
-| `schedules` | `table` | Yes |  |
-| `version` | `table` | Yes |  |
-
-### Operations
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AgentAutomation():list({ agent_id = "example", organization_id = "example" })
-```
-
-#### `load(reqmatch, ctrl) -> any, err`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
-
-```lua
-local result, err = client:AgentAutomation():load({ id = "agent_automation_id", agent_id = "agent_id", organization_id = "organization_id" })
-```
-
-#### `update(reqdata, ctrl) -> any, err`
-
-Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
-
-```lua
-local result, err = client:AgentAutomation():update({
-  id = "agent_automation_id",
-  agent_id = "agent_id",
-  organization_id = "organization_id",
-  -- Fields to update
-})
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `AgentAutomationEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -3917,8 +3842,8 @@ local agent_input = client:AgentInput(nil)
 | --- | --- | --- | --- |
 | `attachment_ids` | `table` | No | Completed uploads from the attachments endpoint, in order. |
 | `attachments` | `table` | No |  |
-| `browser_context` | `table` | Yes | Advisory snapshot of the browser pane beside this conversation when the message was sent. |
-| `client_time` | `table` | Yes | The sending app's IANA time zone and clock, so the agent answers in the person's local time. |
+| `browser_context` | `table` | No | Advisory snapshot of the browser pane beside this conversation when the message was sent. |
+| `client_time` | `table` | No | The sending app's IANA time zone and clock, so the agent answers in the person's local time. |
 | `conversation_id` | `string` | Yes | Main or a conversation identity returned by the agent thread list. |
 | `model_policy` | `any` | No |  |
 | `requester_membership_id` | `string` | No | Snapshot the membership supplied by conversation history for a NEW V1 input. |
@@ -3935,8 +3860,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 local result, err = client:AgentInput():create({
   agent_id = --[[ string ]],
   organization_id = --[[ string ]],
-  browser_context = --[[ table ]],
-  client_time = --[[ table ]],
   conversation_id = --[[ string ]],
   text = --[[ string ]],
 })
@@ -4513,7 +4436,7 @@ local agent_marketplace = client:AgentMarketplace(nil)
 
 | Field | load | create | update | patch | remove |
 | --- | --- | --- | --- | --- | --- |
-| `bundle` | - | - | - | - | - |
+| `bundle` | - | - | - | Yes | - |
 | `can_manage` | - | - | - | - | - |
 | `catalog_key` | - | - | - | - | - |
 | `categories` | - | - | - | - | - |
@@ -5321,7 +5244,7 @@ local agent_routine = client:AgentRoutine(nil)
 | --- | --- | --- | --- |
 | `can_manage` | `boolean` | Yes |  |
 | `consecutive_errors` | `number` | Yes |  |
-| `credit_wait` | `table` | Yes | The wallet funding an enabled routine that is waiting for inference credit. |
+| `credit_wait` | `table` | No | The wallet funding an enabled routine that is waiting for inference credit. |
 | `description` | `string|nil` | Yes |  |
 | `enabled` | `boolean` | Yes |  |
 | `id` | `string` | Yes |  |
@@ -5335,7 +5258,7 @@ local agent_routine = client:AgentRoutine(nil)
 | `routine` | `table` | Yes |  |
 | `schedule` | `table` | Yes |  |
 | `schedule_label` | `string` | Yes |  |
-| `utility_model` | `table` | Yes |  |
+| `utility_model` | `table` | No |  |
 
 ### Operations
 
@@ -5998,7 +5921,7 @@ local agent_subagent = client:AgentSubagent(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `active` | `boolean` | Yes |  |
-| `attention` | `table|nil` | Yes | Why the person should open this thread, as the Threads panel shows it: a pending question, the agent asking for attention, or a run that did not finish. |
+| `attention` | `table|nil` | No | Why the person should open this thread, as the Threads panel shows it: a pending question, the agent asking for attention, or a run that did not finish. |
 | `ended_at` | `string|nil` | Yes |  |
 | `id` | `string` | Yes |  |
 | `model` | `string|nil` | Yes |  |
@@ -6158,7 +6081,7 @@ local agent_swarm = client:AgentSwarm(nil)
 | `started_at_label` | `string|nil` | Yes |  |
 | `status` | `string` | Yes |  |
 | `summary` | `table` | Yes |  |
-| `target` | `table` | Yes | Where the swarm lands. |
+| `target` | `table` | No | Where the swarm lands. |
 | `task_count` | `number` | Yes |  |
 | `task_template_json` | `string|nil` | Yes |  |
 | `tasks` | `table` | Yes |  |
@@ -6228,7 +6151,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 ```lua
 local result, err = client:AgentSwarm():create({
   organization_slug = --[[ string|nil ]],
-  target = --[[ table ]],
 })
 ```
 
@@ -6961,7 +6883,7 @@ local agent_workflow_proposal = client:AgentWorkflowProposal(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `agent_steps` | `table` | Yes | The model and reasoning the workflow's agent steps share. |
+| `agent_steps` | `table` | No | The model and reasoning the workflow's agent steps share. |
 | `base_digest` | `string|nil` | Yes | The saved workflow this proposal changes; null for a new workflow. |
 | `can_manage` | `boolean` | Yes |  |
 | `can_revise` | `boolean` | Yes | The viewer can choose the model and reasoning of the agent steps now, before saving. |
@@ -7040,7 +6962,7 @@ local agent_workflow_run = client:AgentWorkflowRun(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `action` | `string` | Yes |  |
-| `automation` | `table|nil` | Yes | Saved native automation identity. |
+| `automation` | `table|nil` | No | Saved native automation identity. |
 | `budget_seconds` | `number|nil` | Yes | The run stops once it has been running this long |
 | `budget_usd` | `number|nil` | Yes | The run stops before a step once it has spent this much |
 | `can_answer` | `boolean` | Yes | Whether this viewer can answer the step that stopped the run; the answer runs that step again |
@@ -7048,7 +6970,7 @@ local agent_workflow_run = client:AgentWorkflowRun(nil)
 | `can_dismiss` | `boolean` | Yes | Whether this viewer can dismiss the run waiting for them, which ends it unanswered |
 | `checkpoint` | `table|nil` | Yes | The question a run waiting at a checkpoint is asking |
 | `conversation_id` | `string|nil` | Yes | The thread the run works in, which the person opens to follow it |
-| `decision_history` | `table` | Yes |  |
+| `decision_history` | `table` | No |  |
 | `error` | `string|nil` | Yes |  |
 | `finished_at` | `string|nil` | Yes |  |
 | `flow_steps` | `table|nil` | Yes | How the run went at each step of its workflow file, in the order it reached them; null when steps were recorded without their step of the file |
@@ -8477,6 +8399,82 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AppDeploymentEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AppDeploymentDashboardEntity
+
+```lua
+local app_deployment_dashboard = client:AppDeploymentDashboard(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `table` | Yes |  |
+| `app` | `table` | Yes |  |
+| `audit_events` | `table` | Yes |  |
+| `capacity` | `table` | Yes |  |
+| `connections` | `table` | Yes |  |
+| `data_resources` | `table` | Yes |  |
+| `deployments` | `table` | Yes |  |
+| `desired_states` | `table` | Yes |  |
+| `environments` | `table` | Yes |  |
+| `id` | `string` | No |  |
+| `locations` | `table` | Yes |  |
+| `managed_database_catalog` | `table` | Yes |  |
+| `observability` | `table` | Yes |  |
+| `operations` | `table` | Yes |  |
+| `placements` | `table` | Yes |  |
+| `reconciler_ticks` | `table` | Yes |  |
+| `releases` | `table` | Yes |  |
+| `rollback_deployments` | `table` | Yes |  |
+| `rollouts` | `table` | Yes |  |
+| `runtime_instances` | `table` | Yes |  |
+| `service_bindings` | `table` | Yes |  |
+| `service_views` | `table` | Yes |  |
+| `services` | `table` | Yes |  |
+| `storage_resources` | `table` | Yes |  |
+| `summary` | `table` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AppDeploymentDashboard():load({ id = "app_deployment_dashboard_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AppDeploymentDashboardEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -11333,7 +11331,7 @@ local automation_run = client:AutomationRun(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `action` | `string` | Yes |  |
-| `automation` | `table|nil` | Yes | Saved native automation identity. |
+| `automation` | `table|nil` | No | Saved native automation identity. |
 | `budget_seconds` | `number|nil` | Yes | The run stops once it has been running this long |
 | `budget_usd` | `number|nil` | Yes | The run stops before a step once it has spent this much |
 | `can_answer` | `boolean` | Yes | Whether this viewer can answer the step that stopped the run; the answer runs that step again |
@@ -11341,7 +11339,7 @@ local automation_run = client:AutomationRun(nil)
 | `can_dismiss` | `boolean` | Yes | Whether this viewer can dismiss the run waiting for them, which ends it unanswered |
 | `checkpoint` | `table|nil` | Yes | The question a run waiting at a checkpoint is asking |
 | `conversation_id` | `string|nil` | Yes | The thread the run works in, which the person opens to follow it |
-| `decision_history` | `table` | Yes |  |
+| `decision_history` | `table` | No |  |
 | `error` | `string|nil` | Yes |  |
 | `finished_at` | `string|nil` | Yes |  |
 | `flow_steps` | `table|nil` | Yes | How the run went at each step of its workflow file, in the order it reached them; null when steps were recorded without their step of the file |
@@ -14276,7 +14274,7 @@ local change = client:Change(nil)
 | --- | --- | --- | --- |
 | `counts` | `table` | Yes | Counts for each state across the active non-state filters. |
 | `filters` | `table` | Yes |  |
-| `github_sync` | `table` | Yes |  |
+| `github_sync` | `table` | No |  |
 | `result` | `any` | Yes | What this page is a page of. |
 
 ### Operations
@@ -14397,54 +14395,15 @@ local change_comment = client:ChangeComment(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `body` | `string` | Yes |  |
-| `capabilities` | `table` | Yes |  |
-| `change_id` | `string|nil` | No |  |
-| `created_at` | `string|nil` | No |  |
-| `created_at_label` | `string|nil` | No |  |
-| `id` | `string` | Yes |  |
+| `comment` | `table` | No |  |
+| `comments` | `table` | Yes |  |
+| `id` | `string` | No |  |
 | `kind` | `string|nil` | No |  |
 | `line` | `number|nil` | No |  |
-| `outdated` | `boolean` | Yes |  |
 | `parent_comment_id` | `string|nil` | No |  |
 | `patchset_id` | `string|nil` | No |  |
-| `patchset_number` | `number|nil` | Yes |  |
 | `path` | `string|nil` | No |  |
-| `replies` | `table` | No |  |
-| `resolved` | `boolean` | Yes |  |
-| `resolved_at` | `string|nil` | No |  |
-| `resolved_at_label` | `string|nil` | No |  |
-| `resolved_by` | `table` | Yes |  |
 | `side` | `string|nil` | No |  |
-| `updated_at` | `string|nil` | No |  |
-| `updated_at_label` | `string|nil` | No |  |
-| `user` | `table` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | list | create |
-| --- | --- | --- |
-| `body` | - | - |
-| `capabilities` | - | - |
-| `change_id` | - | - |
-| `created_at` | - | - |
-| `created_at_label` | - | - |
-| `id` | - | - |
-| `kind` | - | - |
-| `line` | - | - |
-| `outdated` | - | - |
-| `parent_comment_id` | - | - |
-| `patchset_id` | Yes | - |
-| `patchset_number` | - | - |
-| `path` | - | - |
-| `replies` | - | - |
-| `resolved` | - | - |
-| `resolved_at` | - | - |
-| `resolved_at_label` | - | - |
-| `resolved_by` | - | - |
-| `side` | - | - |
-| `updated_at` | - | - |
-| `updated_at_label` | - | - |
-| `user` | - | - |
 
 ### Operations
 
@@ -14461,12 +14420,12 @@ local result, err = client:ChangeComment():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:ChangeComment():list({ change_id = "example", organization_id = "example", repo_id = "example" })
+local result, err = client:ChangeComment():load({ change_id = "change_id", organization_id = "organization_id", repo_id = "repo_id" })
 ```
 
 ### Common Methods
@@ -14838,10 +14797,10 @@ local change_label = client:ChangeLabel(nil)
 | --- | --- | --- | --- |
 | `accepted` | `boolean` | No |  |
 | `add` | `table` | No |  |
-| `approval` | `table` | Yes |  |
+| `approval` | `table` | No |  |
 | `assets` | `table` | No | Proof assets referenced from the description as `vex-asset:<id>`. |
 | `author` | `any` | No | Human user summary or organization automation identity. |
-| `capabilities` | `table` | Yes |  |
+| `capabilities` | `table` | No |  |
 | `change_key` | `string` | No |  |
 | `checks` | `table` | No |  |
 | `checks_status` | `string` | No |  |
@@ -14849,12 +14808,12 @@ local change_label = client:ChangeLabel(nil)
 | `comments_count` | `number` | No |  |
 | `comments_count_label` | `string` | No |  |
 | `commit_message` | `string|nil` | No |  |
-| `current_patchset` | `table` | Yes |  |
+| `current_patchset` | `table` | No |  |
 | `description` | `string|nil` | No |  |
 | `draft` | `boolean` | No |  |
 | `folded_into_number` | `number|nil` | No |  |
 | `github_projection_status` | `string|nil` | No |  |
-| `github_pull_request` | `table` | Yes |  |
+| `github_pull_request` | `table` | No |  |
 | `github_pull_requests` | `table` | No |  |
 | `group` | `table|nil` | No |  |
 | `has_description` | `boolean` | No | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
@@ -14862,7 +14821,7 @@ local change_label = client:ChangeLabel(nil)
 | `jj_change_id` | `string|nil` | No |  |
 | `labels` | `table` | No |  |
 | `landable` | `boolean` | No |  |
-| `landed_by` | `table` | Yes |  |
+| `landed_by` | `table` | No |  |
 | `number` | `number` | Yes |  |
 | `orphaned` | `boolean` | No |  |
 | `orphaned_at` | `string` | No |  |
@@ -15203,7 +15162,7 @@ local change_transcript = client:ChangeTranscript(nil)
 | `session_title` | `string|nil` | No |  |
 | `status` | `string` | Yes |  |
 | `superseded` | `boolean` | Yes |  |
-| `user` | `table` | Yes |  |
+| `user` | `table` | No |  |
 
 ### Operations
 
@@ -16445,7 +16404,7 @@ local control_computer = client:ControlComputer(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `connection` | `table` | Yes | A point-in-time control transport observation. |
+| `connection` | `table` | No | A point-in-time control transport observation. |
 | `consent` | `table` | Yes |  |
 | `device` | `table` | Yes |  |
 | `id` | `string` | No |  |
@@ -16508,10 +16467,10 @@ local control_computer_control_operation = client:ControlComputerControlOperatio
 | `action` | `string` | Yes |  |
 | `arguments` | `table` | Yes |  |
 | `created_at` | `string` | Yes |  |
-| `delivery` | `table` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `delivery` | `table` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
 | `device_id` | `string` | Yes |  |
 | `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
-| `end` | `table` | Yes |  |
+| `end` | `table` | No |  |
 | `expires_at` | `string` | Yes |  |
 | `id` | `string` | Yes |  |
 | `key` | `string` | Yes |  |
@@ -16678,7 +16637,7 @@ local credential_sign_in_check = client:CredentialSignInCheck(nil)
 | `reproductions` | `table` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `boolean` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `table` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `table` | Yes |  |
+| `scenario_generation` | `table` | No |  |
 | `sign_in_needs_answer` | `boolean` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `string|nil` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -16817,20 +16776,21 @@ local deep_scan = client:DeepScan(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `account_id` | `string|nil` | No |  |
-| `active` | `table` | Yes |  |
 | `agent_filters` | `table` | Yes | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` | `table` | Yes |  |
 | `can_continue` | `boolean` | No | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` | `table` | No |  |
+| `check_count` | `number` | Yes |  |
 | `concurrency` | `number` | Yes |  |
 | `covered_areas` | `table` | Yes | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` | `string` | Yes |  |
-| `deadline_at` | `string` | Yes |  |
+| `credential_name` | `string|nil` | No | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | `string` | Yes | When the team's time limit ends. |
 | `demo_project` | `table|nil` | Yes | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` | `number|nil` | Yes |  |
 | `ended_early` | `boolean` | Yes | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` | `string` | Yes |  |
 | `environment_name` | `string` | Yes |  |
-| `explorations` | `table` | Yes |  |
 | `explorer_activity` | `table` | Yes | What the team is doing now. |
 | `finding_count` | `number` | Yes | Findings at every priority, locked ones included. |
 | `findings` | `table` | Yes | Every tester's findings, most severe first, with the checks each one cites. |
@@ -16840,14 +16800,12 @@ local deep_scan = client:DeepScan(nil)
 | `huntable_flows` | `table` | Yes | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` | `string` | Yes |  |
 | `idempotency_key` | `string` | No |  |
-| `launch_options` | `table` | Yes | Present only when launch was requested by an admin |
 | `max_seconds` | `number` | Yes |  |
 | `max_testers` | `number` | Yes |  |
 | `mode` | `string` | No |  |
 | `next_scan_improvements` | `table` | Yes | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | `string` | No | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | `boolean` | Yes | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` | `table` | Yes |  |
 | `paywalled` | `boolean` | Yes | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` | `table` | Yes |  |
 | `priority_counts` | `table` | Yes |  |
@@ -16858,10 +16816,13 @@ local deep_scan = client:DeepScan(nil)
 | `reproductions` | `table` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `boolean` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `table` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `table` | Yes |  |
+| `scenario_count` | `number` | No | Scenarios saved from this discovery. |
+| `scenario_generation` | `table` | No |  |
+| `scenarios_pending` | `boolean` | No | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `boolean` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `string|nil` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` | `string` | Yes |  |
 | `startup_retryable` | `boolean` | No | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` | `string` | Yes |  |
 | `time_limit_reached` | `boolean` | Yes | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -16871,60 +16832,62 @@ local deep_scan = client:DeepScan(nil)
 
 ### Field Usage by Operation
 
-| Field | load | create |
-| --- | --- | --- |
-| `account_id` | - | - |
-| `active` | - | - |
-| `agent_filters` | - | - |
-| `agents` | - | - |
-| `can_continue` | - | - |
-| `chat_messages` | - | - |
-| `concurrency` | - | Yes |
-| `covered_areas` | - | - |
-| `created_at` | - | - |
-| `deadline_at` | - | - |
-| `demo_project` | - | - |
-| `ended_early` | - | - |
-| `environment_id` | - | - |
-| `environment_name` | - | - |
-| `explorations` | - | - |
-| `explorer_activity` | - | - |
-| `finding_count` | - | - |
-| `findings` | - | - |
-| `findings_fix_prompt` | - | - |
-| `finished_at` | - | - |
-| `goal` | - | - |
-| `huntable_flows` | - | - |
-| `id` | - | - |
-| `idempotency_key` | - | - |
-| `launch_options` | - | - |
-| `max_seconds` | - | Yes |
-| `max_testers` | - | Yes |
-| `mode` | - | - |
-| `next_scan_improvements` | - | - |
-| `observed_at` | - | - |
-| `onboarding` | - | - |
-| `pagination` | - | - |
-| `paywalled` | - | - |
-| `permissions` | - | - |
-| `priority_counts` | - | - |
-| `project_id` | - | - |
-| `related_explorations` | - | - |
-| `report` | - | - |
-| `reproduction_of` | - | - |
-| `reproductions` | - | - |
-| `saves_scenarios` | - | - |
-| `scannable_flows` | - | - |
-| `scenario_generation` | - | - |
-| `sign_in_needs_answer` | - | - |
-| `sign_in_outcome` | - | - |
-| `sign_in_question` | - | - |
-| `startup_retryable` | - | - |
-| `status` | - | - |
-| `time_limit_reached` | - | - |
-| `title` | - | - |
-| `unlock` | - | - |
-| `web_url` | - | - |
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `account_id` | - | - | - |
+| `agent_filters` | - | - | - |
+| `agents` | - | - | - |
+| `can_continue` | - | - | - |
+| `chat_messages` | - | - | - |
+| `check_count` | - | - | - |
+| `concurrency` | - | - | Yes |
+| `covered_areas` | - | - | - |
+| `created_at` | - | - | - |
+| `credential_name` | - | - | - |
+| `deadline_at` | - | Yes | - |
+| `demo_project` | - | - | - |
+| `duration_ms` | - | - | - |
+| `ended_early` | - | - | - |
+| `environment_id` | - | - | - |
+| `environment_name` | - | - | - |
+| `explorer_activity` | - | - | - |
+| `finding_count` | - | - | - |
+| `findings` | - | - | - |
+| `findings_fix_prompt` | - | - | - |
+| `finished_at` | - | Yes | - |
+| `goal` | - | - | - |
+| `huntable_flows` | - | - | - |
+| `id` | - | - | - |
+| `idempotency_key` | - | - | - |
+| `max_seconds` | - | - | Yes |
+| `max_testers` | - | - | Yes |
+| `mode` | - | - | - |
+| `next_scan_improvements` | - | - | - |
+| `observed_at` | - | - | - |
+| `onboarding` | - | - | - |
+| `paywalled` | - | - | - |
+| `permissions` | - | - | - |
+| `priority_counts` | - | - | - |
+| `project_id` | - | - | - |
+| `related_explorations` | - | - | - |
+| `report` | - | - | - |
+| `reproduction_of` | - | - | - |
+| `reproductions` | - | - | - |
+| `saves_scenarios` | - | - | - |
+| `scannable_flows` | - | - | - |
+| `scenario_count` | - | - | - |
+| `scenario_generation` | - | - | - |
+| `scenarios_pending` | - | - | - |
+| `sign_in_needs_answer` | - | - | - |
+| `sign_in_outcome` | - | - | - |
+| `sign_in_question` | - | - | - |
+| `started_at` | - | - | - |
+| `startup_retryable` | - | - | - |
+| `status` | - | - | - |
+| `time_limit_reached` | - | - | - |
+| `title` | - | Yes | - |
+| `unlock` | - | - | - |
+| `web_url` | - | - | - |
 
 ### Operations
 
@@ -16938,6 +16901,14 @@ local result, err = client:DeepScan():create({
   environment_id = --[[ string ]],
   goal = --[[ string ]],
 })
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:DeepScan():list({ organization_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -17968,11 +17939,11 @@ local device = client:Device(nil)
 | --- | --- | --- | --- |
 | `architecture` | `string` | Yes |  |
 | `channel` | `string` | Yes |  |
-| `coding_connection` | `table|nil` | Yes | Independent organization coding-control service state for the current device owner. |
+| `coding_connection` | `table|nil` | No | Independent organization coding-control service state for the current device owner. |
 | `connection_checked_at` | `string|nil` | Yes | When this native presence observation was obtained; null when unobserved or unavailable. |
 | `connection_status` | `string` | Yes | Display-only native presence. |
 | `control_delivery_policy` | `table` | Yes |  |
-| `control_spawn_policy` | `table` | Yes |  |
+| `control_spawn_policy` | `table` | No |  |
 | `created_at` | `string` | Yes |  |
 | `device` | `table` | Yes |  |
 | `environment` | `string` | Yes |  |
@@ -18149,86 +18120,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `DeviceControlMessageEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## DeviceControlOperationEntity
-
-```lua
-local device_control_operation = client:DeviceControlOperation(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `action` | `string` | Yes |  |
-| `arguments` | `table` | Yes |  |
-| `created_at` | `string` | Yes |  |
-| `delivery` | `table` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
-| `device_id` | `string` | Yes |  |
-| `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
-| `end` | `table` | Yes |  |
-| `expires_at` | `string` | Yes |  |
-| `id` | `string` | Yes |  |
-| `key` | `string` | Yes |  |
-| `provider` | `string` | Yes |  |
-| `references` | `table` | Yes |  |
-| `result` | `any` | Yes |  |
-| `result_expired` | `boolean` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
-| `state` | `string` | Yes |  |
-
-### Operations
-
-#### `create(reqdata, ctrl) -> any, err`
-
-Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
-
-```lua
-local result, err = client:DeviceControlOperation():create({
-  device_id = --[[ string ]],
-  organization_id = --[[ string ]],
-  action = --[[ string ]],
-  arguments = --[[ table ]],
-  key = --[[ string ]],
-})
-```
-
-#### `load(reqmatch, ctrl) -> any, err`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
-
-```lua
-local result, err = client:DeviceControlOperation():load({ id = "device_control_operation_id", device_id = "device_id", organization_id = "organization_id" })
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `DeviceControlOperationEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -18538,6 +18429,86 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `DeviceLocalEventEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeviceOperationEntity
+
+```lua
+local device_operation = client:DeviceOperation(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `arguments` | `table` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `delivery` | `table` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` | Yes |  |
+| `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
+| `end` | `table` | No |  |
+| `expires_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `references` | `table` | Yes |  |
+| `result` | `any` | Yes |  |
+| `result_expired` | `boolean` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DeviceOperation():create({
+  device_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  action = --[[ string ]],
+  arguments = --[[ table ]],
+  key = --[[ string ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DeviceOperation():load({ id = "device_operation_id", device_id = "device_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceOperationEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -19399,187 +19370,6 @@ Return the entity name.
 
 ---
 
-## EnvironmentEntity
-
-```lua
-local environment = client:Environment(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `active_revision_id` | `string|nil` | Yes |  |
-| `agent_sign_up_available` | `boolean` | Yes | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
-| `allowed_actions` | `string` | Yes | read_only only looks around; writes may create, change and delete data. |
-| `billing` | `table` | Yes |  |
-| `cleanup` | `table` | Yes |  |
-| `connection` | `string` | Yes |  |
-| `created_at` | `string` | Yes |  |
-| `default_policy` | `table` | No |  |
-| `default_policy_json` | `table` | Yes |  |
-| `discovery_defaults` | `table` | Yes |  |
-| `environment` | `table` | Yes |  |
-| `exploration_accounts` | `table` | No |  |
-| `explorations` | `table` | No |  |
-| `first_run` | `any` | No |  |
-| `hosted_app_id` | `string|nil` | Yes |  |
-| `id` | `string` | Yes |  |
-| `imessage_number` | `string|nil` | Yes | International destination number; blank or null clears it on an added environment. |
-| `included_deep_scan` | `boolean` | Yes | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
-| `lock_version` | `number` | Yes |  |
-| `managed_google_available` | `boolean` | Yes | Whether the managed Google account can be offered for this app. |
-| `managed_google_email` | `string` | Yes |  |
-| `messaging_tester_number` | `string|nil` | No | One configured tester number. |
-| `name` | `string` | Yes | Optional for a website target; defaults to its hostname. |
-| `network_connections` | `table` | Yes |  |
-| `onboarding_discovery` | `any` | No |  |
-| `organization_id` | `string` | Yes |  |
-| `pending_accounts` | `table` | No | Credentials on a Composal address still waiting for the password the customer chose at signup. |
-| `permissions` | `table` | Yes |  |
-| `project_id` | `string|nil` | Yes | Owning project. |
-| `repository_id` | `string|nil` | Yes |  |
-| `revisions` | `table` | Yes |  |
-| `setup_discovery_id` | `string|nil` | No | Existing discovery to resume after setup or Checkout, selected within this environment. |
-| `sign_in_check_available` | `boolean` | Yes | Whether a test account's live sign-in check can run on this app. |
-| `slug` | `string` | Yes |  |
-| `status` | `string` | Yes |  |
-| `target_kind` | `string|nil` | Yes |  |
-| `target_url` | `string|nil` | Yes |  |
-| `test_accounts` | `table` | Yes |  |
-| `updated_at` | `string` | Yes |  |
-| `verify_network_connection_id` | `string|nil` | Yes |  |
-| `version` | `number` | No | Required for target or tester changes; use lock_version from the environment. |
-
-### Field Usage by Operation
-
-| Field | load | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- |
-| `active_revision_id` | - | - | - | - | - |
-| `agent_sign_up_available` | - | - | - | - | - |
-| `allowed_actions` | - | Yes | - | Yes | - |
-| `billing` | - | - | - | - | - |
-| `cleanup` | - | - | - | - | - |
-| `connection` | - | - | - | - | - |
-| `created_at` | - | - | - | - | - |
-| `default_policy` | - | - | - | - | - |
-| `default_policy_json` | - | - | - | - | - |
-| `discovery_defaults` | - | - | - | - | - |
-| `environment` | - | - | - | - | - |
-| `exploration_accounts` | - | - | - | - | - |
-| `explorations` | - | - | - | - | - |
-| `first_run` | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - |
-| `id` | - | - | - | - | - |
-| `imessage_number` | - | Yes | - | Yes | - |
-| `included_deep_scan` | - | - | - | - | - |
-| `lock_version` | - | - | - | - | - |
-| `managed_google_available` | - | - | - | - | - |
-| `managed_google_email` | - | - | - | - | - |
-| `messaging_tester_number` | - | - | - | - | - |
-| `name` | - | Yes | - | Yes | - |
-| `network_connections` | - | - | - | - | - |
-| `onboarding_discovery` | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - |
-| `pending_accounts` | - | - | - | - | - |
-| `permissions` | - | - | - | - | - |
-| `project_id` | - | Yes | - | - | - |
-| `repository_id` | - | Yes | - | - | - |
-| `revisions` | - | - | - | - | - |
-| `setup_discovery_id` | - | - | - | - | - |
-| `sign_in_check_available` | - | - | - | - | - |
-| `slug` | - | - | - | - | - |
-| `status` | - | - | - | - | - |
-| `target_kind` | - | Yes | - | - | - |
-| `target_url` | - | Yes | - | Yes | - |
-| `test_accounts` | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - |
-| `verify_network_connection_id` | - | - | - | Yes | - |
-| `version` | - | - | - | - | - |
-
-### Operations
-
-#### `create(reqdata, ctrl) -> any, err`
-
-Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
-
-```lua
-local result, err = client:Environment():create({
-  organization_id = --[[ string ]],
-  slug = --[[ string ]],
-})
-```
-
-#### `load(reqmatch, ctrl) -> any, err`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
-
-```lua
-local result, err = client:Environment():load({ id = "environment_id", organization_id = "organization_id" })
-```
-
-#### `patch(reqdata, ctrl) -> any, err`
-
-Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
-
-```lua
-local result, err = client:Environment():patch({
-  id = "environment_id",
-  organization_id = "organization_id",
-  -- Only the fields to change
-})
-```
-
-#### `remove(reqmatch, ctrl) -> any, err`
-
-Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
-
-```lua
-local result, err = client:Environment():remove({ id = "environment_id", organization_id = "organization_id" })
-```
-
-#### `update(reqdata, ctrl) -> any, err`
-
-Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
-
-```lua
-local result, err = client:Environment():update({
-  id = "environment_id",
-  organization_id = "organization_id",
-  -- Fields to update
-})
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `EnvironmentEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
 ## EnvironmentDiscoveryRunEntity
 
 ```lua
@@ -19597,7 +19387,7 @@ local environment_discovery_run = client:EnvironmentDiscoveryRun(nil)
 | `failure_code` | `string|nil` | Yes |  |
 | `id` | `string` | Yes |  |
 | `queued_at` | `string` | Yes |  |
-| `recording` | `table` | Yes |  |
+| `recording` | `table` | No |  |
 | `result` | `table|nil` | Yes |  |
 | `status` | `string` | Yes |  |
 
@@ -19716,7 +19506,7 @@ local environment_exploration = client:EnvironmentExploration(nil)
 | `reproductions` | `table` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `boolean` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `table` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `table` | Yes |  |
+| `scenario_generation` | `table` | No |  |
 | `sign_in_needs_answer` | `boolean` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `string|nil` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -20130,58 +19920,6 @@ Return the entity name.
 
 ---
 
-## EvidenceEntity
-
-```lua
-local evidence = client:Evidence(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | No |  |
-
-### Operations
-
-#### `load(reqmatch, ctrl) -> any, err`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
-
-```lua
-local result, err = client:Evidence():load({ id = "evidence_id", organization_id = "organization_id" })
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `EvidenceEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
 ## ExecutionDesiredStateEntity
 
 ```lua
@@ -20580,7 +20318,7 @@ local exploration = client:Exploration(nil)
 | `saves_scenarios` | `boolean` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `table` | Yes | Flows a finished exploration recorded that deep scans can start from. |
 | `scenario_count` | `number` | No | Scenarios saved from this discovery. |
-| `scenario_generation` | `table` | Yes |  |
+| `scenario_generation` | `table` | No |  |
 | `scenarios_pending` | `boolean` | No | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `boolean` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
@@ -20759,7 +20497,7 @@ local exploration_message = client:ExplorationMessage(nil)
 | `reproductions` | `table` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `boolean` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `table` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `table` | Yes |  |
+| `scenario_generation` | `table` | No |  |
 | `sign_in_needs_answer` | `boolean` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `string|nil` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -20907,7 +20645,7 @@ local exploration_scenario = client:ExplorationScenario(nil)
 | `reproductions` | `table` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `boolean` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `table` | Yes | Flows a finished exploration recorded that deep scans can start from. |
-| `scenario_generation` | `table` | Yes |  |
+| `scenario_generation` | `table` | No |  |
 | `sign_in_needs_answer` | `boolean` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `string|nil` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
@@ -20984,7 +20722,7 @@ local finding = client:Finding(nil)
 | `organization_id` | `string` | Yes |  |
 | `permissions` | `table` | Yes |  |
 | `reason` | `string` | No | Why the finding was resolved or ignored, such as "Expected for trial accounts". |
-| `reported_occurrence` | `table|nil` | Yes | The Discovery or Deep Scan report behind the finding; null for scenario run findings |
+| `reported_occurrence` | `table|nil` | No | The Discovery or Deep Scan report behind the finding; null for scenario run findings |
 | `repository_id` | `string|nil` | Yes |  |
 | `safe_summary` | `string` | Yes |  |
 | `scenario_occurrences` | `table` | No |  |
@@ -21869,77 +21607,6 @@ Return the entity name.
 
 ---
 
-## GithubIntegrationEntity
-
-```lua
-local github_integration = client:GithubIntegration(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `account_avatar_url` | `string|nil` | Yes |  |
-| `account_login` | `string` | Yes |  |
-| `connection_status` | `string` | Yes |  |
-| `connection_status_label` | `string` | Yes |  |
-| `github_installation` | `any` | Yes |  |
-| `health` | `table` | Yes |  |
-| `id` | `string` | Yes |  |
-| `imported_repositories_count` | `number` | Yes |  |
-| `imported_repositories_count_label` | `string` | Yes |  |
-| `organization` | `table` | Yes |  |
-| `pagination` | `table` | Yes |  |
-| `repositories` | `table` | Yes |  |
-
-### Operations
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:GithubIntegration():list({ organization_id = "example" })
-```
-
-#### `load(reqmatch, ctrl) -> any, err`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
-
-```lua
-local result, err = client:GithubIntegration():load({ id = "github_integration_id", organization_id = "organization_id" })
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `GithubIntegrationEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
 ## GithubOnboardingEntity
 
 ```lua
@@ -22484,7 +22151,7 @@ local github_runner_history = client:GithubRunnerHistory(nil)
 | `runs` | `table` | Yes |  |
 | `setup` | `any` | No | CI onboarding. |
 | `success_rate` | `number|nil` | Yes |  |
-| `usage` | `table` | Yes |  |
+| `usage` | `table` | No |  |
 
 ### Operations
 
@@ -24583,8 +24250,8 @@ local lease_verify_diagnostic = client:LeaseVerifyDiagnostic(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `browser_events` | `table` | Yes |  |
-| `live_browser` | `table` | Yes |  |
-| `live_view` | `table` | Yes | The tester's read-only live stream for page viewers. |
+| `live_browser` | `table` | No |  |
+| `live_view` | `table` | No | The tester's read-only live stream for page viewers. |
 | `steps` | `table` | No |  |
 
 ### Operations
@@ -24599,8 +24266,6 @@ local result, err = client:LeaseVerifyDiagnostic():create({
   swarm_id = --[[ string ]],
   task_id = --[[ string ]],
   browser_events = --[[ table ]],
-  live_browser = --[[ table ]],
-  live_view = --[[ table ]],
 })
 ```
 
@@ -24877,6 +24542,18 @@ local local_thread_delivery = client:LocalThreadDelivery(nil)
 | `policy` | `table` | Yes |  |
 | `recovery_message` | `string|nil` | Yes |  |
 
+### Field Usage by Operation
+
+| Field | load | update |
+| --- | --- | --- |
+| `decision` | - | - |
+| `decision_pending` | - | - |
+| `delivery` | - | - |
+| `expected_version` | - | - |
+| `id` | - | - |
+| `policy` | - | Yes |
+| `recovery_message` | - | - |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -24944,10 +24621,10 @@ local local_thread_operation = client:LocalThreadOperation(nil)
 | `action` | `string` | Yes |  |
 | `arguments` | `table` | Yes |  |
 | `created_at` | `string` | Yes |  |
-| `delivery` | `table` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `delivery` | `table` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
 | `device_id` | `string` | Yes |  |
 | `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
-| `end` | `table` | Yes |  |
+| `end` | `table` | No |  |
 | `expires_at` | `string` | Yes |  |
 | `id` | `string` | Yes |  |
 | `key` | `string` | Yes |  |
@@ -25338,7 +25015,7 @@ local me = client:Me(nil)
 | `github_pr_user_authorization_login` | `string|nil` | Yes |  |
 | `github_prs_authored_by_change_author` | `boolean` | Yes |  |
 | `id` | `string` | Yes |  |
-| `impersonation` | `table|nil` | Yes |  |
+| `impersonation` | `table|nil` | No |  |
 | `name` | `string|nil` | Yes |  |
 | `next_path` | `string` | No | Present on a sign-in that created the person's first workspace; its setup page, where they go next. |
 | `onboarding` | `table` | Yes | V2 agent onboarding progress. |
@@ -25616,22 +25293,11 @@ local member = client:Member(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accepted_at` | `string|nil` | Yes |  |
-| `accepted_by_user` | `any` | Yes |  |
 | `created_at` | `string` | Yes |  |
 | `created_at_label` | `string|nil` | Yes |  |
-| `email` | `string` | Yes |  |
-| `email_delivery_status` | `string` | No |  |
-| `expires_at` | `string|nil` | Yes |  |
-| `expires_at_label` | `string|nil` | Yes |  |
 | `id` | `string` | Yes |  |
-| `invite_url` | `string|nil` | Yes |  |
-| `invited_by_user` | `any` | Yes |  |
 | `is_self` | `boolean` | Yes |  |
-| `organization` | `table` | Yes |  |
-| `revoked_at` | `string|nil` | Yes |  |
 | `role` | `string` | Yes |  |
-| `status` | `string` | Yes |  |
 | `updated_at` | `string` | Yes |  |
 | `updated_at_label` | `string|nil` | Yes |  |
 | `user` | `table` | Yes |  |
@@ -25832,7 +25498,7 @@ local merge_queue_entry = client:MergeQueueEntry(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analytics` | `table` | Yes | Queue performance for the reporting window. |
+| `analytics` | `table` | No | Queue performance for the reporting window. |
 | `change_id` | `string|nil` | No |  |
 | `expected_target_commit_id` | `string|nil` | No |  |
 | `expected_target_version` | `number|nil` | No |  |
@@ -25893,140 +25559,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `MergeQueueEntryEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## MergeRequestEntity
-
-```lua
-local merge_request = client:MergeRequest(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `available_tests` | `table` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `base_sha` | `string` | Yes |  |
-| `branch` | `string` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `comment_url` | `string|nil` | Yes |  |
-| `current_run` | `any` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `draft` | `boolean` | Yes |  |
-| `findings` | `table` | Yes |  |
-| `github_repository` | `string|nil` | Yes | GitHub owner/repository associated with this pull request. |
-| `github_url` | `string|nil` | Yes |  |
-| `head_sha` | `string` | Yes | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` | `string` | Yes |  |
-| `idempotency_key` | `string` | Yes |  |
-| `number` | `number` | Yes |  |
-| `pagination` | `table` | Yes |  |
-| `permissions` | `table` | Yes |  |
-| `preview_cleanup_ready` | `boolean` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | `string|nil` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` | `any` | No |  |
-| `project_id` | `string|nil` | Yes | Composal project slug or public ID for PR preview environments. |
-| `project_slug` | `string|nil` | Yes |  |
-| `provider` | `string` | Yes |  |
-| `pull_request` | `table` | Yes |  |
-| `repository_id` | `string` | Yes |  |
-| `request_label` | `string` | Yes |  |
-| `requested_run_id` | `string|nil` | Yes |  |
-| `runs` | `table` | Yes |  |
-| `source_branch` | `string|nil` | Yes |  |
-| `source_repository` | `string|nil` | Yes |  |
-| `source_url` | `string|nil` | Yes |  |
-| `state` | `string` | Yes |  |
-| `title` | `string` | Yes |  |
-| `updated_at` | `string` | Yes |  |
-| `web_path` | `string` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | load | create |
-| --- | --- | --- |
-| `available_tests` | - | - |
-| `base_sha` | - | - |
-| `branch` | - | - |
-| `comment_url` | - | - |
-| `current_run` | - | - |
-| `draft` | - | - |
-| `findings` | - | - |
-| `github_repository` | - | - |
-| `github_url` | - | - |
-| `head_sha` | - | Yes |
-| `id` | - | - |
-| `idempotency_key` | - | - |
-| `number` | - | - |
-| `pagination` | - | - |
-| `permissions` | - | - |
-| `preview_cleanup_ready` | - | - |
-| `preview_url` | - | - |
-| `project` | - | - |
-| `project_id` | - | Yes |
-| `project_slug` | - | - |
-| `provider` | - | - |
-| `pull_request` | - | - |
-| `repository_id` | - | Yes |
-| `request_label` | - | - |
-| `requested_run_id` | - | - |
-| `runs` | - | - |
-| `source_branch` | - | - |
-| `source_repository` | - | - |
-| `source_url` | - | - |
-| `state` | - | - |
-| `title` | - | - |
-| `updated_at` | - | - |
-| `web_path` | - | - |
-
-### Operations
-
-#### `create(reqdata, ctrl) -> any, err`
-
-Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
-
-```lua
-local result, err = client:MergeRequest():create({
-  organization_id = --[[ string ]],
-  idempotency_key = --[[ string ]],
-  number = --[[ number ]],
-})
-```
-
-#### `load(reqmatch, ctrl) -> any, err`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
-
-```lua
-local result, err = client:MergeRequest():load({ id = "merge_request_id", organization_id = "organization_id" })
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `MergeRequestEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -26117,7 +25649,7 @@ local messaging_conversation_message = client:MessagingConversationMessage(nil)
 | `client_operation_id` | `string` | Yes |  |
 | `content` | `string` | Yes |  |
 | `id` | `string` | No |  |
-| `media` | `table` | Yes |  |
+| `media` | `table` | No |  |
 | `media_upload_ids` | `table` | No | Ordered staged upload IDs; six on Photon, one on Sendblue. |
 | `messages` | `table` | Yes |  |
 | `reply_to` | `string` | No | Public ID of a visible message |
@@ -26140,7 +25672,6 @@ local result, err = client:MessagingConversationMessage():create({
   project_id = --[[ string ]],
   client_operation_id = --[[ string ]],
   content = --[[ string ]],
-  media = --[[ table ]],
 })
 ```
 
@@ -29338,6 +28869,77 @@ Return the entity name.
 
 ---
 
+## PagesGithubIntegrationEntity
+
+```lua
+local pages_github_integration = client:PagesGithubIntegration(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `string|nil` | Yes |  |
+| `account_login` | `string` | Yes |  |
+| `connection_status` | `string` | Yes |  |
+| `connection_status_label` | `string` | Yes |  |
+| `github_installation` | `any` | Yes |  |
+| `health` | `table` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imported_repositories_count` | `number` | Yes |  |
+| `imported_repositories_count_label` | `string` | Yes |  |
+| `organization` | `table` | Yes |  |
+| `pagination` | `table` | Yes |  |
+| `repositories` | `table` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:PagesGithubIntegration():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:PagesGithubIntegration():load({ id = "pages_github_integration_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PagesGithubIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## PagesGithubOnboardingEntity
 
 ```lua
@@ -30649,7 +30251,7 @@ local product_map_identity_decision = client:ProductMapIdentityDecision(nil)
 | `observations` | `table` | Yes |  |
 | `operation` | `string` | Yes |  |
 | `reason` | `string` | Yes |  |
-| `target` | `table` | Yes |  |
+| `target` | `table` | No |  |
 
 ### Operations
 
@@ -30664,7 +30266,6 @@ local result, err = client:ProductMapIdentityDecision():create({
   observations = --[[ table ]],
   operation = --[[ string ]],
   reason = --[[ string ]],
-  target = --[[ table ]],
 })
 ```
 
@@ -31071,7 +30672,7 @@ local project = client:Project(nil)
 | `name` | `string` | Yes |  |
 | `network_connections` | `table` | Yes |  |
 | `organization_id` | `string` | Yes |  |
-| `overview` | `table` | Yes |  |
+| `overview` | `table` | No |  |
 | `permissions` | `table` | Yes |  |
 | `personas` | `table` | Yes |  |
 | `project` | `table` | Yes |  |
@@ -31079,7 +30680,7 @@ local project = client:Project(nil)
 | `pull_requests` | `table` | Yes |  |
 | `purpose` | `string|nil` | Yes |  |
 | `runs` | `table` | Yes |  |
-| `scenario_history` | `table` | Yes |  |
+| `scenario_history` | `table` | No |  |
 | `scenario_states` | `table` | Yes | Scenarios by the state of their latest execution. |
 | `scenarios` | `table` | Yes |  |
 | `setup_required` | `boolean` | No |  |
@@ -31219,13 +30820,13 @@ local project_android_apk = client:ProjectAndroidApk(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `android` | `table` | Yes |  |
+| `android` | `table` | No |  |
 | `artifact_paths` | `table` | No |  |
 | `description` | `string` | Yes |  |
 | `image` | `string` | Yes |  |
-| `ios` | `table` | Yes |  |
+| `ios` | `table` | No |  |
 | `launch_command` | `string` | No |  |
-| `managed_binary` | `table` | Yes |  |
+| `managed_binary` | `table` | No |  |
 | `platform` | `string` | No |  |
 | `provider` | `string` | No |  |
 | `setup_command` | `string` | No |  |
@@ -31291,7 +30892,7 @@ local project_code_map = client:ProjectCodeMap(nil)
 | `name` | `string` | Yes |  |
 | `ref` | `string` | No |  |
 | `repository_id` | `string` | Yes |  |
-| `revision` | `table` | Yes |  |
+| `revision` | `table` | No |  |
 | `slug` | `string` | Yes |  |
 | `status` | `string` | Yes |  |
 
@@ -31705,13 +31306,13 @@ local project_ios_app = client:ProjectIosApp(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `android` | `table` | Yes |  |
+| `android` | `table` | No |  |
 | `artifact_paths` | `table` | No |  |
 | `description` | `string` | Yes |  |
 | `image` | `string` | Yes |  |
-| `ios` | `table` | Yes |  |
+| `ios` | `table` | No |  |
 | `launch_command` | `string` | No |  |
-| `managed_binary` | `table` | Yes |  |
+| `managed_binary` | `table` | No |  |
 | `platform` | `string` | No |  |
 | `provider` | `string` | No |  |
 | `setup_command` | `string` | No |  |
@@ -31999,6 +31600,60 @@ Return the entity name.
 
 ---
 
+## ProjectPrTestingEntity
+
+```lua
+local project_pr_testing = client:ProjectPrTesting(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+| `project` | `table` | Yes |  |
+| `pull_request_options` | `table` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ProjectPrTesting():load({ id = "project_pr_testing_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ProjectPrTestingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## ProjectProductMapEntity
 
 ```lua
@@ -32036,6 +31691,64 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `ProjectProductMapEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ProjectProductMapComparisonEntity
+
+```lua
+local project_product_map_comparison = client:ProjectProductMapComparison(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accounts` | `table` | Yes |  |
+| `comparison` | `any` | Yes |  |
+| `filters` | `any` | Yes |  |
+| `id` | `string` | No |  |
+| `project` | `table` | Yes |  |
+| `requirements` | `table` | Yes |  |
+| `revisions` | `table` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ProjectProductMapComparison():load({ id = "project_product_map_comparison_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ProjectProductMapComparisonEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -32155,6 +31868,25 @@ local project_run_plan = client:ProjectRunPlan(nil)
 | `updated_at` | `string` | Yes |  |
 | `version` | `number` | Yes |  |
 
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `archived_at` | - | - | - | - | - |
+| `base_url` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dependencies` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `identity_probe` | - | - | Yes | Yes | Yes |
+| `kind` | - | - | - | - | - |
+| `lock_version` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `nodes` | - | - | - | - | - |
+| `preview` | - | - | - | - | - |
+| `project_id` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `version` | - | - | - | - | - |
+
 ### Operations
 
 #### `create(reqdata, ctrl) -> any, err`
@@ -32166,7 +31898,6 @@ local result, err = client:ProjectRunPlan():create({
   organization_id = --[[ string ]],
   project_id = --[[ string ]],
   dependencies = --[[ table ]],
-  identity_probe = --[[ table|nil ]],
   name = --[[ string ]],
   nodes = --[[ table ]],
 })
@@ -32520,21 +32251,17 @@ local project_setting = client:ProjectSetting(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `available_messaging_environments` | `table` | Yes |  |
-| `messaging_conversations` | `table` | Yes |  |
-| `messaging_enabled` | `boolean` | Yes |  |
-| `permissions` | `table` | Yes |  |
-| `project` | `table` | Yes |  |
-| `tester_numbers` | `table` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
 
 ### Operations
 
-#### `load(reqmatch, ctrl) -> any, err`
+#### `list(reqmatch, ctrl) -> any, err`
 
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
-local result, err = client:ProjectSetting():load({ organization_id = "organization_id", project_id = "project_id" })
+local results, err = client:ProjectSetting():list({ organization_id = "example", project_id = "example" })
 ```
 
 ### Common Methods
@@ -32558,91 +32285,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `ProjectSettingEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## PullRequestEntity
-
-```lua
-local pull_request = client:PullRequest(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `available_tests` | `table` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
-| `branch` | `string` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
-| `cleanup_only` | `boolean` | No | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
-| `current_run` | `any` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
-| `findings` | `table` | Yes |  |
-| `head_sha` | `string` | No | If supplied, refuse to create a run unless this is the current PR head. |
-| `id` | `string` | No |  |
-| `idempotency_key` | `string` | Yes |  |
-| `imessage_number` | `string` | No | International destination of this exact deployed commit. |
-| `number` | `number` | No |  |
-| `pagination` | `table` | Yes |  |
-| `permissions` | `table` | Yes |  |
-| `preview_cleanup_ready` | `boolean` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
-| `preview_url` | `string|nil` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
-| `project` | `any` | No |  |
-| `project_id` | `string` | No | Composal project slug or public ID for PR preview environments. |
-| `pull_request` | `table` | Yes |  |
-| `repository_id` | `string` | No |  |
-| `runs` | `table` | Yes |  |
-
-### Operations
-
-#### `create(reqdata, ctrl) -> any, err`
-
-Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
-
-```lua
-local result, err = client:PullRequest():create({
-  organization_id = --[[ string ]],
-  idempotency_key = --[[ string ]],
-})
-```
-
-#### `load(reqmatch, ctrl) -> any, err`
-
-Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
-
-```lua
-local result, err = client:PullRequest():load({ id = "pull_request_id", organization_id = "organization_id" })
-```
-
-#### `remove(reqmatch, ctrl) -> any, err`
-
-Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `PullRequestEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -35651,7 +35293,7 @@ local run_job = client:RunJob(nil)
 | --- | --- | --- | --- |
 | `active` | `boolean` | Yes |  |
 | `allow_failure` | `boolean` | Yes |  |
-| `cache_archive_observations` | `table|nil` | Yes | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `cache_archive_observations` | `table|nil` | No | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
 | `ci_pipeline_run_id` | `string` | Yes |  |
 | `ci_runner_id` | `string|nil` | Yes |  |
 | `created_at` | `string` | Yes |  |
@@ -35672,7 +35314,7 @@ local run_job = client:RunJob(nil)
 | `queued_at` | `string|nil` | Yes |  |
 | `reconciliation_id` | `string|nil` | No |  |
 | `retry_number` | `number` | Yes |  |
-| `reuse` | `table|nil` | Yes |  |
+| `reuse` | `table|nil` | No |  |
 | `runner_label_selector` | `string|nil` | Yes |  |
 | `slug` | `string` | Yes |  |
 | `started_at` | `string|nil` | Yes |  |
@@ -35902,42 +35544,33 @@ local run_update = client:RunUpdate(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `base_sha` | `string` | Yes |  |
-| `can_verify` | `boolean` | Yes |  |
-| `comment_url` | `string|nil` | Yes |  |
-| `draft` | `boolean` | Yes |  |
-| `github_repository` | `string|nil` | Yes | GitHub owner/repository associated with this pull request. |
-| `github_url` | `string|nil` | Yes |  |
-| `head_sha` | `string` | Yes |  |
-| `id` | `string` | Yes |  |
-| `latest_created_at` | `string|nil` | Yes |  |
-| `latest_current` | `boolean` | Yes |  |
-| `latest_head_sha` | `string|nil` | Yes |  |
-| `latest_reason` | `string|nil` | Yes |  |
-| `latest_run_id` | `string|nil` | Yes |  |
-| `latest_state` | `string|nil` | Yes |  |
-| `number` | `number` | Yes |  |
-| `project_id` | `string|nil` | Yes |  |
-| `project_slug` | `string|nil` | Yes |  |
-| `provider` | `string` | Yes |  |
-| `repository_id` | `string` | Yes |  |
-| `request_label` | `string` | Yes |  |
-| `source_branch` | `string|nil` | Yes |  |
-| `source_repository` | `string|nil` | Yes |  |
-| `source_url` | `string|nil` | Yes |  |
-| `state` | `string` | Yes |  |
-| `title` | `string` | Yes |  |
-| `updated_at` | `string` | Yes |  |
-| `web_path` | `string` | Yes |  |
+| `active_runs` | `table` | Yes |  |
+| `checkout_required` | `boolean` | Yes |  |
+| `cli_signed_in_at` | `string|nil` | Yes | When the signed-in user last finished a CLI sign-in for this organization, so agent setup can show the CLI is connected. |
+| `counts` | `table` | Yes |  |
+| `demo_project` | `table|nil` | Yes | The workspace's copy of the demo project, which setup offers as example data. |
+| `environments` | `table` | Yes |  |
+| `included_deep_scan` | `boolean` | Yes | Whether a new app gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account, so setup asks for one right after the app. |
+| `onboarding_discovery` | `any` | No |  |
+| `organization` | `table` | Yes |  |
+| `permissions` | `table` | Yes |  |
+| `project` | `any` | Yes | The project the page is limited to, or null for the whole organization. |
+| `pull_request_launch_options` | `table` | No |  |
+| `pull_requests` | `table` | No |  |
+| `repositories` | `table` | Yes |  |
+| `runs` | `table` | Yes |  |
+| `runs_pagination` | `table` | Yes |  |
+| `suggested_app_url` | `string|nil` | Yes | The URL first-run setup prefills for a new app, from the workspace's project website or the signed-in user's work email domain. |
+| `url_first_start` | `boolean` | Yes | Whether setup opens on the URL-first screen, which saves the app and asks for test access next. |
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:RunUpdate():list({ organization_id = "example" })
+local result, err = client:RunUpdate():load({ organization_id = "organization_id" })
 ```
 
 ### Common Methods
@@ -37012,8 +36645,8 @@ local signal = client:Signal(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `acked_at` | `string|nil` | Yes |  |
-| `acked_by` | `table|nil` | Yes | Who acked the signal, read from `acked_by_user_id`. |
-| `agent_runs` | `table` | Yes | Dispatched-run summary (docs §6c). |
+| `acked_by` | `table|nil` | No | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | `table` | No | Dispatched-run summary (docs §6c). |
 | `app_service_id` | `string|nil` | Yes |  |
 | `attribution` | `table` | Yes | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
 | `created_at` | `string` | Yes | ISO8601 row insert time — retention math and debugging only. |
@@ -37025,8 +36658,8 @@ local signal = client:Signal(nil)
 | `occurred_at` | `string` | Yes | ISO8601 domain event time — what the UI displays and `since` filters on. |
 | `organization_id` | `string` | Yes |  |
 | `payload` | `table` | Yes | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
-| `recovery` | `table` | Yes | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
-| `resolution` | `table` | Yes | Recovery pairing (docs §6b). |
+| `recovery` | `table` | No | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | `table` | No | Recovery pairing (docs §6b). |
 | `severity` | `string` | Yes | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
 | `source` | `table` | Yes | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
 | `subject_id` | `string|nil` | Yes |  |
@@ -39400,7 +39033,7 @@ local spark_agent_local_thread = client:SparkAgentLocalThread(nil)
 | `can_interrupt` | `boolean` | Yes |  |
 | `can_send` | `boolean` | Yes |  |
 | `created_at` | `string` | Yes |  |
-| `delivery` | `table` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `delivery` | `table` | No | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
 | `device_id` | `string` | Yes |  |
 | `device_name` | `string` | Yes |  |
 | `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
@@ -39415,7 +39048,7 @@ local spark_agent_local_thread = client:SparkAgentLocalThread(nil)
 | `provider` | `string` | Yes |  |
 | `references` | `table` | Yes |  |
 | `relay_disconnected_at` | `string|nil` | No |  |
-| `relay_participant` | `table` | Yes |  |
+| `relay_participant` | `table` | No |  |
 | `result` | `any` | Yes |  |
 | `result_expired` | `boolean` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
 | `result_schema` | `table|boolean` | No |  |
@@ -39425,6 +39058,44 @@ local spark_agent_local_thread = client:SparkAgentLocalThread(nil)
 | `task_configured` | `boolean` | Yes |  |
 | `thread_id` | `string` | Yes |  |
 | `title` | `string` | Yes | Short title: the native name, or the first prompt's first line without the agent's task preamble. |
+
+### Field Usage by Operation
+
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `action` | - | - | - |
+| `archived` | - | - | - |
+| `can_archive` | - | - | - |
+| `can_disconnect_relay` | - | - | - |
+| `can_end` | - | - | - |
+| `can_interrupt` | - | - | - |
+| `can_send` | - | - | - |
+| `created_at` | - | - | - |
+| `delivery` | - | - | - |
+| `device_id` | - | - | - |
+| `device_name` | - | - | - |
+| `diagnostic_code` | - | - | - |
+| `end` | - | Yes | - |
+| `expires_at` | - | - | - |
+| `full_title` | - | - | - |
+| `id` | - | - | - |
+| `key` | - | - | - |
+| `last_activity_at` | - | - | - |
+| `native_thread_id` | - | - | - |
+| `parent_conversation_id` | - | - | - |
+| `provider` | - | - | - |
+| `references` | - | - | - |
+| `relay_disconnected_at` | - | - | - |
+| `relay_participant` | - | - | - |
+| `result` | - | - | - |
+| `result_expired` | - | - | - |
+| `result_schema` | - | - | - |
+| `section` | - | - | - |
+| `state` | - | - | - |
+| `status` | - | - | - |
+| `task_configured` | - | - | - |
+| `thread_id` | - | - | - |
+| `title` | - | - | - |
 
 ### Operations
 
@@ -39666,7 +39337,7 @@ local spark_agent_thread = client:SparkAgentThread(nil)
 | `can_compact` | - | - |
 | `can_snooze` | - | - |
 | `coordination_status` | - | - |
-| `execution` | Yes | - |
+| `execution` | - | - |
 | `first_input` | - | - |
 | `first_input_key` | - | - |
 | `first_input_requester_membership_id` | - | - |
@@ -39737,6 +39408,93 @@ Return the entity name.
 
 ---
 
+## SparkAutomationEntity
+
+```lua
+local spark_automation = client:SparkAutomation(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage` | `boolean` | Yes |  |
+| `can_manage_events` | `boolean` | Yes | Whether new event triggers can be attached or existing settings saved. |
+| `can_run` | `boolean` | Yes | Whether the viewer can request a manual Temporal run |
+| `can_schedule` | `boolean` | Yes |  |
+| `definition` | `table` | Yes |  |
+| `event_subscriptions` | `table` | Yes |  |
+| `event_triggers` | `table` | Yes |  |
+| `expected_revision` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `revision` | `number` | Yes |  |
+| `schedule` | `any` | Yes |  |
+| `schedules` | `table` | Yes |  |
+| `version` | `table` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SparkAutomation():list({ agent_id = "example", organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SparkAutomation():load({ id = "spark_automation_id", agent_id = "agent_id", organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SparkAutomation():update({
+  id = "spark_automation_id",
+  agent_id = "agent_id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkAutomationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## SparkCreditEntity
 
 ```lua
@@ -39753,7 +39511,7 @@ local spark_credit = client:SparkCredit(nil)
 | `available_usd` | `string` | Yes |  |
 | `billing_unit` | `string` | No | Compute minute quote version returned by the billing summary. |
 | `can_manage` | `boolean` | Yes |  |
-| `compute_minutes` | `table` | Yes |  |
+| `compute_minutes` | `table` | No |  |
 | `compute_usd` | `string` | No |  |
 | `credits_per_usd` | `number` | Yes |  |
 | `inference_usd` | `string` | No |  |
@@ -41684,7 +41442,7 @@ local vc_merge_queue = client:VcMergeQueue(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analytics` | `table` | Yes | Queue performance for the reporting window. |
+| `analytics` | `table` | No | Queue performance for the reporting window. |
 | `id` | `string` | No |  |
 | `policy` | `table` | Yes |  |
 | `queue` | `table` | Yes |  |
@@ -41760,7 +41518,7 @@ local vc_stack = client:VcStack(nil)
 | `changes` | `table` | Yes |  |
 | `code` | `string` | Yes |  |
 | `id` | `string` | No |  |
-| `landing` | `table` | Yes | Compact landing state for the Stack CLI. |
+| `landing` | `table` | No | Compact landing state for the Stack CLI. |
 | `member_count` | `number` | Yes |  |
 | `name` | `string|nil` | Yes |  |
 | `ref_name` | `string` | Yes |  |
@@ -42378,7 +42136,7 @@ local verification_project_scenario = client:VerificationProjectScenario(nil)
 | `created_at` | `string` | Yes |  |
 | `dependencies` | `table` | Yes |  |
 | `fixtures` | `table` | No | Files upload steps choose, ordered by name. |
-| `health` | `table` | Yes |  |
+| `health` | `table` | No |  |
 | `id` | `string` | Yes |  |
 | `identity_probe` | `any` | No |  |
 | `if` | `string|nil` | No | A documented subset of Actions expressions. |
@@ -42701,6 +42459,458 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `VerifyEmailVerificationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## VerifyEnvironmentEntity
+
+```lua
+local verify_environment = client:VerifyEnvironment(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_revision_id` | `string|nil` | Yes |  |
+| `agent_sign_up_available` | `boolean` | Yes | Whether the signed-in admin can have Verify's agent create a test user for the included Deep Scan (`POST .../first_run/test_user`). |
+| `allowed_actions` | `string` | Yes | read_only only looks around; writes may create, change and delete data. |
+| `billing` | `table` | Yes |  |
+| `cleanup` | `table` | Yes |  |
+| `connection` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `default_policy` | `table` | No |  |
+| `default_policy_json` | `table` | Yes |  |
+| `discovery_defaults` | `table` | Yes |  |
+| `environment` | `table` | Yes |  |
+| `exploration_accounts` | `table` | No |  |
+| `explorations` | `table` | No |  |
+| `first_run` | `any` | No |  |
+| `hosted_app_id` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imessage_number` | `string|nil` | Yes | International destination number; blank or null clears it on an added environment. |
+| `included_deep_scan` | `boolean` | Yes | Whether this app still gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account or is marked as having no sign-in, so setup asks for one before anything else. |
+| `lock_version` | `number` | Yes |  |
+| `managed_google_available` | `boolean` | Yes | Whether the managed Google account can be offered for this app. |
+| `managed_google_email` | `string` | Yes |  |
+| `messaging_tester_number` | `string|nil` | No | One configured tester number. |
+| `name` | `string` | Yes | Optional for a website target; defaults to its hostname. |
+| `network_connections` | `table` | Yes |  |
+| `onboarding_discovery` | `any` | No |  |
+| `organization_id` | `string` | Yes |  |
+| `pending_accounts` | `table` | No | Credentials on a Composal address still waiting for the password the customer chose at signup. |
+| `permissions` | `table` | Yes |  |
+| `project_id` | `string|nil` | Yes | Owning project. |
+| `repository_id` | `string|nil` | Yes |  |
+| `revisions` | `table` | Yes |  |
+| `setup_discovery_id` | `string|nil` | No | Existing discovery to resume after setup or Checkout, selected within this environment. |
+| `sign_in_check_available` | `boolean` | Yes | Whether a test account's live sign-in check can run on this app. |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `target_kind` | `string|nil` | Yes |  |
+| `target_url` | `string|nil` | Yes |  |
+| `test_accounts` | `table` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `verify_network_connection_id` | `string|nil` | Yes |  |
+| `version` | `number` | No | Required for target or tester changes; use lock_version from the environment. |
+
+### Field Usage by Operation
+
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `active_revision_id` | - | - | - | - | - |
+| `agent_sign_up_available` | - | - | - | - | - |
+| `allowed_actions` | - | Yes | - | Yes | - |
+| `billing` | - | - | - | - | - |
+| `cleanup` | - | - | - | - | - |
+| `connection` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `default_policy` | - | - | - | - | - |
+| `default_policy_json` | - | - | - | - | - |
+| `discovery_defaults` | - | - | - | - | - |
+| `environment` | - | - | - | - | - |
+| `exploration_accounts` | - | - | - | - | - |
+| `explorations` | - | - | - | - | - |
+| `first_run` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `imessage_number` | - | Yes | - | Yes | - |
+| `included_deep_scan` | - | - | - | - | - |
+| `lock_version` | - | - | - | - | - |
+| `managed_google_available` | - | - | - | - | - |
+| `managed_google_email` | - | - | - | - | - |
+| `messaging_tester_number` | - | - | - | - | - |
+| `name` | - | Yes | - | Yes | - |
+| `network_connections` | - | - | - | - | - |
+| `onboarding_discovery` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `pending_accounts` | - | - | - | - | - |
+| `permissions` | - | - | - | - | - |
+| `project_id` | - | Yes | - | - | - |
+| `repository_id` | - | Yes | - | - | - |
+| `revisions` | - | - | - | - | - |
+| `setup_discovery_id` | - | - | - | - | - |
+| `sign_in_check_available` | - | - | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `target_kind` | - | Yes | - | - | - |
+| `target_url` | - | Yes | - | Yes | - |
+| `test_accounts` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verify_network_connection_id` | - | - | - | Yes | - |
+| `version` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VerifyEnvironment():create({
+  organization_id = --[[ string ]],
+  slug = --[[ string ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VerifyEnvironment():load({ id = "verify_environment_id", organization_id = "organization_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VerifyEnvironment():patch({
+  id = "verify_environment_id",
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VerifyEnvironment():remove({ id = "verify_environment_id", organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VerifyEnvironment():update({
+  id = "verify_environment_id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VerifyEnvironmentEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## VerifyEvidenceEntity
+
+```lua
+local verify_evidence = client:VerifyEvidence(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VerifyEvidence():load({ id = "verify_evidence_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VerifyEvidenceEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## VerifyMergeRequestEntity
+
+```lua
+local verify_merge_request = client:VerifyMergeRequest(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available_tests` | `table` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `base_sha` | `string` | Yes |  |
+| `branch` | `string` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `comment_url` | `string|nil` | Yes |  |
+| `current_run` | `any` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `draft` | `boolean` | Yes |  |
+| `findings` | `table` | Yes |  |
+| `github_repository` | `string|nil` | Yes | GitHub owner/repository associated with this pull request. |
+| `github_url` | `string|nil` | Yes |  |
+| `head_sha` | `string` | Yes | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` | `string` | Yes |  |
+| `idempotency_key` | `string` | Yes |  |
+| `number` | `number` | Yes |  |
+| `pagination` | `table` | Yes |  |
+| `permissions` | `table` | Yes |  |
+| `preview_cleanup_ready` | `boolean` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | `string|nil` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` | `any` | No |  |
+| `project_id` | `string|nil` | Yes | Composal project slug or public ID for PR preview environments. |
+| `project_slug` | `string|nil` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `pull_request` | `table` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `request_label` | `string` | Yes |  |
+| `requested_run_id` | `string|nil` | Yes |  |
+| `runs` | `table` | Yes |  |
+| `source_branch` | `string|nil` | Yes |  |
+| `source_repository` | `string|nil` | Yes |  |
+| `source_url` | `string|nil` | Yes |  |
+| `state` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `web_path` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `available_tests` | - | - |
+| `base_sha` | - | - |
+| `branch` | - | - |
+| `comment_url` | - | - |
+| `current_run` | - | - |
+| `draft` | - | - |
+| `findings` | - | - |
+| `github_repository` | - | - |
+| `github_url` | - | - |
+| `head_sha` | - | Yes |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `number` | - | - |
+| `pagination` | - | - |
+| `permissions` | - | - |
+| `preview_cleanup_ready` | - | - |
+| `preview_url` | - | - |
+| `project` | - | - |
+| `project_id` | - | Yes |
+| `project_slug` | - | - |
+| `provider` | - | - |
+| `pull_request` | - | - |
+| `repository_id` | - | Yes |
+| `request_label` | - | - |
+| `requested_run_id` | - | - |
+| `runs` | - | - |
+| `source_branch` | - | - |
+| `source_repository` | - | - |
+| `source_url` | - | - |
+| `state` | - | - |
+| `title` | - | - |
+| `updated_at` | - | - |
+| `web_path` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VerifyMergeRequest():create({
+  organization_id = --[[ string ]],
+  idempotency_key = --[[ string ]],
+  number = --[[ number ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VerifyMergeRequest():load({ id = "verify_merge_request_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VerifyMergeRequestEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## VerifyPullRequestEntity
+
+```lua
+local verify_pull_request = client:VerifyPullRequest(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available_tests` | `table` | Yes | All active saved scenarios in the configured project, including scenarios outside the automatic selection. |
+| `branch` | `string` | No | Exact deployed source branch; refused if it differs from the canonical request branch. |
+| `cleanup_only` | `boolean` | No | Refresh canonical PR state and cancel closed-preview work without preparing a new verification request, including when its PR record is missing. |
+| `current_run` | `any` | No | Latest verification request if it matches the current head and base, independent of history pagination. |
+| `findings` | `table` | Yes |  |
+| `head_sha` | `string` | No | If supplied, refuse to create a run unless this is the current PR head. |
+| `id` | `string` | No |  |
+| `idempotency_key` | `string` | Yes |  |
+| `imessage_number` | `string` | No | International destination of this exact deployed commit. |
+| `number` | `number` | No |  |
+| `pagination` | `table` | Yes |  |
+| `permissions` | `table` | Yes |  |
+| `preview_cleanup_ready` | `boolean` | Yes | The source is closed or merged and unfinished Scenario execution and Discovery have stopped. |
+| `preview_url` | `string|nil` | No | Most recently supplied preview URL for the current head commit, retained across verification attempts. |
+| `project` | `any` | No |  |
+| `project_id` | `string` | No | Composal project slug or public ID for PR preview environments. |
+| `pull_request` | `table` | Yes |  |
+| `repository_id` | `string` | No |  |
+| `runs` | `table` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VerifyPullRequest():create({
+  organization_id = --[[ string ]],
+  idempotency_key = --[[ string ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VerifyPullRequest():load({ id = "verify_pull_request_id", organization_id = "organization_id" })
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VerifyPullRequestEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -43517,10 +43727,10 @@ local client = sdk.new({
 ### Configuring features
 
 Each feature is inactive until switched on, and an SDK with no feature
-configured does no feature work at all. Every option below keeps its default
-unless you name it.
+configured does no feature work at all.
+Every option below keeps its default unless you name it.
 
-The array form of \`feature\` is significant: several features wrap the
+The array form of `feature` is significant: several features wrap the
 transport, and the order you list them in is the order they nest.
 
 #### Ordering
@@ -43531,10 +43741,10 @@ a feature activated later sits OUTSIDE one activated earlier, and sees the call
 first.
 
 That decides behaviour, not just sequence: a feature that short-circuits the
-call, such as a cache serving a hit, stops every feature nested inside it from
+call stops every feature nested inside it from
 ever seeing that call.
 
-`debug`, `idempotency`, `metrics`, `paging`, `test` attach to pipeline hooks
+`debug`, `idempotency`, `metrics`, `paging` attach to pipeline hooks
 rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
@@ -43750,6 +43960,7 @@ its default unless you name it.
 
 - Wraps the transport: its place in the activation order decides what it
   sees. See [Ordering](#ordering) above.
+- Also attaches to pipeline hooks.
 - Inactive by default: leaving it out costs nothing at runtime.
 
 #### `test`
@@ -43777,10 +43988,9 @@ its default unless you name it.
 
 **Considerations**
 
-- Attaches to pipeline hooks, not the transport, so activation order does
-  not change what it observes.
 - Installs the BASE transport that the wrapping features wrap, so it must be
   activated before them.
+- Also attaches to pipeline hooks.
 - Inactive by default: leaving it out costs nothing at runtime.
 
 #### `timeout`

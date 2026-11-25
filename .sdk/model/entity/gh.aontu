@@ -95,20 +95,6 @@ main: kit: entity: gh: {
               }
               {
                 k: "param"
-                n: "gh_id"
-                or: "github_owner"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "github_repo"
-                or: "github_repo"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "github_repo"
                 or: "github_repo"
                 r: true
@@ -118,20 +104,6 @@ main: kit: entity: gh: {
                 k: "param"
                 n: "id"
                 or: "number"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "id"
-                or: "number"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "org_slug"
                 r: true
                 t: "`$STRING`"
               }

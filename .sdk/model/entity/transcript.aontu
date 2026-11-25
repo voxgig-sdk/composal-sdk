@@ -123,13 +123,6 @@ main: kit: entity: transcript: {
                 r: true
                 t: "`$STRING`"
               }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "org_slug"
-                r: true
-                t: "`$STRING`"
-              }
             ]
           }
           m: "POST"
@@ -170,8 +163,11 @@ main: kit: entity: transcript: {
             }
           ]
           t: {
+            page: {
+              cursor: "`body.pagination.next_cursor`"
+            }
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]
@@ -407,11 +403,8 @@ main: kit: entity: transcript: {
             }
           ]
           t: {
-            page: {
-              more: "`body.has_more`"
-            }
             req: "`reqdata`"
-            res: "`body.events`"
+            res: "`body`"
           }
         }
       ]

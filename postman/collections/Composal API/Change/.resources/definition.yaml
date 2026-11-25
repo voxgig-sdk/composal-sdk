@@ -7,6 +7,6 @@ description: |-
   |---|---|---|---|
   | `counts` | object | yes |  |
   | `filters` | object | yes |  |
-  | `github_sync` | object | yes |  |
+  | `github_sync` | object |  |  |
   | `result` | any | yes |  |
-order: 19000
+order: 18000

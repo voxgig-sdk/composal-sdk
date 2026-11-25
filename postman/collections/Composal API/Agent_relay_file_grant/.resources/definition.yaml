@@ -20,4 +20,4 @@ description: |-
   | `revoked_at` | string | yes |  |
   | `snapshot_supported` | boolean |  |  |
   | `source_operation_id` | string | yes |  |
-order: 41000
+order: 40000

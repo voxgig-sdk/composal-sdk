@@ -27,16 +27,8 @@ class PullRequestTranscriptDirectTest < Minitest::Test
       skip(_reason || "skipped via sdk-test-control.json")
       return
     end
-    if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE" && setup[:idmap]["pull_request01"].nil?
-      puts "LIVE STEP {\"id\":\"direct-list-pull_request_transcript\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}"
-      skip("Live coverage incomplete: direct-list-pull_request_transcript excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)")
-    end
-    if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE" && setup[:idmap]["pull_request01"].nil?
-      puts "LIVE STEP {\"id\":\"direct-list-pull_request_transcript\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}"
-      skip("Live coverage incomplete: direct-list-pull_request_transcript excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)")
-    end
     if setup[:live]
-      ["organization01", "pull_request01", "pull_request01", "repo01"].each do |_live_key|
+      ["organization01", "pull_request01", "repo01"].each do |_live_key|
         if setup[:idmap][_live_key].nil?
           Runner.live_miss(LIVE_STRICT, "Live test blocked: needs #{_live_key} via COMPOSAL_TEST_PULL_REQUEST_TRANSCRIPT_ENTID")
         end
@@ -49,8 +41,7 @@ class PullRequestTranscriptDirectTest < Minitest::Test
     query = {}
     params["organization_id"] = setup[:live] ? setup[:idmap]["organization01"] : "direct01"
     params["pull_request_id"] = setup[:live] ? setup[:idmap]["pull_request01"] : "direct02"
-    params["pull_request_id"] = setup[:live] ? setup[:idmap]["pull_request01"] : "direct03"
-    params["repo_id"] = setup[:live] ? setup[:idmap]["repo01"] : "direct04"
+    params["repo_id"] = setup[:live] ? setup[:idmap]["repo01"] : "direct03"
 
     result = client.direct({
       "path" => "api/v1/organizations/{organization_id}/repos/{repo_id}/pages/pull_request/{pull_request_id}/transcripts",

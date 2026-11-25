@@ -47,15 +47,13 @@ class CommitDiffDirectTest extends TestCase
         if ($setup["live"]) {
             $params["commit_id"] = $setup["idmap"]["commit01"] ?? null;
             $params["id"] = $setup["idmap"]["commit_diff01"] ?? null;
-            $params["id"] = $setup["idmap"]["commit_diff01"] ?? null;
             $params["organization_id"] = $setup["idmap"]["organization01"] ?? null;
             $params["repo_id"] = $setup["idmap"]["repo01"] ?? null;
         } else {
             $params["commit_id"] = "direct01";
             $params["id"] = "direct02";
-            $params["id"] = "direct03";
-            $params["organization_id"] = "direct04";
-            $params["repo_id"] = "direct05";
+            $params["organization_id"] = "direct03";
+            $params["repo_id"] = "direct04";
         }
 
         $result = $client->direct([

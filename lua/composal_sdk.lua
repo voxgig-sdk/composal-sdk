@@ -521,20 +521,6 @@ function ComposalSDK:AgentAttachment(data)
 end
 
 
--- Idiomatic facade: client:AgentAutomation():list() / client:AgentAutomation():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function ComposalSDK:AgentAutomation(data)
-  local EntityMod = require("entity.agent_automation_entity")
-  if data == nil then
-    if self._agent_automation == nil then
-      self._agent_automation = EntityMod.new(self, nil)
-    end
-    return self._agent_automation
-  end
-  return EntityMod.new(self, data)
-end
-
-
 -- Idiomatic facade: client:AgentAvatar():list() / client:AgentAvatar():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:AgentAvatar(data)
@@ -1608,6 +1594,20 @@ function ComposalSDK:AppDeployment(data)
       self._app_deployment = EntityMod.new(self, nil)
     end
     return self._app_deployment
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AppDeploymentDashboard():list() / client:AppDeploymentDashboard():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AppDeploymentDashboard(data)
+  local EntityMod = require("entity.app_deployment_dashboard_entity")
+  if data == nil then
+    if self._app_deployment_dashboard == nil then
+      self._app_deployment_dashboard = EntityMod.new(self, nil)
+    end
+    return self._app_deployment_dashboard
   end
   return EntityMod.new(self, data)
 end
@@ -3419,20 +3419,6 @@ function ComposalSDK:DeviceControlMessage(data)
 end
 
 
--- Idiomatic facade: client:DeviceControlOperation():list() / client:DeviceControlOperation():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function ComposalSDK:DeviceControlOperation(data)
-  local EntityMod = require("entity.device_control_operation_entity")
-  if data == nil then
-    if self._device_control_operation == nil then
-      self._device_control_operation = EntityMod.new(self, nil)
-    end
-    return self._device_control_operation
-  end
-  return EntityMod.new(self, data)
-end
-
-
 -- Idiomatic facade: client:DeviceEnterpriseRelay():list() / client:DeviceEnterpriseRelay():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:DeviceEnterpriseRelay(data)
@@ -3498,6 +3484,20 @@ function ComposalSDK:DeviceLocalEvent(data)
       self._device_local_event = EntityMod.new(self, nil)
     end
     return self._device_local_event
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DeviceOperation():list() / client:DeviceOperation():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DeviceOperation(data)
+  local EntityMod = require("entity.device_operation_entity")
+  if data == nil then
+    if self._device_operation == nil then
+      self._device_operation = EntityMod.new(self, nil)
+    end
+    return self._device_operation
   end
   return EntityMod.new(self, data)
 end
@@ -3657,20 +3657,6 @@ function ComposalSDK:EmailVerification(data)
 end
 
 
--- Idiomatic facade: client:Environment():list() / client:Environment():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function ComposalSDK:Environment(data)
-  local EntityMod = require("entity.environment_entity")
-  if data == nil then
-    if self._environment == nil then
-      self._environment = EntityMod.new(self, nil)
-    end
-    return self._environment
-  end
-  return EntityMod.new(self, data)
-end
-
-
 -- Idiomatic facade: client:EnvironmentDiscoveryRun():list() / client:EnvironmentDiscoveryRun():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:EnvironmentDiscoveryRun(data)
@@ -3750,20 +3736,6 @@ function ComposalSDK:EnvironmentTestAccount(data)
       self._environment_test_account = EntityMod.new(self, nil)
     end
     return self._environment_test_account
-  end
-  return EntityMod.new(self, data)
-end
-
-
--- Idiomatic facade: client:Evidence():list() / client:Evidence():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function ComposalSDK:Evidence(data)
-  local EntityMod = require("entity.evidence_entity")
-  if data == nil then
-    if self._evidence == nil then
-      self._evidence = EntityMod.new(self, nil)
-    end
-    return self._evidence
   end
   return EntityMod.new(self, data)
 end
@@ -4044,20 +4016,6 @@ function ComposalSDK:GithubConnection(data)
       self._github_connection = EntityMod.new(self, nil)
     end
     return self._github_connection
-  end
-  return EntityMod.new(self, data)
-end
-
-
--- Idiomatic facade: client:GithubIntegration():list() / client:GithubIntegration():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function ComposalSDK:GithubIntegration(data)
-  local EntityMod = require("entity.github_integration_entity")
-  if data == nil then
-    if self._github_integration == nil then
-      self._github_integration = EntityMod.new(self, nil)
-    end
-    return self._github_integration
   end
   return EntityMod.new(self, data)
 end
@@ -4875,20 +4833,6 @@ function ComposalSDK:MergeQueueEntry(data)
 end
 
 
--- Idiomatic facade: client:MergeRequest():list() / client:MergeRequest():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function ComposalSDK:MergeRequest(data)
-  local EntityMod = require("entity.merge_request_entity")
-  if data == nil then
-    if self._merge_request == nil then
-      self._merge_request = EntityMod.new(self, nil)
-    end
-    return self._merge_request
-  end
-  return EntityMod.new(self, data)
-end
-
-
 -- Idiomatic facade: client:MergeResolution():list() / client:MergeResolution():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:MergeResolution(data)
@@ -5561,6 +5505,20 @@ function ComposalSDK:PagesBilling(data)
 end
 
 
+-- Idiomatic facade: client:PagesGithubIntegration():list() / client:PagesGithubIntegration():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:PagesGithubIntegration(data)
+  local EntityMod = require("entity.pages_github_integration_entity")
+  if data == nil then
+    if self._pages_github_integration == nil then
+      self._pages_github_integration = EntityMod.new(self, nil)
+    end
+    return self._pages_github_integration
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:PagesGithubOnboarding():list() / client:PagesGithubOnboarding():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:PagesGithubOnboarding(data)
@@ -6051,6 +6009,20 @@ function ComposalSDK:ProjectOverviewPullRequest(data)
 end
 
 
+-- Idiomatic facade: client:ProjectPrTesting():list() / client:ProjectPrTesting():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ProjectPrTesting(data)
+  local EntityMod = require("entity.project_pr_testing_entity")
+  if data == nil then
+    if self._project_pr_testing == nil then
+      self._project_pr_testing = EntityMod.new(self, nil)
+    end
+    return self._project_pr_testing
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:ProjectProductMap():list() / client:ProjectProductMap():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:ProjectProductMap(data)
@@ -6060,6 +6032,20 @@ function ComposalSDK:ProjectProductMap(data)
       self._project_product_map = EntityMod.new(self, nil)
     end
     return self._project_product_map
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ProjectProductMapComparison():list() / client:ProjectProductMapComparison():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ProjectProductMapComparison(data)
+  local EntityMod = require("entity.project_product_map_comparison_entity")
+  if data == nil then
+    if self._project_product_map_comparison == nil then
+      self._project_product_map_comparison = EntityMod.new(self, nil)
+    end
+    return self._project_product_map_comparison
   end
   return EntityMod.new(self, data)
 end
@@ -6144,20 +6130,6 @@ function ComposalSDK:ProjectSetting(data)
       self._project_setting = EntityMod.new(self, nil)
     end
     return self._project_setting
-  end
-  return EntityMod.new(self, data)
-end
-
-
--- Idiomatic facade: client:PullRequest():list() / client:PullRequest():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function ComposalSDK:PullRequest(data)
-  local EntityMod = require("entity.pull_request_entity")
-  if data == nil then
-    if self._pull_request == nil then
-      self._pull_request = EntityMod.new(self, nil)
-    end
-    return self._pull_request
   end
   return EntityMod.new(self, data)
 end
@@ -7493,6 +7465,20 @@ function ComposalSDK:SparkAgentThread(data)
 end
 
 
+-- Idiomatic facade: client:SparkAutomation():list() / client:SparkAutomation():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SparkAutomation(data)
+  local EntityMod = require("entity.spark_automation_entity")
+  if data == nil then
+    if self._spark_automation == nil then
+      self._spark_automation = EntityMod.new(self, nil)
+    end
+    return self._spark_automation
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:SparkCredit():list() / client:SparkCredit():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:SparkCredit(data)
@@ -8020,6 +8006,62 @@ function ComposalSDK:VerifyEmailVerification(data)
       self._verify_email_verification = EntityMod.new(self, nil)
     end
     return self._verify_email_verification
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:VerifyEnvironment():list() / client:VerifyEnvironment():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:VerifyEnvironment(data)
+  local EntityMod = require("entity.verify_environment_entity")
+  if data == nil then
+    if self._verify_environment == nil then
+      self._verify_environment = EntityMod.new(self, nil)
+    end
+    return self._verify_environment
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:VerifyEvidence():list() / client:VerifyEvidence():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:VerifyEvidence(data)
+  local EntityMod = require("entity.verify_evidence_entity")
+  if data == nil then
+    if self._verify_evidence == nil then
+      self._verify_evidence = EntityMod.new(self, nil)
+    end
+    return self._verify_evidence
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:VerifyMergeRequest():list() / client:VerifyMergeRequest():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:VerifyMergeRequest(data)
+  local EntityMod = require("entity.verify_merge_request_entity")
+  if data == nil then
+    if self._verify_merge_request == nil then
+      self._verify_merge_request = EntityMod.new(self, nil)
+    end
+    return self._verify_merge_request
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:VerifyPullRequest():list() / client:VerifyPullRequest():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:VerifyPullRequest(data)
+  local EntityMod = require("entity.verify_pull_request_entity")
+  if data == nil then
+    if self._verify_pull_request == nil then
+      self._verify_pull_request = EntityMod.new(self, nil)
+    end
+    return self._verify_pull_request
   end
   return EntityMod.new(self, data)
 end

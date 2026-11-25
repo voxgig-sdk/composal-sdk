@@ -131,7 +131,7 @@ func TestAppDirect(t *testing.T) {
 		}
 
 		result, err := client.Direct(map[string]any{
-			"path":   "api/v1/hosting/apps/{id}/catalog",
+			"path":   "api/v1/hosting/apps/{id}",
 			"method": "GET",
 			"params": params,
 			"query":  query,

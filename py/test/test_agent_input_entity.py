@@ -37,7 +37,7 @@ class TestAgentInputEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.AgentInput(None).create({"agent_id": 1, "organization_id": "x", "browser_context": "x", "client_time": "x", "conversation_id": "x", "text": "x"}, None)
+            client.AgentInput(None).create({"agent_id": 1, "organization_id": "x", "conversation_id": "x", "text": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):

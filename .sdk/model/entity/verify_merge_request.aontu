@@ -1,0 +1,611 @@
+# Entity: verify_merge_request
+
+main: kit: entity: verify_merge_request: {
+
+  alias: field: {}
+
+  fields: {
+    available_tests: {
+      h: "Available Tests"
+      n: "available_tests"
+      r: true
+      sh: "All active saved scenarios in the configured project, including scenarios outside the automatic selection."
+      t: "`$ARRAY`"
+    }
+    base_sha: {
+      h: "Base Sha"
+      n: "base_sha"
+      r: true
+      t: "`$STRING`"
+    }
+    branch: {
+      h: "Branch"
+      n: "branch"
+      r: false
+      sh: "Exact deployed source branch; refused if it differs from the canonical request branch."
+      t: "`$STRING`"
+    }
+    comment_url: {
+      h: "Comment Url"
+      n: "comment_url"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    current_run: {
+      h: "Current Run"
+      n: "current_run"
+      r: false
+      sh: "Latest verification request if it matches the current head and base, independent of history pagination."
+      t: "`$ANY`"
+    }
+    draft: {
+      h: "Draft"
+      n: "draft"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    findings: {
+      h: "Findings"
+      n: "findings"
+      r: true
+      t: "`$ARRAY`"
+    }
+    github_repository: {
+      h: "Github Repository"
+      n: "github_repository"
+      r: true
+      sh: "GitHub owner/repository associated with this pull request."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    github_url: {
+      h: "Github Url"
+      n: "github_url"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    head_sha: {
+      h: "Head Sha"
+      n: "head_sha"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "If supplied, refuse to create a run unless this is the current PR head."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    idempotency_key: {
+      h: "Idempotency Key"
+      n: "idempotency_key"
+      r: true
+      t: "`$STRING`"
+    }
+    number: {
+      h: "Number"
+      n: "number"
+      r: true
+      t: "`$INTEGER`"
+    }
+    pagination: {
+      h: "Pagination"
+      n: "pagination"
+      r: true
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 3
+      }
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: true
+      t: "`$OBJECT`"
+    }
+    preview_cleanup_ready: {
+      h: "Preview Cleanup Ready"
+      n: "preview_cleanup_ready"
+      r: true
+      sh: "The source is closed or merged and unfinished Scenario execution and Discovery have stopped."
+      t: "`$BOOLEAN`"
+    }
+    preview_url: {
+      h: "Preview Url"
+      n: "preview_url"
+      r: false
+      sh: "Most recently supplied preview URL for the current head commit, retained across verification attempts."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    project: {
+      h: "Project"
+      n: "project"
+      r: false
+      t: "`$ANY`"
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "Composal project slug or public ID for PR preview environments."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    project_slug: {
+      h: "Project Slug"
+      n: "project_slug"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: true
+      t: "`$STRING`"
+    }
+    pull_request: {
+      h: "Pull Request"
+      n: "pull_request"
+      r: true
+      t: "`$OBJECT`"
+    }
+    repository_id: {
+      h: "Repository Id"
+      n: "repository_id"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    request_label: {
+      h: "Request Label"
+      n: "request_label"
+      r: true
+      t: "`$STRING`"
+    }
+    requested_run_id: {
+      h: "Requested Run Id"
+      n: "requested_run_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    runs: {
+      h: "Runs"
+      n: "runs"
+      r: true
+      t: "`$ARRAY`"
+    }
+    source_branch: {
+      h: "Source Branch"
+      n: "source_branch"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    source_repository: {
+      h: "Source Repository"
+      n: "source_repository"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    source_url: {
+      h: "Source Url"
+      n: "source_url"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    web_path: {
+      h: "Web Path"
+      n: "web_path"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "verify_merge_request"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "head_sha"
+            "idempotency_key"
+            "scenario_ids"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun"
+          q: {
+            "$action": "rerun"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "merge_requests"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "rerun"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "branch"
+            "head_sha"
+            "idempotency_key"
+            "number"
+            "project_id"
+            "repository_id"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/merge_requests"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/merge_requests"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "merge_requests"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "branch"
+            "environment"
+            "head_sha"
+            "imessage_number"
+            "no_preview"
+            "number"
+            "preview_url"
+            "project_id"
+            "repository_id"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/merge_requests/preview"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/merge_requests/preview"
+          q: {
+            "$action": "preview"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "merge_requests"
+            }
+            {
+              lit: "preview"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verify/merge_requests/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verify/merge_requests/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "merge_requests"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

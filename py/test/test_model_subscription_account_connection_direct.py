@@ -43,11 +43,9 @@ class TestModelSubscriptionAccountConnectionDirect:
         query = {}
         if setup["live"]:
             params["id"] = setup["idmap"].get("model_subscription_account_connection01")
-            params["id"] = setup["idmap"].get("model_subscription_account_connection01")
             pass
         else:
             params["id"] = "direct01"
-            params["id"] = "direct02"
             pass
 
         result = client.direct({

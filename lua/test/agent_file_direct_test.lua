@@ -45,13 +45,11 @@ describe("AgentFileDirect", function()
     if setup.live then
       params["agent_id"] = setup.idmap["agent01"]
       params["id"] = setup.idmap["agent_file01"]
-      params["id"] = setup.idmap["agent_file01"]
       params["organization_id"] = setup.idmap["organization01"]
     else
       params["agent_id"] = "direct01"
       params["id"] = "direct02"
-      params["id"] = "direct03"
-      params["organization_id"] = "direct04"
+      params["organization_id"] = "direct03"
     end
 
     local result, err = client:direct({

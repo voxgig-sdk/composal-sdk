@@ -60,13 +60,6 @@ main: kit: entity: patchset_diff: {
               }
               {
                 k: "param"
-                n: "id"
-                or: "fingerprint"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "organization_id"
                 or: "org_slug"
                 r: true
@@ -78,13 +71,6 @@ main: kit: entity: patchset_diff: {
                 or: "patchset_number"
                 r: true
                 t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "patchset_id"
-                or: "patchset_number"
-                r: true
-                t: "`$INTEGER`"
               }
               {
                 k: "param"

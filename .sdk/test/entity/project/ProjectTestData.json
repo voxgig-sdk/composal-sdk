@@ -208,17 +208,7 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/pr_testing": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

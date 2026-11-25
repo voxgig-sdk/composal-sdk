@@ -1,0 +1,33 @@
+$kind: collection
+id: ae26f618-9a43-5a39-afc8-470ace8924af
+description: |-
+  The **app_deployment_dashboard** entity. Its requests address one record by `{{app_deployment_dashboard_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `activity` | array | yes |  |
+  | `app` | object | yes |  |
+  | `audit_events` | array | yes |  |
+  | `capacity` | object | yes |  |
+  | `connections` | array | yes |  |
+  | `data_resources` | array | yes |  |
+  | `deployments` | array | yes |  |
+  | `desired_states` | array | yes |  |
+  | `environments` | array | yes |  |
+  | `id` | string |  |  |
+  | `locations` | array | yes |  |
+  | `managed_database_catalog` | object | yes |  |
+  | `observability` | object | yes |  |
+  | `operations` | array | yes |  |
+  | `placements` | array | yes |  |
+  | `reconciler_ticks` | array | yes |  |
+  | `releases` | array | yes |  |
+  | `rollback_deployments` | array | yes |  |
+  | `rollouts` | array | yes |  |
+  | `runtime_instances` | array | yes |  |
+  | `service_bindings` | array | yes |  |
+  | `service_views` | array | yes |  |
+  | `services` | array | yes |  |
+  | `storage_resources` | array | yes |  |
+  | `summary` | object | yes |  |
+order: 87000

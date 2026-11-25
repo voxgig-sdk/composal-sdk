@@ -14,7 +14,7 @@ main: kit: entity: agent_workflow_run: {
     automation: {
       h: "Automation"
       n: "automation"
-      r: true
+      r: false
       sh: "Saved native automation identity."
       t: [
         "`$ONE`"
@@ -100,7 +100,7 @@ main: kit: entity: agent_workflow_run: {
     decision_history: {
       h: "Decision History"
       n: "decision_history"
-      r: true
+      r: false
       t: "`$OBJECT`"
     }
     error: {

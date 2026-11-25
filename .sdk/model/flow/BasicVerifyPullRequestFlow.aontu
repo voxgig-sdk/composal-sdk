@@ -12,27 +12,10 @@ main: kit: flow: BasicVerifyPullRequestFlow:
       }
 
       m: {
-        organization_id: "organization01",
-        pull_request_id: "pull_request01"
-      }
-
-      o: "create"
-    }
-
-    {
-      m: {
         organization_id: "organization01"
       }
 
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "verify_pull_request_ref01"
-          }
-        }
-      ]
+      o: "create"
     }
 
     {
@@ -70,26 +53,6 @@ main: kit: flow: BasicVerifyPullRequestFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "verify_pull_request_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicVerifyPullRequestFlow"

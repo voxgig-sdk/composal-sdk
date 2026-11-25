@@ -63,7 +63,7 @@ func TestSparkAgentThreadEntity(t *testing.T) {
 			}
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
-			t.Log("LIVE STEP {\"id\":\"spark_agent_thread.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive\"}")
+			t.Log("LIVE STEP {\"id\":\"spark_agent_thread.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads\"}")
 		if setup.live {
 			for _, _liveKey := range []string{"agent01", "organization01"} {
 				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {

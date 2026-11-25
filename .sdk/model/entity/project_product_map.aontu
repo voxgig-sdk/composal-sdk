@@ -690,11 +690,8 @@ main: kit: entity: project_product_map: {
             }
           ]
           t: {
-            page: {
-              cursor: "`body.next_cursor`"
-            }
             req: "`reqdata`"
-            res: "`body.items`"
+            res: "`body`"
           }
         }
         {

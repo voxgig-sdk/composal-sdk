@@ -29,22 +29,20 @@ const utility_1 = require("../../utility");
         const setup = directSetup({ id: 'direct01' });
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-product_map_observation', setup.live))
             return;
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["product_map_observation01", "product_map_observation01", "organization01", "project01"], LIVE_STRICT))
+        if ((0, utility_1.skipIfMissingIds)(t, setup, ["product_map_observation01", "organization01", "project01"], LIVE_STRICT))
             return;
         const { client, calls } = setup;
         const params = {};
         const query = {};
         if (setup.live) {
             params.id = setup.idmap['product_map_observation01'];
-            params.id = setup.idmap['product_map_observation01'];
             params.organization_id = setup.idmap['organization01'];
             params.project_id = setup.idmap['project01'];
         }
         else {
             params.id = 'direct01';
-            params.id = 'direct02';
-            params.organization_id = 'direct03';
-            params.project_id = 'direct04';
+            params.organization_id = 'direct02';
+            params.project_id = 'direct03';
         }
         const result = await client.direct({
             path: 'api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/observations/{id}',
@@ -70,7 +68,6 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(calls[0].url.includes('direct01'));
             (0, node_assert_1.default)(calls[0].url.includes('direct02'));
             (0, node_assert_1.default)(calls[0].url.includes('direct03'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct04'));
         }
     });
 });

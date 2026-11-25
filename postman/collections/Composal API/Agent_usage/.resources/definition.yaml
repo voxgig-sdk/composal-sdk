@@ -13,4 +13,4 @@ description: |-
   | `user_days` | array | yes |  |
   | `users` | array | yes |  |
   | `window` | string | yes |  |
-order: 64000
+order: 63000

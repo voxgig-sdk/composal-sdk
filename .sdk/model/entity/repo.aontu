@@ -276,20 +276,6 @@ main: kit: entity: repo: {
               }
               {
                 k: "param"
-                n: "id"
-                or: "repo_slug"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "organization_id"
-                or: "org_slug"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
                 n: "organization_id"
                 or: "org_slug"
                 r: true
@@ -374,7 +360,7 @@ main: kit: entity: repo: {
           m: "GET"
           o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/sync"
           q: {
-            "$action": "sync"
+            "$action": "page_sync"
             exist: [
               "id"
               "organization_id"
@@ -418,7 +404,7 @@ main: kit: entity: repo: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.sync_targets`"
+            res: "`body`"
           }
         }
       ]
