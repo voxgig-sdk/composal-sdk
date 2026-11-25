@@ -90,24 +90,19 @@ outcome was uncertain, pass the original key as \`idempotency_key\` (the SDK sen
 header and never replaces it). An action that requires the header, such as \`Agent\` create
 with \`$action: 'browser_opened'\`, needs \`idempotency_key\` in the call to be selected.
 
-**Types.** Some request fields that Composal's definition makes optional are typed as
-required, among them \`browser_context\` and \`client_time\` on \`AgentInput\` create. Each is an
-object with required fields of its own, which this generation misreads as the field itself
-being required. TypeScript refuses a call without them and Python's type hints say the same;
-no SDK checks it at run time.
-
 **Files and streams.** Nineteen calls can answer with a file or plain text rather than JSON:
-images, recordings, archives and downloads, such as \`Evidence\` load with
-\`$action: 'download'\`. Four answer with a server-sent event stream, among them an agent's live
-events. This generation reads neither, so those calls report an unreadable response; an
-agent's saved conversation, \`Agent\` load with \`$action: 'conversation'\`, holds its replies.
-Eight uploads take multipart form data or JSON; the SDK sends JSON.
+images, recordings, archives and downloads, such as \`VerifyEvidence\` load
+with \`$action: 'download'\`. Four answer with a server-sent event stream, among them an agent's live events.
+This generation reads neither, so those calls report an unreadable response; an agent's saved
+conversation, \`Agent\` load with \`$action: 'conversation'\`, holds its replies. Eight uploads
+take multipart form data or JSON; the SDK sends JSON.
 
 **Scope.** Composal's definition is generated from its application's routes and holds 2,008
-operations. This SDK covers every one a customer can call: 1,747 operations, as 555
-resources. It leaves out only the 38 that Composal marks internal, the 194 it marks deprecated
-(among them the \`/clawder\` paths, which \`/spark\` replaces), and the 29 that need a service
-credential rather than a personal access token.
+operations. This SDK covers every one a customer can call: 1,747 operations, as 558 resources.
+Three of them are views read whole: an app's deployment dashboard, and a project's PR-testing
+options and product-map comparison. It leaves out only the 38 that Composal marks internal, the
+194 it marks deprecated (among them the \`/clawder\` paths, which \`/spark\` replaces), and the
+29 that need a service credential rather than a personal access token.
 
 **Not yet run with a token.** Every request was checked against the definition, not against
 Composal.`
